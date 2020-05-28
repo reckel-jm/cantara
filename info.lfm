@@ -1,50 +1,54 @@
 object frmInfo: TfrmInfo
-  Left = 527
-  Height = 197
-  Top = 39
-  Width = 320
+  Left = 734
+  Height = 344
+  Top = 158
+  Width = 480
   BorderIcons = [biSystemMenu, biMaximize]
   BorderStyle = bsDialog
   Caption = 'Über das Programm'
-  ClientHeight = 197
-  ClientWidth = 320
+  ClientHeight = 344
+  ClientWidth = 480
+  DesignTimePPI = 144
   OnCreate = FormCreate
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.8.0'
   object lblAuthor: TLabel
     Left = 0
-    Height = 17
-    Top = 57
-    Width = 320
+    Height = 25
+    Top = 80
+    Width = 480
     Align = alTop
     Caption = 'Autor: Jan Martin Reckel'
     ParentColor = False
+    ParentFont = False
   end
   object lblCompDate: TLabel
     Left = 0
-    Height = 17
-    Top = 74
-    Width = 320
+    Height = 25
+    Top = 105
+    Width = 480
     Align = alTop
     Caption = 'lblCompDate'
     ParentColor = False
+    ParentFont = False
   end
   object lblVersion: TLabel
     Left = 0
-    Height = 17
-    Top = 40
-    Width = 320
+    Height = 25
+    Top = 55
+    Width = 480
     Align = alTop
     Caption = 'lblVersion'
     ParentColor = False
+    ParentFont = False
   end
   object lblName: TLabel
     Left = 0
-    Height = 40
+    Height = 55
     Top = 0
-    Width = 320
+    Width = 480
     Align = alTop
     Caption = 'Cantara'
-    Font.Height = -32
+    Font.Height = -48
     Font.Name = 'Palladio URW'
     Font.Style = [fsBold, fsItalic]
     ParentColor = False
@@ -52,13 +56,24 @@ object frmInfo: TfrmInfo
   end
   object lblInfo: TLabel
     Left = 0
-    Height = 85
-    Top = 106
-    Width = 320
+    Height = 150
+    Top = 152
+    Width = 480
     Align = alTop
-    BorderSpacing.Top = 15
-    Caption = 'Dieses Programm sowie sein Quelltext dürfen nur mit Genehmigung verwendet werden.'#10#10'Für Fragen kontaktieren Sie:'#10'jm.reckel@t-online.de'
+    BorderSpacing.Top = 22
+    Caption = 'Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.'#13#10'Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.'#13#10#13#10'Der Autor wünscht für die Verwendung Gottes Segen!'
     ParentColor = False
+    ParentFont = False
     WordWrap = True
+    OnClick = lblInfoClick
+  end
+  object btnOpenGitRepo: TButton
+    Left = 0
+    Height = 38
+    Top = 304
+    Width = 481
+    Caption = 'Öffne Git-Repository im Webbrowser...'
+    OnClick = btnOpenGitRepoClick
+    TabOrder = 0
   end
 end

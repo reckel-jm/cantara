@@ -1,122 +1,129 @@
 object frmSongs: TfrmSongs
   Left = 402
-  Height = 483
+  Height = 664
   Top = 220
-  Width = 705
+  Width = 1058
   AllowDropFiles = True
-  Caption = 'Lieder'
-  ClientHeight = 456
-  ClientWidth = 705
+  Caption = 'Liedauswahl (Cantara)'
+  ClientHeight = 634
+  ClientWidth = 1058
+  DesignTimePPI = 144
   Menu = MainMenu
   OnChangeBounds = FormResize
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
   OnWindowStateChange = FormResize
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.0.8.0'
   object lbxSRepo: TListBox
     AnchorSideRight.Control = grbControl
     Left = 0
-    Height = 425
+    Height = 564
     Top = 0
-    Width = 320
+    Width = 673
     Align = alLeft
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
     OnDblClick = btnAddClick
     OnKeyDown = lbxSRepoKeyDown
+    ParentFont = False
     ScrollWidth = 318
     Sorted = True
     TabOrder = 0
-    TopIndex = -1
   end
   object lbxSselected: TListBox
     Left = 360
-    Height = 425
+    Height = 564
     Top = 0
-    Width = 345
+    Width = 698
     Align = alRight
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
     OnDragDrop = lbxSselectedDragDrop
     OnKeyPress = lbxSselectedKeyPress
     OnKeyDown = lbxSselectedKeyDown
+    ParentFont = False
     ScrollWidth = 343
     TabOrder = 1
-    TopIndex = -1
   end
   object grbSettings: TGroupBox
     Left = 0
-    Height = 31
-    Top = 425
-    Width = 705
+    Height = 70
+    Top = 564
+    Width = 1058
     Align = alBottom
-    ClientHeight = 29
-    ClientWidth = 703
+    ClientHeight = 40
+    ClientWidth = 1054
+    ParentFont = False
     TabOrder = 2
     object btnStartPresentation: TButton
       Left = 0
-      Height = 29
+      Height = 40
       Top = 0
-      Width = 144
+      Width = 216
       Align = alLeft
       Caption = 'Präsentation...'
       OnClick = btnStartPresentationClick
+      ParentFont = False
       TabOrder = 0
     end
     object btnSettings: TButton
-      Left = 568
-      Height = 29
+      Left = 852
+      Height = 40
       Top = 0
-      Width = 135
+      Width = 202
       Align = alRight
       Caption = 'Einstellungen...'
       OnClick = btnSettingsClick
+      ParentFont = False
       TabOrder = 1
     end
   end
   object grbControl: TGroupBox
     AnchorSideLeft.Control = lbxSRepo
     AnchorSideRight.Control = lbxSselected
-    Left = 320
-    Height = 425
+    Left = 673
+    Height = 564
     Top = 0
-    Width = 40
+    Width = 0
     Align = alLeft
     Anchors = [akTop, akLeft, akRight, akBottom]
-    ClientHeight = 423
-    ClientWidth = 38
+    ClientHeight = 534
+    ClientWidth = 0
+    ParentFont = False
     TabOrder = 3
     OnClick = grbControlClick
     object btnAdd: TButton
       Left = 0
-      Height = 25
+      Height = 38
       Top = 0
-      Width = 38
+      Width = 0
       Align = alTop
       Caption = '+'
       OnClick = btnAddClick
+      ParentFont = False
       TabOrder = 0
     end
     object btnRemove: TButton
       Left = 0
-      Height = 25
-      Top = 25
-      Width = 38
+      Height = 38
+      Top = 38
+      Width = 0
       Align = alTop
       Caption = '-'
       OnClick = btnRemoveClick
+      ParentFont = False
       TabOrder = 1
     end
     object btnUp: TButton
       Left = 0
-      Height = 36
-      Top = 100
-      Width = 38
+      Height = 54
+      Top = 151
+      Width = 0
       Align = alTop
-      BorderSpacing.Top = 50
-      Caption = 'Ý'
-      Font.Height = -13
+      BorderSpacing.Top = 75
+      Caption = '🠕'
+      Font.Height = -20
       Font.Name = 'Symbol PS'
       Font.Style = [fsBold]
       OnClick = btnUpClick
@@ -125,12 +132,12 @@ object frmSongs: TfrmSongs
     end
     object btnDown: TButton
       Left = 0
-      Height = 36
-      Top = 136
-      Width = 38
+      Height = 54
+      Top = 205
+      Width = 0
       Align = alTop
-      Caption = 'ß'
-      Font.Height = -13
+      Caption = '🠗'
+      Font.Height = -20
       Font.Name = 'Symbol PS'
       Font.Style = [fsBold]
       OnClick = btnDownClick
@@ -139,17 +146,21 @@ object frmSongs: TfrmSongs
     end
     object btnClear: TButton
       Left = 0
-      Height = 33
-      Top = 224
-      Width = 38
-      Caption = 'Leeren'
+      Height = 50
+      Hint = 'Leere alle ausgewählten Lieder'
+      Top = 344
+      Width = 0
+      Align = alTop
+      BorderSpacing.Top = 85
+      Caption = '🗑'
       OnClick = btnClearClick
+      ParentFont = False
       TabOrder = 4
     end
   end
   object MainMenu: TMainMenu
-    left = 264
-    top = 428
+    left = 396
+    top = 642
     object menuFile: TMenuItem
       Caption = 'Datei'
       OnClick = menuFileClick
@@ -162,6 +173,11 @@ object frmSongs: TfrmSongs
         Caption = 'Auswahl speichern..'
         ShortCut = 16467
         OnClick = itemSaveClick
+      end
+      object itemReloadSongList: TMenuItem
+        Caption = 'Liederliste neu laden'
+        ShortCut = 16462
+        OnClick = itemReloadSongListClick
       end
       object itemSeperator1: TMenuItem
         Caption = '-'
@@ -196,13 +212,11 @@ object frmSongs: TfrmSongs
     end
   end
   object OpenDialog: TOpenDialog
-    left = 198
-    top = 424
+    left = 297
+    top = 636
   end
   object SaveDialog: TSaveDialog
-    Width = 1008
-    Height = 664
-    left = 232
-    top = 424
+    left = 348
+    top = 636
   end
 end

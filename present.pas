@@ -5,8 +5,11 @@ unit Present;
 interface
 
 uses
+  {$if defined(LINUX)} //Für Linux müssen die GTK-Pakete geladen werden, um Vollbildfunktion zu ermöglichen
+  gtk2, gdk2,
+  {$endif}
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  gtk2, gdk2, Settings, Types, Themes;
+  Settings, Types, Themes;
 type
 
   { TfrmPresent }
@@ -29,6 +32,9 @@ type
     { private declarations }
   public
     { public declarations }
+    OriginalBounds: TRect;
+    OriginalWindowState: TWindowState;
+    ScreenBounds: TRect;
   end;
 
 var
@@ -131,6 +137,26 @@ end;
 
 procedure TfrmPresent.SwitchFullScreen;
 begin
+  {$if defined(WINDOWS)}
+  if BorderStyle <> bsNone then begin
+    // To full screen
+    OriginalWindowState := WindowState;
+    OriginalBounds := BoundsRect;
+    BorderStyle := bsNone;
+    BoundsRect := Screen.MonitorFromWindow(Handle).BoundsRect;
+    Fullscreen := True;
+  end else begin
+    // From full screen
+    BorderStyle := bsSizeable;
+    if OriginalWindowState = wsMaximized then
+      WindowState := wsMaximized
+    else
+      BoundsRect := OriginalBounds;
+    Fullscreen := False;
+  end;
+  {$endif}
+  {$if defined(LINUX)}
+  if defined(LINUX)}
   if Fullscreen = False then begin
     // To full screen
     gdk_window_fullscreen(PGtkWidget(Handle)^.window);
@@ -140,6 +166,7 @@ begin
     gdk_window_unfullscreen(PGtkWidget(Handle)^.window);
     Fullscreen := False;
   end;
+  {$endif}
 end;
 
 end.

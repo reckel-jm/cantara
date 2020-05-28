@@ -35,6 +35,7 @@ type
     menuHelp: TMenuItem;
     MenuItem1: TMenuItem;
     itemPresentation: TMenuItem;
+    itemReloadSongList: TMenuItem;
     OpenDialog: TOpenDialog;
     SaveDialog: TSaveDialog;
     procedure btnAddClick(Sender: TObject);
@@ -61,6 +62,7 @@ type
     procedure loadRepo(repoPath: string);
     procedure menuFileClick(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
+    procedure itemReloadSongListClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -118,6 +120,12 @@ end;
 procedure TfrmSongs.MenuItem1Click(Sender: TObject);
 begin
   frmInfo.ShowModal;
+end;
+
+procedure TfrmSongs.itemReloadSongListClick(Sender: TObject);
+begin
+  lbxSRepo.Items.Clear;
+  loadRepo(frmSettings.edtRepoPath.Text);
 end;
 
 procedure TfrmSongs.FormResize(Sender: TObject);

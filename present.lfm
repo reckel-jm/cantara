@@ -8,12 +8,13 @@ object frmPresent: TfrmPresent
   ClientHeight = 517
   ClientWidth = 1127
   Color = clBlack
+  DesignTimePPI = 144
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
-  LCLVersion = '1.6.0.4'
+  LCLVersion = '2.0.8.0'
   WindowState = wsMaximized
   object lblText: TLabel
     Cursor = crNone
@@ -33,7 +34,7 @@ object frmPresent: TfrmPresent
   end
   object lblNext: TLabel
     Left = 0
-    Height = 17
+    Height = 25
     Top = 1
     Width = 1127
     Align = alTop
@@ -42,6 +43,7 @@ object frmPresent: TfrmPresent
     Color = clBlack
     Font.Color = clWhite
     Layout = tlCenter
+    ParentColor = False
     ParentFont = False
     Transparent = False
     WordWrap = True
