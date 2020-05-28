@@ -26,7 +26,7 @@ Zwei Strophen werden immer durch doppelten Zeilenumbruch voneinander getrennt. L
 
 ### Lizensierung
 
-Cantara ist unter der GPL3 lizensiert. In der Datei [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) findet man Details dazu. Kurz zusammengefasst darf die und der Quelltext Software kostenfrei verwendet, weitergegeben und verändert werden, dabei muss allerdings der Name der Urheber erwähnt und die Lizenz beibehalten werden.
+Cantara ist unter der GPL3 lizensiert. In der Datei [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) findet man Details dazu. Kurz zusammengefasst darf die Software und der Quelltext kostenfrei verwendet, weitergegeben und verändert werden, dabei muss allerdings der Name der Urheber erwähnt und die Lizenz beibehalten werden.
 
 ## Englisch
 Unfortunaly, Cantara is not localised yet and only available in German. This will be changed soon. An issue has been already opened: https://github.com/reckel-jm/cantara/issues/1
