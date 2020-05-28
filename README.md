@@ -5,7 +5,7 @@ Open Source Song Presentation Software
 ## Deutsch
 
 ### Über dieses Programm
-Cantara ist ein einfach zu bedienendes, schlichtes Liedpräsentations-Programm, welches in Lazarus (Pascal) geschrieben wurde. Mit diesem Programm lassen sich schnell und einfach Liedtexte anzeigen, sodass gemeinsames musizieren und singen erleichtert wird. Dies ist besonders für christliche Gruppen, Veranstaltungen und Gemeinden konzipiert, kann aber auch für andere Zwecke verwendet werden.
+Cantara ist ein einfach zu bedienendes, schlichtes Liedpräsentations-Programm, welches in Lazarus (Pascal) geschrieben wurde. Mit diesem Programm lassen sich schnell und einfach Liedtexte anzeigen, sodass gemeinsames Musizieren und Singen erleichtert wird. Dies ist besonders für christliche Gruppen, Veranstaltungen und Gemeinden konzipiert, kann aber auch für andere Zwecke verwendet werden.
 
 ### Derzeitige Version
 Die derzeitige Version ist 1.1 und wurde am 28.05.2020 veröffentlicht.
