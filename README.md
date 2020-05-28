@@ -24,6 +24,8 @@ Um die Lieder verwenden zu können, müssen sie zunächst eingepflegt werden. Ei
 
 Zwei Strophen werden immer durch doppelten Zeilenumbruch voneinander getrennt. Liedzeilen werden durch einen einfachen Zeilenumbruch voneinander getrennt. Die Lieder werden alle in einem Verzeichnis gespeichert, welches dann in den Einstellungen von Cantara ausgewählt wird.
 
+Zur Zeit entsteht ein weiteres [GitHub Repository mit gemeinfreien christlichen Liedtexten](https://github.com/reckel-jm/cantara_songrepo), welche direkt in Cantara importiert werden können.
+
 ### Lizensierung
 
 Cantara ist unter der GPL3 lizensiert. In der Datei [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) findet man Details dazu. Kurz zusammengefasst darf die Software und der Quelltext kostenfrei verwendet, weitergegeben und verändert werden, dabei muss allerdings der Name der Urheber erwähnt und die Lizenz beibehalten werden.
@@ -47,9 +49,11 @@ In order to make songs appear in that list, song templates have to be prepared o
 
 Stanzas are seperated by double line wrap. Lines of stanza are seperated by a single line wrap. Repetitions (such as refrains) can be implemented by copy and paste. That's it. The user set ups a directory where all the stanzas will be stored.
 
+At the moment an other [GitHub Repository with public domain Christian song lyrics is under construction](https://github.com/reckel-jm/cantara_songrepo), which can be directly imported to Cantara.
+
 ### Settings
-The color and font size of the presentation can be changed in the settings.
+The color and font of the presentation can be changed in the settings.
 
 ### Licence
-The program is licenced under GPL3. See COPYING for details.
+The program is licenced under GPL3. See [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) for details. You may use and change this software and it's source code and share it as you wish, but you need to add a copyright hint and keep the licence.
 
