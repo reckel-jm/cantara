@@ -1,6 +1,7 @@
 # Cantara
-Ein freies Liedpräsentations-Programm
-Open Source Song Presentation Software
+Ein freies Liedpräsentations-Programm // Open Source Song Presentation Software
+
+[Download Latest Windows Version (with Installer)](https://github.com/reckel-jm/cantara/releases/download/release1-1/cantara-1-1.exe)
 
 ## Deutsch
 
