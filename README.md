@@ -13,11 +13,11 @@ Die derzeitige Version ist 1.1 und wurde am 28.05.2020 veröffentlicht.
 ### Lieder einpflegen
 Um die Lieder verwenden zu können, müssen sie zunächst eingepflegt werden. Ein Lied besteht dabei aus einer Textdatei mit der Struktur Liedname.song (die Dateiendung kann abweichen) und folgender Syntax:
 
-Strophe 1 Zeile 1
-Strophe 1 Zeile 2 (usw.)
-
-Strophe 2 Zeile 1
-Strophe 2 Zeile 2 (usw.)
+    Strophe 1 Zeile 1
+    Strophe 1 Zeile 2 (usw.)
+    
+    Strophe 2 Zeile 1
+    Strophe 2 Zeile 2 (usw.)
 
 Zwei Strophen werden immer durch doppelten Zeilenumbruch voneinander getrennt. Liedzeilen werden durch einen einfachen Zeilenumbruch voneinander getrennt. Die Lieder werden alle in einem Verzeichnis gespeichert, welches dann in den Einstellungen von Cantara ausgewählt wird.
 
@@ -36,11 +36,11 @@ The current version is 1.1 released at May 28 2020.
 ### Song templates
 In order to make songs appear in that list, song templates have to be prepared once. A song consists of a txt-File which has the following structure:
 
-Stanza 1 Line 1
-Stanza 1 Line 2
-
-Stanza 2 Line 1
-Stanza 2 Line 2
+    Stanza 1 Line 1
+    Stanza 1 Line 2
+    
+    Stanza 2 Line 1
+    Stanza 2 Line 2
 
 Stanzas are seperated by double line wrap. Lines of stanza are seperated by a single line wrap. Repetitions (such as refrains) can be implemented by copy and paste. That's it. The user set ups a directory where all the stanzas will be stored.
 
