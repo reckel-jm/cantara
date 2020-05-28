@@ -1,4 +1,4 @@
-# cantara
+# Cantara
 Ein freies Liedpräsentations-Programm
 Open Source Song Presentation Software
 
