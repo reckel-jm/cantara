@@ -31,7 +31,7 @@ Zur Zeit entsteht ein weiteres [GitHub Repository mit gemeinfreien christlichen 
 Cantara ist unter der GPL3 lizensiert. In der Datei [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) findet man Details dazu. Kurz zusammengefasst darf die Software und der Quelltext kostenfrei verwendet, weitergegeben und verändert werden, dabei muss allerdings der Name der Urheber erwähnt und die Lizenz beibehalten werden.
 
 ## Englisch
-Unfortunaly, Cantara is not localised yet and only available in German. This will be changed soon. An issue has been already opened: https://github.com/reckel-jm/cantara/issues/1
+Unfortunaly, Cantara is not localised yet and only available in German. This will be changed soon. [An issue has been already opened](https://github.com/reckel-jm/cantara/issues/1)
 ### About the program
 Cantara is a simple open source song presentation software written in Free Pascal/Lazarus which allows people to spontanously present song lyrics for a bigger audience for the purpose of singing together. This is especially useful for church groups and meetings. 
 
