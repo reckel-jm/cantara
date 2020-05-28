@@ -1,7 +1,9 @@
 # Cantara
 Ein freies Liedpräsentations-Programm // Open Source Song Presentation Software
 
-[Lade die neuste Version herunter // Download Latest Windows Version (with Installer)](https://github.com/reckel-jm/cantara/releases/download/release1-1/cantara-1-1.exe)
+[Lade die neuste Version für Windows herunter (EXE-Datei) // Download Latest Windows Version (with Installer)](https://github.com/reckel-jm/cantara/releases/download/release1-1/cantara-1-1.exe)
+
+Linux-User können sich den Quelltext herunterladen und mit Lazarus selbst kompilieren.
 
 ## Deutsch
 
@@ -24,7 +26,7 @@ Zwei Strophen werden immer durch doppelten Zeilenumbruch voneinander getrennt. L
 
 ### Lizensierung
 
-Cantara ist unter der GPL3 lizensiert. In der Datei COPYING findet man Details dazu.
+Cantara ist unter der GPL3 lizensiert. In der Datei [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) findet man Details dazu. Kurz zusammengefasst darf die und der Quelltext Software kostenfrei verwendet, weitergegeben und verändert werden, dabei muss allerdings der Name der Urheber erwähnt und die Lizenz beibehalten werden.
 
 ## Englisch
 Unfortunaly, Cantara is not localised yet and only available in German. This will be changed soon. An issue has been already opened: https://github.com/reckel-jm/cantara/issues/1
