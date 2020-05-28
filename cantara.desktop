@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Cantara
+GenericName[de]=Liedpräsentation
+GenericName[en_GB]=Song Presenter
+
+# Gnome and KDE 3 uses Comment.
+Comment=Present Songs
+Comment[en_GB]=Present Songs
+Comment[de]=Liedtexte anzeigen
+Exec=cantara
+Terminal=false
+Icon=cantara
+Type=Application
+Categories=Office;Presentation;

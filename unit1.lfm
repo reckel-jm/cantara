@@ -1,0 +1,208 @@
+object frmSongs: TfrmSongs
+  Left = 402
+  Height = 483
+  Top = 220
+  Width = 705
+  AllowDropFiles = True
+  Caption = 'Lieder'
+  ClientHeight = 456
+  ClientWidth = 705
+  Menu = MainMenu
+  OnChangeBounds = FormResize
+  OnCreate = FormCreate
+  OnResize = FormResize
+  OnShow = FormShow
+  OnWindowStateChange = FormResize
+  LCLVersion = '1.8.4.0'
+  object lbxSRepo: TListBox
+    AnchorSideRight.Control = grbControl
+    Left = 0
+    Height = 425
+    Top = 0
+    Width = 320
+    Align = alLeft
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ItemHeight = 0
+    OnDblClick = btnAddClick
+    OnKeyDown = lbxSRepoKeyDown
+    ScrollWidth = 318
+    Sorted = True
+    TabOrder = 0
+    TopIndex = -1
+  end
+  object lbxSselected: TListBox
+    Left = 360
+    Height = 425
+    Top = 0
+    Width = 345
+    Align = alRight
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ItemHeight = 0
+    OnDragDrop = lbxSselectedDragDrop
+    OnKeyPress = lbxSselectedKeyPress
+    OnKeyDown = lbxSselectedKeyDown
+    ScrollWidth = 343
+    TabOrder = 1
+    TopIndex = -1
+  end
+  object grbSettings: TGroupBox
+    Left = 0
+    Height = 31
+    Top = 425
+    Width = 705
+    Align = alBottom
+    ClientHeight = 29
+    ClientWidth = 703
+    TabOrder = 2
+    object btnStartPresentation: TButton
+      Left = 0
+      Height = 29
+      Top = 0
+      Width = 144
+      Align = alLeft
+      Caption = 'Präsentation...'
+      OnClick = btnStartPresentationClick
+      TabOrder = 0
+    end
+    object btnSettings: TButton
+      Left = 568
+      Height = 29
+      Top = 0
+      Width = 135
+      Align = alRight
+      Caption = 'Einstellungen...'
+      OnClick = btnSettingsClick
+      TabOrder = 1
+    end
+  end
+  object grbControl: TGroupBox
+    AnchorSideLeft.Control = lbxSRepo
+    AnchorSideRight.Control = lbxSselected
+    Left = 320
+    Height = 425
+    Top = 0
+    Width = 40
+    Align = alLeft
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ClientHeight = 423
+    ClientWidth = 38
+    TabOrder = 3
+    OnClick = grbControlClick
+    object btnAdd: TButton
+      Left = 0
+      Height = 25
+      Top = 0
+      Width = 38
+      Align = alTop
+      Caption = '+'
+      OnClick = btnAddClick
+      TabOrder = 0
+    end
+    object btnRemove: TButton
+      Left = 0
+      Height = 25
+      Top = 25
+      Width = 38
+      Align = alTop
+      Caption = '-'
+      OnClick = btnRemoveClick
+      TabOrder = 1
+    end
+    object btnUp: TButton
+      Left = 0
+      Height = 36
+      Top = 100
+      Width = 38
+      Align = alTop
+      BorderSpacing.Top = 50
+      Caption = 'Ý'
+      Font.Height = -13
+      Font.Name = 'Symbol PS'
+      Font.Style = [fsBold]
+      OnClick = btnUpClick
+      ParentFont = False
+      TabOrder = 2
+    end
+    object btnDown: TButton
+      Left = 0
+      Height = 36
+      Top = 136
+      Width = 38
+      Align = alTop
+      Caption = 'ß'
+      Font.Height = -13
+      Font.Name = 'Symbol PS'
+      Font.Style = [fsBold]
+      OnClick = btnDownClick
+      ParentFont = False
+      TabOrder = 3
+    end
+    object btnClear: TButton
+      Left = 0
+      Height = 33
+      Top = 224
+      Width = 38
+      Caption = 'Leeren'
+      OnClick = btnClearClick
+      TabOrder = 4
+    end
+  end
+  object MainMenu: TMainMenu
+    left = 264
+    top = 428
+    object menuFile: TMenuItem
+      Caption = 'Datei'
+      OnClick = menuFileClick
+      object itemLoad: TMenuItem
+        Caption = 'Auswahl laden...'
+        ShortCut = 16463
+        OnClick = itemLoadClick
+      end
+      object itemSave: TMenuItem
+        Caption = 'Auswahl speichern..'
+        ShortCut = 16467
+        OnClick = itemSaveClick
+      end
+      object itemSeperator1: TMenuItem
+        Caption = '-'
+        Enabled = False
+      end
+      object itemPresentation: TMenuItem
+        Caption = 'Präsentation'
+        ShortCut = 16464
+        OnClick = btnStartPresentationClick
+      end
+      object itemEnd: TMenuItem
+        Caption = 'Beenden'
+        ShortCut = 32883
+        OnClick = itemEndClick
+      end
+    end
+    object menuEdit: TMenuItem
+      Caption = 'Bearbeiten'
+      object itemSettings: TMenuItem
+        Caption = 'Einstellungen...'
+        ShortCut = 16453
+        OnClick = btnSettingsClick
+      end
+    end
+    object menuHelp: TMenuItem
+      Caption = 'Hilfe'
+      object MenuItem1: TMenuItem
+        Caption = 'Informationen zum Programm'
+        ShortCut = 112
+        OnClick = MenuItem1Click
+      end
+    end
+  end
+  object OpenDialog: TOpenDialog
+    left = 198
+    top = 424
+  end
+  object SaveDialog: TSaveDialog
+    Width = 1008
+    Height = 664
+    left = 232
+    top = 424
+  end
+end

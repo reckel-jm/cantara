@@ -1,0 +1,49 @@
+object frmPresent: TfrmPresent
+  Cursor = crNone
+  Left = 218
+  Height = 517
+  Top = 108
+  Width = 1127
+  Caption = 'Präsentation'
+  ClientHeight = 517
+  ClientWidth = 1127
+  Color = clBlack
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnResize = FormResize
+  OnShow = FormShow
+  LCLVersion = '1.6.0.4'
+  WindowState = wsMaximized
+  object lblText: TLabel
+    Cursor = crNone
+    Left = 0
+    Height = 1
+    Top = 0
+    Width = 1127
+    Align = alTop
+    Alignment = taCenter
+    Font.Color = clWhite
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+    OnClick = lblTextClick
+    OnContextPopup = lblTextContextPopup
+    OnDblClick = lblTextDblClick
+  end
+  object lblNext: TLabel
+    Left = 0
+    Height = 17
+    Top = 1
+    Width = 1127
+    Align = alTop
+    Alignment = taCenter
+    Caption = 'hier steht test.'
+    Color = clBlack
+    Font.Color = clWhite
+    Layout = tlCenter
+    ParentFont = False
+    Transparent = False
+    WordWrap = True
+  end
+end

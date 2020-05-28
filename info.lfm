@@ -1,0 +1,64 @@
+object frmInfo: TfrmInfo
+  Left = 527
+  Height = 197
+  Top = 39
+  Width = 320
+  BorderIcons = [biSystemMenu, biMaximize]
+  BorderStyle = bsDialog
+  Caption = 'Über das Programm'
+  ClientHeight = 197
+  ClientWidth = 320
+  OnCreate = FormCreate
+  LCLVersion = '1.6.0.4'
+  object lblAuthor: TLabel
+    Left = 0
+    Height = 17
+    Top = 57
+    Width = 320
+    Align = alTop
+    Caption = 'Autor: Jan Martin Reckel'
+    ParentColor = False
+  end
+  object lblCompDate: TLabel
+    Left = 0
+    Height = 17
+    Top = 74
+    Width = 320
+    Align = alTop
+    Caption = 'lblCompDate'
+    ParentColor = False
+  end
+  object lblVersion: TLabel
+    Left = 0
+    Height = 17
+    Top = 40
+    Width = 320
+    Align = alTop
+    Caption = 'lblVersion'
+    ParentColor = False
+  end
+  object lblName: TLabel
+    Left = 0
+    Height = 40
+    Top = 0
+    Width = 320
+    Align = alTop
+    Caption = 'Cantara'
+    Font.Height = -32
+    Font.Name = 'Palladio URW'
+    Font.Style = [fsBold, fsItalic]
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblInfo: TLabel
+    Left = 0
+    Height = 85
+    Top = 106
+    Width = 320
+    Align = alTop
+    BorderSpacing.Top = 15
+    Caption = 'Dieses Programm sowie sein Quelltext dürfen nur mit Genehmigung verwendet werden.'#10#10'Für Fragen kontaktieren Sie:'#10'jm.reckel@t-online.de'
+    ParentColor = False
+    WordWrap = True
+  end
+end

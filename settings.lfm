@@ -1,0 +1,202 @@
+object frmSettings: TfrmSettings
+  Left = 455
+  Height = 227
+  Top = 209
+  Width = 349
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Einstellungen'
+  ClientHeight = 227
+  ClientWidth = 349
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poMainFormCenter
+  LCLVersion = '1.6.0.4'
+  object Label1: TLabel
+    Left = 0
+    Height = 23
+    Top = 8
+    Width = 124
+    AutoSize = False
+    Caption = 'Liederverzeichnis:'
+    Layout = tlCenter
+    ParentColor = False
+  end
+  object edtRepoPath: TEdit
+    Left = 128
+    Height = 23
+    Top = 8
+    Width = 192
+    OnChange = edtRepoPathChange
+    OnEditingDone = edtRepoPathEditingDone
+    OnExit = edtRepoPathExit
+    TabOrder = 0
+  end
+  object btnSelectDir: TButton
+    Left = 320
+    Height = 23
+    Top = 8
+    Width = 24
+    Caption = '...'
+    OnClick = btnSelectDirClick
+    TabOrder = 1
+  end
+  object cbEmptyFrame: TCheckBox
+    Left = 0
+    Height = 21
+    Top = 40
+    Width = 206
+    BorderSpacing.Left = 10
+    Caption = 'Leerfolie zwischen Liedern'
+    Checked = True
+    State = cbChecked
+    TabOrder = 2
+  end
+  object Button2: TButton
+    Left = 0
+    Height = 23
+    Top = 152
+    Width = 168
+    Caption = 'Hintergrundfarbe...'
+    OnClick = Button2Click
+    TabOrder = 3
+  end
+  object Button3: TButton
+    Left = 168
+    Height = 23
+    Top = 152
+    Width = 176
+    Caption = 'Textfarbe...'
+    OnClick = Button3Click
+    TabOrder = 4
+  end
+  object Label2: TLabel
+    Left = 1
+    Height = 17
+    Top = 128
+    Width = 153
+    Caption = 'Präsentationsanzeige:'
+    ParentColor = False
+  end
+  object Button4: TButton
+    Left = 237
+    Height = 33
+    Top = 184
+    Width = 107
+    Caption = 'Schließen'
+    ModalResult = 1
+    TabOrder = 5
+  end
+  object cbSpoiler: TCheckBox
+    Left = 0
+    Height = 21
+    Top = 64
+    Width = 185
+    Caption = 'Nächste Folie andeuten'
+    Checked = True
+    State = cbChecked
+    TabOrder = 6
+  end
+  object btnFontSizeManually: TButton
+    Left = 168
+    Height = 25
+    Top = 128
+    Width = 176
+    Caption = 'Schriftgröße...'
+    OnClick = btnFontSizeManuallyClick
+    ParentFont = False
+    TabOrder = 7
+  end
+  object lblLineDistance: TLabel
+    Left = 0
+    Height = 17
+    Top = 96
+    Width = 105
+    Caption = 'Zeilenabstand: '
+    ParentColor = False
+  end
+  object edtLineDistance: TFloatSpinEdit
+    Left = 118
+    Height = 23
+    Top = 96
+    Width = 50
+    Enabled = False
+    Increment = 1
+    MaxValue = 100
+    MinValue = 0
+    TabOrder = 8
+    Value = 1
+  end
+  object SelectDirectoryDialog: TSelectDirectoryDialog
+    left = 16
+    top = 176
+  end
+  object bgColorDialog: TColorDialog
+    Width = 502
+    Height = 275
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    left = 176
+    top = 184
+  end
+  object textColorDialog: TColorDialog
+    Width = 502
+    Height = 275
+    Color = clWhite
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    left = 88
+    top = 184
+  end
+  object FontDialog: TFontDialog
+    Font.Height = -56
+    MinFontSize = 0
+    MaxFontSize = 0
+    Options = [fdEffects, fdNoStyleSel]
+    left = 136
+    top = 184
+  end
+end
