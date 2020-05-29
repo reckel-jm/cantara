@@ -1,0 +1,97 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tfrmsongs.btnadd.caption
+msgid "+"
+msgstr ""
+
+#: tfrmsongs.btnclear.caption
+msgid "🗑"
+msgstr ""
+
+#: tfrmsongs.btnclear.hint
+msgid "Leere alle ausgewählten Lieder"
+msgstr ""
+
+#: tfrmsongs.btndown.caption
+msgid "🠗"
+msgstr ""
+
+#: tfrmsongs.btnremove.caption
+msgid "-"
+msgstr ""
+
+#: tfrmsongs.btnsettings.caption
+msgctxt "tfrmsongs.btnsettings.caption"
+msgid "Einstellungen..."
+msgstr ""
+
+#: tfrmsongs.btnstartpresentation.caption
+msgid "Präsentation..."
+msgstr ""
+
+#: tfrmsongs.btnup.caption
+msgid "🠕"
+msgstr ""
+
+#: tfrmsongs.caption
+msgctxt "tfrmsongs.caption"
+msgid "Liedauswahl (Cantara)"
+msgstr ""
+
+#: tfrmsongs.itemend.caption
+msgid "Beenden"
+msgstr ""
+
+#: tfrmsongs.itemload.caption
+msgid "Auswahl laden..."
+msgstr ""
+
+#: tfrmsongs.itempresentation.caption
+msgctxt "tfrmsongs.itempresentation.caption"
+msgid "Präsentation"
+msgstr ""
+
+#: tfrmsongs.itemreloadsonglist.caption
+msgid "Liederliste neu laden"
+msgstr ""
+
+#: tfrmsongs.itemsave.caption
+msgid "Auswahl speichern.."
+msgstr ""
+
+#: tfrmsongs.itemsettings.caption
+msgctxt "tfrmsongs.itemsettings.caption"
+msgid "Einstellungen..."
+msgstr ""
+
+#: tfrmsongs.menuedit.caption
+msgid "Bearbeiten"
+msgstr ""
+
+#: tfrmsongs.menufile.caption
+msgid "Datei"
+msgstr ""
+
+#: tfrmsongs.menuhelp.caption
+msgid "Hilfe"
+msgstr ""
+
+#: tfrmsongs.menuitem1.caption
+msgid "Informationen zum Programm"
+msgstr ""
+
+#: unit1.btnpresentationcaption
+msgctxt "unit1.btnpresentationcaption"
+msgid "Präsentation"
+msgstr ""
+
+#: unit1.btnsettingscaption
+msgid "Einstellungen"
+msgstr ""
+
+#: unit1.frmsongscaption
+msgctxt "unit1.frmsongscaption"
+msgid "Liedauswahl (Cantara)"
+msgstr ""
+

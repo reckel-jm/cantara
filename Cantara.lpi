@@ -16,7 +16,7 @@
       <Icon Value="0"/>
     </General>
     <i18n>
-      <EnableI18N Value="True" LFM="False"/>
+      <EnableI18N Value="True"/>
       <OutDir Value="locals"/>
     </i18n>
     <VersionInfo>

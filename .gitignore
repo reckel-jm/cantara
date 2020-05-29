@@ -36,4 +36,5 @@ lib/
 # End of https://www.gitignore.io/api/lazarus 
 # Project Specific Folders
 published/
+publish/
 doc/

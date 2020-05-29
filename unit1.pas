@@ -78,6 +78,11 @@ var
   frmSongs: TfrmSongs;
   repo: array of TRepoFile;
 
+resourcestring
+  btnPresentationCaption = 'Präsentation...';
+  btnSettingsCaption = 'Einstellungen...';
+  frmSongsCaption = 'Liedauswahl (Cantara)';
+
 implementation
 
 {$R *.lfm}
