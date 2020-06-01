@@ -27,6 +27,7 @@ msgid "Einstellungen..."
 msgstr ""
 
 #: tfrmsongs.btnstartpresentation.caption
+msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Präsentation..."
 msgstr ""
 
@@ -83,15 +84,36 @@ msgstr ""
 
 #: unit1.btnpresentationcaption
 msgctxt "unit1.btnpresentationcaption"
-msgid "Präsentation"
+msgid "Präsentation..."
 msgstr ""
 
 #: unit1.btnsettingscaption
-msgid "Einstellungen"
+msgctxt "unit1.btnsettingscaption"
+msgid "Einstellungen..."
+msgstr ""
+
+#: unit1.errmsgopen
+msgid "Fehler beim Öffnen. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diese Datei zuzugreifen"
+msgstr ""
+
+#: unit1.errmsgsave
+msgid "Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen"
+msgstr ""
+
+#: unit1.errorsongnottherepartone
+msgid "Fehler: Das Lied \""
+msgstr ""
+
+#: unit1.errorsongnotthereparttwo
+msgid "\" ist nicht vorhanden. Es wird übersprungen."
 msgstr ""
 
 #: unit1.frmsongscaption
 msgctxt "unit1.frmsongscaption"
 msgid "Liedauswahl (Cantara)"
+msgstr ""
+
+#: unit1.hintsongsnotaddedyet
+msgid "Es müssen zuerst Lieder hinzugefügt werden."
 msgstr ""
 

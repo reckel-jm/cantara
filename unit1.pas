@@ -82,6 +82,11 @@ resourcestring
   btnPresentationCaption = 'Präsentation...';
   btnSettingsCaption = 'Einstellungen...';
   frmSongsCaption = 'Liedauswahl (Cantara)';
+  errMSGOpen = 'Fehler beim Öffnen. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diese Datei zuzugreifen';
+  errMSGSave = 'Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen';
+  HintSongsNotAddedYet = 'Es müssen zuerst Lieder hinzugefügt werden.';
+  ErrorSongNotTherePartOne = 'Fehler: Das Lied "';
+  ErrorSongNotTherePartTwo = '" ist nicht vorhanden. Es wird übersprungen.';
 
 implementation
 
@@ -180,7 +185,7 @@ begin
   try
     if OpenDialog.Execute then lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
   except
-    ShowMessage('Fehler beim Öffnen. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diese Datei zuzugreifen');
+    ShowMessage(errMSGOpen);
   end;
 end;
 
@@ -189,7 +194,7 @@ begin
   try
     if SaveDialog.Execute then lbxSselected.Items.SaveToFile(SaveDialog.FileName);
   except
-    ShowMessage('Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen');
+    ShowMessage(errMSGSave);
   end;
 end;
 
@@ -278,7 +283,7 @@ begin
       while repo[j].Name <> lbxSSelected.Items.Strings[i] do
         inc(j);
     except
-      ShowMessage('Fehler: Das Lied "' + lbxSSelected.Items.Strings[i] + '" ist nicht vorhanden. Es wird übersprungen.')
+      ShowMessage(ErrorSongNotTherePartOne + lbxSSelected.Items.Strings[i] + ErrorSongNotTherePartTwo)
     end;
     //Lade Song-menuFile
     songfile.LoadFromFile(frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath);
@@ -299,7 +304,7 @@ begin
     end;
   frmPresent.Show();
   songfile.Free;
-  end else ShowMessage('Es müssen zuerst Lieder hinzugefügt werden.');
+  end else ShowMessage(HintSongsNotAddedYet);
 end;
 
 procedure TfrmSongs.btnUpClick(Sender: TObject);
