@@ -6,7 +6,7 @@ interface
 
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles;
+  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator;
 
 type
 

@@ -34,9 +34,21 @@
       <DestinationDirectory Value="$(ProjPath)/published/"/>
     </PublishOptions>
     <RunParams>
+      <environment>
+        <UserOverrides Count="1">
+          <Variable0 Name="LANG" Value="EN"/>
+        </UserOverrides>
+      </environment>
       <FormatVersion Value="2"/>
-      <Modes Count="1">
+      <Modes Count="2">
         <Mode0 Name="default"/>
+        <Mode1 Name="english">
+          <environment>
+            <UserOverrides Count="1">
+              <Variable0 Name="LANG" Value="EN"/>
+            </UserOverrides>
+          </environment>
+        </Mode1>
       </Modes>
     </RunParams>
     <RequiredPackages Count="2">

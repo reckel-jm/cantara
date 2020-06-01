@@ -9,7 +9,7 @@ uses
   gtk2, gdk2,
   {$endif}
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Settings, Types, Themes;
+  Settings, Types, Themes, DefaultTranslator;
 type
 
   { TfrmPresent }

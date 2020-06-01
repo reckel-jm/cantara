@@ -1,0 +1,13 @@
+{"version":1,"strings":[
+{"hash":255846078,"name":"tfrmsettings.caption","sourcebytes":[69,105,110,115,116,101,108,108,117,110,103,101,110],"value":"Einstellungen"},
+{"hash":58624538,"name":"tfrmsettings.label1.caption","sourcebytes":[76,105,101,100,101,114,118,101,114,122,101,105,99,104,110,105,115,58],"value":"Liederverzeichnis:"},
+{"hash":12558,"name":"tfrmsettings.btnselectdir.caption","sourcebytes":[46,46,46],"value":"..."},
+{"hash":262480350,"name":"tfrmsettings.cbemptyframe.caption","sourcebytes":[76,101,101,114,102,111,108,105,101,32,122,119,105,115,99,104,101,110,32,76,105,101,100,101,114,110],"value":"Leerfolie zwischen Liedern"},
+{"hash":152545038,"name":"tfrmsettings.button2.caption","sourcebytes":[72,105,110,116,101,114,103,114,117,110,100,102,97,114,98,101,46,46,46],"value":"Hintergrundfarbe..."},
+{"hash":220502990,"name":"tfrmsettings.button3.caption","sourcebytes":[84,101,120,116,102,97,114,98,101,46,46,46],"value":"Textfarbe..."},
+{"hash":91259066,"name":"tfrmsettings.label2.caption","sourcebytes":[80,114,195,164,115,101,110,116,97,116,105,111,110,115,97,110,122,101,105,103,101,58],"value":"Pr\u00E4sentationsanzeige:"},
+{"hash":50621518,"name":"tfrmsettings.button4.caption","sourcebytes":[83,99,104,108,105,101,195,159,101,110],"value":"Schlie\u00DFen"},
+{"hash":259199646,"name":"tfrmsettings.cbspoiler.caption","sourcebytes":[78,195,164,99,104,115,116,101,32,70,111,108,105,101,32,97,110,100,101,117,116,101,110],"value":"N\u00E4chste Folie andeuten"},
+{"hash":223744638,"name":"tfrmsettings.btnfontsizemanually.caption","sourcebytes":[83,99,104,114,105,102,116,103,114,195,182,195,159,101,46,46,46],"value":"Schriftgr\u00F6\u00DFe..."},
+{"hash":176971920,"name":"tfrmsettings.lbllinedistance.caption","sourcebytes":[90,101,105,108,101,110,97,98,115,116,97,110,100,58,32],"value":"Zeilenabstand: "}
+]}
