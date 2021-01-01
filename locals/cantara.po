@@ -1,0 +1,279 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: info.strautor
+msgid "Autor"
+msgstr ""
+
+#: info.strbuttongitrepo
+msgctxt "info.strbuttongitrepo"
+msgid "Öffne Git-Repository im Webbrowser..."
+msgstr ""
+
+#: info.strformcaption
+msgctxt "info.strformcaption"
+msgid "Über das Programm"
+msgstr ""
+
+#: info.strhinweise
+msgid ""
+"Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
+"\n"
+"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
+"\n"
+"Der Autor wünscht für die Verwendung Gottes Segen!\n"
+msgstr ""
+
+#: info.strprogrammerstellt
+msgid "Programm erstellt"
+msgstr ""
+
+#: info.strversion
+msgid "Version"
+msgstr ""
+
+#: present.strformcaption
+msgctxt "present.strformcaption"
+msgid "Präsentation"
+msgstr ""
+
+#: settings.strformcaption
+msgid "Einstellungen"
+msgstr ""
+
+#: settings.strhintergrundfarbe
+msgid "Hintergrundfarbe"
+msgstr ""
+
+#: settings.strleerfoliezwischenliedern
+msgid "Leerfolie zwischen Liedern"
+msgstr ""
+
+#: settings.strliederverzeichnis
+msgid "Liederverzeichnis"
+msgstr ""
+
+#: settings.strnaechstefolieandeuten
+msgid "Nächste Folie andeuten"
+msgstr ""
+
+#: settings.strpraesentationsanzeige
+msgid "Präsentationsanzeige"
+msgstr ""
+
+#: settings.strschliessen
+msgid "Schließen"
+msgstr ""
+
+#: settings.strschriftgroesse
+msgid "Schriftgröße"
+msgstr ""
+
+#: settings.strtextfarbe
+msgid "Textfarbe"
+msgstr ""
+
+#: settings.strzeilenabstand
+msgid "Zeilenabstand"
+msgstr ""
+
+#: tfrminfo.btnopengitrepo.caption
+msgctxt "tfrminfo.btnopengitrepo.caption"
+msgid "Öffne Git-Repository im Webbrowser..."
+msgstr ""
+
+#: tfrminfo.caption
+msgctxt "tfrminfo.caption"
+msgid "Über das Programm"
+msgstr ""
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr ""
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr ""
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
+"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
+"\n"
+"Der Autor wünscht für die Verwendung Gottes Segen!\n"
+msgstr ""
+
+#: tfrminfo.lblname.caption
+msgid "Cantara"
+msgstr ""
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr ""
+
+#: tfrmsongs.btnadd.caption
+msgid "+"
+msgstr ""
+
+#: tfrmsongs.btnclear.caption
+msgid "🗑"
+msgstr ""
+
+#: tfrmsongs.btnclear.hint
+msgid "Leere alle ausgewählten Lieder"
+msgstr ""
+
+#: tfrmsongs.btndown.caption
+msgid "🠗"
+msgstr ""
+
+#: tfrmsongs.btnremove.caption
+msgid "-"
+msgstr ""
+
+#: tfrmsongs.btnsettings.caption
+msgctxt "tfrmsongs.btnsettings.caption"
+msgid "Einstellungen..."
+msgstr ""
+
+#: tfrmsongs.btnstartpresentation.caption
+msgctxt "tfrmsongs.btnstartpresentation.caption"
+msgid "Präsentation..."
+msgstr ""
+
+#: tfrmsongs.btnup.caption
+msgid "🠕"
+msgstr ""
+
+#: tfrmsongs.caption
+msgctxt "tfrmsongs.caption"
+msgid "Liedauswahl (Cantara)"
+msgstr ""
+
+#: tfrmsongs.itemabout.caption
+msgid "Informationen zum Programm"
+msgstr ""
+
+#: tfrmsongs.itemend.caption
+msgctxt "tfrmsongs.itemend.caption"
+msgid "Beenden"
+msgstr ""
+
+#: tfrmsongs.itemload.caption
+msgctxt "tfrmsongs.itemload.caption"
+msgid "Auswahl laden..."
+msgstr ""
+
+#: tfrmsongs.itempresentation.caption
+msgctxt "tfrmsongs.itempresentation.caption"
+msgid "Präsentation"
+msgstr ""
+
+#: tfrmsongs.itemreloadsonglist.caption
+msgctxt "tfrmsongs.itemreloadsonglist.caption"
+msgid "Liederliste neu laden"
+msgstr ""
+
+#: tfrmsongs.itemsave.caption
+msgid "Auswahl speichern.."
+msgstr ""
+
+#: tfrmsongs.itemsettings.caption
+msgctxt "tfrmsongs.itemsettings.caption"
+msgid "Einstellungen..."
+msgstr ""
+
+#: tfrmsongs.menuedit.caption
+msgctxt "tfrmsongs.menuedit.caption"
+msgid "Bearbeiten"
+msgstr ""
+
+#: tfrmsongs.menufile.caption
+msgctxt "tfrmsongs.menufile.caption"
+msgid "Datei"
+msgstr ""
+
+#: tfrmsongs.menuhelp.caption
+msgctxt "tfrmsongs.menuhelp.caption"
+msgid "Hilfe"
+msgstr ""
+
+#: unit1.strbuttoneinstellungen
+msgctxt "unit1.strbuttoneinstellungen"
+msgid "Einstellungen..."
+msgstr ""
+
+#: unit1.strbuttonpraesentation
+msgctxt "unit1.strbuttonpraesentation"
+msgid "Präsentation..."
+msgstr ""
+
+#: unit1.strerstebenutzung
+msgid "Sie nutzen dieses Programm zum ersten Mal. Bitte wählen Sie einen Ordner aus, in dem sich die Liedtexte befinden."
+msgstr ""
+
+#: unit1.strfehlerkeineliederbeipraesentation
+msgid "Es müssen zuerst Lieder hinzugefügt werden."
+msgstr ""
+
+#: unit1.strfehleroeffnen
+msgid "Fehler beim Öffnen. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diese Datei zuzugreifen"
+msgstr ""
+
+#: unit1.strfehlerspeichern
+msgid "Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen."
+msgstr ""
+
+#: unit1.strformcaption
+msgctxt "unit1.strformcaption"
+msgid "Liedauswahl (Cantara)"
+msgstr ""
+
+#: unit1.strmenuauswahlladen
+msgctxt "unit1.strmenuauswahlladen"
+msgid "Auswahl laden..."
+msgstr ""
+
+#: unit1.strmenuauswahlspeichern
+msgid "Auswahl speichern..."
+msgstr ""
+
+#: unit1.strmenubearbeiten
+msgctxt "unit1.strmenubearbeiten"
+msgid "Bearbeiten"
+msgstr ""
+
+#: unit1.strmenubeenden
+msgctxt "unit1.strmenubeenden"
+msgid "Beenden"
+msgstr ""
+
+#: unit1.strmenudatei
+msgctxt "unit1.strmenudatei"
+msgid "Datei"
+msgstr ""
+
+#: unit1.strmenueinstellungen
+msgctxt "unit1.strmenueinstellungen"
+msgid "Einstellungen..."
+msgstr ""
+
+#: unit1.strmenuhilfe
+msgctxt "unit1.strmenuhilfe"
+msgid "Hilfe"
+msgstr ""
+
+#: unit1.strmenuinfo
+msgid "Informationen zum Programm..."
+msgstr ""
+
+#: unit1.strmenuliederlisteneuladen
+msgctxt "unit1.strmenuliederlisteneuladen"
+msgid "Liederliste neu laden"
+msgstr ""
+
+#: unit1.strmenupraesentation
+msgctxt "unit1.strmenupraesentation"
+msgid "Präsentation..."
+msgstr ""
+
