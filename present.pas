@@ -156,7 +156,6 @@ begin
   end;
   {$endif}
   {$if defined(LINUX)}
-  if defined(LINUX)}
   if Fullscreen = False then begin
     // To full screen
     gdk_window_fullscreen(PGtkWidget(Handle)^.window);
