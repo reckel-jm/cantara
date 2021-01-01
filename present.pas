@@ -9,7 +9,7 @@ uses
   gtk2, gdk2,
   {$endif}
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Settings, Types, Themes;
+  Settings, Types, Themes, DefaultTranslator;
 type
 
   { TfrmPresent }
@@ -42,6 +42,9 @@ var
   textList: TStringList;
   cur: Integer; //The current Index of the String List which is shown
   FullScreen: Boolean;
+
+ResourceString
+  strFormCaption = 'Präsentation';
 
 implementation
 
@@ -128,6 +131,7 @@ begin
   cur := 0;
   present.textList := TStringList.Create;
   FullScreen := False;
+  self.Caption:= strFormCaption;
 end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);

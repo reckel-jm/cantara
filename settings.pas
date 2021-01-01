@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons, ComCtrls, Spin, INIfiles;
+  Buttons, ComCtrls, Spin, INIfiles, DefaultTranslator;
 
 type
 
@@ -14,25 +14,25 @@ type
 
   TfrmSettings = class(TForm)
     btnFontSizeManually: TButton;
-    Button4: TButton;
+    btnClose: TButton;
     cbSpoiler: TCheckBox;
     edtLineDistance: TFloatSpinEdit;
     FontDialog: TFontDialog;
-    Label2: TLabel;
+    lblPresentationView: TLabel;
     lblLineDistance: TLabel;
     textColorDialog: TColorDialog;
     btnSelectDir: TButton;
-    Button2: TButton;
-    Button3: TButton;
+    btnBackgroundColor: TButton;
+    btnTextColor: TButton;
     cbEmptyFrame: TCheckBox;
     bgColorDialog: TColorDialog;
     edtRepoPath: TEdit;
-    Label1: TLabel;
+    labelSongDir: TLabel;
     SelectDirectoryDialog: TSelectDirectoryDialog;
     procedure btnFontSizeManuallyClick(Sender: TObject);
     procedure btnSelectDirClick(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
+    procedure btnBackgroundColorClick(Sender: TObject);
+    procedure btnTextColorClick(Sender: TObject);
     procedure edtRepoPathChange(Sender: TObject);
     procedure edtRepoPathEditingDone(Sender: TObject);
     procedure edtRepoPathExit(Sender: TObject);
@@ -43,6 +43,7 @@ type
     procedure loadSettings();
   private
     { private declarations }
+    procedure LocaliseCaptions;
   public
     { public declarations }
   end;
@@ -51,11 +52,37 @@ var
   frmSettings: TfrmSettings;
   settingsFile: TINIFile;
 
+ResourceString
+  strLiederverzeichnis = 'Liederverzeichnis';
+  strLeerfolieZwischenLiedern = 'Leerfolie zwischen Liedern';
+  strNaechsteFolieAndeuten = 'Nächste Folie andeuten';
+  strZeilenabstand = 'Zeilenabstand';
+  strPraesentationsanzeige = 'Präsentationsanzeige';
+  strSchriftgroesse = 'Schriftgröße';
+  strHintergrundfarbe = 'Hintergrundfarbe';
+  strTextfarbe = 'Textfarbe';
+  strSchliessen = 'Schließen';
+  strFormCaption = 'Einstellungen';
+
 implementation
 
 {$R *.lfm}
 
 { TfrmSettings }
+
+procedure TfrmSettings.LocaliseCaptions;
+begin
+  labelSongDir.Caption := StrLiederverzeichnis + ': ';
+  cbEmptyFrame.Caption := strLeerfolieZwischenLiedern;
+  cbSpoiler.Caption := strNaechsteFolieAndeuten;
+  lblLineDistance.Caption:= strZeilenabstand;
+  lblPresentationView.Caption:=strPraesentationsanzeige;
+  btnFontSizeManually.Caption:= strSchriftgroesse + '...';
+  btnBackgroundColor.Caption := strHintergrundfarbe + '...';
+  btnTextColor.Caption := strTextfarbe + '...';
+  btnClose.Caption := strSchliessen;
+  self.Caption:= strFormCaption;
+end;
 
 function getRepoDir(): string;
 begin
@@ -109,7 +136,7 @@ end;
 procedure TfrmSettings.FormCreate(Sender: TObject);
 var filename: string;
 begin
-
+  self.LocaliseCaptions;
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
@@ -128,12 +155,12 @@ begin
   FontDialog.Execute;
 end;
 
-procedure TfrmSettings.Button2Click(Sender: TObject);
+procedure TfrmSettings.btnBackgroundColorClick(Sender: TObject);
 begin
   bgColorDialog.Execute;
 end;
 
-procedure TfrmSettings.Button3Click(Sender: TObject);
+procedure TfrmSettings.btnTextColorClick(Sender: TObject);
 begin
   textColorDialog.Execute;
 end;

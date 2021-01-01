@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, SynEdit, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdCtrls, lclintf;
+  ExtCtrls, StdCtrls, lclintf, DefaultTranslator;
 
 type
 
@@ -29,10 +29,23 @@ type
   end;
 
 const
-  VERSION:string = '1.1';
+  VERSION:string = '1.3';
+  AUTOR:string = 'Jan Martin Reckel';
 
 var
   frmInfo: TfrmInfo;
+
+resourceString
+  strFormCaption = 'Über das Programm';
+  strProgrammErstellt = 'Programm erstellt';
+  strVersion = 'Version';
+  strAutor = 'Autor';
+  strButtonGitRepo = 'Öffne Git-Repository im Webbrowser...';
+  strHinweise = 'Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.'
+    + SLineBreak + SLineBreak +
+    'Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.'
+    + SLineBreak + SLineBreak +
+    'Der Autor wünscht für die Verwendung Gottes Segen!';
 
 implementation
 
@@ -42,9 +55,13 @@ implementation
 
 procedure TfrmInfo.FormCreate(Sender: TObject);
 begin
-  lblCompDate.Caption := 'Programm erstellt: ' + {$I %DATE%} + ' ' + {$I %TIME%};
-  lblVersion.Caption := 'Version ' + VERSION;
-  btnOpenGitRepo.Top := lblInfo.Top+lblInfo.Height;
+  lblCompDate.Caption := strProgrammErstellt + ': ' + {$I %DATE%} + ' ' + {$I %TIME%};
+  lblVersion.Caption := strVersion + ': ' + VERSION;
+  lblAuthor.Caption := strAutor + ': ' + AUTOR;
+  lblInfo.Caption := strHinweise;
+  self.Caption:= strFormCaption;
+  btnOpenGitRepo.Caption := strButtonGitRepo;
+  btnOpenGitRepo.Top := lblInfo.Top+lblInfo.Height + btnOpenGitRepo.Height;
   frmInfo.Height := btnOpenGitRepo.Top + btnOpenGitRepo.Height;
 end;
 

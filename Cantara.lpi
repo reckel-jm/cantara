@@ -6,6 +6,7 @@
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
       <Title Value="Cantara"/>
+      <Scaled Value="True"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <XPManifest>
@@ -16,15 +17,15 @@
       <Icon Value="0"/>
     </General>
     <i18n>
-      <EnableI18N Value="True" LFM="False"/>
+      <EnableI18N Value="True"/>
       <OutDir Value="locals"/>
     </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
-      <MinorVersionNr Value="1"/>
+      <MinorVersionNr Value="3"/>
       <Language Value="0407"/>
-      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel"/>
+      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="1.3"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>

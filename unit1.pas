@@ -6,7 +6,7 @@ interface
 
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles;
+  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator;
 
 type
 
@@ -33,7 +33,7 @@ type
     menuEdit: TMenuItem;
     itemSettings: TMenuItem;
     menuHelp: TMenuItem;
-    MenuItem1: TMenuItem;
+    itemAbout: TMenuItem;
     itemPresentation: TMenuItem;
     itemReloadSongList: TMenuItem;
     OpenDialog: TOpenDialog;
@@ -62,10 +62,11 @@ type
     procedure lbxSselectedKeyPress(Sender: TObject; var Key: char);
     procedure loadRepo(repoPath: string);
     procedure menuFileClick(Sender: TObject);
-    procedure MenuItem1Click(Sender: TObject);
+    procedure itemAboutClick(Sender: TObject);
     procedure itemReloadSongListClick(Sender: TObject);
   private
     { private declarations }
+    procedure LocaliseCaptions;
   public
     { public declarations }
   end;
@@ -78,6 +79,25 @@ type
 var
   frmSongs: TfrmSongs;
   repo: array of TRepoFile;
+
+ResourceString
+  StrErsteBenutzung = 'Sie nutzen dieses Programm zum ersten Mal. Bitte wählen Sie einen Ordner aus, in dem sich die Liedtexte befinden.';
+  StrFehlerOeffnen = 'Fehler beim Öffnen. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diese Datei zuzugreifen';
+  StrFehlerSpeichern = 'Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen.';
+  StrFehlerKeineLiederBeiPraesentation = 'Es müssen zuerst Lieder hinzugefügt werden.';
+  StrButtonPraesentation = 'Präsentation...';
+  StrButtonEinstellungen = 'Einstellungen...';
+  StrMenuDatei = 'Datei';
+  StrMenuBearbeiten = 'Bearbeiten';
+  StrMenuHilfe = 'Hilfe';
+  StrMenuAuswahlLaden = 'Auswahl laden...';
+  StrMenuAuswahlSpeichern = 'Auswahl speichern...';
+  StrMenuLiederlisteNeuLaden = 'Liederliste neu laden';
+  StrMenuPraesentation = 'Präsentation...';
+  StrMenuBeenden = 'Beenden';
+  StrMenuEinstellungen = 'Einstellungen...';
+  StrMenuInfo = 'Informationen zum Programm...';
+  StrFormCaption = 'Liedauswahl (Cantara)';
 
 implementation
 
@@ -113,12 +133,28 @@ begin
   FindClose(Info);
 end;
 
+procedure TfrmSongs.LocaliseCaptions;
+begin
+  btnStartPresentation.Caption := StrButtonPraesentation;
+  btnSettings.Caption := StrButtonEinstellungen;
+  menuFile.Caption := StrMenuDatei;
+  itemLoad.Caption := StrMenuAuswahlLaden;
+  itemSave.Caption := StrMenuAuswahlSpeichern;
+  itemPresentation.Caption := StrMenuPraesentation;
+  itemEnd.Caption := StrMenuBeenden;
+  menuEdit.Caption := StrMenuBearbeiten;
+  itemSettings.Caption := StrMenuEinstellungen;
+  menuHelp.Caption := StrMenuHilfe;
+  itemAbout.Caption := StrMenuInfo;
+  self.Caption:=StrFormCaption;
+end;
+
 procedure TfrmSongs.menuFileClick(Sender: TObject);
 begin
 
 end;
 
-procedure TfrmSongs.MenuItem1Click(Sender: TObject);
+procedure TfrmSongs.itemAboutClick(Sender: TObject);
 begin
   frmInfo.ShowModal;
 end;
@@ -155,7 +191,7 @@ begin
       frmSettings.loadSettings();
     end else
     begin
-      ShowMessage('Sie nutzen dieses Programm zum ersten Mal. Bitte wählen Sie einen Ordner aus, in dem sich die Liedtexte befinden.');
+      ShowMessage(StrErsteBenutzung);
       frmSettings.ShowModal;
     end;
   loadRepo(frmSettings.edtRepoPath.Text);
@@ -182,7 +218,7 @@ begin
   try
     if OpenDialog.Execute then lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
   except
-    ShowMessage('Fehler beim Öffnen. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diese Datei zuzugreifen');
+    ShowMessage(StrFehlerOeffnen);
   end;
 end;
 
@@ -191,7 +227,7 @@ begin
   try
     if SaveDialog.Execute then lbxSselected.Items.SaveToFile(SaveDialog.FileName);
   except
-    ShowMessage('Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen');
+    ShowMessage(StrFehlerSpeichern);
   end;
 end;
 
@@ -220,7 +256,7 @@ end;
 
 procedure TfrmSongs.FormCreate(Sender: TObject);
 begin
-
+  self.LocaliseCaptions;
 end;
 
 procedure TfrmSongs.btnAddClick(Sender: TObject);
@@ -301,7 +337,7 @@ begin
     end;
   frmPresent.Show();
   songfile.Free;
-  end else ShowMessage('Es müssen zuerst Lieder hinzugefügt werden.');
+  end else ShowMessage(StrFehlerKeineLiederBeiPraesentation);
 end;
 
 procedure TfrmSongs.btnUpClick(Sender: TObject);

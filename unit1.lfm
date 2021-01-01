@@ -1,7 +1,7 @@
 object frmSongs: TfrmSongs
-  Left = 348
+  Left = 901
   Height = 729
-  Top = 191
+  Top = 184
   Width = 1081
   AllowDropFiles = True
   Caption = 'Liedauswahl (Cantara)'
@@ -207,10 +207,10 @@ object frmSongs: TfrmSongs
     end
     object menuHelp: TMenuItem
       Caption = 'Hilfe'
-      object MenuItem1: TMenuItem
+      object itemAbout: TMenuItem
         Caption = 'Informationen zum Programm'
         ShortCut = 112
-        OnClick = MenuItem1Click
+        OnClick = itemAboutClick
       end
     end
   end
