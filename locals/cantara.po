@@ -38,6 +38,7 @@ msgid "Präsentation"
 msgstr ""
 
 #: settings.strformcaption
+msgctxt "settings.strformcaption"
 msgid "Einstellungen"
 msgstr ""
 
@@ -46,6 +47,7 @@ msgid "Hintergrundfarbe"
 msgstr ""
 
 #: settings.strleerfoliezwischenliedern
+msgctxt "settings.strleerfoliezwischenliedern"
 msgid "Leerfolie zwischen Liedern"
 msgstr ""
 
@@ -54,6 +56,7 @@ msgid "Liederverzeichnis"
 msgstr ""
 
 #: settings.strnaechstefolieandeuten
+msgctxt "settings.strnaechstefolieandeuten"
 msgid "Nächste Folie andeuten"
 msgstr ""
 
@@ -62,6 +65,7 @@ msgid "Präsentationsanzeige"
 msgstr ""
 
 #: settings.strschliessen
+msgctxt "settings.strschliessen"
 msgid "Schließen"
 msgstr ""
 
@@ -109,6 +113,54 @@ msgstr ""
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
+msgstr ""
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Hintergrundfarbe..."
+msgstr ""
+
+#: tfrmsettings.btnclose.caption
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Schließen"
+msgstr ""
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Schriftgröße..."
+msgstr ""
+
+#: tfrmsettings.btnselectdir.caption
+msgid "..."
+msgstr ""
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Textfarbe..."
+msgstr ""
+
+#: tfrmsettings.caption
+msgctxt "tfrmsettings.caption"
+msgid "Einstellungen"
+msgstr ""
+
+#: tfrmsettings.cbemptyframe.caption
+msgctxt "tfrmsettings.cbemptyframe.caption"
+msgid "Leerfolie zwischen Liedern"
+msgstr ""
+
+#: tfrmsettings.cbspoiler.caption
+msgctxt "tfrmsettings.cbspoiler.caption"
+msgid "Nächste Folie andeuten"
+msgstr ""
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Liederverzeichnis:"
+msgstr ""
+
+#: tfrmsettings.lbllinedistance.caption
+msgid "Zeilenabstand: "
+msgstr ""
+
+#: tfrmsettings.lblpresentationview.caption
+msgid "Präsentationsanzeige:"
 msgstr ""
 
 #: tfrmsongs.btnadd.caption

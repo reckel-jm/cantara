@@ -1,5 +1,5 @@
 object frmSongs: TfrmSongs
-  Left = 901
+  Left = 829
   Height = 729
   Top = 184
   Width = 1081

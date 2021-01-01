@@ -20,6 +20,7 @@
 *.rst
 *.rsj
 *.lrt
+*.lrj
 
 # Lazarus local files (user-specific info)
 *.lps
@@ -37,3 +38,6 @@ lib/
 # Project Specific Folders
 published/
 doc/
+
+#Executable under linux
+cantara
