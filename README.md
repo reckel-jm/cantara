@@ -11,7 +11,7 @@ Linux-User können sich den Quelltext herunterladen und mit Lazarus selbst kompi
 Cantara ist ein einfach zu bedienendes, schlichtes Liedpräsentations-Programm, welches in Lazarus (Pascal) geschrieben wurde. Mit diesem Programm lassen sich schnell und einfach Liedtexte anzeigen, sodass gemeinsames Musizieren und Singen erleichtert wird. Dies ist besonders für christliche Gruppen, Veranstaltungen und Gemeinden konzipiert, kann aber auch für andere Zwecke verwendet werden.
 
 ### Derzeitige Version
-Die derzeitige Version ist 1.1 und wurde am 28.05.2020 veröffentlicht.
+Die derzeitige Version ist 1.3 und wurde am 01.01.2021 veröffentlicht.
 
 ### Lieder einpflegen
 Um die Lieder verwenden zu können, müssen sie zunächst eingepflegt werden. Ein Lied besteht dabei aus einer Textdatei mit der Struktur Liedname.song (die Dateiendung kann abweichen) und folgender Syntax:
@@ -31,12 +31,13 @@ Zur Zeit entsteht ein weiteres [GitHub Repository mit gemeinfreien christlichen 
 Cantara ist unter der GPL3 lizensiert. In der Datei [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) findet man Details dazu. Kurz zusammengefasst darf die Software und der Quelltext kostenfrei verwendet, weitergegeben und verändert werden, dabei muss allerdings der Name der Urheber erwähnt und die Lizenz beibehalten werden.
 
 ## Englisch
-Unfortunaly, Cantara is not localised yet and only available in German. This will be changed soon. [An issue has been already opened](https://github.com/reckel-jm/cantara/issues/1)
+Cantara supports English translation from version 1.3 on.
+
 ### About the program
 Cantara is a simple open source song presentation software written in Free Pascal/Lazarus which allows people to spontanously present song lyrics for a bigger audience for the purpose of singing together. This is especially useful for church groups and meetings. 
 
 ### Current Version
-The current version is 1.1 released at May 28 2020.
+The current version is 1.3 released at January 01, 2021.
 
 ### Song templates
 In order to make songs appear in that list, song templates have to be prepared once. A song consists of a txt-File which has the following structure:
