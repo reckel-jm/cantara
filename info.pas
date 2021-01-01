@@ -5,8 +5,8 @@ unit info;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, lclintf;
+  Classes, SysUtils, FileUtil, SynEdit, Forms, Controls, Graphics, Dialogs,
+  ExtCtrls, StdCtrls, lclintf;
 
 type
 
@@ -44,6 +44,8 @@ procedure TfrmInfo.FormCreate(Sender: TObject);
 begin
   lblCompDate.Caption := 'Programm erstellt: ' + {$I %DATE%} + ' ' + {$I %TIME%};
   lblVersion.Caption := 'Version ' + VERSION;
+  btnOpenGitRepo.Top := lblInfo.Top+lblInfo.Height;
+  frmInfo.Height := btnOpenGitRepo.Top + btnOpenGitRepo.Height;
 end;
 
 procedure TfrmInfo.btnOpenGitRepoClick(Sender: TObject);

@@ -50,6 +50,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure grbControlClick(Sender: TObject);
+    procedure grbSettingsClick(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
@@ -158,9 +159,15 @@ begin
       frmSettings.ShowModal;
     end;
   loadRepo(frmSettings.edtRepoPath.Text);
+  self.FormResize(frmSongs);
 end;
 
 procedure TfrmSongs.grbControlClick(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmSongs.grbSettingsClick(Sender: TObject);
 begin
 
 end;
