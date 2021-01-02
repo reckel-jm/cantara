@@ -6,8 +6,8 @@ GenericName[en_GB]=Song Presenter
 
 # Gnome and KDE 3 uses Comment.
 Comment=Present Songs
-Comment[en_GB]=Present Songs
-Comment[de]=Liedtexte anzeigen
+Comment[en_GB]=Song Presentation Software
+Comment[de]=Software für Liedpräsentationen
 Exec=cantara
 Terminal=false
 Icon=cantara

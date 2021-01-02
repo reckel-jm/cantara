@@ -3,7 +3,18 @@ Ein freies Liedpräsentations-Programm // Open Source Song Presentation Software
 
 [Lade die neuste Version für Windows herunter (EXE-Datei) // Download Latest Windows Version (with Installer)](https://github.com/reckel-jm/cantara/releases/download/release1-1/cantara-1-1.exe)
 
-Linux-User können sich den Quelltext herunterladen und mit Lazarus selbst kompilieren.
+Linux-User können sich den Quelltext herunterladen und mit Lazarus selbst kompilieren. Dazu folgende Befehle ausführen:
+
+    git clone https://github.com/reckel-jm/cantara.git
+    cd cantara
+    chmod +x *.sh
+    make
+    sudo make install
+    make clean
+    
+Eine Deinstallation ist ebenfalls möglich:
+
+    sudo make uninstall
 
 ## Deutsch
 

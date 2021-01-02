@@ -38,3 +38,6 @@ lib/
 # Project Specific Folders
 published/
 doc/
+
+#Executable under linux
+cantara
