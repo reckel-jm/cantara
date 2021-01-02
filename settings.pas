@@ -29,6 +29,7 @@ type
     edtRepoPath: TEdit;
     labelSongDir: TLabel;
     SelectDirectoryDialog: TSelectDirectoryDialog;
+    procedure btnCloseClick(Sender: TObject);
     procedure btnFontSizeManuallyClick(Sender: TObject);
     procedure btnSelectDirClick(Sender: TObject);
     procedure btnBackgroundColorClick(Sender: TObject);
@@ -58,13 +59,16 @@ ResourceString
   strNaechsteFolieAndeuten = 'Nächste Folie andeuten';
   strZeilenabstand = 'Zeilenabstand';
   strPraesentationsanzeige = 'Präsentationsanzeige';
-  strSchriftgroesse = 'Schriftgröße';
+  strSchriftgroesse = 'Schriftgröße und -art';
   strHintergrundfarbe = 'Hintergrundfarbe';
   strTextfarbe = 'Textfarbe';
   strSchliessen = 'Schließen';
   strFormCaption = 'Einstellungen';
 
 implementation
+
+Uses
+  Present, Unit1;
 
 {$R *.lfm}
 
@@ -155,6 +159,11 @@ begin
   FontDialog.Execute;
 end;
 
+procedure TfrmSettings.btnCloseClick(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmSettings.btnBackgroundColorClick(Sender: TObject);
 begin
   bgColorDialog.Execute;
@@ -183,7 +192,8 @@ end;
 
 procedure TfrmSettings.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-
+  frmPresent.loadSettings;
+  if (ProgrammMode = ModeMultiScreenPresentation) Then Unit1.frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 

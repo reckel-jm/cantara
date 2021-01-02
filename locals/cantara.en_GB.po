@@ -86,7 +86,9 @@ msgid "Schließen"
 msgstr "Close"
 
 #: settings.strschriftgroesse
-msgid "Schriftgröße"
+#, fuzzy
+#| msgid "Schriftgröße"
+msgid "Schriftgröße und -art"
 msgstr "Font Size"
 
 #: settings.strtextfarbe
@@ -131,6 +133,16 @@ msgstr ""
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
+msgstr ""
+
+#: tfrmpresent.caption
+#, fuzzy
+msgctxt "tfrmpresent.caption"
+msgid "Präsentation"
+msgstr "Presentation"
+
+#: tfrmpresent.lblnext.caption
+msgid "hier steht test."
 msgstr ""
 
 #: tfrmsettings.btnbackgroundcolor.caption
@@ -201,6 +213,18 @@ msgstr ""
 msgid "🠗"
 msgstr ""
 
+#: tfrmsongs.btngoleft.caption
+msgid "←"
+msgstr ""
+
+#: tfrmsongs.btngoright.caption
+msgid "→"
+msgstr ""
+
+#: tfrmsongs.btnquitpresentation.caption
+msgid "×"
+msgstr ""
+
 #: tfrmsongs.btnremove.caption
 msgid "-"
 msgstr ""
@@ -219,10 +243,6 @@ msgstr "Presentation..."
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr ""
-
-#: tfrmsongs.button1.caption
-msgid "Button1"
 msgstr ""
 
 #: tfrmsongs.caption
@@ -278,6 +298,10 @@ msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Einstellungen..."
 msgstr "Settings..."
 
+#: tfrmsongs.lblfoilnumber.caption
+msgid "Foliennummern"
+msgstr ""
+
 #: tfrmsongs.lblpresentation.caption
 msgid "Präsentation läuft:"
 msgstr ""
@@ -325,6 +349,10 @@ msgstr "Something went wrong while opening the file. Maybe you haven't the neede
 #: unit1.strfehlerspeichern
 msgid "Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen."
 msgstr "Something went wrong while saving the file. Maybe you haven't the needed permissions."
+
+#: unit1.strfolie
+msgid "Folie"
+msgstr ""
 
 #: unit1.strformcaption
 msgctxt "unit1.strformcaption"
@@ -378,6 +406,10 @@ msgstr "Reload Song List"
 msgctxt "unit1.strmenupraesentation"
 msgid "Präsentation..."
 msgstr "Presentation..."
+
+#: unit1.strmultiplewindowmode
+msgid "Zwei-Fenster-Modus (für zwei Bildschirme und Videokonferenzen geeignet)"
+msgstr ""
 
 #: unit1.strsearchfieldhint
 msgctxt "unit1.strsearchfieldhint"

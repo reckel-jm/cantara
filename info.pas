@@ -29,7 +29,7 @@ type
   end;
 
 const
-  VERSION:string = '1.3';
+  VERSION:string = '2.0 BETA';
   AUTOR:string = 'Jan Martin Reckel';
 
 var
@@ -42,9 +42,9 @@ resourceString
   strAutor = 'Autor';
   strButtonGitRepo = 'Öffne Git-Repository im Webbrowser...';
   strHinweise = 'Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.'
-    + SLineBreak + SLineBreak +
+    + sLineBreak + sLineBreak +
     'Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.'
-    + SLineBreak + SLineBreak +
+    + sLineBreak + sLineBreak +
     'Der Autor wünscht für die Verwendung Gottes Segen!';
 
 implementation

@@ -70,7 +70,7 @@ msgid "Schließen"
 msgstr ""
 
 #: settings.strschriftgroesse
-msgid "Schriftgröße"
+msgid "Schriftgröße und -art"
 msgstr ""
 
 #: settings.strtextfarbe
@@ -113,6 +113,15 @@ msgstr ""
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
+msgstr ""
+
+#: tfrmpresent.caption
+msgctxt "tfrmpresent.caption"
+msgid "Präsentation"
+msgstr ""
+
+#: tfrmpresent.lblnext.caption
+msgid "hier steht test."
 msgstr ""
 
 #: tfrmsettings.btnbackgroundcolor.caption
@@ -179,6 +188,18 @@ msgstr ""
 msgid "🠗"
 msgstr ""
 
+#: tfrmsongs.btngoleft.caption
+msgid "←"
+msgstr ""
+
+#: tfrmsongs.btngoright.caption
+msgid "→"
+msgstr ""
+
+#: tfrmsongs.btnquitpresentation.caption
+msgid "×"
+msgstr ""
+
 #: tfrmsongs.btnremove.caption
 msgid "-"
 msgstr ""
@@ -195,10 +216,6 @@ msgstr ""
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr ""
-
-#: tfrmsongs.button1.caption
-msgid "Button1"
 msgstr ""
 
 #: tfrmsongs.caption
@@ -248,6 +265,10 @@ msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Einstellungen..."
 msgstr ""
 
+#: tfrmsongs.lblfoilnumber.caption
+msgid "Foliennummern"
+msgstr ""
+
 #: tfrmsongs.lblpresentation.caption
 msgid "Präsentation läuft:"
 msgstr ""
@@ -291,6 +312,10 @@ msgstr ""
 
 #: unit1.strfehlerspeichern
 msgid "Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen."
+msgstr ""
+
+#: unit1.strfolie
+msgid "Folie"
 msgstr ""
 
 #: unit1.strformcaption
@@ -344,6 +369,10 @@ msgstr ""
 #: unit1.strmenupraesentation
 msgctxt "unit1.strmenupraesentation"
 msgid "Präsentation..."
+msgstr ""
+
+#: unit1.strmultiplewindowmode
+msgid "Zwei-Fenster-Modus (für zwei Bildschirme und Videokonferenzen geeignet)"
 msgstr ""
 
 #: unit1.strsearchfieldhint
