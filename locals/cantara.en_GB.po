@@ -221,11 +221,19 @@ msgstr "Presentation..."
 msgid "🠕"
 msgstr ""
 
+#: tfrmsongs.button1.caption
+msgid "Button1"
+msgstr ""
+
 #: tfrmsongs.caption
 #, fuzzy
 msgctxt "tfrmsongs.caption"
 msgid "Liedauswahl (Cantara)"
 msgstr "Song Selection (Cantara)"
+
+#: tfrmsongs.chkmultiwindowmode.caption
+msgid "Mehr-Fenstermodus (für mehrere Bildschirme geeignet)"
+msgstr ""
 
 #: tfrmsongs.edtsearch.hint
 msgctxt "tfrmsongs.edtsearch.hint"
@@ -269,6 +277,10 @@ msgstr ""
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Einstellungen..."
 msgstr "Settings..."
+
+#: tfrmsongs.lblpresentation.caption
+msgid "Präsentation läuft:"
+msgstr ""
 
 #: tfrmsongs.menuedit.caption
 #, fuzzy
