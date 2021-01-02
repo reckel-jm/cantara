@@ -202,6 +202,11 @@ msgctxt "tfrmsongs.caption"
 msgid "Liedauswahl (Cantara)"
 msgstr ""
 
+#: tfrmsongs.edtsearch.hint
+msgctxt "tfrmsongs.edtsearch.hint"
+msgid "Suchen..."
+msgstr ""
+
 #: tfrmsongs.itemabout.caption
 msgid "Informationen zum Programm"
 msgstr ""
@@ -327,5 +332,10 @@ msgstr ""
 #: unit1.strmenupraesentation
 msgctxt "unit1.strmenupraesentation"
 msgid "Präsentation..."
+msgstr ""
+
+#: unit1.strsearchfieldhint
+msgctxt "unit1.strsearchfieldhint"
+msgid "Suchen..."
 msgstr ""
 

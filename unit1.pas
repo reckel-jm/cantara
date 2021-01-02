@@ -5,7 +5,7 @@ unit Unit1;
 interface
 
 uses
-  LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs,
+  LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, strutils,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator;
 
 type
@@ -20,6 +20,7 @@ type
     btnStartPresentation: TButton;
     btnSettings: TButton;
     btnClear: TButton;
+    edtSearch: TEdit;
     grbSettings: TGroupBox;
     grbControl: TGroupBox;
     lbxSRepo: TListBox;
@@ -45,6 +46,7 @@ type
     procedure btnSettingsClick(Sender: TObject);
     procedure btnStartPresentationClick(Sender: TObject);
     procedure btnUpClick(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
     procedure FileNameEdit1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
@@ -61,12 +63,12 @@ type
       Shift: TShiftState);
     procedure lbxSselectedKeyPress(Sender: TObject; var Key: char);
     procedure loadRepo(repoPath: string);
-    procedure menuFileClick(Sender: TObject);
     procedure itemAboutClick(Sender: TObject);
     procedure itemReloadSongListClick(Sender: TObject);
   private
     { private declarations }
     procedure LocaliseCaptions;
+    procedure FilterListBox(s: String);
   public
     { public declarations }
   end;
@@ -98,6 +100,7 @@ ResourceString
   StrMenuEinstellungen = 'Einstellungen...';
   StrMenuInfo = 'Informationen zum Programm...';
   StrFormCaption = 'Liedauswahl (Cantara)';
+  StrSearchFieldHint = 'Suchen...';
 
 implementation
 
@@ -117,14 +120,15 @@ begin
     Repeat
       if (Info.Name[1] <> '.') then
         begin
-         //Finde den letzten Punkt
+         // Finde den letzten Punkt
          songName := Info.Name + '.';
          for i := 1 to length(Info.Name) do
            if songName[i] = '.' then c := i;
+         // Entferne die Dateiendung
          songName := copy(songName,1,c-1);
          lbxSRepo.Items.Add(songName);
          setlength(repo, length(repo)+1);
-         //Füllen des Repo-Arrays zur späteren Fehlerkorrektur!
+         // Füllen des Repo-Arrays zur späteren Fehlerkorrektur!
          repo[(length(repo)-1)].Name := songName;
          repo[(length(repo)-1)].filePath := Info.Name;
         end;
@@ -147,12 +151,10 @@ begin
   menuHelp.Caption := StrMenuHilfe;
   itemAbout.Caption := StrMenuInfo;
   self.Caption:=StrFormCaption;
+  self.edtSearch.TextHint := StrSearchFieldHint;
 end;
 
-procedure TfrmSongs.menuFileClick(Sender: TObject);
-begin
 
-end;
 
 procedure TfrmSongs.itemAboutClick(Sender: TObject);
 begin
@@ -171,6 +173,9 @@ begin
   lbxSRepo.Width:=(frmSongs.Width-grbControl.Width) div 2;
   lbxSSelected.left:=grbControl.Width+lbxSRepo.Width;
   lbxSSelected.Width:=lbxSRepo.Width;
+  edtSearch.Top := 0;
+  edtSearch.Width:= lbxSRepo.Width;
+  lbxSRepo.BorderSpacing.Top := edtSearch.Height;
 end;
 
 function getRepoDir(): string;
@@ -206,6 +211,21 @@ end;
 procedure TfrmSongs.grbSettingsClick(Sender: TObject);
 begin
 
+end;
+
+procedure TfrmSongs.FilterListBox(s: String);
+var anz, i: integer;
+begin
+  lbxSRepo.Clear;
+  anz := length(repo);
+  if s <> '' Then
+  begin
+  for i := 0 to anz-1 do
+    if AnsiContainsText(repo[i].Name, s) = True Then
+      lbxSRepo.Items.add(repo[i].Name);
+  end
+  Else for i := 0 to anz-1 do
+    lbxSRepo.Items.add(repo[i].Name);
 end;
 
 procedure TfrmSongs.itemEndClick(Sender: TObject);
@@ -351,6 +371,11 @@ begin
       lbxSselected.Items.Strings[lbxSSelected.ItemIndex] := tausch;
       lbxSselected.ItemIndex := lbxSselected.ItemIndex-1;
     end;
+end;
+
+procedure TfrmSongs.edtSearchChange(Sender: TObject);
+begin
+  self.FilterListBox(edtSearch.Text);
 end;
 
 procedure TfrmSongs.FileNameEdit1Change(Sender: TObject);

@@ -1,13 +1,12 @@
 object frmSongs: TfrmSongs
-  Left = 829
-  Height = 729
-  Top = 184
-  Width = 1081
+  Left = 419
+  Height = 737
+  Top = 213
+  Width = 1062
   AllowDropFiles = True
   Caption = 'Liedauswahl (Cantara)'
-  ClientHeight = 698
-  ClientWidth = 1081
-  DesignTimePPI = 95
+  ClientHeight = 706
+  ClientWidth = 1062
   Menu = MainMenu
   OnChangeBounds = FormResize
   OnCreate = FormCreate
@@ -18,25 +17,26 @@ object frmSongs: TfrmSongs
   object lbxSRepo: TListBox
     AnchorSideRight.Control = grbControl
     Left = 0
-    Height = 652
-    Top = 0
-    Width = 513
+    Height = 630
+    Top = 30
+    Width = 524
     Align = alLeft
-    Anchors = [akTop, akLeft, akRight, akBottom]
+    Anchors = [akLeft, akRight, akBottom]
+    BorderSpacing.Top = 30
     ItemHeight = 0
     OnDblClick = btnAddClick
     OnKeyDown = lbxSRepoKeyDown
     ParentFont = False
-    ScrollWidth = 511
+    ScrollWidth = 522
     Sorted = True
     TabOrder = 0
     TopIndex = -1
   end
   object lbxSselected: TListBox
     Left = 568
-    Height = 652
+    Height = 660
     Top = 0
-    Width = 513
+    Width = 494
     Align = alRight
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
@@ -44,18 +44,18 @@ object frmSongs: TfrmSongs
     OnKeyPress = lbxSselectedKeyPress
     OnKeyDown = lbxSselectedKeyDown
     ParentFont = False
-    ScrollWidth = 511
+    ScrollWidth = 492
     TabOrder = 1
     TopIndex = -1
   end
   object grbSettings: TGroupBox
     Left = 0
     Height = 46
-    Top = 652
-    Width = 1081
+    Top = 660
+    Width = 1062
     Align = alBottom
     ClientHeight = 44
-    ClientWidth = 1079
+    ClientWidth = 1060
     ParentFont = False
     TabOrder = 2
     OnClick = grbSettingsClick
@@ -63,7 +63,7 @@ object frmSongs: TfrmSongs
       Left = 0
       Height = 44
       Top = 0
-      Width = 142
+      Width = 143
       Align = alLeft
       Caption = 'Präsentation...'
       OnClick = btnStartPresentationClick
@@ -71,10 +71,10 @@ object frmSongs: TfrmSongs
       TabOrder = 0
     end
     object btnSettings: TButton
-      Left = 946
+      Left = 926
       Height = 44
       Top = 0
-      Width = 133
+      Width = 134
       Align = alRight
       Caption = 'Einstellungen...'
       OnClick = btnSettingsClick
@@ -85,14 +85,14 @@ object frmSongs: TfrmSongs
   object grbControl: TGroupBox
     AnchorSideLeft.Control = lbxSRepo
     AnchorSideRight.Control = lbxSselected
-    Left = 513
-    Height = 652
+    Left = 524
+    Height = 660
     Top = 0
-    Width = 55
+    Width = 44
     Align = alLeft
     Anchors = [akTop, akLeft, akRight, akBottom]
-    ClientHeight = 650
-    ClientWidth = 53
+    ClientHeight = 658
+    ClientWidth = 42
     ParentFont = False
     TabOrder = 3
     OnClick = grbControlClick
@@ -100,7 +100,7 @@ object frmSongs: TfrmSongs
       Left = 0
       Height = 33
       Top = 0
-      Width = 53
+      Width = 42
       Align = alTop
       Caption = '+'
       OnClick = btnAddClick
@@ -111,7 +111,7 @@ object frmSongs: TfrmSongs
       Left = 0
       Height = 33
       Top = 33
-      Width = 53
+      Width = 42
       Align = alTop
       Caption = '-'
       OnClick = btnRemoveClick
@@ -121,10 +121,10 @@ object frmSongs: TfrmSongs
     object btnUp: TButton
       Left = 0
       Height = 33
-      Top = 115
-      Width = 53
+      Top = 116
+      Width = 42
       Align = alTop
-      BorderSpacing.Top = 49
+      BorderSpacing.Top = 50
       Caption = '🠕'
       Font.Height = -13
       Font.Name = 'Symbol PS'
@@ -136,8 +136,8 @@ object frmSongs: TfrmSongs
     object btnDown: TButton
       Left = 0
       Height = 33
-      Top = 148
-      Width = 53
+      Top = 149
+      Width = 42
       Align = alTop
       Caption = '🠗'
       Font.Height = -13
@@ -151,22 +151,34 @@ object frmSongs: TfrmSongs
       Left = 0
       Height = 33
       Hint = 'Leere alle ausgewählten Lieder'
-      Top = 237
-      Width = 53
+      Top = 239
+      Width = 42
       Align = alTop
-      BorderSpacing.Top = 56
+      BorderSpacing.Top = 57
       Caption = '🗑'
       OnClick = btnClearClick
       ParentFont = False
       TabOrder = 4
     end
   end
+  object edtSearch: TEdit
+    Left = 0
+    Height = 32
+    Hint = 'Suchen...'
+    Top = 0
+    Width = 524
+    Alignment = taCenter
+    Anchors = [akTop]
+    OnChange = edtSearchChange
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+  end
   object MainMenu: TMainMenu
-    Left = 261
-    Top = 424
+    Left = 264
+    Top = 428
     object menuFile: TMenuItem
       Caption = 'Datei'
-      OnClick = menuFileClick
       object itemLoad: TMenuItem
         Caption = 'Auswahl laden...'
         ShortCut = 16463
@@ -215,11 +227,11 @@ object frmSongs: TfrmSongs
     end
   end
   object OpenDialog: TOpenDialog
-    Left = 196
-    Top = 420
+    Left = 198
+    Top = 424
   end
   object SaveDialog: TSaveDialog
-    Left = 230
-    Top = 420
+    Left = 232
+    Top = 424
   end
 end
