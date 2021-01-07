@@ -88,6 +88,8 @@ type
     procedure itemReloadSongListClick(Sender: TObject);
     procedure pnlMultiScreenClick(Sender: TObject);
     procedure pnlMultiScreenResize(Sender: TObject);
+    procedure PnlSplitterCanOffset(Sender: TObject; var NewOffset: Integer;
+      var Accept: Boolean);
     procedure PnlSplitterMoved(Sender: TObject);
   private
     { private declarations }
@@ -207,11 +209,18 @@ end;
 procedure TfrmSongs.pnlMultiScreenResize(Sender: TObject);
 begin
   imgLiveViewer.Width := pnlMultiScreen.Width;
-  // Passe Höhe an Bild an
-  imgLiveViewer.Height := round(imgLiveViewer.Width * imgLiveViewer.Picture.Bitmap.Height / imgLiveViewer.Picture.Bitmap.Width);
   // Falls Bild noch nicht da, nehme FrmPresent Höhe
   if imgLiveViewer.Height < 10 Then
-    imgLiveViewer.Height := frmPresent.Height;
+    imgLiveViewer.Height := frmPresent.Height
+  // Passe Höhe an Bild an
+  else if (imgLiveViewer.Picture.Bitmap.Width > 0) Then
+    imgLiveViewer.Height := round(imgLiveViewer.Width * imgLiveViewer.Picture.Bitmap.Height / imgLiveViewer.Picture.Bitmap.Width);
+end;
+
+procedure TfrmSongs.PnlSplitterCanOffset(Sender: TObject;
+  var NewOffset: Integer; var Accept: Boolean);
+begin
+
 end;
 
 procedure TfrmSongs.PnlSplitterMoved(Sender: TObject);
@@ -227,8 +236,12 @@ begin
   lbxSSelected.Height := frmSongs.Height - lbxSSelected.Top - grbSettings.Height - MainMenu.Height;
   edtSearch.Top := 0;
   edtSearch.Left := 0;
+  {$if defined(LINUX)}
   chkMultiWindowMode.Top := Round((grbSettings.Height-chkMultiWindowMode.Height)/2);
-
+  {$endif}
+  {$if defined(WINDOWS)}
+  chkMultiWindowMode.Top := btnStartPresentation.Top;
+  {$endif}
   if (ProgrammMode = ModeSelection) OR (ProgrammMode = ModeSingleScreenPresentation) Then
   Begin
     lbxSRepo.Width:=(frmSongs.Width-grbControl.Width) div 2;
@@ -525,6 +538,8 @@ begin
   frmSongs.FormResize(frmSongs);
   // Zeige die Präsentations-Form
   frmPresent.Show();
+  // Workaround für Windoof
+  frmPresent.WindowState:= wsMaximized;
   if Screen.MonitorCount > 1 Then frmPresent.SwitchFullscreen(True);
   songfile.Free;
   // Deaktiviere Präsentationsbutton für Zeit der Präsentation
@@ -563,29 +578,16 @@ begin
   begin
     Application.Restore;
     Application.BringToFront;
+    {$if defined(LINUX)}
     frmPresent.BringToFront;
     frmSongs.BringToFront;
+    {$endif}
   end;
 end;
 
 { Diese Funktion macht ein Bildschirmfoto der Präsentation und zeigt dieses an. }
 
 procedure TfrmSongs.ReloadPresentationImage;
-{var
-  lRect: TRect;
-  lFormBitmap: TBitmap;
-begin
-  lRect := Bounds(frmPresent.Left, frmPresent.Top, frmPresent.Width, frmPresent.Height);
-  lFormBitmap := TBitmap.Create;
-  try
-    lFormBitmap.Width := frmPresent.Width;
-    lFormBitmap.Height := frmPresent.Height;
-    lFormBitmap.Canvas.CopyRect(lRect, Canvas, lRect);
-    //zur Anzeige bringen
-    imgLiveViewer.Picture := lFormBitmap;
-  finally
-    lFormBitmap.Free;
-  end; }
 var
   FormImage: TBitmap;
 begin
@@ -602,4 +604,3 @@ begin
 end;
 
 end.
-
