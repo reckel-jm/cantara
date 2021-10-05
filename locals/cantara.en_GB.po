@@ -99,42 +99,6 @@ msgstr "Text Color"
 msgid "Zeilenabstand"
 msgstr "Line Distance"
 
-#: tfrminfo.btnopengitrepo.caption
-#, fuzzy
-msgctxt "tfrminfo.btnopengitrepo.caption"
-msgid "Öffne Git-Repository im Webbrowser..."
-msgstr "Open Git Repository in a web browser..."
-
-#: tfrminfo.caption
-#, fuzzy
-msgctxt "tfrminfo.caption"
-msgid "Über das Programm"
-msgstr "About this Program"
-
-#: tfrminfo.lblauthor.caption
-msgid "Autor: Jan Martin Reckel"
-msgstr ""
-
-#: tfrminfo.lblcompdate.caption
-msgid "lblCompDate"
-msgstr ""
-
-#: tfrminfo.lblinfo.caption
-msgid ""
-"Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
-"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
-"\n"
-"Der Autor wünscht für die Verwendung Gottes Segen!\n"
-msgstr ""
-
-#: tfrminfo.lblname.caption
-msgid "Cantara"
-msgstr ""
-
-#: tfrminfo.lblversion.caption
-msgid "lblVersion"
-msgstr ""
-
 #: tfrmpresent.caption
 #, fuzzy
 msgctxt "tfrmpresent.caption"
@@ -143,58 +107,6 @@ msgstr "Presentation"
 
 #: tfrmpresent.lblnext.caption
 msgid "hier steht test."
-msgstr ""
-
-#: tfrmsettings.btnbackgroundcolor.caption
-msgid "Hintergrundfarbe..."
-msgstr ""
-
-#: tfrmsettings.btnclose.caption
-#, fuzzy
-msgctxt "tfrmsettings.btnclose.caption"
-msgid "Schließen"
-msgstr "Close"
-
-#: tfrmsettings.btnfontsizemanually.caption
-msgid "Schriftgröße..."
-msgstr ""
-
-#: tfrmsettings.btnselectdir.caption
-msgid "..."
-msgstr ""
-
-#: tfrmsettings.btntextcolor.caption
-msgid "Textfarbe..."
-msgstr ""
-
-#: tfrmsettings.caption
-#, fuzzy
-msgctxt "tfrmsettings.caption"
-msgid "Einstellungen"
-msgstr "Settings"
-
-#: tfrmsettings.cbemptyframe.caption
-#, fuzzy
-msgctxt "tfrmsettings.cbemptyframe.caption"
-msgid "Leerfolie zwischen Liedern"
-msgstr "Add empty slice between songs"
-
-#: tfrmsettings.cbspoiler.caption
-#, fuzzy
-msgctxt "tfrmsettings.cbspoiler.caption"
-msgid "Nächste Folie andeuten"
-msgstr "Spoiler next slide"
-
-#: tfrmsettings.labelsongdir.caption
-msgid "Liederverzeichnis:"
-msgstr ""
-
-#: tfrmsettings.lbllinedistance.caption
-msgid "Zeilenabstand: "
-msgstr ""
-
-#: tfrmsettings.lblpresentationview.caption
-msgid "Präsentationsanzeige:"
 msgstr ""
 
 #: tfrmsongs.btnadd.caption

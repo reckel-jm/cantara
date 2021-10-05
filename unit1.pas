@@ -9,7 +9,17 @@ uses
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator;
 
 type
+  TRepoFile = record
+    Name: string;
+    filePath: string;
+  end;
 
+  TSongPosition = record
+    songname: string;
+    stanzaposition: integer;
+    songposition: integer;
+    stanzapositionstart: integer;
+  end;
   { TfrmSongs }
 
   TfrmSongs = class(TForm)
@@ -91,18 +101,17 @@ type
     procedure PnlSplitterCanOffset(Sender: TObject; var NewOffset: Integer;
       var Accept: Boolean);
     procedure PnlSplitterMoved(Sender: TObject);
+    procedure CreatePresentationData;
+    function GetCurrentSongPosition: TSongPosition;
+    procedure UpdateSongPositionInLbxSSelected;
   private
     { private declarations }
     procedure LocaliseCaptions;
     procedure FilterListBox(s: String);
     procedure ReloadPresentationImage;
+    procedure BringToFront;
   public
     { public declarations }
-  end;
-
-  TRepoFile = record
-    Name: string;
-    filePath: string;
   end;
 
 const
@@ -175,6 +184,7 @@ begin
         begin
          // Finde den letzten Punkt
          songName := Info.Name + '.';
+         i :=-1;
          for i := 1 to length(Info.Name) do
            if songName[i] = '.' then c := i;
          // Entferne die Dateiendung
@@ -406,7 +416,11 @@ procedure TfrmSongs.FormKeyDown(Sender: TObject; var Key: Word;
 begin
   //Übergebe Key an Presentations-Form, wenn Vorausforderungen erfüllt sind
   if ((ProgrammMode = ModeMultiScreenPresentation) and (edtSearch.Focused = False))
-  Then frmPresent.FormKeyDown(frmSongs, Key, Shift);
+  Then
+  Begin
+    frmPresent.FormKeyDown(frmSongs, Key, Shift);
+    ImageUpdater.Enabled:=True;
+  end;
 end;
 
 procedure TfrmSongs.FormKeyPress(Sender: TObject; var Key: char);
@@ -476,25 +490,69 @@ begin
 end;
 
 procedure TfrmSongs.btnStartPresentationClick(Sender: TObject);
-var i,j: integer;
-    songfile: TStringList;
-    stanza: string;
 begin
   // Prüfe, ob mindestens ein Lied ausgewählt wurde
   if lbxSSelected.Count > 0 then
   begin
+    CreatePresentationData;
+
+    // Passe Hauptfenster an, falls Multi-Fenster-Modus ausgewählt wurde.
+    if chkMultiWindowMode.Checked Then
+      Begin
+        ProgrammMode := ModeMultiscreenPresentation;
+        ImageUpdater.Enabled:=True;
+        pnlSplitter.Left := Round(frmSongs.Width / 2);
+        frmSongs.FormResize(frmSongs);
+        pnlMultiScreenResize(Self);
+        // Falls min. zwei Bildschirme, verschiebe Präsentationsfenster auf zweite Form und starte Vollbild
+        if Screen.MonitorCount > 1 Then
+          begin
+            Try
+              frmPresent.Top := Screen.Monitors[1].Top;
+              frmPresent.Left := Screen.Monitors[1].Left;
+            finally
+              //Falls nicht möglich, kein Problem.
+            end;
+          end;
+        //BringToFront;
+        frmSongs.KeyPreview:=True;
+      end
+    Else ProgrammMode := ModeSingleScreenPresentation;
+
+    frmSongs.FormResize(frmSongs);
+    // Zeige die Präsentations-Form
+    frmPresent.Show();
+    // Workaround für Windoof
+    frmPresent.WindowState:= wsMaximized;
+    if Screen.MonitorCount > 1 Then frmPresent.SwitchFullscreen(True);
+    // Deaktiviere Präsentationsbutton für Zeit der Präsentation
+    itemPresentation.Enabled := False;
+    btnStartPresentation.Enabled := False;
+    // Wurde kein Lied ausewählt, zeige eine Fehlermeldung
+  end
+  else ShowMessage(StrFehlerKeineLiederBeiPraesentation);
+end;
+
+procedure TfrmSongs.CreatePresentationData;
+var i,j: integer;
+    songfile: TStringList;
+    songname: string;
+    stanza: string;
+begin
   present.cur:=0;
   present.textList.Clear;
   songfile := TStringList.Create();
   for i := 0 to lbxSSelected.Count-1 do
     begin
+    //Ermittel Liednamen
+    songname := lbxSSelected.Items.Strings[i];
     //suche Dateinamen in repo-Array
     j := 0;
     try
-      while repo[j].Name <> lbxSSelected.Items.Strings[i] do
+      while repo[j].Name <> songname do
         inc(j);
     except
-      ShowMessage('Fehler: Das Lied "' + lbxSSelected.Items.Strings[i] + '" ist nicht vorhanden. Es wird übersprungen.')
+      ShowMessage('Fehler: Das Lied "' + songname + '" ist nicht vorhanden. Es wird übersprungen.')
     end;
     //Lade Song-menuFile
     songfile.LoadFromFile(frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath);
@@ -505,48 +563,49 @@ begin
       if (songfile.strings[j] = '') then
         begin
           present.textList.Add(stanza);
+          present.songMetaList.Add(songname);
           stanza := '';
         end
         else stanza := stanza + songfile.Strings[j] + LineEnding;
     end;
     present.textList.Add(stanza);
+    present.songMetaList.Add(songname);
     if frmSettings.cbEmptyFrame.Checked then
-      present.textList.Add('');
-    end;
-    // Passe Hauptfenster an, falls Multi-Fenster-Modus ausgewählt wurde.
-  if chkMultiWindowMode.Checked Then
-    Begin
-      ProgrammMode := ModeMultiscreenPresentation;
-      ImageUpdater.Enabled:=True;
-      pnlSplitter.Left := Round(frmSongs.Width / 2);
-      frmSongs.FormResize(frmSongs);
-      pnlMultiScreenResize(Self);
-      // Falls min. zwei Bildschirme, verschiebe Präsentationsfenster auf zweite Form und starte Vollbild
-      if Screen.MonitorCount > 1 Then
-        begin
-        Try
-          frmPresent.Top := Screen.Monitors[1].Top;
-          frmPresent.Left := Screen.Monitors[1].Left;
-
-        finally
-          //Falls nicht möglich, kein Problem.
-        end;
-        end;
-    end
-  Else ProgrammMode := ModeSingleScreenPresentation;
-
-  frmSongs.FormResize(frmSongs);
-  // Zeige die Präsentations-Form
-  frmPresent.Show();
-  // Workaround für Windoof
-  frmPresent.WindowState:= wsMaximized;
-  if Screen.MonitorCount > 1 Then frmPresent.SwitchFullscreen(True);
+      begin
+        present.textList.Add('');
+        present.songMetaList.Add(songname);
+      end;
+  end;
   songfile.Free;
-  // Deaktiviere Präsentationsbutton für Zeit der Präsentation
-  itemPresentation.Enabled := False;
-  btnStartPresentation.Enabled := False;
-  // Wurde kein Lied ausewählt, zeige eine Fehlermeldung
-  end else ShowMessage(StrFehlerKeineLiederBeiPraesentation);
+  end;
+
+function TFrmSongs.GetCurrentSongPosition: TSongPosition;
+var
+    SongPosition: TSongPosition;
+    i: integer;
+
+begin
+  SongPosition.songname:=present.songMetaList.Strings[present.cur];
+  SongPosition.songposition:= 1;
+  SongPosition.stanzapositionstart := 0;
+  for i := 1 To present.cur do
+  begin
+    if present.songMetaList.Strings[i] <> present.SongMetaList.Strings[i-1] Then
+      begin
+      inc(SongPosition.songposition);
+      SongPosition.stanzapositionstart := i;
+      end;
+  end;
+  SongPosition.stanzaposition:=present.cur-SongPosition.stanzapositionstart+1;
+  result := SongPosition;
+end;
+
+procedure TfrmSongs.UpdateSongPositionInLbxSSelected;
+var
+    SongPosition: TSongPosition;
+begin
+  SongPosition := GetCurrentSongPosition;
+  lbxSselected.Itemindex := SongPosition.songposition-1;
 end;
 
 procedure TfrmSongs.btnUpClick(Sender: TObject);
@@ -572,16 +631,21 @@ begin
   self.FilterListBox(edtSearch.Text);
 end;
 
-procedure TfrmSongs.FormActivate(Sender: TObject);
+procedure TfrmSongs.BringToFront;
 begin
-  if ((ProgrammMode = ModeMultiScreenPresentation) and (ProgrammMode = ModeMultiScreenPresentation)) Then
-  begin
-    Application.Restore;
-    Application.BringToFront;
-    {$if defined(LINUX)}
+  Application.Restore;
+  Application.BringToFront;
+  {$if defined(LINUX)}
     frmPresent.BringToFront;
     frmSongs.BringToFront;
-    {$endif}
+  {$endif}
+end;
+
+procedure TfrmSongs.FormActivate(Sender: TObject);
+begin
+  if ((ProgrammMode = ModeMultiScreenPresentation) and (ProgrammMode = ModeMultiScreenPresentation)) and (frmSongs.Active <> True) and (frmPresent.Active <> True) Then
+  begin
+    //BringToFront;
   end;
 end;
 

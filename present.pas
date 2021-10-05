@@ -45,6 +45,7 @@ type
 var
   frmPresent: TfrmPresent;
   textList: TStringList;
+  songMetaList: TStringList;
   cur: Integer; //The current Index of the String List which is shown
   FullScreen: Boolean;
 
@@ -155,13 +156,16 @@ begin
     lblText.Caption := textList.Strings[cur];
     lblText.BorderSpacing.Top := (frmPresent.Height-lblText.Height-lblNext.Height-lblNext.BorderSpacing.Top) div 2;
     lines := 0;
-    Unit1.frmSongs.ImageUpdater.Enabled:=True;
+    // Aktualisiere SongListe in Present-Form
+    unit1.frmSongs.UpdateSongPositionInLbxSSelected;
+    //Unit1.frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 procedure TfrmPresent.FormCreate(Sender: TObject);
 begin
   cur := 0;
   present.textList := TStringList.Create;
+  present.songMetaList := TStringList.Create;
   FullScreen := False;
   self.Caption:= strFormCaption;
 end;
@@ -176,6 +180,7 @@ begin
   // Stelle Unit1 wieder her
   Unit1.ProgrammMode:=Unit1.ModeSelection;
   Unit1.frmSongs.FormResize(self);
+  Unit1.frmSongs.KeyPreview := False;
 
   // Aktiviere Präsentations-Button, um Präsentation erneut starten zu können
 

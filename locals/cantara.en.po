@@ -97,45 +97,8 @@ msgstr "Text Color"
 msgid "Zeilenabstand"
 msgstr "Line Space"
 
-#: tfrminfo.btnopengitrepo.caption
-msgctxt "tfrminfo.btnopengitrepo.caption"
-msgid "Öffne Git-Repository im Webbrowser..."
-msgstr "Open Git-Repository inside Web Browser..."
-
-#: tfrminfo.caption
-msgctxt "tfrminfo.caption"
-msgid "Über das Programm"
-msgstr "About that Program"
-
-#: tfrminfo.lblauthor.caption
-msgid "Autor: Jan Martin Reckel"
-msgstr "Autor: Jan Martin Reckel"
-
-#: tfrminfo.lblcompdate.caption
-msgid "lblCompDate"
-msgstr ""
-
-#: tfrminfo.lblinfo.caption
-msgid ""
-"Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
-"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
-"\n"
-"Der Autor wünscht für die Verwendung Gottes Segen!\n"
-msgstr ""
-"This programme is published under the GPL3 licence.\n"
-"The source code and documentation can be viewed on GitHub. Further use and modification is possible under attribution.\n"
-"\n"
-"The author wishes God's blessing for its use!\n"
-
-#: tfrminfo.lblname.caption
-msgid "Cantara"
-msgstr "Cantara"
-
-#: tfrminfo.lblversion.caption
-msgid "lblVersion"
-msgstr ""
-
 #: tfrmpresent.caption
+#, fuzzy
 msgctxt "tfrmpresent.caption"
 msgid "Präsentation"
 msgstr "Presentation"
@@ -144,166 +107,130 @@ msgstr "Presentation"
 msgid "hier steht test."
 msgstr ""
 
-#: tfrmsettings.btnbackgroundcolor.caption
-msgid "Hintergrundfarbe..."
-msgstr "Background Color..."
-
-#: tfrmsettings.btnclose.caption
-msgctxt "tfrmsettings.btnclose.caption"
-msgid "Schließen"
-msgstr "Close"
-
-#: tfrmsettings.btnfontsizemanually.caption
-msgid "Schriftgröße..."
-msgstr "Font Size..."
-
-#: tfrmsettings.btnselectdir.caption
-msgid "..."
-msgstr "..."
-
-#: tfrmsettings.btntextcolor.caption
-msgid "Textfarbe..."
-msgstr "Text Color..."
-
-#: tfrmsettings.caption
-msgctxt "tfrmsettings.caption"
-msgid "Einstellungen"
-msgstr "Settings"
-
-#: tfrmsettings.cbemptyframe.caption
-msgctxt "tfrmsettings.cbemptyframe.caption"
-msgid "Leerfolie zwischen Liedern"
-msgstr "Empty Slide between Songs"
-
-#: tfrmsettings.cbspoiler.caption
-msgctxt "tfrmsettings.cbspoiler.caption"
-msgid "Nächste Folie andeuten"
-msgstr "Spoiler next Slide"
-
-#: tfrmsettings.labelsongdir.caption
-msgid "Liederverzeichnis:"
-msgstr "Song Directory:"
-
-#: tfrmsettings.lbllinedistance.caption
-msgid "Zeilenabstand: "
-msgstr "Line Distance:"
-
-#: tfrmsettings.lblpresentationview.caption
-msgid "Präsentationsanzeige:"
-msgstr "Presentation View:"
-
 #: tfrmsongs.btnadd.caption
 msgid "+"
-msgstr "+"
+msgstr ""
 
 #: tfrmsongs.btnclear.caption
 msgid "🗑"
-msgstr "🗑"
+msgstr ""
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
-msgstr "Clear all selected songs"
+msgstr ""
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
-msgstr "🠗"
+msgstr ""
 
 #: tfrmsongs.btngoleft.caption
 msgid "←"
-msgstr "←"
+msgstr ""
 
 #: tfrmsongs.btngoright.caption
 msgid "→"
-msgstr "→"
+msgstr ""
 
 #: tfrmsongs.btnquitpresentation.caption
 msgid "×"
-msgstr "×"
+msgstr ""
 
 #: tfrmsongs.btnremove.caption
 msgid "-"
-msgstr "-"
+msgstr ""
 
 #: tfrmsongs.btnsettings.caption
+#, fuzzy
 msgctxt "tfrmsongs.btnsettings.caption"
 msgid "Einstellungen..."
 msgstr "Settings..."
 
 #: tfrmsongs.btnstartpresentation.caption
+#, fuzzy
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Präsentation..."
 msgstr "Presentation..."
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr "🠕"
+msgstr ""
 
 #: tfrmsongs.caption
+#, fuzzy
 msgctxt "tfrmsongs.caption"
 msgid "Liedauswahl (Cantara)"
-msgstr "Cantara Song Presentation"
+msgstr "Song Presentation Software Cantara"
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Mehr-Fenstermodus (für mehrere Bildschirme geeignet)"
-msgstr "Multiple Window Presentation Mode (useful for more screens)"
+msgstr ""
 
 #: tfrmsongs.edtsearch.hint
+#, fuzzy
 msgctxt "tfrmsongs.edtsearch.hint"
 msgid "Suchen..."
 msgstr "Search..."
 
 #: tfrmsongs.itemabout.caption
 msgid "Informationen zum Programm"
-msgstr "Information about that Program"
+msgstr ""
 
 #: tfrmsongs.itemend.caption
+#, fuzzy
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Beenden"
 msgstr "Quit"
 
 #: tfrmsongs.itemload.caption
+#, fuzzy
 msgctxt "tfrmsongs.itemload.caption"
 msgid "Auswahl laden..."
 msgstr "Load Selection..."
 
 #: tfrmsongs.itempresentation.caption
+#, fuzzy
 msgctxt "tfrmsongs.itempresentation.caption"
 msgid "Präsentation"
 msgstr "Presentation"
 
 #: tfrmsongs.itemreloadsonglist.caption
+#, fuzzy
 msgctxt "tfrmsongs.itemreloadsonglist.caption"
 msgid "Liederliste neu laden"
 msgstr "Reload Song List"
 
 #: tfrmsongs.itemsave.caption
 msgid "Auswahl speichern.."
-msgstr "Save Selection..."
+msgstr ""
 
 #: tfrmsongs.itemsettings.caption
+#, fuzzy
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Einstellungen..."
 msgstr "Settings..."
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Foliennummern"
-msgstr "Slide Numbers"
+msgstr ""
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Präsentation läuft:"
-msgstr "Presentation is running:"
+msgstr ""
 
 #: tfrmsongs.menuedit.caption
+#, fuzzy
 msgctxt "tfrmsongs.menuedit.caption"
 msgid "Bearbeiten"
 msgstr "Edit"
 
 #: tfrmsongs.menufile.caption
+#, fuzzy
 msgctxt "tfrmsongs.menufile.caption"
 msgid "Datei"
 msgstr "File"
 
 #: tfrmsongs.menuhelp.caption
+#, fuzzy
 msgctxt "tfrmsongs.menuhelp.caption"
 msgid "Hilfe"
 msgstr "Help"
@@ -399,3 +326,4 @@ msgstr "Two-window mode (suitable for two screens and video conferencing)"
 msgctxt "unit1.strsearchfieldhint"
 msgid "Suchen..."
 msgstr "Search..."
+
