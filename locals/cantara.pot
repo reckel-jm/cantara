@@ -1,39 +1,19 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Project-Id-Version: Cantara\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: en\n"
+msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: info.strautor
 msgid "Autor"
-msgstr "Author"
+msgstr ""
 
 #: info.strbuttongitrepo
-msgctxt "info.strbuttongitrepo"
 msgid "Öffne Git-Repository im Webbrowser..."
-msgstr "Open GitHub Repository in Web Browser..."
+msgstr ""
 
 #: info.strformcaption
-msgctxt "info.strformcaption"
 msgid "Über das Programm"
-msgstr "About this Program"
+msgstr ""
 
 #: info.strhinweise
-#, fuzzy
-#| msgid ""
-#| "Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
-#| "\n"
-#| "Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
-#| "\n"
-#| "Der Autor wünscht für die Verwendung Gottes Segen!\n"
 msgid ""
 "Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
 "\n"
@@ -41,74 +21,64 @@ msgid ""
 "\n"
 "Der Autor wünscht für die Verwendung Gottes Segen!"
 msgstr ""
-"This programme is published under the GPL3 licence.\n"
-"\n"
-"The source code and documentation can be viewed on GitHub. Further use and modification is possible under attribution.\n"
-"\n"
-"The author wishes God's blessing for its use!\n"
 
 #: info.strprogrammerstellt
 msgid "Programm erstellt"
-msgstr "Program created"
+msgstr ""
 
 #: info.strversion
 msgid "Version"
-msgstr "Version"
+msgstr ""
 
 #: present.strformcaption
 msgctxt "present.strformcaption"
 msgid "Präsentation"
-msgstr "Presentation"
+msgstr ""
 
 #: settings.strformcaption
-msgctxt "settings.strformcaption"
 msgid "Einstellungen"
-msgstr "Settings"
+msgstr ""
 
 #: settings.strhintergrundfarbe
 msgid "Hintergrundfarbe"
-msgstr "Background Color"
+msgstr ""
 
 #: settings.strleerfoliezwischenliedern
-msgctxt "settings.strleerfoliezwischenliedern"
 msgid "Leerfolie zwischen Liedern"
-msgstr "Empty slide between songs"
+msgstr ""
 
 #: settings.strliederverzeichnis
 msgid "Liederverzeichnis"
-msgstr "Song Directory"
+msgstr ""
 
 #: settings.strnaechstefolieandeuten
-msgctxt "settings.strnaechstefolieandeuten"
 msgid "Nächste Folie andeuten"
-msgstr "Spoiler next Slide"
+msgstr ""
 
 #: settings.strpraesentationsanzeige
 msgid "Präsentationsanzeige"
-msgstr "Presentation View"
+msgstr ""
 
 #: settings.strschliessen
-msgctxt "settings.strschliessen"
 msgid "Schließen"
-msgstr "Close"
+msgstr ""
 
 #: settings.strschriftgroesse
 msgid "Schriftgröße und -art"
-msgstr "Font Settings"
+msgstr ""
 
 #: settings.strtextfarbe
 msgid "Textfarbe"
-msgstr "Text Color"
+msgstr ""
 
 #: settings.strzeilenabstand
 msgid "Zeilenabstand"
-msgstr "Line Space"
+msgstr ""
 
 #: tfrmpresent.caption
-#, fuzzy
 msgctxt "tfrmpresent.caption"
 msgid "Präsentation"
-msgstr "Presentation"
+msgstr ""
 
 #: tfrmpresent.lblnext.caption
 msgid "hier steht test."
@@ -147,74 +117,65 @@ msgid "-"
 msgstr ""
 
 #: tfrmsongs.btnsettings.caption
-#, fuzzy
 msgctxt "tfrmsongs.btnsettings.caption"
 msgid "Einstellungen..."
-msgstr "Settings..."
+msgstr ""
 
 #: tfrmsongs.btnstartpresentation.caption
-#, fuzzy
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Präsentation..."
-msgstr "Presentation..."
+msgstr ""
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
 msgstr ""
 
 #: tfrmsongs.caption
-#, fuzzy
 msgctxt "tfrmsongs.caption"
 msgid "Liedauswahl (Cantara)"
-msgstr "Song Presentation Software Cantara"
+msgstr ""
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Mehr-Fenstermodus (für mehrere Bildschirme geeignet)"
 msgstr ""
 
 #: tfrmsongs.edtsearch.hint
-#, fuzzy
 msgctxt "tfrmsongs.edtsearch.hint"
 msgid "Suchen..."
-msgstr "Search..."
+msgstr ""
 
 #: tfrmsongs.itemabout.caption
 msgid "Informationen zum Programm"
 msgstr ""
 
 #: tfrmsongs.itemend.caption
-#, fuzzy
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Beenden"
-msgstr "Quit"
+msgstr ""
 
 #: tfrmsongs.itemload.caption
-#, fuzzy
 msgctxt "tfrmsongs.itemload.caption"
 msgid "Auswahl laden..."
-msgstr "Load Selection..."
+msgstr ""
 
 #: tfrmsongs.itempresentation.caption
-#, fuzzy
 msgctxt "tfrmsongs.itempresentation.caption"
 msgid "Präsentation"
-msgstr "Presentation"
+msgstr ""
 
 #: tfrmsongs.itemreloadsonglist.caption
-#, fuzzy
 msgctxt "tfrmsongs.itemreloadsonglist.caption"
 msgid "Liederliste neu laden"
-msgstr "Reload Song List"
+msgstr ""
 
 #: tfrmsongs.itemsave.caption
 msgid "Auswahl speichern.."
 msgstr ""
 
 #: tfrmsongs.itemsettings.caption
-#, fuzzy
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Einstellungen..."
-msgstr "Settings..."
+msgstr ""
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Foliennummern"
@@ -225,112 +186,109 @@ msgid "Präsentation läuft:"
 msgstr ""
 
 #: tfrmsongs.menuedit.caption
-#, fuzzy
 msgctxt "tfrmsongs.menuedit.caption"
 msgid "Bearbeiten"
-msgstr "Edit"
+msgstr ""
 
 #: tfrmsongs.menufile.caption
-#, fuzzy
 msgctxt "tfrmsongs.menufile.caption"
 msgid "Datei"
-msgstr "File"
+msgstr ""
 
 #: tfrmsongs.menuhelp.caption
-#, fuzzy
 msgctxt "tfrmsongs.menuhelp.caption"
 msgid "Hilfe"
-msgstr "Help"
+msgstr ""
 
 #: unit1.strbuttoneinstellungen
 msgctxt "unit1.strbuttoneinstellungen"
 msgid "Einstellungen..."
-msgstr "Settings..."
+msgstr ""
 
 #: unit1.strbuttonpraesentation
 msgctxt "unit1.strbuttonpraesentation"
 msgid "Präsentation..."
-msgstr "Presentation..."
+msgstr ""
 
 #: unit1.strerstebenutzung
 msgid "Sie nutzen dieses Programm zum ersten Mal. Bitte wählen Sie einen Ordner aus, in dem sich die Liedtexte befinden."
-msgstr "You are using this programme for the first time. Please select the folder where the song lyrics are located."
+msgstr ""
 
 #: unit1.strfehlerkeineliederbeipraesentation
 msgid "Es müssen zuerst Lieder hinzugefügt werden."
-msgstr "You first have to add songs to the list."
+msgstr ""
 
 #: unit1.strfehleroeffnen
 msgid "Fehler beim Öffnen. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diese Datei zuzugreifen"
-msgstr "Error while opening. You probably don't have the necessary rights to access this file."
+msgstr ""
 
 #: unit1.strfehlerspeichern
 msgid "Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen."
-msgstr "Error while saving. You probably don't have the necessary rights to access this file."
+msgstr ""
 
 #: unit1.strfolie
 msgid "Folie"
-msgstr "Slide"
+msgstr ""
 
 #: unit1.strformcaption
 msgctxt "unit1.strformcaption"
 msgid "Liedauswahl (Cantara)"
-msgstr "Song Presentation Software Cantara"
+msgstr ""
 
 #: unit1.strmenuauswahlladen
 msgctxt "unit1.strmenuauswahlladen"
 msgid "Auswahl laden..."
-msgstr "Load Selection..."
+msgstr ""
 
 #: unit1.strmenuauswahlspeichern
 msgid "Auswahl speichern..."
-msgstr "Save Selection..."
+msgstr ""
 
 #: unit1.strmenubearbeiten
 msgctxt "unit1.strmenubearbeiten"
 msgid "Bearbeiten"
-msgstr "Edit"
+msgstr ""
 
 #: unit1.strmenubeenden
 msgctxt "unit1.strmenubeenden"
 msgid "Beenden"
-msgstr "Quit"
+msgstr ""
 
 #: unit1.strmenudatei
 msgctxt "unit1.strmenudatei"
 msgid "Datei"
-msgstr "File"
+msgstr ""
 
 #: unit1.strmenueinstellungen
 msgctxt "unit1.strmenueinstellungen"
 msgid "Einstellungen..."
-msgstr "Settings..."
+msgstr ""
 
 #: unit1.strmenuhilfe
 msgctxt "unit1.strmenuhilfe"
 msgid "Hilfe"
-msgstr "Help"
+msgstr ""
 
 #: unit1.strmenuinfo
 msgid "Informationen zum Programm..."
-msgstr "Information about that Program.."
+msgstr ""
 
 #: unit1.strmenuliederlisteneuladen
 msgctxt "unit1.strmenuliederlisteneuladen"
 msgid "Liederliste neu laden"
-msgstr "Reload Song List"
+msgstr ""
 
 #: unit1.strmenupraesentation
 msgctxt "unit1.strmenupraesentation"
 msgid "Präsentation..."
-msgstr "Presentation..."
+msgstr ""
 
 #: unit1.strmultiplewindowmode
 msgid "Zwei-Fenster-Modus (für zwei Bildschirme und Videokonferenzen geeignet)"
-msgstr "Two-window mode (suitable for two screens and video conferencing)"
+msgstr ""
 
 #: unit1.strsearchfieldhint
 msgctxt "unit1.strsearchfieldhint"
 msgid "Suchen..."
-msgstr "Search..."
+msgstr ""
 

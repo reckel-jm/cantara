@@ -9,7 +9,7 @@ uses
   gtk2, gdk2,
   {$endif}
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Settings, Types, Themes, DefaultTranslator;
+  Settings, Types, Themes, DefaultTranslator, LCLIntf;
 type
 
   { TfrmPresent }
@@ -216,11 +216,11 @@ begin
   {$if defined(LINUX)}
   if Fullscreen = False then begin
     // To full screen
-    gdk_window_fullscreen(PGtkWidget(Handle)^.window);
+    ShowWindow(Handle, SW_SHOWFULLSCREEN);
     Fullscreen := True;
   end else begin
     // From full screen
-    gdk_window_unfullscreen(PGtkWidget(Handle)^.window);
+    ShowWindow(Handle, SW_SHOWMAXIMIZED);
     Fullscreen := False;
   end;
   {$endif}
@@ -249,11 +249,11 @@ begin
   {$if defined(LINUX)}
   if WantFullScreen = True then begin
     // To full screen
-    gdk_window_fullscreen(PGtkWidget(Handle)^.window);
+    ShowWindow(Handle, SW_SHOWFULLSCREEN);
     Fullscreen := True;
   end else begin
     // From full screen
-    gdk_window_unfullscreen(PGtkWidget(Handle)^.window);
+    ShowWindow(Handle, SW_SHOWMAXIMIZED);
     Fullscreen := False;
   end;
   {$endif}

@@ -6,7 +6,7 @@ interface
 
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
-  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator;
+  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd;
 
 type
   TRepoFile = record
@@ -576,6 +576,8 @@ begin
         present.songMetaList.Add(songname);
       end;
   end;
+  present.textList.Delimiter:=LineEnding;
+  Clipboard.AsText := present.textList.DelimitedText;
   songfile.Free;
   end;
 
