@@ -29,7 +29,7 @@ type
   end;
 
 const
-  VERSION:string = '2.0 BETA';
+  VERSION:string = '2.0 RC';
   AUTOR:string = 'Jan Martin Reckel';
 
 var
@@ -40,12 +40,12 @@ resourceString
   strProgrammErstellt = 'Programm erstellt';
   strVersion = 'Version';
   strAutor = 'Autor';
-  strButtonGitRepo = 'Öffne Git-Repository im Webbrowser...';
+  strButtonGitRepo = 'Öffne GitHub-Repository im Webbrowser...';
   strHinweise = 'Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.'
     + sLineBreak + sLineBreak +
-    'Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.'
+    'Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Auf diesem Wege ist auch eine Kontaktaufname möglich.'
     + sLineBreak + sLineBreak +
-    'Der Autor wünscht für die Verwendung Gottes Segen!';
+    'Der Autor wünscht für die Verwendung Gottes Segen und freut sich über Rückmeldungen!';
 
 implementation
 
@@ -61,7 +61,7 @@ begin
   lblInfo.Caption := strHinweise;
   self.Caption:= strFormCaption;
   btnOpenGitRepo.Caption := strButtonGitRepo;
-  btnOpenGitRepo.Top := lblInfo.Top+lblInfo.Height + btnOpenGitRepo.Height;
+  btnOpenGitRepo.Top := lblInfo.Top + lblInfo.Height + 100;
   frmInfo.Height := btnOpenGitRepo.Top + btnOpenGitRepo.Height;
 end;
 

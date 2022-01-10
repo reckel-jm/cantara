@@ -1,14 +1,15 @@
+# Jan Martin Reckel, 2022.
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Project-Id-Version: Cantara\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2022-01-10 21:05+0100\n"
+"Last-Translator: Jan Martin Reckel\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en\n"
 
@@ -17,8 +18,10 @@ msgid "Autor"
 msgstr "Author"
 
 #: info.strbuttongitrepo
+#, fuzzy
+#| msgid "Öffne Git-Repository im Webbrowser..."
 msgctxt "info.strbuttongitrepo"
-msgid "Öffne Git-Repository im Webbrowser..."
+msgid "Öffne GitHub-Repository im Webbrowser..."
 msgstr "Open GitHub Repository in Web Browser..."
 
 #: info.strformcaption
@@ -31,19 +34,23 @@ msgstr "About this Program"
 #| msgid ""
 #| "Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
 #| "\n"
-#| "Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
+#| "Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. "
+#| "Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
 #| "\n"
 #| "Der Autor wünscht für die Verwendung Gottes Segen!\n"
 msgid ""
 "Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
 "\n"
-"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
+"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. "
+"Auf diesem Wege ist auch eine Kontaktaufname möglich.\n"
 "\n"
-"Der Autor wünscht für die Verwendung Gottes Segen!"
+"Der Autor wünscht für die Verwendung Gottes Segen und freut sich über "
+"Rückmeldungen!"
 msgstr ""
 "This programme is published under the GPL3 licence.\n"
 "\n"
-"The source code and documentation can be viewed on GitHub. Further use and modification is possible under attribution.\n"
+"The source code and documentation can be viewed on GitHub. Further use and "
+"modification is possible under attribution.\n"
 "\n"
 "The author wishes God's blessing for its use!\n"
 
@@ -96,6 +103,10 @@ msgstr "Close"
 msgid "Schriftgröße und -art"
 msgstr "Font Settings"
 
+#: settings.strsonglyricstoclipboard
+msgid "Kopiere die Liedtexte in die Zwischenablage"
+msgstr ""
+
 #: settings.strtextfarbe
 msgid "Textfarbe"
 msgstr "Text Color"
@@ -103,6 +114,46 @@ msgstr "Text Color"
 #: settings.strzeilenabstand
 msgid "Zeilenabstand"
 msgstr "Line Space"
+
+#: tfrminfo.btnopengitrepo.caption
+#, fuzzy
+msgctxt "tfrminfo.btnopengitrepo.caption"
+msgid "Öffne Git-Repository im Webbrowser..."
+msgstr "Open GitHub Repository in Web Browser..."
+
+#: tfrminfo.caption
+#, fuzzy
+msgctxt "tfrminfo.caption"
+msgid "Über das Programm"
+msgstr "About this Program"
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr "Author: Jan Martin Reckel"
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr ""
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
+"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. "
+"Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
+"\n"
+"Der Autor wünscht für die Verwendung Gottes Segen!"
+msgstr ""
+"This program is published under GPL3 licence.\n"
+"The source code and a brief documentation can be found on GitHub.\n"
+"The author wishes God's blessings!"
+
+#: tfrminfo.lblname.caption
+msgid "Cantara"
+msgstr ""
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr ""
 
 #: tfrmpresent.caption
 #, fuzzy
@@ -112,6 +163,62 @@ msgstr "Presentation"
 
 #: tfrmpresent.lblnext.caption
 msgid "hier steht test."
+msgstr ""
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Hintergrundfarbe..."
+msgstr "Background Color..."
+
+#: tfrmsettings.btnclose.caption
+#, fuzzy
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Schließen"
+msgstr "Close"
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Schriftgröße..."
+msgstr ""
+
+#: tfrmsettings.btnselectdir.caption
+msgid "..."
+msgstr ""
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Textfarbe..."
+msgstr ""
+
+#: tfrmsettings.caption
+#, fuzzy
+msgctxt "tfrmsettings.caption"
+msgid "Einstellungen"
+msgstr "Settings"
+
+#: tfrmsettings.cbemptyframe.caption
+#, fuzzy
+msgctxt "tfrmsettings.cbemptyframe.caption"
+msgid "Leerfolie zwischen Liedern"
+msgstr "Empty slide between songs"
+
+#: tfrmsettings.cblyricstoclipboard.caption
+msgid "Liedtexte in die Zwischenablage kopieren"
+msgstr ""
+
+#: tfrmsettings.cbspoiler.caption
+#, fuzzy
+msgctxt "tfrmsettings.cbspoiler.caption"
+msgid "Nächste Folie andeuten"
+msgstr "Spoiler next Slide"
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Liederverzeichnis:"
+msgstr ""
+
+#: tfrmsettings.lbllinedistance.caption
+msgid "Zeilenabstand: "
+msgstr ""
+
+#: tfrmsettings.lblpresentationview.caption
+msgid "Präsentationsanzeige:"
 msgstr ""
 
 #: tfrmsongs.btnadd.caption
@@ -124,7 +231,7 @@ msgstr ""
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
-msgstr ""
+msgstr "Clear all selected songs"
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
@@ -160,7 +267,7 @@ msgstr "Presentation..."
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr ""
+msgstr "🠕"
 
 #: tfrmsongs.caption
 #, fuzzy
@@ -170,7 +277,7 @@ msgstr "Song Presentation Software Cantara"
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Mehr-Fenstermodus (für mehrere Bildschirme geeignet)"
-msgstr ""
+msgstr "Multi-Window-Mode (for several screens)"
 
 #: tfrmsongs.edtsearch.hint
 #, fuzzy
@@ -180,7 +287,7 @@ msgstr "Search..."
 
 #: tfrmsongs.itemabout.caption
 msgid "Informationen zum Programm"
-msgstr ""
+msgstr "Information about this Program"
 
 #: tfrmsongs.itemend.caption
 #, fuzzy
@@ -208,7 +315,7 @@ msgstr "Reload Song List"
 
 #: tfrmsongs.itemsave.caption
 msgid "Auswahl speichern.."
-msgstr ""
+msgstr "Save Selection..."
 
 #: tfrmsongs.itemsettings.caption
 #, fuzzy
@@ -218,11 +325,11 @@ msgstr "Settings..."
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Foliennummern"
-msgstr ""
+msgstr "Slide Numbers"
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Präsentation läuft:"
-msgstr ""
+msgstr "Presentation is running:"
 
 #: tfrmsongs.menuedit.caption
 #, fuzzy
@@ -253,20 +360,32 @@ msgid "Präsentation..."
 msgstr "Presentation..."
 
 #: unit1.strerstebenutzung
-msgid "Sie nutzen dieses Programm zum ersten Mal. Bitte wählen Sie einen Ordner aus, in dem sich die Liedtexte befinden."
-msgstr "You are using this programme for the first time. Please select the folder where the song lyrics are located."
+msgid ""
+"Sie nutzen dieses Programm zum ersten Mal. Bitte wählen Sie einen Ordner "
+"aus, in dem sich die Liedtexte befinden."
+msgstr ""
+"You are using this programme for the first time. Please select the folder "
+"where the song lyrics are located."
 
 #: unit1.strfehlerkeineliederbeipraesentation
 msgid "Es müssen zuerst Lieder hinzugefügt werden."
 msgstr "You first have to add songs to the list."
 
 #: unit1.strfehleroeffnen
-msgid "Fehler beim Öffnen. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diese Datei zuzugreifen"
-msgstr "Error while opening. You probably don't have the necessary rights to access this file."
+msgid ""
+"Fehler beim Öffnen. Wahrscheinlich haben Sie nicht die nötigen Rechte, um "
+"auf diese Datei zuzugreifen"
+msgstr ""
+"Error while opening. You probably don't have the necessary rights to access "
+"this file."
 
 #: unit1.strfehlerspeichern
-msgid "Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um auf diesen Ordner zuzugreifen."
-msgstr "Error while saving. You probably don't have the necessary rights to access this file."
+msgid ""
+"Fehler beim Speichern. Wahrscheinlich haben Sie nicht die nötigen Rechte, um "
+"auf diesen Ordner zuzugreifen."
+msgstr ""
+"Error while saving. You probably don't have the necessary rights to access "
+"this file."
 
 #: unit1.strfolie
 msgid "Folie"
@@ -333,4 +452,3 @@ msgstr "Two-window mode (suitable for two screens and video conferencing)"
 msgctxt "unit1.strsearchfieldhint"
 msgid "Suchen..."
 msgstr "Search..."
-

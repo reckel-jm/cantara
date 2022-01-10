@@ -10,6 +10,7 @@ object frmSongs: TfrmSongs
   Menu = MainMenu
   OnActivate = FormActivate
   OnChangeBounds = FormResize
+  OnClose = FormClose
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
@@ -219,6 +220,7 @@ object frmSongs: TfrmSongs
         Width = 75
         Align = alLeft
         Caption = '←'
+        ModalResult = 5
         OnClick = btnGoLeftClick
         TabOrder = 0
       end
@@ -229,6 +231,7 @@ object frmSongs: TfrmSongs
         Width = 75
         Align = alLeft
         Caption = '→'
+        ModalResult = 5
         OnClick = btnGoRightClick
         TabOrder = 1
       end
@@ -239,6 +242,7 @@ object frmSongs: TfrmSongs
         Width = 75
         Align = alLeft
         Caption = '×'
+        ModalResult = 5
         OnClick = btnQuitPresentationClick
         TabOrder = 2
       end

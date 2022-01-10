@@ -9,40 +9,37 @@ object frmInfo: TfrmInfo
   ClientHeight = 271
   ClientWidth = 510
   OnCreate = FormCreate
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.2.0.4'
   object lblAuthor: TLabel
     Left = 0
-    Height = 19
-    Top = 50
+    Height = 22
+    Top = 55
     Width = 510
     Align = alTop
     Caption = 'Autor: Jan Martin Reckel'
-    ParentColor = False
     ParentFont = False
   end
   object lblCompDate: TLabel
     Left = 0
-    Height = 19
-    Top = 69
+    Height = 22
+    Top = 77
     Width = 510
     Align = alTop
     Caption = 'lblCompDate'
-    ParentColor = False
     ParentFont = False
   end
   object lblVersion: TLabel
     Left = 0
-    Height = 19
-    Top = 31
+    Height = 22
+    Top = 33
     Width = 510
     Align = alTop
     Caption = 'lblVersion'
-    ParentColor = False
     ParentFont = False
   end
   object lblName: TLabel
     Left = 0
-    Height = 31
+    Height = 33
     Top = 0
     Width = 510
     Align = alTop
@@ -50,26 +47,24 @@ object frmInfo: TfrmInfo
     Font.Height = -32
     Font.Name = 'Palladio URW'
     Font.Style = [fsBold, fsItalic]
-    ParentColor = False
     ParentFont = False
   end
   object lblInfo: TLabel
     Left = 0
-    Height = 114
-    Top = 103
+    Height = 122
+    Top = 114
     Width = 510
     Align = alTop
     BorderSpacing.Top = 15
     Caption = 'Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.'#13#10'Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.'#13#10#13#10'Der Autor wünscht für die Verwendung Gottes Segen!'
-    ParentColor = False
     ParentFont = False
     WordWrap = True
     OnClick = lblInfoClick
   end
   object btnOpenGitRepo: TButton
-    Left = 81
+    Left = 80
     Height = 25
-    Top = 226
+    Top = 240
     Width = 320
     Caption = 'Öffne Git-Repository im Webbrowser...'
     OnClick = btnOpenGitRepoClick

@@ -16,6 +16,7 @@ type
     btnFontSizeManually: TButton;
     btnClose: TButton;
     cbSpoiler: TCheckBox;
+    cbLyricsToClipboard: TCheckBox;
     edtLineDistance: TFloatSpinEdit;
     FontDialog: TFontDialog;
     lblPresentationView: TLabel;
@@ -34,6 +35,7 @@ type
     procedure btnSelectDirClick(Sender: TObject);
     procedure btnBackgroundColorClick(Sender: TObject);
     procedure btnTextColorClick(Sender: TObject);
+    procedure cbLyricsToClipboardChange(Sender: TObject);
     procedure edtRepoPathChange(Sender: TObject);
     procedure edtRepoPathEditingDone(Sender: TObject);
     procedure edtRepoPathExit(Sender: TObject);
@@ -64,6 +66,7 @@ ResourceString
   strTextfarbe = 'Textfarbe';
   strSchliessen = 'Schließen';
   strFormCaption = 'Einstellungen';
+  strSongLyricsToClipboard = 'Kopiere die Liedtexte in die Zwischenablage';
 
 implementation
 
@@ -79,6 +82,7 @@ begin
   labelSongDir.Caption := StrLiederverzeichnis + ': ';
   cbEmptyFrame.Caption := strLeerfolieZwischenLiedern;
   cbSpoiler.Caption := strNaechsteFolieAndeuten;
+  cbLyricsToClipboard.Caption:=strSongLyricsToClipboard;
   lblLineDistance.Caption:= strZeilenabstand;
   lblPresentationView.Caption:=strPraesentationsanzeige;
   btnFontSizeManually.Caption:= strSchriftgroesse + '...';
@@ -128,6 +132,7 @@ procedure TfrmSettings.loadSettings();
 begin
   edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
+  cbLyricsToClipboard.Checked := settingsFile.ReadBool('Config', 'copy-lyrics-to-clipboard', True);
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Text-Color', 'clWhite'));
   bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Background-Color', 'clBlack'));
   cbSpoiler.Checked:=settingsFile.ReadBool('Config', 'Spoiler', True);
@@ -174,6 +179,11 @@ begin
   textColorDialog.Execute;
 end;
 
+procedure TfrmSettings.cbLyricsToClipboardChange(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmSettings.edtRepoPathChange(Sender: TObject);
 begin
 
@@ -212,6 +222,7 @@ begin
     settingsFile.WriteInteger('Config', 'Font-Size', FontDialog.Font.Size);
     settingsFile.WriteString('Config', 'Font-Style', StyleToStr(FontDialog.Font.Style));
     settingsFile.WriteFloat('Config', 'Line-Distance', edtLineDistance.Value);
+    settingsFile.WriteBool('Config', 'copy-lyrics-to-clipboard', cbLyricsToClipboard.Checked);
     settingsFile.UpdateFile;
     CanClose := True;
   end;

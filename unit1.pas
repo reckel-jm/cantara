@@ -6,7 +6,7 @@ interface
 
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
-  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd;
+  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd, lyrics;
 
 type
   TRepoFile = record
@@ -73,6 +73,7 @@ type
     procedure BtnUpdateClick(Sender: TObject);
     procedure edtSearchChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: char);
@@ -295,6 +296,10 @@ begin
   if FileExists(filename) then
     begin
       frmSettings.loadSettings();
+      // Maximize Window according to saved state
+      if settings.settingsfile.ReadBool('Size', 'main-window-maximized', False) = True
+         Then frmSongs.WindowState:= TWindowState.wsMaximized
+      else frmSongs.WindowState:=TWindowState.wsNormal;
     end else
     begin
       ShowMessage(StrErsteBenutzung);
@@ -528,7 +533,9 @@ begin
     // Deaktiviere Präsentationsbutton für Zeit der Präsentation
     itemPresentation.Enabled := False;
     btnStartPresentation.Enabled := False;
-    // Wurde kein Lied ausewählt, zeige eine Fehlermeldung
+    // Lade nochmals Einstellungen (zur Sicherheit)
+    frmPresent.LoadSettings;
+    // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
   end
   else ShowMessage(StrFehlerKeineLiederBeiPraesentation);
 end;
@@ -576,8 +583,11 @@ begin
         present.songMetaList.Add(songname);
       end;
   end;
-  present.textList.Delimiter:=LineEnding;
-  Clipboard.AsText := present.textList.DelimitedText;
+  // Kopiere Lieder in Zwischenablage
+  // ToDo: Erstelle Einstellung für das Kopieren der Liedtexte in die Zwischenablage
+  if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);
+
+  // Free
   songfile.Free;
   end;
 
@@ -649,6 +659,14 @@ begin
   begin
     //BringToFront;
   end;
+end;
+
+procedure TfrmSongs.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  // Save WindowStates to File
+  settings.settingsFile.WriteBool('Size', 'main-window-maximized',frmSongs.WindowState = TWindowState.wsMaximized);
+  settings.settingsFile.UpdateFile;
+  settings.settingsFile.FreeInstance;
 end;
 
 { Diese Funktion macht ein Bildschirmfoto der Präsentation und zeigt dieses an. }

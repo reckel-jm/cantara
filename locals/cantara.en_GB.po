@@ -17,8 +17,10 @@ msgid "Autor"
 msgstr "Author"
 
 #: info.strbuttongitrepo
+#, fuzzy
+#| msgid "Öffne Git-Repository im Webbrowser..."
 msgctxt "info.strbuttongitrepo"
-msgid "Öffne Git-Repository im Webbrowser..."
+msgid "Öffne GitHub-Repository im Webbrowser..."
 msgstr "Open Git Repository in a web browser..."
 
 #: info.strformcaption
@@ -37,9 +39,9 @@ msgstr "About this Program"
 msgid ""
 "Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
 "\n"
-"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
+"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Auf diesem Wege ist auch eine Kontaktaufname möglich.\n"
 "\n"
-"Der Autor wünscht für die Verwendung Gottes Segen!"
+"Der Autor wünscht für die Verwendung Gottes Segen und freut sich über Rückmeldungen!"
 msgstr ""
 "This Program has been published under GPL3 licence.\n"
 "\n"
@@ -98,6 +100,10 @@ msgstr "Close"
 msgid "Schriftgröße und -art"
 msgstr "Font Size"
 
+#: settings.strsonglyricstoclipboard
+msgid "Kopiere die Liedtexte in die Zwischenablage"
+msgstr ""
+
 #: settings.strtextfarbe
 msgid "Textfarbe"
 msgstr "Text Color"
@@ -105,6 +111,42 @@ msgstr "Text Color"
 #: settings.strzeilenabstand
 msgid "Zeilenabstand"
 msgstr "Line Distance"
+
+#: tfrminfo.btnopengitrepo.caption
+#, fuzzy
+msgctxt "tfrminfo.btnopengitrepo.caption"
+msgid "Öffne Git-Repository im Webbrowser..."
+msgstr "Open Git Repository in a web browser..."
+
+#: tfrminfo.caption
+#, fuzzy
+msgctxt "tfrminfo.caption"
+msgid "Über das Programm"
+msgstr "About this Program"
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr ""
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr ""
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
+"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
+"\n"
+"Der Autor wünscht für die Verwendung Gottes Segen!"
+msgstr ""
+
+#: tfrminfo.lblname.caption
+msgid "Cantara"
+msgstr ""
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr ""
 
 #: tfrmpresent.caption
 #, fuzzy
@@ -114,6 +156,62 @@ msgstr "Presentation"
 
 #: tfrmpresent.lblnext.caption
 msgid "hier steht test."
+msgstr ""
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Hintergrundfarbe..."
+msgstr ""
+
+#: tfrmsettings.btnclose.caption
+#, fuzzy
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Schließen"
+msgstr "Close"
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Schriftgröße..."
+msgstr ""
+
+#: tfrmsettings.btnselectdir.caption
+msgid "..."
+msgstr ""
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Textfarbe..."
+msgstr ""
+
+#: tfrmsettings.caption
+#, fuzzy
+msgctxt "tfrmsettings.caption"
+msgid "Einstellungen"
+msgstr "Settings"
+
+#: tfrmsettings.cbemptyframe.caption
+#, fuzzy
+msgctxt "tfrmsettings.cbemptyframe.caption"
+msgid "Leerfolie zwischen Liedern"
+msgstr "Add empty slice between songs"
+
+#: tfrmsettings.cblyricstoclipboard.caption
+msgid "Liedtexte in die Zwischenablage kopieren"
+msgstr ""
+
+#: tfrmsettings.cbspoiler.caption
+#, fuzzy
+msgctxt "tfrmsettings.cbspoiler.caption"
+msgid "Nächste Folie andeuten"
+msgstr "Spoiler next slide"
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Liederverzeichnis:"
+msgstr ""
+
+#: tfrmsettings.lbllinedistance.caption
+msgid "Zeilenabstand: "
+msgstr ""
+
+#: tfrmsettings.lblpresentationview.caption
+msgid "Präsentationsanzeige:"
 msgstr ""
 
 #: tfrmsongs.btnadd.caption
