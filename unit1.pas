@@ -81,6 +81,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure grbControlClick(Sender: TObject);
     procedure grbSettingsClick(Sender: TObject);
+    procedure ImageUpdaterStopTimer(Sender: TObject);
     procedure ImageUpdaterTimer(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
@@ -319,8 +320,14 @@ begin
 
 end;
 
+procedure TfrmSongs.ImageUpdaterStopTimer(Sender: TObject);
+begin
+  ReloadPresentationImage;
+end;
+
 procedure TfrmSongs.ImageUpdaterTimer(Sender: TObject);
 begin
+  //Sleep(30);
   ReloadPresentationImage;
   ImageUpdater.Enabled := False
 end;
@@ -505,7 +512,6 @@ begin
     if chkMultiWindowMode.Checked Then
       Begin
         ProgrammMode := ModeMultiscreenPresentation;
-        ImageUpdater.Enabled:=True;
         pnlSplitter.Left := Round(frmSongs.Width / 2);
         frmSongs.FormResize(frmSongs);
         pnlMultiScreenResize(Self);
@@ -538,6 +544,9 @@ begin
     // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
   end
   else ShowMessage(StrFehlerKeineLiederBeiPraesentation);
+  if ProgrammMode = ModeMultiscreenPresentation Then begin
+     ImageUpdater.Enabled:=True;
+  end;
 end;
 
 procedure TfrmSongs.CreatePresentationData;

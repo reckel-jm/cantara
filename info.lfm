@@ -1,5 +1,5 @@
 object frmInfo: TfrmInfo
-  Left = 1374
+  Left = 1600
   Height = 271
   Top = 232
   Width = 510

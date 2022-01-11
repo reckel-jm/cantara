@@ -1,12 +1,12 @@
 object frmPresent: TfrmPresent
   Cursor = crNone
   Left = 0
-  Height = 1015
+  Height = 835
   Top = 0
-  Width = 1920
+  Width = 1600
   Caption = 'Präsentation'
-  ClientHeight = 1015
-  ClientWidth = 1920
+  ClientHeight = 835
+  ClientWidth = 1600
   Color = clBlack
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -21,7 +21,7 @@ object frmPresent: TfrmPresent
     Left = 0
     Height = 1
     Top = 0
-    Width = 1920
+    Width = 1600
     Align = alTop
     Alignment = taCenter
     Font.Color = clWhite
@@ -35,7 +35,7 @@ object frmPresent: TfrmPresent
     Left = 0
     Height = 22
     Top = 1
-    Width = 1920
+    Width = 1600
     Align = alTop
     Alignment = taCenter
     Caption = 'hier steht test.'

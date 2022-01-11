@@ -77,6 +77,7 @@ begin
       inc(cur);
       ShowItem(cur);
     end;
+  if Unit1.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 procedure TfrmPresent.GoPrevious;
@@ -86,6 +87,7 @@ begin
     dec(cur);
     ShowItem(cur);
   end;
+  if Unit1.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 procedure TfrmPresent.FormResize(Sender: TObject);
