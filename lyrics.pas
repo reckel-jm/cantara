@@ -5,7 +5,19 @@ unit lyrics;
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, Strings;
+type
+TSongPart = record
+      Identifier: String;
+      Content: String;
+  end;
+{
+  TSong = Class ( TObject )
+    function Get(index: Integer): TSongPart;
+    procedure Put(index: Integer): TSongPart;
+    property Items(index: Integer): TKontakt read get write put; default;
+  end;
+ }
 
 function StringListToString(StringList: TStringList): String;
 

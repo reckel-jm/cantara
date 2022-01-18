@@ -177,7 +177,7 @@ var Info: TSearchRec;
     i,c: integer;
     songName: string;
 begin
-  if FindFirst(repoPath + PathDelim + '*', faAnyFile, Info)=0 then
+  if FindFirst(repoPath + PathDelim + '*.song', faAnyFile, Info)=0 then
     begin
     lbxSRepo.Clear;
     setlength(repo, 0);
@@ -593,7 +593,6 @@ begin
       end;
   end;
   // Kopiere Lieder in Zwischenablage
-  // ToDo: Erstelle Einstellung für das Kopieren der Liedtexte in die Zwischenablage
   if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);
 
   // Free

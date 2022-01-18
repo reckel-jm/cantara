@@ -1,7 +1,7 @@
 object frmSongs: TfrmSongs
-  Left = 0
+  Left = 486
   Height = 1014
-  Top = 0
+  Top = 57
   Width = 1073
   AllowDropFiles = True
   Caption = 'Liedauswahl (Cantara)'
