@@ -1,5 +1,5 @@
 object frmInfo: TfrmInfo
-  Left = 1600
+  Left = 1410
   Height = 271
   Top = 232
   Width = 510
@@ -9,7 +9,7 @@ object frmInfo: TfrmInfo
   ClientHeight = 271
   ClientWidth = 510
   OnCreate = FormCreate
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '2.2.2.0'
   object lblAuthor: TLabel
     Left = 0
     Height = 22
@@ -17,6 +17,7 @@ object frmInfo: TfrmInfo
     Width = 510
     Align = alTop
     Caption = 'Autor: Jan Martin Reckel'
+    ParentColor = False
     ParentFont = False
   end
   object lblCompDate: TLabel
@@ -26,6 +27,7 @@ object frmInfo: TfrmInfo
     Width = 510
     Align = alTop
     Caption = 'lblCompDate'
+    ParentColor = False
     ParentFont = False
   end
   object lblVersion: TLabel
@@ -35,6 +37,7 @@ object frmInfo: TfrmInfo
     Width = 510
     Align = alTop
     Caption = 'lblVersion'
+    ParentColor = False
     ParentFont = False
   end
   object lblName: TLabel
@@ -47,6 +50,7 @@ object frmInfo: TfrmInfo
     Font.Height = -32
     Font.Name = 'Palladio URW'
     Font.Style = [fsBold, fsItalic]
+    ParentColor = False
     ParentFont = False
   end
   object lblInfo: TLabel
@@ -57,6 +61,7 @@ object frmInfo: TfrmInfo
     Align = alTop
     BorderSpacing.Top = 15
     Caption = 'Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.'#13#10'Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.'#13#10#13#10'Der Autor wünscht für die Verwendung Gottes Segen!'
+    ParentColor = False
     ParentFont = False
     WordWrap = True
     OnClick = lblInfoClick

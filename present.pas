@@ -134,6 +134,7 @@ procedure TfrmPresent.showItem(index: integer);
 var i,lines, lastposition, pHeight, pWidth: integer;
   longestline: string;
 begin
+    cur := index;
     lblText.WordWrap:=True;
     lblText.Font := frmSettings.FontDialog.Font;
     lblText.Font.Color:= frmSettings.textColorDialog.Color;
@@ -192,6 +193,7 @@ begin
   // Deaktiviere Vollbildschirm (falls noch möglich)
 
   SwitchFullScreen(False);
+  unit1.frmSongs.UpdateControls;
 
 end;
 

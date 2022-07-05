@@ -11,13 +11,17 @@ TSongPart = record
       Identifier: String;
       Content: String;
   end;
-{
-  TSong = Class ( TObject )
-    function Get(index: Integer): TSongPart;
-    procedure Put(index: Integer): TSongPart;
-    property Items(index: Integer): TKontakt read get write put; default;
-  end;
- }
+
+  //TSong = Class ( TObject )
+    //function Get(index: Integer): TSongPart;
+    //procedure Put(index: Integer): TSongPart;
+    //property Items(index: Integer): TKontakt read get write put; default;
+    //property title: String;
+    //property author: String;
+    //property composer: String;
+    //property copyright: string;
+    //property cclinumber: string;
+  //end;
 
 function StringListToString(StringList: TStringList): String;
 
@@ -32,7 +36,6 @@ begin
   begin
     s := s + StringList.Strings[i] + LineEnding;
   end;
-  s := s + StringList.Strings[i];
   Result := s;
 end;
 

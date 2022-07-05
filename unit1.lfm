@@ -1,7 +1,7 @@
 object frmSongs: TfrmSongs
   Left = 486
   Height = 1014
-  Top = 57
+  Top = 1
   Width = 1073
   AllowDropFiles = True
   Caption = 'Liedauswahl (Cantara)'
@@ -17,7 +17,7 @@ object frmSongs: TfrmSongs
   OnResize = FormResize
   OnShow = FormShow
   OnWindowStateChange = FormResize
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '2.2.2.0'
   object lbxSselected: TListBox
     Left = 440
     Height = 926
@@ -72,7 +72,7 @@ object frmSongs: TfrmSongs
       Left = 192
       Height = 26
       Top = 8
-      Width = 423
+      Width = 401
       Caption = 'Mehr-Fenstermodus (für mehrere Bildschirme geeignet)'
       TabOrder = 2
     end
@@ -190,6 +190,7 @@ object frmSongs: TfrmSongs
       Alignment = taCenter
       Caption = 'Präsentation läuft:'
       Font.Style = [fsBold]
+      ParentColor = False
       ParentFont = False
     end
     object imgLiveViewer: TImage
@@ -255,6 +256,7 @@ object frmSongs: TfrmSongs
       Align = alTop
       BorderSpacing.Left = 3
       Caption = 'Foliennummern'
+      ParentColor = False
     end
   end
   object lbxSRepo: TListBox

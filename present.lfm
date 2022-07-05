@@ -1,6 +1,6 @@
 object frmPresent: TfrmPresent
   Cursor = crNone
-  Left = 398
+  Left = 320
   Height = 835
   Top = 131
   Width = 1600
@@ -14,7 +14,7 @@ object frmPresent: TfrmPresent
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '2.2.2.0'
   WindowState = wsMaximized
   object lblText: TLabel
     Cursor = crNone
@@ -26,6 +26,7 @@ object frmPresent: TfrmPresent
     Alignment = taCenter
     Font.Color = clWhite
     Layout = tlCenter
+    ParentColor = False
     ParentFont = False
     OnClick = lblTextClick
     OnContextPopup = lblTextContextPopup
@@ -42,6 +43,7 @@ object frmPresent: TfrmPresent
     Color = clBlack
     Font.Color = clWhite
     Layout = tlCenter
+    ParentColor = False
     ParentFont = False
     Transparent = False
     WordWrap = True

@@ -106,6 +106,7 @@ type
     procedure CreatePresentationData;
     function GetCurrentSongPosition: TSongPosition;
     procedure UpdateSongPositionInLbxSSelected;
+    procedure UpdateControls;
   private
     { private declarations }
     procedure LocaliseCaptions;
@@ -381,9 +382,18 @@ begin
   if (Key = VK_Space) or (Key = VK_Return) then btnAddClick(lbxSRepo);
 end;
 
-procedure TfrmSongs.lbxSselectedClick(Sender: TObject);
+procedure TfrmSongs.lbxSselectedClick(Sender: TObject); // Jump to the current Song – only in presentation mode
+var
+  selectedSongName: String;
+  pos: Integer;
 begin
-
+  if ProgrammMode <> ModeSelection then
+  begin
+    selectedSongName := lbxSSelected.Items.Strings[lbxSSelected.ItemIndex];
+    pos := Present.songMetaList.IndexOf(selectedSongName);
+    present.frmPresent.showItem(pos);
+    if ProgrammMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View
+  end;
 end;
 
 procedure TfrmSongs.lbxSselectedDragDrop(Sender, Source: TObject; X, Y: Integer
@@ -547,6 +557,26 @@ begin
   if ProgrammMode = ModeMultiscreenPresentation Then begin
      ImageUpdater.Enabled:=True;
   end;
+  UpdateControls;
+end;
+
+procedure TfrmSongs.UpdateControls;
+begin
+  if (ProgrammMode = ModeMultiscreenPresentation) or (ProgrammMode = ModeSingleScreenPresentation) then
+  begin
+    btnAdd.Enabled:=False;
+    btnRemove.Enabled:=False;
+    btnUp.Enabled:=False;
+    btnDown.Enabled:=False;
+    btnClear.Enabled:=False;
+  end else
+  begin
+    btnAdd.Enabled:=True;
+    btnRemove.Enabled:=True;
+    btnUp.Enabled:=True;
+    btnDown.Enabled:=True;
+    btnClear.Enabled:=True;
+  end;
 end;
 
 procedure TfrmSongs.CreatePresentationData;
@@ -557,6 +587,7 @@ var i,j: integer;
 begin
   present.cur:=0;
   present.textList.Clear;
+  present.songMetaList.Clear;
   songfile := TStringList.Create();
   for i := 0 to lbxSSelected.Count-1 do
     begin
