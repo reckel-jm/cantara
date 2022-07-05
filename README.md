@@ -1,9 +1,9 @@
 # Cantara
 Ein freies Liedpräsentations-Programm // Open Source Song Presentation Software
 
-[Lade die neuste Version für Windows herunter (EXE-Datei) // Download Latest Windows Version (with Installer)](https://github.com/reckel-jm/cantara/releases/download/release2-0-beta/cantara-2-0-beta-windows.exe)
+[Es stehen Installationsdateien für Windows und Linux zur Verfügung](https://github.com/reckel-jm/cantara/releases/tag/release2)
 
-Linux-User können sich den Quelltext herunterladen und mit Lazarus selbst kompilieren. Dazu folgende Befehle ausführen:
+Linux-User können sich zudem den Quelltext herunterladen und mit Lazarus selbst kompilieren. Dazu folgende Befehle ausführen:
 
     git clone https://github.com/reckel-jm/cantara.git
     cd cantara
@@ -11,7 +11,8 @@ Linux-User können sich den Quelltext herunterladen und mit Lazarus selbst kompi
     make
     sudo make install
     make clean
-    
+
+Am besten ist es jedoch, das Projekt direkt in Lazarus zu öffnen und dort zu kompilieren, da es sonst Probleme mit der graphischen Oberfläche kommen kann.
 Eine Deinstallation ist ebenfalls möglich:
 
     sudo make uninstall
@@ -19,10 +20,12 @@ Eine Deinstallation ist ebenfalls möglich:
 ## Deutsch
 
 ### Über dieses Programm
-Cantara ist ein einfach zu bedienendes, schlichtes Liedpräsentations-Programm, welches in Lazarus (Pascal) geschrieben wurde. Mit diesem Programm lassen sich schnell und einfach Liedtexte anzeigen, sodass gemeinsames Musizieren und Singen erleichtert wird. Dies ist besonders für christliche Gruppen, Veranstaltungen und Gemeinden konzipiert, kann aber auch für andere Zwecke verwendet werden.
+Cantara ist ein einfach zu bedienendes, schlichtes Liedpräsentations-Programm, welches in Lazarus (Pascal) geschrieben wurde. Mit diesem Programm lassen sich schnell und einfach Liedtexte anzeigen und in die Zwischenablage kopieren, sodass gemeinsames Musizieren und Singen erleichtert wird. Dies ist besonders für christliche Gruppen, Veranstaltungen und Gemeinden konzipiert, kann aber auch für andere Zwecke verwendet werden.
+
+Cantara ist kein Präsentationsprogramm für Vorträge, Bibeltexte oder Predigten, kann aber nahtlos mit solchen (z.B. MS Word, LibreOffice Impress, PdfPC) gemeinsam verwendet werden. Somit entsteht eine Aufgabenteilung zwischen der Liedpräsentation und dem inhaltlichen Teil einer Veranstaltung.
 
 ### Derzeitige Version
-Die derzeitige Version ist 2.0 BETA und wurde am 02.01.2021 veröffentlicht.
+Die derzeitige Version ist 2.2. wurde am 05.07.2022 veröffentlicht.
 
 ### Lieder einpflegen
 Um die Lieder verwenden zu können, müssen sie zunächst eingepflegt werden. Ein Lied besteht dabei aus einer Textdatei mit der Struktur Liedname.song (die Dateiendung kann abweichen) und folgender Syntax:
@@ -48,7 +51,7 @@ Cantara supports English translation from version 1.3 on.
 Cantara is a simple open source song presentation software written in Free Pascal/Lazarus which allows people to spontanously present song lyrics for a bigger audience for the purpose of singing together. This is especially useful for church groups and meetings. 
 
 ### Current Version
-The current version is 2.0 Beta released at January 02, 2021.
+The current version is 2.2 released at July 5, 2022.
 
 ### Song templates
 In order to make songs appear in that list, song templates have to be prepared once. A song consists of a txt-File which has the following structure:
