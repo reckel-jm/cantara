@@ -14,7 +14,7 @@
       <XPManifest>
         <DpiAware Value="True"/>
         <TextName Value="Cantara"/>
-        <TextDesc Value=""/>
+        <TextDesc Value="Song Presentation Software"/>
       </XPManifest>
       <Icon Value="0"/>
     </General>
@@ -30,7 +30,7 @@
       <RevisionNr Value="1"/>
       <BuildNr Value="1"/>
       <Language Value="0407"/>
-      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.2"/>
+      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.2.1"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
@@ -107,6 +107,8 @@
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
+      <RelocatableUnit Value="True"/>
       <Optimizations>
         <OptimizationLevel Value="3"/>
       </Optimizations>
@@ -117,6 +119,7 @@
         <GenerateDebugInfo Value="False"/>
         <StripSymbols Value="True"/>
       </Debugging>
+      <LinkSmart Value="True"/>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>

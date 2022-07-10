@@ -452,7 +452,7 @@ end;
 
 procedure TfrmSongs.btnAddClick(Sender: TObject);
 begin
-  if lbxSRepo.ItemIndex >= 0 then
+  if (lbxSRepo.ItemIndex >= 0) and (ProgrammMode = ModeSelection) then
     lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex]);
 end;
 
@@ -569,6 +569,7 @@ begin
     btnUp.Enabled:=False;
     btnDown.Enabled:=False;
     btnClear.Enabled:=False;
+    //lbxSRepo.Enabled := False;
   end else
   begin
     btnAdd.Enabled:=True;
@@ -576,6 +577,7 @@ begin
     btnUp.Enabled:=True;
     btnDown.Enabled:=True;
     btnClear.Enabled:=True;
+    //lbxSRepo.Enabled := True;
   end;
 end;
 
