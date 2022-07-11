@@ -41,3 +41,7 @@ doc/
 
 #Executable under linux
 cantara
+
+# Zip-Files
+
+*.zip

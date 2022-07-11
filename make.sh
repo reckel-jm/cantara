@@ -2,7 +2,7 @@
 # Detects and parses the architecture
 #
 
-lazbuild Cantara.lpi
+lazbuild -B Cantara.lpi --ws=qt5
 
 if [ $? == 0 ]; then
 
