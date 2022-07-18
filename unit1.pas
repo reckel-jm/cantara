@@ -178,12 +178,12 @@ var Info: TSearchRec;
     i,c: integer;
     songName: string;
 begin
-  if FindFirst(repoPath + PathDelim + '*.song', faAnyFile, Info)=0 then
+  if FindFirst(repoPath + PathDelim + '*', faAnyFile, Info)=0 then
     begin
     lbxSRepo.Clear;
     setlength(repo, 0);
     Repeat
-      if (Info.Name[1] <> '.') then
+      if (Info.Name[1] <> '.') and ((pos('.song',Info.Name) > 0) or (pos('.txt',Info.Name) > 0) or (pos('.ccli',Info.Name) > 0)) then  { only allow compatible file formats }
         begin
          // Finde den letzten Punkt
          songName := Info.Name + '.';
@@ -584,6 +584,8 @@ end;
 procedure TfrmSongs.CreatePresentationData;
 var i,j: integer;
     songfile: TStringList;
+    songfileextension: String;
+    completefilename: String;
     songname: string;
     stanza: string;
 begin
@@ -603,8 +605,16 @@ begin
     except
       ShowMessage('Fehler: Das Lied "' + songname + '" ist nicht vorhanden. Es wird übersprungen.')
     end;
-    //Lade Song-menuFile
-    songfile.LoadFromFile(frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath);
+    //Lade Song-menuFile abhängig von der Erweiterung!
+    songfileextension := ExtractFileExt(repo[j].filePath);
+    completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath;
+    if songfileextension = '.song' then
+       songfile.LoadFromFile(completefilename)
+    else if (songfileextension = '.txt') or (songfileextension = '.ccli') then
+       begin
+         songfile.free;
+         songfile := lyrics.importCCLISongFile(completefilename);
+       end;
     //gehe durch Songdatei und füge gleiche Strophen zu einem String zusammen
     stanza := '';
     for j := 0 to songfile.Count-1 do

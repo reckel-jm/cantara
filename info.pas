@@ -29,7 +29,7 @@ type
   end;
 
 const
-  VERSION:string = '2.2';
+  VERSION:string = '2.3 Beta';
   AUTOR:string = 'Jan Martin Reckel';
 
 var
