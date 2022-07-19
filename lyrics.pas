@@ -51,11 +51,13 @@ end;
 procedure ConvertFile(inputFile: TStringList; output: TStringList; MetaDict: StringDict);
 
 var i: Integer;
-
+  j: Integer;
   PositionDict: StringIntegerDict;
+  RefrainState: Boolean;
 begin
   PositionDict := StringIntegerDict.Create;
   MetaDict.Add('Title', inputFile.Strings[0]);
+  RefrainState := False;
   for i :=  1 to inputFile.Count-1 do
   begin
     { The Parts Chorus and PreChorus are repeated after every other part (stanza+bridge). So, there position should be remembered. }
@@ -63,12 +65,15 @@ begin
     begin
       PositionDict.Add(inputFile.Strings[i],i); { Add the Element Name and the line number }
       WritePart(inputFile, Output, i);
+      RefrainState := False;
     end else
     { The Parts Vers/Strophe and Bridge normally do not get repeated. They are only used once at the printed position. However, after them, the repetitional parts should follow. }
     if (pos('Strophe ',inputFile.Strings[i]) = 1) or (pos('Vers ',inputFile.Strings[i]) = 1) or (pos('Bridge',inputFile.Strings[i]) = 1) then
     begin
+      if RefrainState = True then
+         IncludeRepetitionalParts(inputFile, output, PositionDict);
       WritePart(inputFile, Output, i);
-      IncludeRepetitionalParts(inputFile, output, PositionDict);
+      RefrainState := True;
     end else
     { Handle the CCLI Copyright information }
     if (pos('CCLI', inputFile.Strings[i]) = 1) then
@@ -83,6 +88,9 @@ begin
       end;
     end;
   end;
+  { Add Closing Refrain if needed }
+  if RefrainState = True then
+    IncludeRepetitionalParts(inputFile, output, PositionDict);
 
   { Remove the last lines, if they are blank }
   While Output.Strings[Output.Count-1] = '' do
