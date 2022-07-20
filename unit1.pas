@@ -733,7 +733,7 @@ begin
   finally
     FormImage.Free;
   end;
-  lblFoilNumber.Caption := StrFolie + IntToStr(Present.cur + 1) + ' / ' + IntToStr(Present.TextList.Count);
+  lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(Present.cur + 1) + ' / ' + IntToStr(Present.TextList.Count);
   FormResize(self);
   pnlMultiScreenResize(self);
 end;
