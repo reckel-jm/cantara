@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, SynEdit, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdCtrls, lclintf, DefaultTranslator;
+  ExtCtrls, StdCtrls, lclintf, LCLTranslator;
 
 type
 
@@ -36,16 +36,16 @@ var
   frmInfo: TfrmInfo;
 
 resourceString
-  strFormCaption = 'Über das Programm';
-  strProgrammErstellt = 'Programm erstellt';
+  strFormCaption = 'About this Program';
+  strProgrammErstellt = 'Program compiled';
   strVersion = 'Version';
-  strAutor = 'Autor';
-  strButtonGitRepo = 'Öffne GitHub-Repository im Webbrowser...';
-  strHinweise = 'Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.'
+  strAutor = 'Author';
+  strButtonGitRepo = 'Open webpage...';
+  strHinweise = 'This program is published under the GPL3 licence.'
     + sLineBreak + sLineBreak +
-    'Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Auf diesem Wege ist auch eine Kontaktaufname möglich.'
+    'The Source Code and the documentation can be looked up at Github. In this way, it is also possible to get in contact.'
     + sLineBreak + sLineBreak +
-    'Der Autor wünscht für die Verwendung Gottes Segen und freut sich über Rückmeldungen!';
+    'The author wishes God''s blessings and is looking forward for feedback.';
 
 implementation
 
@@ -67,7 +67,7 @@ end;
 
 procedure TfrmInfo.btnOpenGitRepoClick(Sender: TObject);
 begin
-  OpenURL('https://github.com/reckel-jm/cantara');
+  OpenURL('https://reckel-jm.github.io/cantara-song');
 end;
 
 procedure TfrmInfo.lblInfoClick(Sender: TObject);

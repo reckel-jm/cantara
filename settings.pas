@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons, ComCtrls, Spin, INIfiles, DefaultTranslator;
+  Buttons, ComCtrls, Spin, INIfiles, LCLTranslator;
 
 type
 
@@ -43,6 +43,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure labelSongDirClick(Sender: TObject);
     procedure loadSettings();
   private
     { private declarations }
@@ -55,7 +56,7 @@ var
   frmSettings: TfrmSettings;
   settingsFile: TINIFile;
 
-ResourceString
+{ResourceString
   strLiederverzeichnis = 'Liederverzeichnis';
   strLeerfolieZwischenLiedern = 'Leerfolie zwischen Liedern';
   strNaechsteFolieAndeuten = 'Nächste Folie andeuten';
@@ -66,7 +67,7 @@ ResourceString
   strTextfarbe = 'Textfarbe';
   strSchliessen = 'Schließen';
   strFormCaption = 'Einstellungen';
-  strSongLyricsToClipboard = 'Kopiere die Liedtexte in die Zwischenablage';
+  strSongLyricsToClipboard = 'Kopiere die Liedtexte in die Zwischenablage'; }
 
 implementation
 
@@ -79,7 +80,7 @@ Uses
 
 procedure TfrmSettings.LocaliseCaptions;
 begin
-  labelSongDir.Caption := StrLiederverzeichnis + ': ';
+  {labelSongDir.Caption := StrLiederverzeichnis + ': ';
   cbEmptyFrame.Caption := strLeerfolieZwischenLiedern;
   cbSpoiler.Caption := strNaechsteFolieAndeuten;
   cbLyricsToClipboard.Caption:=strSongLyricsToClipboard;
@@ -89,7 +90,7 @@ begin
   btnBackgroundColor.Caption := strHintergrundfarbe + '...';
   btnTextColor.Caption := strTextfarbe + '...';
   btnClose.Caption := strSchliessen;
-  self.Caption:= strFormCaption;
+  self.Caption:= strFormCaption;}
 end;
 
 function getRepoDir(): string;
@@ -149,6 +150,11 @@ begin
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmSettings.labelSongDirClick(Sender: TObject);
 begin
 
 end;
