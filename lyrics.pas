@@ -68,7 +68,7 @@ begin
       RefrainState := False;
     end else
     { The Parts Vers/Strophe and Bridge normally do not get repeated. They are only used once at the printed position. However, after them, the repetitional parts should follow. }
-    if (pos('Strophe ',inputFile.Strings[i]) = 1) or (pos('Vers ',inputFile.Strings[i]) = 1) or (pos('Bridge',inputFile.Strings[i]) = 1) then
+    if (pos('Strophe ',inputFile.Strings[i]) = 1) or (pos('Vers ',inputFile.Strings[i]) = 1) or (inputFile.Strings[i] = 'Vers') or (pos('Bridge',inputFile.Strings[i]) = 1) then
     begin
       if RefrainState = True then
          IncludeRepetitionalParts(inputFile, output, PositionDict);
