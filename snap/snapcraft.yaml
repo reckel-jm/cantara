@@ -1,0 +1,84 @@
+name: cantara
+version: '2.2.3'
+summary: A Song Presentation Software.
+description: |
+  A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
+confinement: devmode
+base: core20
+grade: stable
+
+parts:
+  cantara:
+    plugin: nil
+    source: .
+    source-type: local
+    build-packages:
+    - fpc
+    - lazarus-ide-qt5
+    - lcl
+    - lcl-utils
+    - build-essential
+    - libgtk2.0-dev
+    stage-packages:
+    # Autodetected dependencies
+    - libqt5pas-dev
+    - libatk1.0-0
+    - libcairo2
+    - libdatrie1
+    - libfontconfig1
+    - libfreetype6
+    - libfribidi0
+    - libgdk-pixbuf2.0-0
+    - libgraphite2-3
+    - libgtk2.0-0
+    - libharfbuzz0b
+    - libpango-1.0-0
+    - libpangocairo-1.0-0
+    - libpangoft2-1.0-0
+    - libpixman-1-0
+    - libpng16-16
+    - libthai0
+    - libx11-6
+    - libxau6
+    - libxcb-render0
+    - libxcb-shm0
+    - libxcb1
+    - libxcomposite1
+    - libxcursor1
+    - libxdamage1
+    - libxdmcp6
+    - libxext6
+    - libxfixes3
+    - libxi6
+    - libxinerama1
+    - libxrandr2
+    - libxrender1
+    override-build: |
+      lazbuild -B Cantara.lpi -Xt --ws=gtk2
+      install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/bin
+      install -s -m 755 cantara $SNAPCRAFT_PART_INSTALL/usr/bin/cantara
+      install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/share/locale/de/LC_MESSAGES/
+      install -m 755 languages/de/cantara.mo $SNAPCRAFT_PART_INSTALL/usr/share/locale/de/LC_MESSAGES/cantara.mo
+      install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/share/applications/
+      install -m 755 cantara.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications/cantara.desktop
+    stage:
+    - etc
+    - lib
+    - usr
+    - usr/bin
+    - usr/share/locale/de/LC_MESSAGES/cantara.mo
+    - usr/share/applications/cantara.desktop
+
+apps:
+  cantara:
+    command: usr/bin/cantara
+    environment:
+      # Fallback to XWayland if running in a Wayland session.
+      DISABLE_WAYLAND: 1
+    desktop: usr/share/applications/cantara.desktop
+    plugs:
+    - home
+    - desktop
+    - desktop-legacy
+    - x11
+    - unity7
