@@ -18,7 +18,7 @@ parts:
     - lcl
     - lcl-utils
     - build-essential
-    - libgtk2.0-dev
+    - libqt5pas-dev
     stage-packages:
     # Autodetected dependencies
     - libqt5pas-dev
@@ -30,7 +30,6 @@ parts:
     - libfribidi0
     - libgdk-pixbuf2.0-0
     - libgraphite2-3
-    - libgtk2.0-0
     - libharfbuzz0b
     - libpango-1.0-0
     - libpangocairo-1.0-0
@@ -54,7 +53,7 @@ parts:
     - libxrandr2
     - libxrender1
     override-build: |
-      lazbuild -B Cantara.lpi --ws=gtk2
+      lazbuild -B Cantara.lpi --ws=qt5
       install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/bin
       install -s -m 755 cantara $SNAPCRAFT_PART_INSTALL/usr/bin/cantara
       install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/share/locale/de/LC_MESSAGES/
