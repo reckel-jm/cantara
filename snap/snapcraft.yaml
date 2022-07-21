@@ -8,129 +8,22 @@ base: core20
 grade: stable
 
 architectures:
-  - build-on: [amd64]
+  - build-on: amd64
 
 parts:
   cantara:
-    plugin: nil
-    source: .
-    source-type: local
-    build-packages:
-    - fpc
-    - lazarus-ide-qt5
-    - lcl
-    - lcl-utils
-    - build-essential
-    - libqt5pas-dev
+    plugin: dump
+    source: https://github.com/reckel-jm/cantara/releases/download/v2.2.3beta/cantara-2.2.3-x86.tar.gz
     stage-packages:
     # Autodetected dependencies
     - libqt5pas-dev
-    - libatk1.0-0
-    - libcairo2
-    - libdatrie1
-    - libfontconfig1
-    - libfreetype6
-    - libfribidi0
-    - libgdk-pixbuf2.0-0
-    - libgraphite2-3
-    - libharfbuzz0b
-    - libpango-1.0-0
-    - libpangocairo-1.0-0
-    - libpangoft2-1.0-0
-    - libpixman-1-0
-    - libpng16-16
-    - libthai0
-    - libx11-6
-    - libxau6
-    - libxcb-render0
-    - libxcb-shm0
-    - libxcb1
-    - libxcomposite1
-    - libxcursor1
-    - libxdamage1
-    - libxdmcp6
-    - libxext6
-    - libxfixes3
-    - libxi6
-    - libxinerama1
-    - libxrandr2
-    - libxrender1
-    override-build: |
-      lazbuild -B Cantara.lpi --ws=qt5
-      install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/bin
-      install -s -m 755 cantara $SNAPCRAFT_PART_INSTALL/usr/bin/cantara
-      install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/share/locale/de/LC_MESSAGES/
-      install -m 755 languages/de/cantara.mo $SNAPCRAFT_PART_INSTALL/usr/share/locale/de/LC_MESSAGES/cantara.mo
-      install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/share/applications/
-      install -m 755 cantara.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications/cantara.desktop
-    stage:
-    - etc
-    - lib
-    - usr
-    - usr/bin
-    - usr/share/locale/de/LC_MESSAGES/cantara.mo
-    - usr/share/applications/cantara.desktop
-  desktop-gtk2:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: gtk
-    plugin: make
-    make-parameters: ["FLAVOR=gtk2"]
-    build-packages:
-      - build-essential
-      - libgtk2.0-dev
-    stage-packages:
-      - libxkbcommon0  # XKB_CONFIG_ROOT
-      - ttf-ubuntu-font-family
-      - dmz-cursor-theme
-      - light-themes
-      - adwaita-icon-theme
-      - gnome-themes-standard
-      - shared-mime-info
-      - libgtk2.0-0
-      - libgdk-pixbuf2.0-0
-      - libglib2.0-bin
-      - libgtk2.0-bin
-      - unity-gtk2-module
-      - locales-all
-      - libappindicator1
-      - xdg-user-dirs
-      - ibus-gtk
-      - libibus-1.0-5
+
 apps:
   cantara:
-    command: usr/bin/cantara
-    environment:
-      # Fallback to XWayland if running in a Wayland session.
-      DISABLE_WAYLAND: 1
-    desktop: usr/share/applications/cantara.desktop
+    command: cantara
+    desktop: cantara.desktop
     plugs:
     - home
     - desktop
     - desktop-legacy
     - x11
-    - unity7
-
-# Additional plugs to pick up the GTK theme and icons from the system
-plugs:
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes
-  gtk-2-engines:
-    interface: content
-    target: $SNAP/lib/gtk-2.0
-    default-provider: gtk2-common-themes:gtk-2-engines
-  gtk-2-themes:
-    interface: content
-    target: $SNAP/usr/share/themes
-    default-provider: gtk2-common-themes:gtk-2-themes
-
-layout:
-  /usr/share/themes:
-    bind: $SNAP/usr/share/themes
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0:
-    bind: $SNAP/lib/gtk-2.0
