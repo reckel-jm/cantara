@@ -7,6 +7,9 @@ confinement: devmode
 base: core20
 grade: stable
 
+architectures:
+  - build-on: [amd64]
+
 parts:
   cantara:
     plugin: nil
@@ -67,7 +70,32 @@ parts:
     - usr/bin
     - usr/share/locale/de/LC_MESSAGES/cantara.mo
     - usr/share/applications/cantara.desktop
-
+  desktop-gtk2:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk2"]
+    build-packages:
+      - build-essential
+      - libgtk2.0-dev
+    stage-packages:
+      - libxkbcommon0  # XKB_CONFIG_ROOT
+      - ttf-ubuntu-font-family
+      - dmz-cursor-theme
+      - light-themes
+      - adwaita-icon-theme
+      - gnome-themes-standard
+      - shared-mime-info
+      - libgtk2.0-0
+      - libgdk-pixbuf2.0-0
+      - libglib2.0-bin
+      - libgtk2.0-bin
+      - unity-gtk2-module
+      - locales-all
+      - libappindicator1
+      - xdg-user-dirs
+      - ibus-gtk
+      - libibus-1.0-5
 apps:
   cantara:
     command: usr/bin/cantara
@@ -81,3 +109,28 @@ apps:
     - desktop-legacy
     - x11
     - unity7
+
+# Additional plugs to pick up the GTK theme and icons from the system
+plugs:
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
+  gtk-2-engines:
+    interface: content
+    target: $SNAP/lib/gtk-2.0
+    default-provider: gtk2-common-themes:gtk-2-engines
+  gtk-2-themes:
+    interface: content
+    target: $SNAP/usr/share/themes
+    default-provider: gtk2-common-themes:gtk-2-themes
+
+layout:
+  /usr/share/themes:
+    bind: $SNAP/usr/share/themes
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0:
+    bind: $SNAP/lib/gtk-2.0
