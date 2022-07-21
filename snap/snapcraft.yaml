@@ -54,7 +54,7 @@ parts:
     - libxrandr2
     - libxrender1
     override-build: |
-      lazbuild -B Cantara.lpi -Xt --ws=gtk2
+      lazbuild -B Cantara.lpi --ws=gtk2
       install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/bin
       install -s -m 755 cantara $SNAPCRAFT_PART_INSTALL/usr/bin/cantara
       install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/share/locale/de/LC_MESSAGES/
