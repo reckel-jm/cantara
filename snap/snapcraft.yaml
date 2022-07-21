@@ -4,31 +4,94 @@ summary: A Song Presentation Software.
 description: |
   A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
 confinement: devmode
-base: core18
+base: core20
 grade: stable
 
 architectures:
   - build-on: amd64
 
 parts:
-  cantara:
-    plugin: dump
-    source: https://github.com/reckel-jm/cantara/releases/download/v2.2.3beta/cantara-2.2.3-x86.tar.gz
+  desktop-gtk2:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk2"]
+    build-packages:
+    - build-essential
+    - libgtk2.0-dev
     stage-packages:
-    # Autodetected dependencies
-    - libqt5pas-dev
-    - libatk1.0-0
-    - libcairo2
-    - libx11-6
-    - libgdk-pixbuf2.0-0
+    - libxkbcommon0  # XKB_CONFIG_ROOT
+    - ttf-ubuntu-font-family
+    - dmz-cursor-theme
+    - light-themes
+    - adwaita-icon-theme
+    - gnome-themes-standard
+    - shared-mime-info
     - libgtk2.0-0
-    - libpango-1.0-0
-    - libglib2.0-0
+    - libgdk-pixbuf2.0-0
+    - libglib2.0-bin
+    - libgtk2.0-bin
+    - unity-gtk2-module
+    - locales-all
+    - libappindicator1
+    - xdg-user-dirs
+    - ibus-gtk
+    - libibus-1.0-5
+  cantara:
+    after:
+    - desktop-gtk2
+    plugin: nil
+    source: .
+    source-type: local
+    build-packages:
+    - fpc
+    - lazarus
+    - lcl
+    - lcl-utils
+    - build-essential
+    override-build: |
+      lazbuild -B Cantara.lpi --ws=gtk2
+      install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/bin
+      install -s -m 755 cantara $SNAPCRAFT_PART_INSTALL/usr/bin/cantara
+      install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/share/locale/de/LC_MESSAGES/
+      install -m 755 languages/de/cantara.mo $SNAPCRAFT_PART_INSTALL/usr/share/locale/de/LC_MESSAGES/cantara.mo
+      install -d -m 755 $SNAPCRAFT_PART_INSTALL/usr/share/applications/
+      install -m 755 cantara.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications/cantara.desktop
+    stage:
+    - etc
+    - lib
+    - usr
+    - usr/bin
+    - usr/share/locale/de/LC_MESSAGES/cantara.mo
+    - usr/share/applications/cantara.desktop
+
+# Additional plugs to pick up the GTK theme and icons from the system
+plugs:
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
+  gtk-2-engines:
+    interface: content
+    target: $SNAP/lib/gtk-2.0
+    default-provider: gtk2-common-themes:gtk-2-engines
+  gtk-2-themes:
+    interface: content
+    target: $SNAP/usr/share/themes
+    default-provider: gtk2-common-themes:gtk-2-themes
+
+environment:
+  XDG_DATA_DIRS: $SNAP/usr/share:$XDG_DATA_DIRS
+  GTK_PATH: $SNAP/lib/gtk-2.0
 
 apps:
   cantara:
-    command: cantara
-    desktop: cantara.desktop
+    command: usr/bin/cantara
+    desktop: usr/bin/application/cantara.desktop
     plugs:
     - home
     - desktop
