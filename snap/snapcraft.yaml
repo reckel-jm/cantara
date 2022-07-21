@@ -23,6 +23,7 @@ parts:
     - libgdk-pixbuf2.0-0
     - libgtk2.0-0
     - libpango-1.0-0
+    - libc6
 apps:
   cantara:
     command: cantara
