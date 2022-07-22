@@ -28,9 +28,15 @@ parts:
     - libqt5pas1
     override-build: |
       lazbuild -B Cantara.lpi --ws=qt5
+      install -d -m 755 $SNAPCRAFT_PART_INSTALL/languages/de/
+      install -s -m 755 languages/de/cantara.mo $SNAPCRAFT_PART_INSTALL/languages/de/cantara.mo
+      install -s -m 755 cantara $SNAPCRAFT_PART_INSTALL/cantara
+      install -s -m 755 cantara.desktop $SNAPCRAFT_PART_INSTALL/cantara.desktop
+      install -s -m 755 Cantara.ico $SNAPCRAFT_PART_INSTALL/Cantara.ico
+      install -s -m 755 Cantara.png $SNAPCRAFT_PART_INSTALL/Cantara.png
     stage:
     - cantara
-    - languages/de/cantara.mo
+    - languages
     - cantara.desktop
     - Cantara.ico
     - Cantara.png
