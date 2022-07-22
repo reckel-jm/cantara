@@ -4,7 +4,7 @@ summary: A Song Presentation Software.
 description: |
   A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
 confinement: devmode
-base: core22
+base: core20
 grade: stable
 
 architectures:
