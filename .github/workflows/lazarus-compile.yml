@@ -34,13 +34,23 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Compiled Linux Binary
-        path: cantara
+        path: |
+          cantara
+          languages
+          Cantara.ico
+          cantara.desktop
+          Cantara.png
     - name: Artifacts (Windows)
       if: ${{ matrix.operating-system == 'windows-latest' }}
       uses: actions/upload-artifact@v3
       with:
         name: Compiled Windows Binary
-        path: cantara.exe
+        path: |
+          cantara.exe
+          languages
+          Cantara.ico
+          cantara.desktop
+          Cantara.png
     - name: Artifacts (Apple)
       if: ${{ matrix.operating-system == 'macos-latest' }}
       uses: actions/upload-artifact@v3
