@@ -3,7 +3,8 @@ version: '2.2.3'
 summary: A Song Presentation Software.
 description: |
   A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
-confinement: devmode
+confinement: strict
+icon: Cantara.png
 base: core20
 grade: stable
 
@@ -43,6 +44,7 @@ parts:
     - libxi6
     - libxinerama1
     - libxrandr2
+    - qt5-style-plugins
     override-build: |
       lazbuild -B Cantara.lpi --ws=qt5
       cp -r languages $SNAPCRAFT_PART_INSTALL/
