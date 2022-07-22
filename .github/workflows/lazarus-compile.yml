@@ -22,7 +22,7 @@ jobs:
       run: lazbuild -B Cantara.lpi
     - name: Install libqt5pas dependency under Ubuntu
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: sudo apt-get -y install libqtpas-dev libqt5pas1
+      run: sudo apt-get -y install libqt5pas-dev libqt5pas1
     - name: Build the Linux Application
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: lazbuild -B Cantara.lpi --ws=qt5
