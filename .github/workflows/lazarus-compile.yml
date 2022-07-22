@@ -1,14 +1,21 @@
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
+      - master  # Set a branch to deploy
 
-steps:
-- uses: actions/checkout@v2
-- uses: gcarreno/setup-lazarus@v3.2
-  with:
-    lazarus-version: "stable"
-    #include-packages: "lib"
-    with-cache: true
-- run: lazbuild Cantara.lpi --ws=qt5
-# - run: YourTestProject
+jobs:
+  build:
+  runs-on: ubuntu-22.04
+    strategy:
+      cantara:
+        operating-system: [windows-latest,ubuntu-latest,macos-latest]
+        lazarus-versions: stable
+  steps:
+  - uses: actions/checkout@v2
+  - uses: gcarreno/setup-lazarus@v3.2
+    with:
+      lazarus-version: "stable"
+      #include-packages: "lib"
+      with-cache: true
+  - run: lazbuild Cantara.lpi --ws=qt5
+  # - run: YourTestProject
