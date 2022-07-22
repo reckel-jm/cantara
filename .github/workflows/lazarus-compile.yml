@@ -16,6 +16,16 @@ jobs:
       with:
         lazarus-version: "stable"
         #include-packages: "lib"
-        with-cache: true
-    - run: lazbuild -B Cantara.lpi
-    # - run: YourTestProject
+        with-cache: false
+    - name: Build the Windows Application:
+      if: ${{ matrix.operating-system != 'windows-latest' }}
+      run: lazbuild -B Cantara.lpi
+    - name: Install libqt5pas dependency under Ubuntu:
+      if: ${{ matrix.operating-system != 'ubuntu-latest' }}
+      run: sudo apt install libqtpas
+    - name: Build the Linux Application:
+      if: ${{ matrix.operating-system != 'ubuntu-latest' }}
+      run: lazbuild -B Cantara.lpi --ws=qt5
+    - name: Build the MacOS Application:
+      if: ${{ matrix.operating-system != 'macos-latest' }}
+      run: lazbuild -B Cantara.lpi
