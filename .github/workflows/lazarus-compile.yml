@@ -30,20 +30,20 @@ jobs:
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: lazbuild -B Cantara.lpi
     - name: Artifacts (Linux)
-        uses: actions/upload-artifact@v3
-        with:
-          if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-          name: Compiled Linux Binary
-          path: cantara
+      uses: actions/upload-artifact@v3
+      with:
+        if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+        name: Compiled Linux Binary
+        path: cantara
     - name: Artifacts (Windows)
-        uses: actions/upload-artifact@v3
-        with:
-          if: ${{ matrix.operating-system == 'windows-latest' }}
-          name: Compiled Windows Binary
-          path: cantara.exe
+      uses: actions/upload-artifact@v3
+      with:
+        if: ${{ matrix.operating-system == 'windows-latest' }}
+        name: Compiled Windows Binary
+        path: cantara.exe
     - name: Artifacts (Apple)
-        uses: actions/upload-artifact@v3
-        with:
-          if: ${{ matrix.operating-system == 'macos-latest' }}
-          name: Compiled Mac OS Binary
-          path: cantara
+      uses: actions/upload-artifact@v3
+      with:
+        if: ${{ matrix.operating-system == 'macos-latest' }}
+        name: Compiled Mac OS Binary
+        path: cantara
