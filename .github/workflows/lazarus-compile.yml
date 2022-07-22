@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     strategy:
-      cantara:
+      matrix:
         operating-system: [windows-latest,ubuntu-latest,macos-latest]
         lazarus-versions: stable
     steps:
