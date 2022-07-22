@@ -45,6 +45,8 @@ parts:
     - libxinerama1
     - libxrandr2
     - qt5-style-plugins
+    stage-snaps:
+    - qt5-core20
     override-build: |
       lazbuild -B Cantara.lpi --ws=qt5
       cp -r languages $SNAPCRAFT_PART_INSTALL/
@@ -61,6 +63,18 @@ parts:
     - cantara.desktop
     - Cantara.ico
     - Cantara.png
+  cleanup:
+    after:  # Make this part run last; list all your other parts here
+      - cantara
+    plugin: nil
+    build-snaps:  # List all content-snaps and base snaps you're using here
+      - core20
+      - qt5-core20
+    override-prime: |
+      set -eux
+      for snap in "core20" "qt5-core20"; do  # List all content-snaps and base snaps you're using here
+          cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+      done
 
 apps:
   cantara:
