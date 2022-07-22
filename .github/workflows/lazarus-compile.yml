@@ -17,5 +17,5 @@ jobs:
         lazarus-version: "stable"
         #include-packages: "lib"
         with-cache: true
-    - run: lazbuild Cantara.lpi
+    - run: lazbuild -B Cantara.lpi
     # - run: YourTestProject
