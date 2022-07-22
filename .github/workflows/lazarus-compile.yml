@@ -40,6 +40,7 @@ jobs:
           Cantara.ico
           cantara.desktop
           Cantara.png
+          COPYING
     - name: Artifacts (Windows)
       if: ${{ matrix.operating-system == 'windows-latest' }}
       uses: actions/upload-artifact@v3
@@ -51,9 +52,12 @@ jobs:
           Cantara.ico
           cantara.desktop
           Cantara.png
+          COPYING
     - name: Artifacts (Apple)
       if: ${{ matrix.operating-system == 'macos-latest' }}
       uses: actions/upload-artifact@v3
       with:
         name: Compiled Mac OS Binary
-        path: cantara.app
+        path: |
+           cantara.app
+           COPYING
