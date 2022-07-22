@@ -5,11 +5,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
         operating-system: [windows-latest,ubuntu-latest,macos-latest]
-        lazarus-versions: stable
+        lazarus-versions: [stable]
     steps:
     - uses: actions/checkout@v2
     - uses: gcarreno/setup-lazarus@v3.2
