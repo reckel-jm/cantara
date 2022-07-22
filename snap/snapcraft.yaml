@@ -34,6 +34,9 @@ parts:
       install Cantara.ico $SNAPCRAFT_PART_INSTALL/
       install Cantara.png $SNAPCRAFT_PART_INSTALL/
     stage:
+    - lib
+    - usr
+    - etc
     - cantara
     - languages
     - cantara.desktop
