@@ -66,6 +66,9 @@ apps:
     desktop: cantara.desktop
     plugs:
     - home
+    - opengl
     - desktop
     - desktop-legacy
     - x11
+    extensions:
+    - kde-neon
