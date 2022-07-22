@@ -24,7 +24,7 @@ parts:
     - libqt5pas-dev
     - libqt5pas1
     stage-packages:
-    - libqt5pas
+    - libqt5pas-dev
     - libqt5pas1
     override-build: |
       lazbuild -B Cantara.lpi --ws=qt5
