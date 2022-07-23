@@ -25,7 +25,7 @@ parts:
     - libqt5pas-dev
     - libqt5pas1
     build-snaps:
-    - qt5-core22
+    - kde-frameworks-5-qt-5-15-3-core20
     stage-packages:
     - libqt5pas-dev
     - libqt5pas1
@@ -78,6 +78,8 @@ apps:
   cantara:
     command: cantara
     desktop: cantara.desktop
+    extensions:
+    - kde-neon
     plugs:
     - home
     - opengl
