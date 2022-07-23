@@ -44,6 +44,15 @@ parts:
     - libxi6
     - libxinerama1
     - libxrandr2
+    - light-themes
+    - ttf-ubuntu-font-family
+    - locales-all
+    - plasma-integration
+    - frameworkintegration
+    - kde-style-breeze
+    - breeze-icon-themes
+    - fonts-freefont-ttf
+    - qt5-style-plugins
     override-build: |
       lazbuild -B Cantara.lpi --ws=qt5
       cp -r languages $SNAPCRAFT_PART_INSTALL/
@@ -84,3 +93,4 @@ apps:
     - desktop
     - desktop-legacy
     - x11
+    - unity7
