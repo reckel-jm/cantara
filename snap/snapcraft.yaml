@@ -84,5 +84,3 @@ apps:
     - desktop
     - desktop-legacy
     - x11
-    extensions:
-    - kde-neon
