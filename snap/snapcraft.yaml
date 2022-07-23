@@ -50,7 +50,7 @@ parts:
     - plasma-integration
     - frameworkintegration
     - kde-style-breeze
-    - breeze-icon-themes
+    - breeze-icon-theme
     - fonts-freefont-ttf
     - qt5-style-plugins
     override-build: |
