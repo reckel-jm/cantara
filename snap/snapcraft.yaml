@@ -5,7 +5,7 @@ description: |
   A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
 confinement: strict
 icon: Cantara.png
-base: core18
+base: core22
 grade: stable
 
 architectures:
@@ -25,8 +25,7 @@ parts:
     - libqt5pas-dev
     - libqt5pas1
     build-snaps:
-    - kde-frameworks-5-core18-sdk
-    - kde-frameworks-5-core18
+    - qt5-core22
     stage-packages:
     - libqt5pas-dev
     - libqt5pas1
@@ -68,11 +67,10 @@ parts:
       - cantara
     plugin: nil
     build-snaps:  # List all content-snaps and base snaps you're using here
-      - kde-frameworks-5-core18
-      - kde-frameworks-5-core18-sdk
+      - qt5-core22
     override-prime: |
       set -eux
-      for snap in "kde-frameworks-5-core18" "kde-frameworks-5-core18-sdk"; do  # List all content-snaps and base snaps you're using here
+      for snap in "qt5-core22"; do  # List all content-snaps and base snaps you're using here
           cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
       done
 
