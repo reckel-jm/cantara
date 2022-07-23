@@ -62,17 +62,17 @@ parts:
     - cantara.desktop
     - Cantara.ico
     - Cantara.png
-  cleanup:
-    after:  # Make this part run last; list all your other parts here
-      - cantara
-    plugin: nil
-    build-snaps:  # List all content-snaps and base snaps you're using here
-      - qt5-core22
-    override-prime: |
-      set -eux
-      for snap in "qt5-core22"; do  # List all content-snaps and base snaps you're using here
-          cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
-      done
+  #cleanup:
+  #  after:  # Make this part run last; list all your other parts here
+  #    - cantara
+  #  plugin: nil
+  #  build-snaps:  # List all content-snaps and base snaps you're using here
+  #    - qt5-core22
+  #  override-prime: |
+  #    set -eux
+  #    for snap in "qt5-core22"; do  # List all content-snaps and base snaps #you're using here
+  #        cd "/snap/$snap/current" && find . -type f,l -exec rm -f #"$SNAPCRAFT_PRIME/{}" \;
+  #    done
 
 apps:
   cantara:
