@@ -24,6 +24,9 @@ parts:
     - build-essential
     - libqt5pas-dev
     - libqt5pas1
+    build-snaps:
+    - kde-frameworks-5-core20-sdk
+    - kde-frameworks-5-core20
     stage-packages:
     - libqt5pas-dev
     - libqt5pas1
@@ -44,9 +47,6 @@ parts:
     - libxi6
     - libxinerama1
     - libxrandr2
-    - qt5-style-plugins
-    stage-snaps:
-    - qt5-core20
     override-build: |
       lazbuild -B Cantara.lpi --ws=qt5
       cp -r languages $SNAPCRAFT_PART_INSTALL/
@@ -68,11 +68,11 @@ parts:
       - cantara
     plugin: nil
     build-snaps:  # List all content-snaps and base snaps you're using here
-      - core20
-      - qt5-core20
+      - kde-frameworks-5-core20
+      - kde-frameworks-5-core20-sdk
     override-prime: |
       set -eux
-      for snap in "core20" "qt5-core20"; do  # List all content-snaps and base snaps you're using here
+      for snap in "kde-frameworks-5-core20" "kde-frameworks-5-core20-sdk"; do  # List all content-snaps and base snaps you're using here
           cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
       done
 
