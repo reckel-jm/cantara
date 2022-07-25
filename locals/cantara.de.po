@@ -53,54 +53,6 @@ msgctxt "present.strformcaption"
 msgid "Präsentation"
 msgstr "Präsentation"
 
-#: settings.strformcaption
-msgctxt "settings.strformcaption"
-msgid "Einstellungen"
-msgstr "Einstellungen"
-
-#: settings.strhintergrundfarbe
-msgid "Hintergrundfarbe"
-msgstr "Hintergrundfarbe"
-
-#: settings.strleerfoliezwischenliedern
-msgctxt "settings.strleerfoliezwischenliedern"
-msgid "Leerfolie zwischen Liedern"
-msgstr "Leerfolie zwischen Liedern"
-
-#: settings.strliederverzeichnis
-msgid "Liederverzeichnis"
-msgstr "Liederverzeichnis"
-
-#: settings.strnaechstefolieandeuten
-msgctxt "settings.strnaechstefolieandeuten"
-msgid "Nächste Folie andeuten"
-msgstr "Nächste Folie andeuten"
-
-#: settings.strpraesentationsanzeige
-msgid "Präsentationsanzeige"
-msgstr "Präsentationsanzeige"
-
-#: settings.strschliessen
-msgctxt "settings.strschliessen"
-msgid "Schließen"
-msgstr "Schließen"
-
-#: settings.strschriftgroesse
-msgid "Schriftgröße und -art"
-msgstr "Schriftgröße und -art"
-
-#: settings.strsonglyricstoclipboard
-msgid "Kopiere die Liedtexte in die Zwischenablage"
-msgstr ""
-
-#: settings.strtextfarbe
-msgid "Textfarbe"
-msgstr "Textfarbe"
-
-#: settings.strzeilenabstand
-msgid "Zeilenabstand"
-msgstr "Zeilenabstand"
-
 #: songselection.strbuttoneinstellungen
 #, fuzzy
 msgctxt "songselection.strbuttoneinstellungen"

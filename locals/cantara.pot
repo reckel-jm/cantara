@@ -6,12 +6,10 @@ msgid "Author"
 msgstr ""
 
 #: info.strbuttongitrepo
-msgctxt "info.strbuttongitrepo"
 msgid "Open webpage..."
 msgstr ""
 
 #: info.strformcaption
-msgctxt "info.strformcaption"
 msgid "About this Program"
 msgstr ""
 
@@ -37,54 +35,6 @@ msgctxt "present.strformcaption"
 msgid "Präsentation"
 msgstr ""
 
-#: settings.strformcaption
-msgctxt "settings.strformcaption"
-msgid "Einstellungen"
-msgstr ""
-
-#: settings.strhintergrundfarbe
-msgid "Hintergrundfarbe"
-msgstr ""
-
-#: settings.strleerfoliezwischenliedern
-msgctxt "settings.strleerfoliezwischenliedern"
-msgid "Leerfolie zwischen Liedern"
-msgstr ""
-
-#: settings.strliederverzeichnis
-msgid "Liederverzeichnis"
-msgstr ""
-
-#: settings.strnaechstefolieandeuten
-msgctxt "settings.strnaechstefolieandeuten"
-msgid "Nächste Folie andeuten"
-msgstr ""
-
-#: settings.strpraesentationsanzeige
-msgid "Präsentationsanzeige"
-msgstr ""
-
-#: settings.strschliessen
-msgctxt "settings.strschliessen"
-msgid "Schließen"
-msgstr ""
-
-#: settings.strschriftgroesse
-msgid "Schriftgröße und -art"
-msgstr ""
-
-#: settings.strsonglyricstoclipboard
-msgid "Kopiere die Liedtexte in die Zwischenablage"
-msgstr ""
-
-#: settings.strtextfarbe
-msgid "Textfarbe"
-msgstr ""
-
-#: settings.strzeilenabstand
-msgid "Zeilenabstand"
-msgstr ""
-
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
@@ -96,37 +46,30 @@ msgid "Presentation..."
 msgstr ""
 
 #: songselection.strerstebenutzung
-msgctxt "songselection.strerstebenutzung"
 msgid "You are using this program for the first time. Please select a song repository folder."
 msgstr ""
 
 #: songselection.strfehlerkeineliederbeipraesentation
-msgctxt "songselection.strfehlerkeineliederbeipraesentation"
 msgid "You have to add songs first."
 msgstr ""
 
 #: songselection.strfehleroeffnen
-msgctxt "songselection.strfehleroeffnen"
 msgid "Error while opening. Propably you have not the required rights to access this file."
 msgstr ""
 
 #: songselection.strfehlerspeichern
-msgctxt "songselection.strfehlerspeichern"
 msgid "Error while saving. Propably you have not the required rights to access this file."
 msgstr ""
 
 #: songselection.strfolie
-msgctxt "songselection.strfolie"
 msgid "Slide"
 msgstr ""
 
 #: tfrminfo.btnopengitrepo.caption
-msgctxt "tfrminfo.btnopengitrepo.caption"
 msgid "Öffne Git-Repository im Webbrowser..."
 msgstr ""
 
 #: tfrminfo.caption
-msgctxt "tfrminfo.caption"
 msgid "Über das Programm"
 msgstr ""
 
@@ -189,12 +132,10 @@ msgid "Text Color..."
 msgstr ""
 
 #: tfrmsettings.caption
-msgctxt "tfrmsettings.caption"
 msgid "Einstellungen"
 msgstr ""
 
 #: tfrmsettings.cbemptyframe.caption
-msgctxt "tfrmsettings.cbemptyframe.caption"
 msgid "Empty slide between songs"
 msgstr ""
 
@@ -203,7 +144,6 @@ msgid "Copy lyrics to clipboard"
 msgstr ""
 
 #: tfrmsettings.cbspoiler.caption
-msgctxt "tfrmsettings.cbspoiler.caption"
 msgid "Spoil next slides"
 msgstr ""
 
@@ -278,7 +218,6 @@ msgid "🠕"
 msgstr ""
 
 #: tfrmsongs.caption
-msgctxt "tfrmsongs.caption"
 msgid "Song Selection (Cantara)"
 msgstr ""
 
@@ -287,7 +226,6 @@ msgid "Multi-Screen-Mode (suitable for multiple screens)"
 msgstr ""
 
 #: tfrmsongs.edtsearch.hint
-msgctxt "tfrmsongs.edtsearch.hint"
 msgid "Suchen..."
 msgstr ""
 
@@ -301,17 +239,14 @@ msgid "Close"
 msgstr ""
 
 #: tfrmsongs.itemload.caption
-msgctxt "tfrmsongs.itemload.caption"
 msgid "Load Selection..."
 msgstr ""
 
 #: tfrmsongs.itempresentation.caption
-msgctxt "tfrmsongs.itempresentation.caption"
 msgid "Run Presentation"
 msgstr ""
 
 #: tfrmsongs.itemreloadsonglist.caption
-msgctxt "tfrmsongs.itemreloadsonglist.caption"
 msgid "Reload Song Repository"
 msgstr ""
 
@@ -333,17 +268,14 @@ msgid "Presentation is running:"
 msgstr ""
 
 #: tfrmsongs.menuedit.caption
-msgctxt "tfrmsongs.menuedit.caption"
 msgid "Edit"
 msgstr ""
 
 #: tfrmsongs.menufile.caption
-msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
 msgstr ""
 
 #: tfrmsongs.menuhelp.caption
-msgctxt "tfrmsongs.menuhelp.caption"
 msgid "Help"
 msgstr ""
 
