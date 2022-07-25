@@ -55,7 +55,7 @@ ResourceString
 implementation
 
 Uses
-  Unit1;
+  SongSelection;
 {$R *.lfm}
 
 { TfrmPresent }
@@ -77,7 +77,7 @@ begin
       inc(cur);
       ShowItem(cur);
     end;
-  if Unit1.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
+  if SongSelection.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 procedure TfrmPresent.GoPrevious;
@@ -87,7 +87,7 @@ begin
     dec(cur);
     ShowItem(cur);
   end;
-  if Unit1.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
+  if SongSelection.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 procedure TfrmPresent.FormResize(Sender: TObject);
@@ -160,7 +160,7 @@ begin
     lblText.BorderSpacing.Top := (frmPresent.Height-lblText.Height-lblNext.Height-lblNext.BorderSpacing.Top) div 2;
     lines := 0;
     // Aktualisiere SongListe in Present-Form
-    unit1.frmSongs.UpdateSongPositionInLbxSSelected;
+    SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
     //Unit1.frmSongs.ImageUpdater.Enabled:=True;
 end;
 
@@ -181,19 +181,19 @@ end;
 procedure TfrmPresent.FormHide(Sender: TObject);
 begin
   // Stelle Unit1 wieder her
-  Unit1.ProgrammMode:=Unit1.ModeSelection;
-  Unit1.frmSongs.FormResize(self);
-  Unit1.frmSongs.KeyPreview := False;
+  SongSelection.ProgrammMode:=SongSelection.ModeSelection;
+  SongSelection.frmSongs.FormResize(self);
+  SongSelection.frmSongs.KeyPreview := False;
 
   // Aktiviere Präsentations-Button, um Präsentation erneut starten zu können
 
-  unit1.frmSongs.itemPresentation.Enabled := True;
-  unit1.frmSongs.btnStartPresentation.Enabled := True;
+  SongSelection.frmSongs.itemPresentation.Enabled := True;
+  SongSelection.frmSongs.btnStartPresentation.Enabled := True;
 
   // Deaktiviere Vollbildschirm (falls noch möglich)
 
   SwitchFullScreen(False);
-  unit1.frmSongs.UpdateControls;
+  SongSelection.frmSongs.UpdateControls;
 
 end;
 

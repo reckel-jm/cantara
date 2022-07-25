@@ -85,6 +85,41 @@ msgstr ""
 msgid "Zeilenabstand"
 msgstr ""
 
+#: songselection.strbuttoneinstellungen
+msgctxt "songselection.strbuttoneinstellungen"
+msgid "Settings..."
+msgstr ""
+
+#: songselection.strbuttonpraesentation
+msgctxt "songselection.strbuttonpraesentation"
+msgid "Presentation..."
+msgstr ""
+
+#: songselection.strerstebenutzung
+msgctxt "songselection.strerstebenutzung"
+msgid "You are using this program for the first time. Please select a song repository folder."
+msgstr ""
+
+#: songselection.strfehlerkeineliederbeipraesentation
+msgctxt "songselection.strfehlerkeineliederbeipraesentation"
+msgid "You have to add songs first."
+msgstr ""
+
+#: songselection.strfehleroeffnen
+msgctxt "songselection.strfehleroeffnen"
+msgid "Error while opening. Propably you have not the required rights to access this file."
+msgstr ""
+
+#: songselection.strfehlerspeichern
+msgctxt "songselection.strfehlerspeichern"
+msgid "Error while saving. Propably you have not the required rights to access this file."
+msgstr ""
+
+#: songselection.strfolie
+msgctxt "songselection.strfolie"
+msgid "Slide"
+msgstr ""
+
 #: tfrminfo.btnopengitrepo.caption
 msgctxt "tfrminfo.btnopengitrepo.caption"
 msgid "Öffne Git-Repository im Webbrowser..."
@@ -318,35 +353,5 @@ msgstr ""
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
-msgstr ""
-
-#: unit1.strbuttoneinstellungen
-msgctxt "unit1.strbuttoneinstellungen"
-msgid "Settings..."
-msgstr ""
-
-#: unit1.strbuttonpraesentation
-msgctxt "unit1.strbuttonpraesentation"
-msgid "Presentation..."
-msgstr ""
-
-#: unit1.strerstebenutzung
-msgid "You are using this program for the first time. Please select a song repository folder."
-msgstr ""
-
-#: unit1.strfehlerkeineliederbeipraesentation
-msgid "You have to add songs first."
-msgstr ""
-
-#: unit1.strfehleroeffnen
-msgid "Error while opening. Propably you have not the required rights to access this file."
-msgstr ""
-
-#: unit1.strfehlerspeichern
-msgid "Error while saving. Propably you have not the required rights to access this file."
-msgstr ""
-
-#: unit1.strfolie
-msgid "Slide"
 msgstr ""
 

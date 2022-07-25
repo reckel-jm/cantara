@@ -101,6 +101,48 @@ msgstr "Textfarbe"
 msgid "Zeilenabstand"
 msgstr "Zeilenabstand"
 
+#: songselection.strbuttoneinstellungen
+#, fuzzy
+msgctxt "songselection.strbuttoneinstellungen"
+msgid "Settings..."
+msgstr "Einstellungen..."
+
+#: songselection.strbuttonpraesentation
+#, fuzzy
+msgctxt "songselection.strbuttonpraesentation"
+msgid "Presentation..."
+msgstr "Präsentation..."
+
+#: songselection.strerstebenutzung
+#, fuzzy
+msgctxt "songselection.strerstebenutzung"
+msgid "You are using this program for the first time. Please select a song repository folder."
+msgstr "Sie benutzen das Programm zum ersten Mal. Bitte wählen Sie nachfolgend einen Ordner für das Liederverzeichnis."
+
+#: songselection.strfehlerkeineliederbeipraesentation
+#, fuzzy
+msgctxt "songselection.strfehlerkeineliederbeipraesentation"
+msgid "You have to add songs first."
+msgstr "Es müssen zuerst Lieder für die Präsentation ausgewählt werden."
+
+#: songselection.strfehleroeffnen
+#, fuzzy
+msgctxt "songselection.strfehleroeffnen"
+msgid "Error while opening. Propably you have not the required rights to access this file."
+msgstr "Fehler beim Öffnen. Wahrscheinlich bestehen nicht die notwendigen Zugriffsrechte für die Datei."
+
+#: songselection.strfehlerspeichern
+#, fuzzy
+msgctxt "songselection.strfehlerspeichern"
+msgid "Error while saving. Propably you have not the required rights to access this file."
+msgstr "Fehler beim Speichern. Wahrscheinlich bestehen nicht die notwendigen Zugriffsrechte für die Datei."
+
+#: songselection.strfolie
+#, fuzzy
+msgctxt "songselection.strfolie"
+msgid "Slide"
+msgstr "Folie"
+
 #: tfrminfo.btnopengitrepo.caption
 #, fuzzy
 msgctxt "tfrminfo.btnopengitrepo.caption"
@@ -339,32 +381,3 @@ msgstr ""
 msgid "Save Song List"
 msgstr ""
 
-#: unit1.strbuttoneinstellungen
-msgctxt "unit1.strbuttoneinstellungen"
-msgid "Settings..."
-msgstr "Einstellungen..."
-
-#: unit1.strbuttonpraesentation
-msgctxt "unit1.strbuttonpraesentation"
-msgid "Presentation..."
-msgstr "Präsentation..."
-
-#: unit1.strerstebenutzung
-msgid "You are using this program for the first time. Please select a song repository folder."
-msgstr "Sie benutzen das Programm zum ersten Mal. Bitte wählen Sie nachfolgend einen Ordner für das Liederverzeichnis."
-
-#: unit1.strfehlerkeineliederbeipraesentation
-msgid "You have to add songs first."
-msgstr "Es müssen zuerst Lieder für die Präsentation ausgewählt werden."
-
-#: unit1.strfehleroeffnen
-msgid "Error while opening. Propably you have not the required rights to access this file."
-msgstr "Fehler beim Öffnen. Wahrscheinlich bestehen nicht die notwendigen Zugriffsrechte für die Datei."
-
-#: unit1.strfehlerspeichern
-msgid "Error while saving. Propably you have not the required rights to access this file."
-msgstr "Fehler beim Speichern. Wahrscheinlich bestehen nicht die notwendigen Zugriffsrechte für die Datei."
-
-#: unit1.strfolie
-msgid "Slide"
-msgstr "Folie"

@@ -8,7 +8,24 @@
 Cantara is a simple open source song presentation software written in Free Pascal/Lazarus which allows people to spontanously present song lyrics for a bigger audience for the purpose of singing together. This is especially useful for church groups and meetings. 
 
 ## Current Version
-The current version is 2.2 released at July 5, 2022.
+The current version is 2.2 released at July 5, 2022. There exists also the 2.3 Beta which supports the CCLI Songselect lyrics format.
+
+## Download and Installation
+
+There are various ways how to download and install Cantara. For a detailed explenation, please check out the docs. [In the "Releases" section of this repository](https://github.com/reckel-jm/cantara/releases) there are several binary downloads for different operating system. You can also find Cantara in the [Snap Store](https://snapcraft.io/cantara).
+
+If you would like to compile the latest state in the master brunch, you need to do the following:
+
+ 1. Download and install the [Lazarus IDE](https://www.lazarus-ide.org) – either via your distribution or their homepage.
+ 2. Clone the Github repository:
+
+    git clone git@github.com:reckel-jm/cantara.git
+
+ 3. Open the `lazarus.lpi` file *as a project* in Lazarus and compile it **or** use `lazbuild` for the compilation via the command line:
+
+    lazbuild -B Cantara.lpi
+
+On Linux, you can change the used graphical framework via the `--ws=qt5` or `--ws=gtk2` option.
 
 ## Song templates
 In order to make songs appear in that list, song templates have to be prepared once. A song consists of a txt-File which has the following structure:

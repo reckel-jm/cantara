@@ -72,7 +72,7 @@ var
 implementation
 
 Uses
-  Present, Unit1;
+  Present, SongSelection;
 
 {$R *.lfm}
 
@@ -209,7 +209,7 @@ end;
 procedure TfrmSettings.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   frmPresent.loadSettings;
-  if (ProgrammMode = ModeMultiScreenPresentation) Then Unit1.frmSongs.ImageUpdater.Enabled:=True;
+  if (ProgrammMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 
