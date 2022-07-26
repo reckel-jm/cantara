@@ -42,31 +42,6 @@ parts:
     - cantara.desktop
     - Cantara.ico
     - Cantara.png
-  #cleanup:
-  #  after:  # Make this part run last; list all your other parts here
-  #    - cantara
-  #  plugin: nil
-  #  build-snaps:  # List all content-snaps and base snaps you're using here
-  #    - qt5-core22
-  #  override-prime: |
-  #    set -eux
-  #    for snap in "qt5-core22"; do  # List all content-snaps and base snaps #you're using here
-  #        cd "/snap/$snap/current" && find . -type f,l -exec rm -f #"$SNAPCRAFT_PRIME/{}" \;
-  #    done
-
-apps:
-  cantara:
-    extensions:
-      - kde-neon
-    command: cantara
-    desktop: cantara.desktop
-    plugs:
-    - home
-    - opengl
-    - desktop
-    - desktop-legacy
-    - x11
-    - unity7
   cleanup:
     after: [cantara]
     plugin: nil
@@ -82,3 +57,17 @@ apps:
       find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
       find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
       find $SNAPCRAFT_PRIME/usr/lib -type f,l -name 'libQt*.so*' -delete
+
+apps:
+  cantara:
+    extensions:
+      - kde-neon
+    command: cantara
+    desktop: cantara.desktop
+    plugs:
+    - home
+    - opengl
+    - desktop
+    - desktop-legacy
+    - x11
+    - unity7
