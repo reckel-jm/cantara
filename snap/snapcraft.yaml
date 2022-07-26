@@ -9,7 +9,7 @@ base: core20
 grade: stable
 
 architectures:
-  - build-on: amd64
+  - build-on: [amd64, arm64]
 
 parts:
   cantara:
