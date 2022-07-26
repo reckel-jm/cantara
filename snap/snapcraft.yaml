@@ -26,6 +26,9 @@ parts:
     - libqt5pas1
     stage-packages:
     - libqt5pas1
+    - libatk1.0-0
+    - libgtk2.0-0
+    - libxinerama1
     override-build: |
       lazbuild -B Cantara.lpi --ws=qt5
       cp -r languages $SNAPCRAFT_PART_INSTALL/
@@ -51,12 +54,12 @@ parts:
       for snap in "kde-frameworks-5-91-qt-5-15-3-core20"; do  # List all content-snaps you're using here
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" "$SNAPCRAFT_PRIME/usr/{}" \;
       done
-      for cruft in bug lintian man; do
+      for cruft in bug lintian man icons; do
         rm -rf $SNAPCRAFT_PRIME/usr/share/$cruft
       done
       find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
       find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
-      find $SNAPCRAFT_PRIME/usr/lib -type f,l -name 'libQt*.so*' -delete
+      find $SNAPCRAFT_PRIME/usr/lib -type f,l -name 'libQt*.so*' ! -name 'libQt5Pas*.so*' -delete
 
 apps:
   cantara:
