@@ -25,34 +25,7 @@ parts:
     - libqt5pas-dev
     - libqt5pas1
     stage-packages:
-    - libqt5pas-dev
     - libqt5pas1
-    - libatk1.0-0
-    - libcairo2
-    - libdatrie1
-    - libfribidi0
-    - libgdk-pixbuf2.0-0
-    - libgtk2.0-0
-    - libpango-1.0-0
-    - libpangocairo-1.0-0
-    - libpangoft2-1.0-0
-    - libpixman-1-0
-    - libthai0
-    - libxcomposite1
-    - libxcursor1
-    - libxdamage1
-    - libxi6
-    - libxinerama1
-    - libxrandr2
-    - light-themes
-    - ttf-ubuntu-font-family
-    - locales-all
-    - plasma-integration
-    - frameworkintegration
-    - kde-style-breeze
-    - breeze-icon-theme
-    - fonts-freefont-ttf
-    - qt5-style-plugins
     override-build: |
       lazbuild -B Cantara.lpi --ws=qt5
       cp -r languages $SNAPCRAFT_PART_INSTALL/
@@ -94,3 +67,18 @@ apps:
     - desktop-legacy
     - x11
     - unity7
+  cleanup:
+    after: [cantara]
+    plugin: nil
+    build-snaps: [kde-frameworks-5-91-qt-5-15-3-core20]
+    override-prime: |
+      set -eux
+      for snap in "kde-frameworks-5-91-qt-5-15-3-core20"; do  # List all content-snaps you're using here
+        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" "$SNAPCRAFT_PRIME/usr/{}" \;
+      done
+      for cruft in bug lintian man; do
+        rm -rf $SNAPCRAFT_PRIME/usr/share/$cruft
+      done
+      find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+      find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
+      find $SNAPCRAFT_PRIME/usr/lib -type f,l -name 'libQt*.so*' -delete
