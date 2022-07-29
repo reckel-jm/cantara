@@ -46,6 +46,7 @@ resourceString
     'The Source Code and the documentation can be looked up at Github. In this way, it is also possible to get in contact.'
     + sLineBreak + sLineBreak +
     'The author wishes God''s blessings and is looking forward for feedback.';
+  strWebpage = 'https://www.cantara.app';
 
 implementation
 
@@ -67,7 +68,7 @@ end;
 
 procedure TfrmInfo.btnOpenGitRepoClick(Sender: TObject);
 begin
-  OpenURL('https://reckel-jm.github.io/cantara-song');
+  OpenURL(strWebpage);
 end;
 
 procedure TfrmInfo.lblInfoClick(Sender: TObject);

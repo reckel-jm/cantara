@@ -1,8 +1,8 @@
 object frmPresent: TfrmPresent
   Cursor = crNone
-  Left = 320
+  Left = 0
   Height = 835
-  Top = 180
+  Top = 0
   Width = 1600
   Caption = 'Präsentation'
   ClientHeight = 835

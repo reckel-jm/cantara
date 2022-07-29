@@ -588,11 +588,13 @@ var i,j: integer;
     completefilename: String;
     songname: string;
     stanza: string;
+    CCLISong: lyrics.TSong;
 begin
   present.cur:=0;
   present.textList.Clear;
   present.songMetaList.Clear;
   songfile := TStringList.Create();
+  CCLISong := lyrics.TSong.Create;
   for i := 0 to lbxSSelected.Count-1 do
     begin
     //Ermittel Liednamen
@@ -610,10 +612,10 @@ begin
     completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath;
     if songfileextension = '.song' then
        songfile.LoadFromFile(completefilename)
-    else if (songfileextension = '.txt') or (songfileextension = '.ccli') then
+    else if (songfileextension = '.txt') or (songfileextension = '.ccli') then // CCLI-Songselect file
        begin
-         songfile.free;
-         songfile := lyrics.importCCLISongFile(completefilename);
+         CCLISong.importCCLISongFile(completefilename);
+         songfile.Assign(CCLISong.output);
        end;
     //gehe durch Songdatei und füge gleiche Strophen zu einem String zusammen
     stanza := '';
@@ -639,7 +641,8 @@ begin
   if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);
 
   // Free
-  songfile.Free;
+  if Assigned(songfile) then songfile.Free;
+  if Assigned(CCLISong) then CCLISong.Free;
   end;
 
 function TFrmSongs.GetCurrentSongPosition: TSongPosition;

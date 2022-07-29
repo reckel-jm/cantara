@@ -30,6 +30,10 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
+#: info.strwebpage
+msgid "https://www.cantara.app"
+msgstr ""
+
 #: present.strformcaption
 msgctxt "present.strformcaption"
 msgid "Präsentation"

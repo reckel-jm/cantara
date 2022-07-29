@@ -48,6 +48,10 @@ msgstr "Kompilierung des Programms"
 msgid "Version"
 msgstr "Version"
 
+#: info.strwebpage
+msgid "https://www.cantara.app"
+msgstr ""
+
 #: present.strformcaption
 msgctxt "present.strformcaption"
 msgid "Präsentation"

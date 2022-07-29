@@ -28,8 +28,7 @@ msgstr "关于这个程序"
 msgid ""
 "This program is published under the GPL3 licence.\n"
 "\n"
-"The Source Code and the documentation can be looked up at Github. In this "
-"way, it is also possible to get in contact.\n"
+"The Source Code and the documentation can be looked up at Github. In this way, it is also possible to get in contact.\n"
 "\n"
 "The author wishes God's blessings and is looking forward for feedback."
 msgstr ""
@@ -47,6 +46,10 @@ msgstr "编制的方案时间"
 msgid "Version"
 msgstr "版本"
 
+#: info.strwebpage
+msgid "https://www.cantara.app"
+msgstr ""
+
 #: present.strformcaption
 msgctxt "present.strformcaption"
 msgid "Präsentation"
@@ -63,9 +66,7 @@ msgid "Presentation..."
 msgstr ""
 
 #: songselection.strerstebenutzung
-msgid ""
-"You are using this program for the first time. Please select a song "
-"repository folder."
+msgid "You are using this program for the first time. Please select a song repository folder."
 msgstr ""
 
 #: songselection.strfehlerkeineliederbeipraesentation
@@ -73,15 +74,11 @@ msgid "You have to add songs first."
 msgstr "请先加歌曲。"
 
 #: songselection.strfehleroeffnen
-msgid ""
-"Error while opening. Propably you have not the required rights to access "
-"this file."
+msgid "Error while opening. Propably you have not the required rights to access this file."
 msgstr ""
 
 #: songselection.strfehlerspeichern
-msgid ""
-"Error while saving. Propably you have not the required rights to access this "
-"file."
+msgid "Error while saving. Propably you have not the required rights to access this file."
 msgstr ""
 
 #: songselection.strfolie
@@ -107,8 +104,7 @@ msgstr ""
 #: tfrminfo.lblinfo.caption
 msgid ""
 "Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
-"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. "
-"Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
+"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
 "\n"
 "Der Autor wünscht für die Verwendung Gottes Segen!"
 msgstr ""
@@ -310,3 +306,4 @@ msgstr ""
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
 msgstr ""
+
