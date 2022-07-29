@@ -26,11 +26,11 @@ parts:
     - libqt5pas1
     stage-packages:
     - libqt5pas1
-    - libatk1.0-0
-    - libgtk2.0-0
+    #- libatk1.0-0
+    #- libgtk2.0-0
     - libxinerama1
     override-build: |
-      lazbuild -B Cantara.lpi --ws=qt5
+      lazbuild -B --bm="Release" --ws="qt5" Cantara.lpi
       cp -r languages $SNAPCRAFT_PART_INSTALL/
       install cantara $SNAPCRAFT_PART_INSTALL/
       install cantara.desktop $SNAPCRAFT_PART_INSTALL/

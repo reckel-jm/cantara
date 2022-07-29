@@ -1,18 +1,18 @@
 #
-# Detects and parses the architecture
+# Runs Lazbuild to build the project for release purpose
 #
 
-lazbuild -B Cantara.lpi --ws=qt5
+lazbuild -B --bm="Release" --ws="qt5" Cantara.lpi
 
 if [ $? == 0 ]; then
 
-    echo "Kompilierung erfolgreich. Cantara kann nun mit 'sudo make install' installiert werden."
+    echo "Compilation succesfully done."
 
     exit 0
 
 else
 
-    echo "Kompilierung fehlgeschlagen. Möglicherweise ist Lazarus nicht installiert oder der vermutete Pfad ist falsch. In diesem Fall ist die Datei make.sh manuell anzupassen (Zeile 32)."
+    echo "Unable to build Cantara. There was an error while compiling."
 
     echo 1
 

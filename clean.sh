@@ -9,3 +9,4 @@ rm -rf lib
 rm -rf *~
 
 rm -rf cantara
+rm -rf cantara.exe

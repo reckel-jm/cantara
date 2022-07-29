@@ -164,9 +164,31 @@ begin
 end;
 
 procedure TSong.importSongLegacyFile;
+var i: integer;
+  curLineText, key, value: String;
 begin
   self.inputFile.LoadFromFile(self.filename);
-  self.output.Assign(self.inputFile);
+  for i := 0 to self.inputFile.Count-1 do
+  begin
+    curLineText := self.inputFile.Strings[i];
+    if pos('#', curLineText) = 1 then
+    begin
+      if pos(':', curLineText) > 1 then
+      key := curLineText.Split(':')[0];
+      value := curLineText.Split(':')[0];
+      { Remove Whitespaces
+        If none of the parts are empty, add the key-value-pair to the MetaData dictionary }
+      if (key <> '') and (value <> '') then
+        begin
+          key := trim(key);
+          value := trim(value);
+        end;
+      self.MetaDict.Add(key, value);
+    end else
+    output.Add(curLineText);
+  end;
+
+  //self.output.Assign(self.inputFile);
 end;
 
 { This function finds out which format the song has and calls the specific import function }
