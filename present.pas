@@ -5,9 +5,6 @@ unit Present;
 interface
 
 uses
-  {$if defined(LINUX)} //Für Linux müssen die GTK-Pakete geladen werden, um Vollbildfunktion zu ermöglichen
-  gtk2, gdk2,
-  {$endif}
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Settings, Types, Themes, LCLTranslator, LCLIntf;
 type
@@ -40,6 +37,8 @@ type
     ScreenBounds: TRect;
     procedure GoPrevious;
     procedure GoNext;
+    procedure Refresh;
+    procedure ShowFirst;
   end;
 
 var
@@ -99,6 +98,7 @@ procedure TfrmPresent.FormShow(Sender: TObject);
 begin
   LoadSettings;
   if textList.Count>0 then showItem(0) else frmPresent.Hide;
+  Refresh;
 end;
 
 procedure TFrmPresent.LoadSettings;
@@ -126,13 +126,11 @@ end;
 
 procedure TfrmPresent.lblTextDblClick(Sender: TObject);
 begin
-  SwitchFullScreen();
+  SwitchFullScreen;
 end;
 
 
 procedure TfrmPresent.showItem(index: integer);
-var i,lines, lastposition, pHeight, pWidth: integer;
-  longestline: string;
 begin
     cur := index;
     lblText.WordWrap:=True;
@@ -158,7 +156,6 @@ begin
     end;
     lblText.Caption := textList.Strings[cur];
     lblText.BorderSpacing.Top := (frmPresent.Height-lblText.Height-lblNext.Height-lblNext.BorderSpacing.Top) div 2;
-    lines := 0;
     // Aktualisiere SongListe in Present-Form
     SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
     //Unit1.frmSongs.ImageUpdater.Enabled:=True;
@@ -180,7 +177,7 @@ end;
 
 procedure TfrmPresent.FormHide(Sender: TObject);
 begin
-  // Stelle Unit1 wieder her
+  // Stelle frmSongs wieder her
   SongSelection.ProgrammMode:=SongSelection.ModeSelection;
   SongSelection.frmSongs.FormResize(self);
   SongSelection.frmSongs.KeyPreview := False;
@@ -261,6 +258,17 @@ begin
     Fullscreen := False;
   end;
   {$endif}
+end;
+
+procedure TfrmPresent.Refresh;
+begin
+  ShowItem(cur);
+end;
+
+procedure TfrmPresent.ShowFirst;
+begin
+  cur := 0;
+  Refresh;
 end;
 
 end.

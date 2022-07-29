@@ -87,8 +87,7 @@ type
     procedure itemLoadClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
     procedure lbxSRepoClick(Sender: TObject);
-    procedure lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
-      );
+    procedure lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure lbxSselectedClick(Sender: TObject);
     procedure lbxSselectedDragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure lbxSselectedKeyDown(Sender: TObject; var Key: Word;
@@ -100,8 +99,6 @@ type
     procedure itemReloadSongListClick(Sender: TObject);
     procedure pnlMultiScreenClick(Sender: TObject);
     procedure pnlMultiScreenResize(Sender: TObject);
-    procedure PnlSplitterCanOffset(Sender: TObject; var NewOffset: Integer;
-      var Accept: Boolean);
     procedure PnlSplitterMoved(Sender: TObject);
     procedure CreatePresentationData;
     function GetCurrentSongPosition: TSongPosition;
@@ -228,12 +225,6 @@ begin
   // Passe Höhe an Bild an
   else if (imgLiveViewer.Picture.Bitmap.Width > 0) Then
     imgLiveViewer.Height := round(imgLiveViewer.Width * imgLiveViewer.Picture.Bitmap.Height / imgLiveViewer.Picture.Bitmap.Width);
-end;
-
-procedure TfrmSongs.PnlSplitterCanOffset(Sender: TObject;
-  var NewOffset: Integer; var Accept: Boolean);
-begin
-
 end;
 
 procedure TfrmSongs.PnlSplitterMoved(Sender: TObject);
@@ -543,6 +534,7 @@ begin
     frmSongs.FormResize(frmSongs);
     // Zeige die Präsentations-Form
     frmPresent.Show();
+    frmPresent.ShowFirst;
     // Workaround für Windoof
     frmPresent.WindowState:= wsMaximized;
     if Screen.MonitorCount > 1 Then frmPresent.SwitchFullscreen(True);
@@ -584,19 +576,18 @@ end;
 procedure TfrmSongs.CreatePresentationData;
 var i,j: integer;
     songfile: TStringList;
-    songfileextension: String;
     completefilename: String;
     songname: string;
     stanza: string;
-    CCLISong: lyrics.TSong;
+    Song: lyrics.TSong;
 begin
   present.cur:=0;
   present.textList.Clear;
   present.songMetaList.Clear;
-  songfile := TStringList.Create();
-  CCLISong := lyrics.TSong.Create;
   for i := 0 to lbxSSelected.Count-1 do
     begin
+    songfile := TStringList.Create;
+    Song := lyrics.TSong.Create;
     //Ermittel Liednamen
     songname := lbxSSelected.Items.Strings[i];
     //suche Dateinamen in repo-Array
@@ -608,15 +599,9 @@ begin
       ShowMessage('Fehler: Das Lied "' + songname + '" ist nicht vorhanden. Es wird übersprungen.')
     end;
     //Lade Song-menuFile abhängig von der Erweiterung!
-    songfileextension := ExtractFileExt(repo[j].filePath);
     completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath;
-    if songfileextension = '.song' then
-       songfile.LoadFromFile(completefilename)
-    else if (songfileextension = '.txt') or (songfileextension = '.ccli') then // CCLI-Songselect file
-       begin
-         CCLISong.importCCLISongFile(completefilename);
-         songfile.Assign(CCLISong.output);
-       end;
+    Song.importSongfile(completefilename);
+    songfile.Assign(song.output);
     //gehe durch Songdatei und füge gleiche Strophen zu einem String zusammen
     stanza := '';
     for j := 0 to songfile.Count-1 do
@@ -629,20 +614,22 @@ begin
         end
         else stanza := stanza + songfile.Strings[j] + LineEnding;
     end;
+    { Add the last stanza }
     present.textList.Add(stanza);
     present.songMetaList.Add(songname);
+    { Add an empty frame if selected in the settings }
     if frmSettings.cbEmptyFrame.Checked then
       begin
         present.textList.Add('');
         present.songMetaList.Add(songname);
       end;
+    { Free the used Classes in the For-Loop }
+    if Assigned(Song) then Song.Free;
+    if Assigned(songfile) then songfile.Free;
   end;
   // Kopiere Lieder in Zwischenablage
   if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);
 
-  // Free
-  if Assigned(songfile) then songfile.Free;
-  if Assigned(CCLISong) then CCLISong.Free;
   end;
 
 function TFrmSongs.GetCurrentSongPosition: TSongPosition;

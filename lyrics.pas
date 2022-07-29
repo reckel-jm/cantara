@@ -20,14 +20,17 @@ type
       delimCounter: Integer;
       constructor Create; overload;
       destructor Destroy; override;
-      procedure importCCLISongFile;
-      procedure importCCLISongFile(filepath: string);
+      procedure importSongFile;
+      procedure importSongfile(filepath: string);
       procedure ConvertFile;
     private
       inputFile: TStringList;
       PositionDict: TStringIntegerDict;
       procedure WritePart(index: Integer);
       procedure IncludeRepetitionalParts;
+      procedure importSongLegacyFile;
+      procedure importCCLISongFile;
+      procedure importCCLISongFile(filepath: string);
   end;
 
 
@@ -158,6 +161,29 @@ begin
     s := s + StringList.Strings[i] + LineEnding;
   end;
   Result := s;
+end;
+
+procedure TSong.importSongLegacyFile;
+begin
+  self.inputFile.LoadFromFile(self.filename);
+  self.output.Assign(self.inputFile);
+end;
+
+{ This function finds out which format the song has and calls the specific import function }
+procedure TSong.importSongFile;
+var songfileextension: String;
+begin
+  songfileextension := ExtractFileExt(self.filename);
+  if songfileextension = '.song' then
+    self.importSongLegacyFile
+  else if (songfileextension = '.txt') or (songfileextension = '.ccli') then // CCLI-Songselect file
+    self.importCCLISongFile;
+end;
+
+procedure TSong.importSongFile(filepath: String);
+begin
+  self.filename:=filepath;
+  importSongFile;
 end;
 
 end.

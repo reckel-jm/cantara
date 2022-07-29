@@ -39,7 +39,7 @@ type
     procedure edtRepoPathChange(Sender: TObject);
     procedure edtRepoPathEditingDone(Sender: TObject);
     procedure edtRepoPathExit(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormClose(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -111,7 +111,7 @@ begin
   Result[2] := Char(Integer(fsItalic In Style) + 83);
   Result[3] := Char(Integer(fsUnderline In Style) + 83);
   Result[4] := Char(Integer(fsStrikeOut In Style) + 83);
-  {replace all S to F's if you like}
+  { replace all S to F's }
   Result := StringReplace(Result, 'S', 'F', [rfReplaceAll]);
 end;
 
@@ -144,7 +144,6 @@ begin
 end;
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
-var filename: string;
 begin
   self.LocaliseCaptions;
 end;
@@ -206,7 +205,7 @@ begin
 
 end;
 
-procedure TfrmSettings.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TfrmSettings.FormClose(Sender: TObject);
 begin
   frmPresent.loadSettings;
   if (ProgrammMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
