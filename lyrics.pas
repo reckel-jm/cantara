@@ -222,8 +222,21 @@ end;
 function TSong.ParseMetaData(MetaLogic: string): string;
 var ParseString: String;
 begin
-  MetaLogic := StringReplace(MetaLogic, LineEnding, LineEnding + ' ', [rfReplaceAll, rfIgnoreCase]);
+  { Prepare String for Syntax }
+  MetaLogic := StringReplace(MetaLogic, LineEnding, ' ' + LineEnding + ' ', [rfReplaceAll, rfIgnoreCase]);
+  MetaLogic := StringReplace(MetaLogic, '{', ' {', [rfReplaceAll]);
+  MetaLogic := StringReplace(MetaLogic, '}', '} ', [rfReplaceAll]);
+  MetaLogic := StringReplace(MetaLogic, '{ ', '{', [rfReplaceAll]);
+  MetaLogic := StringReplace(MetaLogic, ' }', '}', [rfReplaceAll]);
+  MetaLogic := StringReplace(MetaLogic, '{% ', '{%', [rfReplaceAll]);
+  MetaLogic := StringReplace(MetaLogic, ' %}', '%}', [rfReplaceAll]);
+  { The Magig happens here }
   ParseString := ParseMetaData(MetaLogic, 0);
+  { Afterwards, we do some replacements and Trimming to make the string more beautiful }
+  ParseString := StringReplace(ParseString, '  ', ' ', [rfReplaceAll]);
+  while pos(LineEnding + ' ',ParseString) > 0 do
+    ParseString := StringReplace(ParseString, LineEnding + ' ', LineEnding, [rfReplaceAll]);
+  ParseString := Trim(ParseString);
   Result := ParseString;
 end;
 function TSong.ParseMetaData(MetaLogic: string; count: integer): string;
@@ -238,9 +251,9 @@ begin
   begin
     prop := Trim(Copy(word, 3, pos('%}', word)-3));
     if self.MetaDict.IndexOf(lowerCase(prop)) >= 0 then
-      Exit(ParseMetaData(MetaLogic, count+1))
+      Exit(StringReplace(word, '{%' + prop + '%}', '', []) + ' ' + ParseMetaData(MetaLogic, count+1))
     else begin
-      while (word <> '{%end%}') and (word <> '{% end %}') and (count < length(strArray)) do
+      while (pos('{%end%}',word)=0) and (pos(LineEnding,word)=0) and (count < length(strArray)-1) do
       begin
         inc(count);
         word := strArray[count];
@@ -255,8 +268,8 @@ begin
        word := StringReplace(word, '{' + prop + '}', self.MetaDict[lowerCase(prop)], [rfReplaceAll, rfIgnoreCase])
     else word := '';
   Result := word + ' ' + ParseMetaData(MetaLogic, count+1);
-  end else if (word = '{%end%}') or (word = '{% end %}') then
-    Result := ParseMetaData(MetaLogic, count+1)
+  end else if (pos('{%end%}',word)>0) then
+    Result := StringReplace(word, '{%end%}', '', []) + ' ' + ParseMetaData(MetaLogic, count+1)
   else Result := word + ' ' + ParseMetaData(MetaLogic, count+1);
 end;
 end.

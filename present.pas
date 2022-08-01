@@ -113,7 +113,8 @@ begin
   lblText.Font.Color:= frmSettings.textColorDialog.Color;
   lblMeta.Font := frmSettings.FontDialog.Font;
   lblMeta.Font.Color := frmSettings.textColorDialog.Color;
-  lblMeta.Font.Height:= lblMeta.Font.Height div 2;
+  lblMeta.Font.Height:= lblMeta.Font.Height div 3;
+  lblMeta.Width := frmPresent.Width div 2;
 end;
 
 procedure TfrmPresent.lblTextClick(Sender: TObject);
@@ -150,7 +151,9 @@ begin
     begin
       lblNext.Visible:=True;
       //lblNext.Caption := copy(textList.Strings[cur+1], 1, pos(LineEnding, textList.Strings[cur+1])-1);
-      lblNext.Caption := textList.Strings[cur+1];
+      if (SongMetaList.Strings[cur+1] <> SongMetaList.Strings[cur]) and (frmSettings.cbEmptyFrame.Checked=False) then
+         lblNext.Caption := ''
+      else lblNext.Caption := textList.Strings[cur+1];
       lblNext.Color := lblText.Color;
       lblNext.Font := frmSettings.FontDialog.Font;
       lblNext.Font.Color := frmSettings.textColorDialog.Color;
