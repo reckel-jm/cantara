@@ -419,9 +419,6 @@ begin
   if Screen.MonitorCount > 1 Then
     chkMultiWindowMode.Checked := True
   Else chkMultiWindowMode.Checked := False;
-
-  if AnsiContainsText(info.VERSION, 'beta') Then
-     frmSongs.Caption := frmSongs.Caption + ' - BETA Version';
 end;
 
 procedure TfrmSongs.FormKeyDown(Sender: TObject; var Key: Word;

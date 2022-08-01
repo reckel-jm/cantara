@@ -23,6 +23,7 @@ type
       procedure importSongFile;
       procedure importSongfile(filepath: string);
       procedure ConvertFile;
+      function ParseMetaData(MetaLogic: string): string;
     private
       inputFile: TStringList;
       PositionDict: TStringIntegerDict;
@@ -31,6 +32,7 @@ type
       procedure importSongLegacyFile;
       procedure importCCLISongFile;
       procedure importCCLISongFile(filepath: string);
+      function ParseMetaData(MetaLogic: string; wordcount: integer): string;
   end;
 
 
@@ -208,5 +210,13 @@ begin
   importSongFile;
 end;
 
+function TSong.ParseMetaData(MetaLogic: string): string;
+begin
+  Result := ParseMetaData(MetaLogic, 0);
+end;
+function TSong.ParseMetaData(MetaLogic: string; wordCount: integer): string;
+begin
+  Result := 'Hallo Welt';
+end;
 end.
 

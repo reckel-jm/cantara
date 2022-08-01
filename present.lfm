@@ -1,12 +1,12 @@
 object frmPresent: TfrmPresent
   Cursor = crNone
-  Left = 0
-  Height = 835
-  Top = 0
-  Width = 1600
+  Left = 366
+  Height = 548
+  Top = 134
+  Width = 1077
   Caption = 'Präsentation'
-  ClientHeight = 835
-  ClientWidth = 1600
+  ClientHeight = 548
+  ClientWidth = 1077
   Color = clBlack
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -21,7 +21,7 @@ object frmPresent: TfrmPresent
     Left = 0
     Height = 1
     Top = 0
-    Width = 1600
+    Width = 1077
     Align = alTop
     Alignment = taCenter
     Font.Color = clWhite
@@ -36,7 +36,7 @@ object frmPresent: TfrmPresent
     Left = 0
     Height = 22
     Top = 1
-    Width = 1600
+    Width = 1077
     Align = alTop
     Alignment = taCenter
     Caption = '<Lyrics>'
@@ -46,6 +46,23 @@ object frmPresent: TfrmPresent
     ParentColor = False
     ParentFont = False
     Transparent = False
+    WordWrap = True
+  end
+  object lblMeta: TLabel
+    Left = 16
+    Height = 42
+    Top = 488
+    Width = 80
+    Align = alCustom
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 5
+    BorderSpacing.Bottom = 5
+    Caption = '<Meta>'#10'Second Line'
+    Font.Color = clWhite
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+    Visible = False
     WordWrap = True
   end
 end

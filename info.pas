@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, SynEdit, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdCtrls, lclintf, LCLTranslator;
+  ExtCtrls, StdCtrls, lclintf, LCLTranslator, fileinfo, winpeimagereader, elfreader, machoreader;
 
 type
 
@@ -14,12 +14,15 @@ type
 
   TfrmInfo = class(TForm)
     btnOpenGitRepo: TButton;
+    btnOpenWebpage: TButton;
+    imgLogo: TImage;
     lblInfo: TLabel;
     lblName: TLabel;
     lblVersion: TLabel;
     lblCompDate: TLabel;
     lblAuthor: TLabel;
     procedure btnOpenGitRepoClick(Sender: TObject);
+    procedure btnOpenWebpageClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure lblInfoClick(Sender: TObject);
   private
@@ -29,23 +32,18 @@ type
   end;
 
 const
-  VERSION:string = '2.3 Beta';
   AUTOR:string = 'Jan Martin Reckel';
+  GITHUBREPO:string = 'https://www.github.com/reckel-jm/cantara';
 
 var
   frmInfo: TfrmInfo;
 
 resourceString
   strFormCaption = 'About this Program';
-  strProgrammErstellt = 'Program compiled';
+  strProgramCompiled = 'Program compiled';
   strVersion = 'Version';
-  strAutor = 'Author';
+  strAuthor = 'Author';
   strButtonGitRepo = 'Open webpage...';
-  strHinweise = 'This program is published under the GPL3 licence.'
-    + sLineBreak + sLineBreak +
-    'The Source Code and the documentation can be looked up at Github. In this way, it is also possible to get in contact.'
-    + sLineBreak + sLineBreak +
-    'The author wishes God''s blessings and is looking forward for feedback.';
   strWebpage = 'https://www.cantara.app';
 
 implementation
@@ -55,18 +53,26 @@ implementation
 { TfrmInfo }
 
 procedure TfrmInfo.FormCreate(Sender: TObject);
+var FileVerInfo: TFileVersionInfo;
 begin
-  lblCompDate.Caption := strProgrammErstellt + ': ' + {$I %DATE%} + ' ' + {$I %TIME%};
-  lblVersion.Caption := strVersion + ': ' + VERSION;
-  lblAuthor.Caption := strAutor + ': ' + AUTOR;
-  lblInfo.Caption := strHinweise;
-  self.Caption:= strFormCaption;
-  btnOpenGitRepo.Caption := strButtonGitRepo;
-  btnOpenGitRepo.Top := lblInfo.Top + lblInfo.Height + 100;
-  frmInfo.Height := btnOpenGitRepo.Top + btnOpenGitRepo.Height;
+  lblCompDate.Caption := strProgramCompiled + ': ' + {$I %DATE%} + ' ' + {$I %TIME%};
+  lblAuthor.Caption := strAuthor + ': ' + AUTOR;
+  { Fetch the Project Version from the generated Metadata }
+  FileVerInfo := TFileVersionInfo.Create(nil);
+  try
+     FileVerInfo.ReadFileInfo;
+     lblVersion.Caption := strVersion + ': ' + FileVerInfo.VersionStrings.Values['ProductVersion'];
+  finally
+    FileVerInfo.Free;
+  end;
 end;
 
 procedure TfrmInfo.btnOpenGitRepoClick(Sender: TObject);
+begin
+  OpenUrl(GITHUBREPO);
+end;
+
+procedure TfrmInfo.btnOpenWebpageClick(Sender: TObject);
 begin
   OpenURL(strWebpage);
 end;

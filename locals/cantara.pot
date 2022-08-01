@@ -1,7 +1,8 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-#: info.strautor
+#: info.strauthor
+msgctxt "info.strauthor"
 msgid "Author"
 msgstr ""
 
@@ -13,16 +14,8 @@ msgstr ""
 msgid "About this Program"
 msgstr ""
 
-#: info.strhinweise
-msgid ""
-"This program is published under the GPL3 licence.\n"
-"\n"
-"The Source Code and the documentation can be looked up at Github. In this way, it is also possible to get in contact.\n"
-"\n"
-"The author wishes God's blessings and is looking forward for feedback."
-msgstr ""
-
-#: info.strprogrammerstellt
+#: info.strprogramcompiled
+msgctxt "info.strprogramcompiled"
 msgid "Program compiled"
 msgstr ""
 
@@ -70,7 +63,11 @@ msgid "Slide"
 msgstr ""
 
 #: tfrminfo.btnopengitrepo.caption
-msgid "Öffne Git-Repository im Webbrowser..."
+msgid "Open Github Repository with Browser"
+msgstr ""
+
+#: tfrminfo.btnopenwebpage.caption
+msgid "Open Project's Webpage with Browser"
 msgstr ""
 
 #: tfrminfo.caption
@@ -87,10 +84,11 @@ msgstr ""
 
 #: tfrminfo.lblinfo.caption
 msgid ""
-"Dieses Programm ist unter der GPL3-Lizenz veröffentlicht.\n"
-"Der Quellcode und eine Dokumentation können auf GitHub eingesehen werden. Eine Weiterverwendung und Veränderung ist unter Namensnennung möglich.\n"
+"This program has been published under the GPL3 licence. \n"
+"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
 "\n"
-"Der Autor wünscht für die Verwendung Gottes Segen!"
+"The author wishes God's blessing for the use of the program!"
 msgstr ""
 
 #: tfrminfo.lblname.caption
@@ -106,7 +104,15 @@ msgctxt "tfrmpresent.caption"
 msgid "Präsentation"
 msgstr ""
 
+#: tfrmpresent.lblmeta.caption
+msgctxt "tfrmpresent.lblmeta.caption"
+msgid ""
+"<Meta>\n"
+"Second Line"
+msgstr ""
+
 #: tfrmpresent.lblnext.caption
+msgctxt "tfrmpresent.lblnext.caption"
 msgid "<Lyrics>"
 msgstr ""
 
@@ -147,12 +153,25 @@ msgstr ""
 msgid "Copy lyrics to clipboard"
 msgstr ""
 
+#: tfrmsettings.cbmetadatafirstslide.caption
+msgid "at first slide"
+msgstr ""
+
+#: tfrmsettings.cbmetadatalastslide.caption
+msgid "at last slide"
+msgstr ""
+
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
 msgstr ""
 
 #: tfrmsettings.fontdialog.title
 msgid "Select font"
+msgstr ""
+
+#: tfrmsettings.gbpresentation.caption
+msgctxt "tfrmsettings.gbpresentation.caption"
+msgid "Presentation View"
 msgstr ""
 
 #: tfrmsettings.labelsongdir.caption
@@ -163,8 +182,12 @@ msgstr ""
 msgid "Line Distance:"
 msgstr ""
 
-#: tfrmsettings.lblpresentationview.caption
-msgid "Presentation View:"
+#: tfrmsettings.lblmeta.caption
+msgid "Show Meta Data:"
+msgstr ""
+
+#: tfrmsettings.lblmetacontent.caption
+msgid "Meta Data Content:"
 msgstr ""
 
 #: tfrmsettings.selectdirectorydialog.title

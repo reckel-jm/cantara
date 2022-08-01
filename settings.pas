@@ -13,18 +13,23 @@ type
   { TfrmSettings }
 
   TfrmSettings = class(TForm)
-    btnFontSizeManually: TButton;
+    btnBackgroundColor: TButton;
     btnClose: TButton;
+    btnFontSizeManually: TButton;
+    btnTextColor: TButton;
+    cbMetaDataFirstSlide: TCheckBox;
+    cbMetaDataLastSlide: TCheckBox;
     cbSpoiler: TCheckBox;
     cbLyricsToClipboard: TCheckBox;
     edtLineDistance: TFloatSpinEdit;
     FontDialog: TFontDialog;
-    lblPresentationView: TLabel;
+    gbPresentation: TGroupBox;
     lblLineDistance: TLabel;
+    lblMeta: TLabel;
+    lblMetaContent: TLabel;
+    memoMetaData: TMemo;
     textColorDialog: TColorDialog;
     btnSelectDir: TButton;
-    btnBackgroundColor: TButton;
-    btnTextColor: TButton;
     cbEmptyFrame: TCheckBox;
     bgColorDialog: TColorDialog;
     edtRepoPath: TEdit;
@@ -44,6 +49,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure labelSongDirClick(Sender: TObject);
+    procedure lblMetaClick(Sender: TObject);
     procedure loadSettings();
   private
     { private declarations }
@@ -154,6 +160,11 @@ begin
 end;
 
 procedure TfrmSettings.labelSongDirClick(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmSettings.lblMetaClick(Sender: TObject);
 begin
 
 end;

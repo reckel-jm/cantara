@@ -13,6 +13,7 @@ type
 
   TfrmPresent = class(TForm)
     lblNext: TLabel;
+    lblMeta: TLabel;
     lblText: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -28,6 +29,7 @@ type
     procedure SwitchFullScreen;
     procedure SwitchFullScreen(WantFullScreen: Boolean);
     procedure LoadSettings;
+    procedure ShowMeta;
   private
     { private declarations }
   public
@@ -107,6 +109,9 @@ begin
   frmPresent.lblText.Font.Color:=frmSettings.textColorDialog.Color;
   lblText.Font := frmSettings.FontDialog.Font;
   lblText.Font.Color:= frmSettings.textColorDialog.Color;
+  lblMeta.Font := frmSettings.FontDialog.Font;
+  lblMeta.Font.Color := frmSettings.textColorDialog.Color;
+  lblMeta.Font.Height:= lblMeta.Font.Height div 2;
 end;
 
 procedure TfrmPresent.lblTextClick(Sender: TObject);
@@ -136,7 +141,8 @@ begin
     lblText.WordWrap:=True;
     lblText.Font := frmSettings.FontDialog.Font;
     lblText.Font.Color:= frmSettings.textColorDialog.Color;
-
+    lblMeta.Font.Color := frmSettings.textColorDialog.Color;
+    lblMeta.Font.Size := lblText.Font.Size div 3;
     if ((frmSettings.cbSpoiler.Checked) and (textList.Count > cur + 1) and (textList.Strings[cur] <> '')) then
     begin
       lblNext.Visible:=True;
@@ -158,7 +164,21 @@ begin
     lblText.BorderSpacing.Top := (frmPresent.Height-lblText.Height-lblNext.Height-lblNext.BorderSpacing.Top) div 2;
     // Aktualisiere SongListe in Present-Form
     SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
-    //Unit1.frmSongs.ImageUpdater.Enabled:=True;
+    ShowMeta;
+end;
+
+procedure TfrmPresent.ShowMeta;
+var showM: Boolean;
+begin
+  showM := False;
+  {Check if meta should be shown at the beginning of song }
+  if ((frmSettings.cbMetaDataFirstSlide.Checked) and ((cur <= 0) or (SongMetaList.Strings[cur-1] <> SongMetaList.Strings[cur])))
+     then showM := True
+  {Check if meta should be shown at the end of song }
+  else if (frmSettings.cbMetaDataLastSlide.Checked) and (((frmSettings.cbEmptyFrame.Checked) and (cur < SongMetaList.Count-1) and (textList.Strings[cur+1] = '')) or ((frmSettings.cbEmptyFrame.Checked = False) and ((cur = SongMetaList.count-1) or (SongMetaList.Strings[cur+1] <> SongMetaList.Strings[cur]))))
+     then showM := True;
+  lblMeta.Caption := frmSettings.memoMetaData.Lines.Text;
+  lblMeta.Visible := showM;
 end;
 
 procedure TfrmPresent.FormCreate(Sender: TObject);

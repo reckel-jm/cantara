@@ -1,13 +1,12 @@
 object frmSettings: TfrmSettings
-  Left = 481
-  Height = 280
-  Top = 472
-  Width = 349
+  Left = 1048
+  Height = 504
+  Top = 118
+  Width = 494
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsDialog
   Caption = 'Einstellungen'
-  ClientHeight = 280
-  ClientWidth = 349
+  ClientHeight = 504
+  ClientWidth = 494
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -16,10 +15,9 @@ object frmSettings: TfrmSettings
   LCLVersion = '2.2.2.0'
   object labelSongDir: TLabel
     Left = 0
-    Height = 23
+    Height = 22
     Top = 8
-    Width = 124
-    AutoSize = False
+    Width = 110
     Caption = 'Song Repo Path:'
     Layout = tlCenter
     ParentColor = False
@@ -27,10 +25,14 @@ object frmSettings: TfrmSettings
     OnClick = labelSongDirClick
   end
   object edtRepoPath: TEdit
-    Left = 128
+    AnchorSideLeft.Control = labelSongDir
+    AnchorSideLeft.Side = asrBottom
+    Left = 115
     Height = 36
     Top = 8
-    Width = 192
+    Width = 350
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 5
     OnChange = edtRepoPathChange
     OnEditingDone = edtRepoPathEditingDone
     OnExit = edtRepoPathExit
@@ -38,19 +40,22 @@ object frmSettings: TfrmSettings
     TabOrder = 0
   end
   object btnSelectDir: TButton
-    Left = 320
+    Left = 467
     Height = 23
-    Top = 8
+    Top = 16
     Width = 24
+    Anchors = [akTop, akRight]
     Caption = '...'
     OnClick = btnSelectDirClick
     ParentFont = False
     TabOrder = 1
   end
   object cbEmptyFrame: TCheckBox
+    AnchorSideTop.Control = edtRepoPath
+    AnchorSideTop.Side = asrBottom
     Left = 0
     Height = 26
-    Top = 40
+    Top = 44
     Width = 210
     BorderSpacing.Left = 10
     Caption = 'Empty slide between songs'
@@ -59,102 +64,205 @@ object frmSettings: TfrmSettings
     State = cbChecked
     TabOrder = 2
   end
-  object btnBackgroundColor: TButton
-    Left = 0
-    Height = 23
-    Top = 187
-    Width = 168
-    Caption = 'Background Color...'
-    OnClick = btnBackgroundColorClick
-    ParentFont = False
-    TabOrder = 3
-  end
-  object btnTextColor: TButton
-    Left = 168
-    Height = 23
-    Top = 187
-    Width = 176
-    Caption = 'Text Color...'
-    OnClick = btnTextColorClick
-    ParentFont = False
-    TabOrder = 4
-  end
-  object lblPresentationView: TLabel
-    Left = 1
-    Height = 22
-    Top = 163
-    Width = 124
-    Caption = 'Presentation View:'
-    ParentColor = False
-    ParentFont = False
-  end
-  object btnClose: TButton
-    Left = 237
-    Height = 36
-    Top = 219
-    Width = 107
-    Caption = 'Close'
-    ModalResult = 1
-    OnClick = btnCloseClick
-    ParentFont = False
-    TabOrder = 5
-  end
   object cbSpoiler: TCheckBox
+    AnchorSideTop.Control = cbEmptyFrame
+    AnchorSideTop.Side = asrBottom
     Left = 0
     Height = 26
-    Top = 64
+    Top = 70
     Width = 135
     Caption = 'Spoil next slides'
     Checked = True
     ParentFont = False
     State = cbChecked
-    TabOrder = 6
-  end
-  object btnFontSizeManually: TButton
-    Left = 168
-    Height = 25
-    Top = 163
-    Width = 176
-    Caption = 'Font Size...'
-    OnClick = btnFontSizeManuallyClick
-    ParentFont = False
-    TabOrder = 7
-  end
-  object lblLineDistance: TLabel
-    Left = 0
-    Height = 22
-    Top = 128
-    Width = 93
-    Caption = 'Line Distance:'
-    ParentColor = False
-    ParentFont = False
-  end
-  object edtLineDistance: TFloatSpinEdit
-    Left = 118
-    Height = 36
-    Top = 128
-    Width = 50
-    Enabled = False
-    ParentFont = False
-    TabOrder = 8
-    Value = 1
+    TabOrder = 4
   end
   object cbLyricsToClipboard: TCheckBox
+    AnchorSideTop.Control = cbSpoiler
+    AnchorSideTop.Side = asrBottom
     Left = 0
     Height = 26
-    Top = 92
+    Top = 96
     Width = 183
     Caption = 'Copy lyrics to clipboard'
     Checked = True
     OnChange = cbLyricsToClipboardChange
     ParentFont = False
     State = cbChecked
-    TabOrder = 9
+    TabOrder = 5
+  end
+  object gbPresentation: TGroupBox
+    AnchorSideTop.Control = cbLyricsToClipboard
+    AnchorSideTop.Side = asrBottom
+    AnchorSideBottom.Control = btnClose
+    Left = 8
+    Height = 329
+    Top = 122
+    Width = 479
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Bottom = 5
+    Caption = 'Presentation View'
+    ClientHeight = 295
+    ClientWidth = 475
+    TabOrder = 6
+    object edtLineDistance: TFloatSpinEdit
+      AnchorSideLeft.Control = lblLineDistance
+      AnchorSideLeft.Side = asrBottom
+      Left = 135
+      Height = 36
+      Top = 8
+      Width = 61
+      Anchors = [akTop]
+      BorderSpacing.Left = 14
+      Enabled = False
+      ParentFont = False
+      TabOrder = 0
+      Value = 1
+    end
+    object lblLineDistance: TLabel
+      Left = 8
+      Height = 22
+      Top = 16
+      Width = 93
+      Caption = 'Line Distance:'
+      ParentColor = False
+      ParentFont = False
+    end
+    object btnBackgroundColor: TButton
+      AnchorSideLeft.Control = edtLineDistance
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = btnFontSizeManually
+      AnchorSideTop.Side = asrBottom
+      Left = 204
+      Height = 23
+      Top = 32
+      Width = 267
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 8
+      Caption = 'Background Color...'
+      OnClick = btnBackgroundColorClick
+      ParentFont = False
+      TabOrder = 1
+    end
+    object btnFontSizeManually: TButton
+      AnchorSideLeft.Control = edtLineDistance
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      Left = 204
+      Height = 27
+      Top = 5
+      Width = 267
+      Align = alCustom
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 8
+      Caption = 'Font Size...'
+      OnClick = btnFontSizeManuallyClick
+      ParentFont = False
+      TabOrder = 2
+    end
+    object btnTextColor: TButton
+      AnchorSideLeft.Control = edtLineDistance
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = btnBackgroundColor
+      AnchorSideTop.Side = asrBottom
+      Left = 204
+      Height = 23
+      Top = 55
+      Width = 266
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 8
+      Caption = 'Text Color...'
+      OnClick = btnTextColorClick
+      ParentFont = False
+      TabOrder = 3
+    end
+    object lblMeta: TLabel
+      Left = 8
+      Height = 22
+      Top = 88
+      Width = 113
+      Caption = 'Show Meta Data:'
+      ParentColor = False
+      ParentFont = False
+      OnClick = lblMetaClick
+    end
+    object cbMetaDataFirstSlide: TCheckBox
+      AnchorSideLeft.Control = lblMetaContent
+      AnchorSideLeft.Side = asrBottom
+      Left = 148
+      Height = 26
+      Top = 88
+      Width = 106
+      BorderSpacing.Left = 10
+      Caption = 'at first slide'
+      Checked = True
+      ParentFont = False
+      State = cbChecked
+      TabOrder = 4
+    end
+    object cbMetaDataLastSlide: TCheckBox
+      AnchorSideLeft.Control = lblMetaContent
+      AnchorSideLeft.Side = asrBottom
+      Left = 148
+      Height = 26
+      Top = 112
+      Width = 103
+      BorderSpacing.Left = 10
+      Caption = 'at last slide'
+      Checked = True
+      ParentFont = False
+      State = cbChecked
+      TabOrder = 5
+    end
+    object lblMetaContent: TLabel
+      AnchorSideTop.Control = cbMetaDataLastSlide
+      AnchorSideTop.Side = asrBottom
+      Left = 8
+      Height = 22
+      Top = 143
+      Width = 130
+      BorderSpacing.Top = 5
+      Caption = 'Meta Data Content:'
+      ParentColor = False
+      ParentFont = False
+      OnClick = lblMetaClick
+    end
+    object memoMetaData: TMemo
+      AnchorSideLeft.Control = lblMetaContent
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = cbMetaDataLastSlide
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Side = asrBottom
+      Left = 148
+      Height = 147
+      Top = 143
+      Width = 324
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderSpacing.Left = 10
+      BorderSpacing.Top = 5
+      TabOrder = 6
+    end
+  end
+  object btnClose: TButton
+    AnchorSideTop.Control = gbPresentation
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Side = asrBottom
+    Left = 324
+    Height = 46
+    Top = 456
+    Width = 163
+    Anchors = [akRight, akBottom]
+    Caption = 'Close'
+    ModalResult = 1
+    OnClick = btnCloseClick
+    ParentFont = False
+    TabOrder = 3
   end
   object SelectDirectoryDialog: TSelectDirectoryDialog
     Title = 'Select song repository dictionary'
     Left = 16
-    Top = 211
+    Top = 400
   end
   object bgColorDialog: TColorDialog
     Title = 'Select background color'
@@ -181,8 +289,8 @@ object frmSettings: TfrmSettings
       'ColorS=F0FBFF'
       'ColorT=A4A0A0'
     )
-    Left = 176
-    Top = 219
+    Left = 160
+    Top = 400
   end
   object textColorDialog: TColorDialog
     Title = 'Select text color'
@@ -209,8 +317,8 @@ object frmSettings: TfrmSettings
       'ColorS=F0FBFF'
       'ColorT=A4A0A0'
     )
-    Left = 88
-    Top = 219
+    Left = 64
+    Top = 400
   end
   object FontDialog: TFontDialog
     Title = 'Select font'
@@ -218,7 +326,7 @@ object frmSettings: TfrmSettings
     MinFontSize = 0
     MaxFontSize = 0
     Options = [fdNoStyleSel]
-    Left = 136
-    Top = 219
+    Left = 112
+    Top = 400
   end
 end
