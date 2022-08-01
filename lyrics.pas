@@ -5,7 +5,7 @@ unit lyrics;
 interface
 
 uses
-  Classes, SysUtils, Strings, fgl;
+  Classes, SysUtils, Strings, fgl, Dialogs;
 
 function StringListToString(StringList: TStringList): String;
 type
@@ -32,8 +32,9 @@ type
       procedure importSongLegacyFile;
       procedure importCCLISongFile;
       procedure importCCLISongFile(filepath: string);
-      function ParseMetaData(MetaLogic: string; wordcount: integer): string;
+      function ParseMetaData(MetaLogic: string; count: integer): string;
   end;
+  TSongList = specialize TFPGObjectList<TSong>;
 
 
 implementation
@@ -100,11 +101,11 @@ begin
     begin
       if i < self.inputFile.Count-1 then
       begin
-        self.MetaDict.Add('CCLI-Songnumber', self.inputFile.Strings[i].Split(' ')[1]);
-        self.MetaDict.Add('Author',self.inputFile.Strings[i+1]);
+        self.MetaDict.Add('ccli-songnumber', self.inputFile.Strings[i].Split(' ')[1]);
+        self.MetaDict.Add('author',self.inputFile.Strings[i+1]);
       end else
       begin
-        self.MetaDict.Add('CCLI-Licence', self.inputFile.Strings[i].Split(' ')[1]);
+        self.MetaDict.Add('ccli-licencenumber', self.inputFile.Strings[i].Split(' ')[1]);
       end;
     end;
   end;
@@ -168,8 +169,10 @@ end;
 procedure TSong.importSongLegacyFile;
 var i: integer;
   curLineText, key, value: String;
+  contentStarted: boolean;
 begin
   self.inputFile.LoadFromFile(self.filename);
+  contentStarted := False;
   for i := 0 to self.inputFile.Count-1 do
   begin
     curLineText := self.inputFile.Strings[i];
@@ -177,7 +180,8 @@ begin
     begin
       if pos(':', curLineText) > 1 then
       key := curLineText.Split(':')[0];
-      value := curLineText.Split(':')[0];
+      Delete(key, 1, 1); // Delete the # at the beginning
+      value := curLineText.Split(':')[1];
       { Remove Whitespaces
         If none of the parts are empty, add the key-value-pair to the MetaData dictionary }
       if (key <> '') and (value <> '') then
@@ -185,9 +189,14 @@ begin
           key := trim(key);
           value := trim(value);
         end;
-      self.MetaDict.Add(key, value);
+      self.MetaDict.Add(lowerCase(key), value);
     end else
-    output.Add(curLineText);
+    if (Trim(curLineText) = '') and (contentStarted = True) then output.Add(curLineText)
+    else if (Trim(curLineText) <> '') then
+    begin
+      output.Add(curLineText);
+      contentStarted := True;
+    end;
   end;
 
   //self.output.Assign(self.inputFile);
@@ -211,12 +220,44 @@ begin
 end;
 
 function TSong.ParseMetaData(MetaLogic: string): string;
+var ParseString: String;
 begin
-  Result := ParseMetaData(MetaLogic, 0);
+  MetaLogic := StringReplace(MetaLogic, LineEnding, LineEnding + ' ', [rfReplaceAll, rfIgnoreCase]);
+  ParseString := ParseMetaData(MetaLogic, 0);
+  Result := ParseString;
 end;
-function TSong.ParseMetaData(MetaLogic: string; wordCount: integer): string;
+function TSong.ParseMetaData(MetaLogic: string; count: integer): string;
+var strArray: TStringArray;
+  word, prop: String;
 begin
-  Result := 'Hallo Welt';
+  {Add a space to every lineending, so that the split is done successfully }
+  strArray := MetaLogic.Split(' ');
+  if count >= length(strArray) then exit(''); // End-Point of recursional function
+  word := strArray[count];
+  if (pos('{%', word) = 1) and (pos('%}', word) > 1) and (pos('end', word) <= 0) then
+  begin
+    prop := Trim(Copy(word, 3, pos('%}', word)-3));
+    if self.MetaDict.IndexOf(lowerCase(prop)) >= 0 then
+      Exit(ParseMetaData(MetaLogic, count+1))
+    else begin
+      while (word <> '{%end%}') and (word <> '{% end %}') and (count < length(strArray)) do
+      begin
+        inc(count);
+        word := strArray[count];
+      end;
+      Exit(ParseMetaData(MetaLogic, count+1));
+    end;
+  end
+  else if (pos('{', word) = 1) and (pos('}', word) > 1) then
+  begin
+    prop := Trim(Copy(word, 2, pos('}', word)-2));
+    if self.MetaDict.IndexOf(lowerCase(prop)) >= 0 then
+       word := StringReplace(word, '{' + prop + '}', self.MetaDict[lowerCase(prop)], [rfReplaceAll, rfIgnoreCase])
+    else word := '';
+  Result := word + ' ' + ParseMetaData(MetaLogic, count+1);
+  end else if (word = '{%end%}') or (word = '{% end %}') then
+    Result := ParseMetaData(MetaLogic, count+1)
+  else Result := word + ' ' + ParseMetaData(MetaLogic, count+1);
 end;
 end.
 

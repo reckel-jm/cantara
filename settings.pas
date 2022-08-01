@@ -136,6 +136,7 @@ begin
 end;
 
 procedure TfrmSettings.loadSettings();
+
 begin
   edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
@@ -143,6 +144,9 @@ begin
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Text-Color', 'clWhite'));
   bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Background-Color', 'clBlack'));
   cbSpoiler.Checked:=settingsFile.ReadBool('Config', 'Spoiler', True);
+  cbMetaDataFirstSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataFirstSlide', False);
+  cbMetaDataLastSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataLastSlide', False);
+  memoMetaData.Lines.Text := settingsFile.ReadString('Config','MetaDataSyntax', '');
   FontDialog.Font.Name:=settingsFile.ReadString('Config', 'Font-Name', 'default');
   FontDialog.Font.Style := StrToStyle(settingsFile.ReadString('Config', 'Font-Style', 'ssss'));
   FontDialog.Font.Size:= settingsFile.ReadInteger('Config', 'Font-Size', 42);
@@ -239,6 +243,9 @@ begin
     settingsFile.WriteString('Config', 'Font-Style', StyleToStr(FontDialog.Font.Style));
     settingsFile.WriteFloat('Config', 'Line-Distance', edtLineDistance.Value);
     settingsFile.WriteBool('Config', 'copy-lyrics-to-clipboard', cbLyricsToClipboard.Checked);
+    settingsFile.WriteBool('Config', 'MetaDataFirstSlide', cbMetaDataFirstSlide.Checked);
+    settingsFile.WriteBool('Config', 'MetaDataLastSlide', cbMetaDataLastSlide.Checked);
+    settingsFile.WriteString('Config','MetaDataSyntax', memoMetaData.lines.Text);
     settingsFile.UpdateFile;
     CanClose := True;
   end;

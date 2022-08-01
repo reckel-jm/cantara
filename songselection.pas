@@ -577,10 +577,16 @@ var i,j: integer;
     songname: string;
     stanza: string;
     Song: lyrics.TSong;
+    SongList: lyrics.TSongList;
 begin
   present.cur:=0;
   present.textList.Clear;
   present.songMetaList.Clear;
+  Songlist := lyrics.TSongList.Create;
+  Songlist.FreeObjects:=False;
+  //if Assigned(present.frmPresent.Songlist) then
+  //    present.frmPresent.Songlist.FreeInstance;
+    present.frmPresent.Songlist := lyrics.TSongList.Create;
   for i := 0 to lbxSSelected.Count-1 do
     begin
     songfile := TStringList.Create;
@@ -598,6 +604,7 @@ begin
     //Lade Song-menuFile abhängig von der Erweiterung!
     completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath;
     Song.importSongfile(completefilename);
+    Songlist.Add(song);
     songfile.Assign(song.output);
     //gehe durch Songdatei und füge gleiche Strophen zu einem String zusammen
     stanza := '';
@@ -621,12 +628,13 @@ begin
         present.songMetaList.Add(songname);
       end;
     { Free the used Classes in the For-Loop }
-    if Assigned(Song) then Song.Free;
+    //if Assigned(Song) then Song.Free;
     if Assigned(songfile) then songfile.Free;
   end;
   // Kopiere Lieder in Zwischenablage
   if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);
-
+  present.frmPresent.Songlist.Assign(SongList);
+  if Assigned(SongList) then SongList.Free;
   end;
 
 function TFrmSongs.GetCurrentSongPosition: TSongPosition;

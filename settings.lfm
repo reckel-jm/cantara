@@ -1,7 +1,7 @@
 object frmSettings: TfrmSettings
-  Left = 1048
+  Left = 667
   Height = 504
-  Top = 118
+  Top = 133
   Width = 494
   BorderIcons = [biSystemMenu]
   Caption = 'Einstellungen'

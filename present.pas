@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Settings, Types, Themes, LCLTranslator, LCLIntf;
+  Settings, Types, Themes, LCLTranslator, LCLIntf, Lyrics;
 type
 
   { TfrmPresent }
@@ -32,11 +32,13 @@ type
     procedure ShowMeta;
   private
     { private declarations }
+    function getCurrentSong: lyrics.TSong;
   public
     { public declarations }
     OriginalBounds: TRect;
     OriginalWindowState: TWindowState;
     ScreenBounds: TRect;
+    Songlist: lyrics.TSongList;
     procedure GoPrevious;
     procedure GoNext;
     procedure Refresh;
@@ -143,6 +145,7 @@ begin
     lblText.Font.Color:= frmSettings.textColorDialog.Color;
     lblMeta.Font.Color := frmSettings.textColorDialog.Color;
     lblMeta.Font.Size := lblText.Font.Size div 3;
+    lblMeta.Width := frmPresent.Width div 2;
     if ((frmSettings.cbSpoiler.Checked) and (textList.Count > cur + 1) and (textList.Strings[cur] <> '')) then
     begin
       lblNext.Visible:=True;
@@ -169,6 +172,7 @@ end;
 
 procedure TfrmPresent.ShowMeta;
 var showM: Boolean;
+  MetaSyntax: String;
 begin
   showM := False;
   {Check if meta should be shown at the beginning of song }
@@ -177,7 +181,9 @@ begin
   {Check if meta should be shown at the end of song }
   else if (frmSettings.cbMetaDataLastSlide.Checked) and (((frmSettings.cbEmptyFrame.Checked) and (cur < SongMetaList.Count-1) and (textList.Strings[cur+1] = '')) or ((frmSettings.cbEmptyFrame.Checked = False) and ((cur = SongMetaList.count-1) or (SongMetaList.Strings[cur+1] <> SongMetaList.Strings[cur]))))
      then showM := True;
-  lblMeta.Caption := frmSettings.memoMetaData.Lines.Text;
+
+  MetaSyntax := frmSettings.memoMetaData.Lines.Text;
+  lblMeta.Caption := getCurrentSong.ParseMetaData(MetaSyntax);
   lblMeta.Visible := showM;
 end;
 
@@ -211,7 +217,7 @@ begin
 
   SwitchFullScreen(False);
   SongSelection.frmSongs.UpdateControls;
-
+  if Assigned(Songlist) then Songlist.Free;
 end;
 
 procedure TfrmPresent.SwitchFullScreen;
@@ -289,6 +295,18 @@ procedure TfrmPresent.ShowFirst;
 begin
   cur := 0;
   Refresh;
+end;
+
+function TfrmPresent.getCurrentSong: lyrics.TSong;
+var i, count: integer;
+begin
+  count := 0;
+  if cur <= 0 then exit(SongList.Items[count]);
+  for i := 1 to cur do
+  begin
+      if SongMetaList.Strings[i] <> SongMetaList.Strings[i-1] then count := count+1;
+  end;
+  Result := SongList.Items[count];
 end;
 
 end.
