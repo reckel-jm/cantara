@@ -10,6 +10,7 @@ object frmInfo: TfrmInfo
   ClientHeight = 324
   ClientWidth = 493
   OnCreate = FormCreate
+  Position = poMainFormCenter
   LCLVersion = '2.2.2.0'
   object lblAuthor: TLabel
     AnchorSideTop.Control = lblVersion

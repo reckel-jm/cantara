@@ -2,7 +2,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: info.strauthor
-msgctxt "info.strauthor"
 msgid "Author"
 msgstr ""
 
@@ -15,7 +14,6 @@ msgid "About this Program"
 msgstr ""
 
 #: info.strprogramcompiled
-msgctxt "info.strprogramcompiled"
 msgid "Program compiled"
 msgstr ""
 
@@ -105,14 +103,12 @@ msgid "Präsentation"
 msgstr ""
 
 #: tfrmpresent.lblmeta.caption
-msgctxt "tfrmpresent.lblmeta.caption"
 msgid ""
 "<Meta>\n"
 "Second Line"
 msgstr ""
 
 #: tfrmpresent.lblnext.caption
-msgctxt "tfrmpresent.lblnext.caption"
 msgid "<Lyrics>"
 msgstr ""
 
@@ -170,7 +166,6 @@ msgid "Select font"
 msgstr ""
 
 #: tfrmsettings.gbpresentation.caption
-msgctxt "tfrmsettings.gbpresentation.caption"
 msgid "Presentation View"
 msgstr ""
 

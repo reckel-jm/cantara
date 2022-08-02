@@ -30,8 +30,7 @@
       <BuildNr Value="2"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
-      <Attributes pvaPreRelease="True"/>
-      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.3 Beta"/>
+      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.3"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Release" Default="True"/>

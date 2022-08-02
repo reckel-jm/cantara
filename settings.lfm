@@ -1,7 +1,7 @@
 object frmSettings: TfrmSettings
-  Left = 667
+  Left = 451
   Height = 504
-  Top = 133
+  Top = 208
   Width = 494
   BorderIcons = [biSystemMenu]
   Caption = 'Einstellungen'
@@ -11,7 +11,7 @@ object frmSettings: TfrmSettings
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnShow = FormShow
-  Position = poMainFormCenter
+  Position = poScreenCenter
   LCLVersion = '2.2.2.0'
   object labelSongDir: TLabel
     Left = 0
@@ -168,7 +168,7 @@ object frmSettings: TfrmSettings
       Left = 204
       Height = 23
       Top = 55
-      Width = 266
+      Width = 267
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Text Color...'

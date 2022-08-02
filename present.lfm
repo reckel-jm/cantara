@@ -14,6 +14,7 @@ object frmPresent: TfrmPresent
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
+  Position = poDesktopCenter
   LCLVersion = '2.2.2.0'
   WindowState = wsMaximized
   object lblText: TLabel
