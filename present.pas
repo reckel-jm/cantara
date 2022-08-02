@@ -114,7 +114,7 @@ begin
   lblMeta.Font := frmSettings.FontDialog.Font;
   lblMeta.Font.Color := frmSettings.textColorDialog.Color;
   lblMeta.Font.Height:= lblMeta.Font.Height div 3;
-  lblMeta.Width := frmPresent.Width div 2;
+  lblMeta.Width := Trunc(frmPresent.Width * 0.67);
 end;
 
 procedure TfrmPresent.lblTextClick(Sender: TObject);
@@ -146,7 +146,7 @@ begin
     lblText.Font.Color:= frmSettings.textColorDialog.Color;
     lblMeta.Font.Color := frmSettings.textColorDialog.Color;
     lblMeta.Font.Size := lblText.Font.Size div 3;
-    lblMeta.Width := frmPresent.Width div 2;
+    lblMeta.Width := Trunc(frmPresent.Width * 0.67);
     if ((frmSettings.cbSpoiler.Checked) and (textList.Count > cur + 1) and (textList.Strings[cur] <> '')) then
     begin
       lblNext.Visible:=True;

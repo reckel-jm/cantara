@@ -225,6 +225,7 @@ procedure TfrmSettings.FormClose(Sender: TObject);
 begin
   frmPresent.loadSettings;
   if (ProgrammMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
+  frmSongs.edtSearch.Text := '';
 end;
 
 
