@@ -171,6 +171,7 @@ begin
     // Aktualisiere SongListe in Present-Form
     SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
     ShowMeta;
+    lblMeta.Top := frmPresent.Height-lblMeta.Height-lblMeta.Left;
 end;
 
 procedure TfrmPresent.ShowMeta;
