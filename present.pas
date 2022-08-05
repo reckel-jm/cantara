@@ -342,7 +342,10 @@ begin
       //originalPicture := TPicture.Create;
       //originalPicture.LoadFromFile(frmSettings.BgPictureDialog.FileName);
       imgBackground.Picture.LoadFromFile(frmSettings.BgPictureDialog.FileName);
-      imgBackground.Height:=Trunc(imgBackground.width*imgBackground.Picture.Height/imgBackground.Picture.Width);
+      if imgBackground.Width >= imgBackground.Picture.Width then
+        imgBackground.Height:=Trunc(imgBackground.width*imgBackground.Picture.Height/imgBackground.Picture.Width)
+      else if imgBackground.Height > imgBackground.Picture.Height then
+        imgBackground.Width:=Trunc(frmPresent.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
       BrightnessBitmap(imgbackground.Picture.Bitmap, imgbackground.Picture.Bitmap, frmSettings.sbImageBrightness.Position);
 
       //originalPicture.Free;
