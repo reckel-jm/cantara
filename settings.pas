@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons, ComCtrls, Spin, INIfiles, LCLTranslator;
+  Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, ExtDlgs;
 
 type
 
@@ -17,17 +17,23 @@ type
     btnClose: TButton;
     btnFontSizeManually: TButton;
     btnTextColor: TButton;
+    btnBackgroundImage: TButton;
     cbMetaDataFirstSlide: TCheckBox;
+    cbShowBackgroundImage: TCheckBox;
     cbMetaDataLastSlide: TCheckBox;
     cbSpoiler: TCheckBox;
     cbLyricsToClipboard: TCheckBox;
     edtLineDistance: TFloatSpinEdit;
     FontDialog: TFontDialog;
     gbPresentation: TGroupBox;
+    lblImageBrithness: TLabel;
+    lblImageBrightness: TLabel;
     lblLineDistance: TLabel;
     lblMeta: TLabel;
     lblMetaContent: TLabel;
     memoMetaData: TMemo;
+    BgPictureDialog: TOpenPictureDialog;
+    sbImageBrightness: TScrollBar;
     textColorDialog: TColorDialog;
     btnSelectDir: TButton;
     cbEmptyFrame: TCheckBox;
@@ -35,12 +41,14 @@ type
     edtRepoPath: TEdit;
     labelSongDir: TLabel;
     SelectDirectoryDialog: TSelectDirectoryDialog;
+    procedure btnBackgroundImageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure btnFontSizeManuallyClick(Sender: TObject);
     procedure btnSelectDirClick(Sender: TObject);
     procedure btnBackgroundColorClick(Sender: TObject);
     procedure btnTextColorClick(Sender: TObject);
     procedure cbLyricsToClipboardChange(Sender: TObject);
+    procedure cbShowBackgroundImageChange(Sender: TObject);
     procedure edtRepoPathChange(Sender: TObject);
     procedure edtRepoPathEditingDone(Sender: TObject);
     procedure edtRepoPathExit(Sender: TObject);
@@ -51,6 +59,7 @@ type
     procedure labelSongDirClick(Sender: TObject);
     procedure lblMetaClick(Sender: TObject);
     procedure loadSettings();
+    procedure sbImageBrightnessChange(Sender: TObject);
   private
     { private declarations }
     procedure LocaliseCaptions;
@@ -135,25 +144,6 @@ begin
     Include(Result, fsStrikeOut);
 end;
 
-procedure TfrmSettings.loadSettings();
-var str: String;
-begin
-  edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
-  cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
-  cbLyricsToClipboard.Checked := settingsFile.ReadBool('Config', 'copy-lyrics-to-clipboard', True);
-  textColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Text-Color', 'clWhite'));
-  bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Background-Color', 'clBlack'));
-  cbSpoiler.Checked:=settingsFile.ReadBool('Config', 'Spoiler', True);
-  cbMetaDataFirstSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataFirstSlide', False);
-  cbMetaDataLastSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataLastSlide', False);
-  str := settingsFile.ReadString('Config','MetaDataSyntax', '');
-  memoMetaData.lines.Text := StringReplace(str, '</br>', LineEnding, [rfReplaceAll]);
-  FontDialog.Font.Name:=settingsFile.ReadString('Config', 'Font-Name', 'default');
-  FontDialog.Font.Style := StrToStyle(settingsFile.ReadString('Config', 'Font-Style', 'ssss'));
-  FontDialog.Font.Size:= settingsFile.ReadInteger('Config', 'Font-Size', 42);
-  edtLineDistance.Value:=settingsFile.ReadFloat('Config', 'Line-Distance', 1);
-end;
-
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
   self.LocaliseCaptions;
@@ -190,6 +180,11 @@ begin
 
 end;
 
+procedure TfrmSettings.btnBackgroundImageClick(Sender: TObject);
+begin
+  BgPictureDialog.Execute;
+end;
+
 procedure TfrmSettings.btnBackgroundColorClick(Sender: TObject);
 begin
   bgColorDialog.Execute;
@@ -203,6 +198,11 @@ end;
 procedure TfrmSettings.cbLyricsToClipboardChange(Sender: TObject);
 begin
 
+end;
+
+procedure TfrmSettings.cbShowBackgroundImageChange(Sender: TObject);
+begin
+  btnBackgroundImage.Enabled:=cbShowBackgroundImage.Checked;
 end;
 
 procedure TfrmSettings.edtRepoPathChange(Sender: TObject);
@@ -228,6 +228,34 @@ begin
   frmSongs.edtSearch.Text := '';
 end;
 
+procedure TfrmSettings.loadSettings();
+var str: String;
+begin
+  edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
+  cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
+  cbLyricsToClipboard.Checked := settingsFile.ReadBool('Config', 'copy-lyrics-to-clipboard', True);
+  textColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Text-Color', 'clWhite'));
+  bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Background-Color', 'clBlack'));
+  cbSpoiler.Checked:=settingsFile.ReadBool('Config', 'Spoiler', True);
+  cbMetaDataFirstSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataFirstSlide', False);
+  cbMetaDataLastSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataLastSlide', False);
+  str := settingsFile.ReadString('Config','MetaDataSyntax', '');
+  memoMetaData.lines.Text := StringReplace(str, '</br>', LineEnding, [rfReplaceAll]);
+  FontDialog.Font.Name:=settingsFile.ReadString('Config', 'Font-Name', 'default');
+  FontDialog.Font.Style := StrToStyle(settingsFile.ReadString('Config', 'Font-Style', 'ssss'));
+  FontDialog.Font.Size:= settingsFile.ReadInteger('Config', 'Font-Size', 42);
+  edtLineDistance.Value:=settingsFile.ReadFloat('Config', 'Line-Distance', 1);
+  cbShowBackgroundImage.Checked := settingsFile.ReadBool('Config', 'BackgroundPicture', false);
+  cbShowBackgroundImageChange(frmSettings);
+  BgPictureDialog.FileName := settingsFile.ReadString('Config', 'BackgroundPicture-Path', '');
+  sbImageBrightness.Position:=settingsFile.ReadInteger('Config', 'ImageBrightness', 0);
+  sbImageBrightnessChange(frmPresent);
+end;
+
+procedure TfrmSettings.sbImageBrightnessChange(Sender: TObject);
+begin
+  lblImageBrithness.Caption:=IntToStr(sbImageBrightness.Position)+'%';
+end;
 
 procedure TfrmSettings.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 var str: String;
@@ -250,6 +278,9 @@ begin
     settingsFile.WriteBool('Config', 'MetaDataLastSlide', cbMetaDataLastSlide.Checked);
     str := StringReplace(memoMetaData.Lines.Text, LineEnding, '</br>', [rfReplaceAll]);
     settingsFile.WriteString('Config','MetaDataSyntax', str);
+    settingsFile.WriteBool('Config', 'BackgroundPicture', cbShowBackgroundImage.Checked);
+    settingsFile.WriteString('Config', 'BackgroundPicture-Path', BgPictureDialog.FileName);
+    settingsFile.WriteInteger('Config', 'ImageBrightness', sbImageBrightness.Position);
     settingsFile.UpdateFile;
     CanClose := True;
   end;

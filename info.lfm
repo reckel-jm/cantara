@@ -1,45 +1,41 @@
 object frmInfo: TfrmInfo
   Left = 226
-  Height = 324
+  Height = 316
   Top = 274
-  Width = 493
+  Width = 497
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
-  Caption = 'Über das Programm'
-  ClientHeight = 324
-  ClientWidth = 493
+  Caption = 'About this Program'
+  ClientHeight = 316
+  ClientWidth = 497
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '2.2.2.0'
   object lblAuthor: TLabel
-    AnchorSideTop.Control = lblVersion
     Left = 0
     Height = 22
     Top = 55
-    Width = 493
+    Width = 497
     Align = alTop
     Caption = 'Autor: Jan Martin Reckel'
     ParentColor = False
     ParentFont = False
   end
   object lblCompDate: TLabel
-    AnchorSideTop.Control = lblAuthor
     Left = 0
     Height = 22
     Top = 77
-    Width = 493
+    Width = 497
     Align = alTop
     Caption = 'lblCompDate'
     ParentColor = False
     ParentFont = False
   end
   object lblVersion: TLabel
-    AnchorSideTop.Control = lblName
     Left = 0
     Height = 22
     Top = 33
-    Width = 493
+    Width = 497
     Align = alTop
     Caption = 'lblVersion'
     ParentColor = False
@@ -49,7 +45,7 @@ object frmInfo: TfrmInfo
     Left = 0
     Height = 33
     Top = 0
-    Width = 493
+    Width = 497
     Align = alTop
     Caption = 'Cantara'
     Font.Height = -32
@@ -59,11 +55,10 @@ object frmInfo: TfrmInfo
     ParentFont = False
   end
   object lblInfo: TLabel
-    AnchorSideTop.Control = lblCompDate
     Left = 0
     Height = 142
     Top = 114
-    Width = 493
+    Width = 497
     Align = alTop
     BorderSpacing.Top = 15
     Caption = 'This program has been published under the GPL3 licence. '#10'The source code is available at the Github repository, a documentation can be be found on the project''s webpage.'#10'You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.'#10#10'The author wishes God''s blessing for the use of the program!'
@@ -76,7 +71,7 @@ object frmInfo: TfrmInfo
     AnchorSideTop.Control = lblInfo
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Side = asrBottom
-    Left = -4
+    Left = 0
     Height = 25
     Top = 266
     Width = 497
@@ -89,9 +84,9 @@ object frmInfo: TfrmInfo
   end
   object imgLogo: TImage
     AnchorSideRight.Side = asrBottom
-    Left = 389
+    Left = 393
     Height = 105
-    Top = 9
+    Top = 7
     Width = 104
     Anchors = [akRight]
     Picture.Data = {
@@ -659,7 +654,7 @@ object frmInfo: TfrmInfo
     AnchorSideTop.Control = btnOpenGitRepo
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Side = asrBottom
-    Left = 0
+    Left = 4
     Height = 25
     Top = 291
     Width = 493

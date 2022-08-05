@@ -30,11 +30,10 @@
       <BuildNr Value="5"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
+      <Attributes pvaPreRelease="True"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.3"/>
     </VersionInfo>
-    <MacroValues Count="3">
-      <Macro1 Name="LCLWidgetType" Value="qt5"/>
-      <Macro2 Name="LCLWidgetType" Value="qt5"/>
+    <MacroValues Count="1">
       <Macro3 Name="LCLWidgetType" Value="qt5"/>
     </MacroValues>
     <BuildModes Count="1">
@@ -61,7 +60,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -100,6 +99,11 @@
         <Filename Value="lyrics.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit5>
+      <Unit6>
+        <Filename Value="commandlineoptions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CommandLineOptions"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

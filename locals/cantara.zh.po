@@ -23,6 +23,7 @@ msgid "Open webpage..."
 msgstr "打开网页"
 
 #: info.strformcaption
+msgctxt "info.strformcaption"
 msgid "About this Program"
 msgstr "关于这个程序"
 
@@ -84,8 +85,10 @@ msgid "Open Project's Webpage with Browser"
 msgstr ""
 
 #: tfrminfo.caption
-msgid "Über das Programm"
-msgstr ""
+#, fuzzy
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
+msgstr "关于这个程序"
 
 #: tfrminfo.lblauthor.caption
 msgid "Autor: Jan Martin Reckel"
@@ -137,6 +140,10 @@ msgstr ""
 msgid "Background Color..."
 msgstr ""
 
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr ""
+
 #: tfrmsettings.btnclose.caption
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
@@ -155,7 +162,7 @@ msgid "Text Color..."
 msgstr ""
 
 #: tfrmsettings.caption
-msgid "Einstellungen"
+msgid "Settings"
 msgstr ""
 
 #: tfrmsettings.cbemptyframe.caption
@@ -174,6 +181,10 @@ msgstr ""
 msgid "at last slide"
 msgstr ""
 
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr ""
+
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
 msgstr ""
@@ -189,6 +200,14 @@ msgstr ""
 
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
+msgstr ""
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Brightness:"
+msgstr ""
+
+#: tfrmsettings.lblimagebrithness.caption
+msgid "lblImageBrithness"
 msgstr ""
 
 #: tfrmsettings.lbllinedistance.caption
