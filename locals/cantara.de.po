@@ -35,7 +35,7 @@ msgstr "Version"
 
 #: info.strwebpage
 msgid "https://www.cantara.app"
-msgstr "https://www.cantara.app/de"
+msgstr ""
 
 #: present.strformcaption
 msgctxt "present.strformcaption"
@@ -81,8 +81,6 @@ msgid "Open Project's Webpage with Browser"
 msgstr "Öffne die Projektwebseite in einem Browser"
 
 #: tfrminfo.caption
-#, fuzzy
-#| msgid "Über das Programm"
 msgctxt "tfrminfo.caption"
 msgid "About this Program"
 msgstr "Über das Programm"
@@ -119,7 +117,7 @@ msgstr ""
 
 #: tfrmpresent.caption
 msgctxt "tfrmpresent.caption"
-msgid "Präsentation"
+msgid "Presentation"
 msgstr "Präsentation"
 
 #: tfrmpresent.lblmeta.caption
@@ -142,7 +140,7 @@ msgstr "Hintergrundfarbe..."
 
 #: tfrmsettings.btnbackgroundimage.caption
 msgid "Background Image..."
-msgstr ""
+msgstr "Hintergrundbild..."
 
 #: tfrmsettings.btnclose.caption
 msgctxt "tfrmsettings.btnclose.caption"
@@ -162,8 +160,6 @@ msgid "Text Color..."
 msgstr "Textfarbe..."
 
 #: tfrmsettings.caption
-#, fuzzy
-#| msgid "Einstellungen"
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -185,7 +181,7 @@ msgstr "bei der letzten Folie"
 
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
-msgstr ""
+msgstr "Zeige Hintergrundbild:"
 
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
@@ -205,7 +201,7 @@ msgstr "Liederverzeichnis"
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Brightness:"
-msgstr ""
+msgstr "Verändere Bildhelligkeit:"
 
 #: tfrmsettings.lblimagebrithness.caption
 msgid "lblImageBrithness"
@@ -346,4 +342,3 @@ msgstr "Öffne Liederauswahl"
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
 msgstr "Speichere Liederauswahl"
-

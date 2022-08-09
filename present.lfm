@@ -4,7 +4,7 @@ object frmPresent: TfrmPresent
   Height = 535
   Top = 158
   Width = 1070
-  Caption = 'Präsentation'
+  Caption = 'Presentation'
   ClientHeight = 535
   ClientWidth = 1070
   Color = clBlack
@@ -15,7 +15,6 @@ object frmPresent: TfrmPresent
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '2.2.2.0'
   WindowState = wsMaximized
   object imgBackground: TImage
     AnchorSideRight.Side = asrBottom

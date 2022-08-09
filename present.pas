@@ -62,9 +62,6 @@ var
   cur: Integer; //The current Index of the String List which is shown
   FullScreen: Boolean;
 
-ResourceString
-  strFormCaption = 'Präsentation';
-
 implementation
 
 Uses
@@ -213,7 +210,6 @@ begin
   present.textList := TStringList.Create;
   present.songMetaList := TStringList.Create;
   FullScreen := False;
-  self.Caption:= strFormCaption;
   self.WindowState:= wsMaximized;
 end;
 

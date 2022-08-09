@@ -101,7 +101,7 @@ msgstr ""
 
 #: tfrmpresent.caption
 msgctxt "tfrmpresent.caption"
-msgid "Präsentation"
+msgid "Presentation"
 msgstr ""
 
 #: tfrmpresent.lblmeta.caption

@@ -71,19 +71,6 @@ var
   frmSettings: TfrmSettings;
   settingsFile: TINIFile;
 
-{ResourceString
-  strLiederverzeichnis = 'Liederverzeichnis';
-  strLeerfolieZwischenLiedern = 'Leerfolie zwischen Liedern';
-  strNaechsteFolieAndeuten = 'Nächste Folie andeuten';
-  strZeilenabstand = 'Zeilenabstand';
-  strPraesentationsanzeige = 'Präsentationsanzeige';
-  strSchriftgroesse = 'Schriftgröße und -art';
-  strHintergrundfarbe = 'Hintergrundfarbe';
-  strTextfarbe = 'Textfarbe';
-  strSchliessen = 'Schließen';
-  strFormCaption = 'Einstellungen';
-  strSongLyricsToClipboard = 'Kopiere die Liedtexte in die Zwischenablage'; }
-
 implementation
 
 Uses
@@ -95,17 +82,7 @@ Uses
 
 procedure TfrmSettings.LocaliseCaptions;
 begin
-  {labelSongDir.Caption := StrLiederverzeichnis + ': ';
-  cbEmptyFrame.Caption := strLeerfolieZwischenLiedern;
-  cbSpoiler.Caption := strNaechsteFolieAndeuten;
-  cbLyricsToClipboard.Caption:=strSongLyricsToClipboard;
-  lblLineDistance.Caption:= strZeilenabstand;
-  lblPresentationView.Caption:=strPraesentationsanzeige;
-  btnFontSizeManually.Caption:= strSchriftgroesse + '...';
-  btnBackgroundColor.Caption := strHintergrundfarbe + '...';
-  btnTextColor.Caption := strTextfarbe + '...';
-  btnClose.Caption := strSchliessen;
-  self.Caption:= strFormCaption;}
+
 end;
 
 function getRepoDir(): string;
