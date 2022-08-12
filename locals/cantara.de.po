@@ -42,6 +42,18 @@ msgctxt "present.strformcaption"
 msgid "Präsentation"
 msgstr "Präsentation"
 
+#: settings.strbrightness
+msgid "Increase brightness by "
+msgstr "Erhöhe die Helligkeit um "
+
+#: settings.strpictureoriginalstate
+msgid "Picture is shown as it is"
+msgstr "Bild wird im Originalzustand gezeigt"
+
+#: settings.strtransparency
+msgid "Increase transparancy by "
+msgstr "Erhöhe die Transparenz um "
+
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
@@ -148,8 +160,8 @@ msgid "Close"
 msgstr "Schließen"
 
 #: tfrmsettings.btnfontsizemanually.caption
-msgid "Font Size..."
-msgstr "Schriftgröße..."
+msgid "Change Font Settings..."
+msgstr "Ändere die Schriftgröße und -art..."
 
 #: tfrmsettings.btnselectdir.caption
 msgid "..."
@@ -200,11 +212,11 @@ msgid "Song Repo Path:"
 msgstr "Liederverzeichnis"
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Brightness:"
-msgstr "Verändere Bildhelligkeit:"
+msgid "Change Image Transparancy/Brightness:"
+msgstr "Verändere Bildtransparenz und -helligkeit:"
 
-#: tfrmsettings.lblimagebrithness.caption
-msgid "lblImageBrithness"
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
 msgstr ""
 
 #: tfrmsettings.lbllinedistance.caption
@@ -219,6 +231,10 @@ msgstr "Zeige Metadaten:"
 msgid "Meta Data Content:"
 msgstr "Inhalt der Metadaten:"
 
+#: tfrmsettings.sbimagebrightness.hint
+msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgstr ""
+
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
 msgstr "Wähle das Liederverzeichnis"
@@ -229,11 +245,11 @@ msgstr "Wähle die Schriftfarbe"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
-msgstr "+"
+msgstr ""
 
 #: tfrmsongs.btnclear.caption
 msgid "🗑"
-msgstr "🗑"
+msgstr ""
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
@@ -241,23 +257,23 @@ msgstr "Leere alle ausgewählten Lieder"
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
-msgstr "🠗"
+msgstr ""
 
 #: tfrmsongs.btngoleft.caption
 msgid "←"
-msgstr "←"
+msgstr ""
 
 #: tfrmsongs.btngoright.caption
 msgid "→"
-msgstr "→"
+msgstr ""
 
 #: tfrmsongs.btnquitpresentation.caption
 msgid "×"
-msgstr "×"
+msgstr ""
 
 #: tfrmsongs.btnremove.caption
 msgid "-"
-msgstr "-"
+msgstr ""
 
 #: tfrmsongs.btnsettings.caption
 msgctxt "tfrmsongs.btnsettings.caption"
@@ -271,7 +287,7 @@ msgstr "Präsentation..."
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr "🠕"
+msgstr ""
 
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"

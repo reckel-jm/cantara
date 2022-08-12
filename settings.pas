@@ -26,7 +26,7 @@ type
     edtLineDistance: TFloatSpinEdit;
     FontDialog: TFontDialog;
     gbPresentation: TGroupBox;
-    lblImageBrithness: TLabel;
+    lblImageExplainer: TLabel;
     lblImageBrightness: TLabel;
     lblLineDistance: TLabel;
     lblMeta: TLabel;
@@ -56,6 +56,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure gbPresentationClick(Sender: TObject);
     procedure labelSongDirClick(Sender: TObject);
     procedure lblMetaClick(Sender: TObject);
     procedure loadSettings();
@@ -70,6 +71,11 @@ type
 var
   frmSettings: TfrmSettings;
   settingsFile: TINIFile;
+
+ResourceString
+  strTransparency = 'Increase transparancy by ';
+  strBrightness = 'Increase brightness by ';
+  strPictureOriginalState = 'Picture is shown as it is';
 
 implementation
 
@@ -127,6 +133,11 @@ begin
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmSettings.gbPresentationClick(Sender: TObject);
 begin
 
 end;
@@ -231,7 +242,12 @@ end;
 
 procedure TfrmSettings.sbImageBrightnessChange(Sender: TObject);
 begin
-  lblImageBrithness.Caption:=IntToStr(sbImageBrightness.Position)+'%';
+  if sbImageBrightness.Position < 0 then
+     lblImageExplainer.Caption:=strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position))+'%'
+  else if sbImageBrightness.Position = 0 then
+     lblImageExplainer.Caption := strPictureOriginalState
+  else
+     lblImageExplainer.Caption:=strBrightness + ' ' + IntToStr(sbImageBrightness.Position) + '%';
 end;
 
 procedure TfrmSettings.FormCloseQuery(Sender: TObject; var CanClose: boolean);

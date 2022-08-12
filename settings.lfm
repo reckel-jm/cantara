@@ -2,11 +2,11 @@ object frmSettings: TfrmSettings
   Left = 451
   Height = 558
   Top = 208
-  Width = 525
+  Width = 719
   BorderIcons = [biSystemMenu]
   Caption = 'Settings'
   ClientHeight = 558
-  ClientWidth = 525
+  ClientWidth = 719
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -29,7 +29,7 @@ object frmSettings: TfrmSettings
     Left = 115
     Height = 36
     Top = 8
-    Width = 381
+    Width = 575
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     OnChange = edtRepoPathChange
@@ -39,7 +39,7 @@ object frmSettings: TfrmSettings
     TabOrder = 0
   end
   object btnSelectDir: TButton
-    Left = 498
+    Left = 692
     Height = 23
     Top = 16
     Width = 24
@@ -97,17 +97,18 @@ object frmSettings: TfrmSettings
     Left = 8
     Height = 383
     Top = 122
-    Width = 510
+    Width = 704
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
     ClientHeight = 349
-    ClientWidth = 506
+    ClientWidth = 700
     TabOrder = 6
+    OnClick = gbPresentationClick
     object edtLineDistance: TFloatSpinEdit
       AnchorSideLeft.Control = lblLineDistance
       AnchorSideLeft.Side = asrBottom
-      Left = 149
+      Left = 218
       Height = 36
       Top = 8
       Width = 61
@@ -117,25 +118,29 @@ object frmSettings: TfrmSettings
       ParentFont = False
       TabOrder = 0
       Value = 1
+      Visible = False
     end
     object lblLineDistance: TLabel
-      Left = 8
+      AnchorSideRight.Control = edtLineDistance
+      Left = 111
       Height = 22
       Top = 16
       Width = 93
+      Anchors = [akRight]
       Caption = 'Line Distance:'
       ParentColor = False
       ParentFont = False
+      Visible = False
     end
     object btnBackgroundColor: TButton
       AnchorSideLeft.Control = edtLineDistance
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnFontSizeManually
       AnchorSideTop.Side = asrBottom
-      Left = 218
+      Left = 287
       Height = 23
       Top = 28
-      Width = 285
+      Width = 410
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Color...'
@@ -147,14 +152,14 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Control = edtLineDistance
       AnchorSideLeft.Side = asrBottom
       AnchorSideRight.Side = asrBottom
-      Left = 218
+      Left = 287
       Height = 23
       Top = 5
-      Width = 285
+      Width = 410
       Align = alCustom
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
-      Caption = 'Font Size...'
+      Caption = 'Change Font Settings...'
       OnClick = btnFontSizeManuallyClick
       ParentFont = False
       TabOrder = 2
@@ -164,10 +169,10 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnBackgroundColor
       AnchorSideTop.Side = asrBottom
-      Left = 218
+      Left = 287
       Height = 23
       Top = 51
-      Width = 285
+      Width = 410
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Text Color...'
@@ -242,7 +247,7 @@ object frmSettings: TfrmSettings
       Left = 148
       Height = 159
       Top = 185
-      Width = 355
+      Width = 549
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Left = 10
       BorderSpacing.Top = 5
@@ -253,10 +258,10 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
-      Left = 218
+      Left = 287
       Height = 23
       Top = 74
-      Width = 285
+      Width = 410
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Image...'
@@ -270,7 +275,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = btnBackgroundImage
-      Left = 11
+      Left = 80
       Height = 26
       Top = 74
       Width = 199
@@ -283,39 +288,43 @@ object frmSettings: TfrmSettings
       TabOrder = 8
     end
     object sbImageBrightness: TScrollBar
+      AnchorSideLeft.Control = btnBackgroundColor
       AnchorSideRight.Side = asrBottom
-      Left = 218
+      Left = 287
       Height = 21
+      Hint = 'A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture.'
       Top = 102
-      Width = 285
+      Width = 410
       Anchors = [akTop, akLeft, akRight]
       Min = -100
       PageSize = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 9
       OnChange = sbImageBrightnessChange
     end
     object lblImageBrightness: TLabel
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideRight.Control = sbImageBrightness
-      Left = 36
+      Left = 11
       Height = 22
       Top = 102
-      Width = 177
+      Width = 271
       Anchors = [akTop, akRight]
       BorderSpacing.Right = 5
-      Caption = 'Change Image Brightness:'
+      Caption = 'Change Image Transparancy/Brightness:'
       ParentColor = False
     end
-    object lblImageBrithness: TLabel
+    object lblImageExplainer: TLabel
       AnchorSideLeft.Control = sbImageBrightness
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
-      Left = 299
+      Left = 432
       Height = 22
       Top = 123
-      Width = 122
-      Caption = 'lblImageBrithness'
+      Width = 121
+      Caption = 'lblImageExplainer'
       ParentColor = False
     end
   end
@@ -323,7 +332,7 @@ object frmSettings: TfrmSettings
     AnchorSideTop.Control = gbPresentation
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Side = asrBottom
-    Left = 355
+    Left = 549
     Height = 46
     Top = 510
     Width = 163

@@ -46,6 +46,18 @@ msgctxt "present.strformcaption"
 msgid "Präsentation"
 msgstr ""
 
+#: settings.strbrightness
+msgid "Increase brightness by "
+msgstr ""
+
+#: settings.strpictureoriginalstate
+msgid "Picture is shown as it is"
+msgstr ""
+
+#: settings.strtransparency
+msgid "Increase transparancy by "
+msgstr ""
+
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
@@ -150,7 +162,7 @@ msgid "Close"
 msgstr ""
 
 #: tfrmsettings.btnfontsizemanually.caption
-msgid "Font Size..."
+msgid "Change Font Settings..."
 msgstr ""
 
 #: tfrmsettings.btnselectdir.caption
@@ -203,11 +215,11 @@ msgid "Song Repo Path:"
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Brightness:"
+msgid "Change Image Transparancy/Brightness:"
 msgstr ""
 
-#: tfrmsettings.lblimagebrithness.caption
-msgid "lblImageBrithness"
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
 msgstr ""
 
 #: tfrmsettings.lbllinedistance.caption
@@ -220,6 +232,10 @@ msgstr ""
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
+msgstr ""
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
 msgstr ""
 
 #: tfrmsettings.selectdirectorydialog.title
