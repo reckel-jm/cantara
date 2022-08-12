@@ -105,7 +105,7 @@ begin
         self.MetaDict.Add('author',self.inputFile.Strings[i+1]);
       end else
       begin
-        self.MetaDict.Add('ccli-licencenumber', self.inputFile.Strings[i].Split(' ')[1]);
+        self.MetaDict.Add('ccli-licensenumber', self.inputFile.Strings[i].Split(' ')[1]);
       end;
     end;
   end;
