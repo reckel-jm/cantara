@@ -23,6 +23,7 @@ msgid "Open webpage..."
 msgstr "打开网页"
 
 #: info.strformcaption
+msgctxt "info.strformcaption"
 msgid "About this Program"
 msgstr "关于这个程序"
 
@@ -43,6 +44,18 @@ msgstr ""
 #: present.strformcaption
 msgctxt "present.strformcaption"
 msgid "Präsentation"
+msgstr ""
+
+#: settings.strbrightness
+msgid "Increase brightness by "
+msgstr ""
+
+#: settings.strpictureoriginalstate
+msgid "Picture is shown as it is"
+msgstr ""
+
+#: settings.strtransparency
+msgid "Increase transparancy by "
 msgstr ""
 
 #: songselection.strbuttoneinstellungen
@@ -84,8 +97,10 @@ msgid "Open Project's Webpage with Browser"
 msgstr ""
 
 #: tfrminfo.caption
-msgid "Über das Programm"
-msgstr ""
+#, fuzzy
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
+msgstr "关于这个程序"
 
 #: tfrminfo.lblauthor.caption
 msgid "Autor: Jan Martin Reckel"
@@ -114,7 +129,7 @@ msgstr ""
 
 #: tfrmpresent.caption
 msgctxt "tfrmpresent.caption"
-msgid "Präsentation"
+msgid "Presentation"
 msgstr ""
 
 #: tfrmpresent.lblmeta.caption
@@ -137,13 +152,17 @@ msgstr ""
 msgid "Background Color..."
 msgstr ""
 
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr ""
+
 #: tfrmsettings.btnclose.caption
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
 msgstr ""
 
 #: tfrmsettings.btnfontsizemanually.caption
-msgid "Font Size..."
+msgid "Change Font Settings..."
 msgstr ""
 
 #: tfrmsettings.btnselectdir.caption
@@ -155,7 +174,7 @@ msgid "Text Color..."
 msgstr ""
 
 #: tfrmsettings.caption
-msgid "Einstellungen"
+msgid "Settings"
 msgstr ""
 
 #: tfrmsettings.cbemptyframe.caption
@@ -172,6 +191,10 @@ msgstr ""
 
 #: tfrmsettings.cbmetadatalastslide.caption
 msgid "at last slide"
+msgstr ""
+
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
 msgstr ""
 
 #: tfrmsettings.cbspoiler.caption
@@ -191,6 +214,14 @@ msgstr ""
 msgid "Song Repo Path:"
 msgstr ""
 
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparancy/Brightness:"
+msgstr ""
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
+msgstr ""
+
 #: tfrmsettings.lbllinedistance.caption
 msgid "Line Distance:"
 msgstr ""
@@ -201,6 +232,10 @@ msgstr ""
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
+msgstr ""
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
 msgstr ""
 
 #: tfrmsettings.selectdirectorydialog.title

@@ -2,7 +2,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: info.strauthor
-msgctxt "info.strauthor"
 msgid "Author"
 msgstr ""
 
@@ -11,11 +10,11 @@ msgid "Open webpage..."
 msgstr ""
 
 #: info.strformcaption
+msgctxt "info.strformcaption"
 msgid "About this Program"
 msgstr ""
 
 #: info.strprogramcompiled
-msgctxt "info.strprogramcompiled"
 msgid "Program compiled"
 msgstr ""
 
@@ -30,6 +29,18 @@ msgstr ""
 #: present.strformcaption
 msgctxt "present.strformcaption"
 msgid "Präsentation"
+msgstr ""
+
+#: settings.strbrightness
+msgid "Increase brightness by "
+msgstr ""
+
+#: settings.strpictureoriginalstate
+msgid "Picture is shown as it is"
+msgstr ""
+
+#: settings.strtransparency
+msgid "Increase transparancy by "
 msgstr ""
 
 #: songselection.strbuttoneinstellungen
@@ -71,7 +82,8 @@ msgid "Open Project's Webpage with Browser"
 msgstr ""
 
 #: tfrminfo.caption
-msgid "Über das Programm"
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
 msgstr ""
 
 #: tfrminfo.lblauthor.caption
@@ -101,18 +113,16 @@ msgstr ""
 
 #: tfrmpresent.caption
 msgctxt "tfrmpresent.caption"
-msgid "Präsentation"
+msgid "Presentation"
 msgstr ""
 
 #: tfrmpresent.lblmeta.caption
-msgctxt "tfrmpresent.lblmeta.caption"
 msgid ""
 "<Meta>\n"
 "Second Line"
 msgstr ""
 
 #: tfrmpresent.lblnext.caption
-msgctxt "tfrmpresent.lblnext.caption"
 msgid "<Lyrics>"
 msgstr ""
 
@@ -124,13 +134,17 @@ msgstr ""
 msgid "Background Color..."
 msgstr ""
 
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr ""
+
 #: tfrmsettings.btnclose.caption
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
 msgstr ""
 
 #: tfrmsettings.btnfontsizemanually.caption
-msgid "Font Size..."
+msgid "Change Font Settings..."
 msgstr ""
 
 #: tfrmsettings.btnselectdir.caption
@@ -142,7 +156,7 @@ msgid "Text Color..."
 msgstr ""
 
 #: tfrmsettings.caption
-msgid "Einstellungen"
+msgid "Settings"
 msgstr ""
 
 #: tfrmsettings.cbemptyframe.caption
@@ -161,6 +175,10 @@ msgstr ""
 msgid "at last slide"
 msgstr ""
 
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr ""
+
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
 msgstr ""
@@ -170,12 +188,19 @@ msgid "Select font"
 msgstr ""
 
 #: tfrmsettings.gbpresentation.caption
-msgctxt "tfrmsettings.gbpresentation.caption"
 msgid "Presentation View"
 msgstr ""
 
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
+msgstr ""
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparancy/Brightness:"
+msgstr ""
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
 msgstr ""
 
 #: tfrmsettings.lbllinedistance.caption
@@ -188,6 +213,10 @@ msgstr ""
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
+msgstr ""
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
 msgstr ""
 
 #: tfrmsettings.selectdirectorydialog.title

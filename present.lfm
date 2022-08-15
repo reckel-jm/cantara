@@ -1,12 +1,12 @@
 object frmPresent: TfrmPresent
   Cursor = crNone
-  Left = 366
-  Height = 548
-  Top = 134
-  Width = 1077
-  Caption = 'Präsentation'
-  ClientHeight = 548
-  ClientWidth = 1077
+  Left = 381
+  Height = 535
+  Top = 158
+  Width = 1070
+  Caption = 'Presentation'
+  ClientHeight = 535
+  ClientWidth = 1070
   Color = clBlack
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -14,14 +14,28 @@ object frmPresent: TfrmPresent
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
+  Position = poDesktopCenter
   LCLVersion = '2.2.2.0'
   WindowState = wsMaximized
+  object imgBackground: TImage
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 535
+    Top = 0
+    Width = 1078
+    AntialiasingMode = amOn
+    Center = True
+    Stretch = True
+    Transparent = True
+    Visible = False
+  end
   object lblText: TLabel
     Cursor = crNone
     Left = 0
     Height = 1
     Top = 0
-    Width = 1077
+    Width = 1070
     Align = alTop
     Alignment = taCenter
     Font.Color = clWhite
@@ -36,22 +50,20 @@ object frmPresent: TfrmPresent
     Left = 0
     Height = 22
     Top = 1
-    Width = 1077
+    Width = 1070
     Align = alTop
     Alignment = taCenter
     Caption = '<Lyrics>'
-    Color = clBlack
     Font.Color = clWhite
     Layout = tlCenter
     ParentColor = False
     ParentFont = False
-    Transparent = False
     WordWrap = True
   end
   object lblMeta: TLabel
     Left = 16
     Height = 42
-    Top = 488
+    Top = 475
     Width = 80
     Align = alCustom
     Anchors = [akLeft, akBottom]
@@ -64,5 +76,22 @@ object frmPresent: TfrmPresent
     ParentFont = False
     Visible = False
     WordWrap = True
+  end
+  object ReloadImage: TAsyncProcess
+    Active = False
+    Options = []
+    Priority = ppNormal
+    StartupOptions = []
+    ShowWindow = swoNone
+    WindowColumns = 0
+    WindowHeight = 0
+    WindowLeft = 0
+    WindowRows = 0
+    WindowTop = 0
+    WindowWidth = 0
+    FillAttribute = 0
+    OnReadData = ReloadImageReadData
+    Left = 176
+    Top = 480
   end
 end

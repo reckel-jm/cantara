@@ -300,6 +300,7 @@ begin
     end;
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
+  frmPresent.LoadBackground;
 end;
 
 procedure TfrmSongs.grbControlClick(Sender: TObject);

@@ -6,15 +6,21 @@ interface
 
 uses
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Settings, Types, Themes, LCLTranslator, LCLIntf, Lyrics;
+  Settings, Types, Themes, LCLTranslator, LCLIntf, ExtCtrls, Lyrics,
+  IntfGraphics, AsyncProcess,
+  fpImage,
+  math;
 type
 
   { TfrmPresent }
 
   TfrmPresent = class(TForm)
+    ReloadImage: TAsyncProcess;
+    imgBackground: TImage;
     lblNext: TLabel;
     lblMeta: TLabel;
     lblText: TLabel;
+    ManipulatedBitmap: TBitmap;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
@@ -25,6 +31,7 @@ type
     procedure lblTextContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
     procedure lblTextDblClick(Sender: TObject);
+    procedure ReloadImageReadData(Sender: TObject);
     procedure showItem(index: integer);
     procedure SwitchFullScreen;
     procedure SwitchFullScreen(WantFullScreen: Boolean);
@@ -33,12 +40,15 @@ type
   private
     { private declarations }
     function getCurrentSong: lyrics.TSong;
+    procedure Brightness(SourceBitmap, DestBitmap: TBitMap; Offset: integer);
+    procedure BrightnessBitmap(SourceBitmap, DestBitmap: TBitmap; Prozent:integer);
   public
     { public declarations }
     OriginalBounds: TRect;
     OriginalWindowState: TWindowState;
     ScreenBounds: TRect;
     Songlist: lyrics.TSongList;
+    procedure LoadBackground;
     procedure GoPrevious;
     procedure GoNext;
     procedure Refresh;
@@ -51,9 +61,6 @@ var
   songMetaList: TStringList;
   cur: Integer; //The current Index of the String List which is shown
   FullScreen: Boolean;
-
-ResourceString
-  strFormCaption = 'Präsentation';
 
 implementation
 
@@ -96,6 +103,7 @@ end;
 procedure TfrmPresent.FormResize(Sender: TObject);
 begin
   showItem(cur);
+  LoadBackground;
 end;
 
 procedure TfrmPresent.FormShow(Sender: TObject);
@@ -114,7 +122,8 @@ begin
   lblMeta.Font := frmSettings.FontDialog.Font;
   lblMeta.Font.Color := frmSettings.textColorDialog.Color;
   lblMeta.Font.Height:= lblMeta.Font.Height div 3;
-  lblMeta.Width := frmPresent.Width div 2;
+  lblMeta.Width := Trunc(frmPresent.Width * 0.67);
+  LoadBackground;
 end;
 
 procedure TfrmPresent.lblTextClick(Sender: TObject);
@@ -137,6 +146,11 @@ begin
   SwitchFullScreen;
 end;
 
+procedure TfrmPresent.ReloadImageReadData(Sender: TObject);
+begin
+  LoadBackground;
+end;
+
 
 procedure TfrmPresent.showItem(index: integer);
 begin
@@ -146,7 +160,7 @@ begin
     lblText.Font.Color:= frmSettings.textColorDialog.Color;
     lblMeta.Font.Color := frmSettings.textColorDialog.Color;
     lblMeta.Font.Size := lblText.Font.Size div 3;
-    lblMeta.Width := frmPresent.Width div 2;
+    lblMeta.Width := Trunc(frmPresent.Width * 0.67);
     if ((frmSettings.cbSpoiler.Checked) and (textList.Count > cur + 1) and (textList.Strings[cur] <> '')) then
     begin
       lblNext.Visible:=True;
@@ -154,7 +168,6 @@ begin
       if (SongMetaList.Strings[cur+1] <> SongMetaList.Strings[cur]) and (frmSettings.cbEmptyFrame.Checked=False) then
          lblNext.Caption := ''
       else lblNext.Caption := textList.Strings[cur+1];
-      lblNext.Color := lblText.Color;
       lblNext.Font := frmSettings.FontDialog.Font;
       lblNext.Font.Color := frmSettings.textColorDialog.Color;
       lblNext.Font.Height:= lblNext.Font.Height div 2;
@@ -171,6 +184,8 @@ begin
     // Aktualisiere SongListe in Present-Form
     SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
     ShowMeta;
+    lblMeta.Top := frmPresent.Height-lblMeta.Height-lblMeta.Left;
+    //LoadBackground;
 end;
 
 procedure TfrmPresent.ShowMeta;
@@ -196,7 +211,7 @@ begin
   present.textList := TStringList.Create;
   present.songMetaList := TStringList.Create;
   FullScreen := False;
-  self.Caption:= strFormCaption;
+  self.WindowState:= wsMaximized;
 end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);
@@ -310,6 +325,108 @@ begin
       if SongMetaList.Strings[i] <> SongMetaList.Strings[i-1] then count := count+1;
   end;
   Result := SongList.Items[count];
+end;
+
+procedure TfrmPresent.LoadBackground;
+//var originalPicture: TPicture;
+begin
+  // Handle Background Image
+    if (frmSettings.cbShowBackgroundImage.Checked) and (FileExists(frmSettings.BgPictureDialog.FileName)) then
+    begin
+      imgBackground.Visible:=True;
+      imgBackground.Width:=frmPresent.Width;
+      imgBackground.Height:=frmPresent.Height;
+      //originalPicture := TPicture.Create;
+      //originalPicture.LoadFromFile(frmSettings.BgPictureDialog.FileName);
+      imgBackground.Picture.LoadFromFile(frmSettings.BgPictureDialog.FileName);
+      if imgBackground.Width/imgBackground.Height >= imgBackground.Picture.Width/imgBackground.Picture.Height then
+        begin
+          imgBackground.Height:=Trunc(imgBackground.Width*imgBackground.Picture.Height/imgBackground.Picture.Width);
+          //imgBackground.Height:=Trunc(imgBackground.width*imgBackground.Picture.Height/imgBackground.Picture.Width);
+          //imgBackground.Left:=Trunc((imgBackground.Picture.Width-imgBackground.width)/2);
+          imgBackground.Left:=0;
+          imgBackground.Top:=-Abs(Trunc((imgBackground.Height-frmPresent.Height)/2));
+        end
+      else
+        begin
+          imgBackground.Width:=Trunc(frmPresent.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
+          //imgBackground.Top:=Trunc((imgBackground.Picture.Height-imgBackground.Height)/2);
+          imgBackground.Left:=-Abs(Trunc((imgBackground.Width-frmPresent.Width)/2));
+          imgBackground.Top:=0;
+        end;
+      BrightnessBitmap(imgbackground.Picture.Bitmap, imgbackground.Picture.Bitmap, frmSettings.sbImageBrightness.Position);
+
+      //originalPicture.Free;
+    end
+    else
+    begin
+      imgBackground.Visible:=False;
+    end;
+end;
+
+procedure TfrmPresent.Brightness(SourceBitmap, DestBitmap: TBitMap; Offset: integer);
+var
+  SrctfImg, TemptfImg: TLazIntfImage;
+  ImgHandle, ImgMaskHandle: HBitmap;
+  px, py: integer;
+  CurColor: TFPColor;
+begin
+  Offset:=Offset * $FF;
+  SrctfImg := TLazIntfImage.Create(0, 0);
+  SrctfImg.LoadFromBitmap(SourceBitmap.Handle, SourceBitmap.MaskHandle);
+  TemptfImg := TLazIntfImage.Create(0, 0);
+  TemptfImg.DataDescription := GetDescriptionFromDevice(0);
+  TemptfImg.SetSize(SrctfImg.Width,SrctfImg.Height);
+  for py := 0 to SrctfImg.Height - 1 do
+  begin
+    for px := 0 to SrctfImg.Width - 1 do
+    begin
+      CurColor := SrctfImg.Colors[px, py];
+      CurColor.red := EnsureRange(CurColor.red + Offset,0,$FFFF);
+      CurColor.green := EnsureRange(CurColor.green + Offset,0,$FFFF);
+      CurColor.blue := EnsureRange(CurColor.blue + Offset,0,$FFFF);
+      TemptfImg.Colors[px, py] := CurColor;
+    end;
+  end;
+  TemptfImg.CreateBitmaps(ImgHandle, ImgMaskHandle, False);
+  DestBitmap.Handle := ImgHandle;
+  DestBitmap.MaskHandle := ImgMaskHandle;
+  SrctfImg.Free;
+  TemptfImg.Free;
+end;
+
+Procedure TfrmPresent.BrightnessBitmap(SourceBitmap, DestBitmap: TBitmap; Prozent:integer);
+var
+  Stream:Tmemorystream;
+  neuwert:array[0..255] of byte;
+  i:Integer;
+  b:byte;
+begin
+//  i:=gettickcount;
+
+  if Prozent<0 then        //Abdunkeln
+    for i:=0 to 255 do neuwert[i]:=round(i * (100+prozent)/100)
+  else                     //Aufhellen
+    for i:=0 to 255 do neuwert[i]:=round(i + (255-i) * (prozent)/100);
+
+  Stream:=TMemorystream.Create;
+  try
+    Sourcebitmap.SaveToStream(Stream);
+
+    Stream.Position:=55;   //Header Bitmap weg, nur Daten nutzen (http://de.wikipedia.org/wiki/Windows_Bi ... tionsblock)
+
+    for i:=Stream.Position to Stream.Size-1 do begin
+      b:=Stream.Readbyte;
+      Stream.Position:=i;
+      Stream.WriteByte(neuwert[b]);
+    end;
+
+    Stream.Position:=0;
+    DestBitmap.LoadFromStream(Stream);
+
+  finally
+    Stream.Free;
+  end;
 end;
 
 end.
