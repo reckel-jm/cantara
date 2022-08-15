@@ -24,19 +24,19 @@ type
 
   TfrmSongs = class(TForm)
     btnAdd: TButton;
+    btnClear: TButton;
+    btnDown: TButton;
     btnQuitPresentation: TButton;
     btnRemove: TButton;
-    btnUp: TButton;
-    btnDown: TButton;
-    btnStartPresentation: TButton;
-    btnSettings: TButton;
-    btnClear: TButton;
     btnGoLeft: TButton;
     btnGoRight: TButton;
+    btnSettings: TButton;
+    btnStartPresentation: TButton;
+    btnUp: TButton;
     chkMultiWindowMode: TCheckBox;
     edtSearch: TEdit;
-    grbSettings: TGroupBox;
-    grbControl: TGroupBox;
+    grbControl: TPanel;
+    grbSettings: TPanel;
     imgLiveViewer: TImage;
     lblFoilNumber: TLabel;
     lblPresentation: TLabel;

@@ -5,7 +5,7 @@ object frmSongs: TfrmSongs
   Width = 1073
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
-  ClientHeight = 801
+  ClientHeight = 803
   ClientWidth = 1073
   Menu = MainMenu
   OnActivate = FormActivate
@@ -17,10 +17,9 @@ object frmSongs: TfrmSongs
   OnResize = FormResize
   OnShow = FormShow
   OnWindowStateChange = FormResize
-  LCLVersion = '2.2.2.0'
   object lbxSselected: TListBox
     Left = 440
-    Height = 747
+    Height = 749
     Top = 0
     Width = 380
     Align = alCustom
@@ -35,126 +34,6 @@ object frmSongs: TfrmSongs
     ScrollWidth = 378
     TabOrder = 0
   end
-  object grbSettings: TGroupBox
-    Left = 0
-    Height = 42
-    Top = 759
-    Width = 1073
-    Align = alBottom
-    ClientHeight = 38
-    ClientWidth = 1069
-    ParentFont = False
-    TabOrder = 1
-    OnClick = grbSettingsClick
-    object btnStartPresentation: TButton
-      Left = 0
-      Height = 38
-      Top = 0
-      Width = 143
-      Align = alLeft
-      Caption = 'Presentation...'
-      OnClick = btnStartPresentationClick
-      ParentFont = False
-      TabOrder = 0
-    end
-    object btnSettings: TButton
-      Left = 935
-      Height = 38
-      Top = 0
-      Width = 134
-      Align = alRight
-      Caption = 'Settings...'
-      OnClick = btnSettingsClick
-      ParentFont = False
-      TabOrder = 1
-    end
-    object chkMultiWindowMode: TCheckBox
-      Left = 192
-      Height = 26
-      Top = 8
-      Width = 355
-      Caption = 'Multi-Screen-Mode (suitable for multiple screens)'
-      TabOrder = 2
-    end
-  end
-  object grbControl: TGroupBox
-    AnchorSideRight.Control = lbxSselected
-    Left = 400
-    Height = 648
-    Top = 8
-    Width = 40
-    Align = alCustom
-    Anchors = []
-    ClientHeight = 644
-    ClientWidth = 36
-    ParentFont = False
-    TabOrder = 2
-    OnClick = grbControlClick
-    object btnAdd: TButton
-      Left = 0
-      Height = 33
-      Top = 0
-      Width = 36
-      Align = alTop
-      Caption = '+'
-      OnClick = btnAddClick
-      ParentFont = False
-      TabOrder = 0
-    end
-    object btnRemove: TButton
-      Left = 0
-      Height = 33
-      Top = 33
-      Width = 36
-      Align = alTop
-      Caption = '-'
-      OnClick = btnRemoveClick
-      ParentFont = False
-      TabOrder = 1
-    end
-    object btnUp: TButton
-      Left = 0
-      Height = 33
-      Top = 116
-      Width = 36
-      Align = alTop
-      BorderSpacing.Top = 50
-      Caption = '🠕'
-      Font.Height = -13
-      Font.Name = 'Symbol PS'
-      Font.Style = [fsBold]
-      OnClick = btnUpClick
-      ParentFont = False
-      TabOrder = 2
-    end
-    object btnDown: TButton
-      Left = 0
-      Height = 33
-      Top = 149
-      Width = 36
-      Align = alTop
-      Caption = '🠗'
-      Font.Height = -13
-      Font.Name = 'Symbol PS'
-      Font.Style = [fsBold]
-      OnClick = btnDownClick
-      ParentFont = False
-      TabOrder = 3
-    end
-    object btnClear: TButton
-      Left = 0
-      Height = 33
-      Hint = 'Leere alle ausgewählten Lieder'
-      Top = 239
-      Width = 36
-      Align = alTop
-      BorderSpacing.Top = 57
-      Caption = '🗑'
-      OnClick = btnClearClick
-      ParentFont = False
-      TabOrder = 4
-    end
-  end
   object edtSearch: TEdit
     Left = 2
     Height = 36
@@ -166,19 +45,19 @@ object frmSongs: TfrmSongs
     OnChange = edtSearchChange
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 1
   end
   object pnlMultiScreen: TPanel
     AnchorSideLeft.Control = PnlSplitter
     Left = 832
-    Height = 759
+    Height = 761
     Top = 0
     Width = 241
     Align = alRight
     Anchors = [akTop, akLeft, akRight, akBottom]
-    ClientHeight = 759
+    ClientHeight = 761
     ClientWidth = 241
-    TabOrder = 4
+    TabOrder = 2
     OnClick = pnlMultiScreenClick
     OnResize = pnlMultiScreenResize
     object lblPresentation: TLabel
@@ -211,12 +90,12 @@ object frmSongs: TfrmSongs
       Align = alTop
       BorderWidth = 1
       BorderStyle = bsSingle
-      ClientHeight = 46
-      ClientWidth = 235
+      ClientHeight = 42
+      ClientWidth = 231
       TabOrder = 0
       object btnGoLeft: TButton
         Left = 2
-        Height = 42
+        Height = 38
         Top = 2
         Width = 75
         Align = alLeft
@@ -227,7 +106,7 @@ object frmSongs: TfrmSongs
       end
       object btnGoRight: TButton
         Left = 77
-        Height = 42
+        Height = 38
         Top = 2
         Width = 75
         Align = alLeft
@@ -238,7 +117,7 @@ object frmSongs: TfrmSongs
       end
       object btnQuitPresentation: TButton
         Left = 152
-        Height = 42
+        Height = 38
         Top = 2
         Width = 75
         Align = alLeft
@@ -260,11 +139,10 @@ object frmSongs: TfrmSongs
     end
   end
   object lbxSRepo: TListBox
-    AnchorSideRight.Control = grbControl
     Left = 0
     Height = 632
     Top = 32
-    Width = 400
+    Width = 406
     Align = alCustom
     Anchors = []
     BorderSpacing.Top = 30
@@ -275,18 +153,138 @@ object frmSongs: TfrmSongs
     ParentFont = False
     ScrollWidth = 398
     Sorted = True
-    TabOrder = 5
+    TabOrder = 3
   end
   object PnlSplitter: TSplitter
     AnchorSideLeft.Control = pnlMultiScreen
     AnchorSideRight.Control = pnlMultiScreen
     Left = 832
     Height = 669
-    Top = 42
+    Top = 43
     Width = 1
     Align = alNone
     Anchors = []
     OnMoved = PnlSplitterMoved
+  end
+  object grbControl: TPanel
+    AnchorSideRight.Control = lbxSselected
+    Left = 400
+    Height = 648
+    Top = 8
+    Width = 40
+    Align = alCustom
+    Anchors = []
+    ClientHeight = 648
+    ClientWidth = 40
+    ParentFont = False
+    TabOrder = 5
+    OnClick = grbControlClick
+    object btnAdd: TButton
+      Left = 1
+      Height = 33
+      Top = 1
+      Width = 38
+      Align = alTop
+      Caption = '+'
+      OnClick = btnAddClick
+      ParentFont = False
+      TabOrder = 0
+    end
+    object btnRemove: TButton
+      Left = 1
+      Height = 33
+      Top = 34
+      Width = 38
+      Align = alTop
+      Caption = '-'
+      OnClick = btnRemoveClick
+      ParentFont = False
+      TabOrder = 1
+    end
+    object btnUp: TButton
+      Left = 1
+      Height = 33
+      Top = 117
+      Width = 38
+      Align = alTop
+      BorderSpacing.Top = 50
+      Caption = '🠕'
+      Font.Height = -13
+      Font.Name = 'Symbol PS'
+      Font.Style = [fsBold]
+      OnClick = btnUpClick
+      ParentFont = False
+      TabOrder = 2
+    end
+    object btnDown: TButton
+      Left = 1
+      Height = 33
+      Top = 150
+      Width = 38
+      Align = alTop
+      Caption = '🠗'
+      Font.Height = -13
+      Font.Name = 'Symbol PS'
+      Font.Style = [fsBold]
+      OnClick = btnDownClick
+      ParentFont = False
+      TabOrder = 3
+    end
+    object btnClear: TButton
+      Left = 1
+      Height = 33
+      Hint = 'Leere alle ausgewählten Lieder'
+      Top = 240
+      Width = 38
+      Align = alTop
+      BorderSpacing.Top = 57
+      Caption = '🗑'
+      OnClick = btnClearClick
+      ParentFont = False
+      TabOrder = 4
+    end
+  end
+  object grbSettings: TPanel
+    Left = 0
+    Height = 42
+    Top = 761
+    Width = 1073
+    Align = alBottom
+    ClientHeight = 42
+    ClientWidth = 1073
+    ParentFont = False
+    TabOrder = 6
+    OnClick = grbSettingsClick
+    object btnStartPresentation: TButton
+      Left = 1
+      Height = 40
+      Top = 1
+      Width = 159
+      Align = alLeft
+      Caption = 'Presentation...'
+      OnClick = btnStartPresentationClick
+      ParentFont = False
+      TabOrder = 0
+    end
+    object btnSettings: TButton
+      Left = 938
+      Height = 40
+      Top = 1
+      Width = 134
+      Align = alRight
+      Caption = 'Settings...'
+      OnClick = btnSettingsClick
+      ParentFont = False
+      TabOrder = 1
+    end
+    object chkMultiWindowMode: TCheckBox
+      Left = 192
+      Height = 28
+      Top = 8
+      Width = 357
+      Caption = 'Multi-Screen-Mode (suitable for multiple screens)'
+      TabOrder = 2
+    end
   end
   object MainMenu: TMainMenu
     Left = 264
