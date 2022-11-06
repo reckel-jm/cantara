@@ -5,7 +5,7 @@ object frmSongs: TfrmSongs
   Width = 1073
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
-  ClientHeight = 803
+  ClientHeight = 801
   ClientWidth = 1073
   Menu = MainMenu
   OnActivate = FormActivate
@@ -19,7 +19,7 @@ object frmSongs: TfrmSongs
   OnWindowStateChange = FormResize
   object lbxSselected: TListBox
     Left = 440
-    Height = 749
+    Height = 747
     Top = 0
     Width = 380
     Align = alCustom
@@ -50,12 +50,12 @@ object frmSongs: TfrmSongs
   object pnlMultiScreen: TPanel
     AnchorSideLeft.Control = PnlSplitter
     Left = 832
-    Height = 761
+    Height = 759
     Top = 0
     Width = 241
     Align = alRight
     Anchors = [akTop, akLeft, akRight, akBottom]
-    ClientHeight = 761
+    ClientHeight = 759
     ClientWidth = 241
     TabOrder = 2
     OnClick = pnlMultiScreenClick
@@ -90,12 +90,12 @@ object frmSongs: TfrmSongs
       Align = alTop
       BorderWidth = 1
       BorderStyle = bsSingle
-      ClientHeight = 42
-      ClientWidth = 231
+      ClientHeight = 46
+      ClientWidth = 235
       TabOrder = 0
       object btnGoLeft: TButton
         Left = 2
-        Height = 38
+        Height = 42
         Top = 2
         Width = 75
         Align = alLeft
@@ -106,7 +106,7 @@ object frmSongs: TfrmSongs
       end
       object btnGoRight: TButton
         Left = 77
-        Height = 38
+        Height = 42
         Top = 2
         Width = 75
         Align = alLeft
@@ -117,7 +117,7 @@ object frmSongs: TfrmSongs
       end
       object btnQuitPresentation: TButton
         Left = 152
-        Height = 38
+        Height = 42
         Top = 2
         Width = 75
         Align = alLeft
@@ -160,7 +160,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = pnlMultiScreen
     Left = 832
     Height = 669
-    Top = 43
+    Top = 42
     Width = 1
     Align = alNone
     Anchors = []
@@ -247,7 +247,7 @@ object frmSongs: TfrmSongs
   object grbSettings: TPanel
     Left = 0
     Height = 42
-    Top = 761
+    Top = 759
     Width = 1073
     Align = alBottom
     ClientHeight = 42
@@ -279,9 +279,9 @@ object frmSongs: TfrmSongs
     end
     object chkMultiWindowMode: TCheckBox
       Left = 192
-      Height = 28
+      Height = 26
       Top = 8
-      Width = 357
+      Width = 355
       Caption = 'Multi-Screen-Mode (suitable for multiple screens)'
       TabOrder = 2
     end

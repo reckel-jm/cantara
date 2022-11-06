@@ -8,6 +8,7 @@ object frmPresent: TfrmPresent
   ClientHeight = 535
   ClientWidth = 1070
   Color = clBlack
+  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnHide = FormHide
@@ -15,7 +16,6 @@ object frmPresent: TfrmPresent
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '2.2.2.0'
   WindowState = wsMaximized
   object imgBackground: TImage
     AnchorSideRight.Side = asrBottom
@@ -25,9 +25,7 @@ object frmPresent: TfrmPresent
     Top = 0
     Width = 1078
     AntialiasingMode = amOn
-    Center = True
     Stretch = True
-    Transparent = True
     Visible = False
   end
   object lblText: TLabel

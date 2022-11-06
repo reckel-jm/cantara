@@ -16,17 +16,10 @@ uses
 begin
   Application.Scaled:=True;
   Application.Initialize;
-  {if HasOption('h', 'help') then
-  begin
-    PrintHelp;
-    Application.Free;
-    Terminate;
-    Exit;
-  end; }
   Application.CreateForm(TfrmSongs, frmSongs);
-  Application.CreateForm(TfrmPresent, frmPresent);
   Application.CreateForm(TfrmSettings, frmSettings);
   Application.CreateForm(TfrmInfo, frmInfo);
+  Application.CreateForm(TfrmPresent, frmPresent);
   Application.Run;
 end.
 

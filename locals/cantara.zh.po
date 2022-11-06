@@ -5,360 +5,241 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: zh_CN\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
-#: info.strauthor
-#, fuzzy
-msgctxt "info.strauthor"
+msgid "+"
+msgstr "+"
+
+msgid "-"
+msgstr "-"
+
+msgid "..."
+msgstr "..."
+
+msgid "About this Program"
+msgstr "關於本程式"
+
 msgid "Author"
-msgstr "程序员"
+msgstr "作者"
 
-#: info.strbuttongitrepo
-msgid "Open webpage..."
-msgstr "打开网页"
-
-#: info.strformcaption
-msgctxt "info.strformcaption"
-msgid "About this Program"
-msgstr "关于这个程序"
-
-#: info.strprogramcompiled
-#, fuzzy
-msgctxt "info.strprogramcompiled"
-msgid "Program compiled"
-msgstr "编制的方案时间"
-
-#: info.strversion
-msgid "Version"
-msgstr "版本"
-
-#: info.strwebpage
-msgid "https://www.cantara.app"
-msgstr ""
-
-#: present.strformcaption
-msgctxt "present.strformcaption"
-msgid "Präsentation"
-msgstr ""
-
-#: settings.strbrightness
-msgid "Increase brightness by "
-msgstr ""
-
-#: settings.strpictureoriginalstate
-msgid "Picture is shown as it is"
-msgstr ""
-
-#: settings.strtransparency
-msgid "Increase transparancy by "
-msgstr ""
-
-#: songselection.strbuttoneinstellungen
-msgctxt "songselection.strbuttoneinstellungen"
-msgid "Settings..."
-msgstr ""
-
-#: songselection.strbuttonpraesentation
-msgctxt "songselection.strbuttonpraesentation"
-msgid "Presentation..."
-msgstr ""
-
-#: songselection.strerstebenutzung
-msgid "You are using this program for the first time. Please select a song repository folder."
-msgstr ""
-
-#: songselection.strfehlerkeineliederbeipraesentation
-msgid "You have to add songs first."
-msgstr "请先加歌曲。"
-
-#: songselection.strfehleroeffnen
-msgid "Error while opening. Propably you have not the required rights to access this file."
-msgstr ""
-
-#: songselection.strfehlerspeichern
-msgid "Error while saving. Propably you have not the required rights to access this file."
-msgstr ""
-
-#: songselection.strfolie
-msgid "Slide"
-msgstr ""
-
-#: tfrminfo.btnopengitrepo.caption
-msgid "Open Github Repository with Browser"
-msgstr ""
-
-#: tfrminfo.btnopenwebpage.caption
-msgid "Open Project's Webpage with Browser"
-msgstr ""
-
-#: tfrminfo.caption
-#, fuzzy
-msgctxt "tfrminfo.caption"
-msgid "About this Program"
-msgstr "关于这个程序"
-
-#: tfrminfo.lblauthor.caption
 msgid "Autor: Jan Martin Reckel"
-msgstr ""
+msgstr "作者：Jan Martin Reckel"
 
-#: tfrminfo.lblcompdate.caption
-msgid "lblCompDate"
-msgstr ""
+msgid "Background Color..."
+msgstr "背景顏色…"
 
-#: tfrminfo.lblinfo.caption
+msgid "Cantara"
+msgstr "Cantara"
+
+msgid "Copy lyrics to clipboard"
+msgstr "將文本複製到剪貼板"
+
+msgid "Edit"
+msgstr "編輯"
+
+msgid "Einstellungen"
+msgstr "設定"
+
+msgid "Empty slide between songs"
+msgstr "歌曲之間的空投影片"
+
+msgid ""
+"Error while opening. Propably you have not the required rights to access "
+"this file."
+msgstr "打開時發生錯誤。可能您未獲取打開該檔案的權限。"
+
+msgid ""
+"Error while saving. Propably you have not the required rights to access this "
+"file."
+msgstr "保存時發生錯誤。可能您未獲取保存該檔案的權限。"
+
+msgid "File"
+msgstr "文件"
+
+msgid "Font Size..."
+msgstr "字體大小..."
+
+msgid "Help"
+msgstr "幫助"
+
+msgid "Information about the Program"
+msgstr "關於本程式"
+
+msgid "Leere alle ausgewählten Lieder"
+msgstr "清空所有選定歌曲"
+
+msgid "Line Distance:"
+msgstr "列間距："
+
+msgid "Load Selection..."
+msgstr "載入歌曲選集..."
+
+msgid "Meta Data Content:"
+msgstr "元資料內容："
+
+msgid "Multi-Screen-Mode (suitable for multiple screens)"
+msgstr "多熒幕模式（多熒幕或視訊會議）"
+
+msgid "Open Github Repository with Browser"
+msgstr "在瀏覽器中打開GitHub資料庫"
+
+msgid "Open Project's Webpage with Browser"
+msgstr "在瀏覽器中打開項目站點"
+
+msgid "Open Song List"
+msgstr "打開歌曲列表"
+
+msgid "Open webpage..."
+msgstr "打開網頁..."
+
+msgid "Presentation View"
+msgstr "投影片展示模式"
+
+msgid "Presentation is running:"
+msgstr "投影展示正在運行："
+
+msgid "Program compiled"
+msgstr "編譯程序"
+
+msgid "Reload Song Repository"
+msgstr "重新加載曲庫"
+
+msgid "Run Presentation"
+msgstr "開始投影片放映"
+
+msgid "Save Selection..."
+msgstr "儲存已選歌曲..."
+
+msgid "Save Song List"
+msgstr "保存歌曲列表"
+
+msgid "Select background color"
+msgstr "選擇背景顏色"
+
+msgid "Select font"
+msgstr "選擇字體及字號"
+
+msgid "Select song repository dictionary"
+msgstr "選擇曲庫目錄"
+
+msgid "Select text color"
+msgstr "選擇文本顏色"
+
+msgid "Show Meta Data:"
+msgstr "顯示元資料："
+
+msgid "Slide"
+msgstr "投影片"
+
+msgid "Song Repo Path:"
+msgstr "曲庫路徑："
+
+msgid "Song Selection (Cantara)"
+msgstr "歌曲選集 (Cantara)"
+
+msgid "Spoil next slides"
+msgstr "提示次投影片"
+
+msgid "Suchen..."
+msgstr "查找..."
+
+msgid "Text Color..."
+msgstr "文本顏色..."
+
 msgid ""
 "This program has been published under the GPL3 licence. \n"
-"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
-"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
+"The source code is available at the Github repository, a documentation can "
+"be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms "
+"and conditions of the GPL3 licence.\n"
 "\n"
 "The author wishes God's blessing for the use of the program!"
 msgstr ""
+"本應用程式經GPL3許可下發布。 \n"
+"本應用程式的源碼可以在GitHub的資源庫找到，項目頁面中可以找到本程式的說明文"
+"檔。\n"
+"在GPL3許可所規定的條款與條件下，本程式可以被修改和重新使用。\n"
+"\n"
+"上帝保佑您使用這個程式！"
 
-#: tfrminfo.lblname.caption
-msgid "Cantara"
-msgstr ""
+msgid "Version"
+msgstr "版本"
 
-#: tfrminfo.lblversion.caption
-msgid "lblVersion"
-msgstr ""
-
-#: tfrmpresent.caption
-msgctxt "tfrmpresent.caption"
-msgid "Presentation"
-msgstr ""
-
-#: tfrmpresent.lblmeta.caption
-msgctxt "tfrmpresent.lblmeta.caption"
 msgid ""
-"<Meta>\n"
-"Second Line"
-msgstr ""
+"You are using this program for the first time. Please select a song "
+"repository folder."
+msgstr "您正在第一次使用本程式。請選擇一個曲庫資料夾。"
 
-#: tfrmpresent.lblnext.caption
-msgctxt "tfrmpresent.lblnext.caption"
-msgid "<Lyrics>"
-msgstr ""
+msgid "You have to add songs first."
+msgstr "您必須首先添加歌曲。"
 
-#: tfrmsettings.bgcolordialog.title
-msgid "Select background color"
-msgstr ""
+msgid "at first slide"
+msgstr "首投影片"
 
-#: tfrmsettings.btnbackgroundcolor.caption
-msgid "Background Color..."
-msgstr ""
+msgid "at last slide"
+msgstr "末投影片"
 
-#: tfrmsettings.btnbackgroundimage.caption
-msgid "Background Image..."
-msgstr ""
+msgid "https://www.cantara.app"
+msgstr "https://www.cantara.app/de"
 
-#: tfrmsettings.btnclose.caption
+msgctxt "present.strformcaption"
+msgid "Präsentation"
+msgstr "投影片"
+
+msgctxt "songselection.strbuttoneinstellungen"
+msgid "Settings..."
+msgstr "設定…"
+
+msgctxt "songselection.strbuttonpraesentation"
+msgid "Presentation..."
+msgstr "展示..."
+
+msgctxt "tfrmpresent.caption"
+msgid "Präsentation"
+msgstr "投影片"
+
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
-#: tfrmsettings.btnfontsizemanually.caption
-msgid "Change Font Settings..."
-msgstr ""
-
-#: tfrmsettings.btnselectdir.caption
-msgid "..."
-msgstr ""
-
-#: tfrmsettings.btntextcolor.caption
-msgid "Text Color..."
-msgstr ""
-
-#: tfrmsettings.caption
-msgid "Settings"
-msgstr ""
-
-#: tfrmsettings.cbemptyframe.caption
-msgid "Empty slide between songs"
-msgstr ""
-
-#: tfrmsettings.cblyricstoclipboard.caption
-msgid "Copy lyrics to clipboard"
-msgstr ""
-
-#: tfrmsettings.cbmetadatafirstslide.caption
-msgid "at first slide"
-msgstr ""
-
-#: tfrmsettings.cbmetadatalastslide.caption
-msgid "at last slide"
-msgstr ""
-
-#: tfrmsettings.cbshowbackgroundimage.caption
-msgid "Show Background Image:"
-msgstr ""
-
-#: tfrmsettings.cbspoiler.caption
-msgid "Spoil next slides"
-msgstr ""
-
-#: tfrmsettings.fontdialog.title
-msgid "Select font"
-msgstr ""
-
-#: tfrmsettings.gbpresentation.caption
-msgctxt "tfrmsettings.gbpresentation.caption"
-msgid "Presentation View"
-msgstr ""
-
-#: tfrmsettings.labelsongdir.caption
-msgid "Song Repo Path:"
-msgstr ""
-
-#: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparancy/Brightness:"
-msgstr ""
-
-#: tfrmsettings.lblimageexplainer.caption
-msgid "lblImageExplainer"
-msgstr ""
-
-#: tfrmsettings.lbllinedistance.caption
-msgid "Line Distance:"
-msgstr ""
-
-#: tfrmsettings.lblmeta.caption
-msgid "Show Meta Data:"
-msgstr ""
-
-#: tfrmsettings.lblmetacontent.caption
-msgid "Meta Data Content:"
-msgstr ""
-
-#: tfrmsettings.sbimagebrightness.hint
-msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
-msgstr ""
-
-#: tfrmsettings.selectdirectorydialog.title
-msgid "Select song repository dictionary"
-msgstr ""
-
-#: tfrmsettings.textcolordialog.title
-msgid "Select text color"
-msgstr ""
-
-#: tfrmsongs.btnadd.caption
-msgid "+"
-msgstr ""
-
-#: tfrmsongs.btnclear.caption
-msgid "🗑"
-msgstr ""
-
-#: tfrmsongs.btnclear.hint
-msgid "Leere alle ausgewählten Lieder"
-msgstr ""
-
-#: tfrmsongs.btndown.caption
-msgid "🠗"
-msgstr ""
-
-#: tfrmsongs.btngoleft.caption
-msgid "←"
-msgstr ""
-
-#: tfrmsongs.btngoright.caption
-msgid "→"
-msgstr ""
-
-#: tfrmsongs.btnquitpresentation.caption
-msgid "×"
-msgstr ""
-
-#: tfrmsongs.btnremove.caption
-msgid "-"
-msgstr ""
-
-#: tfrmsongs.btnsettings.caption
 msgctxt "tfrmsongs.btnsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "設定…"
 
-#: tfrmsongs.btnstartpresentation.caption
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
-msgstr ""
+msgstr "投影片..."
 
-#: tfrmsongs.btnup.caption
-msgid "🠕"
-msgstr ""
-
-#: tfrmsongs.caption
-msgid "Song Selection (Cantara)"
-msgstr ""
-
-#: tfrmsongs.chkmultiwindowmode.caption
-msgid "Multi-Screen-Mode (suitable for multiple screens)"
-msgstr ""
-
-#: tfrmsongs.edtsearch.hint
-msgid "Suchen..."
-msgstr ""
-
-#: tfrmsongs.itemabout.caption
-msgid "Information about the Program"
-msgstr ""
-
-#: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
-#: tfrmsongs.itemload.caption
-msgid "Load Selection..."
-msgstr ""
-
-#: tfrmsongs.itempresentation.caption
-msgid "Run Presentation"
-msgstr ""
-
-#: tfrmsongs.itemreloadsonglist.caption
-msgid "Reload Song Repository"
-msgstr ""
-
-#: tfrmsongs.itemsave.caption
-msgid "Save Selection..."
-msgstr ""
-
-#: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "設定…"
 
-#: tfrmsongs.lblfoilnumber.caption
-msgid "Foliennummern"
-msgstr ""
+msgid "×"
+msgstr "×"
 
-#: tfrmsongs.lblpresentation.caption
-msgid "Presentation is running:"
-msgstr ""
+msgid "Über das Programm"
+msgstr "關於程式"
 
-#: tfrmsongs.menuedit.caption
-msgid "Edit"
-msgstr ""
+msgid "←"
+msgstr "←"
 
-#: tfrmsongs.menufile.caption
-msgid "File"
-msgstr ""
+msgid "→"
+msgstr "→"
 
-#: tfrmsongs.menuhelp.caption
-msgid "Help"
-msgstr ""
+msgid "🗑"
+msgstr "🗑"
 
-#: tfrmsongs.opendialog.title
-msgid "Open Song List"
-msgstr ""
+msgid "🠕"
+msgstr "🠕"
 
-#: tfrmsongs.savedialog.title
-msgid "Save Song List"
-msgstr ""
-
+msgid "🠗"
+msgstr "🠗"

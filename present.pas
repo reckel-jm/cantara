@@ -21,6 +21,7 @@ type
     lblMeta: TLabel;
     lblText: TLabel;
     ManipulatedBitmap: TBitmap;
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
@@ -214,6 +215,11 @@ begin
   self.WindowState:= wsMaximized;
 end;
 
+procedure TfrmPresent.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+
+end;
+
 procedure TfrmPresent.FormDestroy(Sender: TObject);
 begin
   textList.Free;
@@ -328,7 +334,7 @@ begin
 end;
 
 procedure TfrmPresent.LoadBackground;
-//var originalPicture: TPicture;
+var newHeight, newWidth: integer;
 begin
   // Handle Background Image
     if (frmSettings.cbShowBackgroundImage.Checked) and (FileExists(frmSettings.BgPictureDialog.FileName)) then
@@ -341,22 +347,19 @@ begin
       imgBackground.Picture.LoadFromFile(frmSettings.BgPictureDialog.FileName);
       if imgBackground.Width/imgBackground.Height >= imgBackground.Picture.Width/imgBackground.Picture.Height then
         begin
-          imgBackground.Height:=Trunc(imgBackground.Width*imgBackground.Picture.Height/imgBackground.Picture.Width);
-          //imgBackground.Height:=Trunc(imgBackground.width*imgBackground.Picture.Height/imgBackground.Picture.Width);
-          //imgBackground.Left:=Trunc((imgBackground.Picture.Width-imgBackground.width)/2);
-          imgBackground.Left:=0;
+          newHeight:=Trunc(imgBackground.Width*imgBackground.Picture.Height/imgBackground.Picture.Width);
           imgBackground.Top:=-Abs(Trunc((imgBackground.Height-frmPresent.Height)/2));
+          imgBackground.Left:=0;
+          imgBackground.Height := newHeight;
         end
       else
         begin
-          imgBackground.Width:=Trunc(frmPresent.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
-          //imgBackground.Top:=Trunc((imgBackground.Picture.Height-imgBackground.Height)/2);
+          newWidth:=Trunc(frmPresent.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
           imgBackground.Left:=-Abs(Trunc((imgBackground.Width-frmPresent.Width)/2));
           imgBackground.Top:=0;
+          imgBackground.Width:=newWidth;
         end;
       BrightnessBitmap(imgbackground.Picture.Bitmap, imgbackground.Picture.Bitmap, frmSettings.sbImageBrightness.Position);
-
-      //originalPicture.Free;
     end
     else
     begin
