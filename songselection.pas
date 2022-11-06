@@ -300,7 +300,6 @@ begin
     end;
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
-  frmPresent.LoadBackground;
 end;
 
 procedure TfrmSongs.grbControlClick(Sender: TObject);
@@ -531,7 +530,8 @@ begin
 
     frmSongs.FormResize(frmSongs);
     // Zeige die Präsentations-Form
-    frmPresent.Show();
+    frmPresent.LoadBackground;
+    frmPresent.Show;
     frmPresent.ShowFirst;
     // Workaround für Windoof
     frmPresent.WindowState:= wsMaximized;
