@@ -38,8 +38,8 @@ jobs:
           cantara
           languages
           Cantara.ico
-          cantara.desktop
-          Cantara.png
+          app.cantara.Cantara.desktop
+          app.cantara.Cantara.png
           COPYING
     - name: Artifacts (Windows)
       if: ${{ matrix.operating-system == 'windows-latest' }}
@@ -50,8 +50,8 @@ jobs:
           cantara.exe
           languages
           Cantara.ico
-          cantara.desktop
-          Cantara.png
+          app.cantara.Cantara.desktop
+          app.cantara.Cantara.png
           COPYING
     - name: Artifacts (Apple)
       if: ${{ matrix.operating-system == 'macos-latest' }}

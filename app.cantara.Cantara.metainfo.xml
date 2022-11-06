@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2022 Jan Martin Reckel -->
+<component type="desktop-application">
+    <id>app.cantara.Cantara</id>
+    <translation type="gettext">cantara</translation>
+    <content_rating type="oars-1.1" />
+    <metadata_license>FSFAP</metadata_license>
+    <project_license>GPL-3.0-only</project_license>
+    <name>Cantara</name>
+    <summary>A Song Presentation Software.</summary>
+    <description>
+        <p>
+            A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
+        </p>
+    </description>
+
+    <launchable type="desktop-id">app.cantara.Cantara.desktop</launchable>
+
+    <screenshots>
+        <screenshot>
+            <image>https://github.com/reckel-jm/cantara/raw/master/cantara1.png</image>
+        </screenshot>
+        <screenshot>
+            <image>https://github.com/reckel-jm/cantara/raw/master/cantara2.png</image>
+        </screenshot>
+        <screenshot>
+            <image>https://github.com/reckel-jm/cantara/raw/master/cantara4.png</image>
+        </screenshot>
+        <screenshot>
+            <image>https://github.com/reckel-jm/cantara/raw/master/cantara-multiscreen.jpg</image>
+        </screenshot>
+        <screenshot>
+            <image>https://github.com/reckel-jm/cantara/raw/master/cantara-songselection-en.png</image>
+        </screenshot>
+    </screenshots>
+
+    <url type="homepage">https://www.cantara.app/</url>
+    <url type="bugtracker">https://github.com/reckel-jm/cantara/issues</url>
+    <url type="vcs-browser">https://github.com/reckel-jm/cantara</url>
+    <url type="contribute">https://www.cantara.app/contribute/</url>
+
+    <developer_name>Jan Martin Reckel</developer_name>
+
+    <releases>
+        <release version="2.3.1" date="2022-08-12">
+            <description>
+                <p>
+                    Improvements:
+                    <ul>
+                        <li>Version 2.3.1 brings support for background images. These can be adjusted and made transparent (towards the background color) or brighter.</li>
+                    </ul>
+                </p>
+                <p>
+                    Bug Fixes:
+                    <ul>
+                        <li>Fix of spell mistake in CCLI license tag. It now <code>ccli-licensenumber</code></li>
+                        <li>complete German translation</li>
+                    </ul>
+                </p>
+            </description>
+        </release>
+        <release version="2.3" date="2022-08-02">
+            <description>
+                <p>
+                    After testing and further development, version 2.3 can be released.
+                </p>
+                <p>
+                    Improvements:
+                    <ul>
+                        <li>Support of the CCLI songselect format</li>
+                        <li>Support for Metadata which can be displayed dynamically during the song</li>
+                        <li>Improvements in source code</li>
+                        <li>Preparations for further development in source code, abstractions</li>
+                        <li>Bugfixes in displaying the songs</li>
+                    </ul>
+                </p>
+                <p>
+                    As always, I am looking forward to feedback, suggestions and bug reports.
+                    Thank you!
+                </p>
+            </description>
+        </release>
+        <release version="2.0" date="2022-07-05" />
+        <release version="1.3" date="2021-01-01" />
+        <release version="1.1" date="2020-05-28" />
+    </releases>
+</component>
+
+
+
