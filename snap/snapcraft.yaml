@@ -4,7 +4,7 @@ summary: A Song Presentation Software.
 description: |
   A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
 confinement: strict
-icon: Cantara.png
+icon: app.cantara.Cantara.png
 base: core20
 grade: stable
 
@@ -35,7 +35,7 @@ parts:
       install cantara $SNAPCRAFT_PART_INSTALL/
       install cantara.desktop $SNAPCRAFT_PART_INSTALL/
       install Cantara.ico $SNAPCRAFT_PART_INSTALL/
-      install Cantara.png $SNAPCRAFT_PART_INSTALL/
+      install app.cantara.Cantara.png $SNAPCRAFT_PART_INSTALL/
     stage:
     - lib
     - usr
@@ -44,7 +44,7 @@ parts:
     - languages
     - cantara.desktop
     - Cantara.ico
-    - Cantara.png
+    - app.cantara.Cantara.png
   cleanup:
     after: [cantara]
     plugin: nil
