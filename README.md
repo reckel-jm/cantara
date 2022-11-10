@@ -1,14 +1,16 @@
 # Cantara
 
-**Hint**: This is just the repository for the source code. If you are not interested in the source code, please go to the [webpage](https://reckel-jm.github.io/cantara-song) with a complete documentation and instruction on downloading and installing.
+**Hint**: This is just the repository for the source code. For general information, please consider the [webpage](https://reckel-jm.github.io/cantara-song) with a complete documentation and instruction on downloading and installing.
 
-**Pull Requests** with bug reports, suggestions or general feedback are very appreciated!
+**Pull Requests or issues** with bug reports, suggestions or general feedback are very appreciated!
+
+If you like the project, please consider giving to *star* it on Github!
 
 ## About the program
 Cantara is a simple open source song presentation software written in Free Pascal/Lazarus which allows people to spontanously present song lyrics for a bigger audience for the purpose of singing together. This is especially useful for church groups and meetings. 
 
 ## Current Version
-The current version is 2.3.1 released at August 12, 2022. Go to the [release section](https://github.com/reckel-jm/cantara/releases/tag/v2.3.1) to download the binaries for a productive use of the software.
+The current version is 2.3.2 released at October 11, 2022. Go to the [release section](https://github.com/reckel-jm/cantara/releases/tag/v2.3.2) to download the binaries for a productive use of the software.
 The master branch of this repository contains the latest commits which were already tested and **should** work, but are not officially released yet. If you clone from master, you might expect bugs, misbehavior or other errors when running the application. If you find any of them, please feel free to report them as a Github issue!
 
 Cantara is also available at the snapstore. The edge version contains the latest commit to the master branch.
@@ -28,7 +30,7 @@ If you would like to compile the latest state in the master brunch, you need to 
 
  3. Open the `lazarus.lpi` file *as a project* in Lazarus and compile it **or** use `lazbuild` for the compilation via the command line:
 
-    lazbuild -B Cantara.lpi
+`lazbuild -B Cantara.lpi`
 
 On Linux, you can change the used graphical framework via the `--ws=qt5` or `--ws=gtk2` option.
 
@@ -39,6 +41,13 @@ At the moment an other [GitHub Repository with public domain Christian song lyri
 
 ## Settings
 The color, background and font of the presentation can be changed in the settings.
+
+## Contribution
+
+A big thanks to the following users who helped improving Cantara:
+
+* @freundTech: helping with preparing the program for flatpack
+* @primores-resugendi: Contributing traditional Chinese translation
 
 ## Licence
 The program is licenced under GPL3. See [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) for details. You may use and change this software and it's source code and share it as you wish, but you need to add a copyright hint and keep the licence.
