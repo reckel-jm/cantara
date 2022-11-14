@@ -20,6 +20,7 @@ The master branch of this repository contains the latest commits which were alre
 Cantara is also available at the snapstore. The edge version contains the latest commit to the master branch.
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/cantara)
+<a href='https://flathub.org/apps/details/app.cantara.Cantara'><img width='170' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
 ## Download and Installation
 
@@ -30,7 +31,7 @@ If you would like to compile the latest state in the master brunch, you need to 
  1. Download and install the [Lazarus IDE](https://www.lazarus-ide.org) – either via your distribution or their homepage.
  2. Clone the Github repository:
 
-    git clone git@github.com:reckel-jm/cantara.git
+    `git clone git@github.com:reckel-jm/cantara.git`
 
  3. Open the `lazarus.lpi` file *as a project* in Lazarus and compile it **or** use `lazbuild` for the compilation via the command line:
 
@@ -50,7 +51,7 @@ The color, background and font of the presentation can be changed in the setting
 
 A big thanks to the following users who helped improving Cantara:
 
-* @[freundTech](https://github.com/freundTech): helping with preparing the program for flatpack
+* @[freundTech](https://github.com/freundTech): helping with preparing the program for flatpak
 * @[primores-resugendi](https://github.com/primores-resugendi): Contributing traditional Chinese translation
 
 ## Licence
