@@ -27,11 +27,10 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
       <MinorVersionNr Value="3"/>
-      <RevisionNr Value="2"/>
-      <BuildNr Value="6"/>
+      <RevisionNr Value="3"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
-      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.3.2"/>
+      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.3.3"/>
     </VersionInfo>
     <MacroValues Count="1">
       <Macro3 Name="LCLWidgetType" Value="qt5"/>

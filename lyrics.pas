@@ -23,6 +23,7 @@ type
       procedure importSongFile;
       procedure importSongfile(filepath: string);
       procedure ConvertFile;
+      procedure wordWrap;
       function ParseMetaData(MetaLogic: string): string;
     private
       inputFile: TStringList;
@@ -200,6 +201,28 @@ begin
   end;
 
   //self.output.Assign(self.inputFile);
+end;
+
+procedure TSong.wordWrap;
+var n1, n2,i: integer;
+begin
+  if self.delimCounter = 0 then exit;
+  n1 := 0;
+  n2 := 0;
+  for i := 0 to output.Count-1 do
+  begin
+    if output.Strings[i] := '' then
+    begin
+       n2 := i;
+       if (n2-n1) >= self.delimCounter then
+         output.Insert((n1+(n2-n1) div 2) + 1, '');
+       n1 := n2;
+    end;
+  end;
+  // For the last slide
+  inc(n2);
+  if (n2-n1) >= self.delimCounter then
+         output.Insert((n1+(n2-n1) div 2) + 1, '');
 end;
 
 { This function finds out which format the song has and calls the specific import function }

@@ -46,6 +46,10 @@ msgstr "投影片"
 msgid "Increase brightness by "
 msgstr "增加亮度："
 
+#: settings.strerrorcaption
+msgid "Error"
+msgstr ""
+
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
 msgstr "以原圖像顯示"
@@ -53,6 +57,10 @@ msgstr "以原圖像顯示"
 #: settings.strtransparency
 msgid "Increase transparancy by "
 msgstr "增加透明度："
+
+#: settings.strvalidsongrepository
+msgid "Please choose a valid folder for the song repository!"
+msgstr ""
 
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
@@ -65,9 +73,7 @@ msgid "Presentation..."
 msgstr "展示"
 
 #: songselection.strerstebenutzung
-msgid ""
-"You are using this program for the first time. Please select a song "
-"repository folder."
+msgid "You are using this program for the first time. Please select a song repository folder."
 msgstr "您正在第一次使用本程式。請選擇一個曲庫資料夾。"
 
 #: songselection.strfehlerkeineliederbeipraesentation
@@ -75,15 +81,11 @@ msgid "You have to add songs first."
 msgstr "您必須首先添加歌曲。"
 
 #: songselection.strfehleroeffnen
-msgid ""
-"Error while opening. Propably you have not the required rights to access "
-"this file."
+msgid "Error while opening. Propably you have not the required rights to access this file."
 msgstr "打開時發生錯誤。可能您未獲取打開該檔案的權限。"
 
 #: songselection.strfehlerspeichern
-msgid ""
-"Error while saving. Propably you have not the required rights to access this "
-"file."
+msgid "Error while saving. Propably you have not the required rights to access this file."
 msgstr "保存時發生錯誤。可能您未獲取保存該檔案的權限。"
 
 #: songselection.strfolie
@@ -114,16 +116,13 @@ msgstr ""
 #: tfrminfo.lblinfo.caption
 msgid ""
 "This program has been published under the GPL3 licence. \n"
-"The source code is available at the Github repository, a documentation can "
-"be be found on the project's webpage.\n"
-"You are allowed to change and reuse this program under the specified terms "
-"and conditions of the GPL3 licence.\n"
+"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
 "\n"
 "The author wishes God's blessing for the use of the program!"
 msgstr ""
 "本應用程式經GPL3許可下發布。 \n"
-"本應用程式的源碼可以在GitHub的資源庫找到，項目頁面中可以找到本程式的說明文"
-"檔。\n"
+"本應用程式的源碼可以在GitHub的資源庫找到，項目頁面中可以找到本程式的說明文檔。\n"
 "在GPL3許可所規定的條款與條件下，本程式可以被修改和重新使用。\n"
 "\n"
 "上帝保佑您使用這個程式！"
@@ -133,7 +132,6 @@ msgid "Cantara"
 msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
-#| msgid "Version"
 msgid "lblVersion"
 msgstr ""
 
@@ -231,10 +229,6 @@ msgstr "更改圖像透明度/亮度："
 msgid "lblImageExplainer"
 msgstr ""
 
-#: tfrmsettings.lbllinedistance.caption
-msgid "Line Distance:"
-msgstr "列間距"
-
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
 msgstr "顯示元資料："
@@ -243,13 +237,13 @@ msgstr "顯示元資料："
 msgid "Meta Data Content:"
 msgstr "元資料內容："
 
-#: tfrmsettings.sbimagebrightness.hint
-msgid ""
-"A value smaller than 0% will make the image transparent and the background "
-"color shine through, a value > 0% will increase the brightness of the "
-"picture."
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
 msgstr ""
-"小於0%的亮度值將使圖像透明化並顯示背景顏色。大於0%的亮度值將提高圖像亮度。"
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgstr "小於0%的亮度值將使圖像透明化並顯示背景顏色。大於0%的亮度值將提高圖像亮度。"
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
@@ -375,15 +369,3 @@ msgstr "打開歌曲列表"
 msgid "Save Song List"
 msgstr "保存歌曲列表"
 
-#~ msgid "Einstellungen"
-#~ msgstr "設定"
-
-#~ msgid "Font Size..."
-#~ msgstr "字體大小..."
-
-#~ msgctxt "tfrmpresent.caption"
-#~ msgid "Präsentation"
-#~ msgstr "投影片"
-
-#~ msgid "Über das Programm"
-#~ msgstr "關於程式"

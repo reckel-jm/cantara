@@ -46,6 +46,10 @@ msgstr "Präsentation"
 msgid "Increase brightness by "
 msgstr "Erhöhe die Helligkeit um "
 
+#: settings.strerrorcaption
+msgid "Error"
+msgstr ""
+
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
 msgstr "Bild wird im Originalzustand gezeigt"
@@ -53,6 +57,10 @@ msgstr "Bild wird im Originalzustand gezeigt"
 #: settings.strtransparency
 msgid "Increase transparancy by "
 msgstr "Erhöhe die Transparenz um "
+
+#: settings.strvalidsongrepository
+msgid "Please choose a valid folder for the song repository!"
+msgstr ""
 
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
@@ -219,10 +227,6 @@ msgstr "Verändere Bildtransparenz und -helligkeit:"
 msgid "lblImageExplainer"
 msgstr ""
 
-#: tfrmsettings.lbllinedistance.caption
-msgid "Line Distance:"
-msgstr "Zeilenabstand"
-
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
 msgstr "Zeige Metadaten:"
@@ -230,6 +234,10 @@ msgstr "Zeige Metadaten:"
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
 msgstr "Inhalt der Metadaten:"
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
+msgstr ""
 
 #: tfrmsettings.sbimagebrightness.hint
 msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
@@ -358,3 +366,4 @@ msgstr "Öffne Liederauswahl"
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
 msgstr "Speichere Liederauswahl"
+

@@ -35,12 +35,20 @@ msgstr ""
 msgid "Increase brightness by "
 msgstr ""
 
+#: settings.strerrorcaption
+msgid "Error"
+msgstr ""
+
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
 msgstr ""
 
 #: settings.strtransparency
 msgid "Increase transparancy by "
+msgstr ""
+
+#: settings.strvalidsongrepository
+msgid "Please choose a valid folder for the song repository!"
 msgstr ""
 
 #: songselection.strbuttoneinstellungen
@@ -203,16 +211,16 @@ msgstr ""
 msgid "lblImageExplainer"
 msgstr ""
 
-#: tfrmsettings.lbllinedistance.caption
-msgid "Line Distance:"
-msgstr ""
-
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
 msgstr ""
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
+msgstr ""
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
 msgstr ""
 
 #: tfrmsettings.sbimagebrightness.hint

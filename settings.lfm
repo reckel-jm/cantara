@@ -1,17 +1,18 @@
 object frmSettings: TfrmSettings
-  Left = 451
-  Height = 558
-  Top = 208
-  Width = 719
+  Left = 539
+  Height = 589
+  Top = 261
+  Width = 824
   BorderIcons = [biSystemMenu]
   Caption = 'Settings'
-  ClientHeight = 558
-  ClientWidth = 719
+  ClientHeight = 589
+  ClientWidth = 824
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
+  LCLVersion = '2.2.4.0'
   object labelSongDir: TLabel
     Left = 0
     Height = 22
@@ -29,7 +30,7 @@ object frmSettings: TfrmSettings
     Left = 115
     Height = 36
     Top = 8
-    Width = 575
+    Width = 680
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     OnChange = edtRepoPathChange
@@ -39,7 +40,7 @@ object frmSettings: TfrmSettings
     TabOrder = 0
   end
   object btnSelectDir: TButton
-    Left = 692
+    Left = 797
     Height = 23
     Top = 16
     Width = 24
@@ -95,90 +96,60 @@ object frmSettings: TfrmSettings
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = btnClose
     Left = 8
-    Height = 383
+    Height = 414
     Top = 122
-    Width = 704
+    Width = 809
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
-    ClientHeight = 349
-    ClientWidth = 700
+    ClientHeight = 380
+    ClientWidth = 805
     TabOrder = 6
     OnClick = gbPresentationClick
-    object edtLineDistance: TFloatSpinEdit
-      AnchorSideLeft.Control = lblLineDistance
-      AnchorSideLeft.Side = asrBottom
-      Left = 218
-      Height = 36
-      Top = 8
-      Width = 61
-      Anchors = [akTop]
-      BorderSpacing.Left = 14
-      Enabled = False
-      ParentFont = False
-      TabOrder = 0
-      Value = 1
-      Visible = False
-    end
-    object lblLineDistance: TLabel
-      AnchorSideRight.Control = edtLineDistance
-      Left = 111
-      Height = 22
-      Top = 16
-      Width = 93
-      Anchors = [akRight]
-      Caption = 'Line Distance:'
-      ParentColor = False
-      ParentFont = False
-      Visible = False
-    end
     object btnBackgroundColor: TButton
-      AnchorSideLeft.Control = edtLineDistance
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnFontSizeManually
       AnchorSideTop.Side = asrBottom
-      Left = 287
+      Left = 344
       Height = 23
       Top = 28
-      Width = 410
+      Width = 458
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Color...'
       OnClick = btnBackgroundColorClick
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
     end
     object btnFontSizeManually: TButton
-      AnchorSideLeft.Control = edtLineDistance
       AnchorSideLeft.Side = asrBottom
       AnchorSideRight.Side = asrBottom
-      Left = 287
+      Left = 344
       Height = 23
       Top = 5
-      Width = 410
+      Width = 458
       Align = alCustom
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Change Font Settings...'
       OnClick = btnFontSizeManuallyClick
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
     end
     object btnTextColor: TButton
-      AnchorSideLeft.Control = edtLineDistance
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnBackgroundColor
       AnchorSideTop.Side = asrBottom
-      Left = 287
+      Left = 344
       Height = 23
       Top = 51
-      Width = 410
+      Width = 458
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Text Color...'
       OnClick = btnTextColorClick
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
     end
     object lblMeta: TLabel
       AnchorSideTop.Control = sbImageBrightness
@@ -208,7 +179,7 @@ object frmSettings: TfrmSettings
       Checked = True
       ParentFont = False
       State = cbChecked
-      TabOrder = 4
+      TabOrder = 3
     end
     object cbMetaDataLastSlide: TCheckBox
       AnchorSideLeft.Control = lblMetaContent
@@ -222,7 +193,7 @@ object frmSettings: TfrmSettings
       BorderSpacing.Left = 10
       Caption = 'at last slide'
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 4
     end
     object lblMetaContent: TLabel
       AnchorSideTop.Control = cbMetaDataLastSlide
@@ -245,29 +216,28 @@ object frmSettings: TfrmSettings
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Side = asrBottom
       Left = 148
-      Height = 159
+      Height = 190
       Top = 185
-      Width = 549
+      Width = 654
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Left = 10
       BorderSpacing.Top = 5
-      TabOrder = 6
+      TabOrder = 5
     end
     object btnBackgroundImage: TButton
-      AnchorSideLeft.Control = edtLineDistance
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
-      Left = 287
+      Left = 344
       Height = 23
       Top = 74
-      Width = 410
+      Width = 459
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Image...'
       OnClick = btnBackgroundImageClick
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 6
     end
     object cbShowBackgroundImage: TCheckBox
       AnchorSideLeft.Control = lblMetaContent
@@ -275,7 +245,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = btnBackgroundImage
-      Left = 80
+      Left = 137
       Height = 26
       Top = 74
       Width = 199
@@ -285,28 +255,28 @@ object frmSettings: TfrmSettings
       Caption = 'Show Background Image:'
       OnChange = cbShowBackgroundImageChange
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
     end
     object sbImageBrightness: TScrollBar
       AnchorSideLeft.Control = btnBackgroundColor
       AnchorSideRight.Side = asrBottom
-      Left = 287
+      Left = 344
       Height = 21
       Hint = 'A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture.'
       Top = 102
-      Width = 410
+      Width = 458
       Anchors = [akTop, akLeft, akRight]
       Min = -100
       PageSize = 0
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 9
+      TabOrder = 8
       OnChange = sbImageBrightnessChange
     end
     object lblImageBrightness: TLabel
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideRight.Control = sbImageBrightness
-      Left = 11
+      Left = 68
       Height = 22
       Top = 102
       Width = 271
@@ -320,21 +290,44 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
-      Left = 432
+      Left = 513
       Height = 22
       Top = 123
       Width = 121
       Caption = 'lblImageExplainer'
       ParentColor = False
     end
+    object seWrapLines: TSpinEdit
+      AnchorSideLeft.Control = lblWrapAfter
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = lblWrapAfter
+      AnchorSideTop.Side = asrBottom
+      Left = 154
+      Height = 36
+      Top = 28
+      Width = 50
+      Anchors = [akTop]
+      OnChange = seWrapLinesChange
+      TabOrder = 9
+    end
+    object lblWrapAfter: TLabel
+      Left = 8
+      Height = 22
+      Top = 6
+      Width = 365
+      AutoSize = False
+      Caption = 'Automatic wrap after how many lines (0 = off):'
+      ParentColor = False
+      WordWrap = True
+    end
   end
   object btnClose: TButton
     AnchorSideTop.Control = gbPresentation
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Side = asrBottom
-    Left = 549
+    Left = 654
     Height = 46
-    Top = 510
+    Top = 541
     Width = 163
     Anchors = [akRight, akBottom]
     Caption = 'Close'
