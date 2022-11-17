@@ -16,21 +16,21 @@ type
     public
       filename: String;
       output: TStringList;
-      MetaDict: TStringDict;
-      delimCounter: Integer;
+      MetaDict: TStringDict; { contains all the MetaData of the songs }
+      MaxSlideLineLength: Integer; { When should slices be cut into two parts }
       constructor Create; overload;
       destructor Destroy; override;
       procedure importSongFile;
       procedure importSongfile(filepath: string);
-      procedure ConvertFile;
-      procedure wordWrap;
+      procedure ConvertCCLIFile;
+      procedure slideWrap;
       function ParseMetaData(MetaLogic: string): string;
     private
       inputFile: TStringList;
       PositionDict: TStringIntegerDict;
       procedure WritePart(index: Integer);
       procedure IncludeRepetitionalParts;
-      procedure importSongLegacyFile;
+      procedure importSongFormatFile;
       procedure importCCLISongFile;
       procedure importCCLISongFile(filepath: string);
       function ParseMetaData(MetaLogic: string; count: integer): string;
@@ -64,7 +64,7 @@ end;
 procedure TSong.importCCLISongFile;
 begin
   self.inputFile.LoadFromFile(self.filename);
-  ConvertFile;
+  ConvertCCLIFile;
 end;
 
 procedure TSong.importCCLISongFile(filepath: String);
@@ -73,7 +73,7 @@ begin
   self.importCCLISongFile;
 end;
 
-procedure TSong.ConvertFile;
+procedure TSong.ConvertCCLIFile;
 var i: Integer;
   j: Integer;
   RefrainState: Boolean;
@@ -131,10 +131,12 @@ begin
     inc(i);
   end;
   length := i - index - 1;
-  if length >= self.delimCounter then { seperate the parts which are two big in two peaces }
+  {
+  This is not needed anymore, for the function slideWrap handles it in a universal way.
+  if length >= self.MaxSlideLineLength then { seperate the parts which are two big in two peaces }
   begin
     self.output.Insert(self.output.count-1-(length div 2)+1,'');
-  end;
+  end; }
   self.output.Add(''); // An empty line at the end of a song part
 end;
 
@@ -167,7 +169,7 @@ begin
   Result := s;
 end;
 
-procedure TSong.importSongLegacyFile;
+procedure TSong.importSongFormatFile;
 var i: integer;
   curLineText, key, value: String;
   contentStarted: boolean;
@@ -203,26 +205,41 @@ begin
   //self.output.Assign(self.inputFile);
 end;
 
-procedure TSong.wordWrap;
+procedure TSong.slideWrap;
 var n1, n2,i: integer;
+  changed: boolean;
 begin
-  if self.delimCounter = 0 then exit;
+  repeat
+  begin
+  changed := False;
+  if self.MaxSlideLineLength = 0 then exit; // Just as a protective measure, actually not needed anymore.
   n1 := 0;
   n2 := 0;
   for i := 0 to output.Count-1 do
   begin
-    if output.Strings[i] := '' then
+    if output.Strings[i] = '' then
     begin
        n2 := i;
-       if (n2-n1) >= self.delimCounter then
-         output.Insert((n1+(n2-n1) div 2) + 1, '');
-       n1 := n2;
+       if (n2-n1) > self.MaxSlideLineLength then
+         begin
+           if self.MaxSlideLineLength mod 2 = 0 then
+             output.Insert((n1+(n2-n1) div 2), '')
+           else output.Insert((n1+(n2-n1) div 2) + 1, '');
+           changed := True;
+         end;
+       n1 := n2+1;
     end;
   end;
   // For the last slide
-  inc(n2);
-  if (n2-n1) >= self.delimCounter then
-         output.Insert((n1+(n2-n1) div 2) + 1, '');
+  n2 := output.Count;
+  if (n2-n1) > self.MaxSlideLineLength then
+     begin
+         if self.MaxSlideLineLength mod 2 = 0 then
+           output.Insert((n1+(n2-n1) div 2), '')
+         else output.Insert((n1+(n2-n1) div 2) + 1, '');
+         changed := True;
+     end;
+  end until changed = False;
 end;
 
 { This function finds out which format the song has and calls the specific import function }
@@ -231,9 +248,10 @@ var songfileextension: String;
 begin
   songfileextension := ExtractFileExt(self.filename);
   if songfileextension = '.song' then
-    self.importSongLegacyFile
+    self.importSongFormatFile
   else if (songfileextension = '.txt') or (songfileextension = '.ccli') then // CCLI-Songselect file
     self.importCCLISongFile;
+  if self.MaxSlideLineLength>0 then self.slideWrap;
 end;
 
 procedure TSong.importSongFile(filepath: String);
@@ -262,6 +280,7 @@ begin
   ParseString := Trim(ParseString);
   Result := ParseString;
 end;
+
 function TSong.ParseMetaData(MetaLogic: string; count: integer): string;
 var strArray: TStringArray;
   word, prop: String;

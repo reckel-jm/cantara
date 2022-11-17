@@ -30,9 +30,10 @@ object frmSongs: TfrmSongs
     OnKeyPress = lbxSselectedKeyPress
     OnKeyDown = lbxSselectedKeyDown
     OnResize = lbxSselectedResize
+    ParentShowHint = False
     ParentFont = False
     ScrollWidth = 378
-    TabOrder = 0
+    TabOrder = 1
   end
   object edtSearch: TEdit
     Left = 2
@@ -45,7 +46,8 @@ object frmSongs: TfrmSongs
     OnChange = edtSearchChange
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 1
+    TabStop = False
+    TabOrder = 2
   end
   object pnlMultiScreen: TPanel
     AnchorSideLeft.Control = PnlSplitter
@@ -57,7 +59,7 @@ object frmSongs: TfrmSongs
     Anchors = [akTop, akLeft, akRight, akBottom]
     ClientHeight = 759
     ClientWidth = 241
-    TabOrder = 2
+    TabOrder = 3
     OnClick = pnlMultiScreenClick
     OnResize = pnlMultiScreenResize
     object lblPresentation: TLabel
@@ -153,7 +155,7 @@ object frmSongs: TfrmSongs
     ParentFont = False
     ScrollWidth = 398
     Sorted = True
-    TabOrder = 3
+    TabOrder = 0
   end
   object PnlSplitter: TSplitter
     AnchorSideLeft.Control = pnlMultiScreen
@@ -189,6 +191,7 @@ object frmSongs: TfrmSongs
       OnClick = btnAddClick
       ParentFont = False
       TabOrder = 0
+      TabStop = False
     end
     object btnRemove: TButton
       Left = 1
@@ -200,6 +203,7 @@ object frmSongs: TfrmSongs
       OnClick = btnRemoveClick
       ParentFont = False
       TabOrder = 1
+      TabStop = False
     end
     object btnUp: TButton
       Left = 1
@@ -215,6 +219,7 @@ object frmSongs: TfrmSongs
       OnClick = btnUpClick
       ParentFont = False
       TabOrder = 2
+      TabStop = False
     end
     object btnDown: TButton
       Left = 1
@@ -229,6 +234,7 @@ object frmSongs: TfrmSongs
       OnClick = btnDownClick
       ParentFont = False
       TabOrder = 3
+      TabStop = False
     end
     object btnClear: TButton
       Left = 1
@@ -242,6 +248,7 @@ object frmSongs: TfrmSongs
       OnClick = btnClearClick
       ParentFont = False
       TabOrder = 4
+      TabStop = False
     end
   end
   object grbSettings: TPanel
@@ -265,6 +272,7 @@ object frmSongs: TfrmSongs
       OnClick = btnStartPresentationClick
       ParentFont = False
       TabOrder = 0
+      TabStop = False
     end
     object btnSettings: TButton
       Left = 938
@@ -276,6 +284,7 @@ object frmSongs: TfrmSongs
       OnClick = btnSettingsClick
       ParentFont = False
       TabOrder = 1
+      TabStop = False
     end
     object chkMultiWindowMode: TCheckBox
       Left = 192

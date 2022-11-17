@@ -370,7 +370,7 @@ end;
 procedure TfrmSongs.lbxSRepoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if (Key = VK_Space) or (Key = VK_Return) then btnAddClick(lbxSRepo);
+  if (Key = VK_Space) or (Key = VK_Return) or (key = VK_Right) then btnAddClick(lbxSRepo);
 end;
 
 procedure TfrmSongs.lbxSselectedClick(Sender: TObject); // Jump to the current Song – only in presentation mode
@@ -396,7 +396,7 @@ end;
 procedure TfrmSongs.lbxSselectedKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if Key = VK_DELETE then btnRemoveClick(lbxSSelected);
+  if (Key = VK_DELETE) or (Key = VK_Left) then btnRemoveClick(lbxSSelected);
 end;
 
 procedure TfrmSongs.lbxSselectedKeyPress(Sender: TObject; var Key: char);
@@ -585,14 +585,13 @@ begin
   present.songMetaList.Clear;
   Songlist := lyrics.TSongList.Create;
   Songlist.FreeObjects:=False;
-  //if Assigned(present.frmPresent.Songlist) then
-  //    present.frmPresent.Songlist.FreeInstance;
-    present.frmPresent.Songlist := lyrics.TSongList.Create;
+  present.frmPresent.Songlist := lyrics.TSongList.Create;
   for i := 0 to lbxSSelected.Count-1 do
     begin
     songfile := TStringList.Create;
     Song := lyrics.TSong.Create;
-    //Ermittel Liednamen
+    Song.MaxSlideLineLength:=Settings.frmSettings.seWrapLines.Value;
+    //Get Song Name
     songname := lbxSSelected.Items.Strings[i];
     //suche Dateinamen in repo-Array
     j := 0;
