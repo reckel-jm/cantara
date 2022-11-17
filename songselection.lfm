@@ -24,11 +24,14 @@ object frmSongs: TfrmSongs
     Width = 380
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
+    DragMode = dmAutomatic
     ItemHeight = 0
     OnClick = lbxSselectedClick
     OnDragDrop = lbxSselectedDragDrop
+    OnDragOver = lbxSselectedDragOver
     OnKeyPress = lbxSselectedKeyPress
     OnKeyDown = lbxSselectedKeyDown
+    OnMouseDown = lbxSselectedMouseDown
     OnResize = lbxSselectedResize
     ParentShowHint = False
     ParentFont = False
@@ -152,6 +155,7 @@ object frmSongs: TfrmSongs
     OnClick = lbxSRepoClick
     OnDblClick = btnAddClick
     OnKeyDown = lbxSRepoKeyDown
+    OnMouseDown = lbxSRepoMouseDown
     ParentFont = False
     ScrollWidth = 398
     Sorted = True
@@ -293,6 +297,7 @@ object frmSongs: TfrmSongs
       Width = 355
       Caption = 'Multi-Screen-Mode (suitable for multiple screens)'
       TabOrder = 2
+      TabStop = False
     end
   end
   object MainMenu: TMainMenu

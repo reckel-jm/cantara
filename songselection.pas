@@ -88,11 +88,17 @@ type
     procedure itemSaveClick(Sender: TObject);
     procedure lbxSRepoClick(Sender: TObject);
     procedure lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure lbxSRepoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure lbxSselectedClick(Sender: TObject);
     procedure lbxSselectedDragDrop(Sender, Source: TObject; X, Y: Integer);
+    procedure lbxSselectedDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
     procedure lbxSselectedKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure lbxSselectedKeyPress(Sender: TObject; var Key: char);
+    procedure lbxSselectedMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure lbxSselectedResize(Sender: TObject);
     procedure loadRepo(repoPath: string);
     procedure itemAboutClick(Sender: TObject);
@@ -123,6 +129,7 @@ var
   frmSongs: TfrmSongs;
   repo: array of TRepoFile;
   ProgrammMode: char;
+  startingPoint: TPoint;
 
 ResourceString
   StrErsteBenutzung = 'You are using this program for the first time. Please select a song repository folder.';
@@ -373,6 +380,13 @@ begin
   if (Key = VK_Space) or (Key = VK_Return) or (key = VK_Right) then btnAddClick(lbxSRepo);
 end;
 
+procedure TfrmSongs.lbxSRepoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  if Button = mbLeft then
+    lbxSRepo.BeginDrag(False);
+end;
+
 procedure TfrmSongs.lbxSselectedClick(Sender: TObject); // Jump to the current Song – only in presentation mode
 var
   selectedSongName: String;
@@ -387,10 +401,30 @@ begin
   end;
 end;
 
-procedure TfrmSongs.lbxSselectedDragDrop(Sender, Source: TObject; X, Y: Integer
-  );
+procedure TfrmSongs.lbxSselectedDragDrop(Sender, Source: TObject; X, Y: Integer);
+var DropPosition, StartPosition: Integer;
+    DropPoint: TPoint;
 begin
+  if (Source is TListBox) and ((Source as TListBox).Name = 'lbxSRepo') then
+     lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex])
+  else if (Source is TListBox) and ((Source as TListBox).Name = 'lbxSselected') then
+    begin
+      DropPoint.X := X;
+      DropPoint.Y := Y;
+      with Source as TListBox do
+      begin
+        StartPosition := ItemAtPos(StartingPoint,True) ;
+        DropPosition := ItemAtPos(DropPoint,True) ;
+        Items.Move(StartPosition, DropPosition) ;
+      end;
+    end;
+end;
 
+procedure TfrmSongs.lbxSselectedDragOver(Sender, Source: TObject; X,
+  Y: Integer; State: TDragState; var Accept: Boolean);
+begin
+  if (Source is TListBox) then
+     Accept := True;
 end;
 
 procedure TfrmSongs.lbxSselectedKeyDown(Sender: TObject; var Key: Word;
@@ -402,6 +436,13 @@ end;
 procedure TfrmSongs.lbxSselectedKeyPress(Sender: TObject; var Key: char);
 begin
 
+end;
+
+procedure TfrmSongs.lbxSselectedMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  StartingPoint.X := X;
+  StartingPoint.Y := Y;
 end;
 
 procedure TfrmSongs.lbxSselectedResize(Sender: TObject);
