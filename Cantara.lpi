@@ -28,6 +28,7 @@
       <MajorVersionNr Value="2"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="3"/>
+      <BuildNr Value="2"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.3.3"/>
@@ -59,7 +60,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="9">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -103,6 +104,21 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="CommandLineOptions"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="songeditor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSongEdit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="frames/displaysongcontent.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDisplaySongContent"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="displaySongContent"/>
+      </Unit8>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -112,6 +128,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="frames"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

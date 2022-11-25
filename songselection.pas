@@ -6,14 +6,9 @@ interface
 
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
-  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd, lyrics, LCLTranslator;
+  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd, lyrics, LCLTranslator, songeditor;
 
 type
-  TRepoFile = record
-    Name: string;
-    filePath: string;
-  end;
-
   TSongPosition = record
     songname: string;
     stanzaposition: integer;
@@ -54,6 +49,7 @@ type
     itemAbout: TMenuItem;
     itemPresentation: TMenuItem;
     itemReloadSongList: TMenuItem;
+    itemSongEditor: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     pnlMultiScreen: TPanel;
@@ -75,6 +71,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure FormResize(Sender: TObject);
@@ -86,6 +83,7 @@ type
     procedure itemEndClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
+    procedure itemSongEditorClick(Sender: TObject);
     procedure lbxSRepoClick(Sender: TObject);
     procedure lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure lbxSRepoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -127,7 +125,7 @@ const
 
 var
   frmSongs: TfrmSongs;
-  repo: array of TRepoFile;
+  repo: TRepoArray;
   ProgrammMode: char;
   startingPoint: TPoint;
 
@@ -138,19 +136,7 @@ ResourceString
   StrFehlerKeineLiederBeiPraesentation = 'You have to add songs first.';
   StrButtonPraesentation = 'Presentation...';
   StrButtonEinstellungen = 'Settings...';
-  {StrMenuDatei = 'File';
-  StrMenuBearbeiten = 'Edit';
-  StrMenuHilfe = 'Help';
-  StrMenuAuswahlLaden = 'Auswahl laden...';
-  StrMenuAuswahlSpeichern = 'Auswahl speichern...';
-  StrMenuLiederlisteNeuLaden = 'Liederliste neu laden';
-  StrMenuPraesentation = 'Präsentation...';
-  StrMenuBeenden = 'Beenden';
-  StrMenuEinstellungen = 'Einstellungen...';
-  StrMenuInfo = 'Informationen zum Programm...';
-  StrFormCaption = 'Liedauswahl (Cantara)';
-  StrSearchFieldHint = 'Suchen...';
-  StrMultipleWindowMode = 'Zwei-Fenster-Modus (für zwei Bildschirme und Videokonferenzen geeignet)'; }
+  StrCanNotOpenSong = 'Error: The Song "{songname}" is not available. Skipping.';
   StrFolie = 'Slide';
 
 implementation
@@ -199,6 +185,7 @@ begin
          lbxSRepo.Items.Add(songName);
          setlength(repo, length(repo)+1);
          // Füllen des Repo-Arrays zur späteren Fehlerkorrektur!
+         repo[(length(repo)-1)] := TRepoFile.Create;
          repo[(length(repo)-1)].Name := songName;
          repo[(length(repo)-1)].filePath := Info.Name;
         end;
@@ -369,6 +356,13 @@ begin
   end;
 end;
 
+procedure TfrmSongs.itemSongEditorClick(Sender: TObject);
+begin
+  songEditor.frmSongEdit.Show;
+  songEditor.frmSongEdit.loadRepo(repo);
+  //songeditor.
+end;
+
 procedure TfrmSongs.lbxSRepoClick(Sender: TObject);
 begin
 
@@ -460,6 +454,14 @@ begin
   if Screen.MonitorCount > 1 Then
     chkMultiWindowMode.Checked := True
   Else chkMultiWindowMode.Checked := False;
+end;
+
+procedure TfrmSongs.FormDestroy(Sender: TObject);
+var i: integer;
+begin
+  // Distroy all Song Data
+  for i := 0 to length(repo)-1 do
+    repo[i].Free;
 end;
 
 procedure TfrmSongs.FormKeyDown(Sender: TObject; var Key: Word;
@@ -640,7 +642,7 @@ begin
       while repo[j].Name <> songname do
         inc(j);
     except
-      ShowMessage('Fehler: Das Lied "' + songname + '" ist nicht vorhanden. Es wird übersprungen.')
+      ShowMessage(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll]));
     end;
     //Lade Song-menuFile abhängig von der Erweiterung!
     completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath;

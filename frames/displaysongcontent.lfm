@@ -1,0 +1,50 @@
+object frmDisplaySongContent: TfrmDisplaySongContent
+  Left = 0
+  Height = 413
+  Top = 0
+  Width = 773
+  ClientHeight = 413
+  ClientWidth = 773
+  OnClick = FrameClick
+  TabOrder = 0
+  DesignLeft = 409
+  DesignTop = 34
+  object memoCode: TMemo
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 391
+    Top = 22
+    Width = 773
+    Align = alCustom
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabOrder = 0
+  end
+  object lblSongName: TLabel
+    Left = 0
+    Height = 22
+    Top = 0
+    Width = 48
+    Caption = 'Name: '
+    ParentColor = False
+  end
+  object edtSongName: TEdit
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Side = asrBottom
+    Left = 53
+    Height = 22
+    Top = 0
+    Width = 1231
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    OnEditingDone = edtSongNameEditingDone
+    OnExit = edtSongNameExit
+    OnMouseLeave = edtSongNameMouseLeave
+    TabOrder = 1
+    Text = 'edtSongName'
+    Visible = False
+  end
+end

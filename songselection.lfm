@@ -12,6 +12,7 @@ object frmSongs: TfrmSongs
   OnChangeBounds = FormResize
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
   OnResize = FormResize
@@ -19,9 +20,9 @@ object frmSongs: TfrmSongs
   OnWindowStateChange = FormResize
   object lbxSselected: TListBox
     Left = 440
-    Height = 747
+    Height = 1342
     Top = 0
-    Width = 380
+    Width = 1133
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     DragMode = dmAutomatic
@@ -39,7 +40,7 @@ object frmSongs: TfrmSongs
     TabOrder = 1
   end
   object edtSearch: TEdit
-    Left = 2
+    Left = 482
     Height = 36
     Hint = 'Suchen...'
     Top = 0
@@ -54,22 +55,22 @@ object frmSongs: TfrmSongs
   end
   object pnlMultiScreen: TPanel
     AnchorSideLeft.Control = PnlSplitter
-    Left = 832
+    Left = 2790
     Height = 759
     Top = 0
-    Width = 241
+    Width = 0
     Align = alRight
     Anchors = [akTop, akLeft, akRight, akBottom]
     ClientHeight = 759
-    ClientWidth = 241
+    ClientWidth = 0
     TabOrder = 3
     OnClick = pnlMultiScreenClick
     OnResize = pnlMultiScreenResize
     object lblPresentation: TLabel
-      Left = 1
+      Left = 0
       Height = 22
       Top = 1
-      Width = 239
+      Width = 0
       Align = alTop
       Alignment = taCenter
       Caption = 'Presentation is running:'
@@ -78,28 +79,28 @@ object frmSongs: TfrmSongs
       ParentFont = False
     end
     object imgLiveViewer: TImage
-      Left = 1
+      Left = 0
       Height = 196
       Top = 43
-      Width = 239
+      Width = 0
       Align = alTop
       BorderSpacing.Top = 20
       Proportional = True
       Stretch = True
     end
     object Control: TPanel
-      Left = 1
+      Left = 0
       Height = 50
       Top = 261
-      Width = 239
+      Width = 0
       Align = alTop
       BorderWidth = 1
       BorderStyle = bsSingle
       ClientHeight = 46
-      ClientWidth = 235
+      ClientWidth = 0
       TabOrder = 0
       object btnGoLeft: TButton
-        Left = 2
+        Left = 0
         Height = 42
         Top = 2
         Width = 75
@@ -110,7 +111,7 @@ object frmSongs: TfrmSongs
         TabOrder = 0
       end
       object btnGoRight: TButton
-        Left = 77
+        Left = 0
         Height = 42
         Top = 2
         Width = 75
@@ -121,7 +122,7 @@ object frmSongs: TfrmSongs
         TabOrder = 1
       end
       object btnQuitPresentation: TButton
-        Left = 152
+        Left = 0
         Height = 42
         Top = 2
         Width = 75
@@ -133,10 +134,10 @@ object frmSongs: TfrmSongs
       end
     end
     object lblFoilNumber: TLabel
-      Left = 4
+      Left = 1
       Height = 22
       Top = 239
-      Width = 236
+      Width = 0
       Align = alTop
       BorderSpacing.Left = 3
       Caption = 'Foliennummern'
@@ -164,9 +165,9 @@ object frmSongs: TfrmSongs
   object PnlSplitter: TSplitter
     AnchorSideLeft.Control = pnlMultiScreen
     AnchorSideRight.Control = pnlMultiScreen
-    Left = 832
+    Left = 2790
     Height = 669
-    Top = 42
+    Top = 1128
     Width = 1
     Align = alNone
     Anchors = []
@@ -337,6 +338,10 @@ object frmSongs: TfrmSongs
     end
     object menuEdit: TMenuItem
       Caption = 'Edit'
+      object itemSongEditor: TMenuItem
+        Caption = 'Song Lyrics...'
+        OnClick = itemSongEditorClick
+      end
       object itemSettings: TMenuItem
         Caption = 'Settings...'
         ShortCut = 16453

@@ -1,0 +1,64 @@
+object frmSongEdit: TfrmSongEdit
+  Left = 409
+  Height = 546
+  Top = 34
+  Width = 919
+  Caption = 'Edit Files'
+  ClientHeight = 546
+  ClientWidth = 919
+  LCLVersion = '2.2.4.0'
+  object lsSongs: TListBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = splitter
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 546
+    Top = 0
+    Width = 344
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ItemHeight = 0
+    OnClick = lsSongsClick
+    Sorted = True
+    TabOrder = 0
+  end
+  inline frmDisplay: TfrmDisplaySongContent
+    AnchorSideLeft.Control = splitter
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 352
+    Height = 546
+    Width = 567
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ClientHeight = 546
+    ClientWidth = 567
+    OnClick = frmDisplayClick
+    TabOrder = 1
+    inherited memoCode: TMemo
+      AnchorSideLeft.Control = frmDisplay
+      AnchorSideRight.Control = frmDisplay
+      AnchorSideBottom.Control = frmDisplay
+    end
+    inherited lblSongName: TLabel
+      OnClick = lblSongNameClick
+    end
+  end
+  object splitter: TSplitter
+    AnchorSideLeft.Control = lsSongs
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 344
+    Height = 458
+    Top = 0
+    Width = 8
+    Align = alCustom
+    Anchors = [akTop]
+  end
+end

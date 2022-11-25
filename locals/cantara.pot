@@ -26,11 +26,6 @@ msgstr ""
 msgid "https://www.cantara.app"
 msgstr ""
 
-#: present.strformcaption
-msgctxt "present.strformcaption"
-msgid "Präsentation"
-msgstr ""
-
 #: settings.strbrightness
 msgid "Increase brightness by "
 msgstr ""
@@ -61,6 +56,10 @@ msgctxt "songselection.strbuttonpraesentation"
 msgid "Presentation..."
 msgstr ""
 
+#: songselection.strcannotopensong
+msgid "Error: The Song \"{songname}\" is not available. Skipping."
+msgstr ""
+
 #: songselection.strerstebenutzung
 msgid "You are using this program for the first time. Please select a song repository folder."
 msgstr ""
@@ -79,6 +78,16 @@ msgstr ""
 
 #: songselection.strfolie
 msgid "Slide"
+msgstr ""
+
+#: tfrmdisplaysongcontent.edtsongname.text
+msgctxt "tfrmdisplaysongcontent.edtsongname.text"
+msgid "edtSongName"
+msgstr ""
+
+#: tfrmdisplaysongcontent.lblsongname.caption
+msgctxt "tfrmdisplaysongcontent.lblsongname.caption"
+msgid "Name: "
 msgstr ""
 
 #: tfrminfo.btnopengitrepo.caption
@@ -235,6 +244,10 @@ msgstr ""
 msgid "Select text color"
 msgstr ""
 
+#: tfrmsongedit.caption
+msgid "Edit Files"
+msgstr ""
+
 #: tfrmsongs.btnadd.caption
 msgid "+"
 msgstr ""
@@ -321,6 +334,10 @@ msgstr ""
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."
+msgstr ""
+
+#: tfrmsongs.itemsongeditor.caption
+msgid "Song Lyrics..."
 msgstr ""
 
 #: tfrmsongs.lblfoilnumber.caption

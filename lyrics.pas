@@ -8,9 +8,16 @@ uses
   Classes, SysUtils, Strings, fgl, Dialogs;
 
 function StringListToString(StringList: TStringList): String;
+
 type
   TStringDict = specialize TFPGMap<string, string>;
   TStringIntegerDict = specialize TFPGMap<string, integer>;
+  TRepoFile = class
+    Name: string;
+    filePath: string;
+  end;
+  TRepoArray = array of TRepoFile;
+
   { TSong }
   TSong = Class
     public

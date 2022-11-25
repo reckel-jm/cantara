@@ -37,11 +37,6 @@ msgstr "版本"
 msgid "https://www.cantara.app"
 msgstr "https://www.cantara.app/de"
 
-#: present.strformcaption
-msgctxt "present.strformcaption"
-msgid "Präsentation"
-msgstr "投影片"
-
 #: settings.strbrightness
 msgid "Increase brightness by "
 msgstr "增加亮度："
@@ -72,6 +67,10 @@ msgctxt "songselection.strbuttonpraesentation"
 msgid "Presentation..."
 msgstr "展示"
 
+#: songselection.strcannotopensong
+msgid "Error: The Song \"{songname}\" is not available. Skipping."
+msgstr ""
+
 #: songselection.strerstebenutzung
 msgid "You are using this program for the first time. Please select a song repository folder."
 msgstr "您正在第一次使用本程式。請選擇一個曲庫資料夾。"
@@ -91,6 +90,16 @@ msgstr "保存時發生錯誤。可能您未獲取保存該檔案的權限。"
 #: songselection.strfolie
 msgid "Slide"
 msgstr "投影片"
+
+#: tfrmdisplaysongcontent.edtsongname.text
+msgctxt "tfrmdisplaysongcontent.edtsongname.text"
+msgid "edtSongName"
+msgstr ""
+
+#: tfrmdisplaysongcontent.lblsongname.caption
+msgctxt "tfrmdisplaysongcontent.lblsongname.caption"
+msgid "Name: "
+msgstr ""
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
@@ -253,6 +262,10 @@ msgstr "選擇曲庫目錄"
 msgid "Select text color"
 msgstr "選擇文本顏色"
 
+#: tfrmsongedit.caption
+msgid "Edit Files"
+msgstr ""
+
 #: tfrmsongs.btnadd.caption
 msgid "+"
 msgstr "+"
@@ -340,6 +353,10 @@ msgstr "儲存已選歌曲"
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."
 msgstr "設定…"
+
+#: tfrmsongs.itemsongeditor.caption
+msgid "Song Lyrics..."
+msgstr ""
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Foliennummern"
