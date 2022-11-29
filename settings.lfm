@@ -12,7 +12,6 @@ object frmSettings: TfrmSettings
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
   object labelSongDir: TLabel
     Left = 0
     Height = 22
@@ -407,6 +406,8 @@ object frmSettings: TfrmSettings
     Top = 400
   end
   object BgPictureDialog: TOpenPictureDialog
+    Title = 'Open image file'
+    Options = [ofReadOnly, ofPathMustExist, ofFileMustExist, ofNoTestFileCreate, ofEnableSizing, ofViewDetail, ofAutoPreview]
     Left = 16
     Top = 456
   end

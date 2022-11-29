@@ -133,7 +133,6 @@ end;
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
-  self.LocaliseCaptions;
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);

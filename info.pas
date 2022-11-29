@@ -5,7 +5,7 @@ unit info;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, SynEdit, Forms, Controls, Graphics, Dialogs,
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, StdCtrls, lclintf, LCLTranslator, fileinfo, winpeimagereader, elfreader, machoreader;
 
 type

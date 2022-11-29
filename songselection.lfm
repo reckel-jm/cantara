@@ -18,6 +18,7 @@ object frmSongs: TfrmSongs
   OnResize = FormResize
   OnShow = FormShow
   OnWindowStateChange = FormResize
+  Position = poScreenCenter
   object lbxSselected: TListBox
     Left = 440
     Height = 1342

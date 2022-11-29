@@ -163,6 +163,10 @@ msgstr ""
 msgid "Select background color"
 msgstr "Wähle Hintergrundfarbe"
 
+#: tfrmsettings.bgpicturedialog.title
+msgid "Open image file"
+msgstr ""
+
 #: tfrmsettings.btnbackgroundcolor.caption
 msgid "Background Color..."
 msgstr "Hintergrundfarbe..."

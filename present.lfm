@@ -16,7 +16,6 @@ object frmPresent: TfrmPresent
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '2.2.4.0'
   WindowState = wsMaximized
   object imgBackground: TImage
     AnchorSideRight.Side = asrBottom
@@ -75,22 +74,5 @@ object frmPresent: TfrmPresent
     ParentFont = False
     Visible = False
     WordWrap = True
-  end
-  object ReloadImage: TAsyncProcess
-    Active = False
-    Options = []
-    Priority = ppNormal
-    StartupOptions = []
-    ShowWindow = swoNone
-    WindowColumns = 0
-    WindowHeight = 0
-    WindowLeft = 0
-    WindowRows = 0
-    WindowTop = 0
-    WindowWidth = 0
-    FillAttribute = 0
-    OnReadData = ReloadImageReadData
-    Left = 176
-    Top = 480
   end
 end

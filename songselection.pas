@@ -282,7 +282,7 @@ begin
   settings.settingsFile := TINIFile.Create(filename);
   if FileExists(filename) then
     begin
-      frmSettings.loadSettings();
+      frmSettings.loadSettings;
       // Maximize Window according to saved state
       if settings.settingsfile.ReadBool('Size', 'main-window-maximized', False) = True
          Then frmSongs.WindowState:= TWindowState.wsMaximized
@@ -294,6 +294,7 @@ begin
     end;
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
+  frmPresent.LoadSettings; // We need to load the settings into the present form here because only at this point all the needed data is available.
 end;
 
 procedure TfrmSongs.grbControlClick(Sender: TObject);
@@ -447,7 +448,7 @@ end;
 procedure TfrmSongs.FormCreate(Sender: TObject);
 begin
   ProgrammMode := ModeSelection;
-  self.LocaliseCaptions;
+  //self.LocaliseCaptions;
   pnlMultiScreen.Width := Round(frmSongs.Width/2);
 
   // Check Multiple Screen
@@ -573,7 +574,6 @@ begin
 
     frmSongs.FormResize(frmSongs);
     // Zeige die Präsentations-Form
-    frmPresent.LoadBackground;
     frmPresent.Show;
     frmPresent.ShowFirst;
     // Workaround für Windoof
@@ -583,7 +583,7 @@ begin
     itemPresentation.Enabled := False;
     btnStartPresentation.Enabled := False;
     // Lade nochmals Einstellungen (zur Sicherheit)
-    frmPresent.LoadSettings;
+    // vorert nicht: frmPresent.LoadSettings;
     // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
   end
   else ShowMessage(StrFehlerKeineLiederBeiPraesentation);
