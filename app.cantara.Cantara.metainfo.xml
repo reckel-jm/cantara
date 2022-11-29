@@ -46,27 +46,27 @@
             <description>
                 <p>
                     Improvements:
-                    <ul>
-                        <li>Version 2.3.2 brings traditional Chinese translation and the readiness for flatpak.</li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>Version 2.3.2 brings traditional Chinese translation and the readiness for flatpak.</li>
+                </ul>
             </description>
         </release>
         <release version="2.3.1" date="2022-08-12">
             <description>
                 <p>
                     Improvements:
-                    <ul>
-                        <li>Version 2.3.1 brings support for background images. These can be adjusted and made transparent (towards the background color) or brighter.</li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>Version 2.3.1 brings support for background images. These can be adjusted and made transparent (towards the background color) or brighter.</li>
+                </ul>
                 <p>
                     Bug Fixes:
-                    <ul>
-                        <li>Fix of spell mistake in CCLI license tag. It now <code>ccli-licensenumber</code></li>
-                        <li>complete German translation</li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>Fix of spell mistake in CCLI license tag. It now <code>ccli-licensenumber</code></li>
+                    <li>complete German translation</li>
+                </ul>
             </description>
         </release>
         <release version="2.3" date="2022-08-02">
@@ -76,14 +76,14 @@
                 </p>
                 <p>
                     Improvements:
-                    <ul>
-                        <li>Support of the CCLI songselect format</li>
-                        <li>Support for Metadata which can be displayed dynamically during the song</li>
-                        <li>Improvements in source code</li>
-                        <li>Preparations for further development in source code, abstractions</li>
-                        <li>Bugfixes in displaying the songs</li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>Support of the CCLI songselect format</li>
+                    <li>Support for Metadata which can be displayed dynamically during the song</li>
+                    <li>Improvements in source code</li>
+                    <li>Preparations for further development in source code, abstractions</li>
+                    <li>Bugfixes in displaying the songs</li>
+                </ul>
                 <p>
                     As always, I am looking forward to feedback, suggestions and bug reports.
                     Thank you!
