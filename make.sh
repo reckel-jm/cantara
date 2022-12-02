@@ -2,7 +2,7 @@
 # Runs Lazbuild to build the project for release purpose
 #
 
-lazbuild -B --bm="Release" --ws="qt5" Cantara.lpi
+lazbuild -B --bm="Release" --ws="qt5" src/Cantara.lpi
 
 if [ $? == 0 ]; then
 
@@ -12,7 +12,7 @@ if [ $? == 0 ]; then
 
 else
 
-    echo "Unable to build Cantara. There was an error while compiling."
+    echo "Unable to build Cantara. There was an error while compiling. Check the previous logs."
 
     echo 1
 
