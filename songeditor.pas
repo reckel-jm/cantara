@@ -5,37 +5,38 @@ unit songeditor;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, displaySongContent, lyrics;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  editordisplaysongcontent, editorwelcome, lyrics, lclintf, ComCtrls, Menus;
 
 type
   { TfrmSongEdit }
 
   TfrmSongEdit = class(TForm)
-    btnOpenDocs: TButton;
-    frmDisplaySong: TfrmDisplaySongContent;
-    lblDescription: TLabel;
-    lblWelcome: TLabel;
     lsSongs: TListBox;
-    notebook: TNotebook;
-    pageEditSong: TPage;
-    pageWelcome: TPage;
+    EditorMenu: TMainMenu;
+    menuFile: TMenuItem;
+    menuItemSave: TMenuItem;
+    menuItemClose: TMenuItem;
+    PageControl: TPageControl;
     splitter: TSplitter;
-    procedure edtSongNameChange(Sender: TObject);
-    procedure edtSongNameEditingDone(Sender: TObject);
-    procedure edtSongNameExit(Sender: TObject);
-    procedure frmDisplayClick(Sender: TObject);
-    procedure lblSongNameClick(Sender: TObject);
+    procedure btnOpenDocsClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormShow(Sender: TObject);
     procedure lsSongsClick(Sender: TObject);
-    procedure notebookChangeBounds(Sender: TObject);
-    procedure pageEditBeforeShow(ASender: TObject; ANewPage: TPage;
-      ANewIndex: Integer);
-    procedure pageWelcomeBeforeShow(ASender: TObject; ANewPage: TPage;
-      ANewIndex: Integer);
+    procedure menuItemCloseClick(Sender: TObject);
+    procedure menuItemSaveClick(Sender: TObject);
+    procedure PageControlCloseTabClicked(Sender: TObject);
   private
     repo: TRepoArray; // Load the Repo for editing it later
+    //Tabs: array of TTabSheet; // Array which holds the tabs
     procedure loadRepoIntoSongListbox;
     procedure LoadSelectedSongContent;
-    procedure loadFileIntoFrame(song: TRepoFile);
+    procedure loadFileIntoTabs(song: TRepoFile);
+    procedure CreateNewTab;
+    procedure CloseCurrentTab;
+    procedure UpdateTabHeadlines;
+    procedure OpenFileOnNewTab(song: TRepoFile);
+    function CreateEditorFrame(Frame: TFrame): TfrmDisplaySongContent;
   public
     procedure loadRepo(SongRepositoryArray: TRepoArray);
   end;
@@ -43,7 +44,15 @@ type
 var
   frmSongEdit: TfrmSongEdit;
 
+ResourceString
+  strSyntaxDocURL = 'https://www.cantara.app/tutorial/meta-data/';
+  strWelcome = 'Welcome';
+  strFileHasChanged = 'The file {{filename}} has been changed after opening. Would you like to save it?';
+
 implementation
+
+uses SongSelection;
+
 procedure TfrmSongEdit.loadRepo(SongRepositoryArray: TRepoArray);
 begin
   self.repo:=SongRepositoryArray;
@@ -55,54 +64,72 @@ begin
   LoadSelectedSongContent;
 end;
 
-procedure TfrmSongEdit.notebookChangeBounds(Sender: TObject);
+procedure TfrmSongEdit.menuItemCloseClick(Sender: TObject);
 begin
-
+  frmSongEdit.Close;
 end;
 
-procedure TfrmSongEdit.pageEditBeforeShow(ASender: TObject; ANewPage: TPage;
-  ANewIndex: Integer);
+procedure TfrmSongEdit.menuItemSaveClick(Sender: TObject);
+var Frame: TFrame;
+  EditFrame: TfrmDisplaySongContent;
 begin
-
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if (Frame.ClassType = TfrmDisplaySongContent) then
+    begin
+      EditFrame := Frame as TfrmDisplaySongContent;
+      EditFrame.SaveFile;
+    end;
 end;
 
-procedure TfrmSongEdit.pageWelcomeBeforeShow(ASender: TObject; ANewPage: TPage;
-  ANewIndex: Integer);
+procedure TfrmSongEdit.PageControlCloseTabClicked(Sender: TObject);
 begin
-
+  CloseCurrentTab;
 end;
 
-procedure TfrmSongEdit.frmDisplayClick(Sender: TObject);
-begin
 
+procedure TfrmSongEdit.CreateNewTab;
+var ContentFrame: TFrame;
+  NewTab: TTabSheet;
+begin
+  NewTab := TTabSheet.Create(PageControl);
+  NewTab.PageControl := PageControl;
+  NewTab.Name := 'Tab' + IntToStr(PageControl.PageCount);
+  NewTab.Caption := strWelcome;
+  ContentFrame := TfrmEditorWelcome.Create(NewTab);
+  ContentFrame.Name := 'ContentFrame';
+  ContentFrame.Align := TAlign.alClient;
+  ContentFrame.Parent := NewTab;
 end;
 
-procedure TfrmSongEdit.lblSongNameClick(Sender: TObject);
+procedure TfrmSongEdit.CloseCurrentTab;
 begin
-
+  PageControl.ActivePage.Free;
+  if PageControl.PageCount = 0 then CreateNewTab;
 end;
 
-procedure TfrmSongEdit.edtSongNameExit(Sender: TObject);
+procedure TfrmSongEdit.FormShow(Sender: TObject);
 begin
-
+  CreateNewTab;
 end;
 
-procedure TfrmSongEdit.edtSongNameEditingDone(Sender: TObject);
+procedure TfrmSongEdit.btnOpenDocsClick(Sender: TObject);
 begin
-
+  OpenURL(strSyntaxDocUrl);
 end;
 
-procedure TfrmSongEdit.edtSongNameChange(Sender: TObject);
+procedure TfrmSongEdit.FormClose(Sender: TObject; var CloseAction: TCloseAction
+  );
 begin
-
+  // Update the Repository
+  loadRepo(frmSettings.edtRepoPath.Text);
 end;
 
 procedure TfrmSongEdit.loadRepoIntoSongListbox;
 var i: integer;
 begin
   lsSongs.Items.Clear;
-  for i := 0 to length(self.repo)-1 do
-    lsSongs.Items.AddObject(self.repo[i].filePath, self.repo[i]);
+   for i := 0 to length(self.repo)-1 do
+    lsSongs.Items.AddObject(self.repo[i].FileName, self.repo[i]);
 end;
 
 procedure TfrmSongEdit.LoadSelectedSongContent;
@@ -110,13 +137,54 @@ var selectedName: String;
   i: Integer;
 begin
   selectedName := lsSongs.Items[lsSongs.ItemIndex];
-  loadFileIntoFrame(lsSongs.Items.Objects[lsSongs.ItemIndex] as TRepoFile);
+  loadFileIntoTabs(lsSongs.Items.Objects[lsSongs.ItemIndex] as TRepoFile);
 end;
 
-procedure TfrmSongEdit.loadFileIntoFrame(song: TRepoFile);
+procedure TfrmSongEdit.loadFileIntoTabs(song: TRepoFile);
+var Frame: TFrame;
+EditorFrame: TfrmDisplaySongContent;
 begin
-  notebook.PageIndex:=1;
-  frmDisplaySong.loadFile(song);
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if Frame.ClassType = TfrmEditorWelcome then
+  begin
+    Frame.Free;
+    Frame := TfrmDisplaySongContent.Create(PageControl.ActivePage);
+    EditorFrame := CreateEditorFrame(Frame);
+    EditorFrame.loadFile(song);
+  end else if (Frame.ClassType = TfrmDisplaySongContent) and ((Frame as TfrmDisplaySongContent).hasChanged = False) then
+  begin
+    EditorFrame := Frame as TfrmDisplaySongContent;
+    EditorFrame.loadFile(song);
+  end else if (Frame.ClassType = TfrmDisplaySongContent) and ((Frame as TfrmDisplaySongContent).hasChanged = True) then
+    OpenFileOnNewTab(song);
+  PageControl.ActivePage.Caption:=song.Name;
+end;
+
+function TfrmSongEdit.CreateEditorFrame(Frame: TFrame): TfrmDisplaySongContent;
+begin
+  Frame.Name := 'ContentFrame';
+  Frame.Parent:=PageControl.ActivePage;
+  Frame.Align := TAlign.alClient;
+  //Frame.OnFileChanged := @UpdateTabHeadlines;
+  Result := Frame as TfrmDisplaySongContent;
+end;
+
+procedure TfrmSongEdit.OpenFileOnNewTab(song: TRepoFile);
+var Frame: TFrame;
+EditorFrame: TfrmDisplaySongContent;
+begin
+  CreateNewTab;
+  PageControl.ActivePageIndex:=PageControl.PageCount-1;
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  Frame.Free;
+  Frame := TfrmDisplaySongContent.Create(PageControl.ActivePage);
+  EditorFrame := CreateEditorFrame(Frame);
+  EditorFrame.loadFile(song);
+end;
+
+procedure TfrmSongEdit.UpdateTabHeadlines;
+begin
+
 end;
 
 {$R *.lfm}

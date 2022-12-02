@@ -57,7 +57,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="9">
+    <Units Count="10">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -109,13 +109,19 @@
         <ResourceBaseClass Value="Form"/>
       </Unit7>
       <Unit8>
-        <Filename Value="frames/displaysongcontent.pas"/>
+        <Filename Value="frames/editordisplaysongcontent.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmDisplaySongContent"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="displaySongContent"/>
       </Unit8>
+      <Unit9>
+        <Filename Value="frames/editorwelcome.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmEditorWelcome"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit9>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

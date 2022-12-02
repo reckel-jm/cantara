@@ -4,8 +4,12 @@ object frmSongEdit: TfrmSongEdit
   Top = 34
   Width = 1029
   Caption = 'Edit Files'
-  ClientHeight = 562
+  ClientHeight = 528
   ClientWidth = 1029
+  Menu = EditorMenu
+  OnClose = FormClose
+  OnShow = FormShow
+  WindowState = wsMaximized
   object lsSongs: TListBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -13,7 +17,7 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 562
+    Height = 528
     Top = 0
     Width = 386
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -26,6 +30,7 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideLeft.Control = lsSongs
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = PageControl
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 386
@@ -34,8 +39,10 @@ object frmSongEdit: TfrmSongEdit
     Width = 8
     Align = alCustom
     Anchors = [akTop]
+    AutoSnap = False
+    Beveled = True
   end
-  object notebook: TNotebook
+  object PageControl: TPageControl
     AnchorSideLeft.Control = splitter
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Owner
@@ -44,74 +51,27 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 394
-    Height = 562
+    Height = 528
     Top = 0
     Width = 635
-    PageIndex = 1
     Anchors = [akTop, akLeft, akRight, akBottom]
-    OnChangeBounds = notebookChangeBounds
     TabOrder = 2
-    object pageWelcome: TPage
-      OnBeforeShow = pageWelcomeBeforeShow
-      object lblWelcome: TLabel
-        AnchorSideLeft.Control = pageWelcome
-        AnchorSideLeft.Side = asrCenter
-        Left = 232
-        Height = 22
-        Top = 72
-        Width = 171
-        Caption = 'Welcome to the Editor!'
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
+    OnCloseTabClicked = PageControlCloseTabClicked
+    Options = [nboShowCloseButtons, nboShowAddTabButton]
+  end
+  object EditorMenu: TMainMenu
+    Left = 521
+    Top = 110
+    object menuFile: TMenuItem
+      Caption = 'File'
+      object menuItemSave: TMenuItem
+        Caption = 'Save...'
+        ShortCut = 16467
+        OnClick = menuItemSaveClick
       end
-      object lblDescription: TLabel
-        AnchorSideLeft.Control = pageWelcome
-        AnchorSideLeft.Side = asrCenter
-        AnchorSideTop.Control = lblWelcome
-        AnchorSideTop.Side = asrBottom
-        Left = 55
-        Height = 62
-        Top = 124
-        Width = 524
-        BorderSpacing.Top = 30
-        Caption = 'Here you can change the songs which you would like to display.'#10#10'For detailed information about the syntax, please consider the documentation.'
-        ParentColor = False
-      end
-      object btnOpenDocs: TButton
-        AnchorSideLeft.Control = lblDescription
-        AnchorSideTop.Control = lblDescription
-        AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = lblDescription
-        AnchorSideRight.Side = asrBottom
-        Left = 55
-        Height = 32
-        Top = 216
-        Width = 524
-        Anchors = [akTop, akLeft, akRight]
-        BorderSpacing.Top = 30
-        Caption = 'Open Documentation in Webbrowser...'
-        TabOrder = 0
-      end
-    end
-    object pageEditSong: TPage
-      inline frmDisplaySong: TfrmDisplaySongContent
-        Height = 562
-        Width = 635
-        Align = alClient
-        ClientHeight = 562
-        ClientWidth = 635
-        inherited memoCode: TMemo
-          AnchorSideLeft.Control = frmDisplaySong
-          AnchorSideRight.Control = frmDisplaySong
-          AnchorSideBottom.Control = frmDisplaySong
-          Height = 540
-          Width = 635
-        end
-        inherited edtSongName: TEdit
-          Height = 171
-          Width = 1093
-        end
+      object menuItemClose: TMenuItem
+        Caption = 'Close'
+        OnClick = menuItemCloseClick
       end
     end
   end

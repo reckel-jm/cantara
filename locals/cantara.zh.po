@@ -12,6 +12,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.1.1\n"
 
+#: editordisplaysongcontent.strfilecannotberenamed
+msgid "The File can not be renamed"
+msgstr ""
+
 #: info.strauthor
 msgid "Author"
 msgstr "作者"
@@ -55,6 +59,18 @@ msgstr "增加透明度："
 
 #: settings.strvalidsongrepository
 msgid "Please choose a valid folder for the song repository!"
+msgstr ""
+
+#: songeditor.strfilehaschanged
+msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
+msgstr ""
+
+#: songeditor.strsyntaxdocurl
+msgid "https://www.cantara.app/tutorial/meta-data/"
+msgstr ""
+
+#: songeditor.strwelcome
+msgid "Welcome"
 msgstr ""
 
 #: songselection.strbuttoneinstellungen
@@ -101,16 +117,30 @@ msgctxt "tfrmdisplaysongcontent.lblsongname.caption"
 msgid "Name: "
 msgstr ""
 
-#: tfrmdisplaysongcontent.lblsongnamecontent.caption
-msgid "lblSongNameContent"
+#: tfrmeditorwelcome.btnopendocs.caption
+msgctxt "tfrmeditorwelcome.btnopendocs.caption"
+msgid "Open Documentation in Webbrowser..."
 msgstr ""
 
-#: tfrmdisplaysongcontent.menusong.caption
-msgid "menuSong"
+#: tfrmeditorwelcome.lbldescription.caption
+msgctxt "tfrmeditorwelcome.lbldescription.caption"
+msgid ""
+"Here you can change the songs which you would like to display.\n"
+"\n"
+"For detailed information about the syntax, please consider the documentation."
 msgstr ""
 
-#: tfrmdisplaysongcontent.save.caption
-msgid "Save"
+#: tfrmeditorwelcome.lblhint.caption
+msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
+msgstr ""
+
+#: tfrmeditorwelcome.lblsupport.caption
+msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
+msgstr ""
+
+#: tfrmeditorwelcome.lblwelcome.caption
+msgctxt "tfrmeditorwelcome.lblwelcome.caption"
+msgid "Welcome to the Editor!"
 msgstr ""
 
 #: tfrminfo.btnopengitrepo.caption
@@ -278,23 +308,24 @@ msgstr "選擇曲庫目錄"
 msgid "Select text color"
 msgstr "選擇文本顏色"
 
-#: tfrmsongedit.btnopendocs.caption
-msgid "Open Documentation in Webbrowser..."
-msgstr ""
-
 #: tfrmsongedit.caption
 msgid "Edit Files"
 msgstr ""
 
-#: tfrmsongedit.lbldescription.caption
-msgid ""
-"Here you can change the songs which you would like to display.\n"
-"\n"
-"For detailed information about the syntax, please consider the documentation."
-msgstr ""
+#: tfrmsongedit.menufile.caption
+#, fuzzy
+msgctxt "tfrmsongedit.menufile.caption"
+msgid "File"
+msgstr "文件"
 
-#: tfrmsongedit.lblwelcome.caption
-msgid "Welcome to the Editor!"
+#: tfrmsongedit.menuitemclose.caption
+#, fuzzy
+msgctxt "tfrmsongedit.menuitemclose.caption"
+msgid "Close"
+msgstr "關閉"
+
+#: tfrmsongedit.menuitemsave.caption
+msgid "Save..."
 msgstr ""
 
 #: tfrmsongs.btnadd.caption
@@ -402,6 +433,7 @@ msgid "Edit"
 msgstr "編輯"
 
 #: tfrmsongs.menufile.caption
+msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
 msgstr "文件"
 

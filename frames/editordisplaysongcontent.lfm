@@ -22,6 +22,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Width = 773
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
+    OnChange = memoCodeChange
+    OnKeyPress = memoCodeKeyPress
     TabOrder = 0
   end
   object lblSongName: TLabel
@@ -42,7 +44,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Left = 53
     Height = 22
     Top = 0
-    Width = 1231
+    Width = 720
     Anchors = [akTop, akLeft, akRight, akBottom]
     OnEditingDone = edtSongNameEditingDone
     OnExit = edtSongNameExit
@@ -68,18 +70,5 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     ParentColor = False
     OnClick = lblSongNameContentClick
     OnDblClick = lblSongNameContentDblClick
-  end
-  object menu: TMainMenu
-    Left = 186
-    Top = 121
-    object menuSong: TMenuItem
-      Caption = 'menuSong'
-      OnClick = menuSongClick
-      object Save: TMenuItem
-        Caption = 'Save'
-        ShortCut = 16467
-        OnClick = SaveClick
-      end
-    end
   end
 end

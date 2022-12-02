@@ -1,6 +1,6 @@
 unit SongSelection;
 
-{$mode objfpc}{$H+}
+{$mode ObjFPC}{$H+}
 
 interface
 
@@ -187,7 +187,7 @@ begin
          // Füllen des Repo-Arrays zur späteren Fehlerkorrektur!
          repo[(length(repo)-1)] := TRepoFile.Create;
          repo[(length(repo)-1)].Name := songName;
-         repo[(length(repo)-1)].filePath := Info.Name;
+         repo[(length(repo)-1)].FileName := Info.Name;
         end;
     Until FindNext(info)<>0;
     end;
@@ -646,7 +646,7 @@ begin
       ShowMessage(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll]));
     end;
     //Lade Song-menuFile abhängig von der Erweiterung!
-    completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath;
+    completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
     Song.importSongfile(completefilename);
     Songlist.Add(song);
     songfile.Assign(song.output);

@@ -10,7 +10,8 @@ uses
   Forms, runtimetypeinfocontrols, SongSelection, Present, settings,
   info, lyrics,
   { you can add units after this }
-  CommandLineOptions, CustApp, fgl, songeditor, displaySongContent;
+  CommandLineOptions, CustApp, fgl, songeditor, editordisplaysongcontent,
+editorwelcome;
 {$R *.res}
 
 begin

@@ -14,7 +14,7 @@ type
   TStringIntegerDict = specialize TFPGMap<string, integer>;
   TRepoFile = class
     Name: string;
-    filePath: string;
+    FileName: string;
   end;
   TRepoArray = array of TRepoFile;
 
