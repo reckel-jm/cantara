@@ -1,12 +1,11 @@
 object frmSongEdit: TfrmSongEdit
   Left = 409
-  Height = 546
+  Height = 562
   Top = 34
-  Width = 919
+  Width = 1029
   Caption = 'Edit Files'
-  ClientHeight = 546
-  ClientWidth = 919
-  LCLVersion = '2.2.4.0'
+  ClientHeight = 562
+  ClientWidth = 1029
   object lsSongs: TListBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -14,39 +13,14 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 546
+    Height = 562
     Top = 0
-    Width = 344
+    Width = 386
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
     OnClick = lsSongsClick
     Sorted = True
     TabOrder = 0
-  end
-  inline frmDisplay: TfrmDisplaySongContent
-    AnchorSideLeft.Control = splitter
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Owner
-    AnchorSideRight.Control = Owner
-    AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = Owner
-    AnchorSideBottom.Side = asrBottom
-    Left = 352
-    Height = 546
-    Width = 567
-    Anchors = [akTop, akLeft, akRight, akBottom]
-    ClientHeight = 546
-    ClientWidth = 567
-    OnClick = frmDisplayClick
-    TabOrder = 1
-    inherited memoCode: TMemo
-      AnchorSideLeft.Control = frmDisplay
-      AnchorSideRight.Control = frmDisplay
-      AnchorSideBottom.Control = frmDisplay
-    end
-    inherited lblSongName: TLabel
-      OnClick = lblSongNameClick
-    end
   end
   object splitter: TSplitter
     AnchorSideLeft.Control = lsSongs
@@ -54,11 +28,70 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideTop.Control = Owner
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 344
+    Left = 386
     Height = 458
     Top = 0
     Width = 8
     Align = alCustom
     Anchors = [akTop]
+  end
+  object notebook: TNotebook
+    AnchorSideLeft.Control = splitter
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 394
+    Height = 562
+    Top = 0
+    Width = 635
+    PageIndex = 0
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    OnChangeBounds = notebookChangeBounds
+    TabOrder = 2
+    object pageWelcome: TPage
+      object lblWelcome: TLabel
+        AnchorSideLeft.Control = pageWelcome
+        AnchorSideLeft.Side = asrCenter
+        Left = 232
+        Height = 22
+        Top = 72
+        Width = 171
+        Caption = 'Welcome to the Editor!'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lblDescription: TLabel
+        AnchorSideLeft.Control = pageWelcome
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = lblWelcome
+        AnchorSideTop.Side = asrBottom
+        Left = 55
+        Height = 62
+        Top = 124
+        Width = 524
+        BorderSpacing.Top = 30
+        Caption = 'Here you can change the songs which you would like to display.'#10#10'For detailed information about the syntax, please consider the documentation.'
+        ParentColor = False
+      end
+      object btnOpenDocs: TButton
+        AnchorSideLeft.Control = lblDescription
+        AnchorSideTop.Control = lblDescription
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = lblDescription
+        AnchorSideRight.Side = asrBottom
+        Left = 55
+        Height = 32
+        Top = 216
+        Width = 524
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 30
+        Caption = 'Open Documentation in Webbrowser...'
+        TabOrder = 0
+      end
+    end
   end
 end

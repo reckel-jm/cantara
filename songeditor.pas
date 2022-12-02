@@ -11,8 +11,12 @@ type
   { TfrmSongEdit }
 
   TfrmSongEdit = class(TForm)
-    frmDisplay: TfrmDisplaySongContent;
+    btnOpenDocs: TButton;
+    lblDescription: TLabel;
+    lblWelcome: TLabel;
     lsSongs: TListBox;
+    notebook: TNotebook;
+    pageWelcome: TPage;
     splitter: TSplitter;
     procedure edtSongNameChange(Sender: TObject);
     procedure edtSongNameEditingDone(Sender: TObject);
@@ -20,6 +24,11 @@ type
     procedure frmDisplayClick(Sender: TObject);
     procedure lblSongNameClick(Sender: TObject);
     procedure lsSongsClick(Sender: TObject);
+    procedure notebookChangeBounds(Sender: TObject);
+    procedure pageEditBeforeShow(ASender: TObject; ANewPage: TPage;
+      ANewIndex: Integer);
+    procedure pageWelcomeBeforeShow(ASender: TObject; ANewPage: TPage;
+      ANewIndex: Integer);
   private
     repo: TRepoArray; // Load the Repo for editing it later
     procedure loadRepoIntoSongListbox;
@@ -42,6 +51,23 @@ end;
 procedure TfrmSongEdit.lsSongsClick(Sender: TObject);
 begin
   LoadSelectedSongContent;
+end;
+
+procedure TfrmSongEdit.notebookChangeBounds(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmSongEdit.pageEditBeforeShow(ASender: TObject; ANewPage: TPage;
+  ANewIndex: Integer);
+begin
+
+end;
+
+procedure TfrmSongEdit.pageWelcomeBeforeShow(ASender: TObject; ANewPage: TPage;
+  ANewIndex: Integer);
+begin
+
 end;
 
 procedure TfrmSongEdit.frmDisplayClick(Sender: TObject);
@@ -87,7 +113,7 @@ end;
 
 procedure TfrmSongEdit.loadFileIntoFrame(song: TRepoFile);
 begin
-  frmDisplay.loadFile(song);
+  //frmDisplay.loadFile(song);
 end;
 
 {$R *.lfm}

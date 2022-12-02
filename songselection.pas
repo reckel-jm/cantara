@@ -425,6 +425,7 @@ end;
 procedure TfrmSongs.lbxSselectedKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
+  if ProgrammMode <> ModeSelection then exit;
   if (Key = VK_DELETE) or (Key = VK_Left) then btnRemoveClick(lbxSSelected);
 end;
 

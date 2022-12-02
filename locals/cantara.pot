@@ -248,8 +248,23 @@ msgstr ""
 msgid "Select text color"
 msgstr ""
 
+#: tfrmsongedit.btnopendocs.caption
+msgid "Open Documentation in Webbrowser..."
+msgstr ""
+
 #: tfrmsongedit.caption
 msgid "Edit Files"
+msgstr ""
+
+#: tfrmsongedit.lbldescription.caption
+msgid ""
+"Here you can change the songs which you would like to display.\n"
+"\n"
+"For detailed information about the syntax, please consider the documentation."
+msgstr ""
+
+#: tfrmsongedit.lblwelcome.caption
+msgid "Welcome to the Editor!"
 msgstr ""
 
 #: tfrmsongs.btnadd.caption
