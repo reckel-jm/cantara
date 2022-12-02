@@ -42,7 +42,7 @@
     <developer_name>Jan Martin Reckel</developer_name>
 
     <releases>
-        <release version="2.3.3"><!-- TODO: Add date -->
+        <release version="2.3.3" date="2022-11-29">
             <p>
                 Bug Fixes:
             </p>
