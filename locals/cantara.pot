@@ -375,6 +375,10 @@ msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr ""
 
+#: tfrmsongs.itemexporttexfile.caption
+msgid "Export Selection with File Contents..."
+msgstr ""
+
 #: tfrmsongs.itemload.caption
 msgid "Load Selection..."
 msgstr ""
@@ -427,5 +431,9 @@ msgstr ""
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
+msgstr ""
+
+#: tfrmsongs.savesongtexfiledialog.title
+msgid "Save SongTeX File"
 msgstr ""
 

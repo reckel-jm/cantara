@@ -6,7 +6,8 @@ interface
 
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
-  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd, lyrics, LCLTranslator, songeditor;
+  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
+  lyrics, LCLTranslator, songeditor, SongTeX;
 
 type
   TSongPosition = record
@@ -50,12 +51,14 @@ type
     itemPresentation: TMenuItem;
     itemReloadSongList: TMenuItem;
     itemSongEditor: TMenuItem;
+    itemExportTeXFile: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
     SaveDialog: TSaveDialog;
     ImageUpdater: TTimer;
+    saveSongTeXFileDialog: TSaveDialog;
     procedure btnAddClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnDownClick(Sender: TObject);
@@ -81,6 +84,7 @@ type
     procedure ImageUpdaterStopTimer(Sender: TObject);
     procedure ImageUpdaterTimer(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
+    procedure itemExportTeXFileClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
     procedure itemSongEditorClick(Sender: TObject);
@@ -114,9 +118,11 @@ type
     procedure FilterListBox(s: String);
     procedure ReloadPresentationImage;
     procedure BringToFront;
+    procedure ExportSelectionAsTeXFile;
   public
     { public declarations }
     procedure AskToReloadRepo;
+    function FindSong(songname: String): TRepoFile;
   end;
 
 const
@@ -343,6 +349,11 @@ end;
 procedure TfrmSongs.itemEndClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TfrmSongs.itemExportTeXFileClick(Sender: TObject);
+begin
+  ExportSelectionAsTeXFile;
 end;
 
 procedure TfrmSongs.itemLoadClick(Sender: TObject);
@@ -786,6 +797,34 @@ end;
 procedure TfrmSongs.AskToReloadRepo;
 begin
   self.loadRepo(frmSettings.edtRepoPath.Text);
+end;
+
+procedure TfrmSongs.ExportSelectionAsTeXFile;
+var i: integer;
+  songtexfile: TSongTeXFile;
+  song: TRepoFile;
+begin
+  if saveSongTeXFileDialog.Execute = False then Exit;
+  songtexfile := TSongTeXFile.Create;
+  for i := 0 to lbxSselected.Count-1 do
+  begin
+    song := FindSong(lbxSSelected.Items.Strings[i]);
+    songtexfile.AddFile(song);
+  end;
+  songtexfile.SaveToFile(saveSongTexFileDialog.FileName);
+end;
+
+function TfrmSongs.FindSong(songname: String): TRepoFile;
+var i: integer;
+begin
+  for i := 0 to length(repo)-1 do
+  begin
+    if repo[i].Name = songname then
+    begin
+      Exit(Repo[i]);
+    end
+  end;
+  Exit(nil);
 end;
 
 end.

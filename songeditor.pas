@@ -149,10 +149,7 @@ begin
 end;
 
 procedure TfrmSongEdit.LoadSelectedSongContent;
-var selectedName: String;
-  i: Integer;
 begin
-  selectedName := lsSongs.Items[lsSongs.ItemIndex];
   loadFileIntoTabs(lsSongs.Items.Objects[lsSongs.ItemIndex] as TRepoFile);
 end;
 

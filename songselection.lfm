@@ -2,11 +2,11 @@ object frmSongs: TfrmSongs
   Left = 527
   Height = 835
   Top = 0
-  Width = 1073
+  Width = 1087
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
   ClientHeight = 801
-  ClientWidth = 1073
+  ClientWidth = 1087
   Menu = MainMenu
   OnActivate = FormActivate
   OnChangeBounds = FormResize
@@ -23,7 +23,7 @@ object frmSongs: TfrmSongs
     Left = 440
     Height = 1342
     Top = 0
-    Width = 1133
+    Width = 1147
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     DragMode = dmAutomatic
@@ -41,7 +41,7 @@ object frmSongs: TfrmSongs
     TabOrder = 1
   end
   object edtSearch: TEdit
-    Left = 482
+    Left = 491
     Height = 36
     Hint = 'Suchen...'
     Top = 0
@@ -56,7 +56,7 @@ object frmSongs: TfrmSongs
   end
   object pnlMultiScreen: TPanel
     AnchorSideLeft.Control = PnlSplitter
-    Left = 2790
+    Left = 2826
     Height = 759
     Top = 0
     Width = 0
@@ -166,7 +166,7 @@ object frmSongs: TfrmSongs
   object PnlSplitter: TSplitter
     AnchorSideLeft.Control = pnlMultiScreen
     AnchorSideRight.Control = pnlMultiScreen
-    Left = 2790
+    Left = 2826
     Height = 669
     Top = 1128
     Width = 1
@@ -261,10 +261,10 @@ object frmSongs: TfrmSongs
     Left = 0
     Height = 42
     Top = 759
-    Width = 1073
+    Width = 1087
     Align = alBottom
     ClientHeight = 42
-    ClientWidth = 1073
+    ClientWidth = 1087
     ParentFont = False
     TabOrder = 6
     OnClick = grbSettingsClick
@@ -281,7 +281,7 @@ object frmSongs: TfrmSongs
       TabStop = False
     end
     object btnSettings: TButton
-      Left = 938
+      Left = 952
       Height = 40
       Top = 1
       Width = 134
@@ -316,6 +316,10 @@ object frmSongs: TfrmSongs
         Caption = 'Save Selection...'
         ShortCut = 16467
         OnClick = itemSaveClick
+      end
+      object itemExportTeXFile: TMenuItem
+        Caption = 'Export Selection with File Contents...'
+        OnClick = itemExportTeXFileClick
       end
       object itemReloadSongList: TMenuItem
         Caption = 'Reload Song Repository'
@@ -375,5 +379,11 @@ object frmSongs: TfrmSongs
     OnStopTimer = ImageUpdaterStopTimer
     Left = 982
     Top = 329
+  end
+  object saveSongTeXFileDialog: TSaveDialog
+    Title = 'Save SongTeX File'
+    Filter = 'SongTeX-File|*.songtex'
+    Left = 191
+    Top = 687
   end
 end

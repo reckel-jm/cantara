@@ -1,4 +1,4 @@
-unit songpresentations;
+unit SongTeX;
 
 {$mode ObjFPC}{$H+}
 
@@ -9,12 +9,15 @@ uses
 
 type
   { TSongTexFile -> a TeX like file which exports whole slides }
-  TSongTeXFile = class
-    public
-      procedure AddFile(SongFile: TRepoFile);
-    private
-      FileContent: TStringList;
-      SongFiles: array of TRepoFile;
+  TSongTeXFile = Class
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure AddFile(SongFile: TRepoFile);
+    procedure SaveTofile(FileName: String);
+  private
+    FileContent: TStringList;
+    SongFiles: array of TRepoFile;
   end;
 
 implementation
@@ -42,6 +45,11 @@ begin
   FileContent.Add('\beginfile{' + SongFile.FileName + '}');
   fileContent.AddStrings(SongFileContent);
   FileContent.Add('\endfile');
+end;
+
+procedure TSongTexFile.SaveToFile(FileName: String);
+begin
+  FileContent.SaveToFile(FileName);
 end;
 
 end.
