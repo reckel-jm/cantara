@@ -15,6 +15,8 @@ type
   TRepoFile = class
     Name: string;
     FileName: string;
+    FilePath: String;
+    FileExtension: String;
   end;
   TRepoArray = array of TRepoFile;
 

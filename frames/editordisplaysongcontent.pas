@@ -148,7 +148,7 @@ procedure TfrmDisplaySongContent.RenameSongFile(newName: String);
 var newFilePath, fileExtension: String;
 begin
   FileExtension := ExtractFileExt(openFilePath);
-  if RenameFile(OpenFilePath, frmSettings.edtRepoPath.Text + PathDelim + newName + '.' + FileExtension) = False then
+  if RenameFile(OpenFilePath, frmSettings.edtRepoPath.Text + PathDelim + newName + FileExtension) = False then
   begin
      ShowMessage(strFileCanNotBeRenamed);
      exit;

@@ -116,6 +116,7 @@ type
     procedure BringToFront;
   public
     { public declarations }
+    procedure AskToReloadRepo;
   end;
 
 const
@@ -164,21 +165,24 @@ begin
 end;
 
 procedure TfrmSongs.loadRepo(repoPath: string);
-var Info: TSearchRec;
+var SearchResult: TSearchRec;
     i,c: integer;
     songName: string;
+    fileExtension: String;
 begin
-  if FindFirst(repoPath + PathDelim + '*', faAnyFile, Info)=0 then
+  if FindFirst(repoPath + PathDelim + '*', faAnyFile, SearchResult)=0 then
     begin
     lbxSRepo.Clear;
     setlength(repo, 0);
     Repeat
-      if (Info.Name[1] <> '.') and ((pos('.song',Info.Name) > 0) or (pos('.txt',Info.Name) > 0) or (pos('.ccli',Info.Name) > 0)) then  { only allow compatible file formats }
+      // get the file extension
+      fileExtension := ExtractFileExt(SearchResult.Name);
+      if ((SearchResult.Name[1] <> '.') and ((fileExtension = '.song') or (fileExtension = '.txt') or (fileExtension = '.ccli'))) then  { only allow compatible file formats }
         begin
          // Finde den letzten Punkt
-         songName := Info.Name + '.';
+         songName := SearchResult.Name + '.';
          i :=-1;
-         for i := 1 to length(Info.Name) do
+         for i := 1 to length(SearchResult.Name) do
            if songName[i] = '.' then c := i;
          // Entferne die Dateiendung
          songName := copy(songName,1,c-1);
@@ -187,11 +191,13 @@ begin
          // Füllen des Repo-Arrays zur späteren Fehlerkorrektur!
          repo[(length(repo)-1)] := TRepoFile.Create;
          repo[(length(repo)-1)].Name := songName;
-         repo[(length(repo)-1)].FileName := Info.Name;
+         repo[(length(repo)-1)].FileName := SearchResult.Name;
+         repo[(length(repo)-1)].FilePath := repoPath + PathDelim + SearchResult.Name;
+         repo[(length(repo)-1)].FileExtension := fileExtension;
         end;
-    Until FindNext(info)<>0;
+    Until FindNext(SearchResult)<>0;
     end;
-  FindClose(Info);
+  FindClose(SearchResult);
 end;
 
 procedure TfrmSongs.itemAboutClick(Sender: TObject);
@@ -775,6 +781,11 @@ begin
   lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(Present.cur + 1) + ' / ' + IntToStr(Present.TextList.Count);
   FormResize(self);
   pnlMultiScreenResize(self);
+end;
+
+procedure TfrmSongs.AskToReloadRepo;
+begin
+  self.loadRepo(frmSettings.edtRepoPath.Text);
 end;
 
 end.

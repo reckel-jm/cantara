@@ -121,7 +121,7 @@ procedure TfrmSongEdit.FormClose(Sender: TObject; var CloseAction: TCloseAction
   );
 begin
   // Update the Repository
-  loadRepo(frmSettings.edtRepoPath.Text);
+  frmSongs.AskToReloadRepo;
 end;
 
 procedure TfrmSongEdit.loadRepoIntoSongListbox;

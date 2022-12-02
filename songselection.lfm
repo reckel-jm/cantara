@@ -5,8 +5,8 @@ object frmSongs: TfrmSongs
   Width = 1073
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
-  ClientHeight = 206
-  ClientWidth = 320
+  ClientHeight = 801
+  ClientWidth = 1073
   Menu = MainMenu
   OnActivate = FormActivate
   OnChangeBounds = FormResize
@@ -19,7 +19,6 @@ object frmSongs: TfrmSongs
   OnShow = FormShow
   OnWindowStateChange = FormResize
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
   object lbxSselected: TListBox
     Left = 440
     Height = 1342
@@ -98,7 +97,7 @@ object frmSongs: TfrmSongs
       Align = alTop
       BorderWidth = 1
       BorderStyle = bsSingle
-      ClientHeight = 50
+      ClientHeight = 46
       ClientWidth = 0
       TabOrder = 0
       object btnGoLeft: TButton
