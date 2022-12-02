@@ -2,9 +2,9 @@ object frmEditorWelcome: TfrmEditorWelcome
   Left = 0
   Height = 542
   Top = 0
-  Width = 565
+  Width = 679
   ClientHeight = 542
-  ClientWidth = 565
+  ClientWidth = 679
   TabOrder = 0
   DesignLeft = 408
   DesignTop = 34
@@ -12,7 +12,7 @@ object frmEditorWelcome: TfrmEditorWelcome
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Owner
-    Left = 197
+    Left = 254
     Height = 22
     Top = 50
     Width = 171
@@ -24,14 +24,19 @@ object frmEditorWelcome: TfrmEditorWelcome
   end
   object lblDescription: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = lblWelcome
     AnchorSideTop.Side = asrBottom
-    Left = 20
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 15
     Height = 62
     Top = 102
-    Width = 524
+    Width = 649
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    BorderSpacing.Left = 15
     BorderSpacing.Top = 30
+    BorderSpacing.Right = 15
     Caption = 'Here you can change the songs which you would like to display.'#10#10'For detailed information about the syntax, please consider the documentation.'
     ParentColor = False
   end
@@ -41,10 +46,10 @@ object frmEditorWelcome: TfrmEditorWelcome
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = lblDescription
     AnchorSideRight.Side = asrBottom
-    Left = 20
+    Left = 15
     Height = 32
     Top = 194
-    Width = 524
+    Width = 649
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 30
     Caption = 'Open Documentation in Webbrowser...'
@@ -57,10 +62,10 @@ object frmEditorWelcome: TfrmEditorWelcome
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = btnOpenDocs
     AnchorSideRight.Side = asrBottom
-    Left = 20
-    Height = 62
+    Left = 15
+    Height = 42
     Top = 256
-    Width = 524
+    Width = 649
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 30
     Caption = 'Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet.'
@@ -73,10 +78,10 @@ object frmEditorWelcome: TfrmEditorWelcome
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = btnOpenDocs
     AnchorSideRight.Side = asrBottom
-    Left = 20
-    Height = 82
-    Top = 348
-    Width = 524
+    Left = 15
+    Height = 62
+    Top = 328
+    Width = 649
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 30

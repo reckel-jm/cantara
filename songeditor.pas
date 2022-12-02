@@ -26,6 +26,8 @@ type
     procedure menuItemCloseClick(Sender: TObject);
     procedure menuItemSaveClick(Sender: TObject);
     procedure PageControlCloseTabClicked(Sender: TObject);
+    procedure PageControlMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
   private
     repo: TRepoArray; // Load the Repo for editing it later
     //Tabs: array of TTabSheet; // Array which holds the tabs
@@ -43,6 +45,7 @@ type
 
 var
   frmSongEdit: TfrmSongEdit;
+  mouseX, mouseY: Integer;
 
 ResourceString
   strSyntaxDocURL = 'https://www.cantara.app/tutorial/meta-data/';
@@ -82,8 +85,21 @@ begin
 end;
 
 procedure TfrmSongEdit.PageControlCloseTabClicked(Sender: TObject);
+var i: Integer;
 begin
-  CloseCurrentTab;
+  i := PageControl.IndexOfPageAt(mouseX, mouseY);
+  if i > -1 then
+  begin
+    PageControl.Pages[i].Free;
+    if PageControl.PageCount = 0 then CreateNewTab;
+  end else CloseCurrentTab;
+end;
+
+procedure TfrmSongEdit.PageControlMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  mouseX := X;
+  mouseY := Y;
 end;
 
 

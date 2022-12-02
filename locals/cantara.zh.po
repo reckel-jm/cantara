@@ -325,7 +325,7 @@ msgid "Close"
 msgstr "關閉"
 
 #: tfrmsongedit.menuitemsave.caption
-msgid "Save..."
+msgid "Save"
 msgstr ""
 
 #: tfrmsongs.btnadd.caption
