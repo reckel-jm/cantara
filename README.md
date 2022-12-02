@@ -26,7 +26,7 @@ Cantara is also available at the snapstore. The edge version contains the latest
 
 There are various ways how to download and install Cantara. For a detailed explenation, please check out the docs. [In the "Releases" section of this repository](https://github.com/reckel-jm/cantara/releases) there are several binary downloads for different operating system. You can also find Cantara in the [Snap Store](https://snapcraft.io/cantara). Use the 'edge' channel to get the build from the last master commit of this repository.
 
-If you would like to compile the latest state in the master brunch, you need to do the following:
+If you would like to compile the latest not stable state in the master brunch, you need to do the following:
 
  1. Download and install the [Lazarus IDE](https://www.lazarus-ide.org) – either via your distribution or their homepage.
  2. Clone the Github repository:
@@ -38,6 +38,8 @@ If you would like to compile the latest state in the master brunch, you need to 
 `lazbuild -B Cantara.lpi`
 
 On Linux, you can change the used graphical framework via the `--ws=qt5` or `--ws=gtk2` option.
+
+**Warning: The state of the master brunch is not stable and not ready for productive use yet! If you want a stable version, please go to the releases section.**
 
 ## Song templates
 Please consult the [documentation](https://www.cantara.app/tutorial/where-to-get-the-songs/) for learning which song formats are supported and where to get songs from.
