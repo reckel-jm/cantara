@@ -47,11 +47,12 @@ object frmSongEdit: TfrmSongEdit
     Height = 562
     Top = 0
     Width = 635
-    PageIndex = 0
+    PageIndex = 1
     Anchors = [akTop, akLeft, akRight, akBottom]
     OnChangeBounds = notebookChangeBounds
     TabOrder = 2
     object pageWelcome: TPage
+      OnBeforeShow = pageWelcomeBeforeShow
       object lblWelcome: TLabel
         AnchorSideLeft.Control = pageWelcome
         AnchorSideLeft.Side = asrCenter
@@ -91,6 +92,26 @@ object frmSongEdit: TfrmSongEdit
         BorderSpacing.Top = 30
         Caption = 'Open Documentation in Webbrowser...'
         TabOrder = 0
+      end
+    end
+    object pageEditSong: TPage
+      inline frmDisplaySong: TfrmDisplaySongContent
+        Height = 562
+        Width = 635
+        Align = alClient
+        ClientHeight = 562
+        ClientWidth = 635
+        inherited memoCode: TMemo
+          AnchorSideLeft.Control = frmDisplaySong
+          AnchorSideRight.Control = frmDisplaySong
+          AnchorSideBottom.Control = frmDisplaySong
+          Height = 540
+          Width = 635
+        end
+        inherited edtSongName: TEdit
+          Height = 171
+          Width = 1093
+        end
       end
     end
   end

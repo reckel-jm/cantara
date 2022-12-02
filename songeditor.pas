@@ -12,10 +12,12 @@ type
 
   TfrmSongEdit = class(TForm)
     btnOpenDocs: TButton;
+    frmDisplaySong: TfrmDisplaySongContent;
     lblDescription: TLabel;
     lblWelcome: TLabel;
     lsSongs: TListBox;
     notebook: TNotebook;
+    pageEditSong: TPage;
     pageWelcome: TPage;
     splitter: TSplitter;
     procedure edtSongNameChange(Sender: TObject);
@@ -113,7 +115,8 @@ end;
 
 procedure TfrmSongEdit.loadFileIntoFrame(song: TRepoFile);
 begin
-  //frmDisplay.loadFile(song);
+  notebook.PageIndex:=1;
+  frmDisplaySong.loadFile(song);
 end;
 
 {$R *.lfm}

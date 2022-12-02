@@ -33,7 +33,11 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     ParentColor = False
   end
   object edtSongName: TEdit
+    AnchorSideLeft.Control = lblSongNameContent
+    AnchorSideTop.Control = lblSongNameContent
+    AnchorSideRight.Control = lblSongNameContent
     AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = lblSongNameContent
     AnchorSideBottom.Side = asrBottom
     Left = 53
     Height = 22
@@ -46,5 +50,36 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     TabOrder = 1
     Text = 'edtSongName'
     Visible = False
+  end
+  object lblSongNameContent: TLabel
+    AnchorSideLeft.Control = lblSongName
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = lblSongName
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = lblSongName
+    AnchorSideBottom.Side = asrBottom
+    Left = 53
+    Height = 22
+    Top = 0
+    Width = 720
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Left = 5
+    ParentColor = False
+    OnClick = lblSongNameContentClick
+    OnDblClick = lblSongNameContentDblClick
+  end
+  object menu: TMainMenu
+    Left = 186
+    Top = 121
+    object menuSong: TMenuItem
+      Caption = 'menuSong'
+      OnClick = menuSongClick
+      object Save: TMenuItem
+        Caption = 'Save'
+        ShortCut = 16467
+        OnClick = SaveClick
+      end
+    end
   end
 end

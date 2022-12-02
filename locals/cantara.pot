@@ -90,6 +90,18 @@ msgctxt "tfrmdisplaysongcontent.lblsongname.caption"
 msgid "Name: "
 msgstr ""
 
+#: tfrmdisplaysongcontent.lblsongnamecontent.caption
+msgid "lblSongNameContent"
+msgstr ""
+
+#: tfrmdisplaysongcontent.menusong.caption
+msgid "menuSong"
+msgstr ""
+
+#: tfrmdisplaysongcontent.save.caption
+msgid "Save"
+msgstr ""
+
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
 msgstr ""
