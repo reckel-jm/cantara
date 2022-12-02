@@ -6,6 +6,9 @@ lazbuild -B --bm="Release" --ws="qt5" src/Cantara.lpi
 
 if [ $? == 0 ]; then
 
+    mv src/cantara cantara
+    echo "Move src/cantara to cantara"
+
     echo "Compilation succesfully done."
 
     exit 0
