@@ -19,7 +19,7 @@ jobs:
         with-cache: false
     - name: Build the Windows Application
       if: ${{ matrix.operating-system == 'windows-latest' }}
-      run: lazbuild -B Cantara.lpi
+      run: lazbuild -B src/Cantara.lpi
     - name: Install libqt5pas dependency under Ubuntu
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: sudo apt-get -y install libqt5pas-dev libqt5pas1
