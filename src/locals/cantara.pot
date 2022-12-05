@@ -1,8 +1,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+#: editordisplaysongcontent.strerrorcclitosong
+msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
+msgstr ""
+
 #: editordisplaysongcontent.strfilecannotberenamed
-msgid "The File can not be renamed"
+msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
 msgstr ""
 
 #: info.strauthor
@@ -96,9 +100,22 @@ msgstr ""
 msgid "Slide"
 msgstr ""
 
+#: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
+msgid "Convert CCLI File to Song Format"
+msgstr ""
+
 #: tfrmdisplaysongcontent.edtsongname.text
 msgctxt "tfrmdisplaysongcontent.edtsongname.text"
 msgid "edtSongName"
+msgstr ""
+
+#: tfrmdisplaysongcontent.labelccliimporthint.caption
+msgid ""
+"Hint:\n"
+"\n"
+"The file which you are going to open is a CCLI file.\n"
+"It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
+"If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
 msgstr ""
 
 #: tfrmdisplaysongcontent.lblsongname.caption
@@ -376,7 +393,11 @@ msgid "Close"
 msgstr ""
 
 #: tfrmsongs.itemexporttexfile.caption
-msgid "Export Selection with File Contents..."
+msgid "Export Selection with Files..."
+msgstr ""
+
+#: tfrmsongs.itemimporttexfile.caption
+msgid "Import Selection with Files..."
 msgstr ""
 
 #: tfrmsongs.itemload.caption

@@ -303,8 +303,8 @@ object frmSongs: TfrmSongs
     end
   end
   object MainMenu: TMainMenu
-    Left = 264
-    Top = 428
+    Left = 312
+    Top = 408
     object menuFile: TMenuItem
       Caption = 'File'
       object itemLoad: TMenuItem
@@ -317,8 +317,11 @@ object frmSongs: TfrmSongs
         ShortCut = 16467
         OnClick = itemSaveClick
       end
+      object itemImportTeXFile: TMenuItem
+        Caption = 'Import Selection with Files...'
+      end
       object itemExportTeXFile: TMenuItem
-        Caption = 'Export Selection with File Contents...'
+        Caption = 'Export Selection with Files...'
         OnClick = itemExportTeXFileClick
       end
       object itemReloadSongList: TMenuItem

@@ -28,10 +28,10 @@ type
     procedure PageControlCloseTabClicked(Sender: TObject);
     procedure PageControlMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
+    procedure loadRepoIntoSongListbox; // this has to be public because it will be called from outside, e.g. the frame TEditorDisplaySongContent
   private
     repo: TRepoArray; // Load the Repo for editing it later
     //Tabs: array of TTabSheet; // Array which holds the tabs
-    procedure loadRepoIntoSongListbox;
     procedure LoadSelectedSongContent;
     procedure loadFileIntoTabs(song: TRepoFile);
     procedure CreateNewTab;

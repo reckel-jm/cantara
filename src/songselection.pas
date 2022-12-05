@@ -52,6 +52,7 @@ type
     itemReloadSongList: TMenuItem;
     itemSongEditor: TMenuItem;
     itemExportTeXFile: TMenuItem;
+    itemImportTeXFile: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     pnlMultiScreen: TPanel;
@@ -803,6 +804,7 @@ procedure TfrmSongs.ExportSelectionAsTeXFile;
 var i: integer;
   songtexfile: TSongTeXFile;
   song: TRepoFile;
+  songtexFileName: String;
 begin
   if saveSongTeXFileDialog.Execute = False then Exit;
   songtexfile := TSongTeXFile.Create;
@@ -811,7 +813,10 @@ begin
     song := FindSong(lbxSSelected.Items.Strings[i]);
     songtexfile.AddFile(song);
   end;
-  songtexfile.SaveToFile(saveSongTexFileDialog.FileName);
+  songtexFileName := saveSongTexFileDialog.FileName;
+  if ExtractFileExt(songtexFileName) <> '.songtex' then
+     songtexFileName := songtexFileName + '.songtex';
+  songtexfile.SaveToFile(songtexFileName);
 end;
 
 function TfrmSongs.FindSong(songname: String): TRepoFile;
