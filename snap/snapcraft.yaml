@@ -32,7 +32,7 @@ parts:
     override-build: |
       make
       cp -r src/languages $SNAPCRAFT_PART_INSTALL/
-      install src/cantara $SNAPCRAFT_PART_INSTALL/
+      install cantara $SNAPCRAFT_PART_INSTALL/
       install src/cantara.desktop $SNAPCRAFT_PART_INSTALL/
       install src/Cantara.ico $SNAPCRAFT_PART_INSTALL/
       install app.cantara.Cantara.png $SNAPCRAFT_PART_INSTALL/
