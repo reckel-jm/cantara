@@ -55,6 +55,7 @@ type
     itemImportTeXFile: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
+    OpenSongTeXFileDialog: TOpenDialog;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
     SaveDialog: TSaveDialog;
@@ -86,6 +87,7 @@ type
     procedure ImageUpdaterTimer(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
     procedure itemExportTeXFileClick(Sender: TObject);
+    procedure itemImportTeXFileClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
     procedure itemSongEditorClick(Sender: TObject);
@@ -120,6 +122,7 @@ type
     procedure ReloadPresentationImage;
     procedure BringToFront;
     procedure ExportSelectionAsTeXFile;
+    procedure ImportTeXFileAsSelection;
   public
     { public declarations }
     procedure AskToReloadRepo;
@@ -355,6 +358,11 @@ end;
 procedure TfrmSongs.itemExportTeXFileClick(Sender: TObject);
 begin
   ExportSelectionAsTeXFile;
+end;
+
+procedure TfrmSongs.itemImportTeXFileClick(Sender: TObject);
+begin
+  ImportTeXFileAsSelection;
 end;
 
 procedure TfrmSongs.itemLoadClick(Sender: TObject);
@@ -830,6 +838,11 @@ begin
     end
   end;
   Exit(nil);
+end;
+
+procedure TfrmSongs.ImportTeXFileAsSelection;
+begin
+
 end;
 
 end.

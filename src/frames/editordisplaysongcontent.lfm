@@ -24,6 +24,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Anchors = [akTop, akLeft, akRight, akBottom]
     OnChange = memoCodeChange
     OnKeyPress = memoCodeKeyPress
+    ScrollBars = ssAutoVertical
     TabOrder = 0
   end
   object lblSongName: TLabel

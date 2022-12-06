@@ -319,6 +319,7 @@ object frmSongs: TfrmSongs
       end
       object itemImportTeXFile: TMenuItem
         Caption = 'Import Selection with Files...'
+        OnClick = itemImportTeXFileClick
       end
       object itemExportTeXFile: TMenuItem
         Caption = 'Export Selection with Files...'
@@ -388,5 +389,10 @@ object frmSongs: TfrmSongs
     Filter = 'SongTeX-File|*.songtex'
     Left = 191
     Top = 687
+  end
+  object OpenSongTeXFileDialog: TOpenDialog
+    Filter = 'SongTeX-File|*.songtex'
+    Left = 418
+    Top = 477
   end
 end
