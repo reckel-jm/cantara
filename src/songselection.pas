@@ -115,11 +115,11 @@ type
     function GetCurrentSongPosition: TSongPosition;
     procedure UpdateSongPositionInLbxSSelected;
     procedure UpdateControls;
+    procedure ReloadPresentationImage;
   private
     { private declarations }
     procedure LocaliseCaptions;
     procedure FilterListBox(s: String);
-    procedure ReloadPresentationImage;
     procedure BringToFront;
     procedure ExportSelectionAsTeXFile;
     procedure ImportTeXFileAsSelection;
@@ -137,8 +137,9 @@ const
 var
   frmSongs: TfrmSongs;
   repo: TRepoArray;
-  ProgrammMode: char;
+  ProgramMode: char;
   startingPoint: TPoint;
+  PanelMultiScreenWidth: Integer;
 
 ResourceString
   StrErsteBenutzung = 'You are using this program for the first time. Please select a song repository folder.';
@@ -239,48 +240,30 @@ end;
 
 procedure TfrmSongs.PnlSplitterMoved(Sender: TObject);
 begin
-  frmSongs.FormResize(self);
+  grbControl.Left := PnlSplitter.Left+PnlSplitter.Width-grbControl.Width-(lbxSSelected.Width+lbxSRepo.Width) div 2;
+  PanelMultiScreenWidth := frmSongs.Width-PnlSplitter.Left-1;
 end;
 
 procedure TfrmSongs.FormResize(Sender: TObject);
 begin
-  //grbControl.Width:=40;
-  lbxSRepo.Height := frmSongs.Height - lbxSRepo.Top - grbSettings.Height - MainMenu.Height;
-  grbControl.Height := frmSongs.Height - grbControl.Top - grbSettings.Height - MainMenu.Height;
-  lbxSSelected.Height := frmSongs.Height - lbxSSelected.Top - grbSettings.Height - MainMenu.Height;
-  edtSearch.Top := 0;
-  edtSearch.Left := 0;
-  {$if defined(LINUX)}
-  chkMultiWindowMode.Top := Round((grbSettings.Height-chkMultiWindowMode.Height)/2);
-  {$endif}
-  {$if defined(WINDOWS)}
-  chkMultiWindowMode.Top := btnStartPresentation.Top;
-  {$endif}
-  if (ProgrammMode = ModeSelection) OR (ProgrammMode = ModeSingleScreenPresentation) Then
+  if (ProgramMode = ModeSelection) OR (ProgramMode = ModeSingleScreenPresentation) Then
   Begin
-    lbxSRepo.Width:=(frmSongs.Width-grbControl.Width) div 2;
-    lbxSSelected.left:=grbControl.Width+lbxSRepo.Width;
-    lbxSSelected.Width:=lbxSRepo.Width;
-    edtSearch.Width:= lbxSRepo.Width;
-    lbxSRepo.BorderSpacing.Top := edtSearch.Height;
-    grbControl.Left := lbxSRepo.Left + lbxSRepo.Width;
-    PnlSplitter.Visible := False;
+    PnlSplitter.MoveSplitter(frmSongs.Width);
+    PnlSplitter.Width:=1;
+    IntToStr(PnlSplitter.Left);
+    //PnlSplitter.Visible := False;
     pnlMultiScreen.Visible := False;
   end else
   Begin
-    lbxSRepo.Width:=(frmSongs.Width-grbControl.Width-pnlMultiscreen.Width) div 2;
-    lbxSSelected.Width:=lbxSRepo.Width;
-    lbxSSelected.left:=grbControl.Width+lbxSRepo.Width;
-    edtSearch.Width:= lbxSRepo.Width;
-    lbxSRepo.BorderSpacing.Top := edtSearch.Height;
-    grbControl.Left := lbxSRepo.Left + lbxSRepo.Width;
-    pnlMultiScreen.Visible := True;
     PnlSplitter.Visible := True;
-    pnlMultiScreen.Left := frmSongs.Width-pnlMultiScreen.Width;
+    pnlSplitter.Left := frmSongs.Width-PanelMultiScreenWidth;
+    PnlSplitter.Width := 1;
+    pnlMultiScreen.Visible := True;
     itemPresentation.Enabled := False;
     btnStartPresentation.Enabled := False;
     frmPresent.KeyPreview := True;
   end;
+  grbControl.Left := PnlSplitter.Left+PnlSplitter.Width-grbControl.Width-(lbxSSelected.Width+lbxSRepo.Width) div 2;
 end;
 
 function getRepoDir(): string;
@@ -311,6 +294,7 @@ begin
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
   frmPresent.LoadSettings; // We need to load the settings into the present form here because only at this point all the needed data is available.
+  PanelMultiScreenWidth := Round(frmSongs.Width/2);
 end;
 
 procedure TfrmSongs.grbControlClick(Sender: TObject);
@@ -413,12 +397,12 @@ var
   selectedSongName: String;
   pos: Integer;
 begin
-  if ProgrammMode <> ModeSelection then
+  if ProgramMode <> ModeSelection then
   begin
     selectedSongName := lbxSSelected.Items.Strings[lbxSSelected.ItemIndex];
     pos := Present.songMetaList.IndexOf(selectedSongName);
     present.frmPresent.showItem(pos);
-    if ProgrammMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View
+    if ProgramMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View
   end;
 end;
 
@@ -451,7 +435,7 @@ end;
 procedure TfrmSongs.lbxSselectedKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if ProgrammMode <> ModeSelection then exit;
+  if ProgramMode <> ModeSelection then exit;
   if (Key = VK_DELETE) or (Key = VK_Left) then btnRemoveClick(lbxSSelected);
 end;
 
@@ -474,9 +458,8 @@ end;
 
 procedure TfrmSongs.FormCreate(Sender: TObject);
 begin
-  ProgrammMode := ModeSelection;
+  ProgramMode := ModeSelection;
   //self.LocaliseCaptions;
-  pnlMultiScreen.Width := Round(frmSongs.Width/2);
 
   // Check Multiple Screen
   if Screen.MonitorCount > 1 Then
@@ -496,7 +479,7 @@ procedure TfrmSongs.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   //Übergebe Key an Presentations-Form, wenn Vorausforderungen erfüllt sind
-  if ((ProgrammMode = ModeMultiScreenPresentation) and (edtSearch.Focused = False))
+  if ((ProgramMode = ModeMultiScreenPresentation) and (edtSearch.Focused = False))
   Then
   Begin
     frmPresent.FormKeyDown(frmSongs, Key, Shift);
@@ -511,7 +494,7 @@ end;
 
 procedure TfrmSongs.btnAddClick(Sender: TObject);
 begin
-  if (lbxSRepo.ItemIndex >= 0) and (ProgrammMode = ModeSelection) then
+  if (lbxSRepo.ItemIndex >= 0) and (ProgramMode = ModeSelection) then
     lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex]);
 end;
 
@@ -580,7 +563,7 @@ begin
     // Passe Hauptfenster an, falls Multi-Fenster-Modus ausgewählt wurde.
     if chkMultiWindowMode.Checked Then
       Begin
-        ProgrammMode := ModeMultiscreenPresentation;
+        ProgramMode := ModeMultiscreenPresentation;
         pnlSplitter.Left := Round(frmSongs.Width / 2);
         frmSongs.FormResize(frmSongs);
         pnlMultiScreenResize(Self);
@@ -597,7 +580,7 @@ begin
         //BringToFront;
         frmSongs.KeyPreview:=True;
       end
-    Else ProgrammMode := ModeSingleScreenPresentation;
+    Else ProgramMode := ModeSingleScreenPresentation;
 
     frmSongs.FormResize(frmSongs);
     // Zeige die Präsentations-Form
@@ -614,7 +597,7 @@ begin
     // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
   end
   else ShowMessage(StrFehlerKeineLiederBeiPraesentation);
-  if ProgrammMode = ModeMultiscreenPresentation Then begin
+  if ProgramMode = ModeMultiscreenPresentation Then begin
      ImageUpdater.Enabled:=True;
   end;
   UpdateControls;
@@ -622,7 +605,7 @@ end;
 
 procedure TfrmSongs.UpdateControls;
 begin
-  if (ProgrammMode = ModeMultiscreenPresentation) or (ProgrammMode = ModeSingleScreenPresentation) then
+  if (ProgramMode = ModeMultiscreenPresentation) or (ProgramMode = ModeSingleScreenPresentation) then
   begin
     btnAdd.Enabled:=False;
     btnRemove.Enabled:=False;
@@ -771,7 +754,7 @@ end;
 
 procedure TfrmSongs.FormActivate(Sender: TObject);
 begin
-  if ((ProgrammMode = ModeMultiScreenPresentation) and (ProgrammMode = ModeMultiScreenPresentation)) and (frmSongs.Active <> True) and (frmPresent.Active <> True) Then
+  if ((ProgramMode = ModeMultiScreenPresentation) and (ProgramMode = ModeMultiScreenPresentation)) and (frmSongs.Active <> True) and (frmPresent.Active <> True) Then
   begin
     //BringToFront;
   end;
@@ -791,16 +774,18 @@ procedure TfrmSongs.ReloadPresentationImage;
 var
   FormImage: TBitmap;
 begin
-  FormImage := frmPresent.GetFormImage;
-  try
-    // Clipboard.Assign(FormImage); // <=== NOPE
-    imgLiveViewer.Picture.Assign(FormImage); // <-- this works ok
-  finally
-    FormImage.Free;
+  if ProgramMode = ModeMultiScreenPresentation then
+    begin
+    FormImage := frmPresent.GetFormImage;
+    try
+      imgLiveViewer.Picture.Assign(FormImage);
+    finally
+      FormImage.Free;
+    end;
+    lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(Present.cur + 1) + ' / ' + IntToStr(Present.TextList.Count);
+    FormResize(self);
+    pnlMultiScreenResize(self);
   end;
-  lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(Present.cur + 1) + ' / ' + IntToStr(Present.TextList.Count);
-  FormResize(self);
-  pnlMultiScreenResize(self);
 end;
 
 procedure TfrmSongs.AskToReloadRepo;

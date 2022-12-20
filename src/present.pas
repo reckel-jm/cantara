@@ -25,6 +25,12 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
+      MousePos: TPoint; var Handled: Boolean);
+    procedure FormMouseWheelHorz(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+    procedure FormPaint(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lblTextClick(Sender: TObject);
@@ -81,6 +87,31 @@ begin
   else if (key = VK_Escape) then frmPresent.Hide;
 end;
 
+procedure TfrmPresent.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+
+end;
+
+procedure TfrmPresent.FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+
+end;
+
+procedure TfrmPresent.FormMouseWheelHorz(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+begin
+  {if WheelDelta > 0 then GoNext
+  else if WheelDelta < 0 then GoPrevious;
+  Handled := True;}
+end;
+
+procedure TfrmPresent.FormPaint(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmPresent.GoNext;
 begin
   if (cur < textList.Count-1) then
@@ -88,7 +119,7 @@ begin
       inc(cur);
       ShowItem(cur);
     end;
-  if SongSelection.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
+  if SongSelection.ProgramMode = ModeMultiscreenPresentation Then frmSongs.ReloadPresentationImage;
 end;
 
 procedure TfrmPresent.GoPrevious;
@@ -98,7 +129,7 @@ begin
     dec(cur);
     ShowItem(cur);
   end;
-  if SongSelection.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
+  if SongSelection.ProgramMode = ModeMultiscreenPresentation Then frmSongs.ReloadPresentationImage;
 end;
 
 procedure TfrmPresent.FormResize(Sender: TObject);
@@ -197,6 +228,7 @@ begin
     SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
     ShowMeta;
     lblMeta.Top := frmPresent.Height-lblMeta.Height-lblMeta.Left;
+    frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 procedure TfrmPresent.ShowMeta;
@@ -239,7 +271,7 @@ end;
 procedure TfrmPresent.FormHide(Sender: TObject);
 begin
   // Stelle frmSongs wieder her
-  SongSelection.ProgrammMode:=SongSelection.ModeSelection;
+  SongSelection.ProgramMode:=SongSelection.ModeSelection;
   SongSelection.frmSongs.FormResize(self);
   SongSelection.frmSongs.KeyPreview := False;
 
@@ -366,6 +398,8 @@ begin
     begin
       imgBackground.Visible:=False;
     end;
+    // set changedBackground as False unless changes are done again (in settings)
+    frmSettings.changedBackground:=False;
 end;
 
 procedure TfrmPresent.ResizeBackground;

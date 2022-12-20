@@ -49,3 +49,5 @@ cantara
 *.tar.gz
 
 *.snap
+
+*.wpo

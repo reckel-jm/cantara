@@ -13,6 +13,10 @@ object frmPresent: TfrmPresent
   OnDestroy = FormDestroy
   OnHide = FormHide
   OnKeyDown = FormKeyDown
+  OnMouseMove = FormMouseMove
+  OnMouseWheelDown = FormMouseWheelDown
+  OnMouseWheelHorz = FormMouseWheelHorz
+  OnPaint = FormPaint
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter

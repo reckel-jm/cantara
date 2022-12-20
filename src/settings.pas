@@ -68,6 +68,7 @@ type
     procedure LocaliseCaptions;
   public
     { public declarations }
+    changedBackground: Boolean;
   end;
 
 var
@@ -133,6 +134,7 @@ end;
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
+  changedBackground := False;
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
@@ -174,6 +176,7 @@ end;
 procedure TfrmSettings.btnBackgroundImageClick(Sender: TObject);
 begin
   BgPictureDialog.Execute;
+  changedBackground := True;
 end;
 
 procedure TfrmSettings.btnBackgroundColorClick(Sender: TObject);
@@ -199,6 +202,7 @@ end;
 procedure TfrmSettings.cbShowBackgroundImageChange(Sender: TObject);
 begin
   btnBackgroundImage.Enabled:=cbShowBackgroundImage.Checked;
+  changedBackground := True;
 end;
 
 procedure TfrmSettings.edtRepoPathChange(Sender: TObject);
@@ -219,8 +223,8 @@ end;
 
 procedure TfrmSettings.FormClose(Sender: TObject);
 begin
-  frmPresent.loadSettings;
-  if (ProgrammMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
+  if changedBackground then frmPresent.loadSettings;
+  if (ProgramMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
   frmSongs.edtSearch.Text := '';
 end;
 
@@ -257,6 +261,7 @@ begin
      lblImageExplainer.Caption := strPictureOriginalState
   else
      lblImageExplainer.Caption:=strBrightness + ' ' + IntToStr(sbImageBrightness.Position) + '%';
+  changedBackground := True;
 end;
 
 procedure TfrmSettings.seWrapLinesChange(Sender: TObject);
