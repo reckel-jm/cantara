@@ -854,7 +854,7 @@ begin
           // We save the song under an imported flag and add it
           songExtension := ExtractFileExt(NextFileName);
           SongName := Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName)));
-          DateTimeToString(DateTimeStr, 'yyyy-mm-dd', Time);
+          DateTimeToString(DateTimeStr, 'yyyy-mm-dd', Now);
           SongName := SongName + ' [' + DateTimeStr + ']';
           SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + SongName + SongExtension);
           lbxSSelected.Items.Add(SongName);

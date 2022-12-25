@@ -398,11 +398,13 @@ object frmSongs: TfrmSongs
         OnClick = itemSaveClick
       end
       object itemImportTeXFile: TMenuItem
-        Caption = 'Import Selection with Files...'
+        Caption = 'Import Selection with Content...'
+        Hint = 'Imports a SongTeX file which contains all selected song files with their content.'#10'If the file does not exist in the song repository yet, it will be automatically added to.'
         OnClick = itemImportTeXFileClick
       end
       object itemExportTeXFile: TMenuItem
-        Caption = 'Export Selection with Files...'
+        Caption = 'Export Selection with Content...'
+        Hint = 'Exports a SongTeX file which contains all selected song files with their content.'
         OnClick = itemExportTeXFileClick
       end
       object itemReloadSongList: TMenuItem

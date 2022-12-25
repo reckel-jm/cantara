@@ -229,11 +229,21 @@ msgid "Close"
 msgstr ""
 
 #: tfrmsongs.itemexporttexfile.caption
-msgid "Export Selection with Files..."
+msgid "Export Selection with Content..."
+msgstr ""
+
+#: tfrmsongs.itemexporttexfile.hint
+msgid "Exports a SongTeX file which contains all selected song files with their content."
 msgstr ""
 
 #: tfrmsongs.itemimporttexfile.caption
-msgid "Import Selection with Files..."
+msgid "Import Selection with Content..."
+msgstr ""
+
+#: tfrmsongs.itemimporttexfile.hint
+msgid ""
+"Imports a SongTeX file which contains all selected song files with their content.\n"
+"If the file does not exist in the song repository yet, it will be automatically added to."
 msgstr ""
 
 #: tfrmsongs.itemload.caption
