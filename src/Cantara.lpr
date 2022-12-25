@@ -10,7 +10,7 @@ uses
   Forms, runtimetypeinfocontrols, SongSelection, Present, settings,
   info,
   { you can add units after this }
-  songeditor, songtextest;
+  songeditor;
 {$R *.res}
 
 begin
