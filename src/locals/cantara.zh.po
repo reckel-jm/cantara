@@ -12,6 +12,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.1.1\n"
 
+#: editordisplaysongcontent.streditsongnamecaption
+msgid "Edit Song Name"
+msgstr ""
+
+#: editordisplaysongcontent.streditsongnamecontent
+msgid "Please enter the new song name: "
+msgstr ""
+
 #: editordisplaysongcontent.strerrorcclitosong
 msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
 msgstr ""
@@ -66,8 +74,24 @@ msgstr "增加透明度："
 msgid "Please choose a valid folder for the song repository!"
 msgstr ""
 
+#: songeditor.strcannotarchivate
+msgid "No valid file selected."
+msgstr ""
+
 #: songeditor.strfilehaschanged
 msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
+msgstr ""
+
+#: songeditor.strfilenameexists
+msgid "The name exists already. Please choose an other one."
+msgstr ""
+
+#: songeditor.strnewfilecaption
+msgid "New Song"
+msgstr ""
+
+#: songeditor.strnewfilecontent
+msgid "Please add the name of the new song"
 msgstr ""
 
 #: songeditor.strsyntaxdocurl
@@ -121,6 +145,23 @@ msgstr ""
 msgid "Slide"
 msgstr "投影片"
 
+#: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
+msgid "Convert CCLI File to Song Format"
+msgstr ""
+
+#: tfrmdisplaysongcontent.labelccliimporthint.caption
+msgid ""
+"Hint:\n"
+"\n"
+"The file which you are going to open is a CCLI file.\n"
+"It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
+"If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
+msgstr ""
+
+#: tfrmdisplaysongcontent.lblsongname.caption
+msgid "Name: "
+msgstr ""
+
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
 msgstr ""
@@ -158,6 +199,32 @@ msgstr ""
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
+msgstr ""
+
+#: tfrmsongedit.caption
+msgid "Edit Files"
+msgstr ""
+
+#: tfrmsongedit.menufile.caption
+msgctxt "tfrmsongedit.menufile.caption"
+msgid "File"
+msgstr ""
+
+#: tfrmsongedit.menuitemarchivate.caption
+msgid "Archivate"
+msgstr ""
+
+#: tfrmsongedit.menuitemclose.caption
+msgctxt "tfrmsongedit.menuitemclose.caption"
+msgid "Close"
+msgstr ""
+
+#: tfrmsongedit.menuitemnew.caption
+msgid "New"
+msgstr ""
+
+#: tfrmsongedit.menuitemsave.caption
+msgid "Save"
 msgstr ""
 
 #: tfrmsongs.btnadd.caption
@@ -225,6 +292,7 @@ msgid "Information about the Program"
 msgstr ""
 
 #: tfrmsongs.itemend.caption
+msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr ""
 
@@ -285,6 +353,7 @@ msgid "Edit"
 msgstr ""
 
 #: tfrmsongs.menufile.caption
+msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
 msgstr ""
 

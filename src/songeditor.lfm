@@ -65,10 +65,18 @@ object frmSongEdit: TfrmSongEdit
     Top = 110
     object menuFile: TMenuItem
       Caption = 'File'
+      object menuItemNew: TMenuItem
+        Caption = 'New'
+        OnClick = menuItemNewClick
+      end
       object menuItemSave: TMenuItem
         Caption = 'Save'
         ShortCut = 16467
         OnClick = menuItemSaveClick
+      end
+      object menuItemArchivate: TMenuItem
+        Caption = 'Archivate'
+        OnClick = menuItemArchivateClick
       end
       object menuItemClose: TMenuItem
         Caption = 'Close'

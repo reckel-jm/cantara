@@ -35,25 +35,6 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Caption = 'Name: '
     ParentColor = False
   end
-  object edtSongName: TEdit
-    AnchorSideLeft.Control = lblSongNameContent
-    AnchorSideTop.Control = lblSongNameContent
-    AnchorSideRight.Control = lblSongNameContent
-    AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = lblSongNameContent
-    AnchorSideBottom.Side = asrBottom
-    Left = 53
-    Height = 22
-    Top = 0
-    Width = 720
-    Anchors = [akTop, akLeft, akRight, akBottom]
-    OnEditingDone = edtSongNameEditingDone
-    OnExit = edtSongNameExit
-    OnMouseLeave = edtSongNameMouseLeave
-    TabOrder = 1
-    Text = 'edtSongName'
-    Visible = False
-  end
   object lblSongNameContent: TLabel
     AnchorSideLeft.Control = lblSongName
     AnchorSideLeft.Side = asrBottom
@@ -82,8 +63,9 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     ClientWidth = 773
     Color = clForm
     ParentColor = False
-    TabOrder = 2
+    TabOrder = 1
     Visible = False
+    OnClick = ccliimporthintClick
     object labelCCLIImportHint: TLabel
       AnchorSideLeft.Control = ccliimporthint
       AnchorSideTop.Control = ccliimporthint

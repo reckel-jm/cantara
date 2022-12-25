@@ -14,7 +14,6 @@ type
 
   TfrmDisplaySongContent = class(TFrame)
     btnConvertCCLIFileToSongFormat: TButton;
-    edtSongName: TEdit;
     labelCCLIImportHint: TLabel;
     lblSongNameContent: TLabel;
     lblSongName: TLabel;
@@ -23,6 +22,7 @@ type
     Save: TMenuItem;
     menuSong: TMenuItem;
     procedure btnConvertCCLIFileToSongFormatClick(Sender: TObject);
+    procedure ccliimporthintClick(Sender: TObject);
     constructor Create(AOwner: TComponent);
     procedure edtSongNameEditingDone(Sender: TObject);
     procedure edtSongNameExit(Sender: TObject);
@@ -50,6 +50,8 @@ type
 ResourceString
   strFileCanNotBeRenamed = 'The File can not be renamed. Make sure that you have the permissions to write to the song repository!';
   strErrorCCLIToSong = 'The file can not be converted. Make sure that you have the permissions to write to the song repository!';
+  StrEditSongNameCaption = 'Edit Song Name';
+  StrEditSongNameContent = 'Please enter the new song name: ';
 
 const
   ArchiveFolderName:String = 'archive';
@@ -84,37 +86,35 @@ begin
        CreateDir(frmSettings.edtRepoPath.Text + PathDelim + ArchiveFolderName);
     if not RenameFile(openFile.FilePath, frmSettings.edtRepoPath.Text + PathDelim + ArchiveFolderName + PathDelim + openfile.Name + '.ccli') then // move ccli file to subfolder
        ShowMessage(strErrorCCLIToSong);
-       openfile.FileExtension := '.song';
-       openfile.FileName:=openfile.Name + openFile.FileExtension;
-       openfile.FilePath:=SongFilePath;
-       LoadFile(openfile);
-       frmSongEdit.loadRepoIntoSongListbox;
-       markaschanged(False);
+    openfile.FileExtension := '.song';
+    openfile.FileName:=openfile.Name + openFile.FileExtension;
+    openfile.FilePath:=SongFilePath;
+    LoadFile(openfile);
+    frmSongEdit.loadRepoIntoSongListbox;
+    markaschanged(False);
   except
     ShowMessage(strErrorCCLIToSong);
   end;
 end;
 
+procedure TfrmDisplaySongContent.ccliimporthintClick(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmDisplaySongContent.edtSongNameEditingDone(Sender: TObject);
 begin
-  edtSongNameExit(Sender);
-  RenameSongFile(edtSongName.Text);
+
 end;
 
 procedure TfrmDisplaySongContent.edtSongNameExit(Sender: TObject);
 begin
-  edtSongName.Visible:=False;
-  if lblSongNameContent.Caption <> edtSongName.Text then
-  begin
-    lblSongNameContent.Caption:=edtSongName.Text;
-    self.markAsChanged(True);
-  end;
+
 end;
 
 procedure TfrmDisplaySongContent.edtSongNameMouseLeave(Sender: TObject);
 begin
-  edtSongName.Visible:=False;
-  lblSongNameContent.Caption:=edtSongName.Text;
+
 end;
 
 procedure TfrmDisplaySongContent.FrameClick(Sender: TObject);
@@ -138,9 +138,12 @@ begin
 end;
 
 procedure TfrmDisplaySongContent.lblSongNameContentDblClick(Sender: TObject);
+var
+  NewSongName: String;
 begin
-  edtSongName.Visible := True;
-  edtSongName.Text := lblSongNameContent.Caption;
+  NewSongName := InputBox(StrEditSongNameCaption, StrEditSongNameContent, OpenFile.Name);
+  RenameSongFile(NewSongName);
+  lblSongName.Caption:=NewSongName;
 end;
 
 procedure TfrmDisplaySongContent.memoCodeChange(Sender: TObject);
@@ -161,7 +164,6 @@ begin
   self.openFilePath := frmSettings.edtRepoPath.Text + PathDelim + repoFile.FileName;
   memoCode.Lines.LoadFromFile(self.openFilePath);
   lblSongNameContent.Caption:=openFile.Name;
-  edtSongName.Text:=openFile.Name;
   self.hasChanged := False; // dont run markAsChanged as it may cause exceptions
   { if CCLI File than show conversion suggestion instead of editor }
   songimport := TSong.Create;

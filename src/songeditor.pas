@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  editordisplaysongcontent, editorwelcome, lyrics, lclintf, ComCtrls, Menus;
+  editordisplaysongcontent, editorwelcome, lyrics, lclintf, ComCtrls, Menus, Settings;
 
 type
   { TfrmSongEdit }
@@ -15,6 +15,8 @@ type
     lsSongs: TListBox;
     EditorMenu: TMainMenu;
     menuFile: TMenuItem;
+    menuItemArchivate: TMenuItem;
+    menuItemNew: TMenuItem;
     menuItemSave: TMenuItem;
     menuItemClose: TMenuItem;
     PageControl: TPageControl;
@@ -24,6 +26,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure lsSongsClick(Sender: TObject);
     procedure menuItemCloseClick(Sender: TObject);
+    procedure menuItemArchivateClick(Sender: TObject);
+    procedure menuItemNewClick(Sender: TObject);
     procedure menuItemSaveClick(Sender: TObject);
     procedure PageControlCloseTabClicked(Sender: TObject);
     procedure PageControlMouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -39,6 +43,7 @@ type
     procedure UpdateTabHeadlines;
     procedure OpenFileOnNewTab(song: TRepoFile);
     function CreateEditorFrame(Frame: TFrame): TfrmDisplaySongContent;
+    function RepoContainsSongName(songname: String): Boolean;
   public
     procedure loadRepo(SongRepositoryArray: TRepoArray);
   end;
@@ -51,6 +56,10 @@ ResourceString
   strSyntaxDocURL = 'https://www.cantara.app/tutorial/meta-data/';
   strWelcome = 'Welcome';
   strFileHasChanged = 'The file {{filename}} has been changed after opening. Would you like to save it?';
+  strNewFileContent = 'Please add the name of the new song';
+  strNewFileCaption = 'New Song';
+  StrFileNameExists = 'The name exists already. Please choose an other one.';
+  StrCanNotArchivate = 'No valid file selected.';
 
 implementation
 
@@ -70,6 +79,63 @@ end;
 procedure TfrmSongEdit.menuItemCloseClick(Sender: TObject);
 begin
   frmSongEdit.Close;
+end;
+
+procedure TfrmSongEdit.menuItemArchivateClick(Sender: TObject);
+  var RepoFile: TRepoFile;
+    Frame: TFrame;
+    NewFilePath: String;
+    var i: Integer;
+begin
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if (Frame is TfrmDisplaySongContent) and (FileExists((Frame as TfrmDisplaySongContent).openFile.FilePath)) then
+    begin
+      RepoFile := (Frame as TfrmDisplaySongContent).openFile;
+      NewFilePath := frmSettings.edtRepoPath.Text + PathDelim + editordisplaysongcontent.ArchiveFolderName + PathDelim + RepoFile.FileName;
+      if not RenameFile(RepoFile.FilePath, NewFilePath) then
+        ShowMessage(StrCanNotArchivate);
+      frmSongs.AskToReloadRepo;
+      LoadRepoIntoSongListbox;
+      CloseCurrentTab;
+      //lsSongs.Items.Delete(lsSongs.Items.IndexOf(RepoFile.Name));
+    end else
+      ShowMessage(StrCanNotArchivate);
+end;
+
+procedure TfrmSongEdit.menuItemNewClick(Sender: TObject);
+var
+  NewSongName, NewFilePath: String;
+  DummyFile: TStringList;
+  RepoFile: TRepoFile;
+begin
+  NewSongName := InputBox(StrNewFileCaption, StrNewFileContent, '');
+  While (RepoContainsSongName(NewSongName)) do
+  begin
+    ShowMessage(StrFileNameExists);
+    NewSongName := InputBox(StrNewFileCaption, StrNewFileContent, '');
+  end;
+  DummyFile := TStringList.Create;
+  RepoFile := TRepoFile.Create;
+  RepoFile.Name:=NewSongName;
+  RepoFile.FileExtension:='.song';
+  RepoFile.FileName:=RepoFile.Name+RepoFile.FileExtension;
+  NewFilePath := frmSettings.edtRepoPath.Text + PathDelim + NewSongName + '.song';
+  RepoFile.FilePath:=NewFilePath;
+  DummyFile.SaveToFile(RepoFile.FilePath);
+  FreeAndNil(DummyFile);
+  SetLength(Repo, Length(Repo)+1);
+  Repo[Length(Repo)-1] := RepoFile;
+  lsSongs.AddItem(RepoFile.FileName, RepoFile);
+  LoadFileIntoTabs(RepoFile);
+end;
+
+function TfrmSongEdit.RepoContainsSongName(songname: String): Boolean;
+var i: Integer;
+begin
+  for i := 0 to Length(Repo)-1 do
+    if Repo[i].Name = songname then
+      Exit(True);
+  Result := False;
 end;
 
 procedure TfrmSongEdit.menuItemSaveClick(Sender: TObject);
