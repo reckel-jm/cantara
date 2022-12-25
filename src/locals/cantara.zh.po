@@ -50,6 +50,7 @@ msgid "Increase brightness by "
 msgstr "增加亮度："
 
 #: settings.strerrorcaption
+msgctxt "settings.strerrorcaption"
 msgid "Error"
 msgstr ""
 
@@ -91,6 +92,11 @@ msgstr "展示"
 msgid "Error: The Song \"{songname}\" is not available. Skipping."
 msgstr ""
 
+#: songselection.strerror
+msgctxt "songselection.strerror"
+msgid "Error"
+msgstr ""
+
 #: songselection.strerstebenutzung
 msgid "You are using this program for the first time. Please select a song repository folder."
 msgstr "您正在第一次使用本程式。請選擇一個曲庫資料夾。"
@@ -107,7 +113,184 @@ msgstr "打開時發生錯誤。可能您未獲取打開該檔案的權限。"
 msgid "Error while saving. Propably you have not the required rights to access this file."
 msgstr "保存時發生錯誤。可能您未獲取保存該檔案的權限。"
 
+#: songselection.strfiledoesnotexist
+msgid "The File you would like to open does not exists."
+msgstr ""
+
 #: songselection.strfolie
 msgid "Slide"
 msgstr "投影片"
+
+#: tfrminfo.btnopengitrepo.caption
+msgid "Open Github Repository with Browser"
+msgstr ""
+
+#: tfrminfo.btnopenwebpage.caption
+msgid "Open Project's Webpage with Browser"
+msgstr ""
+
+#: tfrminfo.caption
+#, fuzzy
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
+msgstr "關於本程式"
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr ""
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr ""
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"This program has been published under the GPL3 licence. \n"
+"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
+"\n"
+"The author wishes God's blessing for the use of the program!"
+msgstr ""
+
+#: tfrminfo.lblname.caption
+msgid "Cantara"
+msgstr ""
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr ""
+
+#: tfrmsongs.btnadd.caption
+msgid "+"
+msgstr ""
+
+#: tfrmsongs.btnclear.caption
+msgid "🗑"
+msgstr ""
+
+#: tfrmsongs.btnclear.hint
+msgid "Leere alle ausgewählten Lieder"
+msgstr ""
+
+#: tfrmsongs.btndown.caption
+msgid "🠗"
+msgstr ""
+
+#: tfrmsongs.btngoleft.caption
+msgid "←"
+msgstr ""
+
+#: tfrmsongs.btngoright.caption
+msgid "→"
+msgstr ""
+
+#: tfrmsongs.btnquitpresentation.caption
+msgid "×"
+msgstr ""
+
+#: tfrmsongs.btnremove.caption
+msgid "-"
+msgstr ""
+
+#: tfrmsongs.btnsettings.caption
+#, fuzzy
+msgctxt "tfrmsongs.btnsettings.caption"
+msgid "Settings..."
+msgstr "設定…"
+
+#: tfrmsongs.btnstartpresentation.caption
+#, fuzzy
+msgctxt "tfrmsongs.btnstartpresentation.caption"
+msgid "Presentation..."
+msgstr "展示"
+
+#: tfrmsongs.btnup.caption
+msgid "🠕"
+msgstr ""
+
+#: tfrmsongs.caption
+msgid "Song Selection (Cantara)"
+msgstr ""
+
+#: tfrmsongs.chkmultiwindowmode.caption
+msgid "Multi-Screen-Mode (suitable for multiple screens)"
+msgstr ""
+
+#: tfrmsongs.edtsearch.hint
+msgid "Suchen..."
+msgstr ""
+
+#: tfrmsongs.itemabout.caption
+msgid "Information about the Program"
+msgstr ""
+
+#: tfrmsongs.itemend.caption
+msgid "Close"
+msgstr ""
+
+#: tfrmsongs.itemexporttexfile.caption
+msgid "Export Selection with Files..."
+msgstr ""
+
+#: tfrmsongs.itemimporttexfile.caption
+msgid "Import Selection with Files..."
+msgstr ""
+
+#: tfrmsongs.itemload.caption
+msgid "Load Selection..."
+msgstr ""
+
+#: tfrmsongs.itempresentation.caption
+msgid "Run Presentation"
+msgstr ""
+
+#: tfrmsongs.itemreloadsonglist.caption
+msgid "Reload Song Repository"
+msgstr ""
+
+#: tfrmsongs.itemsave.caption
+msgid "Save Selection..."
+msgstr ""
+
+#: tfrmsongs.itemsettings.caption
+#, fuzzy
+msgctxt "tfrmsongs.itemsettings.caption"
+msgid "Settings..."
+msgstr "設定…"
+
+#: tfrmsongs.itemsongeditor.caption
+msgid "Song Lyrics..."
+msgstr ""
+
+#: tfrmsongs.lblfoilnumber.caption
+msgid "Foliennummern"
+msgstr ""
+
+#: tfrmsongs.lblpresentation.caption
+msgid "Presentation is running:"
+msgstr ""
+
+#: tfrmsongs.menuedit.caption
+msgid "Edit"
+msgstr ""
+
+#: tfrmsongs.menufile.caption
+msgid "File"
+msgstr ""
+
+#: tfrmsongs.menuhelp.caption
+msgid "Help"
+msgstr ""
+
+#: tfrmsongs.opendialog.title
+msgid "Open Song List"
+msgstr ""
+
+#: tfrmsongs.savedialog.title
+msgid "Save Song List"
+msgstr ""
+
+#: tfrmsongs.savesongtexfiledialog.title
+msgid "Save SongTeX File"
+msgstr ""
 

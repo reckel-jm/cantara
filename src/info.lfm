@@ -11,7 +11,6 @@ object frmInfo: TfrmInfo
   ClientWidth = 497
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '2.2.4.0'
   object lblAuthor: TLabel
     Left = 0
     Height = 22
@@ -652,14 +651,16 @@ object frmInfo: TfrmInfo
     Proportional = True
   end
   object btnOpenWebpage: TButton
+    AnchorSideLeft.Control = btnOpenGitRepo
     AnchorSideTop.Control = btnOpenGitRepo
     AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = btnOpenGitRepo
     AnchorSideRight.Side = asrBottom
-    Left = 4
+    Left = 0
     Height = 25
     Top = 291
-    Width = 493
-    Anchors = [akTop, akRight]
+    Width = 497
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Open Project''s Webpage with Browser'
     OnClick = btnOpenWebpageClick
     ParentFont = False

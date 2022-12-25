@@ -150,6 +150,8 @@ ResourceString
   StrButtonEinstellungen = 'Settings...';
   StrCanNotOpenSong = 'Error: The Song "{songname}" is not available. Skipping.';
   StrFolie = 'Slide';
+  StrFileDoesNotExist = 'The File you would like to open does not exists.';
+  StrError = 'Error';
 
 implementation
 
@@ -159,20 +161,7 @@ implementation
 
 procedure TfrmSongs.LocaliseCaptions;
 begin
-  {btnStartPresentation.Caption := StrButtonPraesentation;
-  btnSettings.Caption := StrButtonEinstellungen;
-  menuFile.Caption := StrMenuDatei;
-  itemLoad.Caption := StrMenuAuswahlLaden;
-  itemSave.Caption := StrMenuAuswahlSpeichern;
-  itemPresentation.Caption := StrMenuPraesentation;
-  itemEnd.Caption := StrMenuBeenden;
-  menuEdit.Caption := StrMenuBearbeiten;
-  itemSettings.Caption := StrMenuEinstellungen;
-  menuHelp.Caption := StrMenuHilfe;
-  itemAbout.Caption := StrMenuInfo;
-  self.Caption:=StrFormCaption;
-  self.edtSearch.TextHint := StrSearchFieldHint;
-  chkMultiWindowMode.Caption := StrMultipleWindowMode; }
+
 end;
 
 procedure TfrmSongs.loadRepo(repoPath: string);
@@ -248,7 +237,13 @@ procedure TfrmSongs.FormResize(Sender: TObject);
 begin
   if (ProgramMode = ModeSelection) OR (ProgramMode = ModeSingleScreenPresentation) Then
   Begin
-    PnlSplitter.MoveSplitter(frmSongs.Width);
+    {PnlSplitter.Visible := True;
+    pnlSplitter.Left := frmSongs.Width-PanelMultiScreenWidth;
+    pnlMultiScreen.Visible := True;
+    btnStartPresentation.Enabled := False;
+    frmPresent.KeyPreview := True; }
+
+    PnlSplitter.Left := frmSongs.Width;
     PnlSplitter.Width:=1;
     IntToStr(PnlSplitter.Left);
     //PnlSplitter.Visible := False;
@@ -826,8 +821,57 @@ begin
 end;
 
 procedure TfrmSongs.ImportTeXFileAsSelection;
+var SongTexFile: TSongTeXFile;
+  NextFileName, RepoPath: String;
+  RepoFileStrings: TStringList;
+  songname, songextension: String;
+  DateTimeStr: String;
 begin
-
+  if OpenSongTeXFileDialog.Execute then
+  begin
+    RepoPath := frmSettings.edtRepoPath.Text;
+    if FileExists(OpenSongTeXFileDialog.FileName) = false then
+    begin
+      Application.MessageBox(PChar(strFileDoesNotExist), PChar(strError), MB_ICONWARNING or MB_OK);
+    end;
+    SongTeXFile := TSongTeXFile.Create;
+    SongTeXFile.LoadFromFile(OpenSongTeXFileDialog.FileName);
+    NextFileName := SongTeXFile.HasNextSongfile;
+    while (NextFileName <> '') do
+    begin
+      // Check whether file with the same name exists in the repository
+      if FileExists(RepoPath + PathDelim + NextFileName) then
+      begin
+        // Check whether files are equal
+        RepoFileStrings := TStringList.Create;
+        RepoFileStrings.LoadFromFile(RepoPath + PathDelim + NextFileName);
+        if RepoFileStrings.Equals(SongTeXFile.NextSongFile) then
+        begin
+          // Add the entry from local repo
+          lbxSSelected.Items.Add(Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName))));
+        end else // The song is available but not equal
+        begin
+          // We save the song under an imported flag and add it
+          songExtension := ExtractFileExt(NextFileName);
+          SongName := Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName)));
+          DateTimeToString(DateTimeStr, 'yyyy-mm-dd', Time);
+          SongName := SongName + ' [' + DateTimeStr + ']';
+          SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + SongName + SongExtension);
+          lbxSSelected.Items.Add(SongName);
+          ItemReloadSongListClick(nil);
+        end;
+        FreeAndNil(RepoFileStrings);
+      end else // The file does not exist yet, then we import the file and add it
+      begin
+        SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + NextFileName);
+        SongName := Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName)));
+        lbxSSelected.Items.Add(SongName);
+        ItemReloadSongListClick(nil);
+      end;
+      NextFileName := SongTexFile.HasNextSongfile;
+    end;
+    FreeAndNil(SongTeXFile);
+  end;
 end;
 
 end.

@@ -23,15 +23,21 @@ implementation
 
 procedure TSongTeXTest.TestHookUp;
 var
-  AmazingGrace, AndCanItBe: String;
+  NextFileName: String;
 begin
-  AmazingGrace := songtexfile.HasNextSongfile;
-  AssertEquals('Amazing Grace.song', AmazingGrace);
+  NextFileName := songtexfile.HasNextSongfile;
+  AssertEquals('Amazing Grace.song', NextFileName);
   AssertEquals('1. Amazing grace', SongTexFile.NextSongFile.Strings[0]);
 
-  AndCanItBe := songtexfile.HasNextSongfile;
-  AssertEquals('And Can It Be.song', AndCanItBe);
+  NextFileName := songtexfile.HasNextSongfile;
+  AssertEquals('And Can It Be.song', NextFileName);
   AssertEquals('#title: And Can It Be', SongTexFile.NextSongFile.Strings[0]);
+
+  NextFileName := songtexfile.HasNextSongfile;
+  AssertEquals('', NextFileName);
+
+  NextFileName := songtexfile.HasNextSongfile;
+  AssertEquals('', NextFileName);
 
   FreeAndNil(SongTeXFile);
 end;

@@ -24,7 +24,7 @@ unit SongTeX;
 interface
 
 uses
-  Classes, SysUtils, Lyrics, Strings;
+  Classes, SysUtils, Lyrics;
 
 type
   { TSongTexFile -> a TeX like file which exports whole slides }
@@ -94,17 +94,17 @@ end;
 function TSongTexFile.HasNextSongfile: String;
 var curSongname: string;
 begin
-  while (pos('\beginfile{',FileContent.Strings[ParsingIndex]) < 1) and (ParsingIndex < FileContent.Count) do
+  while (ParsingIndex <= FileContent.Count-1) and (pos('\beginfile{',FileContent.Strings[ParsingIndex]) < 1) do
   begin
     Inc(ParsingIndex);
   end;
-  if pos('\beginfile{',FileContent.Strings[ParsingIndex]) > 0 then
+  if (ParsingIndex <= FileContent.Count-1) and (pos('\beginfile{',FileContent.Strings[ParsingIndex]) > 0) then
   begin
     NextSongFile.Clear;
     curSongname := copy(FileContent.Strings[ParsingIndex],length('\beginfile{')+1,
                 length(FileContent.Strings[ParsingIndex])-12);
     inc(ParsingIndex);
-    while (ParsingIndex < FileContent.Count) and (FileContent.Strings[ParsingIndex] <> '\endfile') do
+    while (ParsingIndex <= FileContent.Count-1) and (FileContent.Strings[ParsingIndex] <> '\endfile') do
     begin
       NextSongFile.Add(FileContent.Strings[ParsingIndex]);
       inc(ParsingIndex);
