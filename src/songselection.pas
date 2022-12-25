@@ -1,6 +1,6 @@
 unit SongSelection;
 
-{$mode ObjFPC}{$H+}{$R-}
+{$mode ObjFPC}{$H+}
 
 interface
 

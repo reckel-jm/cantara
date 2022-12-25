@@ -201,6 +201,20 @@ msgstr ""
 msgid "lblVersion"
 msgstr ""
 
+#: tfrmpresent.caption
+msgid "Presentation"
+msgstr ""
+
+#: tfrmpresent.lblmeta.caption
+msgid ""
+"<Meta>\n"
+"Second Line"
+msgstr ""
+
+#: tfrmpresent.lblnext.caption
+msgid "<Lyrics>"
+msgstr ""
+
 #: tfrmsongedit.caption
 msgid "Edit Files"
 msgstr ""

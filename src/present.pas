@@ -416,10 +416,13 @@ begin
         end
       else
         begin
-          newWidth:=Trunc(frmPresent.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
-          imgBackground.Left:=-Abs(Trunc((imgBackground.Width-frmPresent.Width)/2));
-          imgBackground.Top:=0;
-          imgBackground.Width:=newWidth;
+          if frmSettings.cbShowBackgroundImage.Checked then // This is important because else there will be a range check error!
+          begin
+            newWidth:=Trunc(frmPresent.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
+            imgBackground.Left:=-Abs(Trunc((imgBackground.Width-frmPresent.Width)/2));
+            imgBackground.Top:=0;
+            imgBackground.Width:=newWidth;
+          end;
         end;
 end;
 
