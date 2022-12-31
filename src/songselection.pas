@@ -7,7 +7,7 @@ interface
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
-  lyrics, LCLTranslator, songeditor, SongTeX;
+  lyrics, LCLTranslator, songeditor, SongTeX, welcome;
 
 type
   TSongPosition = record
@@ -18,6 +18,8 @@ type
   end;
   { TfrmSongs }
 
+  { The main form of Cantara where the songs are choosen from. It is also responsible for managing
+  the song repository }
   TfrmSongs = class(TForm)
     btnAdd: TButton;
     btnClear: TButton;
@@ -53,6 +55,7 @@ type
     itemSongEditor: TMenuItem;
     itemExportTeXFile: TMenuItem;
     itemImportTeXFile: TMenuItem;
+    itemShowWelcomeAssistent: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     OpenSongTeXFileDialog: TOpenDialog;
@@ -90,6 +93,7 @@ type
     procedure itemImportTeXFileClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
+    procedure itemShowWelcomeAssistentClick(Sender: TObject);
     procedure itemSongEditorClick(Sender: TObject);
     procedure lbxSRepoClick(Sender: TObject);
     procedure lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -105,12 +109,17 @@ type
     procedure lbxSselectedMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure lbxSselectedResize(Sender: TObject);
+    { loadRepo oads the Song Repository from the repository folder, creates an TSongFile
+    class instance for each file and adds it to the repo array.
+    @param(repoPath is the complete absolute file path to the song repepository without a
+    path delim ('/') or ('\') at its end. }
     procedure loadRepo(repoPath: string);
     procedure itemAboutClick(Sender: TObject);
     procedure itemReloadSongListClick(Sender: TObject);
     procedure pnlMultiScreenClick(Sender: TObject);
     procedure pnlMultiScreenResize(Sender: TObject);
     procedure PnlSplitterMoved(Sender: TObject);
+    { Opens the selected songs and creates the presentation data from the selected songs. }
     procedure CreatePresentationData;
     function GetCurrentSongPosition: TSongPosition;
     procedure UpdateSongPositionInLbxSSelected;
@@ -118,7 +127,8 @@ type
     procedure ReloadPresentationImage;
   private
     { private declarations }
-    procedure LocaliseCaptions;
+    { Filters the Listbox lbxSRepo after a search pattern. If s is empty, no filter will be applied.
+    @param(s: the search pattern) }
     procedure FilterListBox(s: String);
     procedure BringToFront;
     procedure ExportSelectionAsTeXFile;
@@ -136,7 +146,9 @@ const
 
 var
   frmSongs: TfrmSongs;
+  { The Repository array which contains songs as classes of TSongFile }
   repo: TRepoArray;
+  { @deprecated An enum should be used instead, but this has not been changed yet. }
   ProgramMode: char;
   startingPoint: TPoint;
   PanelMultiScreenWidth: Integer;
@@ -159,17 +171,17 @@ implementation
 
 { TfrmSongs }
 
-procedure TfrmSongs.LocaliseCaptions;
-begin
-
-end;
-
 procedure TfrmSongs.loadRepo(repoPath: string);
 var SearchResult: TSearchRec;
     i,c: integer;
     songName: string;
     fileExtension: String;
+    song: TRepoFile;
 begin
+  // Delete everything in repo if there is something.
+  for song in repo do
+    song.Free;
+  SetLength(repo, 0);
   if FindFirst(repoPath + PathDelim + '*', faAnyFile, SearchResult)=0 then
     begin
     lbxSRepo.Clear;
@@ -360,6 +372,11 @@ begin
   except
     ShowMessage(StrFehlerSpeichern);
   end;
+end;
+
+procedure TfrmSongs.itemShowWelcomeAssistentClick(Sender: TObject);
+begin
+  frmWelcome.Show;
 end;
 
 procedure TfrmSongs.itemSongEditorClick(Sender: TObject);

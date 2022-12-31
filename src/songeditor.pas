@@ -15,10 +15,11 @@ type
     lsSongs: TListBox;
     EditorMenu: TMainMenu;
     menuFile: TMenuItem;
+    menuItemCopy: TMenuItem;
+    menuItemClose: TMenuItem;
     menuItemArchivate: TMenuItem;
     menuItemNew: TMenuItem;
     menuItemSave: TMenuItem;
-    menuItemClose: TMenuItem;
     PageControl: TPageControl;
     splitter: TSplitter;
     procedure btnOpenDocsClick(Sender: TObject);
@@ -27,19 +28,22 @@ type
     procedure lsSongsClick(Sender: TObject);
     procedure menuItemCloseClick(Sender: TObject);
     procedure menuItemArchivateClick(Sender: TObject);
+    procedure menuItemCopyClick(Sender: TObject);
     procedure menuItemNewClick(Sender: TObject);
     procedure menuItemSaveClick(Sender: TObject);
     procedure PageControlCloseTabClicked(Sender: TObject);
     procedure PageControlMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure loadRepoIntoSongListbox; // this has to be public because it will be called from outside, e.g. the frame TEditorDisplaySongContent
+    procedure CloseCurrentTab;
+    procedure ArchivateCurrentTab;
+    procedure CopyCurrentTab(OldSongname: String);
   private
     repo: TRepoArray; // Load the Repo for editing it later
     //Tabs: array of TTabSheet; // Array which holds the tabs
     procedure LoadSelectedSongContent;
     procedure loadFileIntoTabs(song: TRepoFile);
     procedure CreateNewTab;
-    procedure CloseCurrentTab;
     procedure UpdateTabHeadlines;
     procedure OpenFileOnNewTab(song: TRepoFile);
     function CreateEditorFrame(Frame: TFrame): TfrmDisplaySongContent;
@@ -82,6 +86,49 @@ begin
 end;
 
 procedure TfrmSongEdit.menuItemArchivateClick(Sender: TObject);
+begin
+  ArchivateCurrentTab;
+end;
+
+procedure TfrmSongEdit.menuItemCopyClick(Sender: TObject);
+begin
+  CopyCurrentTab('');
+end;
+
+
+{
+This function copies the opened file (active Tab) to a new name and opens it.
+}
+procedure TfrmSongEdit.CopyCurrentTab(OldSongname: String);
+  var
+  NewSongName, NewFilePath: String;
+  RepoFile: TRepoFile;
+  Frame: TFrame;
+begin
+  NewSongName := InputBox(StrNewFileCaption, StrNewFileContent, OldSongname);
+  While (RepoContainsSongName(NewSongName)) do
+  begin
+    ShowMessage(StrFileNameExists);
+    NewSongName := InputBox(StrNewFileCaption, StrNewFileContent, '');
+  end;
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if (Frame is TfrmDisplaySongContent) then
+  begin
+    RepoFile := TRepoFile.Create;
+    RepoFile.Name:=NewSongName;
+    RepoFile.FileExtension:='.song';
+    RepoFile.FileName:=RepoFile.Name+RepoFile.FileExtension;
+    NewFilePath := frmSettings.edtRepoPath.Text + PathDelim + NewSongName + '.song';
+    RepoFile.FilePath:=NewFilePath;
+    (Frame as TfrmDisplaySongContent).memoCode.Lines.SaveToFile(NewFilePath);
+    SetLength(Repo, Length(Repo)+1);
+    Repo[Length(Repo)-1] := RepoFile;
+    lsSongs.AddItem(RepoFile.FileName, RepoFile);
+    LoadFileIntoTabs(RepoFile);
+  end;
+end;
+
+procedure TfrmSongEdit.ArchivateCurrentTab;
   var RepoFile: TRepoFile;
     Frame: TFrame;
     NewFilePath: String;
@@ -97,7 +144,10 @@ begin
       frmSongs.AskToReloadRepo;
       LoadRepoIntoSongListbox;
       CloseCurrentTab;
-      //lsSongs.Items.Delete(lsSongs.Items.IndexOf(RepoFile.Name));
+      try
+         lsSongs.Items.Delete(lsSongs.Items.IndexOf(RepoFile.FileName));
+      finally
+      end;
     end else
       ShowMessage(StrCanNotArchivate);
 end;
@@ -219,6 +269,8 @@ begin
   loadFileIntoTabs(lsSongs.Items.Objects[lsSongs.ItemIndex] as TRepoFile);
 end;
 
+{ This Procedure will open a song in a tab. If the current tab has no unsaved changes, it will be opened at its place.
+If the file in the current tab has unsaved changes, it will open a new tab. }
 procedure TfrmSongEdit.loadFileIntoTabs(song: TRepoFile);
 var Frame: TFrame;
 EditorFrame: TfrmDisplaySongContent;

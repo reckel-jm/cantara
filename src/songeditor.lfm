@@ -74,12 +74,16 @@ object frmSongEdit: TfrmSongEdit
         ShortCut = 16467
         OnClick = menuItemSaveClick
       end
+      object menuItemCopy: TMenuItem
+        Caption = 'Copy'
+        OnClick = menuItemCopyClick
+      end
       object menuItemArchivate: TMenuItem
         Caption = 'Archivate'
         OnClick = menuItemArchivateClick
       end
       object menuItemClose: TMenuItem
-        Caption = 'Close'
+        Caption = 'Close Editor'
         OnClick = menuItemCloseClick
       end
     end

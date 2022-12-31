@@ -1,0 +1,147 @@
+object frmWelcome: TfrmWelcome
+  Left = 337
+  Height = 452
+  Top = 34
+  Width = 710
+  Caption = 'Cantara Setup'
+  ClientHeight = 452
+  ClientWidth = 710
+  object Notebook: TNotebook
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 0
+    Height = 232
+    Top = 0
+    Width = 710
+    PageIndex = 0
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabOrder = 0
+    object Page1: TPage
+      object BCLabel1: TLabel
+        AnchorSideLeft.Control = Page1
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = Page1
+        Left = 272
+        Height = 23
+        Top = 20
+        Width = 166
+        BorderSpacing.Top = 20
+        Caption = 'Welcome to Cantara!'
+        Font.Height = -16
+        Font.Name = 'Noto Sans'
+        Font.Style = [fsBold, fsUnderline]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label1: TLabel
+        AnchorSideLeft.Control = Page1
+        AnchorSideTop.Control = BCLabel1
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Page1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 82
+        Top = 43
+        Width = 710
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Cantara is a free and open source song presentation software.'#10'All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven''t collected any songs yet, you can create a new folder first or choose an empty one.'
+        ParentColor = False
+        WordWrap = True
+      end
+      object btnSelectSongRepoDir: TButton
+        AnchorSideLeft.Control = Page1
+        AnchorSideTop.Control = Label1
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Page1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 40
+        Top = 135
+        Width = 710
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 10
+        Caption = 'Select Song Repository...'
+        OnClick = btnSelectSongRepoDirClick
+        TabOrder = 0
+      end
+      object lblSuccess: TLabel
+        AnchorSideLeft.Control = Page1
+        AnchorSideTop.Control = btnSelectSongRepoDir
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Page1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 22
+        Top = 180
+        Width = 710
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        Caption = 'The selected directory can be successfully used as a song repository.'
+        ParentColor = False
+        Visible = False
+      end
+      object Label2: TLabel
+        Left = 53
+        Height = 22
+        Top = 269
+        Width = 44
+        Caption = 'Label2'
+        ParentColor = False
+      end
+    end
+  end
+  object ControlPanel: TGroupBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 50
+    Top = 402
+    Width = 710
+    Anchors = [akLeft, akRight, akBottom]
+    ClientHeight = 46
+    ClientWidth = 706
+    ParentBackground = False
+    TabOrder = 1
+    object btnBack: TButton
+      AnchorSideRight.Control = btnNext
+      Left = 360
+      Height = 33
+      Top = 8
+      Width = 123
+      Anchors = [akRight]
+      BorderSpacing.Right = 5
+      Caption = 'Back...'
+      Color = clNone
+      Enabled = False
+      TabOrder = 0
+    end
+    object btnNext: TButton
+      AnchorSideRight.Control = ControlPanel
+      AnchorSideRight.Side = asrBottom
+      Left = 488
+      Height = 33
+      Top = 8
+      Width = 218
+      Anchors = [akRight]
+      Caption = 'Next...'
+      Color = clNone
+      Enabled = False
+      TabOrder = 1
+    end
+    object BGRAFlashProgressBar1: TProgressBar
+      AnchorSideLeft.Control = ControlPanel
+      AnchorSideRight.Control = btnBack
+      Left = 0
+      Height = 33
+      Top = 8
+      Width = 360
+      Anchors = [akLeft, akRight]
+      TabOrder = 2
+    end
+  end
+end

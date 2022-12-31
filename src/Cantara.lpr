@@ -10,7 +10,7 @@ uses
   Forms, runtimetypeinfocontrols, SongSelection, Present, settings,
   info,
   { you can add units after this }
-  songeditor;
+  songeditor, welcome;
 {$R *.res}
 
 begin
@@ -21,6 +21,7 @@ begin
   Application.CreateForm(TfrmInfo, frmInfo);
   Application.CreateForm(TfrmPresent, frmPresent);
   Application.CreateForm(TfrmSongEdit, frmSongEdit);
+  Application.CreateForm(TfrmWelcome, frmWelcome);
   Application.Run;
 end.
 

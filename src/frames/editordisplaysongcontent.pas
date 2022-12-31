@@ -14,6 +14,10 @@ type
 
   TfrmDisplaySongContent = class(TFrame)
     btnConvertCCLIFileToSongFormat: TButton;
+    btnCopy: TButton;
+    btnArchivate: TButton;
+    btnClose: TButton;
+    btnRename: TButton;
     labelCCLIImportHint: TLabel;
     lblSongNameContent: TLabel;
     lblSongName: TLabel;
@@ -21,19 +25,15 @@ type
     ccliimporthint: TPanel;
     Save: TMenuItem;
     menuSong: TMenuItem;
-    procedure btnConvertCCLIFileToSongFormatClick(Sender: TObject);
-    procedure ccliimporthintClick(Sender: TObject);
+    procedure btnArchivateClick(Sender: TObject);
+    procedure btnCopyClick(Sender: TObject);
+    procedure btnRenameClick(Sender: TObject);
     constructor Create(AOwner: TComponent);
-    procedure edtSongNameEditingDone(Sender: TObject);
-    procedure edtSongNameExit(Sender: TObject);
-    procedure edtSongNameMouseLeave(Sender: TObject);
-    procedure FrameClick(Sender: TObject);
-    procedure lblSongNameContentClick(Sender: TObject);
+    procedure btnCloseClick(Sender: TObject);
+    procedure btnConvertCCLIFileToSongFormatClick(Sender: TObject);
     procedure lblSongNameContentDblClick(Sender: TObject);
     procedure memoCodeChange(Sender: TObject);
     procedure memoCodeKeyPress(Sender: TObject; var Key: char);
-    procedure menuSongClick(Sender: TObject);
-    procedure SaveClick(Sender: TObject);
    //  procedure lblSongNameContentDblClick(Sender: TObject);
   private
     procedure markAsChanged(FileHasChanged: Boolean);
@@ -71,6 +71,21 @@ begin
   self.hasChanged := False; // dont run markAsChanged as it may cause exceptions
 end;
 
+procedure TfrmDisplaySongContent.btnArchivateClick(Sender: TObject);
+begin
+  frmSongEdit.ArchivateCurrentTab;
+end;
+
+procedure TfrmDisplaySongContent.btnCopyClick(Sender: TObject);
+begin
+  frmSongEdit.CopyCurrentTab(openfile.Name);
+end;
+
+procedure TfrmDisplaySongContent.btnRenameClick(Sender: TObject);
+begin
+  lblSongNameContentDblClick(btnRename);
+end;
+
 procedure TfrmDisplaySongContent.btnConvertCCLIFileToSongFormatClick(
   Sender: TObject);
 var song: TSong;
@@ -97,44 +112,9 @@ begin
   end;
 end;
 
-procedure TfrmDisplaySongContent.ccliimporthintClick(Sender: TObject);
+procedure TfrmDisplaySongContent.btnCloseClick(Sender: TObject);
 begin
-
-end;
-
-procedure TfrmDisplaySongContent.edtSongNameEditingDone(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmDisplaySongContent.edtSongNameExit(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmDisplaySongContent.edtSongNameMouseLeave(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmDisplaySongContent.FrameClick(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmDisplaySongContent.lblSongNameContentClick(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmDisplaySongContent.menuSongClick(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmDisplaySongContent.SaveClick(Sender: TObject);
-begin
-
+  frmSongEdit.CloseCurrentTab;
 end;
 
 procedure TfrmDisplaySongContent.lblSongNameContentDblClick(Sender: TObject);
