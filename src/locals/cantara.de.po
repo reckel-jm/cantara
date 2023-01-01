@@ -18,15 +18,15 @@ msgstr "Lied umbenennen"
 
 #: editordisplaysongcontent.streditsongnamecontent
 msgid "Please enter the new song name: "
-msgstr "Bitte geben Sie den neuen Liednamen ein:"
+msgstr "Bitte geben Sie den neuen Liednamen ein: "
 
 #: editordisplaysongcontent.strerrorcclitosong
 msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
-msgstr "Die Datei kann nicht konvertiert werden. Bitte stellen Sie sicher, dass Sie die notwendigen Berechtigungen haben, um auf das Liedverzeichnis zugreifen zu können!"
+msgstr "Die Datei kann nicht konvertiert werden. Bitte stellen Sie sicher, dass Sie die notwendigen Berechtigungen haben, um auf das Liederverzeichnis zugreifen zu können!"
 
 #: editordisplaysongcontent.strfilecannotberenamed
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
-msgstr "Die Datei kann nicht umbenannt werden. Bitte stellen Sie sicher, dass Sie die notwendigen Berechtigungen haben, um auf das Liedverzeichnis zugreifen zu können!"
+msgstr "Die Datei kann nicht umbenannt werden. Bitte stellen Sie sicher, dass Sie die notwendigen Berechtigungen haben, um auf das Liederverzeichnis zugreifen zu können!"
 
 #: info.strauthor
 msgid "Author"
@@ -72,7 +72,7 @@ msgstr "Erhöhe die Transparenz um "
 
 #: settings.strvalidsongrepository
 msgid "Please choose a valid folder for the song repository!"
-msgstr "Bitte wählen Sie einen gültigen Ordner für das Liedverzeichnis aus!"
+msgstr "Bitte wählen Sie einen gültigen Ordner für das Liederverzeichnis aus!"
 
 #: songeditor.strcannotarchivate
 msgid "No valid file selected."
@@ -86,13 +86,17 @@ msgstr "Die Datei {{filename}} wurde nach dem Öffnen geändert. Wollen Sie dies
 msgid "The name exists already. Please choose an other one."
 msgstr "Der Name existiert bereits. Bitte wählen Sie einen anderen aus."
 
+#: songeditor.strinvalidfilename
+msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
+msgstr "Ungültiger Name. Pfadtrenner („/“ unter Linux bzw. „\\“ unter Windows) sind nicht erlaubt."
+
 #: songeditor.strnewfilecaption
 msgid "New Song"
 msgstr "Neues Lied"
 
 #: songeditor.strnewfilecontent
 msgid "Please add the name of the new song"
-msgstr "Bitte geben Sie den Namen des neuen Lieds ein."
+msgstr "Bitte geben Sie den Namen des neuen Lieds ein"
 
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
@@ -166,6 +170,12 @@ msgstr "Kopieren"
 msgid "Rename"
 msgstr "Umbenennen"
 
+#: tfrmdisplaysongcontent.btnsave.caption
+#, fuzzy
+msgctxt "tfrmdisplaysongcontent.btnsave.caption"
+msgid "Save"
+msgstr "Speichern"
+
 #: tfrmdisplaysongcontent.labelccliimporthint.caption
 msgid ""
 "Hint:\n"
@@ -182,11 +192,11 @@ msgstr ""
 
 #: tfrmdisplaysongcontent.lblsongname.caption
 msgid "Name: "
-msgstr "Name:"
+msgstr "Name: "
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
-msgstr ""
+msgstr "Öffne die Dokumentation im Webbrowser..."
 
 #: tfrmeditorwelcome.lbldescription.caption
 msgid ""
@@ -194,18 +204,21 @@ msgid ""
 "\n"
 "For detailed information about the syntax, please consider the documentation."
 msgstr ""
+"Hier können Sie die Lieder bearbeiten, welche präsentiert werden sollen.\n"
+"\n"
+"Für detaillierte Informationen konsultieren Sie bitte die Dokumentation."
 
 #: tfrmeditorwelcome.lblhint.caption
 msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
-msgstr ""
+msgstr "Bitte beachten Sie: Die Liedtext-Dateien sind einfache Textdateien und können daher mit jedem beliebigen Texteditor bearbeitet werden. Cantara bietet nur grundlegende Unterstützung für die Bearbeitung."
 
 #: tfrmeditorwelcome.lblsupport.caption
 msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
-msgstr ""
+msgstr "Cantara ist freie Software, welche mit dem Ziel entwickelt wurde, hilfreich und nützlich zu sein. Beteiligung über Github ist wird gerne gesehen. Es können Issues erstellt Feature- oder Pull-Requests übermittelt werden. Alle Ehre gehört Gott! Soli Deo Gloria."
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
-msgstr ""
+msgstr "Herzlich Willkommen beim Editor!"
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
@@ -264,6 +277,111 @@ msgstr ""
 msgid "<Lyrics>"
 msgstr ""
 
+#: tfrmsettings.bgcolordialog.title
+msgid "Select background color"
+msgstr "Hintergrundfarbe auswählen"
+
+#: tfrmsettings.bgpicturedialog.title
+msgid "Open image file"
+msgstr "Bilddatei laden"
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Background Color..."
+msgstr "Hintergrundfarbe..."
+
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr "Hintergrundbild..."
+
+#: tfrmsettings.btnclose.caption
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Close"
+msgstr "Schließen"
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Change Font Settings..."
+msgstr "Schriftgröße und -art bearbeiten..."
+
+#: tfrmsettings.btnselectdir.caption
+msgid "..."
+msgstr ""
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Text Color..."
+msgstr "Schriftfarbe..."
+
+#: tfrmsettings.caption
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: tfrmsettings.cbemptyframe.caption
+msgid "Empty slide between songs"
+msgstr "Leerfolie zwischen den Liedern einfügen"
+
+#: tfrmsettings.cblyricstoclipboard.caption
+msgid "Copy lyrics to clipboard"
+msgstr "Liedtexte in die Zwischenablage kopieren"
+
+#: tfrmsettings.cbmetadatafirstslide.caption
+msgid "at first slide"
+msgstr "bei der ersten Folie"
+
+#: tfrmsettings.cbmetadatalastslide.caption
+msgid "at last slide"
+msgstr "bei der letzten Folie"
+
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr "Hintergrundbild anzeigen:"
+
+#: tfrmsettings.cbspoiler.caption
+msgid "Spoil next slides"
+msgstr "Die nächste Folie andeuten"
+
+#: tfrmsettings.fontdialog.title
+msgid "Select font"
+msgstr "Wähle Schrift aus"
+
+#: tfrmsettings.gbpresentation.caption
+msgid "Presentation View"
+msgstr "Präsentationsfenster"
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Song Repo Path:"
+msgstr "Pfad des Liederverzeichnisses:"
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparancy/Brightness:"
+msgstr "Transparenz/Helligkeit des Bilds ändern:"
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
+msgstr ""
+
+#: tfrmsettings.lblmeta.caption
+msgid "Show Meta Data:"
+msgstr "Zeige Metadaten:"
+
+#: tfrmsettings.lblmetacontent.caption
+msgid "Meta Data Content:"
+msgstr "Inhalt der Metadaten:"
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
+msgstr "Automatischer Seitenumbruch nach wie vielen Zeilen (0 = aus)"
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgstr "Ein Wert kleiner als 0% erhöht die Transparenz des Hintergrundbilds, sodass die Hintergrundfarbe durchscheint. Ein Wert größer als 0% erhöht die Helligkeit des Hintergrunds."
+
+#: tfrmsettings.selectdirectorydialog.title
+msgid "Select song repository dictionary"
+msgstr "Liederverzeichnis auswählen"
+
+#: tfrmsettings.textcolordialog.title
+msgid "Select text color"
+msgstr "Schriftfarbe auswählen"
+
 #: tfrmsongedit.caption
 msgid "Edit Files"
 msgstr "Dateieditor"
@@ -293,6 +411,7 @@ msgid "New"
 msgstr "Neu"
 
 #: tfrmsongedit.menuitemsave.caption
+msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
 msgstr "Speichern"
 
@@ -336,7 +455,7 @@ msgstr "Einstellungen..."
 #: tfrmsongs.btnstartpresentation.caption
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
-msgstr "Präsentation"
+msgstr "Präsentation..."
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
@@ -348,7 +467,7 @@ msgstr "Liedauswahl (Cantara)"
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Multi-Screen-Mode (suitable for multiple screens)"
-msgstr "Modus für mehrere Bildschirme"
+msgstr "Zwei-Bildschirm-Modus (für Beamer etc. geeignet)"
 
 #: tfrmsongs.edtsearch.hint
 msgid "Suchen..."
@@ -381,11 +500,15 @@ msgid ""
 "If the file does not exist in the song repository yet, it will be automatically added to."
 msgstr ""
 "Importiert eine SongTeX-Datei, welche alle ausgewhälten Lieder mit ihrem Inhalt enthält.\n"
-"Falls die Datei noch nicht im Liedverzeichnis existiert, wird diese automatisch angelegt."
+"Falls die Datei noch nicht im Liederverzeichnis existiert, wird diese automatisch angelegt."
 
 #: tfrmsongs.itemload.caption
-msgid "Load Selection..."
-msgstr "Lade Auswahl..."
+msgid "Load Selection without Content..."
+msgstr "Auswahl ohne Inhalt laden..."
+
+#: tfrmsongs.itemopenineditor.caption
+msgid "Open in Editor..."
+msgstr "Im Editor öffnen..."
 
 #: tfrmsongs.itempresentation.caption
 msgid "Run Presentation"
@@ -393,11 +516,11 @@ msgstr "Starte die Präsentation"
 
 #: tfrmsongs.itemreloadsonglist.caption
 msgid "Reload Song Repository"
-msgstr "Liedverzeichnis erneut laden"
+msgstr "Liederverzeichnis erneut laden"
 
 #: tfrmsongs.itemsave.caption
-msgid "Save Selection..."
-msgstr "Auswahl speichern..."
+msgid "Save Selection without Content..."
+msgstr "Auswahl ohne Inhalt speichern..."
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
@@ -471,7 +594,7 @@ msgstr "Öffne die Internetseite mit Dokumentation..."
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr "Wähle das Liederverzeichnis"
+msgstr "Wähle das Liederverzeichnis..."
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
@@ -505,7 +628,7 @@ msgstr ""
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr "„Amazing Grace“ wurde zu Ihrem Liedverzeichnis hinzugefügt. Sie können nun fortfahren."
+msgstr "„Amazing Grace“ wurde zu Ihrem Liederverzeichnis hinzugefügt. Sie können nun fortfahren."
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
@@ -521,11 +644,11 @@ msgstr "Weiter"
 
 #: welcome.songrepodirempty
 msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
-msgstr "Allerdings scheint es, als ob Sie noch keine Lieder hinzugefügt haben. Wollen Sie das Lied „Amazing Grace“ von John Newton als Beispiel zu Ihrem Liedverzeichnis hinzufügen? Dann klicken Sie auf die untere Schaltfläche. Klicken Sie auf „Weiter“, um zum nächsten Schritt zu gelangen."
+msgstr "Allerdings scheint es, als ob Sie noch keine Lieder hinzugefügt haben. Wollen Sie das Lied „Amazing Grace“ von John Newton als Beispiel zu Ihrem Liederverzeichnis hinzufügen? Dann klicken Sie auf die untere Schaltfläche. Klicken Sie auf „Weiter“, um zum nächsten Schritt zu gelangen."
 
 #: welcome.songreponotempty
 msgid "The song repository contains already {songcount} songs which you can use with Cantara."
-msgstr "Das Liedverzeichnis enthält bereits {songcount} Lieder, welche Sie in Cantara verwenden können."
+msgstr "Das Liederverzeichnis enthält bereits {songcount} Lieder, welche Sie in Cantara verwenden können."
 
 #: welcome.songreponotemptyaddamazinggrace
 msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
@@ -534,5 +657,4 @@ msgstr "Wenn Sie jedoch möchten, können wir das Lied „Amazing Grace“ als e
 #: welcome.songreposuccess
 msgctxt "welcome.songreposuccess"
 msgid "The selected directory can be successfully used as a song repository."
-msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liedverzeichnis genutzt werden."
-
+msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genutzt werden."

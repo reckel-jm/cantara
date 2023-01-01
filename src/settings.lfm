@@ -12,11 +12,12 @@ object frmSettings: TfrmSettings
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
   object labelSongDir: TLabel
+    AnchorSideTop.Control = edtRepoPath
+    AnchorSideTop.Side = asrCenter
     Left = 0
     Height = 22
-    Top = 8
+    Top = 15
     Width = 110
     Caption = 'Song Repo Path:'
     Layout = tlCenter
@@ -40,9 +41,11 @@ object frmSettings: TfrmSettings
     TabOrder = 0
   end
   object btnSelectDir: TButton
+    AnchorSideTop.Control = edtRepoPath
+    AnchorSideTop.Side = asrCenter
     Left = 797
     Height = 23
-    Top = 16
+    Top = 15
     Width = 24
     Anchors = [akTop, akRight]
     Caption = '...'
@@ -102,8 +105,8 @@ object frmSettings: TfrmSettings
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
-    ClientHeight = 402
-    ClientWidth = 797
+    ClientHeight = 380
+    ClientWidth = 805
     TabOrder = 6
     OnClick = gbPresentationClick
     object btnBackgroundColor: TButton
@@ -113,7 +116,7 @@ object frmSettings: TfrmSettings
       Left = 344
       Height = 23
       Top = 28
-      Width = 458
+      Width = 466
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Color...'
@@ -127,7 +130,7 @@ object frmSettings: TfrmSettings
       Left = 344
       Height = 23
       Top = 5
-      Width = 458
+      Width = 466
       Align = alCustom
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
@@ -143,7 +146,7 @@ object frmSettings: TfrmSettings
       Left = 344
       Height = 23
       Top = 51
-      Width = 458
+      Width = 466
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Text Color...'
@@ -216,9 +219,9 @@ object frmSettings: TfrmSettings
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Side = asrBottom
       Left = 148
-      Height = 190
+      Height = 168
       Top = 185
-      Width = 654
+      Width = 662
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Left = 10
       BorderSpacing.Top = 5
@@ -231,7 +234,7 @@ object frmSettings: TfrmSettings
       Left = 344
       Height = 23
       Top = 74
-      Width = 459
+      Width = 467
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Image...'
@@ -264,7 +267,7 @@ object frmSettings: TfrmSettings
       Height = 21
       Hint = 'A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture.'
       Top = 102
-      Width = 458
+      Width = 466
       Anchors = [akTop, akLeft, akRight]
       Min = -100
       PageSize = 0
@@ -290,7 +293,7 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
-      Left = 513
+      Left = 517
       Height = 22
       Top = 123
       Width = 121
@@ -302,7 +305,7 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = lblWrapAfter
       AnchorSideTop.Side = asrBottom
-      Left = 154
+      Left = 156
       Height = 36
       Top = 28
       Width = 50

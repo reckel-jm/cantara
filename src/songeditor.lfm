@@ -4,12 +4,11 @@ object frmSongEdit: TfrmSongEdit
   Top = 34
   Width = 1029
   Caption = 'Edit Files'
-  ClientHeight = 206
-  ClientWidth = 320
+  ClientHeight = 528
+  ClientWidth = 1029
   Menu = EditorMenu
   OnClose = FormClose
   OnShow = FormShow
-  LCLVersion = '2.2.4.0'
   WindowState = wsMaximized
   object lsSongs: TListBox
     AnchorSideLeft.Control = Owner
@@ -20,7 +19,7 @@ object frmSongEdit: TfrmSongEdit
     Left = 0
     Height = 528
     Top = 0
-    Width = 386
+    Width = 300
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
     OnClick = lsSongsClick
@@ -34,7 +33,7 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideRight.Control = PageControl
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 386
+    Left = 300
     Height = 458
     Top = 0
     Width = 6
@@ -51,10 +50,10 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 392
+    Left = 306
     Height = 528
     Top = 0
-    Width = 637
+    Width = 723
     Anchors = [akTop, akLeft, akRight, akBottom]
     TabOrder = 2
     OnCloseTabClicked = PageControlCloseTabClicked

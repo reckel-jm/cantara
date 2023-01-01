@@ -75,6 +75,10 @@ msgstr ""
 msgid "The name exists already. Please choose an other one."
 msgstr ""
 
+#: songeditor.strinvalidfilename
+msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
+msgstr ""
+
 #: songeditor.strnewfilecaption
 msgid "New Song"
 msgstr ""
@@ -153,6 +157,11 @@ msgstr ""
 
 #: tfrmdisplaysongcontent.btnrename.caption
 msgid "Rename"
+msgstr ""
+
+#: tfrmdisplaysongcontent.btnsave.caption
+msgctxt "tfrmdisplaysongcontent.btnsave.caption"
+msgid "Save"
 msgstr ""
 
 #: tfrmdisplaysongcontent.labelccliimporthint.caption
@@ -243,6 +252,111 @@ msgstr ""
 msgid "<Lyrics>"
 msgstr ""
 
+#: tfrmsettings.bgcolordialog.title
+msgid "Select background color"
+msgstr ""
+
+#: tfrmsettings.bgpicturedialog.title
+msgid "Open image file"
+msgstr ""
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Background Color..."
+msgstr ""
+
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr ""
+
+#: tfrmsettings.btnclose.caption
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Close"
+msgstr ""
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Change Font Settings..."
+msgstr ""
+
+#: tfrmsettings.btnselectdir.caption
+msgid "..."
+msgstr ""
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Text Color..."
+msgstr ""
+
+#: tfrmsettings.caption
+msgid "Settings"
+msgstr ""
+
+#: tfrmsettings.cbemptyframe.caption
+msgid "Empty slide between songs"
+msgstr ""
+
+#: tfrmsettings.cblyricstoclipboard.caption
+msgid "Copy lyrics to clipboard"
+msgstr ""
+
+#: tfrmsettings.cbmetadatafirstslide.caption
+msgid "at first slide"
+msgstr ""
+
+#: tfrmsettings.cbmetadatalastslide.caption
+msgid "at last slide"
+msgstr ""
+
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr ""
+
+#: tfrmsettings.cbspoiler.caption
+msgid "Spoil next slides"
+msgstr ""
+
+#: tfrmsettings.fontdialog.title
+msgid "Select font"
+msgstr ""
+
+#: tfrmsettings.gbpresentation.caption
+msgid "Presentation View"
+msgstr ""
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Song Repo Path:"
+msgstr ""
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparancy/Brightness:"
+msgstr ""
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
+msgstr ""
+
+#: tfrmsettings.lblmeta.caption
+msgid "Show Meta Data:"
+msgstr ""
+
+#: tfrmsettings.lblmetacontent.caption
+msgid "Meta Data Content:"
+msgstr ""
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
+msgstr ""
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgstr ""
+
+#: tfrmsettings.selectdirectorydialog.title
+msgid "Select song repository dictionary"
+msgstr ""
+
+#: tfrmsettings.textcolordialog.title
+msgid "Select text color"
+msgstr ""
+
 #: tfrmsongedit.caption
 msgid "Edit Files"
 msgstr ""
@@ -272,6 +386,7 @@ msgid "New"
 msgstr ""
 
 #: tfrmsongedit.menuitemsave.caption
+msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
 msgstr ""
 
@@ -361,7 +476,11 @@ msgid ""
 msgstr ""
 
 #: tfrmsongs.itemload.caption
-msgid "Load Selection..."
+msgid "Load Selection without Content..."
+msgstr ""
+
+#: tfrmsongs.itemopenineditor.caption
+msgid "Open in Editor..."
 msgstr ""
 
 #: tfrmsongs.itempresentation.caption
@@ -373,7 +492,7 @@ msgid "Reload Song Repository"
 msgstr ""
 
 #: tfrmsongs.itemsave.caption
-msgid "Save Selection..."
+msgid "Save Selection without Content..."
 msgstr ""
 
 #: tfrmsongs.itemsettings.caption

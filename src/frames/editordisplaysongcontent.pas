@@ -18,6 +18,7 @@ type
     btnArchivate: TButton;
     btnClose: TButton;
     btnRename: TButton;
+    btnSave: TButton;
     labelCCLIImportHint: TLabel;
     lblSongNameContent: TLabel;
     lblSongName: TLabel;
@@ -28,6 +29,7 @@ type
     procedure btnArchivateClick(Sender: TObject);
     procedure btnCopyClick(Sender: TObject);
     procedure btnRenameClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
     constructor Create(AOwner: TComponent);
     procedure btnCloseClick(Sender: TObject);
     procedure btnConvertCCLIFileToSongFormatClick(Sender: TObject);
@@ -84,6 +86,11 @@ end;
 procedure TfrmDisplaySongContent.btnRenameClick(Sender: TObject);
 begin
   lblSongNameContentDblClick(btnRename);
+end;
+
+procedure TfrmDisplaySongContent.btnSaveClick(Sender: TObject);
+begin
+  frmSongEdit.menuItemSaveClick(btnSave);
 end;
 
 procedure TfrmDisplaySongContent.btnConvertCCLIFileToSongFormatClick(

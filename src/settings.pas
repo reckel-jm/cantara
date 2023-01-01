@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, ExtDlgs;
+  Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs;
 
 type
 
@@ -65,7 +65,6 @@ type
     procedure seWrapLinesChange(Sender: TObject);
   private
     { private declarations }
-    procedure LocaliseCaptions;
   public
     { public declarations }
     changedBackground: Boolean;
@@ -90,11 +89,6 @@ Uses
 {$R *.lfm}
 
 { TfrmSettings }
-
-procedure TfrmSettings.LocaliseCaptions;
-begin
-
-end;
 
 function getRepoDir(): string;
 begin

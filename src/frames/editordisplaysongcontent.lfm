@@ -106,7 +106,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnArchivate
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 719
+    Left = 674
     Height = 22
     Top = 0
     Width = 47
@@ -118,10 +118,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
   end
   object btnArchivate: TButton
     AnchorSideTop.Control = lblSongName
-    AnchorSideRight.Control = btnClose
+    AnchorSideRight.Control = btnSave
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 766
+    Left = 721
     Height = 22
     Top = 0
     Width = 76
@@ -154,7 +154,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnCopy
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 650
+    Left = 605
     Height = 22
     Top = 0
     Width = 69
@@ -163,5 +163,20 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Caption = 'Rename'
     OnClick = btnRenameClick
     TabOrder = 5
+  end
+  object btnSave: TButton
+    AnchorSideTop.Control = lblSongName
+    AnchorSideRight.Control = btnClose
+    AnchorSideBottom.Control = lblSongName
+    AnchorSideBottom.Side = asrBottom
+    Left = 797
+    Height = 22
+    Top = 0
+    Width = 45
+    Anchors = [akTop, akRight, akBottom]
+    AutoSize = True
+    Caption = 'Save'
+    OnClick = btnSaveClick
+    TabOrder = 6
   end
 end

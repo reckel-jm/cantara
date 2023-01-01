@@ -56,11 +56,13 @@ type
     itemExportTeXFile: TMenuItem;
     itemImportTeXFile: TMenuItem;
     itemShowWelcomeAssistent: TMenuItem;
+    itemOpenInEditor: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     OpenSongTeXFileDialog: TOpenDialog;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
+    SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     ImageUpdater: TTimer;
     saveSongTeXFileDialog: TSaveDialog;
@@ -92,6 +94,7 @@ type
     procedure itemExportTeXFileClick(Sender: TObject);
     procedure itemImportTeXFileClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
+    procedure itemOpenInEditorClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
     procedure itemShowWelcomeAssistentClick(Sender: TObject);
     procedure itemSongEditorClick(Sender: TObject);
@@ -122,6 +125,7 @@ type
     { Opens the selected songs and creates the presentation data from the selected songs. }
     procedure CreatePresentationData;
     function GetCurrentSongPosition: TSongPosition;
+    procedure SongPopupMenuPopup(Sender: TObject);
     procedure UpdateSongPositionInLbxSSelected;
     procedure UpdateControls;
     procedure ReloadPresentationImage;
@@ -363,6 +367,38 @@ begin
   end;
 end;
 
+procedure TfrmSongs.itemOpenInEditorClick(Sender: TObject);
+var repoFile: TRepoFile;
+    i: Integer;
+begin
+  if (lbxSRepo.ItemIndex >= 0) then
+  begin
+    frmSongEdit.Show;
+    frmSongEdit.Update; // This is necessary to avoid an AccessViolation
+    frmSongEdit.loadRepo(repo);
+    for i := 0 to length(repo)-1 do
+    begin
+      if repo[i].Name = lbxSRepo.Items[lbxSrepo.ItemIndex] then
+      begin
+        repoFile := repo[i];
+        Break;
+      end;
+    end;
+    frmSongEdit.Update;
+    for i := 0 to frmSongEdit.lsSongs.Count-1 do
+    begin
+      if frmSongEdit.lsSongs.Items[i] = repoFile.FileName then
+      begin
+        frmSongEdit.lsSongs.ItemIndex:=i;
+        frmSongEdit.Update;
+        Application.ProcessMessages;
+        frmSongEdit.LoadSelectedSongContent;
+        Break;
+      end;
+    end;
+  end;
+end;
+
 procedure TfrmSongs.itemSaveClick(Sender: TObject);
 begin
   try
@@ -374,14 +410,13 @@ end;
 
 procedure TfrmSongs.itemShowWelcomeAssistentClick(Sender: TObject);
 begin
-  frmWelcome.Show;
+  frmWelcome.ShowModal;
 end;
 
 procedure TfrmSongs.itemSongEditorClick(Sender: TObject);
 begin
-  songEditor.frmSongEdit.Show;
-  songEditor.frmSongEdit.loadRepo(repo);
-  //songeditor.
+  frmSongEdit.Show;
+  frmSongEdit.loadRepo(repo);
 end;
 
 procedure TfrmSongs.lbxSRepoClick(Sender: TObject);
@@ -719,6 +754,11 @@ begin
   end;
   SongPosition.stanzaposition:=present.cur-SongPosition.stanzapositionstart+1;
   result := SongPosition;
+end;
+
+procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);
+begin
+  itemOpenInEditor.Visible := (lbxSRepo.ItemIndex >= 0);
 end;
 
 procedure TfrmSongs.UpdateSongPositionInLbxSSelected;

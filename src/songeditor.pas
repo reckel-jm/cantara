@@ -38,10 +38,10 @@ type
     procedure CloseCurrentTab;
     procedure ArchivateCurrentTab;
     procedure CopyCurrentTab(OldSongname: String);
+    procedure LoadSelectedSongContent;
+    procedure FindAndSelectItem(FileName: String);
   private
     repo: TRepoArray; // Load the Repo for editing it later
-    //Tabs: array of TTabSheet; // Array which holds the tabs
-    procedure LoadSelectedSongContent;
     procedure loadFileIntoTabs(song: TRepoFile);
     procedure CreateNewTab;
     procedure UpdateTabHeadlines;
@@ -64,6 +64,7 @@ ResourceString
   strNewFileCaption = 'New Song';
   StrFileNameExists = 'The name exists already. Please choose an other one.';
   StrCanNotArchivate = 'No valid file selected.';
+  StrInvalidFileName = 'Invalid name. No path delimiters ("/" on Linux and "\" on Windows) are allowed.';
 
 implementation
 
@@ -104,12 +105,22 @@ procedure TfrmSongEdit.CopyCurrentTab(OldSongname: String);
   NewSongName, NewFilePath: String;
   RepoFile: TRepoFile;
   Frame: TFrame;
+  i: Integer;
 begin
-  NewSongName := InputBox(StrNewFileCaption, StrNewFileContent, OldSongname);
+  NewSongName := OldSongName;
+  if InputQuery(StrNewFileCaption, StrNewFileContent, NewSongName) = False then
+     Exit;
   While (RepoContainsSongName(NewSongName)) do
   begin
     ShowMessage(StrFileNameExists);
-    NewSongName := InputBox(StrNewFileCaption, StrNewFileContent, '');
+    if InputQuery(StrNewFileCaption, StrNewFileContent, NewSongName) = False then
+       Exit;
+  end;
+  While (Pos(PathDelim, NewSongName) > 0) or (length(NewSongName) < 1) do
+  begin
+    ShowMessage(StrInvalidFileName);
+    if InputQuery(StrNewFileCaption, StrNewFileContent, NewSongName) = False then
+       Exit;
   end;
   Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
   if (Frame is TfrmDisplaySongContent) then
@@ -125,6 +136,7 @@ begin
     Repo[Length(Repo)-1] := RepoFile;
     lsSongs.AddItem(RepoFile.FileName, RepoFile);
     LoadFileIntoTabs(RepoFile);
+    FindAndSelectItem(RepoFile.FileName);
   end;
 end;
 
@@ -132,7 +144,6 @@ procedure TfrmSongEdit.ArchivateCurrentTab;
   var RepoFile: TRepoFile;
     Frame: TFrame;
     NewFilePath: String;
-    var i: Integer;
 begin
   Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
   if (Frame is TfrmDisplaySongContent) and (FileExists((Frame as TfrmDisplaySongContent).openFile.FilePath)) then
@@ -140,14 +151,14 @@ begin
       RepoFile := (Frame as TfrmDisplaySongContent).openFile;
       NewFilePath := frmSettings.edtRepoPath.Text + PathDelim + editordisplaysongcontent.ArchiveFolderName + PathDelim + RepoFile.FileName;
       if not RenameFile(RepoFile.FilePath, NewFilePath) then
+      begin
         ShowMessage(StrCanNotArchivate);
-      frmSongs.AskToReloadRepo;
-      LoadRepoIntoSongListbox;
-      CloseCurrentTab;
-      try
-         lsSongs.Items.Delete(lsSongs.Items.IndexOf(RepoFile.FileName));
-      finally
+        Exit;
       end;
+      CloseCurrentTab;
+      loadRepo(SongSelection.repo);
+      LoadRepoIntoSongListbox;
+      Application.ProcessMessages;
     end else
       ShowMessage(StrCanNotArchivate);
 end;
@@ -158,11 +169,21 @@ var
   DummyFile: TStringList;
   RepoFile: TRepoFile;
 begin
-  NewSongName := InputBox(StrNewFileCaption, StrNewFileContent, '');
+  NewSongName := '';
+  if InputQuery(StrNewFileCaption, StrNewFileContent, NewSongName) = False then
+     Exit;
   While (RepoContainsSongName(NewSongName)) do
   begin
     ShowMessage(StrFileNameExists);
-    NewSongName := InputBox(StrNewFileCaption, StrNewFileContent, '');
+    if InputQuery(StrNewFileCaption, StrNewFileContent, NewSongName) = False then
+     Exit;
+  end;
+  // no path delims in song name as this will cause an exception
+  While (Pos(PathDelim, NewSongName) > 0) or (length(NewSongName) < 1) do
+  begin
+    ShowMessage(StrInvalidFileName);
+    if InputQuery(StrNewFileCaption, StrNewFileContent, NewSongName) = False then
+     Exit;
   end;
   DummyFile := TStringList.Create;
   RepoFile := TRepoFile.Create;
@@ -177,6 +198,7 @@ begin
   Repo[Length(Repo)-1] := RepoFile;
   lsSongs.AddItem(RepoFile.FileName, RepoFile);
   LoadFileIntoTabs(RepoFile);
+  FindAndSelectItem(RepoFile.FileName);
 end;
 
 function TfrmSongEdit.RepoContainsSongName(songname: String): Boolean;
@@ -241,7 +263,7 @@ end;
 
 procedure TfrmSongEdit.FormShow(Sender: TObject);
 begin
-  CreateNewTab;
+  if PageControl.PageCount = 0 then CreateNewTab;
 end;
 
 procedure TfrmSongEdit.btnOpenDocsClick(Sender: TObject);
@@ -316,6 +338,19 @@ end;
 procedure TfrmSongEdit.UpdateTabHeadlines;
 begin
 
+end;
+
+procedure TfrmSongEdit.FindAndSelectItem(FileName: String);
+var i: Integer;
+begin
+  for i := 0 to lsSongs.Count-1 do
+  begin
+    if lsSongs.Items[i] = FileName then
+      begin
+        lsSongs.ItemIndex:=i;
+        Break;
+      end;
+  end;
 end;
 
 {$R *.lfm}
