@@ -407,6 +407,7 @@ var newHeight, newWidth: integer;
 begin
   imgBackground.Width:=frmPresent.Width;
   imgBackground.Height:=frmPresent.Height;
+  if imgBackground.Height = 0 then Exit;
   if imgBackground.Width/imgBackground.Height >= imgBackground.Picture.Width/imgBackground.Picture.Height then
         begin
           newHeight:=Trunc(imgBackground.Width*imgBackground.Picture.Height/imgBackground.Picture.Width);
