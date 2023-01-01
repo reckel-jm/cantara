@@ -5,7 +5,7 @@ unit editorwelcome;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, StdCtrls;
+  Classes, SysUtils, Forms, Controls, StdCtrls, DefaultTranslator, LCLTranslator;
 
 type
 

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  editordisplaysongcontent, editorwelcome, lyrics, lclintf, ComCtrls, Menus, Settings;
+  editordisplaysongcontent, editorwelcome, lyrics, lclintf, LCLTranslator, DefaultTranslator, ComCtrls, Menus, Settings;
 
 type
   { TfrmSongEdit }

@@ -7,6 +7,7 @@ object frmWelcome: TfrmWelcome
   ClientHeight = 489
   ClientWidth = 718
   OnShow = FormShow
+  LCLVersion = '2.2.4.0'
   object Notebook: TNotebook
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -17,7 +18,7 @@ object frmWelcome: TfrmWelcome
     Height = 439
     Top = 0
     Width = 718
-    PageIndex = 1
+    PageIndex = 0
     Anchors = [akTop, akLeft, akRight, akBottom]
     TabOrder = 0
     object Page1: TPage
@@ -196,8 +197,8 @@ object frmWelcome: TfrmWelcome
     Top = 439
     Width = 718
     Anchors = [akLeft, akRight, akBottom]
-    ClientHeight = 46
-    ClientWidth = 714
+    ClientHeight = 38
+    ClientWidth = 706
     ParentBackground = False
     TabOrder = 1
     object btnBack: TButton
