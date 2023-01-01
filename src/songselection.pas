@@ -154,9 +154,8 @@ var
   PanelMultiScreenWidth: Integer;
 
 ResourceString
-  StrErsteBenutzung = 'You are using this program for the first time. Please select a song repository folder.';
-  StrFehlerOeffnen = 'Error while opening. Propably you have not the required rights to access this file.';
-  StrFehlerSpeichern = 'Error while saving. Propably you have not the required rights to access this file.';
+  StrErrorOpening = 'Error while opening. Propably you have not the required rights to access this file.';
+  StrErrorSaving = 'Error while saving. Propably you have not the required rights to access this file.';
   StrFehlerKeineLiederBeiPraesentation = 'You have to add songs first.';
   StrButtonPraesentation = 'Presentation...';
   StrButtonEinstellungen = 'Settings...';
@@ -295,8 +294,7 @@ begin
       else frmSongs.WindowState:=TWindowState.wsNormal;
     end else
     begin
-      ShowMessage(StrErsteBenutzung);
-      frmSettings.ShowModal;
+      frmWelcome.ShowModal;
     end;
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
@@ -361,7 +359,7 @@ begin
   try
     if OpenDialog.Execute then lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
   except
-    ShowMessage(StrFehlerOeffnen);
+    ShowMessage(StrErrorOpening);
   end;
 end;
 
@@ -370,7 +368,7 @@ begin
   try
     if SaveDialog.Execute then lbxSselected.Items.SaveToFile(SaveDialog.FileName);
   except
-    ShowMessage(StrFehlerSpeichern);
+    ShowMessage(StrErrorSaving);
   end;
 end;
 

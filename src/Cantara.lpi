@@ -17,6 +17,9 @@
         <TextDesc Value="Song Presentation Software"/>
       </XPManifest>
       <Icon Value="0"/>
+      <Resources Count="1">
+        <Resource_0 FileName="resources/Amazing Grace.song" Type="RCDATA" ResourceName="AMAZING GRACE"/>
+      </Resources>
     </General>
     <i18n>
       <EnableI18N Value="True"/>

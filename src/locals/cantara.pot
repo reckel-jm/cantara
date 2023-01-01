@@ -110,20 +110,18 @@ msgctxt "songselection.strerror"
 msgid "Error"
 msgstr ""
 
-#: songselection.strerstebenutzung
-msgid "You are using this program for the first time. Please select a song repository folder."
+#: songselection.strerroropening
+msgctxt "songselection.strerroropening"
+msgid "Error while opening. Propably you have not the required rights to access this file."
+msgstr ""
+
+#: songselection.strerrorsaving
+msgctxt "songselection.strerrorsaving"
+msgid "Error while saving. Propably you have not the required rights to access this file."
 msgstr ""
 
 #: songselection.strfehlerkeineliederbeipraesentation
 msgid "You have to add songs first."
-msgstr ""
-
-#: songselection.strfehleroeffnen
-msgid "Error while opening. Propably you have not the required rights to access this file."
-msgstr ""
-
-#: songselection.strfehlerspeichern
-msgid "Error while saving. Propably you have not the required rights to access this file."
 msgstr ""
 
 #: songselection.strfiledoesnotexist
@@ -405,12 +403,24 @@ msgstr ""
 msgid "Welcome to Cantara!"
 msgstr ""
 
+#: tfrmwelcome.btnaddexamplesong.caption
+msgid "Add \"Amazing Grace\" as an example"
+msgstr ""
+
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
 msgstr ""
 
 #: tfrmwelcome.btnnext.caption
 msgid "Next..."
+msgstr ""
+
+#: tfrmwelcome.btnopengithubrepo.caption
+msgid "Open Github Repository..."
+msgstr ""
+
+#: tfrmwelcome.btnopenwebpage.caption
+msgid "Open Webpage with Documentation..."
 msgstr ""
 
 #: tfrmwelcome.btnselectsongrepodir.caption
@@ -427,11 +437,47 @@ msgid ""
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
 
-#: tfrmwelcome.label2.caption
-msgid "Label2"
+#: tfrmwelcome.lbladditionalinformation.caption
+msgid ""
+"You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
+"For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
+"\n"
+"Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
+"\n"
+"May God bless you and the use of this software!"
 msgstr ""
 
-#: tfrmwelcome.lblsuccess.caption
+#: tfrmwelcome.lblsongadded.caption
+msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
+msgstr ""
+
+#: tfrmwelcome.lblsuccessheadline.caption
+msgid "Congratulations! Cantara is now ready to use!"
+msgstr ""
+
+#: welcome.btnnextfinish
+msgid "Finish"
+msgstr ""
+
+#: welcome.btnnextnext
+msgid "Next"
+msgstr ""
+
+#: welcome.songrepodirempty
+msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
+msgstr ""
+
+#: welcome.songreponotempty
+msgid "The song repository contains already {songcount} songs which you can use with Cantara."
+msgstr ""
+
+#: welcome.songreponotemptyaddamazinggrace
+msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
+msgstr ""
+
+#: welcome.songreposuccess
+msgctxt "welcome.songreposuccess"
 msgid "The selected directory can be successfully used as a song repository."
 msgstr ""
 

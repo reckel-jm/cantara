@@ -390,16 +390,19 @@ object frmSongs: TfrmSongs
       object itemLoad: TMenuItem
         Caption = 'Load Selection...'
         ShortCut = 16463
+        Visible = False
         OnClick = itemLoadClick
       end
       object itemSave: TMenuItem
         Caption = 'Save Selection...'
         ShortCut = 16467
+        Visible = False
         OnClick = itemSaveClick
       end
       object itemImportTeXFile: TMenuItem
         Caption = 'Import Selection with Content...'
         Hint = 'Imports a SongTeX file which contains all selected song files with their content.'#10'If the file does not exist in the song repository yet, it will be automatically added to.'
+        Visible = False
         OnClick = itemImportTeXFileClick
       end
       object itemExportTeXFile: TMenuItem
