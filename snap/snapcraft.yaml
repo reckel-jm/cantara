@@ -12,23 +12,34 @@ architectures:
   - build-on: [amd64, arm64]
 
 parts:
-  cantara:
+  lazarus:
     plugin: nil
     source: .
     source-type: local
     build-packages:
-    - fpc
-    - lazarus
-    - lcl
-    - lcl-utils
+    - wget
+    - libgtk2.0-dev
+    override-build: |
+      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.2/lazarus-project_2.2.2-0_amd64.deb
+      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.2/fpc-laz_3.2.2-210709_amd64.deb
+      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.2/fpc-src_3.2.2-210709_amd64.deb
+      apt install ./lazarus-project_2.2.2-0_amd64.deb ./fpc-laz_3.2.2-210709_amd64.deb ./fpc-src_3.2.2-210709_amd64.deb
+    prime: [-*]
+  cantara:
+    after: [lazarus]
+    plugin: nil
+    source: .
+    source-type: local
+    build-packages:
+    #- fpc
+    #- lazarus
+    #- lcl
+    #- lcl-utils
     - build-essential
     - libqt5pas-dev
     - libqt5pas1
     stage-packages:
     - libqt5pas1
-    #- libatk1.0-0
-    #- libgtk2.0-0
-    #- libxinerama1
     override-build: |
       cd src
       lazbuild -B --bm="Release" --ws="qt5" Cantara.lpi
