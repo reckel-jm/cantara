@@ -1,19 +1,15 @@
 unit SongSelection;
 
-{$mode objfpc}{$H+}
+{$mode ObjFPC}{$H+}
 
 interface
 
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
-  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd, lyrics, LCLTranslator;
+  StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
+  lyrics, LCLTranslator, songeditor, SongTeX, welcome;
 
 type
-  TRepoFile = record
-    Name: string;
-    filePath: string;
-  end;
-
   TSongPosition = record
     songname: string;
     stanzaposition: integer;
@@ -22,6 +18,8 @@ type
   end;
   { TfrmSongs }
 
+  { The main form of Cantara where the songs are choosen from. It is also responsible for managing
+  the song repository }
   TfrmSongs = class(TForm)
     btnAdd: TButton;
     btnClear: TButton;
@@ -54,12 +52,20 @@ type
     itemAbout: TMenuItem;
     itemPresentation: TMenuItem;
     itemReloadSongList: TMenuItem;
+    itemSongEditor: TMenuItem;
+    itemExportTeXFile: TMenuItem;
+    itemImportTeXFile: TMenuItem;
+    itemShowWelcomeAssistent: TMenuItem;
+    itemOpenInEditor: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
+    OpenSongTeXFileDialog: TOpenDialog;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
+    SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     ImageUpdater: TTimer;
+    saveSongTeXFileDialog: TSaveDialog;
     procedure btnAddClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnDownClick(Sender: TObject);
@@ -75,6 +81,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure FormResize(Sender: TObject);
@@ -84,34 +91,56 @@ type
     procedure ImageUpdaterStopTimer(Sender: TObject);
     procedure ImageUpdaterTimer(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
+    procedure itemExportTeXFileClick(Sender: TObject);
+    procedure itemImportTeXFileClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
+    procedure itemOpenInEditorClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
+    procedure itemShowWelcomeAssistentClick(Sender: TObject);
+    procedure itemSongEditorClick(Sender: TObject);
     procedure lbxSRepoClick(Sender: TObject);
     procedure lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure lbxSRepoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure lbxSselectedClick(Sender: TObject);
     procedure lbxSselectedDragDrop(Sender, Source: TObject; X, Y: Integer);
+    procedure lbxSselectedDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
     procedure lbxSselectedKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure lbxSselectedKeyPress(Sender: TObject; var Key: char);
+    procedure lbxSselectedMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure lbxSselectedResize(Sender: TObject);
+    { loadRepo oads the Song Repository from the repository folder, creates an TSongFile
+    class instance for each file and adds it to the repo array.
+    @param(repoPath is the complete absolute file path to the song repepository without a
+    path delim ('/') or ('\') at its end. }
     procedure loadRepo(repoPath: string);
     procedure itemAboutClick(Sender: TObject);
     procedure itemReloadSongListClick(Sender: TObject);
     procedure pnlMultiScreenClick(Sender: TObject);
     procedure pnlMultiScreenResize(Sender: TObject);
     procedure PnlSplitterMoved(Sender: TObject);
+    { Opens the selected songs and creates the presentation data from the selected songs. }
     procedure CreatePresentationData;
     function GetCurrentSongPosition: TSongPosition;
+    procedure SongPopupMenuPopup(Sender: TObject);
     procedure UpdateSongPositionInLbxSSelected;
     procedure UpdateControls;
+    procedure ReloadPresentationImage;
   private
     { private declarations }
-    procedure LocaliseCaptions;
+    { Filters the Listbox lbxSRepo after a search pattern. If s is empty, no filter will be applied.
+    @param(s: the search pattern) }
     procedure FilterListBox(s: String);
-    procedure ReloadPresentationImage;
     procedure BringToFront;
+    procedure ExportSelectionAsTeXFile;
+    procedure ImportTeXFileAsSelection;
   public
     { public declarations }
+    procedure AskToReloadRepo;
+    function FindSong(songname: String): TRepoFile;
   end;
 
 const
@@ -121,30 +150,23 @@ const
 
 var
   frmSongs: TfrmSongs;
-  repo: array of TRepoFile;
-  ProgrammMode: char;
+  { The Repository array which contains songs as classes of TSongFile }
+  repo: TRepoArray;
+  { @deprecated An enum should be used instead, but this has not been changed yet. }
+  ProgramMode: char;
+  startingPoint: TPoint;
+  PanelMultiScreenWidth: Integer;
 
 ResourceString
-  StrErsteBenutzung = 'You are using this program for the first time. Please select a song repository folder.';
-  StrFehlerOeffnen = 'Error while opening. Propably you have not the required rights to access this file.';
-  StrFehlerSpeichern = 'Error while saving. Propably you have not the required rights to access this file.';
+  StrErrorOpening = 'Error while opening. Propably you have not the required rights to access this file.';
+  StrErrorSaving = 'Error while saving. Propably you have not the required rights to access this file.';
   StrFehlerKeineLiederBeiPraesentation = 'You have to add songs first.';
   StrButtonPraesentation = 'Presentation...';
   StrButtonEinstellungen = 'Settings...';
-  {StrMenuDatei = 'File';
-  StrMenuBearbeiten = 'Edit';
-  StrMenuHilfe = 'Help';
-  StrMenuAuswahlLaden = 'Auswahl laden...';
-  StrMenuAuswahlSpeichern = 'Auswahl speichern...';
-  StrMenuLiederlisteNeuLaden = 'Liederliste neu laden';
-  StrMenuPraesentation = 'Präsentation...';
-  StrMenuBeenden = 'Beenden';
-  StrMenuEinstellungen = 'Einstellungen...';
-  StrMenuInfo = 'Informationen zum Programm...';
-  StrFormCaption = 'Liedauswahl (Cantara)';
-  StrSearchFieldHint = 'Suchen...';
-  StrMultipleWindowMode = 'Zwei-Fenster-Modus (für zwei Bildschirme und Videokonferenzen geeignet)'; }
+  StrCanNotOpenSong = 'Error: The Song "{songname}" is not available. Skipping.';
   StrFolie = 'Slide';
+  StrFileDoesNotExist = 'The File you would like to open does not exists.';
+  StrError = 'Error';
 
 implementation
 
@@ -152,52 +174,45 @@ implementation
 
 { TfrmSongs }
 
-procedure TfrmSongs.LocaliseCaptions;
-begin
-  {btnStartPresentation.Caption := StrButtonPraesentation;
-  btnSettings.Caption := StrButtonEinstellungen;
-  menuFile.Caption := StrMenuDatei;
-  itemLoad.Caption := StrMenuAuswahlLaden;
-  itemSave.Caption := StrMenuAuswahlSpeichern;
-  itemPresentation.Caption := StrMenuPraesentation;
-  itemEnd.Caption := StrMenuBeenden;
-  menuEdit.Caption := StrMenuBearbeiten;
-  itemSettings.Caption := StrMenuEinstellungen;
-  menuHelp.Caption := StrMenuHilfe;
-  itemAbout.Caption := StrMenuInfo;
-  self.Caption:=StrFormCaption;
-  self.edtSearch.TextHint := StrSearchFieldHint;
-  chkMultiWindowMode.Caption := StrMultipleWindowMode; }
-end;
-
 procedure TfrmSongs.loadRepo(repoPath: string);
-var Info: TSearchRec;
+var SearchResult: TSearchRec;
     i,c: integer;
     songName: string;
+    fileExtension: String;
+    song: TRepoFile;
 begin
-  if FindFirst(repoPath + PathDelim + '*', faAnyFile, Info)=0 then
+  // Delete everything in repo if there is something.
+  for song in repo do
+    song.Free;
+  SetLength(repo, 0);
+  if FindFirst(repoPath + PathDelim + '*', faAnyFile, SearchResult)=0 then
     begin
     lbxSRepo.Clear;
     setlength(repo, 0);
     Repeat
-      if (Info.Name[1] <> '.') and ((pos('.song',Info.Name) > 0) or (pos('.txt',Info.Name) > 0) or (pos('.ccli',Info.Name) > 0)) then  { only allow compatible file formats }
+      // get the file extension
+      fileExtension := ExtractFileExt(SearchResult.Name);
+      if ((SearchResult.Name[1] <> '.') and ((fileExtension = '.song') or (fileExtension = '.txt') or (fileExtension = '.ccli'))) then  { only allow compatible file formats }
         begin
          // Finde den letzten Punkt
-         songName := Info.Name + '.';
+         songName := SearchResult.Name + '.';
          i :=-1;
-         for i := 1 to length(Info.Name) do
+         for i := 1 to length(SearchResult.Name) do
            if songName[i] = '.' then c := i;
          // Entferne die Dateiendung
          songName := copy(songName,1,c-1);
          lbxSRepo.Items.Add(songName);
          setlength(repo, length(repo)+1);
          // Füllen des Repo-Arrays zur späteren Fehlerkorrektur!
+         repo[(length(repo)-1)] := TRepoFile.Create;
          repo[(length(repo)-1)].Name := songName;
-         repo[(length(repo)-1)].filePath := Info.Name;
+         repo[(length(repo)-1)].FileName := SearchResult.Name;
+         repo[(length(repo)-1)].FilePath := repoPath + PathDelim + SearchResult.Name;
+         repo[(length(repo)-1)].FileExtension := fileExtension;
         end;
-    Until FindNext(info)<>0;
+    Until FindNext(SearchResult)<>0;
     end;
-  FindClose(Info);
+  FindClose(SearchResult);
 end;
 
 procedure TfrmSongs.itemAboutClick(Sender: TObject);
@@ -229,48 +244,36 @@ end;
 
 procedure TfrmSongs.PnlSplitterMoved(Sender: TObject);
 begin
-  frmSongs.FormResize(self);
+  grbControl.Left := PnlSplitter.Left+PnlSplitter.Width-grbControl.Width-(lbxSSelected.Width+lbxSRepo.Width) div 2;
+  PanelMultiScreenWidth := frmSongs.Width-PnlSplitter.Left-1;
 end;
 
 procedure TfrmSongs.FormResize(Sender: TObject);
 begin
-  //grbControl.Width:=40;
-  lbxSRepo.Height := frmSongs.Height - lbxSRepo.Top - grbSettings.Height - MainMenu.Height;
-  grbControl.Height := frmSongs.Height - grbControl.Top - grbSettings.Height - MainMenu.Height;
-  lbxSSelected.Height := frmSongs.Height - lbxSSelected.Top - grbSettings.Height - MainMenu.Height;
-  edtSearch.Top := 0;
-  edtSearch.Left := 0;
-  {$if defined(LINUX)}
-  chkMultiWindowMode.Top := Round((grbSettings.Height-chkMultiWindowMode.Height)/2);
-  {$endif}
-  {$if defined(WINDOWS)}
-  chkMultiWindowMode.Top := btnStartPresentation.Top;
-  {$endif}
-  if (ProgrammMode = ModeSelection) OR (ProgrammMode = ModeSingleScreenPresentation) Then
+  if (ProgramMode = ModeSelection) OR (ProgramMode = ModeSingleScreenPresentation) Then
   Begin
-    lbxSRepo.Width:=(frmSongs.Width-grbControl.Width) div 2;
-    lbxSSelected.left:=grbControl.Width+lbxSRepo.Width;
-    lbxSSelected.Width:=lbxSRepo.Width;
-    edtSearch.Width:= lbxSRepo.Width;
-    lbxSRepo.BorderSpacing.Top := edtSearch.Height;
-    grbControl.Left := lbxSRepo.Left + lbxSRepo.Width;
-    PnlSplitter.Visible := False;
+    {PnlSplitter.Visible := True;
+    pnlSplitter.Left := frmSongs.Width-PanelMultiScreenWidth;
+    pnlMultiScreen.Visible := True;
+    btnStartPresentation.Enabled := False;
+    frmPresent.KeyPreview := True; }
+
+    PnlSplitter.Left := frmSongs.Width;
+    PnlSplitter.Width:=1;
+    IntToStr(PnlSplitter.Left);
+    //PnlSplitter.Visible := False;
     pnlMultiScreen.Visible := False;
   end else
   Begin
-    lbxSRepo.Width:=(frmSongs.Width-grbControl.Width-pnlMultiscreen.Width) div 2;
-    lbxSSelected.Width:=lbxSRepo.Width;
-    lbxSSelected.left:=grbControl.Width+lbxSRepo.Width;
-    edtSearch.Width:= lbxSRepo.Width;
-    lbxSRepo.BorderSpacing.Top := edtSearch.Height;
-    grbControl.Left := lbxSRepo.Left + lbxSRepo.Width;
-    pnlMultiScreen.Visible := True;
     PnlSplitter.Visible := True;
-    pnlMultiScreen.Left := frmSongs.Width-pnlMultiScreen.Width;
+    pnlSplitter.Left := frmSongs.Width-PanelMultiScreenWidth;
+    PnlSplitter.Width := 1;
+    pnlMultiScreen.Visible := True;
     itemPresentation.Enabled := False;
     btnStartPresentation.Enabled := False;
     frmPresent.KeyPreview := True;
   end;
+  grbControl.Left := PnlSplitter.Left+PnlSplitter.Width-grbControl.Width-(lbxSSelected.Width+lbxSRepo.Width) div 2;
 end;
 
 function getRepoDir(): string;
@@ -288,19 +291,19 @@ begin
   settings.settingsFile := TINIFile.Create(filename);
   if FileExists(filename) then
     begin
-      frmSettings.loadSettings();
+      frmSettings.loadSettings;
       // Maximize Window according to saved state
       if settings.settingsfile.ReadBool('Size', 'main-window-maximized', False) = True
          Then frmSongs.WindowState:= TWindowState.wsMaximized
       else frmSongs.WindowState:=TWindowState.wsNormal;
     end else
     begin
-      ShowMessage(StrErsteBenutzung);
-      frmSettings.ShowModal;
+      frmWelcome.ShowModal;
     end;
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
-  frmPresent.LoadBackground;
+  frmPresent.LoadSettings; // We need to load the settings into the present form here because only at this point all the needed data is available.
+  PanelMultiScreenWidth := Round(frmSongs.Width/2);
 end;
 
 procedure TfrmSongs.grbControlClick(Sender: TObject);
@@ -345,12 +348,54 @@ begin
   Application.Terminate;
 end;
 
+procedure TfrmSongs.itemExportTeXFileClick(Sender: TObject);
+begin
+  ExportSelectionAsTeXFile;
+end;
+
+procedure TfrmSongs.itemImportTeXFileClick(Sender: TObject);
+begin
+  ImportTeXFileAsSelection;
+end;
+
 procedure TfrmSongs.itemLoadClick(Sender: TObject);
 begin
   try
     if OpenDialog.Execute then lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
   except
-    ShowMessage(StrFehlerOeffnen);
+    ShowMessage(StrErrorOpening);
+  end;
+end;
+
+procedure TfrmSongs.itemOpenInEditorClick(Sender: TObject);
+var repoFile: TRepoFile;
+    i: Integer;
+begin
+  if (lbxSRepo.ItemIndex >= 0) then
+  begin
+    frmSongEdit.Show;
+    frmSongEdit.loadRepo(repo);
+    frmSongEdit.Update;
+    Application.ProcessMessages;
+    for i := 0 to length(repo)-1 do
+    begin
+      if repo[i].Name = lbxSRepo.Items[lbxSrepo.ItemIndex] then
+      begin
+        repoFile := repo[i];
+        Break;
+      end;
+    end;
+    for i := 0 to frmSongEdit.lsSongs.Count-1 do
+    begin
+      if frmSongEdit.lsSongs.Items[i] = repoFile.FileName then
+      begin
+        frmSongEdit.lsSongs.ItemIndex:=i;
+        frmSongEdit.Update;
+        Application.ProcessMessages;
+        frmSongEdit.lsSongsClick(frmSongs);
+        Break;
+      end;
+    end;
   end;
 end;
 
@@ -359,8 +404,19 @@ begin
   try
     if SaveDialog.Execute then lbxSselected.Items.SaveToFile(SaveDialog.FileName);
   except
-    ShowMessage(StrFehlerSpeichern);
+    ShowMessage(StrErrorSaving);
   end;
+end;
+
+procedure TfrmSongs.itemShowWelcomeAssistentClick(Sender: TObject);
+begin
+  frmWelcome.ShowModal;
+end;
+
+procedure TfrmSongs.itemSongEditorClick(Sender: TObject);
+begin
+  frmSongEdit.Show;
+  frmSongEdit.loadRepo(repo);
 end;
 
 procedure TfrmSongs.lbxSRepoClick(Sender: TObject);
@@ -371,7 +427,14 @@ end;
 procedure TfrmSongs.lbxSRepoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if (Key = VK_Space) or (Key = VK_Return) then btnAddClick(lbxSRepo);
+  if (Key = VK_Space) or (Key = VK_Return) or (key = VK_Right) then btnAddClick(lbxSRepo);
+end;
+
+procedure TfrmSongs.lbxSRepoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  if Button = mbLeft then
+    lbxSRepo.BeginDrag(False);
 end;
 
 procedure TfrmSongs.lbxSselectedClick(Sender: TObject); // Jump to the current Song – only in presentation mode
@@ -379,30 +442,58 @@ var
   selectedSongName: String;
   pos: Integer;
 begin
-  if ProgrammMode <> ModeSelection then
+  if ProgramMode <> ModeSelection then
   begin
     selectedSongName := lbxSSelected.Items.Strings[lbxSSelected.ItemIndex];
     pos := Present.songMetaList.IndexOf(selectedSongName);
     present.frmPresent.showItem(pos);
-    if ProgrammMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View
+    if ProgramMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View
   end;
 end;
 
-procedure TfrmSongs.lbxSselectedDragDrop(Sender, Source: TObject; X, Y: Integer
-  );
+procedure TfrmSongs.lbxSselectedDragDrop(Sender, Source: TObject; X, Y: Integer);
+var DropPosition, StartPosition: Integer;
+    DropPoint: TPoint;
 begin
+  if (Source is TListBox) and ((Source as TListBox).Name = 'lbxSRepo') then
+     lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex])
+  else if (Source is TListBox) and ((Source as TListBox).Name = 'lbxSselected') then
+    begin
+      DropPoint.X := X;
+      DropPoint.Y := Y;
+      with Source as TListBox do
+      begin
+        StartPosition := ItemAtPos(StartingPoint,True) ;
+        DropPosition := ItemAtPos(DropPoint,True) ;
+        Items.Move(StartPosition, DropPosition) ;
+      end;
+    end;
+end;
 
+procedure TfrmSongs.lbxSselectedDragOver(Sender, Source: TObject; X,
+  Y: Integer; State: TDragState; var Accept: Boolean);
+begin
+  if (Source is TListBox) then
+     Accept := True;
 end;
 
 procedure TfrmSongs.lbxSselectedKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if Key = VK_DELETE then btnRemoveClick(lbxSSelected);
+  if ProgramMode <> ModeSelection then exit;
+  if (Key = VK_DELETE) or (Key = VK_Left) then btnRemoveClick(lbxSSelected);
 end;
 
 procedure TfrmSongs.lbxSselectedKeyPress(Sender: TObject; var Key: char);
 begin
 
+end;
+
+procedure TfrmSongs.lbxSselectedMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  StartingPoint.X := X;
+  StartingPoint.Y := Y;
 end;
 
 procedure TfrmSongs.lbxSselectedResize(Sender: TObject);
@@ -412,9 +503,8 @@ end;
 
 procedure TfrmSongs.FormCreate(Sender: TObject);
 begin
-  ProgrammMode := ModeSelection;
-  self.LocaliseCaptions;
-  pnlMultiScreen.Width := Round(frmSongs.Width/2);
+  ProgramMode := ModeSelection;
+  //self.LocaliseCaptions;
 
   // Check Multiple Screen
   if Screen.MonitorCount > 1 Then
@@ -422,11 +512,19 @@ begin
   Else chkMultiWindowMode.Checked := False;
 end;
 
+procedure TfrmSongs.FormDestroy(Sender: TObject);
+var i: integer;
+begin
+  // Distroy all Song Data
+  for i := 0 to length(repo)-1 do
+    repo[i].Free;
+end;
+
 procedure TfrmSongs.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   //Übergebe Key an Presentations-Form, wenn Vorausforderungen erfüllt sind
-  if ((ProgrammMode = ModeMultiScreenPresentation) and (edtSearch.Focused = False))
+  if ((ProgramMode = ModeMultiScreenPresentation) and (edtSearch.Focused = False))
   Then
   Begin
     frmPresent.FormKeyDown(frmSongs, Key, Shift);
@@ -441,7 +539,7 @@ end;
 
 procedure TfrmSongs.btnAddClick(Sender: TObject);
 begin
-  if (lbxSRepo.ItemIndex >= 0) and (ProgrammMode = ModeSelection) then
+  if (lbxSRepo.ItemIndex >= 0) and (ProgramMode = ModeSelection) then
     lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex]);
 end;
 
@@ -510,7 +608,7 @@ begin
     // Passe Hauptfenster an, falls Multi-Fenster-Modus ausgewählt wurde.
     if chkMultiWindowMode.Checked Then
       Begin
-        ProgrammMode := ModeMultiscreenPresentation;
+        ProgramMode := ModeMultiscreenPresentation;
         pnlSplitter.Left := Round(frmSongs.Width / 2);
         frmSongs.FormResize(frmSongs);
         pnlMultiScreenResize(Self);
@@ -527,11 +625,11 @@ begin
         //BringToFront;
         frmSongs.KeyPreview:=True;
       end
-    Else ProgrammMode := ModeSingleScreenPresentation;
+    Else ProgramMode := ModeSingleScreenPresentation;
 
     frmSongs.FormResize(frmSongs);
     // Zeige die Präsentations-Form
-    frmPresent.Show();
+    frmPresent.Show;
     frmPresent.ShowFirst;
     // Workaround für Windoof
     frmPresent.WindowState:= wsMaximized;
@@ -540,11 +638,11 @@ begin
     itemPresentation.Enabled := False;
     btnStartPresentation.Enabled := False;
     // Lade nochmals Einstellungen (zur Sicherheit)
-    frmPresent.LoadSettings;
+    // vorert nicht: frmPresent.LoadSettings;
     // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
   end
   else ShowMessage(StrFehlerKeineLiederBeiPraesentation);
-  if ProgrammMode = ModeMultiscreenPresentation Then begin
+  if ProgramMode = ModeMultiscreenPresentation Then begin
      ImageUpdater.Enabled:=True;
   end;
   UpdateControls;
@@ -552,7 +650,7 @@ end;
 
 procedure TfrmSongs.UpdateControls;
 begin
-  if (ProgrammMode = ModeMultiscreenPresentation) or (ProgrammMode = ModeSingleScreenPresentation) then
+  if (ProgramMode = ModeMultiscreenPresentation) or (ProgramMode = ModeSingleScreenPresentation) then
   begin
     btnAdd.Enabled:=False;
     btnRemove.Enabled:=False;
@@ -585,14 +683,13 @@ begin
   present.songMetaList.Clear;
   Songlist := lyrics.TSongList.Create;
   Songlist.FreeObjects:=False;
-  //if Assigned(present.frmPresent.Songlist) then
-  //    present.frmPresent.Songlist.FreeInstance;
-    present.frmPresent.Songlist := lyrics.TSongList.Create;
+  present.frmPresent.Songlist := lyrics.TSongList.Create;
   for i := 0 to lbxSSelected.Count-1 do
     begin
     songfile := TStringList.Create;
     Song := lyrics.TSong.Create;
-    //Ermittel Liednamen
+    Song.MaxSlideLineLength:=Settings.frmSettings.seWrapLines.Value;
+    //Get Song Name
     songname := lbxSSelected.Items.Strings[i];
     //suche Dateinamen in repo-Array
     j := 0;
@@ -600,10 +697,10 @@ begin
       while repo[j].Name <> songname do
         inc(j);
     except
-      ShowMessage('Fehler: Das Lied "' + songname + '" ist nicht vorhanden. Es wird übersprungen.')
+      ShowMessage(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll]));
     end;
     //Lade Song-menuFile abhängig von der Erweiterung!
-    completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].filePath;
+    completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
     Song.importSongfile(completefilename);
     Songlist.Add(song);
     songfile.Assign(song.output);
@@ -659,6 +756,11 @@ begin
   result := SongPosition;
 end;
 
+procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);
+begin
+  itemOpenInEditor.Visible := (lbxSRepo.ItemIndex >= 0);
+end;
+
 procedure TfrmSongs.UpdateSongPositionInLbxSSelected;
 var
     SongPosition: TSongPosition;
@@ -702,7 +804,7 @@ end;
 
 procedure TfrmSongs.FormActivate(Sender: TObject);
 begin
-  if ((ProgrammMode = ModeMultiScreenPresentation) and (ProgrammMode = ModeMultiScreenPresentation)) and (frmSongs.Active <> True) and (frmPresent.Active <> True) Then
+  if ((ProgramMode = ModeMultiScreenPresentation) and (ProgramMode = ModeMultiScreenPresentation)) and (frmSongs.Active <> True) and (frmPresent.Active <> True) Then
   begin
     //BringToFront;
   end;
@@ -722,16 +824,109 @@ procedure TfrmSongs.ReloadPresentationImage;
 var
   FormImage: TBitmap;
 begin
-  FormImage := frmPresent.GetFormImage;
-  try
-    // Clipboard.Assign(FormImage); // <=== NOPE
-    imgLiveViewer.Picture.Assign(FormImage); // <-- this works ok
-  finally
-    FormImage.Free;
+  if ProgramMode = ModeMultiScreenPresentation then
+    begin
+    FormImage := frmPresent.GetFormImage;
+    try
+      imgLiveViewer.Picture.Assign(FormImage);
+    finally
+      FormImage.Free;
+    end;
+    lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(Present.cur + 1) + ' / ' + IntToStr(Present.TextList.Count);
+    FormResize(self);
+    pnlMultiScreenResize(self);
   end;
-  lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(Present.cur + 1) + ' / ' + IntToStr(Present.TextList.Count);
-  FormResize(self);
-  pnlMultiScreenResize(self);
+end;
+
+procedure TfrmSongs.AskToReloadRepo;
+begin
+  self.loadRepo(frmSettings.edtRepoPath.Text);
+end;
+
+procedure TfrmSongs.ExportSelectionAsTeXFile;
+var i: integer;
+  songtexfile: TSongTeXFile;
+  song: TRepoFile;
+  songtexFileName: String;
+begin
+  if saveSongTeXFileDialog.Execute = False then Exit;
+  songtexfile := TSongTeXFile.Create;
+  for i := 0 to lbxSselected.Count-1 do
+  begin
+    song := FindSong(lbxSSelected.Items.Strings[i]);
+    songtexfile.AddFile(song);
+  end;
+  songtexFileName := saveSongTexFileDialog.FileName;
+  if ExtractFileExt(songtexFileName) <> '.songtex' then
+     songtexFileName := songtexFileName + '.songtex';
+  songtexfile.SaveToFile(songtexFileName);
+end;
+
+function TfrmSongs.FindSong(songname: String): TRepoFile;
+var i: integer;
+begin
+  for i := 0 to length(repo)-1 do
+  begin
+    if repo[i].Name = songname then
+    begin
+      Exit(Repo[i]);
+    end
+  end;
+  Exit(nil);
+end;
+
+procedure TfrmSongs.ImportTeXFileAsSelection;
+var SongTexFile: TSongTeXFile;
+  NextFileName, RepoPath: String;
+  RepoFileStrings: TStringList;
+  songname, songextension: String;
+  DateTimeStr: String;
+begin
+  if OpenSongTeXFileDialog.Execute then
+  begin
+    RepoPath := frmSettings.edtRepoPath.Text;
+    if FileExists(OpenSongTeXFileDialog.FileName) = false then
+    begin
+      Application.MessageBox(PChar(strFileDoesNotExist), PChar(strError), MB_ICONWARNING or MB_OK);
+    end;
+    SongTeXFile := TSongTeXFile.Create;
+    SongTeXFile.LoadFromFile(OpenSongTeXFileDialog.FileName);
+    NextFileName := SongTeXFile.HasNextSongfile;
+    while (NextFileName <> '') do
+    begin
+      // Check whether file with the same name exists in the repository
+      if FileExists(RepoPath + PathDelim + NextFileName) then
+      begin
+        // Check whether files are equal
+        RepoFileStrings := TStringList.Create;
+        RepoFileStrings.LoadFromFile(RepoPath + PathDelim + NextFileName);
+        if RepoFileStrings.Equals(SongTeXFile.NextSongFile) then
+        begin
+          // Add the entry from local repo
+          lbxSSelected.Items.Add(Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName))));
+        end else // The song is available but not equal
+        begin
+          // We save the song under an imported flag and add it
+          songExtension := ExtractFileExt(NextFileName);
+          SongName := Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName)));
+          DateTimeToString(DateTimeStr, 'yyyy-mm-dd', Now);
+          SongName := SongName + ' [' + DateTimeStr + ']';
+          SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + SongName + SongExtension);
+          lbxSSelected.Items.Add(SongName);
+          ItemReloadSongListClick(nil);
+        end;
+        FreeAndNil(RepoFileStrings);
+      end else // The file does not exist yet, then we import the file and add it
+      begin
+        SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + NextFileName);
+        SongName := Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName)));
+        lbxSSelected.Items.Add(SongName);
+        ItemReloadSongListClick(nil);
+      end;
+      NextFileName := SongTexFile.HasNextSongfile;
+    end;
+    FreeAndNil(SongTeXFile);
+  end;
 end;
 
 end.

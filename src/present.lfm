@@ -1,21 +1,26 @@
 object frmPresent: TfrmPresent
   Cursor = crNone
-  Left = 381
+  Left = 506
   Height = 535
-  Top = 158
+  Top = 279
   Width = 1070
   Caption = 'Presentation'
   ClientHeight = 535
   ClientWidth = 1070
   Color = clBlack
+  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnHide = FormHide
   OnKeyDown = FormKeyDown
+  OnMouseMove = FormMouseMove
+  OnMouseWheelDown = FormMouseWheelDown
+  OnMouseWheelHorz = FormMouseWheelHorz
+  OnPaint = FormPaint
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '2.2.2.0'
+  LCLVersion = '2.2.4.0'
   WindowState = wsMaximized
   object imgBackground: TImage
     AnchorSideRight.Side = asrBottom
@@ -25,9 +30,7 @@ object frmPresent: TfrmPresent
     Top = 0
     Width = 1078
     AntialiasingMode = amOn
-    Center = True
     Stretch = True
-    Transparent = True
     Visible = False
   end
   object lblText: TLabel
@@ -76,22 +79,5 @@ object frmPresent: TfrmPresent
     ParentFont = False
     Visible = False
     WordWrap = True
-  end
-  object ReloadImage: TAsyncProcess
-    Active = False
-    Options = []
-    Priority = ppNormal
-    StartupOptions = []
-    ShowWindow = swoNone
-    WindowColumns = 0
-    WindowHeight = 0
-    WindowLeft = 0
-    WindowRows = 0
-    WindowTop = 0
-    WindowWidth = 0
-    FillAttribute = 0
-    OnReadData = ReloadImageReadData
-    Left = 176
-    Top = 480
   end
 end

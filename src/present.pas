@@ -7,7 +7,7 @@ interface
 uses
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Settings, Types, Themes, LCLTranslator, LCLIntf, ExtCtrls, Lyrics,
-  IntfGraphics, AsyncProcess,
+  IntfGraphics,
   fpImage,
   math;
 type
@@ -15,16 +15,22 @@ type
   { TfrmPresent }
 
   TfrmPresent = class(TForm)
-    ReloadImage: TAsyncProcess;
     imgBackground: TImage;
     lblNext: TLabel;
     lblMeta: TLabel;
     lblText: TLabel;
     ManipulatedBitmap: TBitmap;
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
+      MousePos: TPoint; var Handled: Boolean);
+    procedure FormMouseWheelHorz(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+    procedure FormPaint(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lblTextClick(Sender: TObject);
@@ -49,6 +55,7 @@ type
     ScreenBounds: TRect;
     Songlist: lyrics.TSongList;
     procedure LoadBackground;
+    procedure ResizeBackground;
     procedure GoPrevious;
     procedure GoNext;
     procedure Refresh;
@@ -80,6 +87,31 @@ begin
   else if (key = VK_Escape) then frmPresent.Hide;
 end;
 
+procedure TfrmPresent.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+
+end;
+
+procedure TfrmPresent.FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+
+end;
+
+procedure TfrmPresent.FormMouseWheelHorz(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+begin
+  {if WheelDelta > 0 then GoNext
+  else if WheelDelta < 0 then GoPrevious;
+  Handled := True;}
+end;
+
+procedure TfrmPresent.FormPaint(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmPresent.GoNext;
 begin
   if (cur < textList.Count-1) then
@@ -87,7 +119,7 @@ begin
       inc(cur);
       ShowItem(cur);
     end;
-  if SongSelection.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
+  if SongSelection.ProgramMode = ModeMultiscreenPresentation Then frmSongs.ReloadPresentationImage;
 end;
 
 procedure TfrmPresent.GoPrevious;
@@ -97,19 +129,19 @@ begin
     dec(cur);
     ShowItem(cur);
   end;
-  if SongSelection.ProgrammMode = ModeMultiscreenPresentation Then frmSongs.ImageUpdater.Enabled:=True;
+  if SongSelection.ProgramMode = ModeMultiscreenPresentation Then frmSongs.ReloadPresentationImage;
 end;
 
 procedure TfrmPresent.FormResize(Sender: TObject);
 begin
   showItem(cur);
-  LoadBackground;
+  ResizeBackground;
 end;
 
 procedure TfrmPresent.FormShow(Sender: TObject);
 begin
-  LoadSettings;
   if textList.Count>0 then showItem(0) else frmPresent.Hide;
+  ResizeBackground;
   Refresh;
 end;
 
@@ -148,7 +180,7 @@ end;
 
 procedure TfrmPresent.ReloadImageReadData(Sender: TObject);
 begin
-  LoadBackground;
+  ResizeBackground;
 end;
 
 
@@ -172,6 +204,17 @@ begin
       lblNext.Font.Color := frmSettings.textColorDialog.Color;
       lblNext.Font.Height:= lblNext.Font.Height div 2;
       lblNext.BorderSpacing.Top:=2*lblNext.Font.Size;
+      if lblNext.Top+lblNext.Height > frmPresent.Height then // the spoiler is going beyond the form
+      begin
+        lblNext.Caption := Copy(lblNext.Caption, 1, Pos(lblNext.Caption, LineEnding));
+        // if still to much content then hide
+        if lblNext.Top+lblNext.Height > frmPresent.Height then
+          begin
+            lblNext.Visible:=False;
+            lblText.Height := frmPresent.Height;
+            lblNext.BorderSpacing.Top := 0;
+          end;
+      end;
     end else
     begin
       lblNext.Caption := '';
@@ -185,7 +228,7 @@ begin
     SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
     ShowMeta;
     lblMeta.Top := frmPresent.Height-lblMeta.Height-lblMeta.Left;
-    //LoadBackground;
+    frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 procedure TfrmPresent.ShowMeta;
@@ -212,6 +255,12 @@ begin
   present.songMetaList := TStringList.Create;
   FullScreen := False;
   self.WindowState:= wsMaximized;
+  //LoadSettings;
+end;
+
+procedure TfrmPresent.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+
 end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);
@@ -222,7 +271,7 @@ end;
 procedure TfrmPresent.FormHide(Sender: TObject);
 begin
   // Stelle frmSongs wieder her
-  SongSelection.ProgrammMode:=SongSelection.ModeSelection;
+  SongSelection.ProgramMode:=SongSelection.ModeSelection;
   SongSelection.frmSongs.FormResize(self);
   SongSelection.frmSongs.KeyPreview := False;
 
@@ -328,40 +377,54 @@ begin
 end;
 
 procedure TfrmPresent.LoadBackground;
-//var originalPicture: TPicture;
 begin
   // Handle Background Image
     if (frmSettings.cbShowBackgroundImage.Checked) and (FileExists(frmSettings.BgPictureDialog.FileName)) then
     begin
       imgBackground.Visible:=True;
-      imgBackground.Width:=frmPresent.Width;
-      imgBackground.Height:=frmPresent.Height;
-      //originalPicture := TPicture.Create;
-      //originalPicture.LoadFromFile(frmSettings.BgPictureDialog.FileName);
+      try
       imgBackground.Picture.LoadFromFile(frmSettings.BgPictureDialog.FileName);
-      if imgBackground.Width/imgBackground.Height >= imgBackground.Picture.Width/imgBackground.Picture.Height then
-        begin
-          imgBackground.Height:=Trunc(imgBackground.Width*imgBackground.Picture.Height/imgBackground.Picture.Width);
-          //imgBackground.Height:=Trunc(imgBackground.width*imgBackground.Picture.Height/imgBackground.Picture.Width);
-          //imgBackground.Left:=Trunc((imgBackground.Picture.Width-imgBackground.width)/2);
-          imgBackground.Left:=0;
-          imgBackground.Top:=-Abs(Trunc((imgBackground.Height-frmPresent.Height)/2));
-        end
-      else
-        begin
-          imgBackground.Width:=Trunc(frmPresent.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
-          //imgBackground.Top:=Trunc((imgBackground.Picture.Height-imgBackground.Height)/2);
-          imgBackground.Left:=-Abs(Trunc((imgBackground.Width-frmPresent.Width)/2));
-          imgBackground.Top:=0;
-        end;
+      except on error: FPImageException do
+      begin
+        imgBackground.Visible := False;
+        frmSettings.cbShowBackgroundImage.Checked := False;
+        exit;
+      end;
+      end;
+      //ResizeBackground;
       BrightnessBitmap(imgbackground.Picture.Bitmap, imgbackground.Picture.Bitmap, frmSettings.sbImageBrightness.Position);
-
-      //originalPicture.Free;
     end
     else
     begin
       imgBackground.Visible:=False;
     end;
+    // set changedBackground as False unless changes are done again (in settings)
+    frmSettings.changedBackground:=False;
+end;
+
+procedure TfrmPresent.ResizeBackground;
+var newHeight, newWidth: integer;
+begin
+  imgBackground.Width:=frmPresent.Width;
+  imgBackground.Height:=frmPresent.Height;
+  if imgBackground.Height = 0 then Exit;
+  if imgBackground.Width/imgBackground.Height >= imgBackground.Picture.Width/imgBackground.Picture.Height then
+        begin
+          newHeight:=Trunc(imgBackground.Width*imgBackground.Picture.Height/imgBackground.Picture.Width);
+          imgBackground.Top:=-Abs(Trunc((imgBackground.Height-frmPresent.Height)/2));
+          imgBackground.Left:=0;
+          imgBackground.Height := newHeight;
+        end
+      else
+        begin
+          if frmSettings.cbShowBackgroundImage.Checked then // This is important because else there will be a range check error!
+          begin
+            newWidth:=Trunc(frmPresent.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
+            imgBackground.Left:=-Abs(Trunc((imgBackground.Width-frmPresent.Width)/2));
+            imgBackground.Top:=0;
+            imgBackground.Width:=newWidth;
+          end;
+        end;
 end;
 
 procedure TfrmPresent.Brightness(SourceBitmap, DestBitmap: TBitMap; Offset: integer);

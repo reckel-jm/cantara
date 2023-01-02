@@ -7,26 +7,21 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, runtimetypeinfocontrols, SongSelection, Present, settings, info,
-  lyrics,
+  Forms, runtimetypeinfocontrols, SongSelection, Present, settings,
+  info,
   { you can add units after this }
-  CommandLineOptions, CustApp, fgl;
+  songeditor, welcome;
 {$R *.res}
 
 begin
   Application.Scaled:=True;
   Application.Initialize;
-  {if HasOption('h', 'help') then
-  begin
-    PrintHelp;
-    Application.Free;
-    Terminate;
-    Exit;
-  end; }
   Application.CreateForm(TfrmSongs, frmSongs);
-  Application.CreateForm(TfrmPresent, frmPresent);
   Application.CreateForm(TfrmSettings, frmSettings);
   Application.CreateForm(TfrmInfo, frmInfo);
+  Application.CreateForm(TfrmPresent, frmPresent);
+  Application.CreateForm(TfrmSongEdit, frmSongEdit);
+  Application.CreateForm(TfrmWelcome, frmWelcome);
   Application.Run;
 end.
 

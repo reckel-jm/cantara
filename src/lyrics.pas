@@ -8,37 +8,53 @@ uses
   Classes, SysUtils, Strings, fgl, Dialogs;
 
 function StringListToString(StringList: TStringList): String;
+
 type
   TStringDict = specialize TFPGMap<string, string>;
   TStringIntegerDict = specialize TFPGMap<string, integer>;
+  TRepoFile = class
+    public
+      Name: string;
+      FileName: string;
+      FilePath: String;
+      FileExtension: String;
+  end;
+  TRepoArray = array of TRepoFile;
+
   { TSong }
   TSong = Class
     public
       filename: String;
       output: TStringList;
-      MetaDict: TStringDict;
-      delimCounter: Integer;
+      MetaDict: TStringDict; { contains all the MetaData of the songs }
+      MaxSlideLineLength: Integer; { When should slices be cut into two parts }
       constructor Create; overload;
       destructor Destroy; override;
       procedure importSongFile;
       procedure importSongfile(filepath: string);
-      procedure ConvertFile;
+      procedure ConvertCCLIFile;
+      procedure slideWrap;
       function ParseMetaData(MetaLogic: string): string;
+      procedure exportAsSongFile(outputfilename: String);
+      function IsCCLIFile: Boolean;
+      procedure strip;
     private
       inputFile: TStringList;
       PositionDict: TStringIntegerDict;
       procedure WritePart(index: Integer);
       procedure IncludeRepetitionalParts;
-      procedure importSongLegacyFile;
+      procedure importSongFormatFile;
       procedure importCCLISongFile;
       procedure importCCLISongFile(filepath: string);
       function ParseMetaData(MetaLogic: string; count: integer): string;
+      function compareWithOtherSong(TheSong: TSong): Boolean;
   end;
   TSongList = specialize TFPGObjectList<TSong>;
 
+const
+  CCLIWEBPAGE:string = 'www.ccli.com';
 
 implementation
-
 
 { Create all Lists and Dictionaries with the Constructor }
 constructor TSong.Create;
@@ -63,7 +79,7 @@ end;
 procedure TSong.importCCLISongFile;
 begin
   self.inputFile.LoadFromFile(self.filename);
-  ConvertFile;
+  ConvertCCLIFile;
 end;
 
 procedure TSong.importCCLISongFile(filepath: String);
@@ -72,12 +88,12 @@ begin
   self.importCCLISongFile;
 end;
 
-procedure TSong.ConvertFile;
+procedure TSong.ConvertCCLIFile;
 var i: Integer;
   j: Integer;
   RefrainState: Boolean;
 begin
-  self.MetaDict.Add('Title', inputFile.Strings[0]);
+  self.MetaDict.Add('title', inputFile.Strings[0]);
   RefrainState := False;
   for i :=  1 to self.inputFile.Count-1 do
   begin
@@ -130,10 +146,6 @@ begin
     inc(i);
   end;
   length := i - index - 1;
-  if length >= self.delimCounter then { seperate the parts which are two big in two peaces }
-  begin
-    self.output.Insert(self.output.count-1-(length div 2)+1,'');
-  end;
   self.output.Add(''); // An empty line at the end of a song part
 end;
 
@@ -166,7 +178,7 @@ begin
   Result := s;
 end;
 
-procedure TSong.importSongLegacyFile;
+procedure TSong.importSongFormatFile;
 var i: integer;
   curLineText, key, value: String;
   contentStarted: boolean;
@@ -202,15 +214,53 @@ begin
   //self.output.Assign(self.inputFile);
 end;
 
+procedure TSong.slideWrap;
+var n1, n2,i: integer;
+  changed: boolean;
+begin
+  repeat
+  begin
+  changed := False;
+  if self.MaxSlideLineLength = 0 then exit; // Just as a protective measure, actually not needed anymore.
+  n1 := 0;
+  n2 := 0;
+  for i := 0 to output.Count-1 do
+  begin
+    if output.Strings[i] = '' then
+    begin
+       n2 := i;
+       if (n2-n1) > self.MaxSlideLineLength then
+         begin
+           if self.MaxSlideLineLength mod 2 = 0 then
+             output.Insert((n1+(n2-n1) div 2), '')
+           else output.Insert((n1+(n2-n1) div 2) + 1, '');
+           changed := True;
+         end;
+       n1 := n2+1;
+    end;
+  end;
+  // For the last slide
+  n2 := output.Count;
+  if (n2-n1) > self.MaxSlideLineLength then
+     begin
+         if self.MaxSlideLineLength mod 2 = 0 then
+           output.Insert((n1+(n2-n1) div 2), '')
+         else output.Insert((n1+(n2-n1) div 2) + 1, '');
+         changed := True;
+     end;
+  end until changed = False;
+end;
+
 { This function finds out which format the song has and calls the specific import function }
 procedure TSong.importSongFile;
 var songfileextension: String;
 begin
   songfileextension := ExtractFileExt(self.filename);
   if songfileextension = '.song' then
-    self.importSongLegacyFile
+    self.importSongFormatFile
   else if (songfileextension = '.txt') or (songfileextension = '.ccli') then // CCLI-Songselect file
     self.importCCLISongFile;
+  if self.MaxSlideLineLength>0 then self.slideWrap;
 end;
 
 procedure TSong.importSongFile(filepath: String);
@@ -239,6 +289,7 @@ begin
   ParseString := Trim(ParseString);
   Result := ParseString;
 end;
+
 function TSong.ParseMetaData(MetaLogic: string; count: integer): string;
 var strArray: TStringArray;
   word, prop: String;
@@ -272,5 +323,58 @@ begin
     Result := StringReplace(word, '{%end%}', '', []) + ' ' + ParseMetaData(MetaLogic, count+1)
   else Result := word + ' ' + ParseMetaData(MetaLogic, count+1);
 end;
+
+procedure TSong.exportAsSongFile(outputfilename: String);
+var outputcontent: TStringList;
+  i: integer;
+begin
+  outputcontent := TStringList.Create;
+  for i := 0 to self.MetaDict.Count-1 do
+    outputcontent.Add('#' + self.MetaDict.Keys[i] + ': ' + self.MetaDict.Data[i]);
+  outputcontent.Add('');
+  outputcontent.AddStrings(self.output);
+  outputcontent.SaveToFile(outputfilename);
+  FreeAndNil(outputcontent);
+end;
+
+function TSong.IsCCLIFile: Boolean;
+var i: integer;
+begin
+  if ExtractFileExt(self.filename) = '.ccli' then exit(True)
+  else if ExtractFileExt(self.filename) = '.txt' then
+  begin
+  for i := 0 to inputFile.Count-1 do
+      if (pos(CCLIWEBPAGE, inputfile.Strings[i]) > 0) or (pos('CCLI', inputfile.Strings[i]) > 0) then exit(True);
+  end;
+  Result := False;
+end;
+
+procedure TSong.strip;
+var i: integer;
+begin
+  i := output.Count-1;
+  while (output.Strings[i] = '') and (i > -1) do
+  begin
+    output.Delete(i);
+    dec(i);
+  end;
+end;
+
+function TSong.compareWithOtherSong(TheSong: TSong): Boolean;
+var i: integer;
+begin
+  self.strip;
+  TheSong.strip;
+  if self.output.Count <> TheSong.output.Count then Exit(False);
+  for i := 0 to self.output.Count-1 do
+    if self.output.Strings[i] <> TheSong.output.Strings[i] then Exit(False);
+  if self.MetaDict.Count <> TheSong.MetaDict.Count then Exit(False);
+  for i := 0 to self.MetaDict.Count-1 do
+    if ((self.MetaDict.Keys[i] <> TheSong.MetaDict.Keys[i]) and (self.MetaDict.Data[i] <> TheSong.MetaDict.Data[i]))
+       then exit(False);
+  // If the function arrives here, the two songs should be the same.
+  Result := True;
+end;
+
 end.
 

@@ -1,0 +1,91 @@
+object frmSongEdit: TfrmSongEdit
+  Left = 409
+  Height = 562
+  Top = 34
+  Width = 1029
+  Caption = 'Edit Files'
+  ClientHeight = 528
+  ClientWidth = 1029
+  Menu = EditorMenu
+  OnClose = FormClose
+  OnShow = FormShow
+  WindowState = wsMaximized
+  object lsSongs: TListBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = splitter
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 528
+    Top = 0
+    Width = 300
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ItemHeight = 0
+    OnClick = lsSongsClick
+    Sorted = True
+    TabOrder = 0
+  end
+  object splitter: TSplitter
+    AnchorSideLeft.Control = lsSongs
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = PageControl
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 300
+    Height = 458
+    Top = 0
+    Width = 6
+    Align = alCustom
+    Anchors = [akTop]
+    AutoSnap = False
+    Beveled = True
+  end
+  object PageControl: TPageControl
+    AnchorSideLeft.Control = splitter
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 306
+    Height = 528
+    Top = 0
+    Width = 723
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabOrder = 2
+    OnCloseTabClicked = PageControlCloseTabClicked
+    OnMouseMove = PageControlMouseMove
+    Options = [nboShowCloseButtons, nboShowAddTabButton]
+  end
+  object EditorMenu: TMainMenu
+    Left = 521
+    Top = 110
+    object menuFile: TMenuItem
+      Caption = 'File'
+      object menuItemNew: TMenuItem
+        Caption = 'New'
+        OnClick = menuItemNewClick
+      end
+      object menuItemSave: TMenuItem
+        Caption = 'Save'
+        ShortCut = 16467
+        OnClick = menuItemSaveClick
+      end
+      object menuItemCopy: TMenuItem
+        Caption = 'Copy'
+        OnClick = menuItemCopyClick
+      end
+      object menuItemArchivate: TMenuItem
+        Caption = 'Archivate'
+        OnClick = menuItemArchivateClick
+      end
+      object menuItemClose: TMenuItem
+        Caption = 'Close Editor'
+        OnClick = menuItemCloseClick
+      end
+    end
+  end
+end

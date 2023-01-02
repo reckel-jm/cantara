@@ -5,8 +5,8 @@ unit info;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, SynEdit, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdCtrls, lclintf, LCLTranslator, fileinfo, winpeimagereader, elfreader, machoreader;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
+  ExtCtrls, StdCtrls, lclintf, LCLTranslator, fileinfo;
 
 type
 
@@ -44,6 +44,7 @@ resourceString
   strVersion = 'Version';
   strAuthor = 'Author';
   strButtonGitRepo = 'Open webpage...';
+  { The webpage is a resourceString because the link might direct to a localised version. }
   strWebpage = 'https://www.cantara.app';
 
 implementation

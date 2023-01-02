@@ -42,6 +42,7 @@ doc/
 
 #Executable under linux
 cantara
+fpccantaratest
 
 # Zip-Files
 
@@ -49,3 +50,5 @@ cantara
 *.tar.gz
 
 *.snap
+
+*.wpo

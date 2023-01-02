@@ -1,11 +1,9 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=Cantara
 GenericName=Song Presenter
 GenericName[en_GB]=Song Presenter
 GenericName[de]=Liedpräsentation
 
-# Gnome and KDE 3 uses Comment.
 Comment=Present Songs
 Comment[en_GB]=Present Songs
 Comment[de]=Liedtexte anzeigen

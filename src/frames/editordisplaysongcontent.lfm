@@ -1,0 +1,182 @@
+object frmDisplaySongContent: TfrmDisplaySongContent
+  Left = 0
+  Height = 452
+  Top = 0
+  Width = 892
+  ClientHeight = 452
+  ClientWidth = 892
+  TabOrder = 0
+  DesignLeft = 409
+  DesignTop = 34
+  object ccliimporthint: TPanel
+    Left = 0
+    Height = 452
+    Top = 0
+    Width = 892
+    Align = alClient
+    ClientHeight = 452
+    ClientWidth = 892
+    Color = clForm
+    ParentColor = False
+    TabOrder = 1
+    Visible = False
+    object labelCCLIImportHint: TLabel
+      AnchorSideLeft.Control = ccliimporthint
+      AnchorSideTop.Control = ccliimporthint
+      AnchorSideRight.Control = ccliimporthint
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = ccliimporthint
+      AnchorSideBottom.Side = asrBottom
+      Left = 11
+      Height = 122
+      Top = 31
+      Width = 870
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 10
+      BorderSpacing.Top = 30
+      BorderSpacing.Right = 10
+      Caption = 'Hint:'#10#10'The file which you are going to open is a CCLI file.'#10'It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.'#10'If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory ''archive'' of your song repository and the generated song file will be opened for editing.'
+      ParentColor = False
+      WordWrap = True
+    end
+    object btnConvertCCLIFileToSongFormat: TButton
+      AnchorSideLeft.Control = ccliimporthint
+      AnchorSideTop.Control = labelCCLIImportHint
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = ccliimporthint
+      AnchorSideRight.Side = asrBottom
+      Left = 31
+      Height = 40
+      Top = 183
+      Width = 830
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 30
+      BorderSpacing.Top = 30
+      BorderSpacing.Right = 30
+      Caption = 'Convert CCLI File to Song Format'
+      OnClick = btnConvertCCLIFileToSongFormatClick
+      TabOrder = 0
+    end
+  end
+  object memoCode: TMemo
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 430
+    Top = 22
+    Width = 892
+    Align = alCustom
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    OnChange = memoCodeChange
+    OnKeyPress = memoCodeKeyPress
+    ScrollBars = ssAutoVertical
+    TabOrder = 0
+  end
+  object lblSongName: TLabel
+    Left = 0
+    Height = 22
+    Top = 0
+    Width = 48
+    Caption = 'Name: '
+    ParentColor = False
+  end
+  object lblSongNameContent: TLabel
+    AnchorSideLeft.Control = lblSongName
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = lblSongName
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = lblSongName
+    AnchorSideBottom.Side = asrBottom
+    Left = 53
+    Height = 22
+    Top = 0
+    Width = 1
+    Anchors = [akTop, akLeft, akBottom]
+    BorderSpacing.Left = 5
+    ParentColor = False
+    OnDblClick = lblSongNameContentDblClick
+  end
+  object btnCopy: TButton
+    AnchorSideTop.Control = lblSongName
+    AnchorSideRight.Control = btnArchivate
+    AnchorSideBottom.Control = lblSongName
+    AnchorSideBottom.Side = asrBottom
+    Left = 674
+    Height = 22
+    Top = 0
+    Width = 47
+    Anchors = [akTop, akRight, akBottom]
+    AutoSize = True
+    Caption = 'Copy'
+    OnClick = btnCopyClick
+    TabOrder = 2
+  end
+  object btnArchivate: TButton
+    AnchorSideTop.Control = lblSongName
+    AnchorSideRight.Control = btnSave
+    AnchorSideBottom.Control = lblSongName
+    AnchorSideBottom.Side = asrBottom
+    Left = 721
+    Height = 22
+    Top = 0
+    Width = 76
+    Anchors = [akTop, akRight, akBottom]
+    AutoSize = True
+    Caption = 'Archivate'
+    OnClick = btnArchivateClick
+    TabOrder = 3
+  end
+  object btnClose: TButton
+    AnchorSideLeft.Control = btnArchivate
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideTop.Control = lblSongName
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = lblSongName
+    AnchorSideBottom.Side = asrBottom
+    Left = 842
+    Height = 22
+    Top = 0
+    Width = 50
+    Anchors = [akTop, akRight, akBottom]
+    AutoSize = True
+    Caption = 'Close'
+    OnClick = btnCloseClick
+    TabOrder = 4
+  end
+  object btnRename: TButton
+    AnchorSideTop.Control = lblSongName
+    AnchorSideRight.Control = btnCopy
+    AnchorSideBottom.Control = lblSongName
+    AnchorSideBottom.Side = asrBottom
+    Left = 605
+    Height = 22
+    Top = 0
+    Width = 69
+    Anchors = [akTop, akRight, akBottom]
+    AutoSize = True
+    Caption = 'Rename'
+    OnClick = btnRenameClick
+    TabOrder = 5
+  end
+  object btnSave: TButton
+    AnchorSideTop.Control = lblSongName
+    AnchorSideRight.Control = btnClose
+    AnchorSideBottom.Control = lblSongName
+    AnchorSideBottom.Side = asrBottom
+    Left = 797
+    Height = 22
+    Top = 0
+    Width = 45
+    Anchors = [akTop, akRight, akBottom]
+    AutoSize = True
+    Caption = 'Save'
+    OnClick = btnSaveClick
+    TabOrder = 6
+  end
+end

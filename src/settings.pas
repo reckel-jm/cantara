@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, ExtDlgs;
+  Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs;
 
 type
 
@@ -23,17 +23,17 @@ type
     cbMetaDataLastSlide: TCheckBox;
     cbSpoiler: TCheckBox;
     cbLyricsToClipboard: TCheckBox;
-    edtLineDistance: TFloatSpinEdit;
     FontDialog: TFontDialog;
     gbPresentation: TGroupBox;
+    lblWrapAfter: TLabel;
     lblImageExplainer: TLabel;
     lblImageBrightness: TLabel;
-    lblLineDistance: TLabel;
     lblMeta: TLabel;
     lblMetaContent: TLabel;
     memoMetaData: TMemo;
     BgPictureDialog: TOpenPictureDialog;
     sbImageBrightness: TScrollBar;
+    seWrapLines: TSpinEdit;
     textColorDialog: TColorDialog;
     btnSelectDir: TButton;
     cbEmptyFrame: TCheckBox;
@@ -47,6 +47,7 @@ type
     procedure btnSelectDirClick(Sender: TObject);
     procedure btnBackgroundColorClick(Sender: TObject);
     procedure btnTextColorClick(Sender: TObject);
+    procedure cbAutoWordWrapChange(Sender: TObject);
     procedure cbLyricsToClipboardChange(Sender: TObject);
     procedure cbShowBackgroundImageChange(Sender: TObject);
     procedure edtRepoPathChange(Sender: TObject);
@@ -61,11 +62,12 @@ type
     procedure lblMetaClick(Sender: TObject);
     procedure loadSettings();
     procedure sbImageBrightnessChange(Sender: TObject);
+    procedure seWrapLinesChange(Sender: TObject);
   private
     { private declarations }
-    procedure LocaliseCaptions;
   public
     { public declarations }
+    changedBackground: Boolean;
   end;
 
 var
@@ -76,6 +78,8 @@ ResourceString
   strTransparency = 'Increase transparancy by ';
   strBrightness = 'Increase brightness by ';
   strPictureOriginalState = 'Picture is shown as it is';
+  strErrorCaption = 'Error';
+  strValidSongRepository = 'Please choose a valid folder for the song repository!';
 
 implementation
 
@@ -85,11 +89,6 @@ Uses
 {$R *.lfm}
 
 { TfrmSettings }
-
-procedure TfrmSettings.LocaliseCaptions;
-begin
-
-end;
 
 function getRepoDir(): string;
 begin
@@ -129,12 +128,13 @@ end;
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
-  self.LocaliseCaptions;
+  changedBackground := False;
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
 begin
-
+  sbImageBrightnessChange(frmSettings);
+  changedBackground := False;
 end;
 
 procedure TfrmSettings.gbPresentationClick(Sender: TObject);
@@ -171,6 +171,7 @@ end;
 procedure TfrmSettings.btnBackgroundImageClick(Sender: TObject);
 begin
   BgPictureDialog.Execute;
+  changedBackground := True;
 end;
 
 procedure TfrmSettings.btnBackgroundColorClick(Sender: TObject);
@@ -183,6 +184,11 @@ begin
   textColorDialog.Execute;
 end;
 
+procedure TfrmSettings.cbAutoWordWrapChange(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmSettings.cbLyricsToClipboardChange(Sender: TObject);
 begin
 
@@ -191,6 +197,7 @@ end;
 procedure TfrmSettings.cbShowBackgroundImageChange(Sender: TObject);
 begin
   btnBackgroundImage.Enabled:=cbShowBackgroundImage.Checked;
+  changedBackground := True;
 end;
 
 procedure TfrmSettings.edtRepoPathChange(Sender: TObject);
@@ -211,8 +218,14 @@ end;
 
 procedure TfrmSettings.FormClose(Sender: TObject);
 begin
-  frmPresent.loadSettings;
-  if (ProgrammMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
+  // Prevent exceptions from happening
+  if not FileExists(BgPictureDialog.FileName) then
+  begin
+    cbShowBackgroundImage.Checked := False;
+    cbShowBackgroundImageChange(frmSettings);
+  end;
+  if changedBackground then frmPresent.loadSettings;
+  if (ProgramMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
   frmSongs.edtSearch.Text := '';
 end;
 
@@ -232,11 +245,12 @@ begin
   FontDialog.Font.Name:=settingsFile.ReadString('Config', 'Font-Name', 'default');
   FontDialog.Font.Style := StrToStyle(settingsFile.ReadString('Config', 'Font-Style', 'ssss'));
   FontDialog.Font.Size:= settingsFile.ReadInteger('Config', 'Font-Size', 42);
-  edtLineDistance.Value:=settingsFile.ReadFloat('Config', 'Line-Distance', 1);
+  //edtLineDistance.Value:=settingsFile.ReadFloat('Config', 'Line-Distance', 1);
   cbShowBackgroundImage.Checked := settingsFile.ReadBool('Config', 'BackgroundPicture', false);
   cbShowBackgroundImageChange(frmSettings);
   BgPictureDialog.FileName := settingsFile.ReadString('Config', 'BackgroundPicture-Path', '');
   sbImageBrightness.Position:=settingsFile.ReadInteger('Config', 'ImageBrightness', 0);
+  seWrapLines.Value:=settingsFile.ReadInteger('Config', 'AutoWrap', 8);
   sbImageBrightnessChange(frmPresent);
 end;
 
@@ -248,13 +262,19 @@ begin
      lblImageExplainer.Caption := strPictureOriginalState
   else
      lblImageExplainer.Caption:=strBrightness + ' ' + IntToStr(sbImageBrightness.Position) + '%';
+  changedBackground := True;
+end;
+
+procedure TfrmSettings.seWrapLinesChange(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmSettings.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 var str: String;
 begin
   CanClose := False;
-  if DirectoryExists(edtRepoPath.Text) = False then Application.MessageBox('Sie müssen ein gültiges Verzeichnis angeben', 'Fehler')
+  if DirectoryExists(edtRepoPath.Text) = False then Application.MessageBox(PChar(strValidSongRepository), PChar(strErrorCaption))
   else
   begin
     settingsFile.WriteString('Config', 'Repo-Path', edtRepoPath.Text);
@@ -265,7 +285,7 @@ begin
     settingsFile.WriteString('Config', 'Font-Name', FontDialog.Font.Name);
     settingsFile.WriteInteger('Config', 'Font-Size', FontDialog.Font.Size);
     settingsFile.WriteString('Config', 'Font-Style', StyleToStr(FontDialog.Font.Style));
-    settingsFile.WriteFloat('Config', 'Line-Distance', edtLineDistance.Value);
+    //settingsFile.WriteFloat('Config', 'Line-Distance', edtLineDistance.Value);
     settingsFile.WriteBool('Config', 'copy-lyrics-to-clipboard', cbLyricsToClipboard.Checked);
     settingsFile.WriteBool('Config', 'MetaDataFirstSlide', cbMetaDataFirstSlide.Checked);
     settingsFile.WriteBool('Config', 'MetaDataLastSlide', cbMetaDataLastSlide.Checked);
@@ -274,6 +294,7 @@ begin
     settingsFile.WriteBool('Config', 'BackgroundPicture', cbShowBackgroundImage.Checked);
     settingsFile.WriteString('Config', 'BackgroundPicture-Path', BgPictureDialog.FileName);
     settingsFile.WriteInteger('Config', 'ImageBrightness', sbImageBrightness.Position);
+    settingsFile.WriteInteger('Config', 'AutoWrap', seWrapLines.Value);
     settingsFile.UpdateFile;
     CanClose := True;
   end;
