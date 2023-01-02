@@ -40,6 +40,7 @@ parts:
     - libqt5pas1
     stage-packages:
     - libqt5pas1
+
     override-build: |
       cd src
       lazbuild -B --bm="Release" --ws="qt5" Cantara.lpi
@@ -76,14 +77,19 @@ parts:
 
 apps:
   cantara:
+    adapter: full
     extensions:
       - kde-neon
     command: cantara
     desktop: cantara.desktop
+    environment: 
+      DISABLE_WAYLAND: 1
     plugs:
     - home
-    - opengl
     - desktop
     - desktop-legacy
+    - opengl
     - x11
     - unity7
+    - wayland
+    - gsettings

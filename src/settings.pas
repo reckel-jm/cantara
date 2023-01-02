@@ -133,7 +133,8 @@ end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
 begin
-
+  sbImageBrightnessChange(frmSettings);
+  changedBackground := False;
 end;
 
 procedure TfrmSettings.gbPresentationClick(Sender: TObject);

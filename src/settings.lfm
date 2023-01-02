@@ -113,11 +113,13 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnFontSizeManually
       AnchorSideTop.Side = asrBottom
-      Left = 344
+      AnchorSideRight.Control = gbPresentation
+      AnchorSideRight.Side = asrBottom
+      Left = 387
       Height = 23
       Top = 28
-      Width = 466
-      Anchors = [akTop, akLeft, akRight]
+      Width = 418
+      Anchors = [akTop, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Color...'
       OnClick = btnBackgroundColorClick
@@ -126,13 +128,14 @@ object frmSettings: TfrmSettings
     end
     object btnFontSizeManually: TButton
       AnchorSideLeft.Side = asrBottom
+      AnchorSideRight.Control = gbPresentation
       AnchorSideRight.Side = asrBottom
-      Left = 344
+      Left = 387
       Height = 23
       Top = 5
-      Width = 466
+      Width = 418
       Align = alCustom
-      Anchors = [akTop, akLeft, akRight]
+      Anchors = [akTop, akRight]
       BorderSpacing.Left = 8
       Caption = 'Change Font Settings...'
       OnClick = btnFontSizeManuallyClick
@@ -143,11 +146,13 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnBackgroundColor
       AnchorSideTop.Side = asrBottom
-      Left = 344
+      AnchorSideRight.Control = gbPresentation
+      AnchorSideRight.Side = asrBottom
+      Left = 387
       Height = 23
       Top = 51
-      Width = 466
-      Anchors = [akTop, akLeft, akRight]
+      Width = 418
+      Anchors = [akTop, akRight]
       BorderSpacing.Left = 8
       Caption = 'Text Color...'
       OnClick = btnTextColorClick
@@ -216,26 +221,31 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = cbMetaDataLastSlide
       AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = gbPresentation
       AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = gbPresentation
       AnchorSideBottom.Side = asrBottom
       Left = 148
-      Height = 168
+      Height = 185
       Top = 185
-      Width = 662
+      Width = 657
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Left = 10
       BorderSpacing.Top = 5
+      BorderSpacing.Bottom = 10
       TabOrder = 5
     end
     object btnBackgroundImage: TButton
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
-      Left = 344
+      AnchorSideRight.Control = gbPresentation
+      AnchorSideRight.Side = asrBottom
+      Left = 387
       Height = 23
       Top = 74
-      Width = 467
-      Anchors = [akTop, akLeft, akRight]
+      Width = 418
+      Anchors = [akTop, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Image...'
       OnClick = btnBackgroundImageClick
@@ -248,7 +258,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = btnBackgroundImage
-      Left = 137
+      Left = 180
       Height = 26
       Top = 74
       Width = 199
@@ -263,11 +273,11 @@ object frmSettings: TfrmSettings
     object sbImageBrightness: TScrollBar
       AnchorSideLeft.Control = btnBackgroundColor
       AnchorSideRight.Side = asrBottom
-      Left = 344
+      Left = 387
       Height = 21
       Hint = 'A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture.'
       Top = 102
-      Width = 466
+      Width = 423
       Anchors = [akTop, akLeft, akRight]
       Min = -100
       PageSize = 0
@@ -279,7 +289,7 @@ object frmSettings: TfrmSettings
     object lblImageBrightness: TLabel
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideRight.Control = sbImageBrightness
-      Left = 68
+      Left = 111
       Height = 22
       Top = 102
       Width = 271
@@ -293,7 +303,7 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
-      Left = 517
+      Left = 538
       Height = 22
       Top = 123
       Width = 121
@@ -305,20 +315,25 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = lblWrapAfter
       AnchorSideTop.Side = asrBottom
-      Left = 156
+      AnchorSideRight.Control = cbShowBackgroundImage
+      Left = 120
       Height = 36
-      Top = 28
+      Top = 27
       Width = 50
-      Anchors = [akTop]
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 5
       OnChange = seWrapLinesChange
       TabOrder = 9
     end
     object lblWrapAfter: TLabel
-      Left = 8
+      AnchorSideLeft.Control = gbPresentation
+      AnchorSideTop.Control = btnFontSizeManually
+      AnchorSideRight.Control = btnFontSizeManually
+      Left = 0
       Height = 22
-      Top = 6
-      Width = 365
-      AutoSize = False
+      Top = 5
+      Width = 379
+      Anchors = [akTop, akLeft, akRight]
       Caption = 'Automatic wrap after how many lines (0 = off):'
       ParentColor = False
       WordWrap = True

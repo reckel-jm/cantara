@@ -156,6 +156,7 @@ begin
         Exit;
       end;
       CloseCurrentTab;
+      frmSongs.AskToReloadRepo;
       loadRepo(SongSelection.repo);
       LoadRepoIntoSongListbox;
       Application.ProcessMessages;
