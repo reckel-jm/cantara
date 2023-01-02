@@ -3,11 +3,13 @@ object frmWelcome: TfrmWelcome
   Height = 489
   Top = 34
   Width = 718
+  BorderStyle = bsDialog
   Caption = 'Cantara Setup'
   ClientHeight = 489
   ClientWidth = 718
+  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
-  LCLVersion = '2.2.4.0'
+  Position = poOwnerFormCenter
   object Notebook: TNotebook
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -197,15 +199,15 @@ object frmWelcome: TfrmWelcome
     Top = 439
     Width = 718
     Anchors = [akLeft, akRight, akBottom]
-    ClientHeight = 38
-    ClientWidth = 706
+    ClientHeight = 50
+    ClientWidth = 702
     ParentBackground = False
     TabOrder = 1
     object btnBack: TButton
       AnchorSideRight.Control = btnNext
-      Left = 368
+      Left = 356
       Height = 33
-      Top = 8
+      Top = 16
       Width = 123
       Anchors = [akRight]
       BorderSpacing.Right = 5
@@ -218,9 +220,9 @@ object frmWelcome: TfrmWelcome
     object btnNext: TButton
       AnchorSideRight.Control = ControlPanel
       AnchorSideRight.Side = asrBottom
-      Left = 496
+      Left = 484
       Height = 33
-      Top = 8
+      Top = 16
       Width = 218
       Anchors = [akRight]
       Caption = 'Next...'
@@ -234,8 +236,8 @@ object frmWelcome: TfrmWelcome
       AnchorSideRight.Control = btnBack
       Left = 0
       Height = 33
-      Top = 8
-      Width = 368
+      Top = 16
+      Width = 356
       Anchors = [akLeft, akRight]
       TabOrder = 2
     end

@@ -37,6 +37,7 @@ type
     procedure btnOpenGithubRepoClick(Sender: TObject);
     procedure btnOpenWebpageClick(Sender: TObject);
     procedure btnSelectSongRepoDirClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
     procedure Page2BeforeShow(ASender: TObject; ANewPage: TPage;
       ANewIndex: Integer);
@@ -60,6 +61,7 @@ ResourceString
   SongRepoNotEmptyAddAmazingGrace = 'However if you like, we can add the song "Amazing Grace" as an other example. For that, please press the button below. Else you can click "Next".';
   btnNextNext = 'Next';
   btnNextFinish = 'Finish';
+  StrNoSongRepoYet = 'Please select a song repository path before you leave the assistent. Cantara can not work without it.';
 
 implementation
 
@@ -167,6 +169,13 @@ begin
       end;
     end;
   end;
+end;
+
+procedure TfrmWelcome.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  CanClose := DirectoryExists(frmSettings.edtRepoPath.Text);
+  if not CanClose then
+     ShowMessage(StrNoSongRepoYet);
 end;
 
 procedure TfrmWelcome.FormShow(Sender: TObject);

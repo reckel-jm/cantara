@@ -657,3 +657,7 @@ msgstr "Wenn Sie jedoch möchten, können wir das Lied „Amazing Grace“ als e
 msgctxt "welcome.songreposuccess"
 msgid "The selected directory can be successfully used as a song repository."
 msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genutzt werden."
+
+#: welcome.strnosongrepoyet
+msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
+msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."

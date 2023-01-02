@@ -623,3 +623,7 @@ msgctxt "welcome.songreposuccess"
 msgid "The selected directory can be successfully used as a song repository."
 msgstr ""
 
+#: welcome.strnosongrepoyet
+msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
+msgstr ""
+

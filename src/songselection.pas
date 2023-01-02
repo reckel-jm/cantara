@@ -374,8 +374,8 @@ begin
   if (lbxSRepo.ItemIndex >= 0) then
   begin
     frmSongEdit.Show;
-    frmSongEdit.Update; // This is necessary to avoid an AccessViolation
     frmSongEdit.loadRepo(repo);
+    Application.ProcessMessages;
     for i := 0 to length(repo)-1 do
     begin
       if repo[i].Name = lbxSRepo.Items[lbxSrepo.ItemIndex] then
@@ -384,7 +384,7 @@ begin
         Break;
       end;
     end;
-    frmSongEdit.Update;
+    Application.ProcessMessages;
     for i := 0 to frmSongEdit.lsSongs.Count-1 do
     begin
       if frmSongEdit.lsSongs.Items[i] = repoFile.FileName then

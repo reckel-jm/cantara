@@ -218,6 +218,12 @@ end;
 
 procedure TfrmSettings.FormClose(Sender: TObject);
 begin
+  // Prevent exceptions from happening
+  if not FileExists(BgPictureDialog.FileName) then
+  begin
+    cbShowBackgroundImage.Enabled := False;
+    cbShowBackgroundImageChange(frmSettings);
+  end;
   if changedBackground then frmPresent.loadSettings;
   if (ProgramMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
   frmSongs.edtSearch.Text := '';

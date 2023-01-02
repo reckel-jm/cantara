@@ -5,7 +5,7 @@ unit editorwelcome;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, StdCtrls, DefaultTranslator, LCLTranslator;
+  Classes, SysUtils, Forms, Controls, StdCtrls, DefaultTranslator, LCLTranslator, lclintf, info;
 
 type
 
@@ -32,7 +32,7 @@ implementation
 
 procedure TfrmEditorWelcome.btnOpenDocsClick(Sender: TObject);
 begin
-
+  OpenURL(info.strWebpage);
 end;
 
 end.
