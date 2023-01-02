@@ -54,6 +54,7 @@ parts:
     - libqt5pas1
     stage-packages:
     - libqt5pas1
+    - qt5-gtk-platformtheme
 
     override-build: |
       cd src
