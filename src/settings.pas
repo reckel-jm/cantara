@@ -221,7 +221,7 @@ begin
   // Prevent exceptions from happening
   if not FileExists(BgPictureDialog.FileName) then
   begin
-    cbShowBackgroundImage.Enabled := False;
+    cbShowBackgroundImage.Checked := False;
     cbShowBackgroundImageChange(frmSettings);
   end;
   if changedBackground then frmPresent.loadSettings;
