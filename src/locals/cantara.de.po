@@ -171,7 +171,6 @@ msgid "Rename"
 msgstr "Umbenennen"
 
 #: tfrmdisplaysongcontent.btnsave.caption
-#, fuzzy
 msgctxt "tfrmdisplaysongcontent.btnsave.caption"
 msgid "Save"
 msgstr "Speichern"
@@ -214,7 +213,7 @@ msgstr "Bitte beachten Sie: Die Liedtext-Dateien sind einfache Textdateien und k
 
 #: tfrmeditorwelcome.lblsupport.caption
 msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
-msgstr "Cantara ist freie Software, welche mit dem Ziel entwickelt wurde, hilfreich und nützlich zu sein. Beteiligung über Github ist wird gerne gesehen. Es können Issues erstellt Feature- oder Pull-Requests übermittelt werden. Alle Ehre gehört Gott! Soli Deo Gloria."
+msgstr "Cantara ist freie Software, welche mit dem Ziel entwickelt wurde, hilfreich und nützlich zu sein. Beteiligung über Github wird gerne gesehen. Es können Issues erstellt, sowie Feature- oder Pull-Requests übermittelt werden. Alle Ehre gehört Gott! Soli Deo Gloria."
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
@@ -606,7 +605,7 @@ msgid ""
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
 "Cantara ist eine freie Open-Source-Liedpräsentationssoftware.\n"
-"Alle zu verwendenden Lieder sollten sich in einem Liederverzeichnis befinden. Bitte wählen Sie nun einen Ordner auf ihrem Dateisystem aus, welches Cantara als Liederverzeichnis verwenden wird. Falls Sie noch keine Lieder gesammelt haben, können Sie zunächst einen neuen Ordner erstellen oder einen leeren auswählen."
+"Alle zu verwendenden Lieder sollten sich in einem Liederverzeichnis befinden. Bitte wählen Sie nun einen Ordner auf Ihrem Dateisystem aus, welches Cantara als Liederverzeichnis verwenden wird. Falls Sie noch keine Lieder gesammelt haben, können Sie zunächst einen neuen Ordner erstellen oder einen leeren auswählen."
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
