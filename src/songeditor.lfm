@@ -4,11 +4,15 @@ object frmSongEdit: TfrmSongEdit
   Top = 34
   Width = 1029
   Caption = 'Edit Files'
-  ClientHeight = 528
-  ClientWidth = 1029
+  ClientHeight = 206
+  ClientWidth = 320
   Menu = EditorMenu
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDblClick = FormDblClick
   OnShow = FormShow
+  LCLVersion = '2.2.4.0'
   WindowState = wsMaximized
   object lsSongs: TListBox
     AnchorSideLeft.Control = Owner

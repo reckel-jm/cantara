@@ -80,6 +80,7 @@ type
     procedure edtSearchChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -816,6 +817,12 @@ begin
   settings.settingsFile.WriteBool('Size', 'main-window-maximized',frmSongs.WindowState = TWindowState.wsMaximized);
   settings.settingsFile.UpdateFile;
   settings.settingsFile.FreeInstance;
+end;
+
+procedure TfrmSongs.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+
+begin
+
 end;
 
 { Diese Funktion macht ein Bildschirmfoto der Präsentation und zeigt dieses an. }

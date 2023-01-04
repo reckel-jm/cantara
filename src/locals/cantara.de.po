@@ -98,6 +98,14 @@ msgstr "Neues Lied"
 msgid "Please add the name of the new song"
 msgstr "Bitte geben Sie den Namen des neuen Lieds ein"
 
+#: songeditor.strsaveunsavedchangescaption
+msgid "Question"
+msgstr ""
+
+#: songeditor.strsaveunsavedchangescontent
+msgid "The file {filename} has unsaved changes. Would you like to save it now?"
+msgstr ""
+
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
 msgstr "https://www.cantara.app/tutorial/meta-data/"
@@ -661,3 +669,4 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
+

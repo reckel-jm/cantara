@@ -87,6 +87,14 @@ msgstr ""
 msgid "Please add the name of the new song"
 msgstr ""
 
+#: songeditor.strsaveunsavedchangescaption
+msgid "Question"
+msgstr ""
+
+#: songeditor.strsaveunsavedchangescontent
+msgid "The file {filename} has unsaved changes. Would you like to save it now?"
+msgstr ""
+
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
 msgstr ""

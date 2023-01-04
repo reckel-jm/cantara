@@ -98,6 +98,14 @@ msgstr "新歌曲"
 msgid "Please add the name of the new song"
 msgstr "請添加新歌曲名稱"
 
+#: songeditor.strsaveunsavedchangescaption
+msgid "Question"
+msgstr ""
+
+#: songeditor.strsaveunsavedchangescontent
+msgid "The file {filename} has unsaved changes. Would you like to save it now?"
+msgstr ""
+
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
 msgstr ""
@@ -659,3 +667,8 @@ msgstr "但是如果您希望的話，我們可以添加「奇異恩典」至您
 msgctxt "welcome.songreposuccess"
 msgid "The selected directory can be successfully used as a song repository."
 msgstr "選擇的目錄可以被應用為歌曲庫。"
+
+#: welcome.strnosongrepoyet
+msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
+msgstr ""
+
