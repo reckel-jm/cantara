@@ -13,6 +13,8 @@
       <UseXPManifest Value="True"/>
       <XPManifest>
         <DpiAware Value="True"/>
+        <LongPathAware Value="True"/>
+        <AnsiUTF8 Value="True"/>
         <TextName Value="Cantara"/>
         <TextDesc Value="Song Presentation Software"/>
       </XPManifest>
