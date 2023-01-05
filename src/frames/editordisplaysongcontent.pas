@@ -30,11 +30,11 @@ type
     procedure btnCopyClick(Sender: TObject);
     procedure btnRenameClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
+    procedure ccliimporthintClick(Sender: TObject);
     constructor Create(AOwner: TComponent);
     procedure btnCloseClick(Sender: TObject);
     procedure btnConvertCCLIFileToSongFormatClick(Sender: TObject);
     procedure lblSongNameContentDblClick(Sender: TObject);
-    procedure memoCodeChange(Sender: TObject);
     procedure memoCodeKeyPress(Sender: TObject; var Key: char);
    //  procedure lblSongNameContentDblClick(Sender: TObject);
   private
@@ -45,7 +45,7 @@ type
     hasChanged: Boolean;
     procedure loadFile(repofile: TRepoFile);
     procedure saveFile;
-    procedure RenameSongFile(newName: String);
+    function RenameSongFile(newName: String): Boolean;
     //property OnFileChanged: TNotifyEvent read hasChanged write hasChanged;
   end;
 
@@ -93,6 +93,11 @@ begin
   frmSongEdit.menuItemSaveClick(btnSave);
 end;
 
+procedure TfrmDisplaySongContent.ccliimporthintClick(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmDisplaySongContent.btnConvertCCLIFileToSongFormatClick(
   Sender: TObject);
 var song: TSong;
@@ -127,15 +132,13 @@ end;
 procedure TfrmDisplaySongContent.lblSongNameContentDblClick(Sender: TObject);
 var
   NewSongName: String;
+  InputQueryOK: Boolean;
 begin
-  NewSongName := InputBox(StrEditSongNameCaption, StrEditSongNameContent, OpenFile.Name);
-  RenameSongFile(NewSongName);
-  lblSongName.Caption:=NewSongName;
-end;
-
-procedure TfrmDisplaySongContent.memoCodeChange(Sender: TObject);
-begin
-
+  NewSongName := OpenFile.Name;
+  InputQueryOK := InputQuery(StrEditSongNameCaption, StrEditSongNameContent, NewSongName);
+  if not InputQueryOK then Exit;
+  if RenameSongFile(NewSongName) then
+    lblSongNameContent.Caption:=NewSongName;
 end;
 
 procedure TfrmDisplaySongContent.memoCodeKeyPress(Sender: TObject; var Key: char
@@ -177,17 +180,17 @@ begin
   markAsChanged(False);
 end;
 
-procedure TfrmDisplaySongContent.RenameSongFile(newName: String);
+function TfrmDisplaySongContent.RenameSongFile(newName: String): Boolean;
 var newFilePath, fileExtension: String;
   changedoldstate: Boolean;
 begin
   changedoldstate := hasChanged; // remember whether there are unsaved changes before the renaming
   FileExtension := ExtractFileExt(openFilePath);
   newFilePath := frmSettings.edtRepoPath.Text + PathDelim + newName + FileExtension;
-  if RenameFile(OpenFilePath, NewFilePath) = False then
+  if (FileExists(NewFilePath)) or (newName = '') or (RenameFile(OpenFilePath, NewFilePath) = False) then
   begin
      ShowMessage(strFileCanNotBeRenamed);
-     exit;
+     Exit(False);
   end;
   { Change all Variables of OpenFile Accordingly}
   openFile.Name := newName;
@@ -197,6 +200,7 @@ begin
   frmSongEdit.loadRepoIntoSongListbox;
   self.loadFile(openfile);
   markAsChanged(changedoldstate);
+  Result := True;
 end;
 
 end.

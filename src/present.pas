@@ -34,8 +34,6 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lblTextClick(Sender: TObject);
-    procedure lblTextContextPopup(Sender: TObject; MousePos: TPoint;
-      var Handled: Boolean);
     procedure lblTextDblClick(Sender: TObject);
     procedure ReloadImageReadData(Sender: TObject);
     procedure showItem(index: integer);
@@ -165,12 +163,6 @@ begin
       inc(cur);
       showItem(cur);
     end;
-end;
-
-procedure TfrmPresent.lblTextContextPopup(Sender: TObject; MousePos: TPoint;
-  var Handled: Boolean);
-begin
-
 end;
 
 procedure TfrmPresent.lblTextDblClick(Sender: TObject);

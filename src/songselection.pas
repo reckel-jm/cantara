@@ -626,20 +626,24 @@ begin
         //BringToFront;
         frmSongs.KeyPreview:=True;
       end
-    Else ProgramMode := ModeSingleScreenPresentation;
-
+    Else
+    begin
+      ProgramMode := ModeSingleScreenPresentation;
+      // We make sure that the Presentation window will be shown at the same screen as the frmSongs.
+      frmPresent.Top := frmSongs.Top;
+      frmPresent.Left := frmSongs.Left;
+    end;
     frmSongs.FormResize(frmSongs);
     // Zeige die Präsentations-Form
     frmPresent.Show;
     frmPresent.ShowFirst;
     // Workaround für Windoof
     frmPresent.WindowState:= wsMaximized;
-    if Screen.MonitorCount > 1 Then frmPresent.SwitchFullscreen(True);
+    if (Screen.MonitorCount > 1) and (ProgramMode = ModeMultiscreenPresentation)
+      then frmPresent.SwitchFullscreen(True);
     // Deaktiviere Präsentationsbutton für Zeit der Präsentation
     itemPresentation.Enabled := False;
     btnStartPresentation.Enabled := False;
-    // Lade nochmals Einstellungen (zur Sicherheit)
-    // vorert nicht: frmPresent.LoadSettings;
     // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
   end
   else ShowMessage(StrFehlerKeineLiederBeiPraesentation);

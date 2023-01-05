@@ -46,7 +46,6 @@ object frmPresent: TfrmPresent
     ParentColor = False
     ParentFont = False
     OnClick = lblTextClick
-    OnContextPopup = lblTextContextPopup
     OnDblClick = lblTextDblClick
   end
   object lblNext: TLabel

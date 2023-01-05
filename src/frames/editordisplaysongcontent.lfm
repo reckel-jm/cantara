@@ -8,6 +8,14 @@ object frmDisplaySongContent: TfrmDisplaySongContent
   TabOrder = 0
   DesignLeft = 409
   DesignTop = 34
+  object lblSongName: TLabel
+    Left = 0
+    Height = 22
+    Top = 0
+    Width = 48
+    Caption = 'Name: '
+    ParentColor = False
+  end
   object ccliimporthint: TPanel
     Left = 0
     Height = 452
@@ -20,6 +28,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     ParentColor = False
     TabOrder = 1
     Visible = False
+    OnClick = ccliimporthintClick
     object labelCCLIImportHint: TLabel
       AnchorSideLeft.Control = ccliimporthint
       AnchorSideTop.Control = ccliimporthint
@@ -71,18 +80,9 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Width = 892
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
-    OnChange = memoCodeChange
     OnKeyPress = memoCodeKeyPress
     ScrollBars = ssAutoVertical
     TabOrder = 0
-  end
-  object lblSongName: TLabel
-    Left = 0
-    Height = 22
-    Top = 0
-    Width = 48
-    Caption = 'Name: '
-    ParentColor = False
   end
   object lblSongNameContent: TLabel
     AnchorSideLeft.Control = lblSongName

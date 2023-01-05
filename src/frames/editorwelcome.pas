@@ -13,10 +13,12 @@ type
 
   TfrmEditorWelcome = class(TFrame)
     btnOpenDocs: TButton;
+    btnClose: TButton;
     lblDescription: TLabel;
     lblHint: TLabel;
     lblSupport: TLabel;
     lblWelcome: TLabel;
+    procedure btnCloseClick(Sender: TObject);
     procedure btnOpenDocsClick(Sender: TObject);
   private
 
@@ -28,11 +30,19 @@ implementation
 
 {$R *.lfm}
 
+uses
+  songeditor;
+
 { TfrmEditorWelcome }
 
 procedure TfrmEditorWelcome.btnOpenDocsClick(Sender: TObject);
 begin
   OpenURL(info.strWebpage);
+end;
+
+procedure TfrmEditorWelcome.btnCloseClick(Sender: TObject);
+begin
+  frmSongEdit.Close;
 end;
 
 end.

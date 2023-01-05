@@ -185,6 +185,10 @@ msgstr ""
 msgid "Name: "
 msgstr ""
 
+#: tfrmeditorwelcome.btnclose.caption
+msgid "Close the Editor"
+msgstr ""
+
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
 msgstr ""

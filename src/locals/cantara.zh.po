@@ -201,6 +201,10 @@ msgstr ""
 msgid "Name: "
 msgstr "名稱："
 
+#: tfrmeditorwelcome.btnclose.caption
+msgid "Close the Editor"
+msgstr ""
+
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
 msgstr "在瀏覽器中打開文檔…"
