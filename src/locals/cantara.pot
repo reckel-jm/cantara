@@ -42,6 +42,11 @@ msgstr ""
 msgid "https://www.cantara.app"
 msgstr ""
 
+#: present.strmorelyricsindicator
+msgctxt "present.strmorelyricsindicator"
+msgid "..."
+msgstr ""
+
 #: settings.strbrightness
 msgid "Increase brightness by "
 msgstr ""
@@ -290,6 +295,7 @@ msgid "Change Font Settings..."
 msgstr ""
 
 #: tfrmsettings.btnselectdir.caption
+msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
 msgstr ""
 

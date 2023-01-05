@@ -62,6 +62,7 @@ type
     OpenSongTeXFileDialog: TOpenDialog;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
+    Separator1: TMenuItem;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     ImageUpdater: TTimer;
@@ -80,7 +81,6 @@ type
     procedure edtSearchChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -132,6 +132,9 @@ type
     procedure ReloadPresentationImage;
   private
     { private declarations }
+    { The initial position of the panel for multiscreen
+      when presentation gets started }
+    PanelMultiScreenLeft: Integer;
     { Filters the Listbox lbxSRepo after a search pattern. If s is empty, no filter will be applied.
     @param(s: the search pattern) }
     procedure FilterListBox(s: String);
@@ -156,7 +159,6 @@ var
   { @deprecated An enum should be used instead, but this has not been changed yet. }
   ProgramMode: char;
   startingPoint: TPoint;
-  PanelMultiScreenWidth: Integer;
 
 ResourceString
   StrErrorOpening = 'Error while opening. Propably you have not the required rights to access this file.';
@@ -246,7 +248,7 @@ end;
 procedure TfrmSongs.PnlSplitterMoved(Sender: TObject);
 begin
   grbControl.Left := PnlSplitter.Left+PnlSplitter.Width-grbControl.Width-(lbxSSelected.Width+lbxSRepo.Width) div 2;
-  PanelMultiScreenWidth := frmSongs.Width-PnlSplitter.Left-1;
+  PanelMultiScreenLeft := frmSongs.Width-PnlSplitter.Left-1;
 end;
 
 procedure TfrmSongs.FormResize(Sender: TObject);
@@ -254,7 +256,7 @@ begin
   if (ProgramMode = ModeSelection) OR (ProgramMode = ModeSingleScreenPresentation) Then
   Begin
     {PnlSplitter.Visible := True;
-    pnlSplitter.Left := frmSongs.Width-PanelMultiScreenWidth;
+    pnlSplitter.Left := frmSongs.Width-PanelMultiScreenLeft;
     pnlMultiScreen.Visible := True;
     btnStartPresentation.Enabled := False;
     frmPresent.KeyPreview := True; }
@@ -267,7 +269,7 @@ begin
   end else
   Begin
     PnlSplitter.Visible := True;
-    pnlSplitter.Left := frmSongs.Width-PanelMultiScreenWidth;
+    pnlSplitter.Left := frmSongs.Width-PanelMultiScreenLeft;
     PnlSplitter.Width := 1;
     pnlMultiScreen.Visible := True;
     itemPresentation.Enabled := False;
@@ -304,7 +306,8 @@ begin
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
   frmPresent.LoadSettings; // We need to load the settings into the present form here because only at this point all the needed data is available.
-  PanelMultiScreenWidth := Round(frmSongs.Width/2);
+  PanelMultiScreenLeft := Round(frmSongs.Width/2);
+  PanelMultiScreenLeft := settingsfile.ReadInteger('Size', 'panel-mutliscreen-position', PanelMultiScreenLeft);
 end;
 
 procedure TfrmSongs.grbControlClick(Sender: TObject);
@@ -364,15 +367,21 @@ begin
   try
     if OpenDialog.Execute then lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
   except
-    ShowMessage(StrErrorOpening);
+    Application.MessageBox(PChar(StrErrorOpening), PChar(StrError), MB_OK+MB_ICONERROR);
   end;
 end;
 
 procedure TfrmSongs.itemOpenInEditorClick(Sender: TObject);
 var repoFile: TRepoFile;
     i: Integer;
+    CallingListbox: TListBox;
 begin
-  if (lbxSRepo.ItemIndex >= 0) then
+  if SongPopUpMenu.PopupComponent = lbxSRepo then
+     CallingListbox := lbxSRepo
+  else if SongPopUpMenu.PopupComponent = lbxSSelected then
+     CallingListbox := lbxSSelected
+  else Exit;
+  if (CallingListbox.ItemIndex >= 0) then
   begin
     frmSongEdit.Show;
     frmSongEdit.loadRepo(repo);
@@ -380,7 +389,7 @@ begin
     Application.ProcessMessages;
     for i := 0 to length(repo)-1 do
     begin
-      if repo[i].Name = lbxSRepo.Items[lbxSrepo.ItemIndex] then
+      if repo[i].Name = CallingListbox.Items[CallingListbox.ItemIndex] then
       begin
         repoFile := repo[i];
         Break;
@@ -405,7 +414,7 @@ begin
   try
     if SaveDialog.Execute then lbxSselected.Items.SaveToFile(SaveDialog.FileName);
   except
-    ShowMessage(StrErrorSaving);
+    Application.MessageBox(PChar(StrErrorSaving), PChar(StrError), MB_OK+MB_ICONERROR);
   end;
 end;
 
@@ -646,7 +655,7 @@ begin
     btnStartPresentation.Enabled := False;
     // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
   end
-  else ShowMessage(StrFehlerKeineLiederBeiPraesentation);
+  else Application.MessageBox(PChar(StrFehlerKeineLiederBeiPraesentation), PChar(StrError), MB_OK+MB_ICONWARNING);
   if ProgramMode = ModeMultiscreenPresentation Then begin
      ImageUpdater.Enabled:=True;
   end;
@@ -702,7 +711,7 @@ begin
       while repo[j].Name <> songname do
         inc(j);
     except
-      ShowMessage(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll]));
+      Application.MessageBox(PChar(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll])), PChar(StrError), MB_OK+MB_ICONERROR);
     end;
     //Lade Song-menuFile abhängig von der Erweiterung!
     completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
@@ -819,14 +828,9 @@ procedure TfrmSongs.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   // Save WindowStates to File
   settings.settingsFile.WriteBool('Size', 'main-window-maximized',frmSongs.WindowState = TWindowState.wsMaximized);
+  settings.settingsfile.WriteInteger('Size', 'panel-mutliscreen-position', PanelMultiScreenLeft);
   settings.settingsFile.UpdateFile;
   settings.settingsFile.FreeInstance;
-end;
-
-procedure TfrmSongs.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-
-begin
-
 end;
 
 { Diese Funktion macht ein Bildschirmfoto der Präsentation und zeigt dieses an. }
@@ -899,6 +903,7 @@ begin
     if FileExists(OpenSongTeXFileDialog.FileName) = false then
     begin
       Application.MessageBox(PChar(strFileDoesNotExist), PChar(strError), MB_ICONWARNING or MB_OK);
+      Exit;
     end;
     SongTeXFile := TSongTeXFile.Create;
     SongTeXFile.LoadFromFile(OpenSongTeXFileDialog.FileName);

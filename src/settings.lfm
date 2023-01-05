@@ -12,11 +12,11 @@ object frmSettings: TfrmSettings
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
   object labelSongDir: TLabel
+    AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = edtRepoPath
     AnchorSideTop.Side = asrCenter
-    Left = 0
+    Left = 8
     Height = 22
     Top = 15
     Width = 110
@@ -29,10 +29,10 @@ object frmSettings: TfrmSettings
   object edtRepoPath: TEdit
     AnchorSideLeft.Control = labelSongDir
     AnchorSideLeft.Side = asrBottom
-    Left = 115
+    Left = 123
     Height = 36
     Top = 8
-    Width = 680
+    Width = 672
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     OnChange = edtRepoPathChange
@@ -55,13 +55,13 @@ object frmSettings: TfrmSettings
     TabOrder = 1
   end
   object cbEmptyFrame: TCheckBox
+    AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = edtRepoPath
     AnchorSideTop.Side = asrBottom
-    Left = 0
-    Height = 28
+    Left = 8
+    Height = 26
     Top = 44
-    Width = 212
-    BorderSpacing.Left = 10
+    Width = 210
     Caption = 'Empty slide between songs'
     Checked = True
     ParentFont = False
@@ -69,12 +69,13 @@ object frmSettings: TfrmSettings
     TabOrder = 2
   end
   object cbSpoiler: TCheckBox
+    AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = cbEmptyFrame
     AnchorSideTop.Side = asrBottom
-    Left = 0
-    Height = 28
-    Top = 72
-    Width = 137
+    Left = 8
+    Height = 26
+    Top = 70
+    Width = 135
     Caption = 'Spoil next slides'
     Checked = True
     ParentFont = False
@@ -82,12 +83,13 @@ object frmSettings: TfrmSettings
     TabOrder = 4
   end
   object cbLyricsToClipboard: TCheckBox
+    AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = cbSpoiler
     AnchorSideTop.Side = asrBottom
-    Left = 0
-    Height = 28
-    Top = 100
-    Width = 185
+    Left = 8
+    Height = 26
+    Top = 96
+    Width = 183
     Caption = 'Copy lyrics to clipboard'
     Checked = True
     OnChange = cbLyricsToClipboardChange
@@ -100,14 +102,14 @@ object frmSettings: TfrmSettings
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = btnClose
     Left = 8
-    Height = 408
-    Top = 128
+    Height = 414
+    Top = 122
     Width = 809
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
-    ClientHeight = 396
-    ClientWidth = 797
+    ClientHeight = 380
+    ClientWidth = 805
     TabOrder = 6
     OnClick = gbPresentationClick
     object btnBackgroundColor: TButton
@@ -116,7 +118,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = gbPresentation
       AnchorSideRight.Side = asrBottom
-      Left = 375
+      Left = 387
       Height = 23
       Top = 28
       Width = 418
@@ -131,7 +133,7 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideRight.Control = gbPresentation
       AnchorSideRight.Side = asrBottom
-      Left = 375
+      Left = 387
       Height = 23
       Top = 5
       Width = 418
@@ -149,7 +151,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = gbPresentation
       AnchorSideRight.Side = asrBottom
-      Left = 375
+      Left = 387
       Height = 23
       Top = 51
       Width = 418
@@ -179,9 +181,9 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
       Left = 148
-      Height = 28
+      Height = 26
       Top = 128
-      Width = 108
+      Width = 106
       BorderSpacing.Left = 10
       BorderSpacing.Top = 5
       Caption = 'at first slide'
@@ -196,9 +198,9 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = cbMetaDataFirstSlide
       AnchorSideTop.Side = asrBottom
       Left = 148
-      Height = 28
-      Top = 156
-      Width = 105
+      Height = 26
+      Top = 154
+      Width = 103
       BorderSpacing.Left = 10
       Caption = 'at last slide'
       ParentFont = False
@@ -209,7 +211,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Side = asrBottom
       Left = 8
       Height = 22
-      Top = 189
+      Top = 185
       Width = 130
       BorderSpacing.Top = 5
       Caption = 'Meta Data Content:'
@@ -227,9 +229,9 @@ object frmSettings: TfrmSettings
       AnchorSideBottom.Control = gbPresentation
       AnchorSideBottom.Side = asrBottom
       Left = 148
-      Height = 176
-      Top = 189
-      Width = 645
+      Height = 185
+      Top = 185
+      Width = 657
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Left = 10
       BorderSpacing.Top = 5
@@ -242,7 +244,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = gbPresentation
       AnchorSideRight.Side = asrBottom
-      Left = 375
+      Left = 387
       Height = 23
       Top = 74
       Width = 418
@@ -259,10 +261,10 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = btnBackgroundImage
-      Left = 166
-      Height = 28
+      Left = 180
+      Height = 26
       Top = 74
-      Width = 201
+      Width = 199
       Anchors = [akTop, akRight]
       BorderSpacing.Left = 10
       BorderSpacing.Right = 5
@@ -274,11 +276,11 @@ object frmSettings: TfrmSettings
     object sbImageBrightness: TScrollBar
       AnchorSideLeft.Control = btnBackgroundColor
       AnchorSideRight.Side = asrBottom
-      Left = 375
+      Left = 387
       Height = 21
       Hint = 'A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture.'
       Top = 102
-      Width = 423
+      Width = 419
       Anchors = [akTop, akLeft, akRight]
       Min = -100
       PageSize = 0
@@ -290,7 +292,7 @@ object frmSettings: TfrmSettings
     object lblImageBrightness: TLabel
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideRight.Control = sbImageBrightness
-      Left = 99
+      Left = 111
       Height = 22
       Top = 102
       Width = 271
@@ -304,7 +306,7 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
-      Left = 526
+      Left = 536
       Height = 22
       Top = 123
       Width = 121
@@ -317,8 +319,8 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = lblWrapAfter
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = cbShowBackgroundImage
-      Left = 106
-      Height = 42
+      Left = 120
+      Height = 36
       Top = 27
       Width = 50
       Anchors = [akTop, akRight]
@@ -333,7 +335,7 @@ object frmSettings: TfrmSettings
       Left = 0
       Height = 22
       Top = 5
-      Width = 367
+      Width = 379
       Anchors = [akTop, akLeft, akRight]
       Caption = 'Automatic wrap after how many lines (0 = off):'
       ParentColor = False

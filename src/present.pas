@@ -8,7 +8,7 @@ uses
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Settings, Types, Themes, LCLTranslator, LCLIntf, ExtCtrls, Lyrics,
   IntfGraphics,
-  fpImage,
+  fpImage, StrUtils,
   math;
 type
 
@@ -66,6 +66,9 @@ var
   songMetaList: TStringList;
   cur: Integer; //The current Index of the String List which is shown
   FullScreen: Boolean;
+
+ResourceString
+  StrMoreLyricsIndicator = '...';
 
 implementation
 
@@ -177,6 +180,7 @@ end;
 
 
 procedure TfrmPresent.showItem(index: integer);
+var StringArray: TStringDynArray;
 begin
     cur := index;
     lblText.WordWrap:=True;
@@ -198,7 +202,12 @@ begin
       lblNext.BorderSpacing.Top:=2*lblNext.Font.Size;
       if lblNext.Top+lblNext.Height > frmPresent.Height then // the spoiler is going beyond the form
       begin
-        lblNext.Caption := Copy(lblNext.Caption, 1, Pos(lblNext.Caption, LineEnding));
+        lblNext.BorderSpacing.Top:=0;
+        StringArray := SplitString(lblNext.Caption,LineEnding);
+        if length(StringArray) > 0 then
+           lblNext.Caption := StringArray[0] + StrMoreLyricsIndicator;
+        frmPresent.Repaint;
+        Application.ProcessMessages;
         // if still to much content then hide
         if lblNext.Top+lblNext.Height > frmPresent.Height then
           begin
@@ -468,7 +477,7 @@ begin
   try
     Sourcebitmap.SaveToStream(Stream);
 
-    Stream.Position:=55;   //Header Bitmap weg, nur Daten nutzen (http://de.wikipedia.org/wiki/Windows_Bi ... tionsblock)
+    Stream.Position:=55;
 
     for i:=Stream.Position to Stream.Size-1 do begin
       b:=Stream.Readbyte;

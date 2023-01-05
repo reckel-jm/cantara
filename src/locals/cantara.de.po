@@ -53,6 +53,11 @@ msgstr "Version"
 msgid "https://www.cantara.app"
 msgstr "https://www.cantara.app"
 
+#: present.strmorelyricsindicator
+msgctxt "present.strmorelyricsindicator"
+msgid "..."
+msgstr ""
+
 #: settings.strbrightness
 msgid "Increase brightness by "
 msgstr "Erhöhe die Helligkeit um "
@@ -314,6 +319,7 @@ msgid "Change Font Settings..."
 msgstr "Schriftgröße und -art bearbeiten..."
 
 #: tfrmsettings.btnselectdir.caption
+msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
 msgstr ""
 

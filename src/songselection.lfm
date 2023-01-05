@@ -11,7 +11,6 @@ object frmSongs: TfrmSongs
   OnActivate = FormActivate
   OnChangeBounds = FormResize
   OnClose = FormClose
-  OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
@@ -43,6 +42,7 @@ object frmSongs: TfrmSongs
     OnResize = lbxSselectedResize
     ParentShowHint = False
     ParentFont = False
+    PopupMenu = SongPopupMenu
     ScrollWidth = 378
     TabOrder = 1
   end
@@ -408,6 +408,9 @@ object frmSongs: TfrmSongs
         Caption = 'Export Selection with Content...'
         Hint = 'Exports a SongTeX file which contains all selected song files with their content.'
         OnClick = itemExportTeXFileClick
+      end
+      object Separator1: TMenuItem
+        Caption = '-'
       end
       object itemReloadSongList: TMenuItem
         Caption = 'Reload Song Repository'
