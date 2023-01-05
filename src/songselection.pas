@@ -385,7 +385,6 @@ begin
   begin
     frmSongEdit.Show;
     frmSongEdit.loadRepo(repo);
-    frmSongEdit.Update;
     Application.ProcessMessages;
     for i := 0 to length(repo)-1 do
     begin
@@ -400,9 +399,12 @@ begin
       if frmSongEdit.lsSongs.Items[i] = repoFile.FileName then
       begin
         frmSongEdit.lsSongs.ItemIndex:=i;
-        frmSongEdit.Update;
         Application.ProcessMessages;
-        frmSongEdit.lsSongsClick(frmSongs);
+        frmSongEdit.Repaint;
+        try
+           frmSongEdit.lsSongsClick(frmSongs);
+        finally
+        end;
         Break;
       end;
     end;
