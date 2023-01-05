@@ -78,7 +78,6 @@ end;
 
 procedure TSong.importCCLISongFile;
 begin
-  self.inputFile.LoadFromFile(self.filename);
   ConvertCCLIFile;
 end;
 
@@ -183,7 +182,6 @@ var i: integer;
   curLineText, key, value: String;
   contentStarted: boolean;
 begin
-  self.inputFile.LoadFromFile(self.filename);
   contentStarted := False;
   for i := 0 to self.inputFile.Count-1 do
   begin
@@ -255,12 +253,14 @@ end;
 procedure TSong.importSongFile;
 var songfileextension: String;
 begin
+  self.inputFile.LoadFromFile(self.filename);
   songfileextension := ExtractFileExt(self.filename);
   if songfileextension = '.song' then
     self.importSongFormatFile
-  else if (songfileextension = '.txt') or (songfileextension = '.ccli') then // CCLI-Songselect file
+  else if self.IsCCLIFile then // CCLI-Songselect file
     self.importCCLISongFile;
   if self.MaxSlideLineLength>0 then self.slideWrap;
+  self.strip;
 end;
 
 procedure TSong.importSongFile(filepath: String);
@@ -340,6 +340,7 @@ end;
 function TSong.IsCCLIFile: Boolean;
 var i: integer;
 begin
+  if ExtractFileExt(self.filename) = '.song' then exit(False);
   if ExtractFileExt(self.filename) = '.ccli' then exit(True)
   else if ExtractFileExt(self.filename) = '.txt' then
   begin
@@ -353,10 +354,13 @@ procedure TSong.strip;
 var i: integer;
 begin
   i := output.Count-1;
-  while (output.Strings[i] = '') and (i > -1) do
+  try
+  while (i > 0) and (Trim(output.Strings[i]) = '') do  // We leave at least one line
   begin
     output.Delete(i);
-    dec(i);
+    i := i - 1;
+  end;
+  finally
   end;
 end;
 

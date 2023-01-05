@@ -142,6 +142,7 @@ begin
     SetLength(Repo, Length(Repo)+1);
     Repo[Length(Repo)-1] := RepoFile;
     lsSongs.AddItem(RepoFile.FileName, RepoFile);
+    frmSongEdit.Repaint;
     LoadFileIntoTabs(RepoFile);
     FindAndSelectItem(RepoFile.FileName);
   end;
@@ -206,6 +207,7 @@ begin
   Repo[Length(Repo)-1] := RepoFile;
   lsSongs.AddItem(RepoFile.FileName, RepoFile);
   LoadFileIntoTabs(RepoFile);
+  frmSongEdit.Repaint;
   FindAndSelectItem(RepoFile.FileName);
 end;
 
