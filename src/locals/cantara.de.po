@@ -105,11 +105,11 @@ msgstr "Bitte geben Sie den Namen des neuen Lieds ein"
 
 #: songeditor.strsaveunsavedchangescaption
 msgid "Question"
-msgstr ""
+msgstr "Frage"
 
 #: songeditor.strsaveunsavedchangescontent
 msgid "The file {filename} has unsaved changes. Would you like to save it now?"
-msgstr ""
+msgstr "In der Datei „{filename}“ gibt es ungespeicherte Änderungen. Möchten Sie diese nun speichern?"
 
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
@@ -208,7 +208,7 @@ msgstr "Name: "
 
 #: tfrmeditorwelcome.btnclose.caption
 msgid "Close the Editor"
-msgstr ""
+msgstr "Den Editor beenden"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
@@ -679,4 +679,3 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
-

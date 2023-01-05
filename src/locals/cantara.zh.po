@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
@@ -105,11 +105,11 @@ msgstr "請添加新歌曲名稱"
 
 #: songeditor.strsaveunsavedchangescaption
 msgid "Question"
-msgstr ""
+msgstr "問題"
 
 #: songeditor.strsaveunsavedchangescontent
 msgid "The file {filename} has unsaved changes. Would you like to save it now?"
-msgstr ""
+msgstr "文件 {filename} 有未保存的更改。現在要保存嗎？"
 
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
@@ -208,7 +208,7 @@ msgstr "名稱："
 
 #: tfrmeditorwelcome.btnclose.caption
 msgid "Close the Editor"
-msgstr ""
+msgstr "退出編輯器"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
@@ -680,5 +680,4 @@ msgstr "選擇的目錄可以被應用為歌曲庫。"
 
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
-msgstr ""
-
+msgstr "請在離開助手前選擇歌曲庫目錄。沒有它，Cantara 就無法工作。"
