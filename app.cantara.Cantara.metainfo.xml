@@ -42,7 +42,22 @@
     <developer_name>Jan Martin Reckel</developer_name>
 
     <releases>
-        <release version="2.4.0 beta" data="2023-01-01">
+        <release version="2.4.0" date="2023-01-06">
+            <p>Version 2.4 is finally there! Beside new features, it also brings a lot of bug fixes. See the list below for details.</p>
+            <p>Improvements/Enhancements</p>
+            <ul>
+                <li>A new editor has been implemented which allows editing of the songs, converting CCLI songs into the song format, creating new songs, archiving them and cloning them (e.g. for different versions).</li>
+                <li>A welcome assistant will guide new users after the first start of Cantara to setup and understand the program.</li>
+                <li>Cantara can automatically break long slides into two pages if configured in the settings.</li>
+                <li>The newly implemented SongTeX file format allows to export songs slides with the song lyrics and the order.</li>
+            </ul>
+            <p>Bug Fixes</p>
+            <ul>
+                <li>Floating point errors when no background picture was selected</li>
+                <li>Loading the slides took a long time if a background was selected</li>
+            </ul>
+        </release>
+        <release version="2.4.0 beta" date="2023-01-01">
             <p>Enhancements</p>
             <ul>
                 <li>Editor for creating, editing, archivating, cloning and converting song files</li>
