@@ -57,18 +57,6 @@
                 <li>Loading the slides took a long time if a background was selected</li>
             </ul>
         </release>
-        <release version="2.4.0 beta" date="2023-01-01">
-            <p>Enhancements</p>
-            <ul>
-                <li>Editor for creating, editing, archivating, cloning and converting song files</li>
-                <li>Song selections can be exported with the songlyrics within and also imported into Cantara. For that, a new file format (SongTeX) has been implemented. The imported songs will be automatically added to the repository if necessary.</li>
-                <li>A setup assistent will help with the basic configuration of Cantara when started for the first time.</li>
-            </ul>
-            <p>Bug Fixes:</p>
-            <ul>
-                <li>Loading a presentation with background image took a long time, this is solved now.</li>
-            </ul>
-        </release>
         <release version="2.3.3" date="2022-11-29">
             <p>
                 Bug Fixes:
