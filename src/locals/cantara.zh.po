@@ -160,6 +160,265 @@ msgstr "您要開啟的文檔不存在。"
 msgid "Slide"
 msgstr "投影片"
 
+#: tfrmdisplaysongcontent.btnarchivate.caption
+msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
+msgid "Archivate"
+msgstr ""
+
+#: tfrmdisplaysongcontent.btnclose.caption
+msgctxt "tfrmdisplaysongcontent.btnclose.caption"
+msgid "Close"
+msgstr ""
+
+#: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
+msgid "Convert CCLI File to Song Format"
+msgstr ""
+
+#: tfrmdisplaysongcontent.btncopy.caption
+msgctxt "tfrmdisplaysongcontent.btncopy.caption"
+msgid "Copy"
+msgstr ""
+
+#: tfrmdisplaysongcontent.btnrename.caption
+msgid "Rename"
+msgstr ""
+
+#: tfrmdisplaysongcontent.btnsave.caption
+msgctxt "tfrmdisplaysongcontent.btnsave.caption"
+msgid "Save"
+msgstr ""
+
+#: tfrmdisplaysongcontent.labelccliimporthint.caption
+msgid ""
+"Hint:\n"
+"\n"
+"The file which you are going to open is a CCLI file.\n"
+"It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
+"If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
+msgstr ""
+
+#: tfrmdisplaysongcontent.lblsongname.caption
+msgid "Name: "
+msgstr ""
+
+#: tfrmeditorwelcome.btnclose.caption
+msgid "Close the Editor"
+msgstr ""
+
+#: tfrmeditorwelcome.btnopendocs.caption
+msgid "Open Documentation in Webbrowser..."
+msgstr ""
+
+#: tfrmeditorwelcome.lbldescription.caption
+msgid ""
+"Here you can change the songs which you would like to display.\n"
+"\n"
+"For detailed information about the syntax, please consider the documentation."
+msgstr ""
+
+#: tfrmeditorwelcome.lblhint.caption
+msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
+msgstr ""
+
+#: tfrmeditorwelcome.lblsupport.caption
+msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
+msgstr ""
+
+#: tfrmeditorwelcome.lblwelcome.caption
+msgid "Welcome to the Editor!"
+msgstr ""
+
+#: tfrminfo.btnopengitrepo.caption
+msgid "Open Github Repository with Browser"
+msgstr ""
+
+#: tfrminfo.btnopenwebpage.caption
+msgid "Open Project's Webpage with Browser"
+msgstr ""
+
+#: tfrminfo.caption
+#, fuzzy
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
+msgstr "關於本程式"
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr ""
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr ""
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"This program has been published under the GPL3 licence. \n"
+"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
+"\n"
+"The author wishes God's blessing for the use of the program!"
+msgstr ""
+
+#: tfrminfo.lblname.caption
+msgid "Cantara"
+msgstr ""
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr ""
+
+#: tfrmpresent.caption
+msgid "Presentation"
+msgstr ""
+
+#: tfrmpresent.lblmeta.caption
+msgid ""
+"<Meta>\n"
+"Second Line"
+msgstr ""
+
+#: tfrmpresent.lblnext.caption
+msgid "<Lyrics>"
+msgstr ""
+
+#: tfrmsettings.bgcolordialog.title
+msgid "Select background color"
+msgstr ""
+
+#: tfrmsettings.bgpicturedialog.title
+msgid "Open image file"
+msgstr ""
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Background Color..."
+msgstr ""
+
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr ""
+
+#: tfrmsettings.btnclose.caption
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Close"
+msgstr ""
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Change Font Settings..."
+msgstr ""
+
+#: tfrmsettings.btnselectdir.caption
+msgctxt "tfrmsettings.btnselectdir.caption"
+msgid "..."
+msgstr ""
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Text Color..."
+msgstr ""
+
+#: tfrmsettings.caption
+msgid "Settings"
+msgstr ""
+
+#: tfrmsettings.cbemptyframe.caption
+msgid "Empty slide between songs"
+msgstr ""
+
+#: tfrmsettings.cblyricstoclipboard.caption
+msgid "Copy lyrics to clipboard"
+msgstr ""
+
+#: tfrmsettings.cbmetadatafirstslide.caption
+msgid "at first slide"
+msgstr ""
+
+#: tfrmsettings.cbmetadatalastslide.caption
+msgid "at last slide"
+msgstr ""
+
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr ""
+
+#: tfrmsettings.cbspoiler.caption
+msgid "Spoil next slides"
+msgstr ""
+
+#: tfrmsettings.fontdialog.title
+msgid "Select font"
+msgstr ""
+
+#: tfrmsettings.gbpresentation.caption
+msgid "Presentation View"
+msgstr ""
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Song Repo Path:"
+msgstr ""
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparancy/Brightness:"
+msgstr ""
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
+msgstr ""
+
+#: tfrmsettings.lblmeta.caption
+msgid "Show Meta Data:"
+msgstr ""
+
+#: tfrmsettings.lblmetacontent.caption
+msgid "Meta Data Content:"
+msgstr ""
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
+msgstr ""
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgstr ""
+
+#: tfrmsettings.selectdirectorydialog.title
+msgid "Select song repository dictionary"
+msgstr ""
+
+#: tfrmsettings.textcolordialog.title
+msgid "Select text color"
+msgstr ""
+
+#: tfrmsongedit.caption
+msgid "Edit Files"
+msgstr ""
+
+#: tfrmsongedit.menufile.caption
+msgctxt "tfrmsongedit.menufile.caption"
+msgid "File"
+msgstr ""
+
+#: tfrmsongedit.menuitemarchivate.caption
+msgctxt "tfrmsongedit.menuitemarchivate.caption"
+msgid "Archivate"
+msgstr ""
+
+#: tfrmsongedit.menuitemclose.caption
+msgid "Close Editor"
+msgstr ""
+
+#: tfrmsongedit.menuitemcopy.caption
+msgctxt "tfrmsongedit.menuitemcopy.caption"
+msgid "Copy"
+msgstr ""
+
+#: tfrmsongedit.menuitemnew.caption
+msgid "New"
+msgstr ""
+
+#: tfrmsongedit.menuitemsave.caption
+msgctxt "tfrmsongedit.menuitemsave.caption"
+msgid "Save"
+msgstr ""
+
 #: tfrmsongs.btnadd.caption
 msgid "+"
 msgstr ""
@@ -225,6 +484,7 @@ msgid "Information about the Program"
 msgstr ""
 
 #: tfrmsongs.itemend.caption
+msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr ""
 
@@ -293,6 +553,7 @@ msgid "Edit"
 msgstr ""
 
 #: tfrmsongs.menufile.caption
+msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
 msgstr ""
 
@@ -310,6 +571,63 @@ msgstr ""
 
 #: tfrmsongs.savesongtexfiledialog.title
 msgid "Save SongTeX File"
+msgstr ""
+
+#: tfrmwelcome.bclabel1.caption
+msgid "Welcome to Cantara!"
+msgstr ""
+
+#: tfrmwelcome.btnaddexamplesong.caption
+msgid "Add \"Amazing Grace\" as an example"
+msgstr ""
+
+#: tfrmwelcome.btnback.caption
+msgid "Back..."
+msgstr ""
+
+#: tfrmwelcome.btnnext.caption
+msgid "Next..."
+msgstr ""
+
+#: tfrmwelcome.btnopengithubrepo.caption
+msgid "Open Github Repository..."
+msgstr ""
+
+#: tfrmwelcome.btnopenwebpage.caption
+msgid "Open Webpage with Documentation..."
+msgstr ""
+
+#: tfrmwelcome.btnselectsongrepodir.caption
+msgid "Select Song Repository..."
+msgstr ""
+
+#: tfrmwelcome.caption
+msgid "Cantara Setup"
+msgstr ""
+
+#: tfrmwelcome.label1.caption
+msgid ""
+"Cantara is a free and open source song presentation software.\n"
+"All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
+msgstr ""
+
+#: tfrmwelcome.lbladditionalinformation.caption
+msgid ""
+"You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
+"For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
+"\n"
+"Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
+"\n"
+"May God bless you and the use of this software!"
+msgstr ""
+
+#: tfrmwelcome.lblsongadded.caption
+msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
+msgstr ""
+
+#: tfrmwelcome.lblsuccessheadline.caption
+msgid "Congratulations! Cantara is now ready to use!"
 msgstr ""
 
 #: welcome.btnnextfinish

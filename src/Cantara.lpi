@@ -32,11 +32,16 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
       <MinorVersionNr Value="4"/>
-      <BuildNr Value="11"/>
+      <BuildNr Value="13"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.4.0"/>
     </VersionInfo>
+    <MacroValues Count="3">
+      <Macro1 Name="LCLWidgetType" Value="qt5"/>
+      <Macro2 Name="LCLWidgetType" Value="qt5"/>
+      <Macro3 Name="LCLWidgetType" Value="qt5"/>
+    </MacroValues>
     <BuildModes Count="6">
       <Item1 Name="Release" Default="True"/>
       <Item2 Name="Linux WPO Pass1">
