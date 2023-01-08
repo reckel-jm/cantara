@@ -18,7 +18,7 @@ msgstr "Modifica nome del brano"
 
 #: editordisplaysongcontent.streditsongnamecontent
 msgid "Please enter the new song name: "
-msgstr "Inserire il nome del nuovo brano:"
+msgstr "Inserire il nome del nuovo brano: "
 
 #: editordisplaysongcontent.strerrorcclitosong
 msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
@@ -60,7 +60,7 @@ msgstr "..."
 
 #: settings.strbrightness
 msgid "Increase brightness by "
-msgstr "Aumenta la luminosità di"
+msgstr "Aumenta la luminosità di "
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
@@ -73,7 +73,7 @@ msgstr "L'immagine è mostrata così com'è"
 
 #: settings.strtransparency
 msgid "Increase transparancy by "
-msgstr "Aumenta la trasparenza di"
+msgstr "Aumenta la trasparenza di "
 
 #: settings.strvalidsongrepository
 msgid "Please choose a valid folder for the song repository!"
@@ -177,7 +177,7 @@ msgstr "Converti file CCLI in formato canzone"
 #: tfrmdisplaysongcontent.btncopy.caption
 msgctxt "tfrmdisplaysongcontent.btncopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "Copiare"
 
 #: tfrmdisplaysongcontent.btnrename.caption
 msgid "Rename"
@@ -202,7 +202,7 @@ msgstr ""
 
 #: tfrmdisplaysongcontent.lblsongname.caption
 msgid "Name: "
-msgstr "Nome:"
+msgstr "Nome: "
 
 #: tfrmeditorwelcome.btnclose.caption
 msgid "Close the Editor"
@@ -275,7 +275,7 @@ msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
-msgstr "Versione lbl"
+msgstr "Versione lbl "
 
 #: tfrmpresent.caption
 msgid "Presentation"
@@ -553,7 +553,7 @@ msgstr "Testi brani..."
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Foliennummern"
-msgstr "numero diapositiva"
+msgstr "numero diapositiva "
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Presentation is running:"
@@ -622,12 +622,13 @@ msgid ""
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
 "Cantara è un software di presentazione di canzoni gratuito e open source.\n"
-"Tutti i brani dovrebbero trovarsi in una directory di repository di brani. Seleziona ora una directory sul tuo file system che Cantara utilizzerà come repository di brani. Se non hai ancora raccolto alcun brano, puoi prima creare una nuova cartella o sceglierne una vuota».
+"Tutti i brani devono essere collocati in una directory del repository dei brani. Selezionate ora una cartella del vostro file system che Cantara utilizzerà come archivio dei brani. Se non avete ancora raccolto alcun brano, potete prima creare una nuova cartella o sceglierne una vuota."
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
 "You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
-"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might "
+"apply. The user alone is responsible for the legal use of this software.\n"
 "For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
 "\n"
 "Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
@@ -635,11 +636,12 @@ msgid ""
 "May God bless you and the use of this software!"
 msgstr ""
 "Puoi regolare l'aspetto della presentazione nella finestra di dialogo Impostazioni. Inoltre, puoi aggiungere, modificare, clonare e convertire i file dei brani tramite l'editor. Entrambi si trovano nel menu Modifica nella finestra principale.\n"
-"Cantara supporta due formati di brani: il formato CCLI Songselect e il formato canzone. Ciò semplifica il download e l'importazione di brani da Internet. Tieni presente che, a seconda della tua posizione e del brano specifico, i regolamenti di licenza per la dimostrazione pubblica di brani potrebbero applicarsi i testi. L'utente è l'unico responsabile per l'uso legale di questo software.\n"
+"Cantara supporta due formati di brani: il formato CCLI Songselect e il formato canzone. Ciò semplifica il download e l'importazione di brani da Internet. Tieni presente che, a seconda della tua posizione e del brano specifico, i regolamenti di licenza per la dimostrazione pubblica di brani "
+"potrebbero applicarsi i testi. L'utente è l'unico responsabile per l'uso legale di questo software.\n"
 "Per maggiori informazioni sul programma, consultare la documentazione online alla pagina web https://www.cantara.app.\n"
 "\n"
-"Cantara è un software gratuito e pubblicato con licenza GPL3. Il codice sorgente è pubblicamente disponibile su Github. Se ti piace il progetto, considera di assegnargli una stella su Github! Anche feedback, segnalazioni di problemi e richieste pull sono i benvenuti.\n "
-"\n"
+"Cantara è un software gratuito e pubblicato con licenza GPL3. Il codice sorgente è pubblicamente disponibile su Github. Se ti piace il progetto, considera di assegnargli una stella su Github! Anche feedback, segnalazioni di problemi e richieste pull sono i benvenuti.\n"
+" \n"
 "Che Dio benedica te e l'uso di questo software!"
 
 #: tfrmwelcome.lblsongadded.caption
@@ -678,4 +680,3 @@ msgstr "La directory selezionata può essere utilizzata con successo come reposi
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Seleziona un percorso di repository di brani prima di lasciare l'assistente. Cantara non può funzionare senza di esso."
-
