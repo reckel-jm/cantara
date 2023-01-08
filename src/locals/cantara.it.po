@@ -163,17 +163,16 @@ msgstr "Diapositiva"
 #: tfrmdisplaysongcontent.btnarchivate.caption
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
 msgid "Archivate"
-msgstr ""
+msgstr "Archivio"
 
 #: tfrmdisplaysongcontent.btnclose.caption
-#, fuzzy
 msgctxt "tfrmdisplaysongcontent.btnclose.caption"
 msgid "Close"
 msgstr "Chiudi"
 
 #: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
 msgid "Convert CCLI File to Song Format"
-msgstr ""
+msgstr "Converti file CCLI in formato canzone"
 
 #: tfrmdisplaysongcontent.btncopy.caption
 msgctxt "tfrmdisplaysongcontent.btncopy.caption"
@@ -182,12 +181,12 @@ msgstr ""
 
 #: tfrmdisplaysongcontent.btnrename.caption
 msgid "Rename"
-msgstr ""
+msgstr "Rinomina"
 
 #: tfrmdisplaysongcontent.btnsave.caption
 msgctxt "tfrmdisplaysongcontent.btnsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "Salva"
 
 #: tfrmdisplaysongcontent.labelccliimporthint.caption
 msgid ""
@@ -197,18 +196,21 @@ msgid ""
 "It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
 "If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
 msgstr ""
+"Il file che stai per aprire è un file CCLI.\n"
+"Si consiglia di convertire prima il file nel formato-canzone e poi modificare il file del brano secondo i propri desideri.\n"
+"Se desideri farlo, fai clic sul pulsante in basso. Il file CCLI verrà quindi spostato nella sottodirectory 'archivio' del tuo repository di brani e il file del brano generato verrà aperto per la modifica."
 
 #: tfrmdisplaysongcontent.lblsongname.caption
 msgid "Name: "
-msgstr ""
+msgstr "Nome:"
 
 #: tfrmeditorwelcome.btnclose.caption
 msgid "Close the Editor"
-msgstr ""
+msgstr "Chiudi l'editor"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
-msgstr ""
+msgstr "Apri la documentazione nel browser Web..."
 
 #: tfrmeditorwelcome.lbldescription.caption
 msgid ""
@@ -216,36 +218,38 @@ msgid ""
 "\n"
 "For detailed information about the syntax, please consider the documentation."
 msgstr ""
+"Qui puoi cambiare i brani che desideri visualizzare.\n"
+"\n"
+"Per informazioni dettagliate sulla sintassi, consultare la documentazione."
 
 #: tfrmeditorwelcome.lblhint.caption
 msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
-msgstr ""
+msgstr "Nota: i file dei testi delle canzoni sono semplici file di testo e possono anche essere modificati con qualsiasi editor di testo sul tuo sistema locale. Cantara offre ancora solo funzionalità di base."
 
 #: tfrmeditorwelcome.lblsupport.caption
 msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
-msgstr ""
+msgstr "Cantara è un software gratuito che è stato realizzato con la speranza che possa essere utile e vantaggioso. Il contributo tramite Github è più che benvenuto. Sentiti libero di creare problemi, richieste di funzionalità o richieste pull. Tutta la Gloria appartiene a Dio! Solì Deo Gloria."
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
-msgstr ""
+msgstr "Benvenuto nell'Editor!"
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
-msgstr ""
+msgstr "Apri il repository Github con il browser"
 
 #: tfrminfo.btnopenwebpage.caption
 msgid "Open Project's Webpage with Browser"
-msgstr ""
+msgstr "Apri la pagina Web del progetto con il browser"
 
 #: tfrminfo.caption
-#, fuzzy
 msgctxt "tfrminfo.caption"
 msgid "About this Program"
-msgstr "Informazioni su questo programma"
+msgstr "Informazioni sul programma"
 
 #: tfrminfo.lblauthor.caption
 msgid "Autor: Jan Martin Reckel"
-msgstr ""
+msgstr "Autore: Jan Martin Reckel"
 
 #: tfrminfo.lblcompdate.caption
 msgid "lblCompDate"
@@ -259,108 +263,113 @@ msgid ""
 "\n"
 "The author wishes God's blessing for the use of the program!"
 msgstr ""
+"Questo programma è stato pubblicato sotto licenza GPL3. \n"
+"Il codice sorgente è disponibile presso il repository Github, una documentazione può essere trovata sulla pagina web del progetto.\n"
+"Sei autorizzato a modificare e riutilizzare questo programma secondo i termini e le condizioni specificati della licenza GPL3.\n"
+"\n"
+"L'autore augura la benedizione di Dio per l'utilizzo del programma!"
 
 #: tfrminfo.lblname.caption
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
-msgstr ""
+msgstr "Versione lbl"
 
 #: tfrmpresent.caption
 msgid "Presentation"
-msgstr ""
+msgstr "Presentazione"
 
 #: tfrmpresent.lblmeta.caption
 msgid ""
 "<Meta>\n"
 "Second Line"
 msgstr ""
+"<Meta>\n"
+"Seconda riga"
 
 #: tfrmpresent.lblnext.caption
 msgid "<Lyrics>"
-msgstr ""
+msgstr "<Lyrics>"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
-msgstr ""
+msgstr "Seleziona il colore di sfondo"
 
 #: tfrmsettings.bgpicturedialog.title
 msgid "Open image file"
-msgstr ""
+msgstr "Apri file immagine"
 
 #: tfrmsettings.btnbackgroundcolor.caption
 msgid "Background Color..."
-msgstr ""
+msgstr "Colore di sfondo..."
 
 #: tfrmsettings.btnbackgroundimage.caption
 msgid "Background Image..."
-msgstr ""
+msgstr "Immagine di sfondo..."
 
 #: tfrmsettings.btnclose.caption
-#, fuzzy
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
 msgstr "Chiudi"
 
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
-msgstr ""
+msgstr "Modifica impostazioni carattere..."
 
 #: tfrmsettings.btnselectdir.caption
-#, fuzzy
 msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
 msgstr "..."
 
 #: tfrmsettings.btntextcolor.caption
 msgid "Text Color..."
-msgstr ""
+msgstr "Colore del testo..."
 
 #: tfrmsettings.caption
 msgid "Settings"
-msgstr ""
+msgstr "Impostazioni"
 
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
-msgstr ""
+msgstr "Diapositiva vuota tra le canzoni"
 
 #: tfrmsettings.cblyricstoclipboard.caption
 msgid "Copy lyrics to clipboard"
-msgstr ""
+msgstr "Copia i testi negli appunti"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
-msgstr ""
+msgstr "nella prima diapositiva"
 
 #: tfrmsettings.cbmetadatalastslide.caption
 msgid "at last slide"
-msgstr ""
+msgstr "nell'ultima diapositiva"
 
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
-msgstr ""
+msgstr "Mostra immagine di sfondo:"
 
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
-msgstr ""
+msgstr "Mostra prossime diapositive"
 
 #: tfrmsettings.fontdialog.title
 msgid "Select font"
-msgstr ""
+msgstr "Seleziona carattere"
 
 #: tfrmsettings.gbpresentation.caption
 msgid "Presentation View"
-msgstr ""
+msgstr "Vista presentazione"
 
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
-msgstr ""
+msgstr "Percorso Repo brano:"
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparancy/Brightness:"
-msgstr ""
+msgstr "Cambia trasparenza/luminosità dell'immagine:"
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
@@ -368,34 +377,33 @@ msgstr ""
 
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
-msgstr ""
+msgstr "Mostra metadati:"
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
-msgstr ""
+msgstr "Contenuto dei metadati:"
 
 #: tfrmsettings.lblwrapafter.caption
 msgid "Automatic wrap after how many lines (0 = off):"
-msgstr ""
+msgstr "A capo automatico dopo quante righe (0 = disattivato):"
 
 #: tfrmsettings.sbimagebrightness.hint
 msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
-msgstr ""
+msgstr "Un valore inferiore a 0% renderà l'immagine trasparente e risplenderà il colore dello sfondo, un valore > 0% aumenterà la luminosità dell'immagine."
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
-msgstr ""
+msgstr "Seleziona il dizionario del repository di brani"
 
 #: tfrmsettings.textcolordialog.title
 msgid "Select text color"
-msgstr ""
+msgstr "Seleziona il colore del testo"
 
 #: tfrmsongedit.caption
 msgid "Edit Files"
-msgstr ""
+msgstr "Modifica file"
 
 #: tfrmsongedit.menufile.caption
-#, fuzzy
 msgctxt "tfrmsongedit.menufile.caption"
 msgid "File"
 msgstr "File"
@@ -403,25 +411,25 @@ msgstr "File"
 #: tfrmsongedit.menuitemarchivate.caption
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
 msgid "Archivate"
-msgstr ""
+msgstr "Archivia"
 
 #: tfrmsongedit.menuitemclose.caption
 msgid "Close Editor"
-msgstr ""
+msgstr "Chiudi Editor"
 
 #: tfrmsongedit.menuitemcopy.caption
 msgctxt "tfrmsongedit.menuitemcopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "Copia"
 
 #: tfrmsongedit.menuitemnew.caption
 msgid "New"
-msgstr ""
+msgstr "Nuovo"
 
 #: tfrmsongedit.menuitemsave.caption
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "Salva"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
@@ -578,41 +586,43 @@ msgstr "Salva il file SongTeX"
 
 #: tfrmwelcome.bclabel1.caption
 msgid "Welcome to Cantara!"
-msgstr ""
+msgstr "Benvenuti su Cantara!"
 
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr ""
+msgstr "Aggiungi \"Amazing Grace\" come esempio"
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr ""
+msgstr "Indietro..."
 
 #: tfrmwelcome.btnnext.caption
 msgid "Next..."
-msgstr ""
+msgstr "Avanti..."
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr ""
+msgstr "Apri repository Github..."
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr ""
+msgstr "Apri pagina web con documentazione..."
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr ""
+msgstr "Seleziona Repository brani..."
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr ""
+msgstr "Installazione di Cantara"
 
 #: tfrmwelcome.label1.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
+"Cantara è un software di presentazione di canzoni gratuito e open source.\n"
+"Tutti i brani dovrebbero trovarsi in una directory di repository di brani. Seleziona ora una directory sul tuo file system che Cantara utilizzerà come repository di brani. Se non hai ancora raccolto alcun brano, puoi prima creare una nuova cartella o sceglierne una vuota».
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
@@ -624,14 +634,21 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
+"Puoi regolare l'aspetto della presentazione nella finestra di dialogo Impostazioni. Inoltre, puoi aggiungere, modificare, clonare e convertire i file dei brani tramite l'editor. Entrambi si trovano nel menu Modifica nella finestra principale.\n"
+"Cantara supporta due formati di brani: il formato CCLI Songselect e il formato canzone. Ciò semplifica il download e l'importazione di brani da Internet. Tieni presente che, a seconda della tua posizione e del brano specifico, i regolamenti di licenza per la dimostrazione pubblica di brani potrebbero applicarsi i testi. L'utente è l'unico responsabile per l'uso legale di questo software.\n"
+"Per maggiori informazioni sul programma, consultare la documentazione online alla pagina web https://www.cantara.app.\n"
+"\n"
+"Cantara è un software gratuito e pubblicato con licenza GPL3. Il codice sorgente è pubblicamente disponibile su Github. Se ti piace il progetto, considera di assegnargli una stella su Github! Anche feedback, segnalazioni di problemi e richieste pull sono i benvenuti.\n "
+"\n"
+"Che Dio benedica te e l'uso di questo software!"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr ""
+msgstr "\"Amazing Grace\" è stato aggiunto al tuo repository. Ora puoi continuare."
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr ""
+msgstr "Congratulazioni! Cantara è ora pronta per l'uso!"
 
 #: welcome.btnnextfinish
 msgid "Finish"
