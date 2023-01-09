@@ -398,11 +398,11 @@ begin
     begin
       if frmSongEdit.lsSongs.Items[i] = repoFile.FileName then
       begin
+        try
         frmSongEdit.lsSongs.ItemIndex:=i;
         Application.ProcessMessages;
         frmSongEdit.Repaint;
-        try
-           frmSongEdit.lsSongsClick(frmSongs);
+        frmSongEdit.lsSongsClick(frmSongs);
         finally
         end;
         Break;
