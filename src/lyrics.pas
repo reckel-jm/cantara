@@ -22,6 +22,10 @@ type
   TRepoArray = array of TRepoFile;
 
   { TSong }
+  { The class TSong represents a song in Cantara and implements the logic for importing and parsing.
+  At the moment, two formats are supported:
+   * CCLI-Songselect
+   * Song Format }
   TSong = Class
     public
       filename: String;
@@ -32,6 +36,10 @@ type
       destructor Destroy; override;
       procedure importSongFile;
       procedure importSongfile(filepath: string);
+      {
+      This is the main function which converts a CCLI file into the linear song format.
+      It is public – that means can be called outside – but will call private class functions when needed.
+      }
       procedure ConvertCCLIFile;
       procedure slideWrap;
       function ParseMetaData(MetaLogic: string): string;
@@ -42,7 +50,12 @@ type
       inputFile: TStringList;
       PositionDict: TStringIntegerDict;
       procedure WritePart(index: Integer);
+      { For CCLI-to-Song-Convertion: Finds and inserts the appropriate repetitional parts (mostly used after stanza):
+      1. Pre-Chorus(es)
+      2. The latest Chorus }
       procedure IncludeRepetitionalParts;
+      { For CCLI-to-Song-Convertion: Finds and inserts the latest Refrain. }
+      procedure IncludeLatestRefrain;
       procedure importSongFormatFile;
       procedure importCCLISongFile;
       procedure importCCLISongFile(filepath: string);
@@ -87,6 +100,10 @@ begin
   self.importCCLISongFile;
 end;
 
+{
+This is the main function which converts a CCLI file into the linear song format.
+It is public – that means can be called outside – but will call private class functions when needed.
+}
 procedure TSong.ConvertCCLIFile;
 var i: Integer;
   j: Integer;
@@ -97,22 +114,30 @@ begin
   for i :=  1 to self.inputFile.Count-1 do
   begin
     { The Parts Chorus and PreChorus are repeated after every other part (stanza+bridge). So, there position should be remembered. }
-    if (pos('Chorus', self.inputFile.Strings[i]) = 1) or (self.inputFile.Strings[i] = 'PreChorus') then
+    if (pos('Chorus', self.inputFile.Strings[i]) = 1) or (self.inputFile.Strings[i] = 'PreChorus') or (self.inputFile.Strings[i] = 'Pre-Chorus') then
     begin
-      self.PositionDict.Add(self.inputFile.Strings[i],i); { Add the Element Name and the line number }
+      PositionDict.Add(self.inputFile.Strings[i],i); { Add the Element Name and the line number }
       WritePart(i);
       RefrainState := False;
     end else
     { The Parts Vers/Strophe and Bridge normally do not get repeated. They are only used once at the printed position. However, after them, the repetitional parts should follow. }
-    if (pos('Strophe ',inputFile.Strings[i]) = 1) or (pos('Vers ',inputFile.Strings[i]) = 1) or (inputFile.Strings[i] = 'Vers') or (pos('Bridge',inputFile.Strings[i]) = 1) then
+    if (pos('Strophe ',inputFile.Strings[i]) = 1) or (pos('Vers ',inputFile.Strings[i]) = 1) or (inputFile.Strings[i] = 'Vers') then
     begin
       if RefrainState = True then
          IncludeRepetitionalParts;
       WritePart(i);
       RefrainState := True;
     end else
+    // We assume that after a bridge no Pre-Chorus parts should be included, just the (latest used) chorus.
+    if (pos('Bridge',inputFile.Strings[i]) = 1) then
+    begin
+      if RefrainState = True then
+         IncludeLatestRefrain;
+      WritePart(i);
+      RefrainState := True;
+    end else
     { Handle the CCLI Copyright information }
-    if (pos('CCLI', self.inputFile.Strings[i]) = 1) then
+    if (pos('CCLI', inputFile.Strings[i]) = 1) then
     begin
       if i < self.inputFile.Count-1 then
       begin
@@ -148,6 +173,11 @@ begin
   self.output.Add(''); // An empty line at the end of a song part
 end;
 
+{
+ For CCLI-to-Song-Convertion: Finds and inserts the appropriate repetitional parts (mostly used after stanza):
+ 1. Pre-Chorus(es)
+ 2. The latest Chorus
+}
 procedure TSong.IncludeRepetitionalParts;
 var i, key: Integer;
   foundChorus: Boolean;
@@ -156,7 +186,25 @@ begin
   foundChorus := False;
   for i := 0 to self.PositionDict.Count-1 do
   begin
-    if self.PositionDict.Keys[i] = 'PreChorus' then WritePart(self.PositionDict.Data[i]);
+    if (self.PositionDict.Keys[i] = 'PreChorus') or (self.PositionDict.Keys[i] = 'Pre-Chorus') then WritePart(self.PositionDict.Data[i]);
+    if pos('Chorus',self.PositionDict.Keys[i]) > 0 then
+    begin
+      key := self.PositionDict.Data[i]; foundChorus := True;
+    end;
+  end;
+  if foundChorus then WritePart(key);
+end;
+
+{
+ For CCLI-to-Song-Convertion: Finds and inserts the latest Refrain.
+}
+procedure TSong.IncludeLatestRefrain;
+var i, key: Integer;
+  foundChorus: Boolean;
+begin
+  foundChorus := False;
+  for i := 0 to self.PositionDict.Count-1 do
+  begin
     if pos('Chorus',self.PositionDict.Keys[i]) > 0 then
     begin
       key := self.PositionDict.Data[i]; foundChorus := True;
