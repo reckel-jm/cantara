@@ -1,6 +1,6 @@
 # Cantara
 
-**Hint**: This is just the repository for the source code. For general information, please consider the [webpage](https://reckel-jm.github.io/cantara-song) with a complete documentation and instruction on downloading and installing.
+**Hint**: This is just the repository for the source code. For general information, please consider the [webpage](https://cantara.app) with a complete documentation and instruction on downloading and installing.
 
 **Pull Requests or issues** with bug reports, suggestions or general feedback are very appreciated!
 
@@ -17,7 +17,10 @@ More pictures are in the [screenshots/](screenshots/)-Folder.
 The current version is 2.4.0 released at January 6, 2023. Go to the [release section](https://github.com/reckel-jm/cantara/releases/tag/v2.4.0) to download the binaries for a productive use of the software.
 The master branch of this repository contains the latest commits which were already tested and **should** work, but are not officially released yet. If you clone from master, you might expect bugs, misbehavior or other errors when running the application. If you find any of them, please feel free to report them as a Github issue!
 
-Cantara is also available at the snapstore. The edge version contains the latest commit to the master branch.
+Cantara is also available in the Arch User Repository (AUR), at the snap store and on flatpak. The edge version contains the latest commit to the master branch.
+
+[![cantara](https://img.shields.io/aur/version/cantara?color=1793d1&label=cantara&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/cantara/)
+[![cantara-bin](https://img.shields.io/aur/version/cantara-bin?color=1793d1&label=cantara-bin&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/cantara-bin/)
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/cantara)
 <a href='https://flathub.org/apps/details/app.cantara.Cantara'><img width='170' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
@@ -35,11 +38,11 @@ If you would like to compile the latest not stable state in the master brunch, y
 
  3. Open the `lazarus.lpi` file *as a project* in Lazarus and compile it **or** use `lazbuild` for the compilation via the command line:
 
-`lazbuild -B Cantara.lpi`
+   `lazbuild -B Cantara.lpi`
 
 On Linux, you can change the used graphical framework via the `--ws=qt5` or `--ws=gtk2` option.
 
-**Warning: The state of the master brunch is not stable and not ready for productive use yet! If you want a stable version, please go to the releases section.**
+**Warning: The state of the master brunch is not stable and not ready for productive use yet! If you want a stable version, please go to the [releases section](releases/).**
 
 ## Song templates
 Please consult the [documentation](https://www.cantara.app/tutorial/where-to-get-the-songs/) for learning which song formats are supported and where to get songs from.
