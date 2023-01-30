@@ -14,7 +14,7 @@ Cantara is a simple open source song presentation software written in Free Pasca
 More pictures are in the [screenshots/](screenshots/)-Folder.
 
 ## Current Version
-The current version is 2.4.0 released at January 6, 2023. Go to the [release section](https://github.com/reckel-jm/cantara/releases/tag/v2.4.0) to download the binaries for a productive use of the software.
+The current version is 2.4.1 released at January 30, 2023. Go to the [release section](https://github.com/reckel-jm/cantara/releases/tag/v2.4.1) to download the binaries for a productive use of the software.
 The master branch of this repository contains the latest commits which were already tested and **should** work, but are not officially released yet. If you clone from master, you might expect bugs, misbehavior or other errors when running the application. If you find any of them, please feel free to report them as a Github issue!
 
 Cantara is also available in the Arch User Repository (AUR), at the snap store and on flatpak. The edge version contains the latest commit to the master branch.
