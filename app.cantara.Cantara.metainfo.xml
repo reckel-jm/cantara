@@ -43,27 +43,31 @@
 
     <releases>
         <release version="2.4.0" date="2023-01-06">
-            <p>Version 2.4 is finally there! Beside new features, it also brings a lot of bug fixes. See the list below for details.</p>
-            <p>Improvements/Enhancements</p>
-            <ul>
-                <li>A new editor has been implemented which allows editing of the songs, converting CCLI songs into the song format, creating new songs, archiving them and cloning them (e.g. for different versions).</li>
-                <li>A welcome assistant will guide new users after the first start of Cantara to setup and understand the program.</li>
-                <li>Cantara can automatically break long slides into two pages if configured in the settings.</li>
-                <li>The newly implemented SongTeX file format allows to export songs slides with the song lyrics and the order.</li>
-            </ul>
-            <p>Bug Fixes</p>
-            <ul>
-                <li>Floating point errors when no background picture was selected</li>
-                <li>Loading the slides took a long time if a background was selected</li>
-            </ul>
+            <description>
+                <p>Version 2.4 is finally there! Beside new features, it also brings a lot of bug fixes. See the list below for details.</p>
+                <p>Improvements/Enhancements</p>
+                <ul>
+                    <li>A new editor has been implemented which allows editing of the songs, converting CCLI songs into the song format, creating new songs, archiving them and cloning them (e.g. for different versions).</li>
+                    <li>A welcome assistant will guide new users after the first start of Cantara to setup and understand the program.</li>
+                    <li>Cantara can automatically break long slides into two pages if configured in the settings.</li>
+                    <li>The newly implemented SongTeX file format allows to export songs slides with the song lyrics and the order.</li>
+                </ul>
+                <p>Bug Fixes</p>
+                <ul>
+                    <li>Floating point errors when no background picture was selected</li>
+                    <li>Loading the slides took a long time if a background was selected</li>
+                </ul>
+            </description>
         </release>
         <release version="2.3.3" date="2022-11-29">
-            <p>
-                Bug Fixes:
-            </p>
-            <ul>
-                <li>Fixes broken changelog in appstream xml</li>
-            </ul>
+            <description>
+                <p>
+                    Bug Fixes:
+                </p>
+                <ul>
+                    <li>Fixes broken changelog in appstream xml</li>
+                </ul>
+            </description>
         </release>
         <release version="2.3.2" date="2022-11-10">
             <description>
