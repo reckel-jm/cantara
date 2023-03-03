@@ -1,0 +1,789 @@
+# Heimen Stoffels <vistausss@fastmail.com>, 2023.
+msgid ""
+msgstr ""
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"PO-Revision-Date: 2023-03-03 13:32+0100\n"
+"Project-Id-Version: \n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 22.12.3\n"
+
+#: editordisplaysongcontent.streditsongnamecaption
+msgid "Edit Song Name"
+msgstr "Naam wijzigen"
+
+#: editordisplaysongcontent.streditsongnamecontent
+msgid "Please enter the new song name: "
+msgstr "Voer een nieuwe naam in: "
+
+#: editordisplaysongcontent.strerrorcclitosong
+msgid ""
+"The file can not be converted. Make sure that you have the permissions to"
+" write to the song repository!"
+msgstr ""
+"Het bestand kan niet worden geconverteerd. Zorg er voor dat u over de juiste"
+" maprechten beschikt!"
+
+#: editordisplaysongcontent.strfilecannotberenamed
+msgid ""
+"The File can not be renamed. Make sure that you have the permissions to write"
+" to the song repository!"
+msgstr ""
+"De naam kan niet worden gewijzigd. Zorg er voor dat u over de juiste"
+" maprechten beschikt!"
+
+#: info.strauthor
+msgid "Author"
+msgstr "Maker"
+
+#: info.strbuttongitrepo
+msgid "Open webpage..."
+msgstr "Website openen…"
+
+#: info.strformcaption
+msgctxt "info.strformcaption"
+msgid "About this Program"
+msgstr "Over dit programma"
+
+#: info.strprogramcompiled
+msgid "Program compiled"
+msgstr "Compilatie"
+
+#: info.strversion
+msgid "Version"
+msgstr "Versie"
+
+#: info.strwebpage
+msgid "https://www.cantara.app"
+msgstr "https://www.cantara.app"
+
+#: present.strmorelyricsindicator
+msgctxt "present.strmorelyricsindicator"
+msgid "..."
+msgstr "…"
+
+#: settings.strbrightness
+msgid "Increase brightness by "
+msgstr "Helderheid verhogen met "
+
+#: settings.strerrorcaption
+msgctxt "settings.strerrorcaption"
+msgid "Error"
+msgstr "Foutmelding"
+
+#: settings.strpictureoriginalstate
+msgid "Picture is shown as it is"
+msgstr "De afbeelding wordt onbewerkt getoond"
+
+#: settings.strtransparency
+msgid "Increase transparancy by "
+msgstr "Doorzichtigheid verhogen met "
+
+#: settings.strvalidsongrepository
+msgid "Please choose a valid folder for the song repository!"
+msgstr "Kies een geldige map!"
+
+#: songeditor.strcannotarchivate
+msgid "No valid file selected."
+msgstr "Er is geen geldig bestand gekozen."
+
+#: songeditor.strfilehaschanged
+msgid ""
+"The file {{filename}} has been changed after opening. Would you like to save"
+" it?"
+msgstr "{{filename}} is na het openen gewijzigd. Wilt u het bestand opslaan?"
+
+#: songeditor.strfilenameexists
+msgid "The name exists already. Please choose an other one."
+msgstr "Deze naam is al in gebruik - kies een andere."
+
+#: songeditor.strinvalidfilename
+msgid ""
+"Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are"
+" allowed."
+msgstr ""
+"De naam is ongeldig. Locatiescheidingstekens (‘/’ op Linux en ‘\\’ op"
+" Windows) zijn niet toegestaan."
+
+#: songeditor.strnewfilecaption
+msgid "New Song"
+msgstr "Nieuw nummer"
+
+#: songeditor.strnewfilecontent
+msgid "Please add the name of the new song"
+msgstr "Geef het nieuwe nummer een naam"
+
+#: songeditor.strsaveunsavedchangescaption
+msgid "Question"
+msgstr "Vraag"
+
+#: songeditor.strsaveunsavedchangescontent
+msgid "The file {filename} has unsaved changes. Would you like to save it now?"
+msgstr ""
+"{{filename}} bevat niet-opgeslagen wijzigingen. Wilt u het bestand opslaan?"
+
+#: songeditor.strsyntaxdocurl
+msgid "https://www.cantara.app/tutorial/meta-data/"
+msgstr "https://www.cantara.app/tutorial/meta-data/"
+
+#: songeditor.strwelcome
+msgid "Welcome"
+msgstr "Welkom"
+
+#: songselection.strbuttoneinstellungen
+msgctxt "songselection.strbuttoneinstellungen"
+msgid "Settings..."
+msgstr "Instellingen…"
+
+#: songselection.strbuttonpraesentation
+msgctxt "songselection.strbuttonpraesentation"
+msgid "Presentation..."
+msgstr "Presentatie…"
+
+#: songselection.strcannotopensong
+msgid "Error: The Song \"{songname}\" is not available. Skipping."
+msgstr "Foutmelding: “{{songname}}” is niet beschikbaar."
+
+#: songselection.strerror
+msgctxt "songselection.strerror"
+msgid "Error"
+msgstr "Foutmelding"
+
+#: songselection.strerroropening
+msgid ""
+"Error while opening. Propably you have not the required rights to access this"
+" file."
+msgstr ""
+"Foutmelding tijdens openen: mogelijk beschikt u niet over de juiste"
+" bestandsrechten."
+
+#: songselection.strerrorsaving
+msgid ""
+"Error while saving. Propably you have not the required rights to access this"
+" file."
+msgstr ""
+"Foutmelding tijdens opslaan: mogelijk beschikt u niet over de juiste"
+" bestandsrechten."
+
+#: songselection.strfehlerkeineliederbeipraesentation
+msgid "You have to add songs first."
+msgstr "Voeg eerst nummers toe."
+
+#: songselection.strfiledoesnotexist
+msgid "The File you would like to open does not exists."
+msgstr "Het te openen bestand bestaat niet."
+
+#: songselection.strfolie
+msgid "Slide"
+msgstr "Pauze"
+
+#: tfrmdisplaysongcontent.btnarchivate.caption
+msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
+msgid "Archivate"
+msgstr "Archiveren"
+
+#: tfrmdisplaysongcontent.btnclose.caption
+msgctxt "tfrmdisplaysongcontent.btnclose.caption"
+msgid "Close"
+msgstr "Sluiten"
+
+#: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
+msgid "Convert CCLI File to Song Format"
+msgstr "CCLI-bestand converteren naar muziekformaat"
+
+#: tfrmdisplaysongcontent.btncopy.caption
+msgctxt "tfrmdisplaysongcontent.btncopy.caption"
+msgid "Copy"
+msgstr "Kopiëren"
+
+#: tfrmdisplaysongcontent.btnrename.caption
+msgid "Rename"
+msgstr "Naam wijzigen"
+
+#: tfrmdisplaysongcontent.btnsave.caption
+msgctxt "tfrmdisplaysongcontent.btnsave.caption"
+msgid "Save"
+msgstr "Opslaan"
+
+#: tfrmdisplaysongcontent.labelccliimporthint.caption
+msgid ""
+"Hint:\n"
+"\n"
+"The file which you are going to open is a CCLI file.\n"
+"It is recommended to convert the file to the song-format first and then edit"
+" the song file according to your wishes.\n"
+"If you would like to do so, please click the button below. The CCLI file will"
+" then be moved to the subdirectory 'archive' of your song repository and the"
+" generated song file will be opened for editing."
+msgstr ""
+"Tip:\n"
+"\n"
+"Het bestand dat u wilt openen is een CCLI-bestand.\n"
+"Wij raden aan dit bestand te converteren en vervolgens naar eigen hand te"
+" zetten.\n"
+"Als u dit wilt doen, klik dan op onderstaande knop. Het CCLI-bestand zal"
+" daarna"
+" worden verplaatst naar de map met nummers en het samengestelde nummerbestand"
+" geopend."
+
+#: tfrmdisplaysongcontent.lblsongname.caption
+msgid "Name: "
+msgstr "Naam: "
+
+#: tfrmeditorwelcome.btnclose.caption
+msgid "Close the Editor"
+msgstr "Bewerker sluiten"
+
+#: tfrmeditorwelcome.btnopendocs.caption
+msgid "Open Documentation in Webbrowser..."
+msgstr "Lees de documentatie in uw webbrowser…"
+
+#: tfrmeditorwelcome.lbldescription.caption
+msgid ""
+"Here you can change the songs which you would like to display.\n"
+"\n"
+"For detailed information about the syntax, please consider the documentation."
+msgstr ""
+"Hier kunt u de nummers kiezen die u wilt gebruiken.\n"
+"\n"
+"Meer informatie over de syntaxis vindt u in de documentatie."
+
+#: tfrmeditorwelcome.lblhint.caption
+msgid ""
+"Please note: The song lyrics files are simple text files and can be also"
+" edited with every text editor on your local system. Cantara offers only"
+" basic functionality yet."
+msgstr ""
+"Let op: songtekstbestanden zijn eenvoudige tekstbestanden die in elke"
+" tekstbewerker kunnen worden bewerkt. Cantara biedt momenteel slechts"
+" basisfuncties aan."
+
+#: tfrmeditorwelcome.lblsupport.caption
+msgid ""
+"Cantara is free software which has been made with the hope that it might be"
+" useful and beneficial. Contribution via Github is more than welcome. Feel"
+" free to create issues, feature requests or pull request. All the Glory"
+" belongs to God! Soli Deo Gloria."
+msgstr ""
+"Cantara is vrije software die wordt gemaakt in de hoop bruikbaar en nuttig te"
+" zijn. Bijdragen op GitHub zijn van harte welkom. Meld problemen, deel ideeën"
+" of open pull requests. Alleen aan God de eer! Soli Deo Gloria."
+
+#: tfrmeditorwelcome.lblwelcome.caption
+msgid "Welcome to the Editor!"
+msgstr "Welkom in de bewerker!"
+
+#: tfrminfo.btnopengitrepo.caption
+msgid "Open Github Repository with Browser"
+msgstr "GitHub-opslagruimte openen in webbrowser"
+
+#: tfrminfo.btnopenwebpage.caption
+msgid "Open Project's Webpage with Browser"
+msgstr "Website openen in webbrowser"
+
+#: tfrminfo.caption
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
+msgstr "Over dit programma"
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr "Maker: Jan Martin Reckel"
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr "lblCompDate"
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"This program has been published under the GPL3 licence. \n"
+"The source code is available at the Github repository, a documentation can be"
+" be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms"
+" and conditions of the GPL3 licence.\n"
+"\n"
+"The author wishes God's blessing for the use of the program!"
+msgstr ""
+"Dit programma is uitgebracht onder de voorwaarden van de GPL3-licentie. \n"
+"De broncode is beschikbaar op GitHub; de documentatie op de website.\n"
+"Het is toegestaan om dit programma te bewerken en her uit te geven onder de"
+" voorwaarden van de GPL3-licentie.\n"
+"\n"
+"De maker wenst u Gods zegening bij gebruik van dit programma toe!"
+
+#: tfrminfo.lblname.caption
+msgid "Cantara"
+msgstr "Cantara"
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr "lblVersion"
+
+#: tfrmpresent.caption
+msgid "Presentation"
+msgstr "Presentatie"
+
+#: tfrmpresent.lblmeta.caption
+msgid ""
+"<Meta>\n"
+"Second Line"
+msgstr ""
+"<Meta>\n"
+"Tweede regel"
+
+#: tfrmpresent.lblnext.caption
+msgid "<Lyrics>"
+msgstr "<Lyrics>"
+
+#: tfrmsettings.bgcolordialog.title
+msgid "Select background color"
+msgstr "Kies een achtergrondkleur"
+
+#: tfrmsettings.bgpicturedialog.title
+msgid "Open image file"
+msgstr "Afbeelding openen"
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Background Color..."
+msgstr "Achtergrondkleur…"
+
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr "Achtergrondafbeelding…"
+
+#: tfrmsettings.btnclose.caption
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Close"
+msgstr "Sluiten"
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Change Font Settings..."
+msgstr "Lettertype-instellingen wijzigen…"
+
+#: tfrmsettings.btnselectdir.caption
+msgctxt "tfrmsettings.btnselectdir.caption"
+msgid "..."
+msgstr "…"
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Text Color..."
+msgstr "Tekstkleur…"
+
+#: tfrmsettings.caption
+msgid "Settings"
+msgstr "Instellingen"
+
+#: tfrmsettings.cbemptyframe.caption
+msgid "Empty slide between songs"
+msgstr "Pauze tussen nummers"
+
+#: tfrmsettings.cblyricstoclipboard.caption
+msgid "Copy lyrics to clipboard"
+msgstr "Songtekst kopiëren naar klembord"
+
+#: tfrmsettings.cbmetadatafirstslide.caption
+msgid "at first slide"
+msgstr "na eerste pauze"
+
+#: tfrmsettings.cbmetadatalastslide.caption
+msgid "at last slide"
+msgstr "na laatste pauze"
+
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr "Achtergrondafbeelding tonen:"
+
+#: tfrmsettings.cbspoiler.caption
+msgid "Spoil next slides"
+msgstr "Volgende pauzes overslaan"
+
+#: tfrmsettings.fontdialog.title
+msgid "Select font"
+msgstr "Kies een lettertype"
+
+#: tfrmsettings.gbpresentation.caption
+msgid "Presentation View"
+msgstr "Presentatiemodus"
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Song Repo Path:"
+msgstr "Locatie van nummer:"
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparancy/Brightness:"
+msgstr "Achtergrondhelderheid/-doorzichtigheid wijzigen:"
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
+msgstr "lblImageExplainer"
+
+#: tfrmsettings.lblmeta.caption
+msgid "Show Meta Data:"
+msgstr "Metagegevens tonen:"
+
+#: tfrmsettings.lblmetacontent.caption
+msgid "Meta Data Content:"
+msgstr "Metagegevensinhoud:"
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
+msgstr "Automatisch afbreken na x-aantal regels (0 = uit):"
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid ""
+"A value smaller than 0% will make the image transparent and the background"
+" color shine through, a value > 0% will increase the brightness of the"
+" picture."
+msgstr ""
+"Een waarde lager dan 0% maakt de afbeelding doorzichtig en de"
+" achtergrondkleur doorschijnend - hoger dan 0% verhoogt de helderheid."
+
+#: tfrmsettings.selectdirectorydialog.title
+msgid "Select song repository dictionary"
+msgstr "Kies het nummerwoordenboek"
+
+#: tfrmsettings.textcolordialog.title
+msgid "Select text color"
+msgstr "Kies een tekstkleur"
+
+#: tfrmsongedit.caption
+msgid "Edit Files"
+msgstr "Bestanden bewerken"
+
+#: tfrmsongedit.menufile.caption
+msgctxt "tfrmsongedit.menufile.caption"
+msgid "File"
+msgstr "Bestand"
+
+#: tfrmsongedit.menuitemarchivate.caption
+msgctxt "tfrmsongedit.menuitemarchivate.caption"
+msgid "Archivate"
+msgstr "Archiveren"
+
+#: tfrmsongedit.menuitemclose.caption
+msgid "Close Editor"
+msgstr "Bewerker sluiten"
+
+#: tfrmsongedit.menuitemcopy.caption
+msgctxt "tfrmsongedit.menuitemcopy.caption"
+msgid "Copy"
+msgstr "Kopiëren"
+
+#: tfrmsongedit.menuitemnew.caption
+msgid "New"
+msgstr "Nieuw"
+
+#: tfrmsongedit.menuitemsave.caption
+msgctxt "tfrmsongedit.menuitemsave.caption"
+msgid "Save"
+msgstr "Opslaan"
+
+#: tfrmsongs.btnadd.caption
+msgid "+"
+msgstr "+"
+
+#: tfrmsongs.btnclear.caption
+msgid "🗑"
+msgstr "🗑"
+
+#: tfrmsongs.btnclear.hint
+msgid "Leere alle ausgewählten Lieder"
+msgstr "Prullenbak legen"
+
+#: tfrmsongs.btndown.caption
+msgid "🠗"
+msgstr "🠗"
+
+#: tfrmsongs.btngoleft.caption
+msgid "←"
+msgstr "←"
+
+#: tfrmsongs.btngoright.caption
+msgid "→"
+msgstr "→"
+
+#: tfrmsongs.btnquitpresentation.caption
+msgid "×"
+msgstr "×"
+
+#: tfrmsongs.btnremove.caption
+msgid "-"
+msgstr "-"
+
+#: tfrmsongs.btnsettings.caption
+msgctxt "tfrmsongs.btnsettings.caption"
+msgid "Settings..."
+msgstr "Instellingen…"
+
+#: tfrmsongs.btnstartpresentation.caption
+msgctxt "tfrmsongs.btnstartpresentation.caption"
+msgid "Presentation..."
+msgstr "Presentatie…"
+
+#: tfrmsongs.btnup.caption
+msgid "🠕"
+msgstr "🠕"
+
+#: tfrmsongs.caption
+msgid "Song Selection (Cantara)"
+msgstr "Nummerselectie (Cantara)"
+
+#: tfrmsongs.chkmultiwindowmode.caption
+msgid "Multi-Screen-Mode (suitable for multiple screens)"
+msgstr "Meerschermmodus (voor meerdere beeldschermen)"
+
+#: tfrmsongs.edtsearch.hint
+msgid "Suchen..."
+msgstr "Zoeken…"
+
+#: tfrmsongs.itemabout.caption
+msgid "Information about the Program"
+msgstr "Informatie over programma"
+
+#: tfrmsongs.itemend.caption
+msgctxt "tfrmsongs.itemend.caption"
+msgid "Close"
+msgstr "Sluiten"
+
+#: tfrmsongs.itemexporttexfile.caption
+msgid "Export Selection with Content..."
+msgstr "Selectie met inhoud exporteren…"
+
+#: tfrmsongs.itemexporttexfile.hint
+msgid ""
+"Exports a SongTeX file which contains all selected song files with their"
+" content."
+msgstr ""
+"Exporteert een SongTeX-bestand met alle geselecteerde nummers en hun inhoud."
+
+#: tfrmsongs.itemimporttexfile.caption
+msgid "Import Selection with Content..."
+msgstr "Selectie met inhoud importeren…"
+
+#: tfrmsongs.itemimporttexfile.hint
+msgid ""
+"Imports a SongTeX file which contains all selected song files with their"
+" content.\n"
+"If the file does not exist in the song repository yet, it will be"
+" automatically added to."
+msgstr ""
+"Importeert een SongTeX-bestand met alle geselecteerde nummers en hun inhoud.\n"
+"Als het bestand nog niet aanwezig is, dan wordt het automatisch toegevoegd."
+
+#: tfrmsongs.itemload.caption
+msgid "Load Selection without Content..."
+msgstr "Selectie met inhoud laden…"
+
+#: tfrmsongs.itemopenineditor.caption
+msgid "Open in Editor..."
+msgstr "Openen in bewerker…"
+
+#: tfrmsongs.itempresentation.caption
+msgid "Run Presentation"
+msgstr "Presentatie houden"
+
+#: tfrmsongs.itemreloadsonglist.caption
+msgid "Reload Song Repository"
+msgstr "Nummermap herladen"
+
+#: tfrmsongs.itemsave.caption
+msgid "Save Selection without Content..."
+msgstr "Selectie met inhoud opslaan…"
+
+#: tfrmsongs.itemsettings.caption
+msgctxt "tfrmsongs.itemsettings.caption"
+msgid "Settings..."
+msgstr "Instellingen…"
+
+#: tfrmsongs.itemshowwelcomeassistent.caption
+msgid "Show Welcome Assistent..."
+msgstr "Instelhulp tonen…"
+
+#: tfrmsongs.itemsongeditor.caption
+msgid "Song Lyrics..."
+msgstr "Songtekst…"
+
+#: tfrmsongs.lblfoilnumber.caption
+msgid "Foliennummern"
+msgstr "Volgnummer"
+
+#: tfrmsongs.lblpresentation.caption
+msgid "Presentation is running:"
+msgstr "Actieve presentatie:"
+
+#: tfrmsongs.menuedit.caption
+msgid "Edit"
+msgstr "Bewerken"
+
+#: tfrmsongs.menufile.caption
+msgctxt "tfrmsongs.menufile.caption"
+msgid "File"
+msgstr "Bestand"
+
+#: tfrmsongs.menuhelp.caption
+msgid "Help"
+msgstr "Hulp"
+
+#: tfrmsongs.opendialog.title
+msgid "Open Song List"
+msgstr "Nummerlijst tonen"
+
+#: tfrmsongs.savedialog.title
+msgid "Save Song List"
+msgstr "Nummerlijst opslaan"
+
+#: tfrmsongs.savesongtexfiledialog.title
+msgid "Save SongTeX File"
+msgstr "SongTeX-bestand opslaan"
+
+#: tfrmwelcome.bclabel1.caption
+msgid "Welcome to Cantara!"
+msgstr "Welkom bij Cantara!"
+
+#: tfrmwelcome.btnaddexamplesong.caption
+msgid "Add \"Amazing Grace\" as an example"
+msgstr "‘Amazing Grace’ toevoegen als voorbeeldnummer"
+
+#: tfrmwelcome.btnback.caption
+msgid "Back..."
+msgstr "Terug…"
+
+#: tfrmwelcome.btnnext.caption
+msgid "Next..."
+msgstr "Volgende…"
+
+#: tfrmwelcome.btnopengithubrepo.caption
+msgid "Open Github Repository..."
+msgstr "GitHub-opslagruimte openen…"
+
+#: tfrmwelcome.btnopenwebpage.caption
+msgid "Open Webpage with Documentation..."
+msgstr "Lees de documentatie in uw webbrowser…"
+
+#: tfrmwelcome.btnselectsongrepodir.caption
+msgid "Select Song Repository..."
+msgstr "Kies de nummermap…"
+
+#: tfrmwelcome.caption
+msgid "Cantara Setup"
+msgstr "Cantara-instelhulp"
+
+#: tfrmwelcome.label1.caption
+msgid ""
+"Cantara is a free and open source song presentation software.\n"
+"All songs should be located in a song repository directory. Please select now"
+" a directory on your file system which Cantara will use as its song"
+" repository. If you haven't collected any songs yet, you can create a new"
+" folder first or choose an empty one."
+msgstr ""
+"Cantara is een gratis en open source nummerpresentatieprogramma.\n"
+"Alle nummers dienen aanwezig te zijn in de gekozen map. Kies nu"
+" een map op uw systeem die gebruikt dient te worden als"
+" opslag. Als u nog geen muziekverzameling heeft, dan kunt u eerst een"
+" nieuwe map aanmaken of een lege map kiezen."
+
+#: tfrmwelcome.lbladditionalinformation.caption
+msgid ""
+"You might want to adjust the appearence of the presentation in the Settings"
+" Dialog. In addition, you can add, edit, clone and convert song files via the"
+" editor. Both can be found in the Edit menu in the main window.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song"
+" format. This makes it easy to download and import songs from the internet."
+" Please be aware that depending on your location and the particular song,"
+" license regulations for the public demonstration of song lyrics might apply."
+" The user alone is responsible for the legal use of this software.\n"
+"For more information about the program, please consult the online"
+" documentation at the webpage https://www.cantara.app.\n"
+"\n"
+"Cantara is free software and published under the GPL3 license. The source"
+" code is publicly available on Github. If you like the project, consider"
+" giving it a star at Github! Feedback, issue reports and pull requests are"
+" also more then welcome.\n"
+"\n"
+"May God bless you and the use of this software!"
+msgstr ""
+"U kunt, indien gewenst, de vormgeving van de presentatie aanpassen in de"
+" instellingen."
+" In de bewerker kunt u nummers toevoegen, bewerken, klonen en converteren. "
+" Dit alles is beschikbaar in het menu ‘Bewerken’ in het hoofdvenster.\n"
+"Cantara ondersteunt twee formaten: CCLI Songselect- en reguliere"
+" nummerformaten."
+" Hierdoor is het eenvoudig om nummers van het internet op te halen en"
+" importeren."
+" Let op: er kunnen licentiebeperkingen van kracht zijn op nummers en locaties,"
+" waardoor openbaar vertonen van songteksten mogelijk niet rechtsgeldig is."
+" Gebruikers zijn zélf verantwoordelijk voor het gebruik van deze software.\n"
+"Meer informatie over het programma is te vinden in de online-"
+" documentatie op https://www.cantara.app.\n"
+"\n"
+"Cantara is vrije software, uitgebracht onder de voorwaarden van de"
+" GPL3-licentie. De"
+" broncode is openbaar te verkrijgen op GitHub. Als u de software graag"
+" gebruikt, overweeg"
+" dan een ster op GitHub te geven! Feedback, probleemmeldingen en pull"
+" requests zijn"
+" ook van harte welkom.\n"
+"\n"
+"God zij u en het gebruik van deze software!"
+
+#: tfrmwelcome.lblsongadded.caption
+msgid ""
+"\"Amazing Grace\" has been added to your repository. You can now continue."
+msgstr "‘Amazing Grace’ is toegevoegd - u kunt nu doorgaan."
+
+#: tfrmwelcome.lblsuccessheadline.caption
+msgid "Congratulations! Cantara is now ready to use!"
+msgstr "Geweldig! Cantara is nu klaar voor gebruik."
+
+#: welcome.btnnextfinish
+msgid "Finish"
+msgstr "Afronden"
+
+#: welcome.btnnextnext
+msgid "Next"
+msgstr "Volgende"
+
+#: welcome.songrepodirempty
+msgid ""
+"However it seems that you have not added any songs yet. Would you like to add"
+" the song \"Amazing Grace\" from John Newton as an example to your song"
+" repository? Then click at the button below. Click \"Next\" to go to the next"
+" step."
+msgstr ""
+"Het lijkt er op dat u nog geen nummers heeft toegevoegd. Wilt u ‘Amazing"
+" Grace’"
+" van John Newton toevoegen als voorbeeldnummer? Klik dan op onderstaande knop "
+" en vervolgens op ‘Volgende’."
+
+#: welcome.songreponotempty
+msgid ""
+"The song repository contains already {songcount} songs which you can use with"
+" Cantara."
+msgstr "De map bevat {songcount} nummers die u in Cantara kunt gebruiken."
+
+#: welcome.songreponotemptyaddamazinggrace
+msgid ""
+"However if you like, we can add the song \"Amazing Grace\" as an other"
+" example. For that, please press the button below. Else you can click"
+" \"Next\"."
+msgstr ""
+"Maar als u wilt, kunt u ‘Amazing Grace’ als voorbeeldnummer toevoegen. Klik"
+" hiervoor "
+" op onderstaande knop. Wilt u dit niet? Klik dan op ‘Volgende’."
+
+#: welcome.songreposuccess
+msgid "The selected directory can be successfully used as a song repository."
+msgstr "De gekozen map kan in Cantara worden gebruikt."
+
+#: welcome.strnosongrepoyet
+msgid ""
+"Please select a song repository path before you leave the assistent. Cantara"
+" can not work without it."
+msgstr ""
+"Kies een map met nummers voordat u de instelhulp afsluit. Zonder deze map"
+" werkt Cantara niet."
+
