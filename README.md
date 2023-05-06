@@ -14,16 +14,32 @@ Cantara is a simple open source song presentation software written in Free Pasca
 More pictures are in the [screenshots/](screenshots/)-Folder.
 
 ## Current Version
-The current version is 2.4.0 released at January 6, 2023. Go to the [release section](https://github.com/reckel-jm/cantara/releases/tag/v2.4.0) to download the binaries for a productive use of the software.
+The current version is 2.4.1 released at January 30, 2023. Go to the [release section](https://github.com/reckel-jm/cantara/releases/tag/v2.4.1) to download the binaries for a productive use of the software.
 The master branch of this repository contains the latest commits which were already tested and **should** work, but are not officially released yet. If you clone from master, you might expect bugs, misbehavior or other errors when running the application. If you find any of them, please feel free to report them as a Github issue!
 
-Cantara is also available in the Arch User Repository (AUR), at the snap store and on flatpak. The edge version contains the latest commit to the master branch.
+Cantara is also available in the Microsoft Winget Repository, the Arch User Repository (AUR), at the snap store and on flatpak. The edge version contains the latest commit to the master branch.
 
 [![cantara](https://img.shields.io/aur/version/cantara?color=1793d1&label=cantara&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/cantara/)
 [![cantara-bin](https://img.shields.io/aur/version/cantara-bin?color=1793d1&label=cantara-bin&logo=arch-linux&style=for-the-badge)](https://aur.archlinux.org/packages/cantara-bin/)
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/cantara)
 <a href='https://flathub.org/apps/details/app.cantara.Cantara'><img width='170' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+
+```
+winget install cantara
+```
+```
+yay -S cantara
+```
+```
+yay -S cantara-bin
+```
+```
+snap install cantara
+```
+```
+flatpak install cantara
+```
 
 ## Download and Installation
 
