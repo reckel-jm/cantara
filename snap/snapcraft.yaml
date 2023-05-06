@@ -8,8 +8,7 @@ icon: app.cantara.Cantara.png
 base: core22
 grade: stable
 
-architectures:
-  - build-on: [amd64, arm64]
+architectures: [amd64, arm64]
 
 plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   gtk-3-themes:
