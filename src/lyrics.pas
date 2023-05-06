@@ -24,9 +24,12 @@ type
   { TSong }
   TSong = Class
     public
+      { The file path where the song is located physically on the filesystem }
       filename: String;
+      { contains the lyrics in their right order }
       output: TStringList;
-      MetaDict: TStringDict; { contains all the MetaData of the songs }
+      { contains all the MetaData of the songs }
+      MetaDict: TStringDict;
       MaxSlideLineLength: Integer; { When should slices be cut into two parts }
       constructor Create; overload;
       destructor Destroy; override;
