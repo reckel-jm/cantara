@@ -77,10 +77,10 @@ parts:
   cleanup:
     after: [cantara]
     plugin: nil
-    build-snaps: [kde-frameworks-5-91-qt-5-15-3-core20]
+    build-snaps: [kde-frameworks-5-99-qt-5-15-7-core20]
     override-prime: |
       set -eux
-      for snap in "kde-frameworks-5-91-qt-5-15-3-core20"; do  # List all content-snaps you're using here
+      for snap in "kde-frameworks-5-99-qt-5-15-7-core20"; do  # List all content-snaps you're using here
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" "$SNAPCRAFT_PRIME/usr/{}" \;
       done
       for cruft in bug lintian man icons; do
