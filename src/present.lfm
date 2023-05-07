@@ -33,6 +33,7 @@ object frmPresent: TfrmPresent
     Visible = False
   end
   object lblText: TLabel
+    AnchorSideTop.Control = Owner
     Cursor = crNone
     Left = 0
     Height = 1
@@ -48,6 +49,8 @@ object frmPresent: TfrmPresent
     OnDblClick = lblTextDblClick
   end
   object lblNext: TLabel
+    AnchorSideTop.Control = lblText
+    AnchorSideTop.Side = asrBottom
     Left = 0
     Height = 22
     Top = 1

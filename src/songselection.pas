@@ -258,16 +258,9 @@ procedure TfrmSongs.FormResize(Sender: TObject);
 begin
   if (ProgramMode = ModeSelection) OR (ProgramMode = ModeSingleScreenPresentation) Then
   Begin
-    {PnlSplitter.Visible := True;
-    pnlSplitter.Left := frmSongs.Width-PanelMultiScreenLeft;
-    pnlMultiScreen.Visible := True;
-    btnStartPresentation.Enabled := False;
-    frmPresent.KeyPreview := True; }
-
     PnlSplitter.Left := frmSongs.Width;
     PnlSplitter.Width:=1;
     IntToStr(PnlSplitter.Left);
-    //PnlSplitter.Visible := False;
     pnlMultiScreen.Visible := False;
   end else
   Begin
@@ -805,11 +798,11 @@ var
 begin
   SongPosition.song := frmPresent.SlideList.Items[Present.cur].Song;
   SongPosition.songname:= SongPosition.song.FileNameWithoutEnding;
-  SongPosition.songposition:= 1;
+  SongPosition.songposition := 1;
   SongPosition.stanzapositionstart := 0;
   for i := 1 To present.cur do
   begin
-    if frmPresent.SlideList.Items[Present.cur].Song.filename <> frmPresent.SlideList.Items[Present.cur-1].Song.filename Then
+    if frmPresent.SlideList.Items[i].Song.filename <> frmPresent.SlideList.Items[i-1].Song.filename Then
       begin
         inc(SongPosition.songposition);
         SongPosition.stanzapositionstart := i;

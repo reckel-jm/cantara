@@ -197,6 +197,7 @@ begin
       lblNext.Font := frmSettings.FontDialog.Font;
       lblNext.Font.Color := frmSettings.textColorDialog.Color;
       lblNext.Font.Height:= lblNext.Font.Height div 2;
+      lblNext.Top := lblText.Top+lblText.Height;
       lblNext.BorderSpacing.Top:=2*lblNext.Font.Size;
       if lblNext.Top+lblNext.Height > frmPresent.Height then // the spoiler is going beyond the form
       begin
