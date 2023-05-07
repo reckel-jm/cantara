@@ -8,7 +8,7 @@ uses
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Settings, Types, Themes, LCLTranslator, LCLIntf, ExtCtrls, Lyrics,
   IntfGraphics,
-  fpImage, StrUtils,
+  fpImage, StrUtils, Slides,
   math;
 type
 
@@ -51,7 +51,7 @@ type
     OriginalBounds: TRect;
     OriginalWindowState: TWindowState;
     ScreenBounds: TRect;
-    Songlist: lyrics.TSongList;
+    SlideList: TSlideList;
     procedure LoadBackground;
     procedure ResizeBackground;
     procedure GoPrevious;
@@ -62,8 +62,6 @@ type
 
 var
   frmPresent: TfrmPresent;
-  textList: TStringList;
-  songMetaList: TStringList;
   cur: Integer; //The current Index of the String List which is shown
   FullScreen: Boolean;
 
@@ -115,7 +113,7 @@ end;
 
 procedure TfrmPresent.GoNext;
 begin
-  if (cur < textList.Count-1) then
+  if (cur < frmPresent.SlideList.Count-1) then
     begin
       inc(cur);
       ShowItem(cur);
@@ -141,7 +139,7 @@ end;
 
 procedure TfrmPresent.FormShow(Sender: TObject);
 begin
-  if textList.Count>0 then showItem(0) else frmPresent.Hide;
+  if SlideList.Count >0 then showItem(0) else frmPresent.Hide;
   ResizeBackground;
   Refresh;
 end;
@@ -161,7 +159,7 @@ end;
 
 procedure TfrmPresent.lblTextClick(Sender: TObject);
 begin
-  if (cur < textList.Count-1) then
+  if (cur < SlideList.Count-1) then
     begin
       inc(cur);
       showItem(cur);
@@ -189,13 +187,13 @@ begin
     lblMeta.Font.Color := frmSettings.textColorDialog.Color;
     lblMeta.Font.Size := lblText.Font.Size div 3;
     lblMeta.Width := Trunc(frmPresent.Width * 0.67);
-    if ((frmSettings.cbSpoiler.Checked) and (textList.Count > cur + 1) and (textList.Strings[cur] <> '')) then
+    lblText.Caption := SlideList.Items[cur].PartContent.MainText;
+    lblNext.Caption := SlideList.Items[cur].PartContent.SpoilerText;
+    lblMeta.Caption:= SlideList.Items[cur].PartContent.MetaText;
+    if lblNext.Caption <> '' then // if there is a spoiler/next text to display
     begin
       lblNext.Visible:=True;
       //lblNext.Caption := copy(textList.Strings[cur+1], 1, pos(LineEnding, textList.Strings[cur+1])-1);
-      if (SongMetaList.Strings[cur+1] <> SongMetaList.Strings[cur]) and (frmSettings.cbEmptyFrame.Checked=False) then
-         lblNext.Caption := ''
-      else lblNext.Caption := textList.Strings[cur+1];
       lblNext.Font := frmSettings.FontDialog.Font;
       lblNext.Font.Color := frmSettings.textColorDialog.Color;
       lblNext.Font.Height:= lblNext.Font.Height div 2;
@@ -206,8 +204,8 @@ begin
         StringArray := SplitString(lblNext.Caption,LineEnding);
         if length(StringArray) > 0 then
            lblNext.Caption := StringArray[0] + StrMoreLyricsIndicator;
-        frmPresent.Repaint;
-        Application.ProcessMessages;
+        // frmPresent.Repaint;
+        // Application.ProcessMessages;
         // if still to much content then hide
         if lblNext.Top+lblNext.Height > frmPresent.Height then
           begin
@@ -216,14 +214,13 @@ begin
             lblNext.BorderSpacing.Top := 0;
           end;
       end;
-    end else
+    end else // There is no spoiler/next text to display
     begin
-      lblNext.Caption := '';
       lblNext.Visible:= False;
       lblText.Height := frmPresent.Height;
       lblNext.BorderSpacing.Top := 0;
     end;
-    lblText.Caption := textList.Strings[cur];
+
     lblText.BorderSpacing.Top := (frmPresent.Height-lblText.Height-lblNext.Height-lblNext.BorderSpacing.Top) div 2;
     // Aktualisiere SongListe in Present-Form
     SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
@@ -234,26 +231,14 @@ end;
 
 procedure TfrmPresent.ShowMeta;
 var showM: Boolean;
-  MetaSyntax: String;
 begin
-  showM := False;
-  {Check if meta should be shown at the beginning of song }
-  if ((frmSettings.cbMetaDataFirstSlide.Checked) and ((cur <= 0) or (SongMetaList.Strings[cur-1] <> SongMetaList.Strings[cur])))
-     then showM := True
-  {Check if meta should be shown at the end of song }
-  else if (frmSettings.cbMetaDataLastSlide.Checked) and (((frmSettings.cbEmptyFrame.Checked) and (cur < SongMetaList.Count-1) and (textList.Strings[cur+1] = '')) or ((frmSettings.cbEmptyFrame.Checked = False) and ((cur = SongMetaList.count-1) or (SongMetaList.Strings[cur+1] <> SongMetaList.Strings[cur]))))
-     then showM := True;
-
-  MetaSyntax := frmSettings.memoMetaData.Lines.Text;
-  lblMeta.Caption := getCurrentSong.ParseMetaData(MetaSyntax);
-  lblMeta.Visible := showM;
+  lblMeta.Caption := SlideList.Items[cur].PartContent.MetaText;
+  lblMeta.Visible := (SlideList.Items[cur].PartContent.MetaText <> '');
 end;
 
 procedure TfrmPresent.FormCreate(Sender: TObject);
 begin
   cur := 0;
-  present.textList := TStringList.Create;
-  present.songMetaList := TStringList.Create;
   FullScreen := False;
   self.WindowState:= wsMaximized;
   //LoadSettings;
@@ -266,7 +251,6 @@ end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);
 begin
-  textList.Free;
 end;
 
 procedure TfrmPresent.FormHide(Sender: TObject);
@@ -285,7 +269,7 @@ begin
 
   SwitchFullScreen(False);
   SongSelection.frmSongs.UpdateControls;
-  if Assigned(Songlist) then Songlist.Free;
+  if Assigned(SlideList) then SlideList.Free;
 end;
 
 procedure TfrmPresent.SwitchFullScreen;
@@ -368,13 +352,7 @@ end;
 function TfrmPresent.getCurrentSong: lyrics.TSong;
 var i, count: integer;
 begin
-  count := 0;
-  if cur <= 0 then exit(SongList.Items[count]);
-  for i := 1 to cur do
-  begin
-      if SongMetaList.Strings[i] <> SongMetaList.Strings[i-1] then count := count+1;
-  end;
-  Result := SongList.Items[count];
+  Result := SlideList.Items[cur].Song;
 end;
 
 procedure TfrmPresent.LoadBackground;

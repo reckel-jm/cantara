@@ -7,10 +7,13 @@ interface
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
-  lyrics, LCLTranslator, songeditor, SongTeX, welcome;
+  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides;
 
 type
   TSongPosition = record
+    // The Current Song
+    song: TSong;
+    // The current song name
     songname: string;
     stanzaposition: integer;
     songposition: integer;
@@ -452,14 +455,20 @@ end;
 procedure TfrmSongs.lbxSselectedClick(Sender: TObject); // Jump to the current Song – only in presentation mode
 var
   selectedSongName: String;
-  pos: Integer;
+  i, pos: Integer;
 begin
   if ProgramMode <> ModeSelection then
   begin
     selectedSongName := lbxSSelected.Items.Strings[lbxSSelected.ItemIndex];
-    pos := Present.songMetaList.IndexOf(selectedSongName);
-    present.frmPresent.showItem(pos);
-    if ProgramMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View
+    for i := 0 to frmPresent.SlideList.Count-1 do
+    begin
+      if frmPresent.SlideList.Items[i].Song.FileNameWithoutEnding = selectedSongName then
+      begin
+        frmPresent.showItem(i);
+        Break;
+      end;
+    end;
+    if ProgramMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View   }
   end;
 end;
 
@@ -691,15 +700,17 @@ var i,j: integer;
     completefilename: String;
     songname: string;
     stanza: string;
+    MetaSyntax: String;
     Song: lyrics.TSong;
     SongList: lyrics.TSongList;
+    SlideList, CurrentSongSlideList: TSlideList;
+    Slide: TSlide;
 begin
   present.cur:=0;
-  present.textList.Clear;
-  present.songMetaList.Clear;
   Songlist := lyrics.TSongList.Create;
   Songlist.FreeObjects:=False;
-  present.frmPresent.Songlist := lyrics.TSongList.Create;
+  // CreateSlideList
+  SlideList := TSlideList.Create(True);
   for i := 0 to lbxSSelected.Count-1 do
     begin
     songfile := TStringList.Create;
@@ -713,41 +724,76 @@ begin
       while repo[j].Name <> songname do
         inc(j);
     except
+      // show error if the song file can not be found or opened
       Application.MessageBox(PChar(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll])), PChar(StrError), MB_OK+MB_ICONERROR);
     end;
-    //Lade Song-menuFile abhängig von der Erweiterung!
+    // Lade Song-menuFile abhängig von der Erweiterung!
     completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
     Song.importSongfile(completefilename);
     Songlist.Add(song);
     songfile.Assign(song.output);
     //gehe durch Songdatei und füge gleiche Strophen zu einem String zusammen
     stanza := '';
+    CurrentSongSlideList := TSlideList.Create(False);
     for j := 0 to songfile.Count-1 do
     begin
       if (songfile.strings[j] = '') then
         begin
-          present.textList.Add(stanza);
-          present.songMetaList.Add(songname);
+          Slide := TSlide.Create;
+          Slide.Song := Song;
+          Slide.PartContent.MainText:= stanza;
           stanza := '';
+          CurrentSongSlideList.Add(Slide);
         end
         else stanza := stanza + songfile.Strings[j] + LineEnding;
     end;
     { Add the last stanza }
-    present.textList.Add(stanza);
-    present.songMetaList.Add(songname);
+    Slide := TSlide.Create;
+    Slide.Song := Song;
+    Slide.PartContent.MainText:= stanza;
+    CurrentSongSlideList.Add(Slide);
+    { Add Spoiler Text to the slides if desired in the settings }
+
+    if frmSettings.cbSpoiler.Checked then
+    begin
+      for j := 0 to CurrentSongSlideList.Count-2 do
+        CurrentSongSlideList.Items[j].PartContent.SpoilerText:=CurrentSongSlideList.Items[j+1].PartContent.MainText;
+    end;
+
+    { Add Meta Information to the slides if desired in the settings }
+
+    if (frmSettings.cbMetaDataFirstSlide.Checked) then
+    begin
+      MetaSyntax := frmSettings.memoMetaData.Lines.Text;
+      CurrentSongSlideList.Items[0].PartContent.MetaText := Song.ParseMetaData(MetaSyntax);
+    end;
+
+    if (frmSettings.cbMetaDataLastSlide.Checked) then
+    begin
+      MetaSyntax := frmSettings.memoMetaData.Lines.Text;
+      CurrentSongSlideList.Items[CurrentSongSlideList.Count-1].PartContent.MetaText := Song.ParseMetaData(MetaSyntax);
+    end;
+
     { Add an empty frame if selected in the settings }
     if frmSettings.cbEmptyFrame.Checked then
       begin
-        present.textList.Add('');
-        present.songMetaList.Add(songname);
+        // We create a slide but with no content
+        Slide := TSlide.Create;
+        Slide.Song := Song;
+        CurrentSongSlideList.Add(Slide);
       end;
+
+    { Append CurrentSongSlideList to SongSlideList }
+    SlideList.AddList(CurrentSongSlideList);
+    CurrentSongSlideList.Free;
+
     { Free the used Classes in the For-Loop }
     //if Assigned(Song) then Song.Free;
     if Assigned(songfile) then songfile.Free;
   end;
   // Kopiere Lieder in Zwischenablage
-  if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);
-  present.frmPresent.Songlist.Assign(SongList);
+  // if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);
+  frmPresent.SlideList := SlideList;
   if Assigned(SongList) then SongList.Free;
   end;
 
@@ -757,15 +803,16 @@ var
     i: integer;
 
 begin
-  SongPosition.songname:=present.songMetaList.Strings[present.cur];
+  SongPosition.song := frmPresent.SlideList.Items[Present.cur].Song;
+  SongPosition.songname:= SongPosition.song.FileNameWithoutEnding;
   SongPosition.songposition:= 1;
   SongPosition.stanzapositionstart := 0;
   for i := 1 To present.cur do
   begin
-    if present.songMetaList.Strings[i] <> present.SongMetaList.Strings[i-1] Then
+    if frmPresent.SlideList.Items[Present.cur].Song.filename <> frmPresent.SlideList.Items[Present.cur-1].Song.filename Then
       begin
-      inc(SongPosition.songposition);
-      SongPosition.stanzapositionstart := i;
+        inc(SongPosition.songposition);
+        SongPosition.stanzapositionstart := i;
       end;
   end;
   SongPosition.stanzaposition:=present.cur-SongPosition.stanzapositionstart+1;
@@ -849,7 +896,7 @@ begin
     finally
       FormImage.Free;
     end;
-    lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(Present.cur + 1) + ' / ' + IntToStr(Present.TextList.Count);
+    lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(Present.cur + 1) + ' / ' + IntToStr(frmPresent.SlideList.Count);
     FormResize(self);
     pnlMultiScreenResize(self);
   end;

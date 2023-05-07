@@ -63,9 +63,9 @@ object frmPresent: TfrmPresent
   end
   object lblMeta: TLabel
     Left = 16
-    Height = 42
-    Top = 475
-    Width = 80
+    Height = 62
+    Top = 455
+    Width = 54
     Align = alCustom
     Anchors = [akLeft, akBottom]
     BorderSpacing.Left = 5

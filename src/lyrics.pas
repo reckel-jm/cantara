@@ -5,7 +5,7 @@ unit lyrics;
 interface
 
 uses
-  Classes, SysUtils, Strings, fgl, Dialogs;
+  Classes, SysUtils, Strings, fgl, Dialogs, LazFileUtils;
 
 function StringListToString(StringList: TStringList): String;
 
@@ -30,6 +30,8 @@ type
     public
       { The file path where the song is located physically on the filesystem }
       filename: String;
+      { The file path without ending }
+      FileNameWithoutEnding: String;
       { contains the lyrics in their right order }
       output: TStringList;
       { contains all the MetaData of the songs }
@@ -62,6 +64,7 @@ type
       procedure importSongFormatFile;
       procedure importCCLISongFile;
       procedure importCCLISongFile(filepath: string);
+      procedure getSongNameWithoutEnding;
       function ParseMetaData(MetaLogic: string; count: integer): string;
       function compareWithOtherSong(TheSong: TSong): Boolean;
   end;
@@ -92,8 +95,17 @@ begin
   inherited;
 end;
 
+procedure TSong.getSongNameWithoutEnding;
+begin
+  if ExtractFileExt(self.filename) <> '' then
+    self.FileNameWithoutEnding := ExtractFilename(copy(self.filename,1,pos(ExtractFileExt(self.filename),self.filename)-1))
+  else
+    self.FileNameWithoutEnding := ExtractFilename(self.filename);
+end;
+
 procedure TSong.importCCLISongFile;
 begin
+  GetSongNameWithoutEnding;
   ConvertCCLIFile;
 end;
 
@@ -233,6 +245,9 @@ var i: integer;
   curLineText, key, value: String;
   contentStarted: boolean;
 begin
+  GetSongNameWithoutEnding;
+  // We add the title of the song from the filename (will be overridden if stated otherwise)
+  self.MetaDict.Add('title', self.FileNameWithoutEnding);
   contentStarted := False;
   for i := 0 to self.inputFile.Count-1 do
   begin

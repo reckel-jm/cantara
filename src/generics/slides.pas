@@ -14,7 +14,8 @@ type
     public
       MainText: String;
       SpoilerText: String;
-      AdditionalInformation: String;
+      MetaText: String;
+      constructor Create; overload;
   end;
 
   { Represents an abstraction of a slide to be shown. }
@@ -29,9 +30,17 @@ type
 
   end;
 
-  TSlideList = specialize TFPGObjectList<TSong>;
+  TSlideList = specialize TFPGObjectList<TSlide>;
 
 implementation
+  constructor TPartContent.Create;
+  begin
+    inherited;
+    MainText := '';
+    SpoilerText := '';
+    MetaText := '';
+  end;
+
   constructor TSlide.Create;
   begin
     inherited;
