@@ -60,6 +60,18 @@ type
     procedure ShowFirst;
   end;
 
+{ We need to overload in here with Word, so it can be used to determine if a pressed key is in one
+of the constant arrays defined below. }
+operator in (const AWord: Word; const AArray: array of Word): Boolean; inline;
+
+const
+  { Here we define the list of keys which can be used to move to the next slide (GoRightKeys), go to the previous slide (GoLeftKeys,
+  toggle fullscreen (ToggleFullscreenKeys) or quit the presentation (EscapeKeys). }
+  GoRightKeys: array[0..6] of Word = (VK_RIGHT, VK_DOWN, VK_SPACE, VK_RETURN, VK_MEDIA_NEXT_TRACK, VK_BROWSER_FORWARD, VK_NEXT);
+  GoLeftKeys: array[0..4] of Word = (VK_LEFT, VK_UP, VK_MEDIA_PREV_TRACK, VK_BROWSER_BACK, VK_PRIOR);
+  ToggleFullscreenKeys: array[0..1] of Word = (VK_F11, VK_F5);
+  EscapeKeys: array of Word = (VK_Escape);
+
 var
   frmPresent: TfrmPresent;
   cur: Integer; //The current Index of the String List which is shown
@@ -74,16 +86,26 @@ Uses
   SongSelection;
 {$R *.lfm}
 
+operator in (const AWord: Word; const AArray: array of Word): Boolean; inline;
+var
+  Item: Word;
+begin
+  for Item in AArray do
+    if Item = AWord then
+      Exit(True);
+  Result := False;
+end;
+
 { TfrmPresent }
 
 procedure TfrmPresent.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if ((key = VK_RIGHT) or (key = VK_DOWN) or (key = VK_SPACE) or (key = VK_RETURN)) then
+  if key in GoRightKeys then
     GoNext
-  else if ((key = VK_LEFT) or (key = VK_UP)) then GoPrevious
-  else if ((key = VK_F11) or (key = VK_F5)) then SwitchFullscreen()
-  else if (key = VK_Escape) then frmPresent.Hide;
+  else if key in GoLeftKeys then GoPrevious
+  else if key in ToggleFullscreenKeys then SwitchFullscreen()
+  else if key in EscapeKeys then frmPresent.Hide;
 end;
 
 procedure TfrmPresent.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -231,7 +253,6 @@ begin
 end;
 
 procedure TfrmPresent.ShowMeta;
-var showM: Boolean;
 begin
   lblMeta.Caption := SlideList.Items[cur].PartContent.MetaText;
   lblMeta.Visible := (SlideList.Items[cur].PartContent.MetaText <> '');
@@ -351,7 +372,6 @@ begin
 end;
 
 function TfrmPresent.getCurrentSong: lyrics.TSong;
-var i, count: integer;
 begin
   Result := SlideList.Items[cur].Song;
 end;

@@ -2,11 +2,11 @@ object frmSongs: TfrmSongs
   Left = 527
   Height = 820
   Top = 0
-  Width = 1000
+  Width = 869
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
   ClientHeight = 786
-  ClientWidth = 1000
+  ClientWidth = 869
   Menu = MainMenu
   OnActivate = FormActivate
   OnChangeBounds = FormResize
@@ -19,16 +19,17 @@ object frmSongs: TfrmSongs
   OnShow = FormShow
   OnWindowStateChange = FormResize
   Position = poScreenCenter
+  LCLVersion = '2.2.6.0'
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = PnlSplitter
     AnchorSideBottom.Control = grbSettings
-    Left = 4145
+    Left = 3605
     Height = 744
     Top = 0
-    Width = 2652
+    Width = 2302
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     DragMode = dmAutomatic
@@ -55,7 +56,7 @@ object frmSongs: TfrmSongs
     Height = 36
     Hint = 'Suchen...'
     Top = 0
-    Width = 4100
+    Width = 3560
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
     OnChange = edtSearchChange
@@ -70,7 +71,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
-    Left = 6797
+    Left = 5907
     Height = 744
     Top = 0
     Width = 0
@@ -203,7 +204,7 @@ object frmSongs: TfrmSongs
     Left = 0
     Height = 708
     Top = 36
-    Width = 4100
+    Width = 3560
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
@@ -224,7 +225,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = pnlMultiScreen
     AnchorSideBottom.Control = grbSettings
     AnchorSideBottom.Side = asrBottom
-    Left = 6797
+    Left = 5907
     Height = 786
     Top = 0
     Width = 1
@@ -239,7 +240,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = lbxSselected
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
-    Left = 4100
+    Left = 3560
     Height = 744
     Top = 0
     Width = 45
@@ -343,10 +344,10 @@ object frmSongs: TfrmSongs
     Left = 0
     Height = 42
     Top = 744
-    Width = 1000
+    Width = 869
     Align = alBottom
     ClientHeight = 42
-    ClientWidth = 1000
+    ClientWidth = 869
     ParentFont = False
     TabOrder = 6
     OnClick = grbSettingsClick
@@ -363,7 +364,7 @@ object frmSongs: TfrmSongs
       TabStop = False
     end
     object btnSettings: TButton
-      Left = 865
+      Left = 734
       Height = 40
       Top = 1
       Width = 134
