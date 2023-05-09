@@ -298,7 +298,7 @@ object frmSettings: TfrmSettings
       Width = 271
       Anchors = [akTop, akRight]
       BorderSpacing.Right = 5
-      Caption = 'Change Image Transparancy/Brightness:'
+      Caption = 'Change Image Transparency/Brightness:'
       ParentColor = False
     end
     object lblImageExplainer: TLabel
