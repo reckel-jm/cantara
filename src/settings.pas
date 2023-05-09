@@ -75,7 +75,7 @@ var
   settingsFile: TINIFile;
 
 ResourceString
-  strTransparency = 'Increase transparancy by ';
+  strTransparency = 'Increase transparency by ';
   strBrightness = 'Increase brightness by ';
   strPictureOriginalState = 'Picture is shown as it is';
   strErrorCaption = 'Error';

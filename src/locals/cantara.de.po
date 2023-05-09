@@ -72,7 +72,7 @@ msgid "Picture is shown as it is"
 msgstr "Bild wird im Originalzustand gezeigt"
 
 #: settings.strtransparency
-msgid "Increase transparancy by "
+msgid "Increase transparency by "
 msgstr "Erhöhe die Transparenz um "
 
 #: settings.strvalidsongrepository
@@ -356,7 +356,7 @@ msgid "Song Repo Path:"
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparancy/Brightness:"
+msgid "Change Image Transparency/Brightness:"
 msgstr ""
 
 #: tfrmsettings.lblimageexplainer.caption
