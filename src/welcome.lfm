@@ -10,6 +10,7 @@ object frmWelcome: TfrmWelcome
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
+  LCLVersion = '2.2.6.0'
   object Notebook: TNotebook
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -199,8 +200,8 @@ object frmWelcome: TfrmWelcome
     Top = 439
     Width = 718
     Anchors = [akLeft, akRight, akBottom]
-    ClientHeight = 50
-    ClientWidth = 702
+    ClientHeight = 38
+    ClientWidth = 706
     ParentBackground = False
     TabOrder = 1
     object btnBack: TButton

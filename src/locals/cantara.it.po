@@ -368,9 +368,7 @@ msgid "Song Repo Path:"
 msgstr "Percorso Repo brano:"
 
 #: tfrmsettings.lblimagebrightness.caption
-#, fuzzy
-#| msgid "Change Image Transparency/Brightness:"
-msgid "Change Image Transparancy/Brightness:"
+msgid "Change Image Transparency/Brightness:"
 msgstr "Cambia trasparenza/luminosità dell'immagine:"
 
 #: tfrmsettings.lblimageexplainer.caption

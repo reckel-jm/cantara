@@ -11,6 +11,7 @@ object frmInfo: TfrmInfo
   ClientWidth = 497
   OnCreate = FormCreate
   Position = poMainFormCenter
+  LCLVersion = '2.2.6.0'
   object lblAuthor: TLabel
     Left = 0
     Height = 22

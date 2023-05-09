@@ -5,8 +5,8 @@ object frmSongs: TfrmSongs
   Width = 869
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
-  ClientHeight = 786
-  ClientWidth = 869
+  ClientHeight = 206
+  ClientWidth = 320
   Menu = MainMenu
   OnActivate = FormActivate
   OnChangeBounds = FormResize
@@ -126,7 +126,7 @@ object frmSongs: TfrmSongs
       Align = alTop
       BorderWidth = 1
       BorderStyle = bsSingle
-      ClientHeight = 46
+      ClientHeight = 50
       ClientWidth = 0
       TabOrder = 0
       object btnGoLeft: TButton

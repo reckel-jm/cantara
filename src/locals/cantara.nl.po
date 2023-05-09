@@ -73,8 +73,6 @@ msgid "Picture is shown as it is"
 msgstr "De afbeelding wordt onbewerkt getoond"
 
 #: settings.strtransparency
-#, fuzzy
-#| msgid "Increase transparancy by "
 msgid "Increase transparency by "
 msgstr "Doorzichtigheid verhogen met "
 
@@ -371,7 +369,7 @@ msgid "Song Repo Path:"
 msgstr "Locatie van nummer:"
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparancy/Brightness:"
+msgid "Change Image Transparency/Brightness:"
 msgstr "Achtergrondhelderheid/-doorzichtigheid wijzigen:"
 
 #: tfrmsettings.lblimageexplainer.caption

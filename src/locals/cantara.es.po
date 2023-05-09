@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
@@ -368,9 +368,7 @@ msgid "Song Repo Path:"
 msgstr "Ruta del repositorio de canciones:"
 
 #: tfrmsettings.lblimagebrightness.caption
-#, fuzzy
-#| msgid "Change Image Transparency/Brightness:"
-msgid "Change Image Transparancy/Brightness:"
+msgid "Change Image Transparency/Brightness:"
 msgstr "Cambiar la transparencia/brillo de la imagen:"
 
 #: tfrmsettings.lblimageexplainer.caption
