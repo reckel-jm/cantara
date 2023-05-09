@@ -163,30 +163,30 @@ msgstr "Folie"
 #: tfrmdisplaysongcontent.btnarchivate.caption
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
 msgid "Archivate"
-msgstr ""
+msgstr "Archivieren"
 
 #: tfrmdisplaysongcontent.btnclose.caption
 msgctxt "tfrmdisplaysongcontent.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
 msgid "Convert CCLI File to Song Format"
-msgstr ""
+msgstr "Zum CCLI-Dateiformat konvertieren"
 
 #: tfrmdisplaysongcontent.btncopy.caption
 msgctxt "tfrmdisplaysongcontent.btncopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "Kopieren"
 
 #: tfrmdisplaysongcontent.btnrename.caption
 msgid "Rename"
-msgstr ""
+msgstr "Umbenennen"
 
 #: tfrmdisplaysongcontent.btnsave.caption
 msgctxt "tfrmdisplaysongcontent.btnsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: tfrmdisplaysongcontent.labelccliimporthint.caption
 msgid ""
@@ -298,9 +298,10 @@ msgid "Background Image..."
 msgstr ""
 
 #: tfrmsettings.btnclose.caption
+#, fuzzy
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
@@ -356,7 +357,7 @@ msgid "Song Repo Path:"
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparency/Brightness:"
+msgid "Change Image Transparancy/Brightness:"
 msgstr ""
 
 #: tfrmsettings.lblimageexplainer.caption
@@ -397,27 +398,30 @@ msgid "File"
 msgstr ""
 
 #: tfrmsongedit.menuitemarchivate.caption
+#, fuzzy
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
 msgid "Archivate"
-msgstr ""
+msgstr "Archivieren"
 
 #: tfrmsongedit.menuitemclose.caption
 msgid "Close Editor"
 msgstr ""
 
 #: tfrmsongedit.menuitemcopy.caption
+#, fuzzy
 msgctxt "tfrmsongedit.menuitemcopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "Kopieren"
 
 #: tfrmsongedit.menuitemnew.caption
 msgid "New"
 msgstr ""
 
 #: tfrmsongedit.menuitemsave.caption
+#, fuzzy
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
@@ -484,9 +488,10 @@ msgid "Information about the Program"
 msgstr ""
 
 #: tfrmsongs.itemend.caption
+#, fuzzy
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: tfrmsongs.itemexporttexfile.caption
 msgid "Export Selection with Content..."
