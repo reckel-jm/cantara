@@ -7,7 +7,7 @@ interface
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
-  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides;
+  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch;
 
 type
   TSongPosition = record
@@ -60,6 +60,7 @@ type
     itemImportTeXFile: TMenuItem;
     itemShowWelcomeAssistent: TMenuItem;
     itemOpenInEditor: TMenuItem;
+    itemFulltextSearch: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     OpenSongTeXFileDialog: TOpenDialog;
@@ -96,6 +97,7 @@ type
     procedure ImageUpdaterTimer(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
     procedure itemExportTeXFileClick(Sender: TObject);
+    procedure itemFulltextSearchClick(Sender: TObject);
     procedure itemImportTeXFileClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
     procedure itemOpenInEditorClick(Sender: TObject);
@@ -351,6 +353,11 @@ end;
 procedure TfrmSongs.itemExportTeXFileClick(Sender: TObject);
 begin
   ExportSelectionAsTeXFile;
+end;
+
+procedure TfrmSongs.itemFulltextSearchClick(Sender: TObject);
+begin
+  frmWrapperFulltextSearch.ShowModal(self); // We overload this function so that the child know the parent and it's size
 end;
 
 procedure TfrmSongs.itemImportTeXFileClick(Sender: TObject);

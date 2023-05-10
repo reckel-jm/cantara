@@ -70,10 +70,24 @@ type
   end;
   TSongList = specialize TFPGObjectList<TSong>;
 
+operator < (var A, B: TSong): Boolean;
+operator > (var A, B: TSong): Boolean;
+//operator = (const A, B: TSong): Boolean;
+
 const
   CCLIWEBPAGE:string = 'www.ccli.com';
 
 implementation
+
+operator < (var A, B: TSong): Boolean;
+begin
+  Result := A.filename < B.filename;
+end;
+
+operator > (var A, B: TSong): Boolean;
+begin
+  Result := A.filename > B.filename;
+end;
 
 { Create all Lists and Dictionaries with the Constructor }
 constructor TSong.Create;

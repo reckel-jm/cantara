@@ -51,7 +51,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -92,7 +92,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -133,7 +133,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -183,7 +183,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -236,7 +236,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -290,7 +290,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="13">
+    <Units Count="15">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -370,6 +370,21 @@
         <Filename Value="generics/slides.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="frames/fulltextsearch.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmFulltextsearch"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="forms/formfulltextsearch.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmWrapperFulltextSearch"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormFulltextSearch"/>
+      </Unit14>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -379,7 +394,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="frames;exporters;tests;generics"/>
+      <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>

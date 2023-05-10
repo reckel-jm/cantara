@@ -438,6 +438,11 @@ object frmSongs: TfrmSongs
         Caption = 'Song Lyrics...'
         OnClick = itemSongEditorClick
       end
+      object itemFulltextSearch: TMenuItem
+        Caption = 'Full Text Search...'
+        ShortCut = 16454
+        OnClick = itemFulltextSearchClick
+      end
       object itemSettings: TMenuItem
         Caption = 'Settings...'
         ShortCut = 16453

@@ -234,6 +234,22 @@ msgstr "Cantara es software libre que se ha hecho con la esperanza de que pueda 
 msgid "Welcome to the Editor!"
 msgstr "¡Bienvenido al Editor!"
 
+#: tfrmfulltextsearch.labalcreateindex.caption
+msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
+msgid "Create Index..."
+msgstr ""
+
+#: tfrmfulltextsearch.labelentersearchterm.caption
+msgid "Enter search term"
+msgstr ""
+
+#: tfrmfulltextsearch.labelnoitemsfound.caption
+msgid ""
+"No items found...\n"
+"\n"
+"Try changing the search terms."
+msgstr ""
+
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
 msgstr "Abrir el repositorio Github con el navegador"
@@ -506,6 +522,10 @@ msgstr "Exportar selección con contenido..."
 msgid "Exports a SongTeX file which contains all selected song files with their content."
 msgstr "Exporta un archivo SongTeX que contiene todos los archivos de canciones seleccionados con su contenido."
 
+#: tfrmsongs.itemfulltextsearch.caption
+msgid "Full Text Search..."
+msgstr ""
+
 #: tfrmsongs.itemimporttexfile.caption
 msgid "Import Selection with Content..."
 msgstr "Importar selección con contenido..."
@@ -649,6 +669,10 @@ msgstr "\"Amazing Grace\" ha sido añadido a su repositorio. Ahora puede continu
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
 msgstr "¡Enhorabuena! Cantara ya está listo para su uso!"
+
+#: tfrmwrapperfulltextsearch.caption
+msgid "Fulltext Search"
+msgstr ""
 
 #: welcome.btnnextfinish
 msgid "Finish"
