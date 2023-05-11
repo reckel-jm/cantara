@@ -696,16 +696,13 @@ begin
 end;
 
 procedure TfrmSongs.CreatePresentationData;
-var i,j: integer;
-    songfile: TStringList;
+var i,j, MaxSlideLineLength: integer;
     completefilename: String;
     songname: string;
-    stanza: string;
     MetaSyntax: String;
     Song: lyrics.TSong;
     SongList: lyrics.TSongList;
-    SlideList, CurrentSongSlideList: TSlideList;
-    Slide: TSlide;
+    SlideList: TSlideList;
 begin
   present.cur:=0;
   Songlist := lyrics.TSongList.Create;
@@ -714,9 +711,8 @@ begin
   SlideList := TSlideList.Create(True);
   for i := 0 to lbxSSelected.Count-1 do
     begin
-    songfile := TStringList.Create;
     Song := lyrics.TSong.Create;
-    Song.MaxSlideLineLength:=Settings.frmSettings.seWrapLines.Value;
+    MaxSlideLineLength:=Settings.frmSettings.seWrapLines.Value;
     //Get Song Name
     songname := lbxSSelected.Items.Strings[i];
     //suche Dateinamen in repo-Array
@@ -732,65 +728,8 @@ begin
     completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
     Song.importSongfile(completefilename);
     Songlist.Add(song);
-    songfile.Assign(song.output);
-    //gehe durch Songdatei und füge gleiche Strophen zu einem String zusammen
-    stanza := '';
-    CurrentSongSlideList := TSlideList.Create(False);
-    for j := 0 to songfile.Count-1 do
-    begin
-      if (songfile.strings[j] = '') then
-        begin
-          Slide := TSlide.Create;
-          Slide.Song := Song;
-          Slide.PartContent.MainText:= stanza;
-          stanza := '';
-          CurrentSongSlideList.Add(Slide);
-        end
-        else stanza := stanza + songfile.Strings[j] + LineEnding;
-    end;
-    { Add the last stanza }
-    Slide := TSlide.Create;
-    Slide.Song := Song;
-    Slide.PartContent.MainText:= stanza;
-    CurrentSongSlideList.Add(Slide);
-    { Add Spoiler Text to the slides if desired in the settings }
-
-    if frmSettings.cbSpoiler.Checked then
-    begin
-      for j := 0 to CurrentSongSlideList.Count-2 do
-        CurrentSongSlideList.Items[j].PartContent.SpoilerText:=CurrentSongSlideList.Items[j+1].PartContent.MainText;
-    end;
-
-    { Add Meta Information to the slides if desired in the settings }
-
-    if (frmSettings.cbMetaDataFirstSlide.Checked) then
-    begin
-      MetaSyntax := frmSettings.memoMetaData.Lines.Text;
-      CurrentSongSlideList.Items[0].PartContent.MetaText := Song.ParseMetaData(MetaSyntax);
-    end;
-
-    if (frmSettings.cbMetaDataLastSlide.Checked) then
-    begin
-      MetaSyntax := frmSettings.memoMetaData.Lines.Text;
-      CurrentSongSlideList.Items[CurrentSongSlideList.Count-1].PartContent.MetaText := Song.ParseMetaData(MetaSyntax);
-    end;
-
-    { Add an empty frame if selected in the settings }
-    if frmSettings.cbEmptyFrame.Checked then
-      begin
-        // We create a slide but with no content
-        Slide := TSlide.Create;
-        Slide.Song := Song;
-        CurrentSongSlideList.Add(Slide);
-      end;
-
-    { Append CurrentSongSlideList to SongSlideList }
-    SlideList.AddList(CurrentSongSlideList);
-    CurrentSongSlideList.Free;
-
-    { Free the used Classes in the For-Loop }
-    //if Assigned(Song) then Song.Free;
-    if Assigned(songfile) then songfile.Free;
+    MetaSyntax := frmSettings.memoMetaData.Lines.Text;
+    SlideList.AddList(CreatePresentationDataFromSong(Song, frmSettings.cbSpoiler.Checked, frmSettings.cbMetaDataFirstSlide.Checked, frmSettings.cbMetaDataLastSlide.Checked, MetaSyntax, frmSettings.cbEmptyFrame.Checked, MaxSlideLineLength));
   end;
   // Kopiere Lieder in Zwischenablage
   // if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);

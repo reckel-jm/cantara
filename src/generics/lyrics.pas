@@ -70,6 +70,7 @@ type
   end;
   TSongList = specialize TFPGObjectList<TSong>;
 
+
 operator < (var A, B: TSong): Boolean;
 operator > (var A, B: TSong): Boolean;
 //operator = (const A, B: TSong): Boolean;
