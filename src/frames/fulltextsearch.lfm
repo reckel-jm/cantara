@@ -64,6 +64,7 @@ object FrmFulltextsearch: TFrmFulltextsearch
         Width = 424
         Align = alClient
         ItemHeight = 50
+        OnDblClick = ListBoxResultsDblClick
         OnDrawItem = ListBoxResultsDrawItem
         Style = lbOwnerDrawFixed
         TabOrder = 0
@@ -92,6 +93,19 @@ object FrmFulltextsearch: TFrmFulltextsearch
         Align = alClient
         Alignment = taCenter
         Caption = 'No items found...'#10#10'Try changing the search terms.'
+        Layout = tlCenter
+        ParentColor = False
+      end
+    end
+    object EnterKeyword: TPage
+      object LabelEnterKeyword: TLabel
+        Left = 0
+        Height = 214
+        Top = 0
+        Width = 424
+        Align = alClient
+        Alignment = taCenter
+        Caption = 'Enter a search term...'
         Layout = tlCenter
         ParentColor = False
       end

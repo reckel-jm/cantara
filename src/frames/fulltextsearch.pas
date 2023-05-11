@@ -24,7 +24,9 @@ type
   TFrmFulltextsearch = class(TFrame)
     EditSearchTerm: TEdit;
     Content: TNotebook;
+    EnterKeyword: TPage;
     LabalCreateIndex: TLabel;
+    LabelEnterKeyword: TLabel;
     LabelEnterSearchTerm: TLabel;
     LabelNoItemsFound: TLabel;
     ListBoxResults: TListBox;
@@ -32,6 +34,7 @@ type
     NoResult: TPage;
     SearchResults: TPage;
     procedure EditSearchTermChange(Sender: TObject);
+    procedure ListBoxResultsDblClick(Sender: TObject);
     procedure ListBoxResultsDrawItem(Control: TWinControl; Index: Integer;
       ARect: TRect; State: TOwnerDrawState);
     procedure NoResultBeforeShow(ASender: TObject; ANewPage: TPage;
@@ -76,10 +79,11 @@ begin
     IndexEntry.Song := TempSong;
     TempSong.output.Delimiter := Char(LineEnding);
     IndexEntry.ContentIndex:=Trim(TempSong.output.Text);
+    IndexEntry.ContentIndex:=StringReplace(IndexEntry.ContentIndex, LineEnding, ' ', [rfReplaceAll]);
     IndexList.Add(IndexEntry);
   end;
   // Change to the Notebook page with the Listbox
-  Content.PageIndex:=1;
+  Content.PageIndex:=3;
 end;
 
 destructor TFrmFulltextSearch.Destroy;
@@ -90,16 +94,22 @@ end;
 
 procedure TFrmFulltextsearch.EditSearchTermChange(Sender: TObject);
 var i: Integer;
-  ContentString, AddedContent: String;
+  SearchTerm, ContentString, AddedContent: String;
   PosInFileName, PosInContentIndex: Integer;
 begin
+  SearchTerm := Trim(EditSearchTerm.Text);
+  if SearchTerm = '' then
+  begin
+    Content.PageIndex:=3;
+    Exit;
+  end;
   Content.PageIndex:=1;
   ListboxResults.Clear;
   for i := 0 to IndexList.Count-1 do
   begin
     ContentString := IndexList.Items[i].ContentIndex;
-    PosInFileName := Pos(LowerCase(EditSearchTerm.Text), LowerCase(IndexList.Items[i].Song.FileNameWithoutEnding));
-    PosInContentIndex := Pos(LowerCase(EditSearchTerm.Text), LowerCase(ContentString));
+    PosInFileName := Pos(LowerCase(SearchTerm), LowerCase(IndexList.Items[i].Song.FileNameWithoutEnding));
+    PosInContentIndex := Pos(LowerCase(SearchTerm), LowerCase(ContentString));
     if (PosInFileName > 0) or
       (PosInContentIndex > 0) then
        begin
@@ -107,13 +117,18 @@ begin
          AddedContent += LineEnding;
          ContentString := IndexList.Items[i].ContentIndex;
          if PosInContentIndex > 0 then
-           AddedContent += ContentString[PosInContentIndex-(Min(PosInContentIndex,60))+1..PosInContentIndex+Min(Length(ContentString)-PosInContentIndex, 60)-1]
+           AddedContent += ContentString[PosInContentIndex-(Min(PosInContentIndex,80))+1..PosInContentIndex+Min(Length(ContentString)-PosInContentIndex, 80)-1]
          else if PosInFileName > 0 then
            AddedContent += StrSongTitle;
          ListBoxResults.Items.Add(AddedContent);
        end;
   end;
   if ListBoxResults.Count = 0 then Content.PageIndex := 2;
+end;
+
+procedure TFrmFulltextsearch.ListBoxResultsDblClick(Sender: TObject);
+begin
+  frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(LineEnding)[0]);
 end;
 
 procedure TFrmFulltextsearch.ListBoxResultsDrawItem(Control: TWinControl;
@@ -137,7 +152,7 @@ begin
   if length(StringParts) > 1 then
   begin
     ListBoxResults.Canvas.Font.Bold:=False;
-    ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top+2+Round(FontBaseHeight*1.33), ListBoxResults.Items[Index]);
+    ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top+2+Round(FontBaseHeight*1.33), StringParts[1]);
   end;
 end;
 

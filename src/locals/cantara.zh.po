@@ -237,6 +237,10 @@ msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
 msgid "Create Index..."
 msgstr ""
 
+#: tfrmfulltextsearch.labelenterkeyword.caption
+msgid "Enter a search term..."
+msgstr ""
+
 #: tfrmfulltextsearch.labelentersearchterm.caption
 msgid "Enter search term"
 msgstr ""
