@@ -564,7 +564,9 @@ msgid "Reload Song Repository"
 msgstr "Nummermap herladen"
 
 #: tfrmsongs.itemsave.caption
-msgid "Save Selection without Content..."
+#, fuzzy
+#| msgid "Save Selection without Content..."
+msgid "Save Selection without Content as a simple text file..."
 msgstr "Selectie met inhoud opslaan…"
 
 #: tfrmsongs.itemsettings.caption
@@ -592,14 +594,24 @@ msgstr "Actieve presentatie:"
 msgid "Edit"
 msgstr "Bewerken"
 
+#: tfrmsongs.menuexport.caption
+msgid "Export"
+msgstr ""
+
 #: tfrmsongs.menufile.caption
+#, fuzzy
+#| msgid "File"
 msgctxt "tfrmsongs.menufile.caption"
-msgid "File"
+msgid "Program"
 msgstr "Bestand"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
 msgstr "Hulp"
+
+#: tfrmsongs.menuimport.caption
+msgid "Import"
+msgstr ""
 
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"

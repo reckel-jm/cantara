@@ -564,7 +564,9 @@ msgid "Reload Song Repository"
 msgstr "Liederverzeichnis erneut laden"
 
 #: tfrmsongs.itemsave.caption
-msgid "Save Selection without Content..."
+#, fuzzy
+#| msgid "Save Selection without Content..."
+msgid "Save Selection without Content as a simple text file..."
 msgstr "Auswahl ohne Inhalt speichern..."
 
 #: tfrmsongs.itemsettings.caption
@@ -592,14 +594,24 @@ msgstr "Die Präsentation läuft:"
 msgid "Edit"
 msgstr "Bearbeiten"
 
+#: tfrmsongs.menuexport.caption
+msgid "Export"
+msgstr ""
+
 #: tfrmsongs.menufile.caption
+#, fuzzy
+#| msgid "File"
 msgctxt "tfrmsongs.menufile.caption"
-msgid "File"
+msgid "Program"
 msgstr "Datei"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
 msgstr "Hilfe"
+
+#: tfrmsongs.menuimport.caption
+msgid "Import"
+msgstr ""
 
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"

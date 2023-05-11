@@ -388,30 +388,7 @@ object frmSongs: TfrmSongs
     Left = 312
     Top = 408
     object menuFile: TMenuItem
-      Caption = 'File'
-      object itemLoad: TMenuItem
-        Caption = 'Load Selection without Content...'
-        ShortCut = 16463
-        OnClick = itemLoadClick
-      end
-      object itemSave: TMenuItem
-        Caption = 'Save Selection without Content...'
-        ShortCut = 16467
-        OnClick = itemSaveClick
-      end
-      object itemImportTeXFile: TMenuItem
-        Caption = 'Import Selection with Content...'
-        Hint = 'Imports a SongTeX file which contains all selected song files with their content.'#10'If the file does not exist in the song repository yet, it will be automatically added to.'
-        OnClick = itemImportTeXFileClick
-      end
-      object itemExportTeXFile: TMenuItem
-        Caption = 'Export Selection with Content...'
-        Hint = 'Exports a SongTeX file which contains all selected song files with their content.'
-        OnClick = itemExportTeXFileClick
-      end
-      object Separator1: TMenuItem
-        Caption = '-'
-      end
+      Caption = 'Program'
       object itemReloadSongList: TMenuItem
         Caption = 'Reload Song Repository'
         ShortCut = 16462
@@ -447,6 +424,32 @@ object frmSongs: TfrmSongs
         Caption = 'Settings...'
         ShortCut = 16453
         OnClick = btnSettingsClick
+      end
+    end
+    object menuImport: TMenuItem
+      Caption = 'Import'
+      object itemLoad: TMenuItem
+        Caption = 'Load Selection without Content...'
+        ShortCut = 16463
+        OnClick = itemLoadClick
+      end
+      object itemImportTeXFile: TMenuItem
+        Caption = 'Import Selection with Content...'
+        Hint = 'Imports a SongTeX file which contains all selected song files with their content.'#10'If the file does not exist in the song repository yet, it will be automatically added to.'
+        OnClick = itemImportTeXFileClick
+      end
+    end
+    object menuExport: TMenuItem
+      Caption = 'Export'
+      object itemSave: TMenuItem
+        Caption = 'Save Selection without Content as a simple text file...'
+        ShortCut = 16467
+        OnClick = itemSaveClick
+      end
+      object itemExportTeXFile: TMenuItem
+        Caption = 'Export Selection with Content...'
+        Hint = 'Exports a SongTeX file which contains all selected song files with their content.'
+        OnClick = itemExportTeXFileClick
       end
     end
     object menuHelp: TMenuItem

@@ -61,12 +61,13 @@ type
     itemShowWelcomeAssistent: TMenuItem;
     itemOpenInEditor: TMenuItem;
     itemFulltextSearch: TMenuItem;
+    menuImport: TMenuItem;
+    menuExport: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     OpenSongTeXFileDialog: TOpenDialog;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
-    Separator1: TMenuItem;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     ImageUpdater: TTimer;
