@@ -809,7 +809,7 @@ begin
   SongPosition.stanzapositionstart := 0;
   for i := 1 To present.cur do
   begin
-    if frmPresent.SlideList.Items[i].Song.filename <> frmPresent.SlideList.Items[i-1].Song.filename Then
+    if frmPresent.SlideList.Items[i].Song.CompleteFilePath <> frmPresent.SlideList.Items[i-1].Song.CompleteFilePath Then
       begin
         inc(SongPosition.songposition);
         SongPosition.stanzapositionstart := i;

@@ -29,7 +29,7 @@ type
   TSong = Class
     public
       { The file path where the song is located physically on the filesystem }
-      filename: String;
+      CompleteFilePath: String;
       { The file path without ending }
       FileNameWithoutEnding: String;
       { contains the lyrics in their right order }
@@ -81,12 +81,12 @@ implementation
 
 operator < (var A, B: TSong): Boolean;
 begin
-  Result := A.filename < B.filename;
+  Result := A.CompleteFilePath < B.CompleteFilePath;
 end;
 
 operator > (var A, B: TSong): Boolean;
 begin
-  Result := A.filename > B.filename;
+  Result := A.CompleteFilePath > B.CompleteFilePath;
 end;
 
 { Create all Lists and Dictionaries with the Constructor }
@@ -111,10 +111,10 @@ end;
 
 procedure TSong.getSongNameWithoutEnding;
 begin
-  if ExtractFileExt(self.filename) <> '' then
-    self.FileNameWithoutEnding := ExtractFilename(copy(self.filename,1,pos(ExtractFileExt(self.filename),self.filename)-1))
+  if ExtractFileExt(self.CompleteFilePath) <> '' then
+    self.FileNameWithoutEnding := ExtractFilename(copy(self.CompleteFilePath,1,pos(ExtractFileExt(self.CompleteFilePath),self.CompleteFilePath)-1))
   else
-    self.FileNameWithoutEnding := ExtractFilename(self.filename);
+    self.FileNameWithoutEnding := ExtractFilename(self.CompleteFilePath);
 end;
 
 procedure TSong.importCCLISongFile;
@@ -125,7 +125,7 @@ end;
 
 procedure TSong.importCCLISongFile(filepath: String);
 begin
-  self.filename := filepath;
+  self.CompleteFilePath := filepath;
   self.importCCLISongFile;
 end;
 
@@ -260,7 +260,7 @@ var i: integer;
   contentStarted: boolean;
 begin
   GetSongNameWithoutEnding;
-  // We add the title of the song from the filename (will be overridden if stated otherwise)
+  // We add the title of the song from the CompleteFilePath (will be overridden if stated otherwise)
   self.MetaDict.Add('title', self.FileNameWithoutEnding);
   contentStarted := False;
   for i := 0 to self.inputFile.Count-1 do
@@ -333,8 +333,8 @@ end;
 procedure TSong.importSongFile;
 var songfileextension: String;
 begin
-  self.inputFile.LoadFromFile(self.filename);
-  songfileextension := ExtractFileExt(self.filename);
+  self.inputFile.LoadFromFile(self.CompleteFilePath);
+  songfileextension := ExtractFileExt(self.CompleteFilePath);
   if songfileextension = '.song' then
     self.importSongFormatFile
   else if self.IsCCLIFile then // CCLI-Songselect file
@@ -345,7 +345,7 @@ end;
 
 procedure TSong.importSongFile(filepath: String);
 begin
-  self.filename:=filepath;
+  self.CompleteFilePath:=filepath;
   importSongFile;
 end;
 
@@ -420,9 +420,9 @@ end;
 function TSong.IsCCLIFile: Boolean;
 var i: integer;
 begin
-  if ExtractFileExt(self.filename) = '.song' then exit(False);
-  if ExtractFileExt(self.filename) = '.ccli' then exit(True)
-  else if ExtractFileExt(self.filename) = '.txt' then
+  if ExtractFileExt(self.CompleteFilePath) = '.song' then exit(False);
+  if ExtractFileExt(self.CompleteFilePath) = '.ccli' then exit(True)
+  else if ExtractFileExt(self.CompleteFilePath) = '.txt' then
   begin
   for i := 0 to inputFile.Count-1 do
       if (pos(CCLIWEBPAGE, inputfile.Strings[i]) > 0) or (pos('CCLI', inputfile.Strings[i]) > 0) then exit(True);

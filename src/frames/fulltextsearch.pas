@@ -77,7 +77,7 @@ begin
     TempSong := TSong.Create;
     TempSong.importSongfile(RepoEntry.FilePath);
     IndexEntry.Song := TempSong;
-    TempSong.output.Delimiter := Char(LineEnding);
+    TempSong.output.Delimiter:= Char(' ');
     IndexEntry.ContentIndex:=Trim(TempSong.output.Text);
     IndexEntry.ContentIndex:=StringReplace(IndexEntry.ContentIndex, LineEnding, ' ', [rfReplaceAll]);
     IndexList.Add(IndexEntry);
@@ -117,7 +117,7 @@ begin
          AddedContent += LineEnding;
          ContentString := IndexList.Items[i].ContentIndex;
          if PosInContentIndex > 0 then
-           AddedContent += ContentString[PosInContentIndex-(Min(PosInContentIndex,80))+1..PosInContentIndex+Min(Length(ContentString)-PosInContentIndex, 80)-1]
+           AddedContent += ContentString[PosInContentIndex-(Min(PosInContentIndex,70))+1..PosInContentIndex+Min(Length(ContentString)-PosInContentIndex, 70)-1]
          else if PosInFileName > 0 then
            AddedContent += StrSongTitle;
          ListBoxResults.Items.Add(AddedContent);
