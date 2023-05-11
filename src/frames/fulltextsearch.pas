@@ -74,7 +74,7 @@ begin
     TempSong := TSong.Create;
     TempSong.importSongfile(RepoEntry.FilePath);
     IndexEntry.Song := TempSong;
-    TempSong.output.Delimiter := LineEnding;
+    TempSong.output.Delimiter := Char(LineEnding);
     IndexEntry.ContentIndex:=Trim(TempSong.output.Text);
     IndexList.Add(IndexEntry);
   end;
