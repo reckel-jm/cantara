@@ -17,6 +17,10 @@ msgstr ""
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
 msgstr ""
 
+#: fulltextsearch.strsongtitle
+msgid "Song Title"
+msgstr ""
+
 #: info.strauthor
 msgid "Author"
 msgstr ""

@@ -3,7 +3,6 @@ object frmWrapperFulltextSearch: TfrmWrapperFulltextSearch
   Height = 283
   Top = 34
   Width = 535
-  BorderStyle = bsNone
   BorderWidth = 5
   Caption = 'Fulltext Search'
   ClientHeight = 283
@@ -34,6 +33,7 @@ object frmWrapperFulltextSearch: TfrmWrapperFulltextSearch
       AnchorSideBottom.Control = Wrapper
       Height = 232
       Width = 525
+      PageIndex = 0
       inherited LoadIndex: TPage
         inherited LabalCreateIndex: TLabel
           Left = 211

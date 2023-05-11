@@ -28,6 +28,10 @@ msgstr "El archivo no se puede convertir. ¡Asegúrese de que tiene permisos par
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
 msgstr "El archivo no puede ser renombrado. ¡Asegúrese de que tiene permisos para escribir en el repositorio de canciones!"
 
+#: fulltextsearch.strsongtitle
+msgid "Song Title"
+msgstr ""
+
 #: info.strauthor
 msgid "Author"
 msgstr "Autor"

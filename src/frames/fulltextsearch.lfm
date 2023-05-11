@@ -37,7 +37,7 @@ object FrmFulltextsearch: TFrmFulltextsearch
     Height = 214
     Top = 41
     Width = 424
-    PageIndex = 0
+    PageIndex = 1
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 5
     Color = clNone
@@ -63,7 +63,9 @@ object FrmFulltextsearch: TFrmFulltextsearch
         Top = 0
         Width = 424
         Align = alClient
-        ItemHeight = 0
+        ItemHeight = 50
+        OnDrawItem = ListBoxResultsDrawItem
+        Style = lbOwnerDrawFixed
         TabOrder = 0
       end
       object LabelEnterSearchTerm: TLabel
