@@ -295,7 +295,7 @@
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="songselection.pas"/>
+        <Filename Value="forms/songselection.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmSongs"/>
         <HasResources Value="True"/>
@@ -303,7 +303,7 @@
         <UnitName Value="SongSelection"/>
       </Unit1>
       <Unit2>
-        <Filename Value="present.pas"/>
+        <Filename Value="forms/present.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmPresent"/>
         <HasResources Value="True"/>
@@ -311,21 +311,21 @@
         <UnitName Value="Present"/>
       </Unit2>
       <Unit3>
-        <Filename Value="settings.pas"/>
+        <Filename Value="forms/settings.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmSettings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit3>
       <Unit4>
-        <Filename Value="info.pas"/>
+        <Filename Value="forms/info.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmInfo"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit4>
       <Unit5>
-        <Filename Value="lyrics.pas"/>
+        <Filename Value="generics/lyrics.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit5>
       <Unit6>
@@ -334,7 +334,7 @@
         <UnitName Value="CommandLineOptions"/>
       </Unit6>
       <Unit7>
-        <Filename Value="songeditor.pas"/>
+        <Filename Value="forms/songeditor.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmSongEdit"/>
         <HasResources Value="True"/>

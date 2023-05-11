@@ -10,7 +10,6 @@ object frmWelcome: TfrmWelcome
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '2.2.6.0'
   object Notebook: TNotebook
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -200,17 +199,20 @@ object frmWelcome: TfrmWelcome
     Top = 439
     Width = 718
     Anchors = [akLeft, akRight, akBottom]
-    ClientHeight = 38
-    ClientWidth = 706
+    ClientHeight = 46
+    ClientWidth = 714
     ParentBackground = False
     TabOrder = 1
     object btnBack: TButton
+      AnchorSideTop.Control = ControlPanel
       AnchorSideRight.Control = btnNext
-      Left = 356
-      Height = 33
-      Top = 16
+      AnchorSideBottom.Control = ControlPanel
+      AnchorSideBottom.Side = asrBottom
+      Left = 368
+      Height = 46
+      Top = 0
       Width = 123
-      Anchors = [akRight]
+      Anchors = [akTop, akRight, akBottom]
       BorderSpacing.Right = 5
       Caption = 'Back...'
       Color = clNone
@@ -219,13 +221,16 @@ object frmWelcome: TfrmWelcome
       TabOrder = 0
     end
     object btnNext: TButton
+      AnchorSideTop.Control = ControlPanel
       AnchorSideRight.Control = ControlPanel
       AnchorSideRight.Side = asrBottom
-      Left = 484
-      Height = 33
-      Top = 16
+      AnchorSideBottom.Control = ControlPanel
+      AnchorSideBottom.Side = asrBottom
+      Left = 496
+      Height = 46
+      Top = 0
       Width = 218
-      Anchors = [akRight]
+      Anchors = [akTop, akRight, akBottom]
       Caption = 'Next...'
       Color = clNone
       Enabled = False
@@ -234,12 +239,15 @@ object frmWelcome: TfrmWelcome
     end
     object ProgressBar: TProgressBar
       AnchorSideLeft.Control = ControlPanel
+      AnchorSideTop.Control = ControlPanel
       AnchorSideRight.Control = btnBack
+      AnchorSideBottom.Control = ControlPanel
+      AnchorSideBottom.Side = asrBottom
       Left = 0
-      Height = 33
-      Top = 16
-      Width = 356
-      Anchors = [akLeft, akRight]
+      Height = 46
+      Top = 0
+      Width = 368
+      Anchors = [akTop, akLeft, akRight, akBottom]
       TabOrder = 2
     end
   end
