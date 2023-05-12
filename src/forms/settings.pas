@@ -5,6 +5,9 @@ unit settings;
 interface
 
 uses
+  {$IFDEF WINDOWS}
+  Windows,
+  {$ENDIF}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
   ExtCtrls, Present, Lyrics, Slides;
