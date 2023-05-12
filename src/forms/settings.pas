@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs;
+  Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
+  ExtCtrls, Present, Lyrics, Slides;
 
 type
 
@@ -25,6 +26,7 @@ type
     cbLyricsToClipboard: TCheckBox;
     FontDialog: TFontDialog;
     gbPresentation: TGroupBox;
+    ImagePresentationPreview: TImage;
     lblWrapAfter: TLabel;
     lblImageExplainer: TLabel;
     lblImageBrightness: TLabel;
@@ -56,8 +58,11 @@ type
     procedure FormClose(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure gbPresentationClick(Sender: TObject);
+    procedure ImagePresentationPreviewClick(Sender: TObject);
+    procedure ImagePresentationPreviewDblClick(Sender: TObject);
     procedure labelSongDirClick(Sender: TObject);
     procedure lblMetaClick(Sender: TObject);
     procedure loadSettings();
@@ -65,6 +70,9 @@ type
     procedure seWrapLinesChange(Sender: TObject);
   private
     { private declarations }
+    PreviewPresentationForm: TfrmPresent;
+    SlideList: TSlideList;
+    procedure LoadPreviewImage;
   public
     { public declarations }
     changedBackground: Boolean;
@@ -84,7 +92,7 @@ ResourceString
 implementation
 
 Uses
-  Present, SongSelection;
+  SongSelection;
 
 {$R *.lfm}
 
@@ -131,15 +139,31 @@ begin
   changedBackground := False;
 end;
 
+procedure TfrmSettings.FormDestroy(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmSettings.FormShow(Sender: TObject);
 begin
   sbImageBrightnessChange(frmSettings);
   changedBackground := False;
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.gbPresentationClick(Sender: TObject);
 begin
 
+end;
+
+procedure TfrmSettings.ImagePresentationPreviewClick(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmSettings.ImagePresentationPreviewDblClick(Sender: TObject);
+begin
+  PreviewPresentationForm.Show;
 end;
 
 procedure TfrmSettings.labelSongDirClick(Sender: TObject);
@@ -298,6 +322,45 @@ begin
     settingsFile.UpdateFile;
     CanClose := True;
   end;
+end;
+
+procedure TfrmSettings.LoadPreviewImage;
+var imgWidth: Integer;
+   imgHeight: Integer;
+   Rectangle: TRect;
+   DummySongFile: TStringList;
+   rs: TResourceStream;
+   ExampleSong: TSong;
+begin
+  if not Assigned(SlideList) then
+     SlideList := TSlideList.Create(True);
+  if not Assigned(PreviewPresentationForm) then
+  begin
+    PreviewPresentationForm := TFrmPresent.Create(frmSettings);
+    rs := TResourceStream.Create(hinstance, 'AMAZING GRACE', RT_RCDATA);
+    DummySongFile := TStringList.Create;
+    DummySongFile.LoadFromStream(rs);
+    ExampleSong := TSong.Create;
+    ExampleSong.importSongFromStringList(DummySongFile);
+    SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, cbSpoiler.Checked, cbMetaDataFirstSlide.Checked, cbMetaDataLastSlide.Checked, memoMetaData.Lines.Text, frmSettings.cbEmptyFrame.Checked, seWrapLines.Value));
+    PreviewPresentationForm.SlideList := SlideList;
+    //FreeAndNil(DummySongFile);
+    //FreeAndNil(ExampleSong);
+  end;
+
+  PreviewPresentationForm.LoadBackground;
+  PreviewPresentationForm.ResizeBackground;
+  PreviewPresentationForm.showItem(0);
+  PreviewPresentationForm.Refresh;
+  PreviewPresentationForm.Repaint;
+  PreviewPresentationForm.Update;
+  PreviewPresentationForm.Invalidate;
+  imgWidth := PreviewPresentationForm.Width;
+  imgHeight:= PreviewPresentationForm.Height;
+  Rectangle:= Rect(0, 0, imgWidth, imgHeight);
+  ImagePresentationPreview.Picture.Bitmap.Width := imgWidth;
+  ImagePresentationPreview.Picture.Bitmap.Height:= imgHeight;
+  ImagePresentationPreview.Picture.Bitmap.Canvas.CopyRect(Rectangle, PreviewPresentationForm.Canvas, Rectangle);
 end;
 
 end.

@@ -51,6 +51,7 @@ type
       procedure exportAsSongFile(outputfilename: String);
       function IsCCLIFile: Boolean;
       procedure strip;
+      procedure importSongFromStringList(stringlist: TStringList);
     private
       inputFile: TStringList;
       PositionDict: TStringIntegerDict;
@@ -348,6 +349,14 @@ procedure TSong.importSongFile(filepath: String);
 begin
   self.CompleteFilePath:=filepath;
   importSongFile;
+end;
+
+procedure TSong.importSongFromStringList(stringlist: TStringList);
+begin
+  self.inputFile := stringlist;
+  if self.IsCCLIFile then // CCLI-Songselect file
+    self.importCCLISongFile
+  else self.importSongFormatFile;
 end;
 
 function TSong.ParseMetaData(MetaLogic: string): string;

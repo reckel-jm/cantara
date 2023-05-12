@@ -45,8 +45,6 @@ type
     lbxSselected: TListBox;
     MainMenu: TMainMenu;
     menuFile: TMenuItem;
-    itemLoad: TMenuItem;
-    itemSave: TMenuItem;
     itemSeperator1: TMenuItem;
     itemEnd: TMenuItem;
     menuEdit: TMenuItem;
@@ -56,18 +54,19 @@ type
     itemPresentation: TMenuItem;
     itemReloadSongList: TMenuItem;
     itemSongEditor: TMenuItem;
-    itemExportTeXFile: TMenuItem;
-    itemImportTeXFile: TMenuItem;
     itemShowWelcomeAssistent: TMenuItem;
     itemOpenInEditor: TMenuItem;
     itemFulltextSearch: TMenuItem;
-    menuImport: TMenuItem;
     menuExport: TMenuItem;
+    itemLoadSelection: TMenuItem;
+    itemSaveSelection: TMenuItem;
+    itemSaveSelectionAs: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     OpenSongTeXFileDialog: TOpenDialog;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
+    Separator1: TMenuItem;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     ImageUpdater: TTimer;
@@ -101,8 +100,11 @@ type
     procedure itemFulltextSearchClick(Sender: TObject);
     procedure itemImportTeXFileClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
+    procedure itemLoadSelectionClick(Sender: TObject);
     procedure itemOpenInEditorClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
+    procedure itemSaveSelectionAsClick(Sender: TObject);
+    procedure itemSaveSelectionClick(Sender: TObject);
     procedure itemShowWelcomeAssistentClick(Sender: TObject);
     procedure itemSongEditorClick(Sender: TObject);
     procedure lbxSRepoClick(Sender: TObject);
@@ -141,12 +143,18 @@ type
     { The initial position of the panel for multiscreen
       when presentation gets started }
     PanelMultiScreenLeft: Integer;
+    { The loaded song selection file path }
+    LoadedSongSelectionFilePath: String;
     { Filters the Listbox lbxSRepo after a search pattern. If s is empty, no filter will be applied.
     @param(s: the search pattern) }
     procedure FilterListBox(s: String);
     procedure BringToFront;
-    procedure ExportSelectionAsTeXFile;
-    procedure ImportTeXFileAsSelection;
+    procedure ExportSelectionAsTeXFile(FilePath: String);
+    procedure ImportTeXFileAsSelection(FilePath: String);
+    { Saves the Selection at the place FilePath
+      @param(FilePath: The full File Path where to save the song selection)
+    }
+    procedure SaveSelection(FilePath: String);
   public
     { public declarations }
     procedure AskToReloadRepo;
@@ -353,7 +361,6 @@ end;
 
 procedure TfrmSongs.itemExportTeXFileClick(Sender: TObject);
 begin
-  ExportSelectionAsTeXFile;
 end;
 
 procedure TfrmSongs.itemFulltextSearchClick(Sender: TObject);
@@ -363,7 +370,7 @@ end;
 
 procedure TfrmSongs.itemImportTeXFileClick(Sender: TObject);
 begin
-  ImportTeXFileAsSelection;
+
 end;
 
 procedure TfrmSongs.itemLoadClick(Sender: TObject);
@@ -373,6 +380,26 @@ begin
   except
     Application.MessageBox(PChar(StrErrorOpening), PChar(StrError), MB_OK+MB_ICONERROR);
   end;
+end;
+
+procedure TfrmSongs.itemLoadSelectionClick(Sender: TObject);
+var
+  OpenFilePath: String;
+begin
+  if OpenDialog.Execute then OpenFilePath := OpenDialog.FileName;
+  if FileExists(OpenFilePath) = false then
+  begin
+    Application.MessageBox(PChar(strFileDoesNotExist), PChar(strError), MB_ICONWARNING or MB_OK);
+    Exit;
+  end;
+  If ExtractFileExt(OpenFilePath) = '.songtex' then
+    ImportTeXFileAsSelection(OpenFilePath)
+  else if ExtractFileExt(OpenFilePath) = '.csswc' then
+  begin
+    { This is really depreciated and should not be used anymore... }
+    lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
+  end;
+  self.LoadedSongSelectionFilePath := OpenFilePath;
 end;
 
 procedure TfrmSongs.itemOpenInEditorClick(Sender: TObject);
@@ -421,6 +448,32 @@ begin
     if SaveDialog.Execute then lbxSselected.Items.SaveToFile(SaveDialog.FileName);
   except
     Application.MessageBox(PChar(StrErrorSaving), PChar(StrError), MB_OK+MB_ICONERROR);
+  end;
+end;
+
+procedure TfrmSongs.itemSaveSelectionAsClick(Sender: TObject);
+begin
+  if SaveDialog.Execute then
+  begin
+    SaveSelection(SaveDialog.FileName);
+    LoadedSongSelectionFilePath := SaveDialog.FileName;
+  end;
+end;
+
+procedure TfrmSongs.itemSaveSelectionClick(Sender: TObject);
+begin
+  if LoadedSongSelectionFilePath = '' then itemSaveSelectionAsClick(itemSaveSelection)
+  else SaveSelection(LoadedSongSelectionFilePath);
+end;
+
+procedure TfrmSongs.SaveSelection(FilePath: String);
+begin
+  If ExtractFileExt(FilePath) = '.songtex' then
+    ExportSelectionAsTeXFile(FilePath)
+  else if ExtractFileExt(FilePath) = '.csswc' then
+  begin
+    { This is really depreciated and should not be used anymore... }
+    lbxSselected.Items.SaveToFile(FilePath);
   end;
 end;
 
@@ -532,6 +585,8 @@ begin
   if Screen.MonitorCount > 1 Then
     chkMultiWindowMode.Checked := True
   Else chkMultiWindowMode.Checked := False;
+
+  LoadedSongSelectionFilePath := '';
 end;
 
 procedure TfrmSongs.FormDestroy(Sender: TObject);
@@ -847,21 +902,20 @@ begin
   self.loadRepo(frmSettings.edtRepoPath.Text);
 end;
 
-procedure TfrmSongs.ExportSelectionAsTeXFile;
+procedure TfrmSongs.ExportSelectionAsTeXFile(FilePath: String);
 var i: integer;
   songtexfile: TSongTeXFile;
   song: TRepoFile;
-  songtexFileName: String;
+  songtexfilename: String;
 begin
-  if saveSongTeXFileDialog.Execute = False then Exit;
   songtexfile := TSongTeXFile.Create;
   for i := 0 to lbxSselected.Count-1 do
   begin
     song := FindSong(lbxSSelected.Items.Strings[i]);
     songtexfile.AddFile(song);
   end;
-  songtexFileName := saveSongTexFileDialog.FileName;
-  if ExtractFileExt(songtexFileName) <> '.songtex' then
+  songtexFileName := FilePath;
+  if ExtractFileExt(Filepath) <> '.songtex' then
      songtexFileName := songtexFileName + '.songtex';
   songtexfile.SaveToFile(songtexFileName);
 end;
@@ -879,7 +933,7 @@ begin
   Exit(nil);
 end;
 
-procedure TfrmSongs.ImportTeXFileAsSelection;
+procedure TfrmSongs.ImportTeXFileAsSelection(FilePath: String);
 var SongTexFile: TSongTeXFile;
   NextFileName, RepoPath: String;
   RepoFileStrings: TStringList;
@@ -889,13 +943,8 @@ begin
   if OpenSongTeXFileDialog.Execute then
   begin
     RepoPath := frmSettings.edtRepoPath.Text;
-    if FileExists(OpenSongTeXFileDialog.FileName) = false then
-    begin
-      Application.MessageBox(PChar(strFileDoesNotExist), PChar(strError), MB_ICONWARNING or MB_OK);
-      Exit;
-    end;
     SongTeXFile := TSongTeXFile.Create;
-    SongTeXFile.LoadFromFile(OpenSongTeXFileDialog.FileName);
+    SongTeXFile.LoadFromFile(FilePath);
     NextFileName := SongTeXFile.HasNextSongfile;
     while (NextFileName <> '') do
     begin

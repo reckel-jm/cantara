@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Settings, Types, Themes, LCLTranslator, LCLIntf, ExtCtrls, Lyrics,
+  Types, Themes, LCLTranslator, LCLIntf, ExtCtrls, Lyrics,
   IntfGraphics,
   fpImage, StrUtils, Slides,
   math;
@@ -83,7 +83,7 @@ ResourceString
 implementation
 
 Uses
-  SongSelection;
+  SongSelection, Settings;
 {$R *.lfm}
 
 operator in (const AWord: Word; const AArray: array of Word): Boolean; inline;
@@ -105,7 +105,7 @@ begin
     GoNext
   else if key in GoLeftKeys then GoPrevious
   else if key in ToggleFullscreenKeys then SwitchFullscreen()
-  else if key in EscapeKeys then frmPresent.Hide;
+  else if key in EscapeKeys then self.Hide;
 end;
 
 procedure TfrmPresent.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -135,7 +135,7 @@ end;
 
 procedure TfrmPresent.GoNext;
 begin
-  if (cur < frmPresent.SlideList.Count-1) then
+  if (cur < self.SlideList.Count-1) then
     begin
       inc(cur);
       ShowItem(cur);
@@ -161,21 +161,21 @@ end;
 
 procedure TfrmPresent.FormShow(Sender: TObject);
 begin
-  if SlideList.Count >0 then showItem(0) else frmPresent.Hide;
+  if SlideList.Count >0 then showItem(0) else self.Hide;
   ResizeBackground;
   Refresh;
 end;
 
 procedure TFrmPresent.LoadSettings;
 begin
-  frmPresent.Color:=frmSettings.bgColorDialog.Color;
-  frmPresent.lblText.Font.Color:=frmSettings.textColorDialog.Color;
+  self.Color:=frmSettings.bgColorDialog.Color;
+  self.lblText.Font.Color:=frmSettings.textColorDialog.Color;
   lblText.Font := frmSettings.FontDialog.Font;
   lblText.Font.Color:= frmSettings.textColorDialog.Color;
   lblMeta.Font := frmSettings.FontDialog.Font;
   lblMeta.Font.Color := frmSettings.textColorDialog.Color;
   lblMeta.Font.Height:= lblMeta.Font.Height div 3;
-  lblMeta.Width := Trunc(frmPresent.Width * 0.67);
+  lblMeta.Width := Trunc(self.Width * 0.67);
   LoadBackground;
 end;
 
@@ -208,7 +208,7 @@ begin
     lblText.Font.Color:= frmSettings.textColorDialog.Color;
     lblMeta.Font.Color := frmSettings.textColorDialog.Color;
     lblMeta.Font.Size := lblText.Font.Size div 3;
-    lblMeta.Width := Trunc(frmPresent.Width * 0.67);
+    lblMeta.Width := Trunc(self.Width * 0.67);
     lblText.Caption := SlideList.Items[cur].PartContent.MainText;
     lblNext.Caption := SlideList.Items[cur].PartContent.SpoilerText;
     lblMeta.Caption:= SlideList.Items[cur].PartContent.MetaText;
@@ -221,35 +221,37 @@ begin
       lblNext.Font.Height:= lblNext.Font.Height div 2;
       lblNext.Top := lblText.Top+lblText.Height;
       lblNext.BorderSpacing.Top:=2*lblNext.Font.Size;
-      if lblNext.Top+lblNext.Height > frmPresent.Height then // the spoiler is going beyond the form
+      if lblNext.Top+lblNext.Height > self.Height then // the spoiler is going beyond the form
       begin
         lblNext.BorderSpacing.Top:=0;
         StringArray := SplitString(lblNext.Caption,LineEnding);
         if length(StringArray) > 0 then
            lblNext.Caption := StringArray[0] + StrMoreLyricsIndicator;
-        // frmPresent.Repaint;
+        // self.Repaint;
         // Application.ProcessMessages;
         // if still to much content then hide
-        if lblNext.Top+lblNext.Height > frmPresent.Height then
+        if lblNext.Top+lblNext.Height > self.Height then
           begin
             lblNext.Visible:=False;
-            lblText.Height := frmPresent.Height;
+            lblText.Height := self.Height;
             lblNext.BorderSpacing.Top := 0;
           end;
       end;
     end else // There is no spoiler/next text to display
     begin
       lblNext.Visible:= False;
-      lblText.Height := frmPresent.Height;
+      lblText.Height := self.Height;
       lblNext.BorderSpacing.Top := 0;
     end;
 
-    lblText.BorderSpacing.Top := (frmPresent.Height-lblText.Height-lblNext.Height-lblNext.BorderSpacing.Top) div 2;
+    lblText.BorderSpacing.Top := (self.Height-lblText.Height-lblNext.Height-lblNext.BorderSpacing.Top) div 2;
     // Aktualisiere SongListe in Present-Form
-    SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
+    if self.Owner<>frmSettings then
+      SongSelection.frmSongs.UpdateSongPositionInLbxSSelected;
     ShowMeta;
-    lblMeta.Top := frmPresent.Height-lblMeta.Height-lblMeta.Left;
-    frmSongs.ImageUpdater.Enabled:=True;
+    lblMeta.Top := self.Height-lblMeta.Height-lblMeta.Left;
+    if self.Owner<>frmSettings then;
+      frmSongs.ImageUpdater.Enabled:=True;
 end;
 
 procedure TfrmPresent.ShowMeta;
@@ -277,20 +279,23 @@ end;
 
 procedure TfrmPresent.FormHide(Sender: TObject);
 begin
-  // Stelle frmSongs wieder her
-  SongSelection.ProgramMode:=SongSelection.ModeSelection;
-  SongSelection.frmSongs.FormResize(self);
-  SongSelection.frmSongs.KeyPreview := False;
+  if Owner <> frmSettings then
+  begin
+    // Stelle frmSongs wieder her
+    SongSelection.ProgramMode:=SongSelection.ModeSelection;
+    SongSelection.frmSongs.FormResize(self);
+    SongSelection.frmSongs.KeyPreview := False;
 
-  // Aktiviere Präsentations-Button, um Präsentation erneut starten zu können
+    // Aktiviere Präsentations-Button, um Präsentation erneut starten zu können
 
-  SongSelection.frmSongs.itemPresentation.Enabled := True;
-  SongSelection.frmSongs.btnStartPresentation.Enabled := True;
+    SongSelection.frmSongs.itemPresentation.Enabled := True;
+    SongSelection.frmSongs.btnStartPresentation.Enabled := True;
 
-  // Deaktiviere Vollbildschirm (falls noch möglich)
+    // Deaktiviere Vollbildschirm (falls noch möglich)
 
-  SwitchFullScreen(False);
-  SongSelection.frmSongs.UpdateControls;
+    SwitchFullScreen(False);
+    SongSelection.frmSongs.UpdateControls;
+  end;
   if Assigned(SlideList) then SlideList.Free;
 end;
 
@@ -405,13 +410,13 @@ end;
 procedure TfrmPresent.ResizeBackground;
 var newHeight, newWidth: integer;
 begin
-  imgBackground.Width:=frmPresent.Width;
-  imgBackground.Height:=frmPresent.Height;
+  imgBackground.Width:=self.Width;
+  imgBackground.Height:=self.Height;
   if (imgBackground.Height = 0) or (imgBackground.Picture.Height = 0) then Exit; // Prevent Errors
   if imgBackground.Width/imgBackground.Height >= imgBackground.Picture.Width/imgBackground.Picture.Height then
         begin
           newHeight:=Trunc(imgBackground.Width*imgBackground.Picture.Height/imgBackground.Picture.Width);
-          imgBackground.Top:=-Abs(Trunc((imgBackground.Height-frmPresent.Height)/2));
+          imgBackground.Top:=-Abs(Trunc((imgBackground.Height-self.Height)/2));
           imgBackground.Left:=0;
           imgBackground.Height := newHeight;
         end
@@ -419,8 +424,8 @@ begin
         begin
           if frmSettings.cbShowBackgroundImage.Checked then // This is important because else there will be a range check error!
           begin
-            newWidth:=Trunc(frmPresent.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
-            imgBackground.Left:=-Abs(Trunc((imgBackground.Width-frmPresent.Width)/2));
+            newWidth:=Trunc(self.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
+            imgBackground.Left:=-Abs(Trunc((imgBackground.Width-self.Width)/2));
             imgBackground.Top:=0;
             imgBackground.Width:=newWidth;
           end;

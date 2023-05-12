@@ -2,17 +2,17 @@ object frmSettings: TfrmSettings
   Left = 539
   Height = 589
   Top = 261
-  Width = 824
+  Width = 939
   BorderIcons = [biSystemMenu]
   Caption = 'Settings'
   ClientHeight = 589
-  ClientWidth = 824
+  ClientWidth = 939
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.6.0'
   object labelSongDir: TLabel
     AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = edtRepoPath
@@ -20,7 +20,7 @@ object frmSettings: TfrmSettings
     Left = 8
     Height = 22
     Top = 15
-    Width = 110
+    Width = 116
     Caption = 'Song Repo Path:'
     Layout = tlCenter
     ParentColor = False
@@ -30,10 +30,10 @@ object frmSettings: TfrmSettings
   object edtRepoPath: TEdit
     AnchorSideLeft.Control = labelSongDir
     AnchorSideLeft.Side = asrBottom
-    Left = 123
+    Left = 129
     Height = 36
     Top = 8
-    Width = 672
+    Width = 781
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     OnChange = edtRepoPathChange
@@ -45,7 +45,7 @@ object frmSettings: TfrmSettings
   object btnSelectDir: TButton
     AnchorSideTop.Control = edtRepoPath
     AnchorSideTop.Side = asrCenter
-    Left = 797
+    Left = 912
     Height = 23
     Top = 15
     Width = 24
@@ -62,7 +62,7 @@ object frmSettings: TfrmSettings
     Left = 8
     Height = 26
     Top = 44
-    Width = 210
+    Width = 220
     Caption = 'Empty slide between songs'
     Checked = True
     ParentFont = False
@@ -76,7 +76,7 @@ object frmSettings: TfrmSettings
     Left = 8
     Height = 26
     Top = 70
-    Width = 135
+    Width = 141
     Caption = 'Spoil next slides'
     Checked = True
     ParentFont = False
@@ -90,7 +90,7 @@ object frmSettings: TfrmSettings
     Left = 8
     Height = 26
     Top = 96
-    Width = 183
+    Width = 192
     Caption = 'Copy lyrics to clipboard'
     Checked = True
     OnChange = cbLyricsToClipboardChange
@@ -105,24 +105,23 @@ object frmSettings: TfrmSettings
     Left = 8
     Height = 414
     Top = 122
-    Width = 809
+    Width = 924
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
-    ClientHeight = 402
-    ClientWidth = 797
+    ClientHeight = 380
+    ClientWidth = 920
     TabOrder = 6
     OnClick = gbPresentationClick
     object btnBackgroundColor: TButton
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnFontSizeManually
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = gbPresentation
-      AnchorSideRight.Side = asrBottom
-      Left = 387
+      AnchorSideRight.Control = ImagePresentationPreview
+      Left = 344
       Height = 23
       Top = 28
-      Width = 418
+      Width = 344
       Anchors = [akTop, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Color...'
@@ -132,12 +131,11 @@ object frmSettings: TfrmSettings
     end
     object btnFontSizeManually: TButton
       AnchorSideLeft.Side = asrBottom
-      AnchorSideRight.Control = gbPresentation
-      AnchorSideRight.Side = asrBottom
-      Left = 387
+      AnchorSideRight.Control = ImagePresentationPreview
+      Left = 344
       Height = 23
       Top = 5
-      Width = 418
+      Width = 344
       Align = alCustom
       Anchors = [akTop, akRight]
       BorderSpacing.Left = 8
@@ -150,12 +148,11 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnBackgroundColor
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = gbPresentation
-      AnchorSideRight.Side = asrBottom
-      Left = 387
+      AnchorSideRight.Control = ImagePresentationPreview
+      Left = 344
       Height = 23
       Top = 51
-      Width = 418
+      Width = 344
       Anchors = [akTop, akRight]
       BorderSpacing.Left = 8
       Caption = 'Text Color...'
@@ -169,7 +166,7 @@ object frmSettings: TfrmSettings
       Left = 8
       Height = 22
       Top = 128
-      Width = 113
+      Width = 119
       BorderSpacing.Top = 5
       Caption = 'Show Meta Data:'
       ParentColor = False
@@ -181,10 +178,10 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
-      Left = 148
+      Left = 156
       Height = 26
       Top = 128
-      Width = 106
+      Width = 110
       BorderSpacing.Left = 10
       BorderSpacing.Top = 5
       Caption = 'at first slide'
@@ -198,10 +195,10 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = cbMetaDataFirstSlide
       AnchorSideTop.Side = asrBottom
-      Left = 148
+      Left = 156
       Height = 26
       Top = 154
-      Width = 103
+      Width = 107
       BorderSpacing.Left = 10
       Caption = 'at last slide'
       ParentFont = False
@@ -213,7 +210,7 @@ object frmSettings: TfrmSettings
       Left = 8
       Height = 22
       Top = 185
-      Width = 130
+      Width = 138
       BorderSpacing.Top = 5
       Caption = 'Meta Data Content:'
       ParentColor = False
@@ -229,10 +226,10 @@ object frmSettings: TfrmSettings
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = gbPresentation
       AnchorSideBottom.Side = asrBottom
-      Left = 148
+      Left = 156
       Height = 185
       Top = 185
-      Width = 657
+      Width = 764
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Left = 10
       BorderSpacing.Top = 5
@@ -243,12 +240,11 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = gbPresentation
-      AnchorSideRight.Side = asrBottom
-      Left = 387
+      AnchorSideRight.Control = ImagePresentationPreview
+      Left = 344
       Height = 23
       Top = 74
-      Width = 418
+      Width = 344
       Anchors = [akTop, akRight]
       BorderSpacing.Left = 8
       Caption = 'Background Image...'
@@ -262,10 +258,10 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = btnBackgroundImage
-      Left = 180
+      Left = 127
       Height = 26
       Top = 74
-      Width = 199
+      Width = 209
       Anchors = [akTop, akRight]
       BorderSpacing.Left = 10
       BorderSpacing.Right = 5
@@ -276,12 +272,12 @@ object frmSettings: TfrmSettings
     end
     object sbImageBrightness: TScrollBar
       AnchorSideLeft.Control = btnBackgroundColor
-      AnchorSideRight.Side = asrBottom
-      Left = 387
+      AnchorSideRight.Control = ImagePresentationPreview
+      Left = 344
       Height = 21
       Hint = 'A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture.'
       Top = 102
-      Width = 419
+      Width = 344
       Anchors = [akTop, akLeft, akRight]
       Min = -100
       PageSize = 0
@@ -293,10 +289,10 @@ object frmSettings: TfrmSettings
     object lblImageBrightness: TLabel
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideRight.Control = sbImageBrightness
-      Left = 111
+      Left = 52
       Height = 22
       Top = 102
-      Width = 271
+      Width = 287
       Anchors = [akTop, akRight]
       BorderSpacing.Right = 5
       Caption = 'Change Image Transparency/Brightness:'
@@ -307,10 +303,10 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
-      Left = 536
+      Left = 452
       Height = 22
       Top = 123
-      Width = 121
+      Width = 128
       Caption = 'lblImageExplainer'
       ParentColor = False
     end
@@ -320,7 +316,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = lblWrapAfter
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = cbShowBackgroundImage
-      Left = 120
+      Left = 67
       Height = 36
       Top = 27
       Width = 50
@@ -336,18 +332,34 @@ object frmSettings: TfrmSettings
       Left = 0
       Height = 22
       Top = 5
-      Width = 379
+      Width = 336
       Anchors = [akTop, akLeft, akRight]
       Caption = 'Automatic wrap after how many lines (0 = off):'
       ParentColor = False
       WordWrap = True
+    end
+    object ImagePresentationPreview: TImage
+      AnchorSideTop.Control = btnFontSizeManually
+      AnchorSideRight.Control = gbPresentation
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = memoMetaData
+      Left = 688
+      Height = 175
+      Top = 5
+      Width = 230
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderSpacing.Right = 2
+      OnClick = ImagePresentationPreviewClick
+      OnDblClick = ImagePresentationPreviewDblClick
+      Proportional = True
+      Stretch = True
     end
   end
   object btnClose: TButton
     AnchorSideTop.Control = gbPresentation
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Side = asrBottom
-    Left = 654
+    Left = 769
     Height = 46
     Top = 541
     Width = 163
