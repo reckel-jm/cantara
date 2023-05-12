@@ -34,6 +34,7 @@ type
     btnSettings: TButton;
     btnStartPresentation: TButton;
     btnUp: TButton;
+    ButtonCloseSongtexFile: TButton;
     chkMultiWindowMode: TCheckBox;
     edtSearch: TEdit;
     grbControl: TPanel;
@@ -63,14 +64,13 @@ type
     itemSaveSelectionAs: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
-    OpenSongTeXFileDialog: TOpenDialog;
+    PanelSongTeXStatus: TPanel;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
     Separator1: TMenuItem;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     ImageUpdater: TTimer;
-    saveSongTeXFileDialog: TSaveDialog;
     procedure btnAddClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnDownClick(Sender: TObject);
@@ -82,6 +82,7 @@ type
     procedure btnStartPresentationClick(Sender: TObject);
     procedure btnUpClick(Sender: TObject);
     procedure BtnUpdateClick(Sender: TObject);
+    procedure ButtonCloseSongtexFileClick(Sender: TObject);
     procedure edtSearchChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -184,6 +185,7 @@ ResourceString
   StrFolie = 'Slide';
   StrFileDoesNotExist = 'The File you would like to open does not exists.';
   StrError = 'Error';
+  StrActiveSongTeXFile = 'The following file is opened at the moment: ';
 
 implementation
 
@@ -386,7 +388,8 @@ procedure TfrmSongs.itemLoadSelectionClick(Sender: TObject);
 var
   OpenFilePath: String;
 begin
-  if OpenDialog.Execute then OpenFilePath := OpenDialog.FileName;
+  if OpenDialog.Execute then OpenFilePath := OpenDialog.FileName
+  else Exit;
   if FileExists(OpenFilePath) = false then
   begin
     Application.MessageBox(PChar(strFileDoesNotExist), PChar(strError), MB_ICONWARNING or MB_OK);
@@ -400,6 +403,9 @@ begin
     lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
   end;
   self.LoadedSongSelectionFilePath := OpenFilePath;
+  PanelSongTeXStatus.Visible:=True;
+  PanelSongTeXStatus.Height:=EdtSearch.Height;
+  PanelSongTeXStatus.Caption := StrActiveSongTeXFile + LoadedSongSelectionFilePath;
 end;
 
 procedure TfrmSongs.itemOpenInEditorClick(Sender: TObject);
@@ -457,6 +463,9 @@ begin
   begin
     SaveSelection(SaveDialog.FileName);
     LoadedSongSelectionFilePath := SaveDialog.FileName;
+    PanelSongTeXStatus.Visible:=True;
+    PanelSongTeXStatus.Height:=EdtSearch.Height;
+    PanelSongTeXStatus.Caption := StrActiveSongTeXFile + LoadedSongSelectionFilePath;
   end;
 end;
 
@@ -587,6 +596,10 @@ begin
   Else chkMultiWindowMode.Checked := False;
 
   LoadedSongSelectionFilePath := '';
+  // we hide the panel
+  PanelSongTeXStatus.Visible:=False;
+  PanelSongTeXStatus.Height:=0;
+  PanelSongTeXStatus.Caption:='';
 end;
 
 procedure TfrmSongs.FormDestroy(Sender: TObject);
@@ -845,6 +858,15 @@ begin
   ReloadPresentationImage;
 end;
 
+procedure TfrmSongs.ButtonCloseSongtexFileClick(Sender: TObject);
+begin
+  LoadedSongSelectionFilePath := '';
+  // we hide the panel
+  PanelSongTeXStatus.Visible:=False;
+  PanelSongTeXStatus.Height:=0;
+  PanelSongTeXStatus.Caption:='';
+end;
+
 procedure TfrmSongs.edtSearchChange(Sender: TObject);
 begin
   self.FilterListBox(edtSearch.Text);
@@ -940,47 +962,44 @@ var SongTexFile: TSongTeXFile;
   songname, songextension: String;
   DateTimeStr: String;
 begin
-  if OpenSongTeXFileDialog.Execute then
+  RepoPath := frmSettings.edtRepoPath.Text;
+  SongTeXFile := TSongTeXFile.Create;
+  SongTeXFile.LoadFromFile(FilePath);
+  NextFileName := SongTeXFile.HasNextSongfile;
+  while (NextFileName <> '') do
   begin
-    RepoPath := frmSettings.edtRepoPath.Text;
-    SongTeXFile := TSongTeXFile.Create;
-    SongTeXFile.LoadFromFile(FilePath);
-    NextFileName := SongTeXFile.HasNextSongfile;
-    while (NextFileName <> '') do
+    // Check whether file with the same name exists in the repository
+    if FileExists(RepoPath + PathDelim + NextFileName) then
     begin
-      // Check whether file with the same name exists in the repository
-      if FileExists(RepoPath + PathDelim + NextFileName) then
+      // Check whether files are equal
+      RepoFileStrings := TStringList.Create;
+      RepoFileStrings.LoadFromFile(RepoPath + PathDelim + NextFileName);
+      if RepoFileStrings.Equals(SongTeXFile.NextSongFile) then
       begin
-        // Check whether files are equal
-        RepoFileStrings := TStringList.Create;
-        RepoFileStrings.LoadFromFile(RepoPath + PathDelim + NextFileName);
-        if RepoFileStrings.Equals(SongTeXFile.NextSongFile) then
-        begin
-          // Add the entry from local repo
-          lbxSSelected.Items.Add(Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName))));
-        end else // The song is available but not equal
-        begin
-          // We save the song under an imported flag and add it
-          songExtension := ExtractFileExt(NextFileName);
-          SongName := Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName)));
-          DateTimeToString(DateTimeStr, 'yyyy-mm-dd', Now);
-          SongName := SongName + ' [' + DateTimeStr + ']';
-          SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + SongName + SongExtension);
-          lbxSSelected.Items.Add(SongName);
-          ItemReloadSongListClick(nil);
-        end;
-        FreeAndNil(RepoFileStrings);
-      end else // The file does not exist yet, then we import the file and add it
+        // Add the entry from local repo
+        lbxSSelected.Items.Add(Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName))));
+      end else // The song is available but not equal
       begin
-        SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + NextFileName);
+        // We save the song under an imported flag and add it
+        songExtension := ExtractFileExt(NextFileName);
         SongName := Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName)));
+        DateTimeToString(DateTimeStr, 'yyyy-mm-dd', Now);
+        SongName := SongName + ' [' + DateTimeStr + ']';
+        SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + SongName + SongExtension);
         lbxSSelected.Items.Add(SongName);
         ItemReloadSongListClick(nil);
       end;
-      NextFileName := SongTexFile.HasNextSongfile;
+      FreeAndNil(RepoFileStrings);
+    end else // The file does not exist yet, then we import the file and add it
+    begin
+      SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + NextFileName);
+      SongName := Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName)));
+      lbxSSelected.Items.Add(SongName);
+      ItemReloadSongListClick(nil);
     end;
-    FreeAndNil(SongTeXFile);
+    NextFileName := SongTexFile.HasNextSongfile;
   end;
+  FreeAndNil(SongTeXFile);
 end;
 
 end.

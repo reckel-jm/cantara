@@ -22,12 +22,13 @@ object frmSongs: TfrmSongs
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Owner
+    AnchorSideTop.Control = PanelSongTeXStatus
+    AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = PnlSplitter
     AnchorSideBottom.Control = grbSettings
     Left = 623
-    Height = 624
-    Top = 0
+    Height = 588
+    Top = 36
     Width = 63
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -384,6 +385,44 @@ object frmSongs: TfrmSongs
       TabStop = False
     end
   end
+  object PanelSongTeXStatus: TPanel
+    AnchorSideLeft.Control = grbControl
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = PnlSplitter
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = edtSearch
+    AnchorSideBottom.Side = asrBottom
+    Left = 623
+    Height = 36
+    Top = 0
+    Width = 64
+    Alignment = taLeftJustify
+    Anchors = [akTop, akLeft, akRight]
+    Caption = 'PanelSongTeXStatus'
+    ClientHeight = 36
+    ClientWidth = 64
+    Color = clInactiveCaption
+    ParentColor = False
+    TabOrder = 7
+    object ButtonCloseSongtexFile: TButton
+      AnchorSideTop.Control = PanelSongTeXStatus
+      AnchorSideRight.Control = PanelSongTeXStatus
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = PanelSongTeXStatus
+      AnchorSideBottom.Side = asrBottom
+      Left = -17
+      Height = 34
+      Top = 1
+      Width = 80
+      Anchors = [akTop, akRight, akBottom]
+      AutoSize = True
+      Caption = 'Close File'
+      Color = clInactiveCaption
+      OnClick = ButtonCloseSongtexFileClick
+      TabOrder = 0
+    end
+  end
   object MainMenu: TMainMenu
     Left = 312
     Top = 408
@@ -476,17 +515,6 @@ object frmSongs: TfrmSongs
     OnStopTimer = ImageUpdaterStopTimer
     Left = 904
     Top = 376
-  end
-  object saveSongTeXFileDialog: TSaveDialog
-    Title = 'Save SongTeX File'
-    Filter = 'SongTeX-File|*.songtex'
-    Left = 191
-    Top = 687
-  end
-  object OpenSongTeXFileDialog: TOpenDialog
-    Filter = 'SongTeX-File|*.songtex'
-    Left = 418
-    Top = 477
   end
   object SongPopupMenu: TPopupMenu
     OnPopup = SongPopupMenuPopup
