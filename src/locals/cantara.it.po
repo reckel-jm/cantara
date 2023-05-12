@@ -123,6 +123,10 @@ msgstr "https://www.cantara.app/tutorial/meta-data/"
 msgid "Welcome"
 msgstr "Benvenuti"
 
+#: songselection.stractivesongtexfile
+msgid "The following file is opened at the moment: "
+msgstr ""
+
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
@@ -165,8 +169,10 @@ msgid "Slide"
 msgstr "Diapositiva"
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
+#, fuzzy
+#| msgid "Archivate"
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr "Archivio"
 
 #: tfrmdisplaysongcontent.btnclose.caption
@@ -433,8 +439,10 @@ msgid "File"
 msgstr "File"
 
 #: tfrmsongedit.menuitemarchivate.caption
+#, fuzzy
+#| msgid "Archivate"
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr "Archivia"
 
 #: tfrmsongedit.menuitemclose.caption
@@ -501,6 +509,10 @@ msgstr "Presentazione..."
 msgid "🠕"
 msgstr "🠕"
 
+#: tfrmsongs.buttonclosesongtexfile.caption
+msgid "Close File"
+msgstr ""
+
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"
 msgstr "Selezione Canzone (Cantara)"
@@ -562,11 +574,13 @@ msgstr "Avvia presentazione"
 msgid "Reload Song Repository"
 msgstr "Ricarica il repository dei brani"
 
-#: tfrmsongs.itemsave.caption
-#, fuzzy
-#| msgid "Save Selection without Content..."
-msgid "Save Selection without Content as a simple text file..."
-msgstr "Salva selezione senza contenuto..."
+#: tfrmsongs.itemsaveselection.caption
+msgid "Save Song Selection..."
+msgstr ""
+
+#: tfrmsongs.itemsaveselectionas.caption
+msgid "Save Song Selection As..."
+msgstr ""
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"

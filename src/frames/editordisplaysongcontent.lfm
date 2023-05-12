@@ -12,7 +12,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Left = 0
     Height = 22
     Top = 0
-    Width = 48
+    Width = 51
     Caption = 'Name: '
     ParentColor = False
   end
@@ -92,7 +92,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 53
+    Left = 56
     Height = 22
     Top = 0
     Width = 1
@@ -106,10 +106,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnArchivate
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 674
+    Left = 678
     Height = 22
     Top = 0
-    Width = 47
+    Width = 49
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Copy'
@@ -121,13 +121,13 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnSave
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 721
+    Left = 727
     Height = 22
     Top = 0
-    Width = 76
+    Width = 66
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
-    Caption = 'Archivate'
+    Caption = 'Archive'
     OnClick = btnArchivateClick
     TabOrder = 3
   end
@@ -139,10 +139,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 842
+    Left = 840
     Height = 22
     Top = 0
-    Width = 50
+    Width = 52
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Close'
@@ -154,10 +154,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnCopy
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 605
+    Left = 606
     Height = 22
     Top = 0
-    Width = 69
+    Width = 72
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Rename'
@@ -169,10 +169,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnClose
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 797
+    Left = 793
     Height = 22
     Top = 0
-    Width = 45
+    Width = 47
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Save'

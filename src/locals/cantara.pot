@@ -112,6 +112,10 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
+#: songselection.stractivesongtexfile
+msgid "The following file is opened at the moment: "
+msgstr ""
+
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
@@ -153,7 +157,7 @@ msgstr ""
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr ""
 
 #: tfrmdisplaysongcontent.btnclose.caption
@@ -408,7 +412,7 @@ msgstr ""
 
 #: tfrmsongedit.menuitemarchivate.caption
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr ""
 
 #: tfrmsongedit.menuitemclose.caption
@@ -475,6 +479,10 @@ msgstr ""
 msgid "🠕"
 msgstr ""
 
+#: tfrmsongs.buttonclosesongtexfile.caption
+msgid "Close File"
+msgstr ""
+
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"
 msgstr ""
@@ -496,30 +504,12 @@ msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr ""
 
-#: tfrmsongs.itemexporttexfile.caption
-msgid "Export Selection with Content..."
-msgstr ""
-
-#: tfrmsongs.itemexporttexfile.hint
-msgid "Exports a SongTeX file which contains all selected song files with their content."
-msgstr ""
-
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
 msgstr ""
 
-#: tfrmsongs.itemimporttexfile.caption
-msgid "Import Selection with Content..."
-msgstr ""
-
-#: tfrmsongs.itemimporttexfile.hint
-msgid ""
-"Imports a SongTeX file which contains all selected song files with their content.\n"
-"If the file does not exist in the song repository yet, it will be automatically added to."
-msgstr ""
-
-#: tfrmsongs.itemload.caption
-msgid "Load Selection without Content..."
+#: tfrmsongs.itemloadselection.caption
+msgid "Load Song Selection..."
 msgstr ""
 
 #: tfrmsongs.itemopenineditor.caption
@@ -534,8 +524,12 @@ msgstr ""
 msgid "Reload Song Repository"
 msgstr ""
 
-#: tfrmsongs.itemsave.caption
-msgid "Save Selection without Content as a simple text file..."
+#: tfrmsongs.itemsaveselection.caption
+msgid "Save Song Selection..."
+msgstr ""
+
+#: tfrmsongs.itemsaveselectionas.caption
+msgid "Save Song Selection As..."
 msgstr ""
 
 #: tfrmsongs.itemsettings.caption

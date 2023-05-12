@@ -4,15 +4,14 @@ object frmSongEdit: TfrmSongEdit
   Top = 34
   Width = 1029
   Caption = 'Edit Files'
-  ClientHeight = 206
-  ClientWidth = 320
+  ClientHeight = 528
+  ClientWidth = 1029
   Menu = EditorMenu
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDblClick = FormDblClick
   OnShow = FormShow
-  LCLVersion = '2.2.6.0'
   WindowState = wsMaximized
   object lsSongs: TListBox
     AnchorSideLeft.Control = Owner
@@ -23,7 +22,7 @@ object frmSongEdit: TfrmSongEdit
     Left = 0
     Height = 528
     Top = 0
-    Width = 971
+    Width = 3129
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
     OnClick = lsSongsClick
@@ -37,7 +36,7 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideRight.Control = PageControl
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 971
+    Left = 3129
     Height = 528
     Top = 0
     Width = 6
@@ -54,10 +53,10 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 977
+    Left = 3135
     Height = 528
     Top = 0
-    Width = 52
+    Width = 0
     Anchors = [akTop, akLeft, akRight, akBottom]
     TabOrder = 2
     OnCloseTabClicked = PageControlCloseTabClicked
@@ -83,7 +82,7 @@ object frmSongEdit: TfrmSongEdit
         OnClick = menuItemCopyClick
       end
       object menuItemArchivate: TMenuItem
-        Caption = 'Archivate'
+        Caption = 'Archive'
         OnClick = menuItemArchivateClick
       end
       object menuItemClose: TMenuItem

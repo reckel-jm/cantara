@@ -40,7 +40,7 @@ object frmWelcome: TfrmWelcome
         ParentColor = False
         ParentFont = False
       end
-      object Label1: TLabel
+      object labelWelcome: TLabel
         AnchorSideLeft.Control = Page1
         AnchorSideTop.Control = BCLabel1
         AnchorSideTop.Side = asrBottom
@@ -57,7 +57,7 @@ object frmWelcome: TfrmWelcome
       end
       object btnSelectSongRepoDir: TButton
         AnchorSideLeft.Control = Page1
-        AnchorSideTop.Control = Label1
+        AnchorSideTop.Control = labelWelcome
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = Page1
         AnchorSideRight.Side = asrBottom

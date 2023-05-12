@@ -124,6 +124,10 @@ msgstr "https://www.cantara.app/tutorial/meta-data/"
 msgid "Welcome"
 msgstr "Welkom"
 
+#: songselection.stractivesongtexfile
+msgid "The following file is opened at the moment: "
+msgstr ""
+
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
@@ -164,8 +168,10 @@ msgid "Slide"
 msgstr "Pauze"
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
+#, fuzzy
+#| msgid "Archivate"
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr "Archiveren"
 
 #: tfrmdisplaysongcontent.btnclose.caption
@@ -434,8 +440,10 @@ msgid "File"
 msgstr "Bestand"
 
 #: tfrmsongedit.menuitemarchivate.caption
+#, fuzzy
+#| msgid "Archivate"
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr "Archiveren"
 
 #: tfrmsongedit.menuitemclose.caption
@@ -502,6 +510,10 @@ msgstr "Presentatie…"
 msgid "🠕"
 msgstr "🠕"
 
+#: tfrmsongs.buttonclosesongtexfile.caption
+msgid "Close File"
+msgstr ""
+
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"
 msgstr "Nummerselectie (Cantara)"
@@ -523,33 +535,13 @@ msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr "Sluiten"
 
-#: tfrmsongs.itemexporttexfile.caption
-msgid "Export Selection with Content..."
-msgstr "Selectie met inhoud exporteren…"
-
-#: tfrmsongs.itemexporttexfile.hint
-msgid "Exports a SongTeX file which contains all selected song files with their content."
-msgstr "Exporteert een SongTeX-bestand met alle geselecteerde nummers en hun inhoud."
-
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
 msgstr ""
 
-#: tfrmsongs.itemimporttexfile.caption
-msgid "Import Selection with Content..."
-msgstr "Selectie met inhoud importeren…"
-
-#: tfrmsongs.itemimporttexfile.hint
-msgid ""
-"Imports a SongTeX file which contains all selected song files with their content.\n"
-"If the file does not exist in the song repository yet, it will be automatically added to."
+#: tfrmsongs.itemloadselection.caption
+msgid "Load Song Selection..."
 msgstr ""
-"Importeert een SongTeX-bestand met alle geselecteerde nummers en hun inhoud.\n"
-"Als het bestand nog niet aanwezig is, dan wordt het automatisch toegevoegd."
-
-#: tfrmsongs.itemload.caption
-msgid "Load Selection without Content..."
-msgstr "Selectie met inhoud laden…"
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
@@ -563,11 +555,13 @@ msgstr "Presentatie houden"
 msgid "Reload Song Repository"
 msgstr "Nummermap herladen"
 
-#: tfrmsongs.itemsave.caption
-#, fuzzy
-#| msgid "Save Selection without Content..."
-msgid "Save Selection without Content as a simple text file..."
-msgstr "Selectie met inhoud opslaan…"
+#: tfrmsongs.itemsaveselection.caption
+msgid "Save Song Selection..."
+msgstr ""
+
+#: tfrmsongs.itemsaveselectionas.caption
+msgid "Save Song Selection As..."
+msgstr ""
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"

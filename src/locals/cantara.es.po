@@ -123,6 +123,10 @@ msgstr "https://www.cantara.app/tutorial/meta-data/"
 msgid "Welcome"
 msgstr "Bienvenido"
 
+#: songselection.stractivesongtexfile
+msgid "The following file is opened at the moment: "
+msgstr ""
+
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
@@ -163,8 +167,10 @@ msgid "Slide"
 msgstr "Diapositiva"
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
+#, fuzzy
+#| msgid "Archivate"
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr "Archivar"
 
 #: tfrmdisplaysongcontent.btnclose.caption
@@ -433,8 +439,10 @@ msgid "File"
 msgstr "Archivo"
 
 #: tfrmsongedit.menuitemarchivate.caption
+#, fuzzy
+#| msgid "Archivate"
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr "Archivar"
 
 #: tfrmsongedit.menuitemclose.caption
@@ -500,6 +508,10 @@ msgstr "Presentación..."
 #: tfrmsongs.btnup.caption
 msgid "🠕"
 msgstr "🠕"
+
+#: tfrmsongs.buttonclosesongtexfile.caption
+msgid "Close File"
+msgstr ""
 
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"

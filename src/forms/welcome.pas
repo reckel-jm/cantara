@@ -25,7 +25,7 @@ type
     btnNext: TButton;
     btnSelectSongRepoDir: TButton;
     ControlPanel: TGroupBox;
-    Label1: TLabel;
+    labelWelcome: TLabel;
     lblSongAdded: TLabel;
     lblSuccess: TLabel;
     Notebook: TNotebook;
