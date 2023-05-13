@@ -2,11 +2,11 @@ object frmWelcome: TfrmWelcome
   Left = 337
   Height = 489
   Top = 34
-  Width = 718
+  Width = 667
   BorderStyle = bsDialog
   Caption = 'Cantara Setup'
   ClientHeight = 489
-  ClientWidth = 718
+  ClientWidth = 667
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
@@ -19,7 +19,7 @@ object frmWelcome: TfrmWelcome
     Left = 0
     Height = 439
     Top = 0
-    Width = 718
+    Width = 667
     PageIndex = 0
     Anchors = [akTop, akLeft, akRight, akBottom]
     TabOrder = 0
@@ -28,7 +28,7 @@ object frmWelcome: TfrmWelcome
         AnchorSideLeft.Control = Page1
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = Page1
-        Left = 276
+        Left = 250
         Height = 23
         Top = 20
         Width = 166
@@ -49,7 +49,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 82
         Top = 43
-        Width = 718
+        Width = 667
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Cantara is a free and open source song presentation software.'#10'All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven''t collected any songs yet, you can create a new folder first or choose an empty one.'
         ParentColor = False
@@ -64,7 +64,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 40
         Top = 135
-        Width = 718
+        Width = 667
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         Caption = 'Select Song Repository...'
@@ -80,7 +80,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 1
         Top = 180
-        Width = 718
+        Width = 667
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
         ParentColor = False
@@ -96,7 +96,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 25
         Top = 181
-        Width = 718
+        Width = 667
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Add "Amazing Grace" as an example'
         OnClick = btnAddExampleSongClick
@@ -112,7 +112,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 22
         Top = 206
-        Width = 718
+        Width = 667
         Anchors = [akTop, akLeft, akRight]
         Caption = '"Amazing Grace" has been added to your repository. You can now continue.'
         ParentColor = False
@@ -197,10 +197,10 @@ object frmWelcome: TfrmWelcome
     Left = 0
     Height = 50
     Top = 439
-    Width = 718
+    Width = 667
     Anchors = [akLeft, akRight, akBottom]
     ClientHeight = 46
-    ClientWidth = 714
+    ClientWidth = 663
     ParentBackground = False
     TabOrder = 1
     object btnBack: TButton
@@ -208,7 +208,7 @@ object frmWelcome: TfrmWelcome
       AnchorSideRight.Control = btnNext
       AnchorSideBottom.Control = ControlPanel
       AnchorSideBottom.Side = asrBottom
-      Left = 368
+      Left = 317
       Height = 46
       Top = 0
       Width = 123
@@ -226,7 +226,7 @@ object frmWelcome: TfrmWelcome
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = ControlPanel
       AnchorSideBottom.Side = asrBottom
-      Left = 496
+      Left = 445
       Height = 46
       Top = 0
       Width = 218
@@ -246,7 +246,7 @@ object frmWelcome: TfrmWelcome
       Left = 0
       Height = 46
       Top = 0
-      Width = 368
+      Width = 317
       Anchors = [akTop, akLeft, akRight, akBottom]
       TabOrder = 2
     end

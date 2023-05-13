@@ -534,33 +534,13 @@ msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr "Cerrar"
 
-#: tfrmsongs.itemexporttexfile.caption
-msgid "Export Selection with Content..."
-msgstr "Exportar selección con contenido..."
-
-#: tfrmsongs.itemexporttexfile.hint
-msgid "Exports a SongTeX file which contains all selected song files with their content."
-msgstr "Exporta un archivo SongTeX que contiene todos los archivos de canciones seleccionados con su contenido."
-
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
 msgstr ""
 
-#: tfrmsongs.itemimporttexfile.caption
-msgid "Import Selection with Content..."
-msgstr "Importar selección con contenido..."
-
-#: tfrmsongs.itemimporttexfile.hint
-msgid ""
-"Imports a SongTeX file which contains all selected song files with their content.\n"
-"If the file does not exist in the song repository yet, it will be automatically added to."
+#: tfrmsongs.itemloadselection.caption
+msgid "Load Song Selection..."
 msgstr ""
-"Importa un archivo SongTeX que contiene todos los archivos de canciones seleccionados con su contenido.\n"
-"Si el archivo aún no existe en el repositorio de canciones, se añadirá automáticamente."
-
-#: tfrmsongs.itemload.caption
-msgid "Load Selection without Content..."
-msgstr "Cargar selección sin contenido..."
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
@@ -574,11 +554,13 @@ msgstr "Ejecutar presentación"
 msgid "Reload Song Repository"
 msgstr "Recargar el repositorio de canciones"
 
-#: tfrmsongs.itemsave.caption
-#, fuzzy
-#| msgid "Save Selection without Content..."
-msgid "Save Selection without Content as a simple text file..."
-msgstr "Guardar selección sin contenido..."
+#: tfrmsongs.itemsaveselection.caption
+msgid "Save Song Selection..."
+msgstr ""
+
+#: tfrmsongs.itemsaveselectionas.caption
+msgid "Save Song Selection As..."
+msgstr ""
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
@@ -613,94 +595,24 @@ msgstr ""
 #, fuzzy
 #| msgid "File"
 msgctxt "tfrmsongs.menufile.caption"
-msgid "Program"
+msgid "File"
 msgstr "Archivo"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
 msgstr "Ayuda"
 
-#: tfrmsongs.menuimport.caption
-msgid "Import"
-msgstr ""
-
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"
 msgstr "Abrir lista de canciones"
 
+#: tfrmsongs.panelsongtexstatus.caption
+msgid "PanelSongTeXStatus"
+msgstr ""
+
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
 msgstr "Guardar lista de canciones"
-
-#: tfrmsongs.savesongtexfiledialog.title
-msgid "Save SongTeX File"
-msgstr "Guardar archivo SongTeX"
-
-#: tfrmwelcome.bclabel1.caption
-msgid "Welcome to Cantara!"
-msgstr "¡Bienvenido a Cantara!"
-
-#: tfrmwelcome.btnaddexamplesong.caption
-msgid "Add \"Amazing Grace\" as an example"
-msgstr "Añadir \"Amazing Grace\" como ejemplo"
-
-#: tfrmwelcome.btnback.caption
-msgid "Back..."
-msgstr "Atrás..."
-
-#: tfrmwelcome.btnnext.caption
-msgid "Next..."
-msgstr "Siguiente..."
-
-#: tfrmwelcome.btnopengithubrepo.caption
-msgid "Open Github Repository..."
-msgstr "Abrir repositorio Github..."
-
-#: tfrmwelcome.btnopenwebpage.caption
-msgid "Open Webpage with Documentation..."
-msgstr "Abrir página web con documentación..."
-
-#: tfrmwelcome.btnselectsongrepodir.caption
-msgid "Select Song Repository..."
-msgstr "Seleccionar Repositorio de canciones..."
-
-#: tfrmwelcome.caption
-msgid "Cantara Setup"
-msgstr "Configuración de Cantara"
-
-#: tfrmwelcome.label1.caption
-msgid ""
-"Cantara is a free and open source song presentation software.\n"
-"All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
-msgstr ""
-"Cantara es un software de presentación de canciones gratuito y de código abierto.\n"
-"Todas las canciones deben estar ubicadas en un directorio de repositorio de canciones. Seleccione ahora un directorio de su sistema de archivos que Cantara utilizará como repositorio de canciones. Si aún no ha recopilado ninguna canción, puede crear primero una carpeta nueva o elegir una vacía."
-
-#: tfrmwelcome.lbladditionalinformation.caption
-msgid ""
-"You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
-"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
-"For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
-"\n"
-"Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
-"\n"
-"May God bless you and the use of this software!"
-msgstr ""
-"Puede ajustar la apariencia de la presentación en el cuadro de diálogo de configuración. Además, puedes añadir, editar, clonar y convertir archivos de canciones a través del editor. Ambos se encuentran en el menú Edición de la ventana principal.\n"
-"Cantara admite dos formatos de canción: El formato CCLI Songselect y el formato de canción. Esto facilita la descarga e importación de canciones desde Internet. Tenga en cuenta que, dependiendo de su ubicación y de la canción en particular, pueden aplicarse normativas de licencia para la demostración pública de letras de canciones. El usuario es el único responsable del uso legal de este software.\n"
-"Para más información sobre el programa, consulte la documentación en línea en la página https://www.cantara.app.\n"
-"\n"
-"Cantara es software libre y se publica bajo licencia GPL3. El código fuente está disponible públicamente en Github. Si te gusta el proyecto, ¡considera darle una estrella en Github! Comentarios, informes de problemas y pull requests también son bienvenidos.\n"
-"\n"
-"¡Que Dios le bendiga a usted y al uso de este software!"
-
-#: tfrmwelcome.lblsongadded.caption
-msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr "\"Amazing Grace\" ha sido añadido a su repositorio. Ahora puede continuar."
-
-#: tfrmwelcome.lblsuccessheadline.caption
-msgid "Congratulations! Cantara is now ready to use!"
-msgstr "¡Enhorabuena! Cantara ya está listo para su uso!"
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"

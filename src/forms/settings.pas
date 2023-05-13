@@ -157,8 +157,15 @@ begin
 end;
 
 procedure TfrmSettings.ImagePresentationPreviewClick(Sender: TObject);
+var imgWidth, imgHeight: Integer;
+   Rectangle: TRect;
 begin
-
+  imgWidth := PreviewPresentationForm.Width;
+  imgHeight:= PreviewPresentationForm.Height;
+  Rectangle:= Rect(0, 0, imgWidth, imgHeight);
+  ImagePresentationPreview.Picture.Bitmap.Width := imgWidth;
+  ImagePresentationPreview.Picture.Bitmap.Height:= imgHeight;
+  ImagePresentationPreview.Picture.Bitmap.Canvas.CopyRect(Rectangle, PreviewPresentationForm.Canvas, Rectangle);
 end;
 
 procedure TfrmSettings.ImagePresentationPreviewDblClick(Sender: TObject);
@@ -355,6 +362,7 @@ begin
   PreviewPresentationForm.Repaint;
   PreviewPresentationForm.Update;
   PreviewPresentationForm.Invalidate;
+  PreviewPresentationForm.Canvas.Refresh;
   imgWidth := PreviewPresentationForm.Width;
   imgHeight:= PreviewPresentationForm.Height;
   Rectangle:= Rect(0, 0, imgWidth, imgHeight);
@@ -364,4 +372,3 @@ begin
 end;
 
 end.
-

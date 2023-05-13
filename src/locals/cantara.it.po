@@ -534,33 +534,13 @@ msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr "Chiudi"
 
-#: tfrmsongs.itemexporttexfile.caption
-msgid "Export Selection with Content..."
-msgstr "Esporta selezione con contenuto..."
-
-#: tfrmsongs.itemexporttexfile.hint
-msgid "Exports a SongTeX file which contains all selected song files with their content."
-msgstr "Esporta un file SongTeX che contiene tutti i file dei brani selezionati con il loro contenuto."
-
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
 msgstr ""
 
-#: tfrmsongs.itemimporttexfile.caption
-msgid "Import Selection with Content..."
-msgstr "Importa selezione con contenuto..."
-
-#: tfrmsongs.itemimporttexfile.hint
-msgid ""
-"Imports a SongTeX file which contains all selected song files with their content.\n"
-"If the file does not exist in the song repository yet, it will be automatically added to."
+#: tfrmsongs.itemloadselection.caption
+msgid "Load Song Selection..."
 msgstr ""
-"Importa un file SongTeX che contiene tutti i file dei brani selezionati con il loro contenuto.\n"
-"Se il file non esiste ancora nel repository dei brani, verrà aggiunto automaticamente."
-
-#: tfrmsongs.itemload.caption
-msgid "Load Selection without Content..."
-msgstr "Carica selezione senza contenuto..."
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
