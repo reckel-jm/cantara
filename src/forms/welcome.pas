@@ -6,14 +6,14 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  ComCtrls, Settings, info, lclintf, LCLType, lyrics;
+  LCLTranslator, ComCtrls, Settings, info, lclintf, LCLType, lyrics;
 
 type
 
   { TfrmWelcome }
 
   TfrmWelcome = class(TForm)
-    BCLabel1: TLabel;
+    LabelWelcomeHeadline: TLabel;
     btnAddExampleSong: TButton;
     btnOpenWebpage: TButton;
     btnOpenGithubRepo: TButton;

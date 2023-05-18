@@ -13,6 +13,7 @@ object frmWrapperFulltextSearch: TfrmWrapperFulltextSearch
   OnShow = FormShow
   Position = poOwnerFormCenter
   ShowInTaskBar = stNever
+  LCLVersion = '2.2.6.0'
   inline Wrapper: TFrmFulltextsearch
     Left = 5
     Height = 273
@@ -33,7 +34,6 @@ object frmWrapperFulltextSearch: TfrmWrapperFulltextSearch
       AnchorSideBottom.Control = Wrapper
       Height = 232
       Width = 525
-      PageIndex = 0
       inherited LoadIndex: TPage
         inherited LabalCreateIndex: TLabel
           Left = 211

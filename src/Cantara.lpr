@@ -8,9 +8,9 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, runtimetypeinfocontrols, SongSelection, Present, settings,
-  info,
+  info, welcome, songeditor,
   { you can add units after this }
-  songeditor, welcome, slides, fulltextsearch, FormFulltextSearch;
+  slides, fulltextsearch, FormFulltextSearch;
 {$R *.res}
 
 begin

@@ -377,6 +377,10 @@ msgstr "en la primera diapositiva"
 msgid "at last slide"
 msgstr "en la última diapositiva"
 
+#: tfrmsettings.cbmetatitleslide.caption
+msgid "at special title slide"
+msgstr ""
+
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
 msgstr "Mostrar imagen de fondo:"
@@ -534,6 +538,10 @@ msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr "Cerrar"
 
+#: tfrmsongs.itemexportpptx.caption
+msgid "Powerpoint-Präsentation (pptx)"
+msgstr ""
+
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
 msgstr ""
@@ -613,6 +621,63 @@ msgstr ""
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
 msgstr "Guardar lista de canciones"
+
+#: tfrmwelcome.btnaddexamplesong.caption
+msgid "Add \"Amazing Grace\" as an example"
+msgstr ""
+
+#: tfrmwelcome.btnback.caption
+msgid "Back..."
+msgstr ""
+
+#: tfrmwelcome.btnnext.caption
+msgid "Continue..."
+msgstr ""
+
+#: tfrmwelcome.btnopengithubrepo.caption
+msgid "Open Github Repository..."
+msgstr ""
+
+#: tfrmwelcome.btnopenwebpage.caption
+msgid "Open Webpage with Documentation..."
+msgstr ""
+
+#: tfrmwelcome.btnselectsongrepodir.caption
+msgid "Select Song Repository..."
+msgstr ""
+
+#: tfrmwelcome.caption
+msgid "Cantara Setup"
+msgstr ""
+
+#: tfrmwelcome.labelwelcome.caption
+msgid ""
+"Cantara is a free and open source song presentation software.\n"
+"All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
+msgstr ""
+
+#: tfrmwelcome.labelwelcomeheadline.caption
+msgid "Welcome to Cantara!"
+msgstr ""
+
+#: tfrmwelcome.lbladditionalinformation.caption
+msgid ""
+"You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
+"For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
+"\n"
+"Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
+"\n"
+"May God bless you and the use of this software!"
+msgstr ""
+
+#: tfrmwelcome.lblsongadded.caption
+msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
+msgstr ""
+
+#: tfrmwelcome.lblsuccessheadline.caption
+msgid "Congratulations! Cantara is now ready to use!"
+msgstr ""
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"

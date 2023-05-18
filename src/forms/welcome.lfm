@@ -2,11 +2,11 @@ object frmWelcome: TfrmWelcome
   Left = 337
   Height = 489
   Top = 34
-  Width = 667
+  Width = 689
   BorderStyle = bsDialog
   Caption = 'Cantara Setup'
   ClientHeight = 489
-  ClientWidth = 667
+  ClientWidth = 689
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
@@ -19,16 +19,16 @@ object frmWelcome: TfrmWelcome
     Left = 0
     Height = 439
     Top = 0
-    Width = 667
+    Width = 689
     PageIndex = 0
     Anchors = [akTop, akLeft, akRight, akBottom]
     TabOrder = 0
     object Page1: TPage
-      object BCLabel1: TLabel
+      object LabelWelcomeHeadline: TLabel
         AnchorSideLeft.Control = Page1
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = Page1
-        Left = 250
+        Left = 261
         Height = 23
         Top = 20
         Width = 166
@@ -42,14 +42,14 @@ object frmWelcome: TfrmWelcome
       end
       object labelWelcome: TLabel
         AnchorSideLeft.Control = Page1
-        AnchorSideTop.Control = BCLabel1
+        AnchorSideTop.Control = LabelWelcomeHeadline
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = Page1
         AnchorSideRight.Side = asrBottom
         Left = 0
         Height = 82
         Top = 43
-        Width = 667
+        Width = 689
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Cantara is a free and open source song presentation software.'#10'All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven''t collected any songs yet, you can create a new folder first or choose an empty one.'
         ParentColor = False
@@ -64,7 +64,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 40
         Top = 135
-        Width = 667
+        Width = 689
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         Caption = 'Select Song Repository...'
@@ -80,7 +80,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 1
         Top = 180
-        Width = 667
+        Width = 689
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
         ParentColor = False
@@ -96,7 +96,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 25
         Top = 181
-        Width = 667
+        Width = 689
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Add "Amazing Grace" as an example'
         OnClick = btnAddExampleSongClick
@@ -112,7 +112,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 22
         Top = 206
-        Width = 667
+        Width = 689
         Anchors = [akTop, akLeft, akRight]
         Caption = '"Amazing Grace" has been added to your repository. You can now continue.'
         ParentColor = False
@@ -131,7 +131,7 @@ object frmWelcome: TfrmWelcome
         Left = 0
         Height = 22
         Top = 20
-        Width = 718
+        Width = 667
         Alignment = taCenter
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 20
@@ -147,9 +147,9 @@ object frmWelcome: TfrmWelcome
         AnchorSideRight.Control = lblSuccessHeadline
         AnchorSideRight.Side = asrBottom
         Left = 0
-        Height = 302
+        Height = 322
         Top = 62
-        Width = 718
+        Width = 667
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 20
         Caption = 'You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.'#10'Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.'#10'For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.'#10#10'Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.'#10#10'May God bless you and the use of this software!'
@@ -162,7 +162,7 @@ object frmWelcome: TfrmWelcome
         AnchorSideTop.Side = asrBottom
         Left = 0
         Height = 40
-        Top = 374
+        Top = 394
         Width = 368
         BorderSpacing.Top = 10
         Caption = 'Open Webpage with Documentation...'
@@ -178,8 +178,8 @@ object frmWelcome: TfrmWelcome
         AnchorSideRight.Side = asrBottom
         Left = 368
         Height = 40
-        Top = 374
-        Width = 350
+        Top = 394
+        Width = 299
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         Caption = 'Open Github Repository...'
@@ -197,10 +197,10 @@ object frmWelcome: TfrmWelcome
     Left = 0
     Height = 50
     Top = 439
-    Width = 667
+    Width = 689
     Anchors = [akLeft, akRight, akBottom]
     ClientHeight = 46
-    ClientWidth = 663
+    ClientWidth = 685
     ParentBackground = False
     TabOrder = 1
     object btnBack: TButton
@@ -208,7 +208,7 @@ object frmWelcome: TfrmWelcome
       AnchorSideRight.Control = btnNext
       AnchorSideBottom.Control = ControlPanel
       AnchorSideBottom.Side = asrBottom
-      Left = 317
+      Left = 339
       Height = 46
       Top = 0
       Width = 123
@@ -226,12 +226,12 @@ object frmWelcome: TfrmWelcome
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = ControlPanel
       AnchorSideBottom.Side = asrBottom
-      Left = 445
+      Left = 467
       Height = 46
       Top = 0
       Width = 218
       Anchors = [akTop, akRight, akBottom]
-      Caption = 'Next...'
+      Caption = 'Continue...'
       Color = clNone
       Enabled = False
       OnClick = btnNextClick
@@ -246,7 +246,7 @@ object frmWelcome: TfrmWelcome
       Left = 0
       Height = 46
       Top = 0
-      Width = 317
+      Width = 339
       Anchors = [akTop, akLeft, akRight, akBottom]
       TabOrder = 2
     end

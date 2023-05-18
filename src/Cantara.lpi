@@ -35,7 +35,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="1"/>
+      <BuildNr Value="2"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.5"/>
@@ -362,7 +362,7 @@
         <IsPartOfProject Value="True"/>
       </Unit10>
       <Unit11>
-        <Filename Value="welcome.pas"/>
+        <Filename Value="forms/welcome.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmWelcome"/>
         <HasResources Value="True"/>

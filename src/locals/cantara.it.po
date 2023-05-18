@@ -377,6 +377,10 @@ msgstr "nella prima diapositiva"
 msgid "at last slide"
 msgstr "nell'ultima diapositiva"
 
+#: tfrmsettings.cbmetatitleslide.caption
+msgid "at special title slide"
+msgstr ""
+
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
 msgstr "Mostra immagine di sfondo:"
@@ -534,6 +538,10 @@ msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr "Chiudi"
 
+#: tfrmsongs.itemexportpptx.caption
+msgid "Powerpoint-Präsentation (pptx)"
+msgstr ""
+
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
 msgstr ""
@@ -595,68 +603,62 @@ msgstr ""
 #, fuzzy
 #| msgid "File"
 msgctxt "tfrmsongs.menufile.caption"
-msgid "Program"
+msgid "File"
 msgstr "File"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
 msgstr "Aiuto"
 
-#: tfrmsongs.menuimport.caption
-msgid "Import"
-msgstr ""
-
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"
 msgstr "Apri l'elenco dei brani"
+
+#: tfrmsongs.panelsongtexstatus.caption
+msgid "PanelSongTeXStatus"
+msgstr ""
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
 msgstr "Salva elenco brani"
 
-#: tfrmsongs.savesongtexfiledialog.title
-msgid "Save SongTeX File"
-msgstr "Salva il file SongTeX"
-
-#: tfrmwelcome.bclabel1.caption
-msgid "Welcome to Cantara!"
-msgstr "Benvenuti su Cantara!"
-
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr "Aggiungi \"Amazing Grace\" come esempio"
+msgstr ""
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr "Indietro..."
+msgstr ""
 
 #: tfrmwelcome.btnnext.caption
-msgid "Next..."
-msgstr "Avanti..."
+msgid "Continue..."
+msgstr ""
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr "Apri repository Github..."
+msgstr ""
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr "Apri pagina web con documentazione..."
+msgstr ""
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr "Seleziona Repository brani..."
+msgstr ""
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr "Installazione di Cantara"
+msgstr ""
 
-#: tfrmwelcome.label1.caption
+#: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
-"Cantara è un software di presentazione di canzoni gratuito e open source.\n"
-"Tutti i brani devono essere collocati in una directory del repository dei brani. Selezionate ora una cartella del vostro file system che Cantara utilizzerà come archivio dei brani. Se non avete ancora raccolto alcun brano, potete prima creare una nuova cartella o sceglierne una vuota."
+
+#: tfrmwelcome.labelwelcomeheadline.caption
+msgid "Welcome to Cantara!"
+msgstr ""
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
@@ -668,21 +670,14 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
-"Puoi regolare l'aspetto della presentazione nella finestra di dialogo Impostazioni. Inoltre, puoi aggiungere, modificare, clonare e convertire i file dei brani tramite l'editor. Entrambi si trovano nel menu Modifica nella finestra principale.\n"
-"Cantara supporta due formati di brani: il formato CCLI Songselect e il formato canzone. Ciò semplifica il download e l'importazione di brani da Internet. Tieni presente che, a seconda della tua posizione e del brano specifico, i regolamenti di licenza per la dimostrazione pubblica di brani potrebbero applicarsi i testi. L'utente è l'unico responsabile per l'uso legale di questo software.\n"
-"Per maggiori informazioni sul programma, consultare la documentazione online alla pagina web https://www.cantara.app.\n"
-"\n"
-"Cantara è un software gratuito e pubblicato con licenza GPL3. Il codice sorgente è pubblicamente disponibile su Github. Se ti piace il progetto, considera di assegnargli una stella su Github! Anche feedback, segnalazioni di problemi e richieste pull sono i benvenuti.\n"
-" \n"
-"Che Dio benedica te e l'uso di questo software!"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr "\"Amazing Grace\" è stato aggiunto al tuo repository. Ora puoi continuare."
+msgstr ""
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr "Congratulazioni! Cantara è ora pronta per l'uso!"
+msgstr ""
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"

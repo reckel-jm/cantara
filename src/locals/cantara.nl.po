@@ -378,6 +378,10 @@ msgstr "na eerste pauze"
 msgid "at last slide"
 msgstr "na laatste pauze"
 
+#: tfrmsettings.cbmetatitleslide.caption
+msgid "at special title slide"
+msgstr ""
+
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
 msgstr "Achtergrondafbeelding tonen:"
@@ -535,6 +539,10 @@ msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr "Sluiten"
 
+#: tfrmsongs.itemexportpptx.caption
+msgid "Powerpoint-Präsentation (pptx)"
+msgstr ""
+
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
 msgstr ""
@@ -596,68 +604,62 @@ msgstr ""
 #, fuzzy
 #| msgid "File"
 msgctxt "tfrmsongs.menufile.caption"
-msgid "Program"
+msgid "File"
 msgstr "Bestand"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
 msgstr "Hulp"
 
-#: tfrmsongs.menuimport.caption
-msgid "Import"
-msgstr ""
-
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"
 msgstr "Nummerlijst tonen"
+
+#: tfrmsongs.panelsongtexstatus.caption
+msgid "PanelSongTeXStatus"
+msgstr ""
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
 msgstr "Nummerlijst opslaan"
 
-#: tfrmsongs.savesongtexfiledialog.title
-msgid "Save SongTeX File"
-msgstr "SongTeX-bestand opslaan"
-
-#: tfrmwelcome.bclabel1.caption
-msgid "Welcome to Cantara!"
-msgstr "Welkom bij Cantara!"
-
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr "‘Amazing Grace’ toevoegen als voorbeeldnummer"
+msgstr ""
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr "Terug…"
+msgstr ""
 
 #: tfrmwelcome.btnnext.caption
-msgid "Next..."
-msgstr "Volgende…"
+msgid "Continue..."
+msgstr ""
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr "GitHub-opslagruimte openen…"
+msgstr ""
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr "Lees de documentatie in uw webbrowser…"
+msgstr ""
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr "Kies de nummermap…"
+msgstr ""
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr "Cantara-instelhulp"
+msgstr ""
 
-#: tfrmwelcome.label1.caption
+#: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
-"Cantara is een gratis en open source nummerpresentatieprogramma.\n"
-"Alle nummers dienen aanwezig te zijn in de gekozen map. Kies nu een map op uw systeem die gebruikt dient te worden als opslag. Als u nog geen muziekverzameling heeft, dan kunt u eerst een nieuwe map aanmaken of een lege map kiezen."
+
+#: tfrmwelcome.labelwelcomeheadline.caption
+msgid "Welcome to Cantara!"
+msgstr ""
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
@@ -669,21 +671,14 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
-"U kunt, indien gewenst, de vormgeving van de presentatie aanpassen in de instellingen. In de bewerker kunt u nummers toevoegen, bewerken, klonen en converteren.  Dit alles is beschikbaar in het menu ‘Bewerken’ in het hoofdvenster.\n"
-"Cantara ondersteunt twee formaten: CCLI Songselect- en reguliere nummerformaten. Hierdoor is het eenvoudig om nummers van het internet op te halen en importeren. Let op: er kunnen licentiebeperkingen van kracht zijn op nummers en locaties, waardoor openbaar vertonen van songteksten mogelijk niet rechtsgeldig is. Gebruikers zijn zélf verantwoordelijk voor het gebruik van deze software.\n"
-"Meer informatie over het programma is te vinden in de online- documentatie op https://www.cantara.app.\n"
-"\n"
-"Cantara is vrije software, uitgebracht onder de voorwaarden van de GPL3-licentie. De broncode is openbaar te verkrijgen op GitHub. Als u de software graag gebruikt, overweeg dan een ster op GitHub te geven! Feedback, probleemmeldingen en pull requests zijn ook van harte welkom.\n"
-"\n"
-"God zij u en het gebruik van deze software!"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr "‘Amazing Grace’ is toegevoegd - u kunt nu doorgaan."
+msgstr ""
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr "Geweldig! Cantara is nu klaar voor gebruik."
+msgstr ""
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"
