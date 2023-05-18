@@ -62,6 +62,7 @@ type
     itemLoadSelection: TMenuItem;
     itemSaveSelection: TMenuItem;
     itemSaveSelectionAs: TMenuItem;
+    itemExportPptx: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     PanelSongTeXStatus: TPanel;
@@ -146,6 +147,8 @@ type
     PanelMultiScreenLeft: Integer;
     { The loaded song selection file path }
     LoadedSongSelectionFilePath: String;
+    { This integer counts for the presentation slide id's }
+    PresentationSlideCounter: Integer;
     { Filters the Listbox lbxSRepo after a search pattern. If s is empty, no filter will be applied.
     @param(s: the search pattern) }
     procedure FilterListBox(s: String);
@@ -693,8 +696,8 @@ begin
   // Prüfe, ob mindestens ein Lied ausgewählt wurde
   if lbxSSelected.Count > 0 then
   begin
+    PresentationSlideCounter := 0;
     CreatePresentationData;
-
     // Passe Hauptfenster an, falls Multi-Fenster-Modus ausgewählt wurde.
     if chkMultiWindowMode.Checked Then
       Begin
@@ -797,7 +800,7 @@ begin
     Song.importSongfile(completefilename);
     Songlist.Add(song);
     MetaSyntax := frmSettings.memoMetaData.Lines.Text;
-    SlideList.AddList(CreatePresentationDataFromSong(Song, frmSettings.cbSpoiler.Checked, frmSettings.cbMetaDataFirstSlide.Checked, frmSettings.cbMetaDataLastSlide.Checked, MetaSyntax, frmSettings.cbEmptyFrame.Checked, MaxSlideLineLength));
+    SlideList.AddList(CreatePresentationDataFromSong(Song, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
   end;
   // Kopiere Lieder in Zwischenablage
   // if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);

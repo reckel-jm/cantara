@@ -20,6 +20,7 @@ type
     btnTextColor: TButton;
     btnBackgroundImage: TButton;
     cbMetaDataFirstSlide: TCheckBox;
+    cbMetaTitleSlide: TCheckBox;
     cbShowBackgroundImage: TCheckBox;
     cbMetaDataLastSlide: TCheckBox;
     cbSpoiler: TCheckBox;
@@ -76,6 +77,8 @@ type
   public
     { public declarations }
     changedBackground: Boolean;
+    {Exports the slide settings as TSlideSettings record }
+    function ExportSlideSettings(): TSlideSettings;
   end;
 
 var
@@ -269,6 +272,7 @@ begin
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Text-Color', 'clWhite'));
   bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Background-Color', 'clBlack'));
   cbSpoiler.Checked:=settingsFile.ReadBool('Config', 'Spoiler', True);
+  cbMetaTitleSlide.Checked := settingsFile.ReadBool('Config', 'TitleSlide', False);
   cbMetaDataFirstSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataFirstSlide', False);
   cbMetaDataLastSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataLastSlide', False);
   str := settingsFile.ReadString('Config','MetaDataSyntax', '');
@@ -318,6 +322,7 @@ begin
     settingsFile.WriteString('Config', 'Font-Style', StyleToStr(FontDialog.Font.Style));
     //settingsFile.WriteFloat('Config', 'Line-Distance', edtLineDistance.Value);
     settingsFile.WriteBool('Config', 'copy-lyrics-to-clipboard', cbLyricsToClipboard.Checked);
+    settingsFile.WriteBool('Config', 'TitleSlide', cbMetaTitleSlide.Checked);
     settingsFile.WriteBool('Config', 'MetaDataFirstSlide', cbMetaDataFirstSlide.Checked);
     settingsFile.WriteBool('Config', 'MetaDataLastSlide', cbMetaDataLastSlide.Checked);
     str := StringReplace(memoMetaData.Lines.Text, LineEnding, '</br>', [rfReplaceAll]);
@@ -338,6 +343,7 @@ var imgWidth: Integer;
    DummySongFile: TStringList;
    rs: TResourceStream;
    ExampleSong: TSong;
+   PresentationSlideCounter: Integer;
 begin
   if not Assigned(SlideList) then
      SlideList := TSlideList.Create(True);
@@ -349,7 +355,8 @@ begin
     DummySongFile.LoadFromStream(rs);
     ExampleSong := TSong.Create;
     ExampleSong.importSongFromStringList(DummySongFile);
-    SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, cbSpoiler.Checked, cbMetaDataFirstSlide.Checked, cbMetaDataLastSlide.Checked, memoMetaData.Lines.Text, frmSettings.cbEmptyFrame.Checked, seWrapLines.Value));
+    PresentationSlideCounter := 0;
+    SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
     PreviewPresentationForm.SlideList := SlideList;
     //FreeAndNil(DummySongFile);
     //FreeAndNil(ExampleSong);
@@ -369,6 +376,19 @@ begin
   ImagePresentationPreview.Picture.Bitmap.Width := imgWidth;
   ImagePresentationPreview.Picture.Bitmap.Height:= imgHeight;
   ImagePresentationPreview.Picture.Bitmap.Canvas.CopyRect(Rectangle, PreviewPresentationForm.Canvas, Rectangle);
+end;
+
+function TFrmSettings.ExportSlideSettings(): TSlideSettings;
+var SlideSettings: TSlideSettings;
+begin
+  SlideSettings.EmptyFrame := cbEmptyFrame.Checked;
+  SlideSettings.FirstSlideMeta := cbMetaDataFirstSlide.Checked;
+  SlideSettings.LastSlideMeta := cbMetaDataLastSlide.Checked;
+  SlideSettings.MaxSlideLineLength:= seWrapLines.Value;
+  SlideSettings.MetaSyntax:=memoMetaData.Lines.Text;
+  SlideSettings.SpoilerText:=cbSpoiler.Checked;
+  SlideSettings.TitleSlide := cbMetaTitleSlide.Checked;
+  Result := SlideSettings;
 end;
 
 end.

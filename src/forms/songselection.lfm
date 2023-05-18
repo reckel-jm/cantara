@@ -482,6 +482,9 @@ object frmSongs: TfrmSongs
     end
     object menuExport: TMenuItem
       Caption = 'Export'
+      object itemExportPptx: TMenuItem
+        Caption = 'Powerpoint-Präsentation (pptx)'
+      end
     end
     object menuHelp: TMenuItem
       Caption = 'Help'

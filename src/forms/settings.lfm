@@ -176,11 +176,11 @@ object frmSettings: TfrmSettings
     object cbMetaDataFirstSlide: TCheckBox
       AnchorSideLeft.Control = lblMetaContent
       AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = sbImageBrightness
+      AnchorSideTop.Control = cbMetaTitleSlide
       AnchorSideTop.Side = asrBottom
       Left = 156
       Height = 26
-      Top = 128
+      Top = 159
       Width = 110
       BorderSpacing.Left = 10
       BorderSpacing.Top = 5
@@ -197,7 +197,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Side = asrBottom
       Left = 156
       Height = 26
-      Top = 154
+      Top = 185
       Width = 107
       BorderSpacing.Left = 10
       Caption = 'at last slide'
@@ -209,7 +209,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Side = asrBottom
       Left = 8
       Height = 22
-      Top = 185
+      Top = 216
       Width = 138
       BorderSpacing.Top = 5
       Caption = 'Meta Data Content:'
@@ -227,8 +227,8 @@ object frmSettings: TfrmSettings
       AnchorSideBottom.Control = gbPresentation
       AnchorSideBottom.Side = asrBottom
       Left = 156
-      Height = 185
-      Top = 185
+      Height = 154
+      Top = 216
       Width = 764
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Left = 10
@@ -344,7 +344,7 @@ object frmSettings: TfrmSettings
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = memoMetaData
       Left = 688
-      Height = 175
+      Height = 206
       Top = 5
       Width = 230
       Anchors = [akTop, akLeft, akRight, akBottom]
@@ -353,6 +353,21 @@ object frmSettings: TfrmSettings
       OnDblClick = ImagePresentationPreviewDblClick
       Proportional = True
       Stretch = True
+    end
+    object cbMetaTitleSlide: TCheckBox
+      AnchorSideLeft.Control = lblMetaContent
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = sbImageBrightness
+      AnchorSideTop.Side = asrBottom
+      Left = 156
+      Height = 26
+      Top = 128
+      Width = 162
+      BorderSpacing.Left = 10
+      BorderSpacing.Top = 5
+      Caption = 'at special title slide'
+      ParentFont = False
+      TabOrder = 10
     end
   end
   object btnClose: TButton

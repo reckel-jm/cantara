@@ -19,8 +19,11 @@
         <TextDesc Value="Song Presentation Software"/>
       </XPManifest>
       <Icon Value="0"/>
-      <Resources Count="1">
+      <Resources Count="4">
         <Resource_0 FileName="resources/Amazing Grace.song" Type="RCDATA" ResourceName="AMAZING GRACE"/>
+        <Resource_1 FileName="exporters/templates/pptx/pptxgen.bundle.js" Type="RCDATA" ResourceName="PPTXGEN.BUNDLE"/>
+        <Resource_2 FileName="exporters/templates/pptx/pptxexport_template.html" Type="RCDATA" ResourceName="PPTXEXPORT_TEMPLATE"/>
+        <Resource_3 FileName="exporters/templates/pptx/pptxexport_example.html" Type="RCDATA" ResourceName="PPTXEXPORT_EXAMPLE"/>
       </Resources>
     </General>
     <i18n>

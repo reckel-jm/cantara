@@ -28,6 +28,17 @@ uses
 
 type
 
+  { This record has all the settings required for a presentation slide }
+  TSlideSettings = record
+    SpoilerText: Boolean;
+    TitleSlide: Boolean;
+    FirstSlideMeta: Boolean;
+    LastSlideMeta: Boolean;
+    MetaSyntax: String;
+    EmptyFrame: Boolean;
+    MaxSlideLineLength: Integer;
+  end;
+
   { An Element of every slide which represents its text content. }
   TPartContent = class
     public
@@ -43,7 +54,7 @@ type
       Song: TSong;
       PartContent: TPartContent;
       Extra: String;
-      ID: String;
+      ID: Integer;
       constructor Create; overload;
       destructor Destroy; override;
 
@@ -52,7 +63,7 @@ type
   TSlideList = specialize TFPGObjectList<TSlide>;
 
   { Create Presentation Data from a TSong with appropriate settings }
-  function CreatePresentationDataFromSong(Song: TSong; SpoilerText: Boolean; FirstSlideMeta: Boolean; LastSlideMeta: Boolean; MetaSyntax: String; EmptyFrame: Boolean; MaxSlideLineLength: Integer): TSlideList;
+  function CreatePresentationDataFromSong(Song: TSong; SlideSettings: TSlideSettings; var SlideCounter: Integer): TSlideList;
 
 implementation
   constructor TPartContent.Create;
@@ -75,7 +86,7 @@ implementation
     inherited;
   end;
 
-  function CreatePresentationDataFromSong(Song: TSong; SpoilerText: Boolean; FirstSlideMeta: Boolean; LastSlideMeta: Boolean; MetaSyntax: String; EmptyFrame: Boolean; MaxSlideLineLength: Integer): TSlideList;
+  function CreatePresentationDataFromSong(Song: TSong; SlideSettings: TSlideSettings; var SlideCounter: Integer): TSlideList;
   var songfile: TStringList;
     completefilename: String;
     songname: string;
@@ -84,12 +95,15 @@ implementation
     Slide: TSlide;
     j: Integer;
   begin
-    Song.MaxSlideLineLength:=MaxSlideLineLength;
+    { Create the SlideList which later will be returned }
+    CurrentSongSlideList := TSlideList.Create(False);
+
+    Song.MaxSlideLineLength:=SlideSettings.MaxSlideLineLength;
     Song.slideWrap;
+
     songfile := song.output;
     //gehe durch Songdatei und füge gleiche Strophen zu einem String zusammen
     stanza := '';
-    CurrentSongSlideList := TSlideList.Create(False);
     for j := 0 to songfile.Count-1 do
     begin
       if (songfile.strings[j] = '') then
@@ -97,6 +111,8 @@ implementation
           Slide := TSlide.Create;
           Slide.Song := Song;
           Slide.PartContent.MainText:= stanza;
+          Slide.ID := SlideCounter;
+          SlideCounter += 1;
           stanza := '';
           CurrentSongSlideList.Add(Slide);
         end
@@ -106,34 +122,51 @@ implementation
     Slide := TSlide.Create;
     Slide.Song := Song;
     Slide.PartContent.MainText:= stanza;
+    Slide.ID := SlideCounter;
+    inc(SlideCounter);
     CurrentSongSlideList.Add(Slide);
     { Add Spoiler Text to the slides if desired in the settings }
 
-    if SpoilerText then
+    if SlideSettings.SpoilerText then
     begin
       for j := 0 to CurrentSongSlideList.Count-2 do
-        CurrentSongSlideList.Items[j].PartContent.SpoilerText:=CurrentSongSlideList.Items[j+1].PartContent.MainText;
+        if CurrentSongSlideList.Items[j].PartContent.SpoilerText = '' then
+          CurrentSongSlideList.Items[j].PartContent.SpoilerText:=CurrentSongSlideList.Items[j+1].PartContent.MainText;
     end;
 
     { Add Meta Information to the slides if desired in the settings which were handed over }
 
-    if (FirstSlideMeta) then
+    if (SlideSettings.FirstSlideMeta) then
     begin
-      CurrentSongSlideList.Items[0].PartContent.MetaText := Song.ParseMetaData(MetaSyntax);
+      CurrentSongSlideList.Items[0].PartContent.MetaText := Song.ParseMetaData(SlideSettings.MetaSyntax);
     end;
 
-    if (LastSlideMeta) then
+    if (SlideSettings.LastSlideMeta) then
     begin
-      CurrentSongSlideList.Items[CurrentSongSlideList.Count-1].PartContent.MetaText := Song.ParseMetaData(MetaSyntax);
+      CurrentSongSlideList.Items[CurrentSongSlideList.Count-1].PartContent.MetaText := Song.ParseMetaData(SlideSettings.MetaSyntax);
     end;
 
     { Add an empty frame if selected in the settings }
-    if EmptyFrame then
+    if SlideSettings.EmptyFrame then
     begin
       // We create a slide but with no content
       Slide := TSlide.Create;
       Slide.Song := Song;
+      Slide.ID := SlideCounter;
+      inc(SlideCounter);
       CurrentSongSlideList.Add(Slide);
+    end;
+
+    { add title slide if desired in the settings }
+    // We are doing that at the last slide because we want to avoid confusion with firstslide/lastslide BEFOREHAND
+
+    if SlideSettings.TitleSlide then
+    begin
+      Slide := TSlide.Create;
+      Slide.Song := Song;
+      Slide.PartContent.MainText:=Song.MetaDict['title'];
+      Slide.PartContent.SpoilerText:= Song.ParseMetaData(SlideSettings.MetaSyntax);
+      CurrentSongSlideList.Insert(0, Slide);
     end;
 
     { Return CurrentSongSlideList }
