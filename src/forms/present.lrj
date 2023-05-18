@@ -1,0 +1,5 @@
+{"version":1,"strings":[
+{"hash":13658014,"name":"tfrmpresent.caption","sourcebytes":[80,114,101,115,101,110,116,97,116,105,111,110],"value":"Presentation"},
+{"hash":67698302,"name":"tfrmpresent.lblnext.caption","sourcebytes":[60,76,121,114,105,99,115,62],"value":"<Lyrics>"},
+{"hash":244276325,"name":"tfrmpresent.lblmeta.caption","sourcebytes":[60,77,101,116,97,62,10,83,101,99,111,110,100,32,76,105,110,101],"value":"<Meta>\nSecond Line"}
+]}

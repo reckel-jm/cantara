@@ -1,0 +1,9 @@
+{"version":1,"strings":[
+{"hash":105404867,"name":"tfrmsongedit.caption","sourcebytes":[69,100,105,116,32,70,105,108,101,115],"value":"Edit Files"},
+{"hash":315429,"name":"tfrmsongedit.menufile.caption","sourcebytes":[70,105,108,101],"value":"File"},
+{"hash":21703,"name":"tfrmsongedit.menuitemnew.caption","sourcebytes":[78,101,119],"value":"New"},
+{"hash":366789,"name":"tfrmsongedit.menuitemsave.caption","sourcebytes":[83,97,118,101],"value":"Save"},
+{"hash":304761,"name":"tfrmsongedit.menuitemcopy.caption","sourcebytes":[67,111,112,121],"value":"Copy"},
+{"hash":143257733,"name":"tfrmsongedit.menuitemarchivate.caption","sourcebytes":[65,114,99,104,105,118,101],"value":"Archive"},
+{"hash":1729554,"name":"tfrmsongedit.menuitemclose.caption","sourcebytes":[67,108,111,115,101,32,69,100,105,116,111,114],"value":"Close Editor"}
+]}

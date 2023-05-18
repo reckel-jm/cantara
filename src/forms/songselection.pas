@@ -7,7 +7,7 @@ interface
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
-  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch;
+  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch, PPTX;
 
 type
   TSongPosition = record
@@ -98,6 +98,7 @@ type
     procedure ImageUpdaterStopTimer(Sender: TObject);
     procedure ImageUpdaterTimer(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
+    procedure itemExportPptxClick(Sender: TObject);
     procedure itemExportTeXFileClick(Sender: TObject);
     procedure itemFulltextSearchClick(Sender: TObject);
     procedure itemImportTeXFileClick(Sender: TObject);
@@ -362,6 +363,13 @@ end;
 procedure TfrmSongs.itemEndClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TfrmSongs.itemExportPptxClick(Sender: TObject);
+var PPTXExporter: TPPTXExporter;
+begin
+  PPTXExporter := TPPTXExporter.Create;
+  FreeAndNil(PPTXExporter);
 end;
 
 procedure TfrmSongs.itemExportTeXFileClick(Sender: TObject);
