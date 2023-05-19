@@ -79,3 +79,4 @@ A big thanks to the following users who helped improving Cantara:
 
 ## Licence
 The program is licenced under GPL3. See [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) for details. You may use and change this software and it's source code and share it as you wish, but you need to add a copyright hint and keep the licence.
+The file `src/exporters/templates/pptx/pptxgen.bundle.js` ist copied from the [PptxGenJS](https://github.com/gitbrent/PptxGenJS/) project and originally published by Brent Ely under [MIT license](https://github.com/gitbrent/PptxGenJS/blob/master/LICENSE).
