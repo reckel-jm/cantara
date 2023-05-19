@@ -10,7 +10,7 @@ uses
   {$ENDIF}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
-  ExtCtrls, Present, Lyrics, Slides;
+  ExtCtrls, Present, Lyrics, Slides, ResourceHandling;
 
 type
 
@@ -77,6 +77,7 @@ type
     PreviewPresentationForm: TfrmPresent;
     SlideList: TSlideList;
     procedure LoadPreviewImage;
+    procedure PreparePreviewPresentationForm;
   public
     { public declarations }
     changedBackground: Boolean;
@@ -143,6 +144,7 @@ end;
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
   changedBackground := False;
+  PreparePreviewPresentationForm;
 end;
 
 procedure TfrmSettings.FormDestroy(Sender: TObject);
@@ -340,45 +342,12 @@ begin
 end;
 
 procedure TfrmSettings.LoadPreviewImage;
-var imgWidth: Integer;
-   imgHeight: Integer;
-   Rectangle: TRect;
-   DummySongFile: TStringList;
-   rs: TResourceStream;
-   ExampleSong: TSong;
-   PresentationSlideCounter: Integer;
+var
+   FormImage: TBitmap;
 begin
-  if not Assigned(SlideList) then
-     SlideList := TSlideList.Create(True);
-  if not Assigned(PreviewPresentationForm) then
-  begin
-    PreviewPresentationForm := TFrmPresent.Create(frmSettings);
-    rs := TResourceStream.Create(hinstance, 'AMAZING GRACE', RT_RCDATA);
-    DummySongFile := TStringList.Create;
-    DummySongFile.LoadFromStream(rs);
-    ExampleSong := TSong.Create;
-    ExampleSong.importSongFromStringList(DummySongFile);
-    PresentationSlideCounter := 0;
-    SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
-    PreviewPresentationForm.SlideList := SlideList;
-    //FreeAndNil(DummySongFile);
-    //FreeAndNil(ExampleSong);
-  end;
-
-  PreviewPresentationForm.LoadBackground;
   PreviewPresentationForm.ResizeBackground;
-  PreviewPresentationForm.showItem(0);
-  PreviewPresentationForm.Refresh;
-  PreviewPresentationForm.Repaint;
-  PreviewPresentationForm.Update;
-  PreviewPresentationForm.Invalidate;
-  PreviewPresentationForm.Canvas.Refresh;
-  imgWidth := PreviewPresentationForm.Width;
-  imgHeight:= PreviewPresentationForm.Height;
-  Rectangle:= Rect(0, 0, imgWidth, imgHeight);
-  ImagePresentationPreview.Picture.Bitmap.Width := imgWidth;
-  ImagePresentationPreview.Picture.Bitmap.Height:= imgHeight;
-  ImagePresentationPreview.Picture.Bitmap.Canvas.CopyRect(Rectangle, PreviewPresentationForm.Canvas, Rectangle);
+  FormImage := ImageOfWinControl(PreviewPresentationForm as TWinControl);
+  ImagePresentationPreview.Picture.Assign(FormImage);
 end;
 
 function TFrmSettings.ExportSlideSettings(): TSlideSettings;
@@ -392,6 +361,23 @@ begin
   SlideSettings.SpoilerText:=cbSpoiler.Checked;
   SlideSettings.TitleSlide := cbMetaTitleSlide.Checked;
   Result := SlideSettings;
+end;
+
+procedure TFrmSettings.PreparePreviewPresentationForm;
+  var DummySongFile: TStringList;
+  ExampleSong: TSong;
+  PresentationSlideCounter: Integer;
+begin
+  SlideList := TSlideList.Create(True);
+  PreviewPresentationForm := TFrmPresent.Create(frmSettings);
+  DummySongFile := LoadResourceFileIntoStringList('AMAZING GRACE');
+  ExampleSong := TSong.Create;
+  ExampleSong.importSongFromStringList(DummySongFile);
+  PresentationSlideCounter := 0;
+  SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
+  PreviewPresentationForm.SlideList := SlideList;
+  PreviewPresentationForm.LoadBackground;
+  DummySongFile.Destroy;
 end;
 
 end.

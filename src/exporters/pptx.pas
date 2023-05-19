@@ -5,7 +5,7 @@ unit pptx;
 interface
 
 uses
-  Classes, SysUtils, Slides, LCLType, Lyrics;
+  Classes, SysUtils, Slides, LCLType, Lyrics, ResourceHandling;
 
 type
   TPPTXExporter = class
@@ -18,8 +18,6 @@ type
       TempDir: String;
       pptxgenjs, template, example: TStringList;
   end;
-
-Function LoadResourceFileIntoStringList(ResourceName: String): TStringList;
 
 implementation
 constructor TPPTXExporter.Create;
@@ -41,15 +39,6 @@ begin
   FreeAndNil(template);
   FreeAndNil(example);
   inherited;
-end;
-
-Function LoadResourceFileIntoStringList(ResourceName: String): TStringList;
-var ResourceStream: TResourceStream;
-begin
-  ResourceStream := TResourceStream.Create(HInstance, ResourceName, RT_RCDATA);
-  Result := TStringList.Create;
-  Result.LoadFromStream(ResourceStream);
-  FreeAndNil(ResourceStream);
 end;
 
 end.

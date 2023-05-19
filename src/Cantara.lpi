@@ -292,7 +292,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="16">
+    <Units Count="17">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -391,6 +391,11 @@
         <Filename Value="exporters/pptx.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit15>
+      <Unit16>
+        <Filename Value="generics/resourcehandling.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ResourceHandling"/>
+      </Unit16>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

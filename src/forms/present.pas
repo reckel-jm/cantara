@@ -12,6 +12,8 @@ uses
   math;
 type
 
+  THackWinControl = class(TWinControl);
+
   { TfrmPresent }
 
   TfrmPresent = class(TForm)
@@ -52,6 +54,8 @@ type
     OriginalWindowState: TWindowState;
     ScreenBounds: TRect;
     SlideList: TSlideList;
+    cur: Integer; //The current Index of the String List which is shown
+    FullScreen: Boolean;
     procedure LoadBackground;
     procedure ResizeBackground;
     procedure GoPrevious;
@@ -64,6 +68,9 @@ type
 of the constant arrays defined below. }
 operator in (const AWord: Word; const AArray: array of Word): Boolean; inline;
 
+{ This procedure is used to make a picture of the Form while it is closed. }
+function ImageOfWinControl(aWinControl: TWinControl): TBitmap;
+
 const
   { Here we define the list of keys which can be used to move to the next slide (GoRightKeys), go to the previous slide (GoLeftKeys,
   toggle fullscreen (ToggleFullscreenKeys) or quit the presentation (EscapeKeys). }
@@ -74,8 +81,6 @@ const
 
 var
   frmPresent: TfrmPresent;
-  cur: Integer; //The current Index of the String List which is shown
-  FullScreen: Boolean;
 
 ResourceString
   StrMoreLyricsIndicator = '...';
@@ -209,13 +214,16 @@ begin
     lblMeta.Font.Color := frmSettings.textColorDialog.Color;
     lblMeta.Font.Size := lblText.Font.Size div 3;
     lblMeta.Width := Trunc(self.Width * 0.67);
+    try
     lblText.Caption := SlideList.Items[cur].PartContent.MainText;
     lblNext.Caption := SlideList.Items[cur].PartContent.SpoilerText;
     lblMeta.Caption:= SlideList.Items[cur].PartContent.MetaText;
+    except
+      ShowMessage(IntToStr(cur));
+    end;
     if lblNext.Caption <> '' then // if there is a spoiler/next text to display
     begin
       lblNext.Visible:=True;
-      //lblNext.Caption := copy(textList.Strings[cur+1], 1, pos(LineEnding, textList.Strings[cur+1])-1);
       lblNext.Font := frmSettings.FontDialog.Font;
       lblNext.Font.Color := frmSettings.textColorDialog.Color;
       lblNext.Font.Height:= lblNext.Font.Height div 2;
@@ -296,7 +304,7 @@ begin
     SwitchFullScreen(False);
     SongSelection.frmSongs.UpdateControls;
   end;
-  if Assigned(SlideList) then SlideList.Free;
+  if (Assigned(SlideList)) and (self.Owner = frmSongs) then SlideList.Free;
 end;
 
 procedure TfrmPresent.SwitchFullScreen;
@@ -494,6 +502,35 @@ begin
 
   finally
     Stream.Free;
+  end;
+end;
+
+function ImageOfWinControl(aWinControl: TWinControl): TBitmap;
+var cv: TCanvas;
+    Src: THackWinControl;
+    Img: TImage;
+    ImgBmp: TBitmap;
+    notUsed: HWND;
+    SrcR, DestR: TRect;
+begin
+  notUsed:=0;
+  cv:=TCanvas.Create;
+  Img:=TImage.Create(nil);
+  ImgBmp:=Img.Picture.Bitmap;
+  Src:=THackWinControl(aWinControl);  // damit .GetDeviceContext() sichtbar wird
+  try
+    cv.Handle:=Src.GetDeviceContext({var}notUsed);  // wäre in Windows gleichbedeutend mit: cv.Handle:=GetDC(self.PageControl.Handle);
+    SrcR:=Rect(0,0,Src.Width,Src.Height);
+    DestR:=SrcR;
+    ImgBmp.PixelFormat:=pf24Bit;
+    ImgBmp.Width:=Src.Width;
+    ImgBmp.Height:=Src.Height;
+    Img.Canvas.CopyRect(DestR,cv,SrcR);
+    FreeAndNIL(cv);
+    Result := ImgBmp;
+  finally
+    Img.Free;
+    cv.Free;
   end;
 end;
 

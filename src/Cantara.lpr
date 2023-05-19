@@ -10,7 +10,7 @@ uses
   Forms, runtimetypeinfocontrols, SongSelection, Present, settings,
   info, welcome, songeditor,
   { you can add units after this }
-  slides, fulltextsearch, FormFulltextSearch, pptx;
+  slides, fulltextsearch, FormFulltextSearch, pptx, resourcehandling;
 {$R *.res}
 
 begin

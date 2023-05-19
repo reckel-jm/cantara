@@ -783,7 +783,7 @@ var i,j, MaxSlideLineLength: integer;
     SongList: lyrics.TSongList;
     SlideList: TSlideList;
 begin
-  present.cur:=0;
+  frmPresent.cur:=0;
   Songlist := lyrics.TSongList.Create;
   Songlist.FreeObjects:=False;
   // CreateSlideList
@@ -822,11 +822,11 @@ var
     i: integer;
 
 begin
-  SongPosition.song := frmPresent.SlideList.Items[Present.cur].Song;
+  SongPosition.song := frmPresent.SlideList.Items[frmPresent.cur].Song;
   SongPosition.songname:= SongPosition.song.FileNameWithoutEnding;
   SongPosition.songposition := 1;
   SongPosition.stanzapositionstart := 0;
-  for i := 1 To present.cur do
+  for i := 1 To frmPresent.cur do
   begin
     if frmPresent.SlideList.Items[i].Song.CompleteFilePath <> frmPresent.SlideList.Items[i-1].Song.CompleteFilePath Then
       begin
@@ -834,7 +834,7 @@ begin
         SongPosition.stanzapositionstart := i;
       end;
   end;
-  SongPosition.stanzaposition:=present.cur-SongPosition.stanzapositionstart+1;
+  SongPosition.stanzaposition:=frmPresent.cur-SongPosition.stanzapositionstart+1;
   result := SongPosition;
 end;
 
@@ -924,7 +924,7 @@ begin
     finally
       FormImage.Free;
     end;
-    lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(Present.cur + 1) + ' / ' + IntToStr(frmPresent.SlideList.Count);
+    lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(frmPresent.cur + 1) + ' / ' + IntToStr(frmPresent.SlideList.Count);
     FormResize(self);
     pnlMultiScreenResize(self);
   end;
