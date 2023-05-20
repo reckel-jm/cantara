@@ -10,7 +10,7 @@ uses
   {$ENDIF}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
-  ExtCtrls, Present, Lyrics, Slides, ResourceHandling;
+  ExtCtrls, Present, Lyrics, Slides, ResourceHandling, LCLINTF, LCLType;
 
 type
 
@@ -165,15 +165,8 @@ begin
 end;
 
 procedure TfrmSettings.ImagePresentationPreviewClick(Sender: TObject);
-var imgWidth, imgHeight: Integer;
-   Rectangle: TRect;
 begin
-  imgWidth := PreviewPresentationForm.Width;
-  imgHeight:= PreviewPresentationForm.Height;
-  Rectangle:= Rect(0, 0, imgWidth, imgHeight);
-  ImagePresentationPreview.Picture.Bitmap.Width := imgWidth;
-  ImagePresentationPreview.Picture.Bitmap.Height:= imgHeight;
-  ImagePresentationPreview.Picture.Bitmap.Canvas.CopyRect(Rectangle, PreviewPresentationForm.Canvas, Rectangle);
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.ImagePresentationPreviewDblClick(Sender: TObject);
@@ -342,12 +335,26 @@ begin
 end;
 
 procedure TfrmSettings.LoadPreviewImage;
-var
+ var
    FormImage: TBitmap;
 begin
+  PreviewPresentationForm.FormShow(frmSettings);
   PreviewPresentationForm.ResizeBackground;
-  FormImage := ImageOfWinControl(PreviewPresentationForm as TWinControl);
-  ImagePresentationPreview.Picture.Assign(FormImage);
+  PreviewPresentationForm.Color:=clPurple;
+  PreviewPresentationForm.showItem(0);
+  PreviewPresentationForm.Repaint;
+  PreviewPresentationForm.Refresh;
+  PreviewPresentationForm.Update;
+  PreviewPresentationForm.Invalidate;
+  //BitBLT(ImagePresentationPreview.Canvas.Handle,0,0,ImagePresentationPreview.Width,ImagePresentationPreview.Height,
+  //                                        GetDC(PreviewPresentationForm.Handle),0,0,SRCCOPY);
+  PreviewPresentationForm.PaintTo(ImagePresentationPreview.Canvas, 0, 0);
+  ImagePresentationPreview.Stretch:=True;
+  PreviewPresentationForm.Hide;
+  //ImagePresentationPreview.Proportional:=True;
+  //SendMessage(PreviewPresentationForm.Handle, LM_Paint, ImagePresentationPreview.Picture.Bitmap.Canvas.Handle, 0);
+  //PreviewPresentationForm.PaintTo(ImagePresentationPreview.Picture.Bitmap.Canvas,0,0);
+  //ImagePresentationPreview.Picture.Assign(FormImage);
 end;
 
 function TFrmSettings.ExportSlideSettings(): TSlideSettings;
@@ -370,6 +377,8 @@ procedure TFrmSettings.PreparePreviewPresentationForm;
 begin
   SlideList := TSlideList.Create(True);
   PreviewPresentationForm := TFrmPresent.Create(frmSettings);
+  PreviewPresentationForm.Width:=Screen.Width;
+  PreviewPresentationForm.Height:=Screen.Height;
   DummySongFile := LoadResourceFileIntoStringList('AMAZING GRACE');
   ExampleSong := TSong.Create;
   ExampleSong.importSongFromStringList(DummySongFile);
@@ -377,6 +386,7 @@ begin
   SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
   PreviewPresentationForm.SlideList := SlideList;
   PreviewPresentationForm.LoadBackground;
+  PreviewPresentationForm.ResizeBackground;
   DummySongFile.Destroy;
 end;
 
