@@ -338,23 +338,12 @@ procedure TfrmSettings.LoadPreviewImage;
  var
    FormImage: TBitmap;
 begin
-  PreviewPresentationForm.FormShow(frmSettings);
-  PreviewPresentationForm.ResizeBackground;
-  PreviewPresentationForm.Color:=clPurple;
-  PreviewPresentationForm.showItem(0);
-  PreviewPresentationForm.Repaint;
-  PreviewPresentationForm.Refresh;
-  PreviewPresentationForm.Update;
+  PreviewPresentationForm.Show;
+  PreviewPresentationForm.LoadBackground;
+  PreviewPresentationForm.ShowFirst;
   PreviewPresentationForm.Invalidate;
-  //BitBLT(ImagePresentationPreview.Canvas.Handle,0,0,ImagePresentationPreview.Width,ImagePresentationPreview.Height,
-  //                                        GetDC(PreviewPresentationForm.Handle),0,0,SRCCOPY);
-  PreviewPresentationForm.PaintTo(ImagePresentationPreview.Canvas, 0, 0);
-  ImagePresentationPreview.Stretch:=True;
+  ImagePresentationPreview.Picture.Assign(PreviewPresentationForm.GetFormImage);
   PreviewPresentationForm.Hide;
-  //ImagePresentationPreview.Proportional:=True;
-  //SendMessage(PreviewPresentationForm.Handle, LM_Paint, ImagePresentationPreview.Picture.Bitmap.Canvas.Handle, 0);
-  //PreviewPresentationForm.PaintTo(ImagePresentationPreview.Picture.Bitmap.Canvas,0,0);
-  //ImagePresentationPreview.Picture.Assign(FormImage);
 end;
 
 function TFrmSettings.ExportSlideSettings(): TSlideSettings;
@@ -385,8 +374,6 @@ begin
   PresentationSlideCounter := 0;
   SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
   PreviewPresentationForm.SlideList := SlideList;
-  PreviewPresentationForm.LoadBackground;
-  PreviewPresentationForm.ResizeBackground;
   DummySongFile.Destroy;
 end;
 
