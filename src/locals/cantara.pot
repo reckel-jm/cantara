@@ -285,16 +285,6 @@ msgstr ""
 msgid "Presentation"
 msgstr ""
 
-#: tfrmpresent.lblmeta.caption
-msgid ""
-"<Meta>\n"
-"Second Line"
-msgstr ""
-
-#: tfrmpresent.lblnext.caption
-msgid "<Lyrics>"
-msgstr ""
-
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
 msgstr ""

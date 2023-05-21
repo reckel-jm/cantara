@@ -10,7 +10,7 @@ uses
   {$ENDIF}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
-  ExtCtrls, Present, Lyrics, Slides, ResourceHandling, LCLINTF, LCLType;
+  LCLINTF, LCLType, ExtCtrls, Present, Lyrics, Slides, ResourceHandling, PresentationCanvas;
 
 type
 
@@ -83,6 +83,7 @@ type
     changedBackground: Boolean;
     {Exports the slide settings as TSlideSettings record }
     function ExportSlideSettings(): TSlideSettings;
+    function ExportPresentationStyleSettings: TPresentationStyleSettings;
   end;
 
 var
@@ -375,6 +376,18 @@ begin
   SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
   PreviewPresentationForm.SlideList := SlideList;
   DummySongFile.Destroy;
+end;
+
+function TfrmSettings.ExportPresentationStyleSettings: TPresentationStyleSettings;
+  var PresentationStyleSettings: TPresentationStyleSettings;
+begin
+  PresentationStyleSettings.Font:=FontDialog.Font;
+  PresentationStyleSettings.BackgroundColor:=bgColorDialog.Color;
+  PresentationStyleSettings.ShowBackgroundImage:=cbShowBackgroundImage.Checked;
+  PresentationStyleSettings.TextColor:=textColorDialog.Color;
+  PresentationStyleSettings.BackgroundImageFilePath:=BgPictureDialog.FileName;
+  PresentationStyleSettings.Transparency:=sbImageBrightness.Position;
+  Result := PresentationStyleSettings;
 end;
 
 end.

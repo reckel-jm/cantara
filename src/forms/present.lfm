@@ -20,66 +20,20 @@ object frmPresent: TfrmPresent
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '2.2.6.0'
   WindowState = wsMaximized
-  object imgBackground: TImage
+  object imageShower: TImage
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
     Height = 535
     Top = 0
-    Width = 1078
+    Width = 1070
     AntialiasingMode = amOn
-    Stretch = True
-    Visible = False
-  end
-  object lblText: TLabel
-    AnchorSideTop.Control = Owner
-    Cursor = crNone
-    Left = 0
-    Height = 1
-    Top = 0
-    Width = 1070
-    Align = alTop
-    Alignment = taCenter
-    Font.Color = clWhite
-    Layout = tlCenter
-    ParentColor = False
-    ParentFont = False
-    OnClick = lblTextClick
-    OnDblClick = lblTextDblClick
-  end
-  object lblNext: TLabel
-    AnchorSideTop.Control = lblText
-    AnchorSideTop.Side = asrBottom
-    Left = 0
-    Height = 22
-    Top = 1
-    Width = 1070
-    Align = alTop
-    Alignment = taCenter
-    Caption = '<Lyrics>'
-    Font.Color = clWhite
-    Layout = tlCenter
-    ParentColor = False
-    ParentFont = False
-    WordWrap = True
-  end
-  object lblMeta: TLabel
-    Left = 16
-    Height = 62
-    Top = 455
-    Width = 54
-    Align = alCustom
-    Anchors = [akLeft, akBottom]
-    BorderSpacing.Left = 5
-    BorderSpacing.Bottom = 5
-    Caption = '<Meta>'#10'Second Line'
-    Font.Color = clWhite
-    Layout = tlCenter
-    ParentColor = False
-    ParentFont = False
-    Visible = False
-    WordWrap = True
+    Align = alClient
+    Proportional = True
   end
 end

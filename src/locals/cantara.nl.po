@@ -312,18 +312,6 @@ msgstr "lblVersion"
 msgid "Presentation"
 msgstr "Presentatie"
 
-#: tfrmpresent.lblmeta.caption
-msgid ""
-"<Meta>\n"
-"Second Line"
-msgstr ""
-"<Meta>\n"
-"Tweede regel"
-
-#: tfrmpresent.lblnext.caption
-msgid "<Lyrics>"
-msgstr "<Lyrics>"
-
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
 msgstr "Kies een achtergrondkleur"

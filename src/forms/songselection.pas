@@ -533,16 +533,20 @@ var
 begin
   if ProgramMode <> ModeSelection then
   begin
-    selectedSongName := lbxSSelected.Items.Strings[lbxSSelected.ItemIndex];
-    for i := 0 to frmPresent.SlideList.Count-1 do
-    begin
-      if frmPresent.SlideList.Items[i].Song.FileNameWithoutEnding = selectedSongName then
+    try
+      selectedSongName := lbxSSelected.Items.Strings[lbxSSelected.ItemIndex];
+      for i := 0 to frmPresent.SlideList.Count-1 do
       begin
-        frmPresent.showItem(i);
-        Break;
+        if frmPresent.SlideList.Items[i].Song.FileNameWithoutEnding = selectedSongName then
+        begin
+          frmPresent.showItem(i);
+          Break;
+        end;
       end;
+      if ProgramMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View   }
+    finally
+      // Sometimes there is an error here
     end;
-    if ProgramMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View   }
   end;
 end;
 
@@ -734,6 +738,9 @@ begin
       frmPresent.Left := frmSongs.Left;
     end;
     frmSongs.FormResize(frmSongs);
+    // Take the settings from the Settings Form
+    frmPresent.PresentationCanvas.PresentationStyleSettings:=frmSettings.ExportPresentationStyleSettings;
+    frmPresent.PresentationCanvas.SlideSettings:=frmSettings.ExportSlideSettings();
     // Zeige die Präsentations-Form
     frmPresent.Show;
     frmPresent.ShowFirst;

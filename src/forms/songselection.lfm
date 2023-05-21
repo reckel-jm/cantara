@@ -5,8 +5,8 @@ object frmSongs: TfrmSongs
   Width = 1200
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
-  ClientHeight = 206
-  ClientWidth = 320
+  ClientHeight = 666
+  ClientWidth = 1200
   Menu = MainMenu
   OnActivate = FormActivate
   OnChangeBounds = FormResize
@@ -19,7 +19,6 @@ object frmSongs: TfrmSongs
   OnShow = FormShow
   OnWindowStateChange = FormResize
   Position = poScreenCenter
-  LCLVersion = '2.2.6.0'
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
@@ -27,10 +26,10 @@ object frmSongs: TfrmSongs
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = PnlSplitter
     AnchorSideBottom.Control = grbSettings
-    Left = 2273
+    Left = 8461
     Height = 588
     Top = 36
-    Width = 300
+    Width = 1188
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     DragMode = dmAutomatic
@@ -57,7 +56,7 @@ object frmSongs: TfrmSongs
     Height = 36
     Hint = 'Suchen...'
     Top = 0
-    Width = 2228
+    Width = 8416
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
     OnChange = edtSearchChange
@@ -72,7 +71,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
-    Left = 2573
+    Left = 9649
     Height = 624
     Top = 0
     Width = 0
@@ -127,7 +126,7 @@ object frmSongs: TfrmSongs
       Align = alTop
       BorderWidth = 1
       BorderStyle = bsSingle
-      ClientHeight = 50
+      ClientHeight = 46
       ClientWidth = 0
       TabOrder = 0
       object btnGoLeft: TButton
@@ -205,7 +204,7 @@ object frmSongs: TfrmSongs
     Left = 0
     Height = 588
     Top = 36
-    Width = 2228
+    Width = 8416
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
@@ -226,7 +225,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = pnlMultiScreen
     AnchorSideBottom.Control = grbSettings
     AnchorSideBottom.Side = asrBottom
-    Left = 2573
+    Left = 9649
     Height = 666
     Top = 0
     Width = 1
@@ -241,7 +240,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = lbxSselected
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
-    Left = 2228
+    Left = 8416
     Height = 624
     Top = 0
     Width = 45
@@ -394,15 +393,15 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = edtSearch
     AnchorSideBottom.Side = asrBottom
-    Left = 2273
+    Left = 8461
     Height = 36
     Top = 0
-    Width = 301
+    Width = 1189
     Alignment = taLeftJustify
     Anchors = [akTop, akLeft, akRight]
     Caption = 'PanelSongTeXStatus'
     ClientHeight = 36
-    ClientWidth = 301
+    ClientWidth = 1189
     Color = clInactiveCaption
     ParentColor = False
     TabOrder = 7
@@ -412,7 +411,7 @@ object frmSongs: TfrmSongs
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = PanelSongTeXStatus
       AnchorSideBottom.Side = asrBottom
-      Left = 220
+      Left = 1108
       Height = 34
       Top = 1
       Width = 80

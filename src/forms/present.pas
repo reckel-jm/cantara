@@ -9,7 +9,8 @@ uses
   Types, Themes, LCLTranslator, LCLIntf, ExtCtrls, Lyrics,
   IntfGraphics,
   fpImage, StrUtils, Slides,
-  math;
+  math,
+  PresentationCanvas;
 type
 
   THackWinControl = class(TWinControl);
@@ -17,10 +18,7 @@ type
   { TfrmPresent }
 
   TfrmPresent = class(TForm)
-    imgBackground: TImage;
-    lblNext: TLabel;
-    lblMeta: TLabel;
-    lblText: TLabel;
+    imageShower: TImage;
     ManipulatedBitmap: TBitmap;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -56,6 +54,7 @@ type
     SlideList: TSlideList;
     cur: Integer; //The current Index of the String List which is shown
     FullScreen: Boolean;
+    PresentationCanvas: TPresentationCanvasHandler;
     procedure LoadBackground;
     procedure ResizeBackground;
     procedure GoPrevious;
@@ -160,8 +159,10 @@ end;
 
 procedure TfrmPresent.FormResize(Sender: TObject);
 begin
+  PresentationCanvas.Width:=self.Width;
+  PresentationCanvas.Height:=self.Height;
   showItem(cur);
-  ResizeBackground;
+  //ResizeBackground;
 end;
 
 procedure TfrmPresent.FormShow(Sender: TObject);
@@ -173,7 +174,7 @@ end;
 
 procedure TFrmPresent.LoadSettings;
 begin
-  self.Color:=frmSettings.bgColorDialog.Color;
+  {self.Color:=frmSettings.bgColorDialog.Color;
   self.lblText.Font.Color:=frmSettings.textColorDialog.Color;
   lblText.Font := frmSettings.FontDialog.Font;
   lblText.Font.Color:= frmSettings.textColorDialog.Color;
@@ -181,7 +182,7 @@ begin
   lblMeta.Font.Color := frmSettings.textColorDialog.Color;
   lblMeta.Font.Height:= lblMeta.Font.Height div 3;
   lblMeta.Width := Trunc(self.Width * 0.67);
-  LoadBackground;
+  LoadBackground;  }
 end;
 
 procedure TfrmPresent.lblTextClick(Sender: TObject);
@@ -205,10 +206,15 @@ end;
 
 
 procedure TfrmPresent.showItem(index: integer);
-var StringArray: TStringDynArray;
+var SlideBitmap: TBitmap; // StringArray: TStringDynArray;
 begin
-    cur := index;
-    lblText.WordWrap:=True;
+  cur := index;
+  SlideBitmap := PresentationCanvas.PaintSlide(SlideList.Items[cur]);
+  imageShower.Left := 0;
+  imageShower.Top:=0;
+  imageShower.Picture.Bitmap.Assign(SlideBitmap);
+  SlideBitmap.Destroy;
+    { lblText.WordWrap:=True;
     lblText.Font := frmSettings.FontDialog.Font;
     lblText.Font.Color:= frmSettings.textColorDialog.Color;
     lblMeta.Font.Color := frmSettings.textColorDialog.Color;
@@ -260,12 +266,15 @@ begin
     lblMeta.Top := self.Height-lblMeta.Height-lblMeta.Left;
     if self.Owner<>frmSettings then;
       frmSongs.ImageUpdater.Enabled:=True;
+      }
 end;
 
 procedure TfrmPresent.ShowMeta;
 begin
+  {
   lblMeta.Caption := SlideList.Items[cur].PartContent.MetaText;
   lblMeta.Visible := (SlideList.Items[cur].PartContent.MetaText <> '');
+  }
 end;
 
 procedure TfrmPresent.FormCreate(Sender: TObject);
@@ -273,6 +282,7 @@ begin
   cur := 0;
   FullScreen := False;
   self.WindowState:= wsMaximized;
+  PresentationCanvas := TPresentationCanvasHandler.Create;
   //LoadSettings;
 end;
 
@@ -283,6 +293,7 @@ end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);
 begin
+  PresentationCanvas.Destroy;
 end;
 
 procedure TfrmPresent.FormHide(Sender: TObject);
@@ -392,52 +403,52 @@ end;
 procedure TfrmPresent.LoadBackground;
 begin
   // Handle Background Image
-    if (frmSettings.cbShowBackgroundImage.Checked) and (FileExists(frmSettings.BgPictureDialog.FileName)) then
+  {  if (frmSettings.cbShowBackgroundImage.Checked) and (FileExists(frmSettings.BgPictureDialog.FileName)) then
     begin
-      imgBackground.Visible:=True;
+      imageShower.Visible:=True;
       try
-      imgBackground.Picture.LoadFromFile(frmSettings.BgPictureDialog.FileName);
+      imageShower.Picture.LoadFromFile(frmSettings.BgPictureDialog.FileName);
       except on error: FPImageException do
       begin
-        imgBackground.Visible := False;
+        imageShower.Visible := False;
         frmSettings.cbShowBackgroundImage.Checked := False;
         exit;
       end;
       end;
       //ResizeBackground;
-      BrightnessBitmap(imgbackground.Picture.Bitmap, imgbackground.Picture.Bitmap, frmSettings.sbImageBrightness.Position);
+      BrightnessBitmap(imageShower.Picture.Bitmap, imageShower.Picture.Bitmap, frmSettings.sbImageBrightness.Position);
     end
     else
     begin
-      imgBackground.Visible:=False;
+      imageShower.Visible:=False;
     end;
     // set changedBackground as False unless changes are done again (in settings)
-    frmSettings.changedBackground:=False;
+    frmSettings.changedBackground:=False;    }
 end;
 
 procedure TfrmPresent.ResizeBackground;
-var newHeight, newWidth: integer;
+{var newHeight, newWidth: integer;   }
 begin
-  imgBackground.Width:=self.Width;
-  imgBackground.Height:=self.Height;
-  if (imgBackground.Height = 0) or (imgBackground.Picture.Height = 0) then Exit; // Prevent Errors
-  if imgBackground.Width/imgBackground.Height >= imgBackground.Picture.Width/imgBackground.Picture.Height then
+  { imageShower.Width:=self.Width;
+  imageShower.Height:=self.Height;
+  if (imageShower.Height = 0) or (imageShower.Picture.Height = 0) then Exit; // Prevent Errors
+  if imageShower.Width/imageShower.Height >= imageShower.Picture.Width/imageShower.Picture.Height then
         begin
-          newHeight:=Trunc(imgBackground.Width*imgBackground.Picture.Height/imgBackground.Picture.Width);
-          imgBackground.Top:=-Abs(Trunc((imgBackground.Height-self.Height)/2));
-          imgBackground.Left:=0;
-          imgBackground.Height := newHeight;
+          newHeight:=Trunc(imageShower.Width*imageShower.Picture.Height/imageShower.Picture.Width);
+          imageShower.Top:=-Abs(Trunc((imageShower.Height-self.Height)/2));
+          imageShower.Left:=0;
+          imageShower.Height := newHeight;
         end
       else
         begin
           if frmSettings.cbShowBackgroundImage.Checked then // This is important because else there will be a range check error!
           begin
-            newWidth:=Trunc(self.Height*imgBackground.Picture.Width/imgBackground.Picture.Height);
-            imgBackground.Left:=-Abs(Trunc((imgBackground.Width-self.Width)/2));
-            imgBackground.Top:=0;
-            imgBackground.Width:=newWidth;
+            newWidth:=Trunc(self.Height*imageShower.Picture.Width/imageShower.Picture.Height);
+            imageShower.Left:=-Abs(Trunc((imageShower.Width-self.Width)/2));
+            imageShower.Top:=0;
+            imageShower.Width:=newWidth;
           end;
-        end;
+        end;    }
 end;
 
 procedure TfrmPresent.Brightness(SourceBitmap, DestBitmap: TBitMap; Offset: integer);

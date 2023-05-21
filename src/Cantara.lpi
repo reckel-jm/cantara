@@ -292,7 +292,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="17">
+    <Units Count="18">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -396,6 +396,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResourceHandling"/>
       </Unit16>
+      <Unit17>
+        <Filename Value="generics/presentationcanvas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PresentationCanvas"/>
+      </Unit17>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
