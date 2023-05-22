@@ -5,7 +5,7 @@ unit PresentationCanvas;
 interface
 
 uses
-  Classes, SysUtils, Slides, LCLType, Graphics, IntfGraphics, Math,
+  Classes, SysUtils, Slides, LCLType, LCLIntf, Graphics, IntfGraphics, Math,
   fpImage;
 
 type
@@ -32,6 +32,7 @@ type
       function PaintSlide(Slide: TSlide): TBitmap;
     private
       BackgroundBitmap: TBitmap;
+      Bitmap: TBitmap;
   end;
 
 const
@@ -81,6 +82,7 @@ end;
 constructor TPresentationCanvasHandler.Create; overload;
 begin
   inherited;
+  Bitmap := TBitmap.Create;
 end;
 
 constructor TPresentationCanvasHandler.Create(aPresentationStyleSettings: TPresentationStyleSettings; aSlideSettings: TSlideSettings); overload;
@@ -94,6 +96,7 @@ end;
 destructor TPresentationCanvasHandler.Destroy;
 begin
   if Assigned(BackgroundBitmap) then BackgroundBitmap.Destroy;
+  Bitmap.Destroy;
   inherited;
 end;
 
@@ -109,22 +112,36 @@ begin
 end;
 
 function TPresentationCanvasHandler.PaintSlide(Slide: TSlide): TBitmap;
-var Bitmap: TBitmap;
-  BackgroundRect, ContentRect: TRect;
+var
+  BackgroundRect, ContentRect, CalcRect: TRect;
+  MainTextHeight: Integer;
+  NormalTextFont, SpoilerTextFont, MetaTextFont: TFont;
 begin
-  Bitmap := TBitmap.Create;
+  Bitmap.Canvas.Clear;
   Bitmap.SetSize(self.Width, self.Height);
+  // Here we setup the different fonts for calculating the text height
+  NormalTextFont := PresentationStyleSettings.Font;
+  NormalTextFont.Color:=PresentationStyleSettings.TextColor;;
+  SpoilerTextFont := TFont.Create;
+  SpoilerTextFont.Assign(NormalTextFont);
+  SpoilerTextFont.Height:=NormalTextFont.Height div 2;
+  MetaTextFont := TFont.Create;
+  MetaTextFont.Assign(NormalTextFont);
+  MetaTextFont.Height:=NormalTextFont.Height div 3;
+  with BackgroundRect do
+  begin
+    Left := 0;
+    Top := 0;
+    Width := self.Width-1;
+    Height := self.Height-1;
+  end;
+  CalcRect := BackgroundRect;
+  DrawText(Bitmap.Canvas.Handle, PChar(Slide.PartContent.MainText), Length(Slide.PartContent.MainText), CalcRect, DT_LEFT or DT_WORDBREAK or DT_END_ELLIPSIS or DT_EDITCONTROL or DT_CALCRECT);
+  MainTextHeight := CalcRect.Height;
   with Bitmap.Canvas do
   begin
     Brush.Color := PresentationStyleSettings.BackgroundColor;
     Brush.Style := bsSolid;
-    with BackgroundRect do
-    begin
-      Left := 0;
-      Top := 0;
-      Width := self.Width-1;
-      Height := self.Height-1;
-    end;
     FillRect(Bitmap.Canvas.ClipRect);
     FillRect(BackgroundRect);
     with TextStyle do
@@ -146,6 +163,10 @@ begin
     end;
     TextRect(ContentRect, 0, 0, Slide.PartContent.MainText);
   end;
+  //Bitmap.SaveToFile(GetTempDir() + 'foto.png');
+  NormalTextFont.Destroy;
+  SpoilerTextFont.Destroy;
+  MetaTextFont.Destroy;
   Result := Bitmap;
 end;
 

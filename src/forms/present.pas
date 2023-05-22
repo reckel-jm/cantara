@@ -213,7 +213,6 @@ begin
   imageShower.Left := 0;
   imageShower.Top:=0;
   imageShower.Picture.Bitmap.Assign(SlideBitmap);
-  SlideBitmap.Destroy;
     { lblText.WordWrap:=True;
     lblText.Font := frmSettings.FontDialog.Font;
     lblText.Font.Color:= frmSettings.textColorDialog.Color;

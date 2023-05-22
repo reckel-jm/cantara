@@ -157,7 +157,7 @@ procedure TfrmSettings.FormShow(Sender: TObject);
 begin
   sbImageBrightnessChange(frmSettings);
   changedBackground := False;
-  LoadPreviewImage;
+  //LoadPreviewImage;
 end;
 
 procedure TfrmSettings.gbPresentationClick(Sender: TObject);
