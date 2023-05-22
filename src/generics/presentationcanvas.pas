@@ -33,10 +33,11 @@ type
     private
       BackgroundBitmap: TBitmap;
       Bitmap: TBitmap;
+      function CalculateTextHeight(Font: TFont; RectWidth: Integer; TextString: String): Integer;
   end;
 
 const
-  PADDING:integer = 5;
+  PADDING:integer = 15;
 
 implementation
 procedure TPresentationCanvasHandler.AdjustBrightness(Offset: Integer);
@@ -113,15 +114,17 @@ end;
 
 function TPresentationCanvasHandler.PaintSlide(Slide: TSlide): TBitmap;
 var
-  BackgroundRect, ContentRect, CalcRect: TRect;
-  MainTextHeight: Integer;
+  BackgroundRect, ContentRect: TRect;
+  MainTextHeight, SpoilerTextHeight, MetaTextHeight: Integer;
   NormalTextFont, SpoilerTextFont, MetaTextFont: TFont;
+  SpoilerRectWidth: Integer;
 begin
   Bitmap.Canvas.Clear;
   Bitmap.SetSize(self.Width, self.Height);
   // Here we setup the different fonts for calculating the text height
-  NormalTextFont := PresentationStyleSettings.Font;
-  NormalTextFont.Color:=PresentationStyleSettings.TextColor;;
+  NormalTextFont := TFont.Create;
+  NormalTextFont.Assign(PresentationStyleSettings.Font);
+  NormalTextFont.Color:=PresentationStyleSettings.TextColor;
   SpoilerTextFont := TFont.Create;
   SpoilerTextFont.Assign(NormalTextFont);
   SpoilerTextFont.Height:=NormalTextFont.Height div 2;
@@ -135,9 +138,14 @@ begin
     Width := self.Width-1;
     Height := self.Height-1;
   end;
-  CalcRect := BackgroundRect;
-  DrawText(Bitmap.Canvas.Handle, PChar(Slide.PartContent.MainText), Length(Slide.PartContent.MainText), CalcRect, DT_LEFT or DT_WORDBREAK or DT_END_ELLIPSIS or DT_EDITCONTROL or DT_CALCRECT);
-  MainTextHeight := CalcRect.Height;
+  MainTextHeight := self.CalculateTextHeight(NormalTextFont, self.Width-2*Padding, Slide.PartContent.MainText);
+  if Slide.PartContent.SpoilerText <> '' then
+  begin
+    SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, self.Width-2*Padding, Slide.PartContent.SpoilerText);
+    SpoilerRectWidth := Round((self.Width-2*Padding)*2/3);
+  end
+  else SpoilerTextHeight := 0;
+  MetaTextHeight := CalculateTextHeight(MetaTextFont, SpoilerRectWidth, Slide.PartContent.MetaText);
   with Bitmap.Canvas do
   begin
     Brush.Color := PresentationStyleSettings.BackgroundColor;
@@ -147,27 +155,56 @@ begin
     with TextStyle do
     begin
       Alignment:= taCenter;
-      Layout:= tlCenter;
+      Layout:= tlTop;
       SingleLine := False;
       WordBreak := True;
       Opaque := False;
     end;
-    Font := PresentationStyleSettings.Font;
-    Font.Color:=PresentationStyleSettings.TextColor;
+    Font.Assign(NormalTextFont);
     with ContentRect do
     begin
       Left := PADDING;
-      Top := PADDING;
+      Top := Padding+(self.Height-2*Padding-MainTextHeight-SpoilerTextHeight-40) div 2;
       Width := self.Width-Padding;
-      Height := self.Height-Padding;
+      Height := MainTextHeight;
     end;
-    TextRect(ContentRect, 0, 0, Slide.PartContent.MainText);
+    TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.MainText);
+    // We paint the spoiler if desired
+    if Slide.PartContent.SpoilerText <> '' then
+    begin
+      Font.Assign(SpoilerTextFont);
+      ContentRect.Top += MainTextHeight + 20;
+      ContentRect.Height:=SpoilerTextHeight;
+      TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.SpoilerText);
+    end;
+    // We paint Meta information if desired
+    if Slide.PartContent.MetaText <> '' then
+    begin
+      ContentRect.Top := self.Height-Padding-MetaTextHeight;
+      ContentRect.Left:=Padding;
+      ContentRect.Height:=MetaTextHeight;
+      ContentRect.Width:=SpoilerRectWidth;
+      with TextStyle do
+        Alignment := taLeftJustify;
+      Font.Assign(MetaTextFont);
+      TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.MetaText);
+    end;
   end;
   //Bitmap.SaveToFile(GetTempDir() + 'foto.png');
   NormalTextFont.Destroy;
   SpoilerTextFont.Destroy;
   MetaTextFont.Destroy;
   Result := Bitmap;
+end;
+
+function TPresentationCanvasHandler.CalculateTextHeight(Font: TFont; RectWidth: Integer; TextString: String): Integer;
+var
+  R: TRect;
+begin
+  Bitmap.Canvas.Font.Assign(Font);
+  R  := Rect(0, 0, RectWidth, 0);
+  Result := DrawText
+    (Bitmap.Canvas.Handle, PChar(TextString), Length(TextString), R, dt_CalcRect Or dt_WordBreak);
 end;
 
 end.
