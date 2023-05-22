@@ -381,7 +381,8 @@ end;
 function TfrmSettings.ExportPresentationStyleSettings: TPresentationStyleSettings;
   var PresentationStyleSettings: TPresentationStyleSettings;
 begin
-  PresentationStyleSettings.Font:=FontDialog.Font;
+  PresentationStyleSettings.Font:=TFont.Create;
+  PresentationStyleSettings.Font.Assign(FontDialog.Font);
   PresentationStyleSettings.BackgroundColor:=bgColorDialog.Color;
   PresentationStyleSettings.ShowBackgroundImage:=cbShowBackgroundImage.Checked;
   PresentationStyleSettings.TextColor:=textColorDialog.Color;
