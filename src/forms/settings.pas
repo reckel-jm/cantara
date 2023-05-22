@@ -257,7 +257,7 @@ begin
     cbShowBackgroundImage.Checked := False;
     cbShowBackgroundImageChange(frmSettings);
   end;
-  if changedBackground then frmPresent.loadSettings;
+  //if changedBackground then frmPresent.loadSettings;
   if (ProgramMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
   frmSongs.edtSearch.Text := '';
 end;
@@ -340,7 +340,6 @@ procedure TfrmSettings.LoadPreviewImage;
    FormImage: TBitmap;
 begin
   PreviewPresentationForm.Show;
-  PreviewPresentationForm.LoadBackground;
   PreviewPresentationForm.ShowFirst;
   PreviewPresentationForm.Invalidate;
   ImagePresentationPreview.Picture.Assign(PreviewPresentationForm.GetFormImage);

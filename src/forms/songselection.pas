@@ -7,7 +7,7 @@ interface
 uses
   LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
-  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch, PPTX;
+  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch, PPTX, PresentationCanvas;
 
 type
   TSongPosition = record
@@ -318,7 +318,6 @@ begin
     end;
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
-  frmPresent.LoadSettings; // We need to load the settings into the present form here because only at this point all the needed data is available.
   PanelMultiScreenLeft := Round(frmSongs.Width/2);
   PanelMultiScreenLeft := settingsfile.ReadInteger('Size', 'panel-mutliscreen-position', PanelMultiScreenLeft);
 end;
@@ -739,6 +738,8 @@ begin
     end;
     frmSongs.FormResize(frmSongs);
     // Take the settings from the Settings Form
+    {if Assigned(frmPresent.PresentationCanvas) then FreeAndNil(frmPresent.PresentationCanvas);
+    frmPresent.PresentationCanvas := TPresentationCanvasHandler.Create; }
     frmPresent.PresentationCanvas.PresentationStyleSettings:=frmSettings.ExportPresentationStyleSettings;
     frmPresent.PresentationCanvas.SlideSettings:=frmSettings.ExportSlideSettings();
     // Zeige die Präsentations-Form
