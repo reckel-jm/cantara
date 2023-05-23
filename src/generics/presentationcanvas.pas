@@ -49,46 +49,38 @@ const
 implementation
 procedure TPresentationCanvasHandler.AdjustBrightness(Offset: Integer);
 var
-  SrctfImg, TemptfImg: TLazIntfImage;
-  ImgHandle, ImgMaskHandle: HBitmap;
-  px, py: integer;
-  CurColor: TFPColor;
-  SourceBitmap, DestBitmap: TBitmap;
+  x,y,farbe,Prozent:Integer;
+  r,g,b:byte;
 begin
+  Prozent := PresentationStyleSettings.Transparency;
   AdjustedBackgroundPicture.Clear;
   // Here we create the necessary structures
-  SourceBitmap := TBitmap.Create;
-  SourceBitmap.Assign(BackgroundPicture.Bitmap);
-  DestBitmap := TBitmap.Create;
-  DestBitmap.PixelFormat:= pf32Bit;
-  DestBitmap.Width:=SourceBitmap.Width;
-  DestBitmap.Height:=SourceBitmap.Height;
-  // And at this point we transform the color change
-  Offset:=Offset * $FF;
-  SrctfImg := TLazIntfImage.Create(0, 0);
-  SrctfImg.LoadFromBitmap(SourceBitmap.Handle, SourceBitmap.MaskHandle);
-  TemptfImg := TLazIntfImage.Create(0, 0);
-  TemptfImg.DataDescription := GetDescriptionFromDevice(0);
-  TemptfImg.SetSize(SrctfImg.Width,SrctfImg.Height);
-  for py := 0 to SrctfImg.Height - 1 do
-  begin
-    for px := 0 to SrctfImg.Width - 1 do
-    begin
-      CurColor := SrctfImg.Colors[px, py];
-      CurColor.red := EnsureRange(CurColor.red + Abs(Offset),0,$FFFF);
-      CurColor.green := EnsureRange(CurColor.green + Abs(Offset),0,$FFFF);
-      CurColor.blue := EnsureRange(CurColor.blue + Abs(Offset),0,$FFFF);
-      TemptfImg.Colors[px, py] := CurColor;
-    end;
+  AdjustedBackgroundPicture.Assign(BackgroundPicture);
+  if Prozent<0 then begin                      //Wenn abdunkeln
+    for y:=0 to AdjustedBackgroundPicture.Height-1 do
+      for x:=0 to AdjustedBackgroundPicture.Width-1 do begin
+        farbe:=AdjustedBackgroundPicture.Bitmap.Canvas.Pixels[x,y];
+        b:=byte(farbe shr 16);                 //b=Blau (0..255 oder $00..$FF)
+        g:=byte(farbe shr 8);                  //g=Grün (0..255 oder $00..$FF)
+        r:=byte(farbe);                        //r=rot(0..255 oder $00..$FF)
+        r:=round(r*(100+prozent)/100);
+        g:=round(g*(100+prozent)/100);
+        b:=round(b*(100+prozent)/100);
+        AdjustedBackgroundPicture.Bitmap.Canvas.Pixels[x,y]:=b shl 16 + g shl 8 + r;
+      end;
+  end else begin                               //ansonsten aufhellen
+    for y:=0 to AdjustedBackgroundPicture.Height-1 do
+      for x:=0 to AdjustedBackgroundPicture.Width-1 do begin
+        farbe:=AdjustedBackgroundPicture.Bitmap.Canvas.Pixels[x,y];
+        b:=byte(farbe shr 16);
+        g:=byte(farbe shr 8);
+        r:=byte(farbe);
+        r:=round(r+((255-r)*(prozent)/100));
+        g:=round(g+((255-g)*(prozent)/100));
+        b:=round(b+((255-b)*(prozent)/100));
+        AdjustedBackgroundPicture.Bitmap.Canvas.Pixels[x,y]:=b shl 16 + g shl 8 + r;
+      end;
   end;
-  TemptfImg.CreateBitmaps(ImgHandle, ImgMaskHandle, False);
-  DestBitmap.Handle := ImgHandle;
-  DestBitmap.MaskHandle := ImgMaskHandle;
-  AdjustedBackgroundPicture.Bitmap.Assign(DestBitmap);
-  SrctfImg.Free;
-  TemptfImg.Free;
-  SourceBitmap.Free;
-  DestBitmap.Destroy;
 end;
 
 constructor TPresentationCanvasHandler.Create; overload;
