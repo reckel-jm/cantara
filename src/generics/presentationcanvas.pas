@@ -24,6 +24,7 @@ type
       SlideSettings: TSlideSettings;
       PresentationStyleSettings: TPresentationStyleSettings;
       Width, Height: Integer;
+      Bitmap: TBitmap;
       constructor Create; overload;
       constructor Create(aPresentationStyleSettings: TPresentationStyleSettings; aSlideSettings: TSlideSettings); overload;
       destructor Destroy; override;
@@ -34,8 +35,8 @@ type
       function PaintSlide(Slide: TSlide): TBitmap;
     private
       BackgroundPicture: TPicture;
+      AdjustedBackgroundPicture: TPicture;
       ResizedBackgroundBitmap: TBitmap;
-      Bitmap: TBitmap;
       function CalculateTextHeight(Font: TFont; RectWidth: Integer; TextString: String): Integer;
   end;
 
@@ -54,11 +55,12 @@ var
   CurColor: TFPColor;
   SourceBitmap, DestBitmap: TBitmap;
 begin
+  AdjustedBackgroundPicture.Clear;
   // Here we create the necessary structures
-  BackgroundPicture.Bitmap.Transparent:=True;
   SourceBitmap := TBitmap.Create;
   SourceBitmap.Assign(BackgroundPicture.Bitmap);
   DestBitmap := TBitmap.Create;
+  DestBitmap.PixelFormat:= pf32Bit;
   DestBitmap.Width:=SourceBitmap.Width;
   DestBitmap.Height:=SourceBitmap.Height;
   // And at this point we transform the color change
@@ -73,19 +75,19 @@ begin
     for px := 0 to SrctfImg.Width - 1 do
     begin
       CurColor := SrctfImg.Colors[px, py];
-      CurColor.red := EnsureRange(CurColor.red + -Abs(Offset),PresentationStyleSettings.BackgroundColor,$FFFF);
-      CurColor.green := EnsureRange(CurColor.green + -Abs(Offset),PresentationStyleSettings.BackgroundColor,$FFFF);
-      CurColor.blue := EnsureRange(CurColor.blue + -Abs(Offset),PresentationStyleSettings.BackgroundColor,$FFFF);
+      CurColor.red := EnsureRange(CurColor.red + Abs(Offset),0,$FFFF);
+      CurColor.green := EnsureRange(CurColor.green + Abs(Offset),0,$FFFF);
+      CurColor.blue := EnsureRange(CurColor.blue + Abs(Offset),0,$FFFF);
       TemptfImg.Colors[px, py] := CurColor;
     end;
   end;
   TemptfImg.CreateBitmaps(ImgHandle, ImgMaskHandle, False);
   DestBitmap.Handle := ImgHandle;
   DestBitmap.MaskHandle := ImgMaskHandle;
+  AdjustedBackgroundPicture.Bitmap.Assign(DestBitmap);
   SrctfImg.Free;
   TemptfImg.Free;
-  SourceBitmap.Destroy;
-  BackgroundPicture.Bitmap.Assign(DestBitmap);
+  SourceBitmap.Free;
   DestBitmap.Destroy;
 end;
 
@@ -93,13 +95,16 @@ constructor TPresentationCanvasHandler.Create; overload;
 begin
   inherited;
   Bitmap := TBitmap.Create;
+  Bitmap.PixelFormat:= pf32Bit;
   BackgroundPicture := TPicture.Create;
   ResizedBackgroundBitmap := TBitmap.Create;
+  ResizedBackgroundBitmap.PixelFormat:= pf32Bit;
+  AdjustedBackgroundPicture := TPicture.Create;
 end;
 
 constructor TPresentationCanvasHandler.Create(aPresentationStyleSettings: TPresentationStyleSettings; aSlideSettings: TSlideSettings); overload;
 begin
-  inherited Create;
+  Create;
   PresentationStyleSettings := aPresentationStyleSettings;
   SlideSettings := aSlideSettings;
   LoadBackgroundBitmap;
@@ -110,6 +115,7 @@ begin
   Bitmap.Destroy;
   BackgroundPicture.Destroy;
   ResizedBackgroundBitmap.Destroy;
+  AdjustedBackgroundPicture.Destroy;
   inherited;
 end;
 
@@ -117,14 +123,10 @@ procedure TPresentationCanvasHandler.LoadBackgroundBitmap;
 begin
   if PresentationStyleSettings.ShowBackgroundImage then
   begin
-    if Assigned(BackgroundPicture) then BackgroundPicture.Destroy;
-    BackgroundPicture := TPicture.Create;
-    if Assigned(ResizedBackgroundBitmap) then ResizedBackgroundBitmap.Destroy;
-    ResizedBackgroundBitmap := TBitmap.Create;
-    if Assigned(Bitmap) then Bitmap.Destroy;
-    Bitmap := TBitmap.Create;
+    BackgroundPicture.Clear;
     BackgroundPicture.LoadFromFile(PresentationStyleSettings.BackgroundImageFilePath);
     AdjustBrightness(PresentationStyleSettings.Transparency);
+    //AdjustedBackgroundPicture.Assign(BackgroundPicture);
     ResizeBackgroundBitmap;
   end;
 end;
@@ -132,26 +134,26 @@ end;
 procedure TPresentationCanvasHandler.ResizeBackgroundBitmap;
 var
   DestRect: TRect;
-  NewHeight, NewWidth, NewTop, NewLeft: Integer;
+  NewHeight, NewWidth: Integer;
 begin
   ResizedBackgroundBitmap.Clear;
-  if self.Width/self.Height >= BackgroundPicture.Width/BackgroundPicture.Height then
+  if self.Width/self.Height >= AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height then
   begin
-    NewHeight:=Trunc(self.Width*BackgroundPicture.Height/BackgroundPicture.Width);
-    DestRect.Top:=-Abs(Trunc((BackgroundPicture.Height-self.Height)/2));
+    NewHeight:=Trunc(self.Width*AdjustedBackgroundPicture.Height/AdjustedBackgroundPicture.Width);
+    DestRect.Top:=-Abs(Trunc((AdjustedBackgroundPicture.Height-self.Height)/2));
     DestRect.Left:=0;
     DestRect.Height := newHeight;
-    DestRect.Width := Trunc(newHeight*BackgroundPicture.Width/BackgroundPicture.Height);
+    DestRect.Width := Trunc(newHeight*AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height);
   end else
   begin
-    newWidth:=Trunc(self.Height*BackgroundPicture.Width/BackgroundPicture.Height);
-    DestRect.Left:=-Abs(Trunc((BackgroundPicture.Width-self.Width)/2));
+    newWidth:=Trunc(self.Height*AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height);
+    DestRect.Left:=-Abs(Trunc((AdjustedBackgroundPicture.Width-self.Width)/2));
     DestRect.Top:=0;
     DestRect.Width:=newWidth;
-    DestRect.Height:=Trunc(newWidth*BackgroundPicture.Height/BackgroundPicture.Width);
+    DestRect.Height:=Trunc(newWidth*AdjustedBackgroundPicture.Height/AdjustedBackgroundPicture.Width);
   end;
   ResizedBackgroundBitmap.SetSize(self.Width, self.Height);
-  ResizedBackgroundBitmap.Canvas.StretchDraw(DestRect, BackgroundPicture.Bitmap);
+  ResizedBackgroundBitmap.Canvas.StretchDraw(DestRect, AdjustedBackgroundPicture.Bitmap);
 end;
 
 function TPresentationCanvasHandler.PaintSlide(Slide: TSlide): TBitmap;

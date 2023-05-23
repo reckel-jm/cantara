@@ -10,7 +10,6 @@ object frmSettings: TfrmSettings
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '2.2.6.0'
@@ -26,7 +25,6 @@ object frmSettings: TfrmSettings
     Layout = tlCenter
     ParentColor = False
     ParentFont = False
-    OnClick = labelSongDirClick
   end
   object edtRepoPath: TEdit
     AnchorSideLeft.Control = labelSongDir
@@ -113,7 +111,6 @@ object frmSettings: TfrmSettings
     ClientHeight = 402
     ClientWidth = 912
     TabOrder = 6
-    OnClick = gbPresentationClick
     object btnBackgroundColor: TButton
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnFontSizeManually
@@ -172,7 +169,6 @@ object frmSettings: TfrmSettings
       Caption = 'Show Meta Data:'
       ParentColor = False
       ParentFont = False
-      OnClick = lblMetaClick
     end
     object cbMetaDataFirstSlide: TCheckBox
       AnchorSideLeft.Control = lblMetaContent
@@ -216,7 +212,6 @@ object frmSettings: TfrmSettings
       Caption = 'Meta Data Content:'
       ParentColor = False
       ParentFont = False
-      OnClick = lblMetaClick
     end
     object memoMetaData: TMemo
       AnchorSideLeft.Control = lblMetaContent

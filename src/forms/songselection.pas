@@ -738,8 +738,6 @@ begin
     end;
     frmSongs.FormResize(frmSongs);
     // Take the settings from the Settings Form
-    {if Assigned(frmPresent.PresentationCanvas) then FreeAndNil(frmPresent.PresentationCanvas);
-    frmPresent.PresentationCanvas := TPresentationCanvasHandler.Create; }
     frmPresent.PresentationCanvas.PresentationStyleSettings:=frmSettings.ExportPresentationStyleSettings;
     frmPresent.PresentationCanvas.SlideSettings:=frmSettings.ExportSlideSettings();
     // Zeige die Präsentations-Form
@@ -921,16 +919,12 @@ end;
 { Diese Funktion macht ein Bildschirmfoto der Präsentation und zeigt dieses an. }
 
 procedure TfrmSongs.ReloadPresentationImage;
-var
-  FormImage: TBitmap;
 begin
   if ProgramMode = ModeMultiScreenPresentation then
     begin
-    FormImage := frmPresent.GetFormImage;
     try
-      imgLiveViewer.Picture.Assign(FormImage);
+      imgLiveViewer.Picture.Assign(frmPresent.PresentationCanvas.Bitmap);
     finally
-      FormImage.Free;
     end;
     lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(frmPresent.cur + 1) + ' / ' + IntToStr(frmPresent.SlideList.Count);
     FormResize(self);

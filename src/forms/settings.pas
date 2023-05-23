@@ -5,9 +5,6 @@ unit settings;
 interface
 
 uses
-  {$IFDEF WINDOWS}
-  Windows,
-  {$ENDIF}
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
   LCLINTF, LCLType, ExtCtrls, Present, Lyrics, Slides, ResourceHandling, PresentationCanvas;
@@ -62,13 +59,9 @@ type
     procedure FormClose(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure gbPresentationClick(Sender: TObject);
     procedure ImagePresentationPreviewClick(Sender: TObject);
     procedure ImagePresentationPreviewDblClick(Sender: TObject);
-    procedure labelSongDirClick(Sender: TObject);
-    procedure lblMetaClick(Sender: TObject);
     procedure loadSettings();
     procedure sbImageBrightnessChange(Sender: TObject);
     procedure seWrapLinesChange(Sender: TObject);
@@ -114,8 +107,6 @@ begin
   else result := '';
 end;
 
-
-
 function StyleToStr(Style: TFontStyles): String;
 begin
   SetLength(Result, 4);
@@ -148,21 +139,10 @@ begin
   PreparePreviewPresentationForm;
 end;
 
-procedure TfrmSettings.FormDestroy(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmSettings.FormShow(Sender: TObject);
 begin
   sbImageBrightnessChange(frmSettings);
   changedBackground := False;
-  //LoadPreviewImage;
-end;
-
-procedure TfrmSettings.gbPresentationClick(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmSettings.ImagePresentationPreviewClick(Sender: TObject);
@@ -173,16 +153,6 @@ end;
 procedure TfrmSettings.ImagePresentationPreviewDblClick(Sender: TObject);
 begin
   PreviewPresentationForm.Show;
-end;
-
-procedure TfrmSettings.labelSongDirClick(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmSettings.lblMetaClick(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmSettings.btnSelectDirClick(Sender: TObject);

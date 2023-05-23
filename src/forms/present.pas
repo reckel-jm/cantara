@@ -153,8 +153,8 @@ end;
 
 procedure TfrmPresent.FormShow(Sender: TObject);
 begin
-  if SlideList.Count >0 then showItem(0) else self.Hide;
   PresentationCanvas.LoadBackgroundBitmap;
+  if SlideList.Count >0 then showItem(0) else self.Hide;
   Refresh;
 end;
 
