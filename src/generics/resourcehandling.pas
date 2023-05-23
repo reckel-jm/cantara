@@ -5,6 +5,9 @@ unit ResourceHandling;
 interface
 
 uses
+  {$IFDEF WINDOWS}
+  Windows,
+  {$ENDIF}
   Classes, SysUtils;
 
 Function LoadResourceFileIntoStringList(ResourceName: String): TStringList;
