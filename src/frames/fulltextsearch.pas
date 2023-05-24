@@ -5,7 +5,8 @@ unit fulltextsearch;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, StdCtrls, ExtCtrls, Dialogs, Lyrics, FGL, Types, LCLType, Graphics, Math;
+  Classes, SysUtils, Forms, Controls, StdCtrls, ExtCtrls, Dialogs, Lyrics, FGL,
+  Types, LCLType, Graphics, Math;
 
 type
 
@@ -114,7 +115,7 @@ begin
       (PosInContentIndex > 0) then
        begin
          AddedContent := IndexList.Items[i].Song.FileNameWithoutEnding;
-         AddedContent += LineEnding;
+         AddedContent += PathSeparator;
          ContentString := IndexList.Items[i].ContentIndex;
          if PosInContentIndex > 0 then
            AddedContent += ContentString[PosInContentIndex-(Min(PosInContentIndex,70))+1..PosInContentIndex+Min(Length(ContentString)-PosInContentIndex, 70)-1]
@@ -128,7 +129,7 @@ end;
 
 procedure TFrmFulltextsearch.ListBoxResultsDblClick(Sender: TObject);
 begin
-  frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(LineEnding)[0]);
+  frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(PathSeparator)[0]);
 end;
 
 procedure TFrmFulltextsearch.ListBoxResultsDrawItem(Control: TWinControl;
@@ -145,15 +146,25 @@ begin
   ListBoxResults.Canvas.Brush.Color := aColor;
   ListBoxResults.Canvas.FillRect(aRect);
   ListBoxResults.Canvas.Font.Bold:=True;
-  HeadingStyle.Alignment:=taCenter;
+  ListBoxResults.Canvas.Font.Underline:=True;
+  with ListBoxResults.Canvas.TextStyle do
+    begin
+      Alignment:= taCenter;
+      Layout:= tlTop;
+      SingleLine := True;
+      WordBreak := False;
+      Opaque := False;
+    end;
   // Now we split the strings into the two parts
-  StringParts := ListBoxResults.Items[Index].Split(LineEnding);
-  ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top+2, StringParts[0], HeadingStyle);
+  StringParts := ListBoxResults.Items[Index].Split(PathSeparator);
+  ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top+2, StringParts[0]);
   if length(StringParts) > 1 then
   begin
     ListBoxResults.Canvas.Font.Bold:=False;
+    ListBoxResults.Canvas.Font.Underline:=False;
     ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top+2+Round(FontBaseHeight*1.33), StringParts[1]);
   end;
+  ARect.Height:=500;
 end;
 
 procedure TFrmFulltextsearch.NoResultBeforeShow(ASender: TObject;
