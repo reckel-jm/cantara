@@ -355,6 +355,8 @@ begin
   DummySongFile.Destroy;
   PresentationSlideCounter := 0;
   SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
+  PresentationPreviewCanvas.Height:=Screen.Height;
+  PresentationPreviewCanvas.Width:=Screen.Width;
   PresentationPreviewCanvas.PresentationStyleSettings := ExportPresentationStyleSettings;
   PresentationPreviewCanvas.LoadBackgroundBitmap;
 end;

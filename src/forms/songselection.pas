@@ -734,13 +734,16 @@ begin
     // Take the settings from the Settings Form
     frmPresent.PresentationCanvas.PresentationStyleSettings:=frmSettings.ExportPresentationStyleSettings;
     frmPresent.PresentationCanvas.SlideSettings:=frmSettings.ExportSlideSettings();
-    // Zeige die Präsentations-Form
-    frmPresent.Show;
-    frmPresent.ShowFirst;
     // Workaround für Windoof
     frmPresent.WindowState:= wsMaximized;
     if (Screen.MonitorCount > 1) and (ProgramMode = ModeMultiscreenPresentation)
       then frmPresent.SwitchFullscreen(True);
+    // Zeige die Präsentations-Form
+    frmPresent.Show;
+    frmPresent.PresentationCanvas.Width:=frmPresent.Width;
+    frmPresent.PresentationCanvas.Height:=frmPresent.Height;
+    frmPresent.PresentationCanvas.LoadBackgroundBitmap;
+    frmPresent.ShowFirst;
     // Deaktiviere Präsentationsbutton für Zeit der Präsentation
     itemPresentation.Enabled := False;
     btnStartPresentation.Enabled := False;
