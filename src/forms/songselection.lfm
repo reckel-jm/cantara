@@ -26,10 +26,10 @@ object frmSongs: TfrmSongs
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = PnlSplitter
     AnchorSideBottom.Control = grbSettings
-    Left = 645
+    Left = 461
     Height = 588
     Top = 36
-    Width = 0
+    Width = 384
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     DragMode = dmAutomatic
@@ -56,7 +56,7 @@ object frmSongs: TfrmSongs
     Height = 36
     Hint = 'Suchen...'
     Top = 0
-    Width = 600
+    Width = 416
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
     OnChange = edtSearchChange
@@ -71,14 +71,14 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
-    Left = 500
+    Left = 845
     Height = 624
     Top = 0
-    Width = 700
+    Width = 355
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     ClientHeight = 624
-    ClientWidth = 700
+    ClientWidth = 355
     TabOrder = 3
     OnClick = pnlMultiScreenClick
     OnResize = pnlMultiScreenResize
@@ -90,7 +90,7 @@ object frmSongs: TfrmSongs
       Left = 1
       Height = 22
       Top = 1
-      Width = 698
+      Width = 353
       Align = alTop
       Alignment = taCenter
       Caption = 'Presentation is running:'
@@ -106,7 +106,8 @@ object frmSongs: TfrmSongs
       Left = 1
       Height = 196
       Top = 43
-      Width = 698
+      Width = 353
+      AntialiasingMode = amOn
       Align = alTop
       BorderSpacing.Top = 20
       Proportional = True
@@ -122,12 +123,12 @@ object frmSongs: TfrmSongs
       Left = 1
       Height = 50
       Top = 261
-      Width = 698
+      Width = 353
       Align = alTop
       BorderWidth = 1
       BorderStyle = bsSingle
       ClientHeight = 46
-      ClientWidth = 694
+      ClientWidth = 349
       TabOrder = 0
       object btnGoLeft: TButton
         AnchorSideLeft.Control = Control
@@ -188,7 +189,7 @@ object frmSongs: TfrmSongs
       Left = 4
       Height = 22
       Top = 239
-      Width = 695
+      Width = 350
       Align = alTop
       BorderSpacing.Left = 3
       Caption = 'Foliennummern'
@@ -204,7 +205,7 @@ object frmSongs: TfrmSongs
     Left = 0
     Height = 588
     Top = 36
-    Width = 600
+    Width = 416
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
@@ -225,7 +226,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = pnlMultiScreen
     AnchorSideBottom.Control = grbSettings
     AnchorSideBottom.Side = asrBottom
-    Left = 500
+    Left = 845
     Height = 666
     Top = 0
     Width = 1
@@ -240,7 +241,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = lbxSselected
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
-    Left = 600
+    Left = 416
     Height = 624
     Top = 0
     Width = 45
@@ -393,15 +394,15 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = edtSearch
     AnchorSideBottom.Side = asrBottom
-    Left = 645
+    Left = 461
     Height = 36
     Top = 0
-    Width = 0
+    Width = 385
     Alignment = taLeftJustify
     Anchors = [akTop, akLeft, akRight]
     Caption = 'PanelSongTeXStatus'
     ClientHeight = 36
-    ClientWidth = 0
+    ClientWidth = 385
     Color = clInactiveCaption
     ParentColor = False
     TabOrder = 7
@@ -411,7 +412,7 @@ object frmSongs: TfrmSongs
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = PanelSongTeXStatus
       AnchorSideBottom.Side = asrBottom
-      Left = -80
+      Left = 304
       Height = 34
       Top = 1
       Width = 80
@@ -511,14 +512,6 @@ object frmSongs: TfrmSongs
     Filter = 'Cantara SongTeX file (File with content)|*.songtex|Simple Song Selection|*.csswc'
     Left = 232
     Top = 424
-  end
-  object ImageUpdater: TTimer
-    Enabled = False
-    Interval = 80
-    OnTimer = ImageUpdaterTimer
-    OnStopTimer = ImageUpdaterStopTimer
-    Left = 904
-    Top = 376
   end
   object SongPopupMenu: TPopupMenu
     OnPopup = SongPopupMenuPopup

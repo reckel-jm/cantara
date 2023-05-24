@@ -59,7 +59,9 @@ type
     procedure FormClose(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure gbPresentationClick(Sender: TObject);
     procedure ImagePresentationPreviewClick(Sender: TObject);
     procedure ImagePresentationPreviewDblClick(Sender: TObject);
     procedure loadSettings();
@@ -67,7 +69,7 @@ type
     procedure seWrapLinesChange(Sender: TObject);
   private
     { private declarations }
-    PreviewPresentationForm: TfrmPresent;
+    PresentationPreviewCanvas: TPresentationCanvasHandler;
     SlideList: TSlideList;
     procedure LoadPreviewImage;
     procedure PreparePreviewPresentationForm;
@@ -136,13 +138,25 @@ end;
 procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
   changedBackground := False;
-  PreparePreviewPresentationForm;
+  PresentationPreviewCanvas := TPresentationCanvasHandler.Create;
+end;
+
+procedure TfrmSettings.FormDestroy(Sender: TObject);
+begin
+  PresentationPreviewCanvas.Destroy;
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
 begin
   sbImageBrightnessChange(frmSettings);
   changedBackground := False;
+  PreparePreviewPresentationForm;
+  LoadPreviewImage;
+end;
+
+procedure TfrmSettings.gbPresentationClick(Sender: TObject);
+begin
+  PresentationPreviewCanvas := TPresentationCanvasHandler.Create;
 end;
 
 procedure TfrmSettings.ImagePresentationPreviewClick(Sender: TObject);
@@ -152,7 +166,7 @@ end;
 
 procedure TfrmSettings.ImagePresentationPreviewDblClick(Sender: TObject);
 begin
-  PreviewPresentationForm.Show;
+
 end;
 
 procedure TfrmSettings.btnSelectDirClick(Sender: TObject);
@@ -228,7 +242,6 @@ begin
     cbShowBackgroundImageChange(frmSettings);
   end;
   //if changedBackground then frmPresent.loadSettings;
-  if (ProgramMode = ModeMultiScreenPresentation) Then SongSelection.frmSongs.ImageUpdater.Enabled:=True;
   frmSongs.edtSearch.Text := '';
 end;
 
@@ -306,14 +319,15 @@ begin
 end;
 
 procedure TfrmSettings.LoadPreviewImage;
- var
-   FormImage: TBitmap;
 begin
-  PreviewPresentationForm.Show;
-  PreviewPresentationForm.ShowFirst;
-  PreviewPresentationForm.Invalidate;
-  ImagePresentationPreview.Picture.Assign(PreviewPresentationForm.GetFormImage);
-  PreviewPresentationForm.Hide;
+  PresentationPreviewCanvas.SlideSettings := self.ExportSlideSettings;
+  PresentationPreviewCanvas.PresentationStyleSettings := self.ExportPresentationStyleSettings;
+  PresentationPreviewCanvas.Width:=Screen.Width;
+  PresentationPreviewCanvas.Height:=Screen.Height;
+  if ChangedBackground then
+    PresentationPreviewCanvas.LoadBackgroundBitmap;
+  PresentationPreviewCanvas.ResizeBackgroundBitmap;
+  ImagePresentationPreview.Picture.Assign(PresentationPreviewCanvas.PaintSlide(SlideList[0]));
 end;
 
 function TFrmSettings.ExportSlideSettings(): TSlideSettings;
@@ -335,16 +349,14 @@ procedure TFrmSettings.PreparePreviewPresentationForm;
   PresentationSlideCounter: Integer;
 begin
   SlideList := TSlideList.Create(True);
-  PreviewPresentationForm := TFrmPresent.Create(frmSettings);
-  PreviewPresentationForm.Width:=Screen.Width;
-  PreviewPresentationForm.Height:=Screen.Height;
   DummySongFile := LoadResourceFileIntoStringList('AMAZING GRACE');
   ExampleSong := TSong.Create;
   ExampleSong.importSongFromStringList(DummySongFile);
+  DummySongFile.Destroy;
   PresentationSlideCounter := 0;
   SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
-  PreviewPresentationForm.SlideList := SlideList;
-  DummySongFile.Destroy;
+  PresentationPreviewCanvas.PresentationStyleSettings := ExportPresentationStyleSettings;
+  PresentationPreviewCanvas.LoadBackgroundBitmap;
 end;
 
 function TfrmSettings.ExportPresentationStyleSettings: TPresentationStyleSettings;

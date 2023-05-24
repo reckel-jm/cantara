@@ -10,9 +10,9 @@ object frmSettings: TfrmSettings
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.6.0'
   object labelSongDir: TLabel
     AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = edtRepoPath
@@ -108,9 +108,10 @@ object frmSettings: TfrmSettings
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
-    ClientHeight = 402
-    ClientWidth = 912
+    ClientHeight = 380
+    ClientWidth = 920
     TabOrder = 6
+    OnClick = gbPresentationClick
     object btnBackgroundColor: TButton
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = btnFontSizeManually

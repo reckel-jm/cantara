@@ -5,7 +5,7 @@ unit PresentationCanvas;
 interface
 
 uses
-  Classes, SysUtils, Slides, LCLType, LCLIntf, Graphics, IntfGraphics, Math,
+  Classes, SysUtils, Slides, LCLType, LCLIntf, Graphics, graphtype, intfgraphics, lazcanvas, Math,
   StrUtils, // for SplitString
   fpImage;
 
@@ -29,7 +29,7 @@ type
       constructor Create(aPresentationStyleSettings: TPresentationStyleSettings; aSlideSettings: TSlideSettings); overload;
       destructor Destroy; override;
       // Will be used to adjust the brightness of the background
-      procedure AdjustBrightness(Offset: Integer);
+      procedure AdjustBrightness;
       procedure LoadBackgroundBitmap;
       procedure ResizeBackgroundBitmap;
       function PaintSlide(Slide: TSlide): TBitmap;
@@ -47,40 +47,52 @@ const
   MORELYRICSINDICATOR:String = '...';
 
 implementation
-procedure TPresentationCanvasHandler.AdjustBrightness(Offset: Integer);
+
+procedure TPresentationCanvasHandler.AdjustBrightness;
 var
-  x,y,farbe,Prozent:Integer;
-  r,g,b:byte;
+  SrctfImg, TemptfImg: TLazIntfImage;
+  ImgHandle, ImgMaskHandle: HBitmap;
+  TargetColor: TFPColor;
+  Offset, px, py: integer;
+  CurColor: TFPColor;
 begin
-  Prozent := PresentationStyleSettings.Transparency;
-  AdjustedBackgroundPicture.Clear;
-  // Here we create the necessary structures
-  AdjustedBackgroundPicture.Assign(BackgroundPicture);
-  if Prozent<0 then begin                      //Wenn abdunkeln
-    for y:=0 to AdjustedBackgroundPicture.Height-1 do
-      for x:=0 to AdjustedBackgroundPicture.Width-1 do begin
-        farbe:=AdjustedBackgroundPicture.Bitmap.Canvas.Pixels[x,y];
-        b:=byte(farbe shr 16);                 //b=Blau (0..255 oder $00..$FF)
-        g:=byte(farbe shr 8);                  //g=Grün (0..255 oder $00..$FF)
-        r:=byte(farbe);                        //r=rot(0..255 oder $00..$FF)
-        r:=round(r*(100+prozent)/100);
-        g:=round(g*(100+prozent)/100);
-        b:=round(b*(100+prozent)/100);
-        AdjustedBackgroundPicture.Bitmap.Canvas.Pixels[x,y]:=b shl 16 + g shl 8 + r;
-      end;
-  end else begin                               //ansonsten aufhellen
-    for y:=0 to AdjustedBackgroundPicture.Height-1 do
-      for x:=0 to AdjustedBackgroundPicture.Width-1 do begin
-        farbe:=AdjustedBackgroundPicture.Bitmap.Canvas.Pixels[x,y];
-        b:=byte(farbe shr 16);
-        g:=byte(farbe shr 8);
-        r:=byte(farbe);
-        r:=round(r+((255-r)*(prozent)/100));
-        g:=round(g+((255-g)*(prozent)/100));
-        b:=round(b+((255-b)*(prozent)/100));
-        AdjustedBackgroundPicture.Bitmap.Canvas.Pixels[x,y]:=b shl 16 + g shl 8 + r;
-      end;
+  Offset := PresentationStyleSettings.Transparency;
+  If Offset = 0 then
+  begin
+    AdjustedBackgroundPicture.Assign(BackgroundPicture);
+    Exit;
   end;
+  SrctfImg := TLazIntfImage.Create(0, 0);
+  SrctfImg.LoadFromBitmap(BackgroundPicture.Bitmap.Handle, BackgroundPicture.Bitmap.MaskHandle);
+  TemptfImg := TLazIntfImage.Create(0, 0);
+  TemptfImg.LoadFromBitmap(BackgroundPicture.Bitmap.Handle, BackgroundPicture.Bitmap.MaskHandle);
+  TargetColor := TColorToFPColor(PresentationStyleSettings.BackgroundColor);
+  for py := 0 to SrctfImg.Height - 1 do
+  begin
+    for px := 0 to SrctfImg.Width - 1 do
+    begin
+      if Offset > 0 then
+      begin
+        //Offset:=Offset * $FF;
+        CurColor := SrctfImg.Colors[px, py];
+        CurColor.red := EnsureRange(CurColor.red + Offset, 0,$FFFF);
+        CurColor.green := EnsureRange(CurColor.green + Offset,0,$FFFF);
+        CurColor.blue := EnsureRange(CurColor.blue + Offset,0,$FFFF);
+      end else
+      begin
+        CurColor := SrctfImg.Colors[px, py];
+        CurColor.red := EnsureRange(Trunc(CurColor.red - (CurColor.red - TargetColor.Red)*Abs(Offset)/100), 0,$FFFF);
+        CurColor.green := EnsureRange(Trunc(CurColor.Green - (CurColor.Green - TargetColor.Green)*Abs(Offset)/100),0,$FFFF);
+        CurColor.blue := EnsureRange(Trunc(CurColor.blue - (CurColor.blue - TargetColor.blue)*Abs(Offset)/100),0,$FFFF);
+      end;
+      TemptfImg.Colors[px, py] := CurColor;
+    end;
+  end;
+  TemptfImg.CreateBitmaps(ImgHandle, ImgMaskHandle, False);
+  AdjustedBackgroundPicture.Bitmap.Handle := ImgHandle;
+  AdjustedBackgroundPicture.Bitmap.MaskHandle := ImgMaskHandle;
+  SrctfImg.Free;
+  TemptfImg.Free;
 end;
 
 constructor TPresentationCanvasHandler.Create; overload;
@@ -117,7 +129,7 @@ begin
   begin
     BackgroundPicture.Clear;
     BackgroundPicture.LoadFromFile(PresentationStyleSettings.BackgroundImageFilePath);
-    AdjustBrightness(PresentationStyleSettings.Transparency);
+    AdjustBrightness;
     //AdjustedBackgroundPicture.Assign(BackgroundPicture);
     ResizeBackgroundBitmap;
   end;
@@ -131,18 +143,23 @@ begin
   ResizedBackgroundBitmap.Clear;
   if self.Width/self.Height >= AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height then
   begin
-    NewHeight:=Trunc(self.Width*AdjustedBackgroundPicture.Height/AdjustedBackgroundPicture.Width);
-    DestRect.Top:=-Abs(Trunc((AdjustedBackgroundPicture.Height-self.Height)/2));
+    NewHeight:=Ceil(self.Width*AdjustedBackgroundPicture.Height/AdjustedBackgroundPicture.Width);
+    if AdjustedBackgroundPicture.Height > self.Height then
+       DestRect.Top:=-(Trunc((AdjustedBackgroundPicture.Height-self.Height)/2))
+    else DestRect.Top := 0;
     DestRect.Left:=0;
-    DestRect.Height := newHeight;
-    DestRect.Width := Trunc(newHeight*AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height);
+    DestRect.Height := Max(newHeight, self.Height);
+    DestRect.Width := Ceil(DestRect.Height*AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height);
   end else
   begin
-    newWidth:=Trunc(self.Height*AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height);
-    DestRect.Left:=-Abs(Trunc((AdjustedBackgroundPicture.Width-self.Width)/2));
+    newWidth:=Ceil(self.Height*AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height);
+    if AdjustedBackgroundPicture.Width > self.Width then
+       DestRect.Left:=-(Trunc((AdjustedBackgroundPicture.Width-self.Width)/2))
+    else
+       DestRect.Left := 0;
     DestRect.Top:=0;
-    DestRect.Width:=newWidth;
-    DestRect.Height:=Trunc(newWidth*AdjustedBackgroundPicture.Height/AdjustedBackgroundPicture.Width);
+    DestRect.Width:=Max(newWidth, self.Width);
+    DestRect.Height:=Ceil(DestRect.Width*AdjustedBackgroundPicture.Height/AdjustedBackgroundPicture.Width);
   end;
   ResizedBackgroundBitmap.SetSize(self.Width, self.Height);
   ResizedBackgroundBitmap.Canvas.StretchDraw(DestRect, AdjustedBackgroundPicture.Bitmap);

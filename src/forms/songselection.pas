@@ -5,7 +5,7 @@ unit SongSelection;
 interface
 
 uses
-  LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils,
+  LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils, Math,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch, PPTX, PresentationCanvas;
 
@@ -71,7 +71,6 @@ type
     Separator1: TMenuItem;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
-    ImageUpdater: TTimer;
     procedure btnAddClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnDownClick(Sender: TObject);
@@ -319,7 +318,7 @@ begin
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
   PanelMultiScreenLeft := Round(frmSongs.Width/2);
-  PanelMultiScreenLeft := settingsfile.ReadInteger('Size', 'panel-mutliscreen-position', PanelMultiScreenLeft);
+  PanelMultiScreenLeft := Max(Trunc(0.8*frmSongs.Width), settingsfile.ReadInteger('Size', 'panel-mutliscreen-position', PanelMultiScreenLeft));
 end;
 
 procedure TfrmSongs.grbControlClick(Sender: TObject);
@@ -341,7 +340,6 @@ procedure TfrmSongs.ImageUpdaterTimer(Sender: TObject);
 begin
   //Sleep(30);
   ReloadPresentationImage;
-  ImageUpdater.Enabled := False
 end;
 
 procedure TfrmSongs.FilterListBox(s: String);
@@ -542,7 +540,7 @@ begin
           Break;
         end;
       end;
-      if ProgramMode = ModeMultiScreenPresentation then ImageUpdater.Enabled := True; // Refresh Picture in Presentation View   }
+      if ProgramMode = ModeMultiScreenPresentation then ReloadPresentationImage; // Refresh Picture in Presentation View   }
     finally
       // Sometimes there is an error here
     end;
@@ -632,7 +630,7 @@ begin
   Then
   Begin
     frmPresent.FormKeyDown(frmSongs, Key, Shift);
-    ImageUpdater.Enabled:=True;
+    ReloadPresentationImage;
   end;
 end;
 
@@ -669,17 +667,13 @@ procedure TfrmSongs.btnGoLeftClick(Sender: TObject);
 begin
   frmPresent.GoPrevious;
   //Sleep(500);
-  //ReloadPresentationImage;
-  ImageUpdater.Enabled := True;
+  ReloadPresentationImage;
 end;
 
 procedure TfrmSongs.btnGoRightClick(Sender: TObject);
 begin
   frmPresent.GoNext;
-  //Sleep(2000);
-  //ReloadPresentationImage;
-  //ReloadPresentationImage;
-  ImageUpdater.Enabled := True;
+  ReloadPresentationImage;
 end;
 
 procedure TfrmSongs.btnQuitPresentationClick(Sender: TObject);
@@ -753,8 +747,10 @@ begin
     // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
   end
   else Application.MessageBox(PChar(StrFehlerKeineLiederBeiPraesentation), PChar(StrError), MB_OK+MB_ICONWARNING);
-  if ProgramMode = ModeMultiscreenPresentation Then begin
-     ImageUpdater.Enabled:=True;
+  if ProgramMode = ModeMultiscreenPresentation Then
+  begin
+    Invalidate;
+    ReloadPresentationImage;
   end;
   UpdateControls;
 end;
