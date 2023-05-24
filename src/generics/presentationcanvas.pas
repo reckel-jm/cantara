@@ -127,11 +127,14 @@ procedure TPresentationCanvasHandler.LoadBackgroundBitmap;
 begin
   if PresentationStyleSettings.ShowBackgroundImage then
   begin
-    BackgroundPicture.Clear;
-    BackgroundPicture.LoadFromFile(PresentationStyleSettings.BackgroundImageFilePath);
-    AdjustBrightness;
-    //AdjustedBackgroundPicture.Assign(BackgroundPicture);
-    ResizeBackgroundBitmap;
+    try
+      BackgroundPicture.Clear;
+      BackgroundPicture.LoadFromFile(PresentationStyleSettings.BackgroundImageFilePath);
+      AdjustBrightness;
+      ResizeBackgroundBitmap;
+    except
+      PresentationStyleSettings.ShowBackgroundImage:=False;
+    end;
   end;
 end;
 

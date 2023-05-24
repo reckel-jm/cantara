@@ -5,7 +5,7 @@ object frmSongs: TfrmSongs
   Width = 1200
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
-  ClientHeight = 666
+  ClientHeight = 680
   ClientWidth = 1200
   Menu = MainMenu
   OnActivate = FormActivate
@@ -19,6 +19,7 @@ object frmSongs: TfrmSongs
   OnShow = FormShow
   OnWindowStateChange = FormResize
   Position = poScreenCenter
+  LCLVersion = '2.2.2.0'
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
@@ -27,7 +28,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = PnlSplitter
     AnchorSideBottom.Control = grbSettings
     Left = 461
-    Height = 588
+    Height = 602
     Top = 36
     Width = 384
     Align = alCustom
@@ -53,7 +54,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = lbxSRepo
     AnchorSideRight.Side = asrBottom
     Left = 0
-    Height = 36
+    Height = 25
     Hint = 'Suchen...'
     Top = 0
     Width = 416
@@ -72,12 +73,12 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
     Left = 845
-    Height = 624
+    Height = 638
     Top = 0
     Width = 355
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
-    ClientHeight = 624
+    ClientHeight = 638
     ClientWidth = 355
     TabOrder = 3
     OnClick = pnlMultiScreenClick
@@ -88,7 +89,7 @@ object frmSongs: TfrmSongs
       AnchorSideRight.Control = pnlMultiScreen
       AnchorSideRight.Side = asrBottom
       Left = 1
-      Height = 22
+      Height = 17
       Top = 1
       Width = 353
       Align = alTop
@@ -105,7 +106,7 @@ object frmSongs: TfrmSongs
       AnchorSideRight.Side = asrBottom
       Left = 1
       Height = 196
-      Top = 43
+      Top = 38
       Width = 353
       AntialiasingMode = amOn
       Align = alTop
@@ -122,7 +123,7 @@ object frmSongs: TfrmSongs
       AnchorSideBottom.Side = asrBottom
       Left = 1
       Height = 50
-      Top = 261
+      Top = 251
       Width = 353
       Align = alTop
       BorderWidth = 1
@@ -187,8 +188,8 @@ object frmSongs: TfrmSongs
       AnchorSideRight.Control = pnlMultiScreen
       AnchorSideRight.Side = asrBottom
       Left = 4
-      Height = 22
-      Top = 239
+      Height = 17
+      Top = 234
       Width = 350
       Align = alTop
       BorderSpacing.Left = 3
@@ -203,8 +204,8 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = grbControl
     AnchorSideBottom.Control = grbSettings
     Left = 0
-    Height = 588
-    Top = 36
+    Height = 613
+    Top = 25
     Width = 416
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -227,7 +228,7 @@ object frmSongs: TfrmSongs
     AnchorSideBottom.Control = grbSettings
     AnchorSideBottom.Side = asrBottom
     Left = 845
-    Height = 666
+    Height = 680
     Top = 0
     Width = 1
     Align = alNone
@@ -242,12 +243,12 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
     Left = 416
-    Height = 624
+    Height = 638
     Top = 0
     Width = 45
     Align = alCustom
     Anchors = [akTop, akBottom]
-    ClientHeight = 624
+    ClientHeight = 638
     ClientWidth = 45
     ParentFont = False
     TabOrder = 5
@@ -344,7 +345,7 @@ object frmSongs: TfrmSongs
   object grbSettings: TPanel
     Left = 0
     Height = 42
-    Top = 624
+    Top = 638
     Width = 1200
     Align = alBottom
     ClientHeight = 42
@@ -378,9 +379,9 @@ object frmSongs: TfrmSongs
     end
     object chkMultiWindowMode: TCheckBox
       Left = 192
-      Height = 26
+      Height = 21
       Top = 8
-      Width = 374
+      Width = 311
       Caption = 'Multi-Screen-Mode (suitable for multiple screens)'
       TabOrder = 2
       TabStop = False
@@ -412,10 +413,10 @@ object frmSongs: TfrmSongs
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = PanelSongTeXStatus
       AnchorSideBottom.Side = asrBottom
-      Left = 304
+      Left = 303
       Height = 34
       Top = 1
-      Width = 80
+      Width = 81
       Anchors = [akTop, akRight, akBottom]
       AutoSize = True
       Caption = 'Close File'

@@ -17,7 +17,7 @@ object FrmFulltextsearch: TFrmFulltextsearch
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 0
-    Height = 36
+    Height = 25
     Top = 0
     Width = 424
     Alignment = taCenter
@@ -34,8 +34,8 @@ object FrmFulltextsearch: TFrmFulltextsearch
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 214
-    Top = 41
+    Height = 225
+    Top = 30
     Width = 424
     PageIndex = 0
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -48,10 +48,10 @@ object FrmFulltextsearch: TFrmFulltextsearch
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = LoadIndex
         AnchorSideTop.Side = asrCenter
-        Left = 161
-        Height = 22
-        Top = 96
-        Width = 102
+        Left = 171
+        Height = 17
+        Top = 104
+        Width = 82
         Caption = 'Create Index...'
         ParentColor = False
       end
