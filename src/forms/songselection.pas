@@ -403,6 +403,7 @@ begin
     Application.MessageBox(PChar(strFileDoesNotExist), PChar(strError), MB_ICONWARNING or MB_OK);
     Exit;
   end;
+  lbxSSelected.Clear;
   If ExtractFileExt(OpenFilePath) = '.songtex' then
     ImportTeXFileAsSelection(OpenFilePath)
   else if ExtractFileExt(OpenFilePath) = '.csswc' then

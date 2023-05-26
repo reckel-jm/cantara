@@ -378,6 +378,14 @@ msgstr "Achtergrondafbeelding tonen:"
 msgid "Spoil next slides"
 msgstr "Volgende pauzes overslaan"
 
+#: tfrmsettings.combohorizontal.text
+msgid "Center"
+msgstr ""
+
+#: tfrmsettings.combovertical.text
+msgid "Middle"
+msgstr ""
+
 #: tfrmsettings.fontdialog.title
 msgid "Select font"
 msgstr "Kies een lettertype"
@@ -389,6 +397,10 @@ msgstr "Presentatiemodus"
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
 msgstr "Locatie van nummer:"
+
+#: tfrmsettings.lblalignment.caption
+msgid "Alignment: "
+msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency/Brightness:"

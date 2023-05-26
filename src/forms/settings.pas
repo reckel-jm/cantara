@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
-  LCLINTF, LCLType, ExtCtrls, Present, Lyrics, Slides, ResourceHandling, PresentationCanvas;
+  LCLINTF, LCLType, ExtCtrls, ActnList, Present, Lyrics, Slides,
+  ResourceHandling, PresentationCanvas;
 
 type
 
@@ -25,9 +26,12 @@ type
     cbMetaDataLastSlide: TCheckBox;
     cbSpoiler: TCheckBox;
     cbLyricsToClipboard: TCheckBox;
+    comboVertical: TComboBox;
+    comboHorizontal: TComboBox;
     FontDialog: TFontDialog;
     gbPresentation: TGroupBox;
     ImagePresentationPreview: TImage;
+    lblAlignment: TLabel;
     lblWrapAfter: TLabel;
     lblImageExplainer: TLabel;
     lblImageBrightness: TLabel;
@@ -44,6 +48,7 @@ type
     edtRepoPath: TEdit;
     labelSongDir: TLabel;
     SelectDirectoryDialog: TSelectDirectoryDialog;
+    UpdatePreviewTimer: TTimer;
     procedure btnBackgroundImageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure btnFontSizeManuallyClick(Sender: TObject);
@@ -52,6 +57,9 @@ type
     procedure btnTextColorClick(Sender: TObject);
     procedure cbAutoWordWrapChange(Sender: TObject);
     procedure cbLyricsToClipboardChange(Sender: TObject);
+    procedure cbMetaDataFirstSlideChange(Sender: TObject);
+    procedure cbMetaDataLastSlideChange(Sender: TObject);
+    procedure cbMetaTitleSlideChange(Sender: TObject);
     procedure cbShowBackgroundImageChange(Sender: TObject);
     procedure edtRepoPathChange(Sender: TObject);
     procedure edtRepoPathEditingDone(Sender: TObject);
@@ -60,19 +68,22 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormHide(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure gbPresentationClick(Sender: TObject);
     procedure ImagePresentationPreviewClick(Sender: TObject);
     procedure ImagePresentationPreviewDblClick(Sender: TObject);
     procedure loadSettings();
+    procedure memoMetaDataEditingDone(Sender: TObject);
     procedure sbImageBrightnessChange(Sender: TObject);
     procedure seWrapLinesChange(Sender: TObject);
+    procedure UpdatePreviewTimerTimer(Sender: TObject);
   private
     { private declarations }
     PresentationPreviewCanvas: TPresentationCanvasHandler;
     SlideList: TSlideList;
     procedure LoadPreviewImage;
-    procedure PreparePreviewPresentationForm;
+    procedure ReloadSlideAndPresentationCanvas;
   public
     { public declarations }
     changedBackground: Boolean;
@@ -146,12 +157,17 @@ begin
   PresentationPreviewCanvas.Destroy;
 end;
 
+procedure TfrmSettings.FormHide(Sender: TObject);
+begin
+  UpdatePreviewTimer.Enabled:=False;
+end;
+
 procedure TfrmSettings.FormShow(Sender: TObject);
 begin
   sbImageBrightnessChange(frmSettings);
   changedBackground := False;
-  PreparePreviewPresentationForm;
-  LoadPreviewImage;
+  ReloadSlideAndPresentationCanvas;
+  UpdatePreviewTimer.Enabled:=True;
 end;
 
 procedure TfrmSettings.gbPresentationClick(Sender: TObject);
@@ -209,6 +225,21 @@ end;
 procedure TfrmSettings.cbLyricsToClipboardChange(Sender: TObject);
 begin
 
+end;
+
+procedure TfrmSettings.cbMetaDataFirstSlideChange(Sender: TObject);
+begin
+  ReloadSlideAndPresentationCanvas;
+end;
+
+procedure TfrmSettings.cbMetaDataLastSlideChange(Sender: TObject);
+begin
+  ReloadSlideAndPresentationCanvas;
+end;
+
+procedure TfrmSettings.cbMetaTitleSlideChange(Sender: TObject);
+begin
+  ReloadSlideAndPresentationCanvas;
 end;
 
 procedure TfrmSettings.cbShowBackgroundImageChange(Sender: TObject);
@@ -271,6 +302,11 @@ begin
   sbImageBrightnessChange(frmPresent);
 end;
 
+procedure TfrmSettings.memoMetaDataEditingDone(Sender: TObject);
+begin
+  ReloadSlideAndPresentationCanvas;
+end;
+
 procedure TfrmSettings.sbImageBrightnessChange(Sender: TObject);
 begin
   if sbImageBrightness.Position < 0 then
@@ -284,7 +320,16 @@ end;
 
 procedure TfrmSettings.seWrapLinesChange(Sender: TObject);
 begin
+  if seWrapLines.Value < 0 then seWrapLines.Value:=0;
+  try
+     ReloadSlideAndPresentationCanvas;
+  finally
+  end;
+end;
 
+procedure TfrmSettings.UpdatePreviewTimerTimer(Sender: TObject);
+begin
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.FormCloseQuery(Sender: TObject; var CanClose: boolean);
@@ -343,11 +388,12 @@ begin
   Result := SlideSettings;
 end;
 
-procedure TFrmSettings.PreparePreviewPresentationForm;
+procedure TFrmSettings.ReloadSlideAndPresentationCanvas;
   var DummySongFile: TStringList;
   ExampleSong: TSong;
   PresentationSlideCounter: Integer;
 begin
+  if Assigned(SlideList) then SlideList.Free;
   SlideList := TSlideList.Create(True);
   DummySongFile := LoadResourceFileIntoStringList('AMAZING GRACE');
   ExampleSong := TSong.Create;

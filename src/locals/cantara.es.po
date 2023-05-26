@@ -377,6 +377,14 @@ msgstr "Mostrar imagen de fondo:"
 msgid "Spoil next slides"
 msgstr "Revelar las siguientes diapositivas"
 
+#: tfrmsettings.combohorizontal.text
+msgid "Center"
+msgstr ""
+
+#: tfrmsettings.combovertical.text
+msgid "Middle"
+msgstr ""
+
 #: tfrmsettings.fontdialog.title
 msgid "Select font"
 msgstr "Seleccionar fuente"
@@ -388,6 +396,10 @@ msgstr "Vista de la presentación"
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
 msgstr "Ruta del repositorio de canciones:"
+
+#: tfrmsettings.lblalignment.caption
+msgid "Alignment: "
+msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency/Brightness:"

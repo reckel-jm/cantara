@@ -379,6 +379,14 @@ msgstr "Hintergrundbild anzeigen:"
 msgid "Spoil next slides"
 msgstr "Die nächste Folie andeuten"
 
+#: tfrmsettings.combohorizontal.text
+msgid "Center"
+msgstr ""
+
+#: tfrmsettings.combovertical.text
+msgid "Middle"
+msgstr ""
+
 #: tfrmsettings.fontdialog.title
 msgid "Select font"
 msgstr "Wähle Schrift aus"
@@ -390,6 +398,10 @@ msgstr "Präsentationsfenster"
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
 msgstr "Pfad des Liederverzeichnisses:"
+
+#: tfrmsettings.lblalignment.caption
+msgid "Alignment: "
+msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency/Brightness:"

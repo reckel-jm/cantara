@@ -301,7 +301,14 @@ begin
   repeat
   begin
   changed := False;
-  if self.MaxSlideLineLength = 0 then exit; // Just as a protective measure, actually not needed anymore.
+  if self.MaxSlideLineLength <= 0 then exit; // Just as a protective measure, actually not needed anymore.
+  if self.MaxSlideLineLength = 1 then       // it means to have one line per slide, so we take a shortpath
+  begin
+    for i := 0 to output.Count-2 do
+      if output.Strings[i] <> '' then
+        output.Insert(i+1, '');
+    Exit;
+  end;
   n1 := 0;
   n2 := 0;
   for i := 0 to output.Count-1 do

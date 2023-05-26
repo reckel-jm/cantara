@@ -351,6 +351,14 @@ msgstr ""
 msgid "Spoil next slides"
 msgstr ""
 
+#: tfrmsettings.combohorizontal.text
+msgid "Center"
+msgstr ""
+
+#: tfrmsettings.combovertical.text
+msgid "Middle"
+msgstr ""
+
 #: tfrmsettings.fontdialog.title
 msgid "Select font"
 msgstr ""
@@ -361,6 +369,10 @@ msgstr ""
 
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
+msgstr ""
+
+#: tfrmsettings.lblalignment.caption
+msgid "Alignment: "
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
