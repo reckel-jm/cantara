@@ -10,6 +10,8 @@ uses
   fpImage;
 
 type
+  THorizontalAlignEnum = (Align_Left, Align_Center, Align_Right);
+
   TPresentationStyleSettings = record
     BackgroundColor: TColor;
     Font: TFont;
@@ -17,6 +19,8 @@ type
     ShowBackgroundImage: Boolean;
     BackgroundImageFilePath: String;
     Transparency: Integer;
+    HorizontalAlign: THorizontalAlignEnum;
+    VerticalAlign: TTextLayout;
   end;
 
   TPresentationCanvasHandler = class
@@ -236,7 +240,11 @@ begin
     end;
     with TextStyle do
     begin
-      Alignment:= taCenter;
+      case PresentationStyleSettings.HorizontalAlign of
+        Align_Left: Alignment:=taLeftJustify;
+        Align_Center: Alignment:= taCenter;
+        Align_Right: Alignment:=taRightJustify;
+      end;
       Layout:= tlTop;
       SingleLine := False;
       WordBreak := True;
@@ -246,7 +254,11 @@ begin
     with ContentRect do
     begin
       Left := PADDING;
-      Top := Max(Padding, Padding+(self.Height-2*Padding-MainTextHeight-SpoilerTextHeight-2*SpoilerDistance) div 2);
+      case PresentationStyleSettings.VerticalAlign of
+        tlTop: Top := Padding;
+        tlCenter: Top := Max(Padding, Padding+(self.Height-2*Padding-MainTextHeight-SpoilerTextHeight-2*SpoilerDistance) div 2);
+        tlBottom: Top := self.Height - Padding - MainTextHeight-SpoilerTextHeight-SpoilerDistance;
+      end;
       Width := self.Width-Padding;
       Height := MainTextHeight;
     end;
@@ -267,7 +279,10 @@ begin
       ContentRect.Height:=MetaTextHeight;
       ContentRect.Width:=SpoilerRectWidth;
       with TextStyle do
+      begin
         Alignment := taLeftJustify;
+        Layout := tlBottom;
+      end;
       Font.Assign(MetaTextFont);
       TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.MetaText);
     end;

@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
-  LCLINTF, LCLType, ExtCtrls, ActnList, Present, Lyrics, Slides,
+  LCLINTF, LCLType, ExtCtrls, ActnList, Arrow, Present, Lyrics, Slides,
   ResourceHandling, PresentationCanvas;
 
 type
@@ -20,6 +20,7 @@ type
     btnFontSizeManually: TButton;
     btnTextColor: TButton;
     btnBackgroundImage: TButton;
+    btnDetails: TButton;
     cbMetaDataFirstSlide: TCheckBox;
     cbMetaTitleSlide: TCheckBox;
     cbShowBackgroundImage: TCheckBox;
@@ -299,6 +300,8 @@ begin
   BgPictureDialog.FileName := settingsFile.ReadString('Config', 'BackgroundPicture-Path', '');
   sbImageBrightness.Position:=settingsFile.ReadInteger('Config', 'ImageBrightness', 0);
   seWrapLines.Value:=settingsFile.ReadInteger('Config', 'AutoWrap', 8);
+  comboHorizontal.ItemIndex := settingsFile.ReadInteger('Config', 'AlignHorizontal', Ord(Align_Center)); // default is centering
+  comboVertical.ItemIndex := settingsFile.ReadInteger('Config', 'AlignVertical', Ord(tlCenter)); // default is in the middle
   sbImageBrightnessChange(frmPresent);
 end;
 
@@ -358,6 +361,8 @@ begin
     settingsFile.WriteString('Config', 'BackgroundPicture-Path', BgPictureDialog.FileName);
     settingsFile.WriteInteger('Config', 'ImageBrightness', sbImageBrightness.Position);
     settingsFile.WriteInteger('Config', 'AutoWrap', seWrapLines.Value);
+    settingsFile.WriteInteger('Config', 'AlignHorizontal', comboHorizontal.ItemIndex);
+    settingsFile.WriteInteger('Config', 'AlignVertical', comboVertical.ItemIndex);
     settingsFile.UpdateFile;
     CanClose := True;
   end;
@@ -417,6 +422,8 @@ begin
   PresentationStyleSettings.TextColor:=textColorDialog.Color;
   PresentationStyleSettings.BackgroundImageFilePath:=BgPictureDialog.FileName;
   PresentationStyleSettings.Transparency:=sbImageBrightness.Position;
+  PresentationStyleSettings.VerticalAlign:=TTextLayout(comboVertical.ItemIndex);
+  PresentationStyleSettings.HorizontalAlign:=THorizontalAlignEnum(comboHorizontal.ItemIndex);
   Result := PresentationStyleSettings;
 end;
 

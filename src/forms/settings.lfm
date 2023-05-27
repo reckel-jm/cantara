@@ -432,6 +432,22 @@ object frmSettings: TfrmSettings
       TabOrder = 12
       Text = 'Middle'
     end
+    object btnDetails: TButton
+      AnchorSideLeft.Control = comboVertical
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = comboVertical
+      AnchorSideBottom.Control = comboVertical
+      AnchorSideBottom.Side = asrBottom
+      Left = 734
+      Height = 36
+      Top = 0
+      Width = 74
+      Anchors = [akTop, akLeft, akBottom]
+      AutoSize = True
+      BorderSpacing.Left = 5
+      Caption = 'Details...'
+      TabOrder = 13
+    end
   end
   object btnClose: TButton
     AnchorSideTop.Control = gbPresentation

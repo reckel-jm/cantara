@@ -744,6 +744,7 @@ begin
     frmPresent.PresentationCanvas.Width:=frmPresent.Width;
     frmPresent.PresentationCanvas.Height:=frmPresent.Height;
     frmPresent.PresentationCanvas.LoadBackgroundBitmap;
+    frmPresent.Invalidate;
     frmPresent.ShowFirst;
     // Deaktiviere Präsentationsbutton für Zeit der Präsentation
     itemPresentation.Enabled := False;

@@ -332,6 +332,10 @@ msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
 msgstr "Cerrar"
 
+#: tfrmsettings.btndetails.caption
+msgid "Details..."
+msgstr ""
+
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
 msgstr "Cambiar configuración de fuente..."

@@ -23,6 +23,7 @@
 {"hash":91519008,"name":"tfrmsettings.lblalignment.caption","sourcebytes":[65,108,105,103,110,109,101,110,116,58,32],"value":"Alignment: "},
 {"hash":77355714,"name":"tfrmsettings.combohorizontal.text","sourcebytes":[67,101,110,116,101,114],"value":"Center"},
 {"hash":88058661,"name":"tfrmsettings.combovertical.text","sourcebytes":[77,105,100,100,108,101],"value":"Middle"},
+{"hash":134745518,"name":"tfrmsettings.btndetails.caption","sourcebytes":[68,101,116,97,105,108,115,46,46,46],"value":"Details..."},
 {"hash":4863637,"name":"tfrmsettings.btnclose.caption","sourcebytes":[67,108,111,115,101],"value":"Close"},
 {"hash":216640249,"name":"tfrmsettings.selectdirectorydialog.title","sourcebytes":[83,101,108,101,99,116,32,115,111,110,103,32,114,101,112,111,115,105,116,111,114,121,32,100,105,99,116,105,111,110,97,114,121],"value":"Select song repository dictionary"},
 {"hash":229805586,"name":"tfrmsettings.bgcolordialog.title","sourcebytes":[83,101,108,101,99,116,32,98,97,99,107,103,114,111,117,110,100,32,99,111,108,111,114],"value":"Select background color"},
