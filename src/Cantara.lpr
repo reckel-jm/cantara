@@ -11,7 +11,7 @@ uses
   info, welcome, songeditor,
   { you can add units after this }
   slides, fulltextsearch, FormFulltextSearch, pptx, resourcehandling,
-PresentationCanvas;
+PresentationCanvas, settingsdetailed;
 {$R *.res}
 
 begin

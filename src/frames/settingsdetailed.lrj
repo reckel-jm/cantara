@@ -1,0 +1,7 @@
+{"version":1,"strings":[
+{"hash":108703767,"name":"tframesettingsdetailed.groupboxpadding.caption","sourcebytes":[80,97,100,100,105,110,103],"value":"Padding"},
+{"hash":5422458,"name":"tframesettingsdetailed.labelleft.caption","sourcebytes":[76,101,102,116,58],"value":"Left:"},
+{"hash":150861712,"name":"tframesettingsdetailed.labelright.caption","sourcebytes":[82,105,103,104,116,58,32],"value":"Right: "},
+{"hash":5989312,"name":"tframesettingsdetailed.labeltop.caption","sourcebytes":[84,111,112,58,32],"value":"Top: "},
+{"hash":112944208,"name":"tframesettingsdetailed.labalbottom.caption","sourcebytes":[66,111,116,116,111,109,58,32],"value":"Bottom: "}
+]}
