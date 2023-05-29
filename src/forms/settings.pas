@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
   LCLINTF, LCLType, ExtCtrls, ActnList, Arrow, Present, Lyrics, Slides,
-  ResourceHandling, PresentationCanvas;
+  ResourceHandling, PresentationCanvas, settingspadding;
 
 type
 
@@ -52,6 +52,7 @@ type
     UpdatePreviewTimer: TTimer;
     procedure btnBackgroundImageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
+    procedure btnDetailsClick(Sender: TObject);
     procedure btnFontSizeManuallyClick(Sender: TObject);
     procedure btnSelectDirClick(Sender: TObject);
     procedure btnBackgroundColorClick(Sender: TObject);
@@ -83,6 +84,7 @@ type
     { private declarations }
     PresentationPreviewCanvas: TPresentationCanvasHandler;
     SlideList: TSlideList;
+    slidelistcur: Integer;
     procedure LoadPreviewImage;
     procedure ReloadSlideAndPresentationCanvas;
   public
@@ -151,6 +153,7 @@ procedure TfrmSettings.FormCreate(Sender: TObject);
 begin
   changedBackground := False;
   PresentationPreviewCanvas := TPresentationCanvasHandler.Create;
+  slidelistcur := 0;
 end;
 
 procedure TfrmSettings.FormDestroy(Sender: TObject);
@@ -178,6 +181,8 @@ end;
 
 procedure TfrmSettings.ImagePresentationPreviewClick(Sender: TObject);
 begin
+  if slideListCur < SlideList.Count-1 then slidelistcur += 1
+    else slideListCur := 0;
   LoadPreviewImage;
 end;
 
@@ -200,6 +205,11 @@ end;
 procedure TfrmSettings.btnCloseClick(Sender: TObject);
 begin
 
+end;
+
+procedure TfrmSettings.btnDetailsClick(Sender: TObject);
+begin
+  FormPadding.ShowModal;
 end;
 
 procedure TfrmSettings.btnBackgroundImageClick(Sender: TObject);
@@ -279,6 +289,7 @@ end;
 
 procedure TfrmSettings.loadSettings();
 var str: String;
+  Padding: TPadding;
 begin
   edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
@@ -302,6 +313,13 @@ begin
   seWrapLines.Value:=settingsFile.ReadInteger('Config', 'AutoWrap', 8);
   comboHorizontal.ItemIndex := settingsFile.ReadInteger('Config', 'AlignHorizontal', Ord(Align_Center)); // default is centering
   comboVertical.ItemIndex := settingsFile.ReadInteger('Config', 'AlignVertical', Ord(tlCenter)); // default is in the middle
+
+  Padding.Left:=settingsFile.ReadInteger('Config', 'Padding-Left', PresentationCanvas.PADDING);
+  Padding.Right:=settingsFile.ReadInteger('Config', 'Padding-Right', PresentationCanvas.PADDING);
+  Padding.Top:=settingsFile.ReadInteger('Config', 'Padding-Top', PresentationCanvas.PADDING);
+  Padding.Bottom:=settingsFile.ReadInteger('Config', 'Padding-Bottom', PresentationCanvas.PADDING);
+  FormPadding.frmSettingsDetailed.ImportPadding(Padding);
+
   sbImageBrightnessChange(frmPresent);
 end;
 
@@ -337,6 +355,7 @@ end;
 
 procedure TfrmSettings.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 var str: String;
+  Padding: TPadding;
 begin
   CanClose := False;
   if DirectoryExists(edtRepoPath.Text) = False then Application.MessageBox(PChar(strValidSongRepository), PChar(strErrorCaption))
@@ -363,6 +382,13 @@ begin
     settingsFile.WriteInteger('Config', 'AutoWrap', seWrapLines.Value);
     settingsFile.WriteInteger('Config', 'AlignHorizontal', comboHorizontal.ItemIndex);
     settingsFile.WriteInteger('Config', 'AlignVertical', comboVertical.ItemIndex);
+
+    Padding := FormPadding.frmSettingsDetailed.ExportPadding;
+    settingsFile.WriteInteger('Config', 'Padding-Left', Padding.Left);
+    settingsFile.WriteInteger('Config', 'Padding-Top', Padding.Top);
+    settingsFile.WriteInteger('Config', 'Padding-Right', Padding.Right);
+    settingsFile.WriteInteger('Config', 'Padding-Bottom', Padding.Bottom);
+
     settingsFile.UpdateFile;
     CanClose := True;
   end;
@@ -377,7 +403,7 @@ begin
   if ChangedBackground then
     PresentationPreviewCanvas.LoadBackgroundBitmap;
   PresentationPreviewCanvas.ResizeBackgroundBitmap;
-  ImagePresentationPreview.Picture.Assign(PresentationPreviewCanvas.PaintSlide(SlideList[0]));
+  ImagePresentationPreview.Picture.Assign(PresentationPreviewCanvas.PaintSlide(SlideList[slidelistcur]));
 end;
 
 function TFrmSettings.ExportSlideSettings(): TSlideSettings;
@@ -424,6 +450,7 @@ begin
   PresentationStyleSettings.Transparency:=sbImageBrightness.Position;
   PresentationStyleSettings.VerticalAlign:=TTextLayout(comboVertical.ItemIndex);
   PresentationStyleSettings.HorizontalAlign:=THorizontalAlignEnum(comboHorizontal.ItemIndex);
+  PresentationStyleSettings.Padding:=FormPadding.frmSettingsDetailed.ExportPadding;
   Result := PresentationStyleSettings;
 end;
 

@@ -155,6 +155,30 @@ msgstr ""
 msgid "Slide"
 msgstr ""
 
+#: tformpadding.caption
+msgid "FormPadding"
+msgstr ""
+
+#: tframesettingsdetailed.groupboxpadding.caption
+msgid "Padding"
+msgstr ""
+
+#: tframesettingsdetailed.labalbottom.caption
+msgid "Bottom: "
+msgstr ""
+
+#: tframesettingsdetailed.labelleft.caption
+msgid "Left:"
+msgstr ""
+
+#: tframesettingsdetailed.labelright.caption
+msgid "Right: "
+msgstr ""
+
+#: tframesettingsdetailed.labeltop.caption
+msgid "Top: "
+msgstr ""
+
 #: tfrmdisplaysongcontent.btnarchivate.caption
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
 msgid "Archive"

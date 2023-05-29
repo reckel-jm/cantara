@@ -11,7 +11,7 @@ uses
   info, welcome, songeditor,
   { you can add units after this }
   slides, fulltextsearch, FormFulltextSearch, pptx, resourcehandling,
-PresentationCanvas, settingsdetailed;
+PresentationCanvas, settingsdetailed, settingspadding;
 {$R *.res}
 
 begin
@@ -24,6 +24,7 @@ begin
   Application.CreateForm(TfrmSongEdit, frmSongEdit);
   Application.CreateForm(TfrmWelcome, frmWelcome);
   Application.CreateForm(TfrmWrapperFulltextSearch, frmWrapperFulltextSearch);
+  Application.CreateForm(TFormPadding, FormPadding);
   Application.Run;
 end.
 

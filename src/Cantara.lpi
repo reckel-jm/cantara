@@ -292,7 +292,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="19">
+    <Units Count="20">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -405,8 +405,16 @@
         <Filename Value="frames/settingsdetailed.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrameSettingsDetailed"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
       </Unit18>
+      <Unit19>
+        <Filename Value="forms/settingspadding.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormPadding"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit19>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

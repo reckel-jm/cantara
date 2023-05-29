@@ -12,6 +12,13 @@ uses
 type
   THorizontalAlignEnum = (Align_Left, Align_Center, Align_Right);
 
+  TPadding = record
+    Left: Integer;
+    Right: Integer;
+    Top: Integer;
+    Bottom: Integer;
+  end;
+
   TPresentationStyleSettings = record
     BackgroundColor: TColor;
     Font: TFont;
@@ -21,6 +28,7 @@ type
     Transparency: Integer;
     HorizontalAlign: THorizontalAlignEnum;
     VerticalAlign: TTextLayout;
+    Padding: TPadding;
   end;
 
   TPresentationCanvasHandler = class
@@ -200,21 +208,22 @@ begin
     Width := self.Width;
     Height := self.Height;
   end;
-  MainTextHeight := self.CalculateTextHeight(NormalTextFont, self.Width-2*Padding, Slide.PartContent.MainText);
+  MainTextHeight := self.CalculateTextHeight(NormalTextFont,
+                 self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right, Slide.PartContent.MainText);
   MetaTextHeight := CalculateTextHeight(MetaTextFont, SpoilerRectWidth, Slide.PartContent.MetaText);
   SpoilerText := Slide.PartContent.SpoilerText;
   if SpoilerText <> '' then
   begin
-    SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, self.Width-2*Padding, SpoilerText);
-    SpoilerRectWidth := Round((self.Width-2*Padding)*2/3);
+    SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right, SpoilerText);
+    SpoilerRectWidth := Round((self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right)*2/3);
     // Check whether spoiler fits
-    SpoilerDistance := Min(DEFAULTSPOILERDISTANCE, Height-(2*Padding+MainTextHeight+SpoilerTextHeight+DEFAULTSPOILERDISTANCE-MINSPOILERDISTANCE-MetaTextHeight));
+    SpoilerDistance := Min(DEFAULTSPOILERDISTANCE, Height-(PresentationStyleSettings.Padding.Top+PresentationStyleSettings.Padding.Bottom+MainTextHeight+SpoilerTextHeight+DEFAULTSPOILERDISTANCE-MINSPOILERDISTANCE-MetaTextHeight));
     if SpoilerDistance < DEFAULTSPOILERDISTANCE then
     begin
       SpoilerText := SplitString(SpoilerText, LineEnding)[0] + MoreLyricsIndicator;
       // Now we calculate the height again
-      SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, self.Width-2*Padding, SpoilerText);
-      SpoilerDistance := Min(MINSPOILERDISTANCE, Height-(2*Padding+MainTextHeight+SpoilerTextHeight+DEFAULTSPOILERDISTANCE-MINSPOILERDISTANCE-MetaTextHeight));
+      SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right, SpoilerText);
+      SpoilerDistance := Min(MINSPOILERDISTANCE, Height-(PresentationStyleSettings.Padding.Top+PresentationStyleSettings.Padding.Bottom+MainTextHeight+SpoilerTextHeight+DEFAULTSPOILERDISTANCE-MINSPOILERDISTANCE-MetaTextHeight));
       if SpoilerDistance < MINSPOILERDISTANCE then
       begin
         SpoilerText := '';
@@ -253,13 +262,13 @@ begin
     Font.Assign(NormalTextFont);
     with ContentRect do
     begin
-      Left := PADDING;
+      Left := PresentationStyleSettings.Padding.Left;
       case PresentationStyleSettings.VerticalAlign of
-        tlTop: Top := Padding;
-        tlCenter: Top := Max(Padding, Padding+(self.Height-2*Padding-MainTextHeight-SpoilerTextHeight-2*SpoilerDistance) div 2);
-        tlBottom: Top := self.Height - Padding - MainTextHeight-SpoilerTextHeight-SpoilerDistance;
+        tlTop: Top := PresentationStyleSettings.Padding.Top;
+        tlCenter: Top := Max(PresentationStyleSettings.Padding.Top, PresentationStyleSettings.Padding.Top+(self.Height-PresentationStyleSettings.Padding.Top-PresentationStyleSettings.Padding.Bottom-MainTextHeight-SpoilerTextHeight-2*SpoilerDistance) div 2);
+        tlBottom: Top := self.Height - PresentationStyleSettings.Padding.Bottom - MainTextHeight-SpoilerTextHeight-SpoilerDistance;
       end;
-      Width := self.Width-Padding;
+      Width := self.Width-PresentationStyleSettings.Padding.Right;
       Height := MainTextHeight;
     end;
     TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.MainText);
@@ -274,8 +283,8 @@ begin
     // We paint Meta information if desired
     if Slide.PartContent.MetaText <> '' then
     begin
-      ContentRect.Top := self.Height-Padding-MetaTextHeight;
-      ContentRect.Left:=Padding;
+      ContentRect.Top := self.Height-PresentationStyleSettings.Padding.Bottom-MetaTextHeight;
+      ContentRect.Left:=PresentationStyleSettings.Padding.Left;
       ContentRect.Height:=MetaTextHeight;
       ContentRect.Width:=SpoilerRectWidth;
       with TextStyle do

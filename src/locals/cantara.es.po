@@ -166,6 +166,30 @@ msgstr "El archivo que desea abrir no existe."
 msgid "Slide"
 msgstr "Diapositiva"
 
+#: tformpadding.caption
+msgid "FormPadding"
+msgstr ""
+
+#: tframesettingsdetailed.groupboxpadding.caption
+msgid "Padding"
+msgstr ""
+
+#: tframesettingsdetailed.labalbottom.caption
+msgid "Bottom: "
+msgstr ""
+
+#: tframesettingsdetailed.labelleft.caption
+msgid "Left:"
+msgstr ""
+
+#: tframesettingsdetailed.labelright.caption
+msgid "Right: "
+msgstr ""
+
+#: tframesettingsdetailed.labeltop.caption
+msgid "Top: "
+msgstr ""
+
 #: tfrmdisplaysongcontent.btnarchivate.caption
 #, fuzzy
 #| msgid "Archivate"

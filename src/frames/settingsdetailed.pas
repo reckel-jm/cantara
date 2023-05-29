@@ -5,7 +5,8 @@ unit settingsdetailed;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Spin, ValEdit, StdCtrls;
+  Classes, SysUtils, Forms, Controls, Spin, ValEdit, StdCtrls,
+  PresentationCanvas;
 
 type
 
@@ -24,12 +25,29 @@ type
   private
 
   public
-
+    procedure ImportPadding(Padding: TPadding);
+    function ExportPadding: TPadding;
   end;
 
 implementation
 
 {$R *.lfm}
+
+procedure TFrameSettingsDetailed.ImportPadding(Padding: TPadding);
+begin
+  LeftSpin.Value := Padding.Left;
+  TopSpin.Value := Padding.Top;
+  RightSpin.Value := Padding.Right;
+  BottomSpin.Value := Padding.Bottom;
+end;
+
+function TFrameSettingsDetailed.ExportPadding: TPadding;
+begin
+  Result.Left:=LeftSpin.Value;
+  Result.Top:=TopSpin.Value;
+  Result.Right:=RightSpin.Value;
+  Result.Bottom:=BottomSpin.Value;
+end;
 
 end.
 

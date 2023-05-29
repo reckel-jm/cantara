@@ -28,7 +28,6 @@ object FrameSettingsDetailed: TFrameSettingsDetailed
       Top = 127
       Width = 50
       BorderSpacing.Left = 5
-      EditorEnabled = False
       MaxValue = 500
       TabOrder = 0
     end
@@ -68,7 +67,6 @@ object FrameSettingsDetailed: TFrameSettingsDetailed
       Width = 50
       Anchors = [akTop, akRight]
       BorderSpacing.Left = 5
-      EditorEnabled = False
       MaxValue = 500
       TabOrder = 1
     end
@@ -98,7 +96,6 @@ object FrameSettingsDetailed: TFrameSettingsDetailed
       Top = 0
       Width = 50
       BorderSpacing.Left = 5
-      EditorEnabled = False
       MaxValue = 500
       TabOrder = 2
     end
@@ -116,7 +113,6 @@ object FrameSettingsDetailed: TFrameSettingsDetailed
       Width = 50
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 5
-      EditorEnabled = False
       MaxValue = 500
       TabOrder = 3
     end
