@@ -396,14 +396,17 @@ end;
 
 procedure TfrmSettings.LoadPreviewImage;
 begin
-  PresentationPreviewCanvas.SlideSettings := self.ExportSlideSettings;
-  PresentationPreviewCanvas.PresentationStyleSettings := self.ExportPresentationStyleSettings;
-  PresentationPreviewCanvas.Width:=Screen.Width;
-  PresentationPreviewCanvas.Height:=Screen.Height;
-  if ChangedBackground then
-    PresentationPreviewCanvas.LoadBackgroundBitmap;
-  PresentationPreviewCanvas.ResizeBackgroundBitmap;
-  ImagePresentationPreview.Picture.Assign(PresentationPreviewCanvas.PaintSlide(SlideList[slidelistcur]));
+  try
+    PresentationPreviewCanvas.SlideSettings := self.ExportSlideSettings;
+    PresentationPreviewCanvas.PresentationStyleSettings := self.ExportPresentationStyleSettings;
+    PresentationPreviewCanvas.Width:=Screen.Width;
+    PresentationPreviewCanvas.Height:=Screen.Height;
+    if ChangedBackground then
+      PresentationPreviewCanvas.LoadBackgroundBitmap;
+    PresentationPreviewCanvas.ResizeBackgroundBitmap;
+    ImagePresentationPreview.Picture.Assign(PresentationPreviewCanvas.PaintSlide(SlideList[slidelistcur]));
+  finally
+  end;
 end;
 
 function TFrmSettings.ExportSlideSettings(): TSlideSettings;
