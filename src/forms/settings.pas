@@ -85,6 +85,7 @@ type
     PresentationPreviewCanvas: TPresentationCanvasHandler;
     SlideList: TSlideList;
     slidelistcur: Integer;
+    ExampleSong: TSong;
     procedure LoadPreviewImage;
     procedure ReloadSlideAndPresentationCanvas;
   public
@@ -150,15 +151,23 @@ begin
 end;
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
+var
+  DummySongFile: TStringList;
 begin
   changedBackground := False;
   PresentationPreviewCanvas := TPresentationCanvasHandler.Create;
   slidelistcur := 0;
+  DummySongFile := LoadResourceFileIntoStringList('AMAZING GRACE');
+  ExampleSong := TSong.Create;
+  ExampleSong.MetaDict.Add('title', 'Amazing Grace');
+  ExampleSong.importSongFromStringList(DummySongFile);
+  DummySongFile.Destroy;
 end;
 
 procedure TfrmSettings.FormDestroy(Sender: TObject);
 begin
   PresentationPreviewCanvas.Destroy;
+  ExampleSong.Destroy;
 end;
 
 procedure TfrmSettings.FormHide(Sender: TObject);
@@ -423,18 +432,17 @@ begin
 end;
 
 procedure TFrmSettings.ReloadSlideAndPresentationCanvas;
-  var DummySongFile: TStringList;
-  ExampleSong: TSong;
-  PresentationSlideCounter: Integer;
+  var
+    PresentationSlideCounter: Integer;
+    SlideSettings: TSlideSettings;
 begin
+  ExampleSong.Reset;
+  SlideSettings := self.ExportSlideSettings;
+  ExampleSong.MaxSlideLineLength:=SlideSettings.MaxSlideLineLength;
   if Assigned(SlideList) then SlideList.Free;
   SlideList := TSlideList.Create(True);
-  DummySongFile := LoadResourceFileIntoStringList('AMAZING GRACE');
-  ExampleSong := TSong.Create;
-  ExampleSong.importSongFromStringList(DummySongFile);
-  DummySongFile.Destroy;
   PresentationSlideCounter := 0;
-  SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
+  SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, SlideSettings, PresentationSlideCounter));
   PresentationPreviewCanvas.Height:=Screen.Height;
   PresentationPreviewCanvas.Width:=Screen.Width;
   PresentationPreviewCanvas.PresentationStyleSettings := ExportPresentationStyleSettings;

@@ -52,6 +52,8 @@ type
       function IsCCLIFile: Boolean;
       procedure strip;
       procedure importSongFromStringList(stringlist: TStringList);
+      { Resets the song to its original state }
+      procedure Reset;
     private
       inputFile: TStringList;
       PositionDict: TStringIntegerDict;
@@ -68,6 +70,7 @@ type
       procedure getSongNameWithoutEnding;
       function ParseMetaData(MetaLogic: string; count: integer): string;
       function compareWithOtherSong(TheSong: TSong): Boolean;
+      procedure DecideFileFormatAndContinue;
   end;
   TSongList = specialize TFPGObjectList<TSong>;
 
@@ -338,17 +341,23 @@ begin
   end until changed = False;
 end;
 
-{ This function finds out which format the song has and calls the specific import function }
-procedure TSong.importSongFile;
+procedure TSong.DecideFileFormatAndContinue;
 var songfileextension: String;
 begin
-  self.inputFile.LoadFromFile(self.CompleteFilePath);
   songfileextension := ExtractFileExt(self.CompleteFilePath);
   if songfileextension = '.song' then
     self.importSongFormatFile
   else if self.IsCCLIFile then // CCLI-Songselect file
     self.importCCLISongFile;
   if self.MaxSlideLineLength>0 then self.slideWrap;
+end;
+
+{ This function finds out which format the song has and calls the specific import function }
+procedure TSong.importSongFile;
+begin
+  if self.CompleteFilePath <> '' then
+     self.inputFile.LoadFromFile(self.CompleteFilePath);
+  DecideFileFormatAndContinue;
   self.strip;
 end;
 
@@ -360,10 +369,12 @@ end;
 
 procedure TSong.importSongFromStringList(stringlist: TStringList);
 begin
-  self.inputFile := stringlist;
+  self.inputFile.Assign(stringlist);
   if self.IsCCLIFile then // CCLI-Songselect file
     self.importCCLISongFile
   else self.importSongFormatFile;
+  if self.MaxSlideLineLength>0 then self.slideWrap;
+  self.strip;
 end;
 
 function TSong.ParseMetaData(MetaLogic: string): string;
@@ -475,6 +486,15 @@ begin
        then exit(False);
   // If the function arrives here, the two songs should be the same.
   Result := True;
+end;
+
+procedure TSong.Reset;
+begin
+  if (self.inputFile.Text = '') or (self.output.Text = '') then exit;
+  self.output.Clear;
+  self.MaxSlideLineLength:=0;
+  self.FileNameWithoutEnding:='';
+  self.importSongFile;
 end;
 
 end.
