@@ -28,6 +28,8 @@ uses
 
 type
 
+  SlideTypeEnum = (TitleSlide, SlideWithSpoiler, SlideWithoutSpoiler, EmptySlide);
+
   { This record has all the settings required for a presentation slide }
   TSlideSettings = record
     SpoilerText: Boolean;
@@ -53,7 +55,7 @@ type
     public
       Song: TSong;
       PartContent: TPartContent;
-      Extra: String;
+      SlideType: SlideTypeEnum;
       ID: Integer;
       constructor Create; overload;
       destructor Destroy; override;
@@ -111,6 +113,7 @@ implementation
           Slide := TSlide.Create;
           Slide.Song := Song;
           Slide.PartContent.MainText:= stanza;
+          Slide.SlideType:=SlideWithoutSpoiler;
           Slide.ID := SlideCounter;
           SlideCounter += 1;
           stanza := '';
@@ -131,7 +134,10 @@ implementation
     begin
       for j := 0 to CurrentSongSlideList.Count-2 do
         if CurrentSongSlideList.Items[j].PartContent.SpoilerText = '' then
+        begin
           CurrentSongSlideList.Items[j].PartContent.SpoilerText:=CurrentSongSlideList.Items[j+1].PartContent.MainText;
+          CurrentSongSlideList.Items[j].SlideType:=SlideWithSpoiler;
+        end;
     end;
 
     { Add Meta Information to the slides if desired in the settings which were handed over }
@@ -153,6 +159,7 @@ implementation
       Slide := TSlide.Create;
       Slide.Song := Song;
       Slide.ID := SlideCounter;
+      Slide.SlideType:=EmptySlide;
       inc(SlideCounter);
       CurrentSongSlideList.Add(Slide);
     end;
@@ -166,6 +173,7 @@ implementation
       Slide.Song := Song;
       Slide.PartContent.MainText:=Song.MetaDict['title'];
       Slide.PartContent.SpoilerText:= Song.ParseMetaData(SlideSettings.MetaSyntax);
+      Slide.SlideType:=TitleSlide;
       CurrentSongSlideList.Insert(0, Slide);
     end;
 

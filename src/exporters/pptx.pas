@@ -16,10 +16,18 @@ type
       destructor Destroy; override;
     private
       TempDir: String;
-      pptxgenjs, template, example: TStringList;
+      pptxgenjs, template, exportedJs, content: TStringList;
+      procedure AddSlide(Slide: TSlide);
+      function SaveJavaScriptToFile: String;
   end;
 
 implementation
+
+function PrepareText(Input: String): String;
+begin
+  Result := StringReplace(Input, LineEnding, '\n', [rfReplaceAll]);
+end;
+
 constructor TPPTXExporter.Create;
 begin
   inherited;
@@ -27,9 +35,37 @@ begin
   // Load the Ressource Files here
   pptxgenjs := LoadResourceFileIntoStringList('PPTXGEN.BUNDLE');
   template := LoadResourceFileIntoStringList('PPTXEXPORT_TEMPLATE');
-  example := LoadResourceFileIntoStringList('PPTXEXPORT_EXAMPLE');
+  content := TStringList.Create;
+  exportedJs := TStringList.Create;
+end;
+
+procedure TPPTXExporter.AddSlide(Slide: TSlide);
+begin
+  if Slide.SlideType = SlideWithoutSpoiler then // this is a slide without spoiler
+  begin
+    content.Add('slide = pres.addSlide({ masterName: "SlideWithoutSpoiler" });');
+    content.Add('slide.addText("' + PrepareText(Slide.PartContent.MainText) + '", { placeholder: "maincontent" })');
+  end else
+  if Slide.SlideType = SlideWithSpoiler then
+  begin
+    content.Add('slide = pres.addSlide({ masterName: "SlideWithSpoiler" });');
+    content.Add('slide.addText("' + PrepareText(Slide.PartContent.MainText) + '", { placeholder: "maincontent" })');
+    content.Add('slide.addText("' + PrepareText(Slide.PartContent.SpoilerText) + '", { placeholder: "spoiler" })');
+  end;
+  if Slide.SlideType = EmptySlide then
+  begin
+    content.Add('slide = pres.addSlide({ masterName: "EmptySlide" });');
+  end;
+end;
+
+function TPPTXExporter.SaveJavaScriptToFile: String;
+var ExportedFilePath: String;
+begin
   pptxgenjs.SaveToFile(TempDir + 'pptxgen.bundle.js');
-  example.SaveToFile(TempDir + 'cantara-pptx-export.html');
+  exportedJs.Text := StringReplace(template.Text, '{{SLIDECONTENT}}', content.Text, [rfReplaceAll]);
+  ExportedFilePath := TempDir + 'pptx-export.html';
+  exportedJs.SaveToFile(ExportedFilePath);
+  Result := ExportedFilePath;
 end;
 
 destructor TPPTXExporter.Destroy;
@@ -37,7 +73,8 @@ begin
   if Assigned(InputSongs) then FreeAndNil(InputSongs);
   FreeAndNil(pptxgenjs);
   FreeAndNil(template);
-  FreeAndNil(example);
+  exportedJs.Destroy;
+  content.Destroy;
   inherited;
 end;
 

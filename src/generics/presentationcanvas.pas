@@ -160,7 +160,7 @@ begin
   begin
     NewHeight:=Ceil(self.Width*AdjustedBackgroundPicture.Height/AdjustedBackgroundPicture.Width);
     if AdjustedBackgroundPicture.Height > self.Height then
-       DestRect.Top:=-(Trunc((AdjustedBackgroundPicture.Height-self.Height)/2))
+       DestRect.Top:=Max(-(Trunc((AdjustedBackgroundPicture.Height-self.Height)/2)),0)
     else DestRect.Top := 0;
     DestRect.Left:=0;
     DestRect.Height := Max(newHeight, self.Height);
@@ -169,7 +169,7 @@ begin
   begin
     newWidth:=Ceil(self.Height*AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height);
     if AdjustedBackgroundPicture.Width > self.Width then
-       DestRect.Left:=-(Trunc((AdjustedBackgroundPicture.Width-self.Width)/2))
+       DestRect.Left:=Max(-(Trunc((AdjustedBackgroundPicture.Width-self.Width)/2)),0)
     else
        DestRect.Left := 0;
     DestRect.Top:=0;
