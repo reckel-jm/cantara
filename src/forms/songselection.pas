@@ -5,7 +5,7 @@ unit SongSelection;
 interface
 
 uses
-  LCLType, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils, Math,
+  LCLType, LCLIntf, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils, Math,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch, PPTX, PresentationCanvas;
 
@@ -134,7 +134,7 @@ type
     procedure pnlMultiScreenResize(Sender: TObject);
     procedure PnlSplitterMoved(Sender: TObject);
     { Opens the selected songs and creates the presentation data from the selected songs. }
-    procedure CreatePresentationData;
+    procedure LoadPresentationDataIntoSlideList(ASlideList: TSlideList);
     function GetCurrentSongPosition: TSongPosition;
     procedure SongPopupMenuPopup(Sender: TObject);
     procedure UpdateSongPositionInLbxSSelected;
@@ -364,9 +364,15 @@ end;
 
 procedure TfrmSongs.itemExportPptxClick(Sender: TObject);
 var PPTXExporter: TPPTXExporter;
+    PPTXSlideList: TSlideList;
 begin
   PPTXExporter := TPPTXExporter.Create;
-  FreeAndNil(PPTXExporter);
+  PPTXSlideList := TSlideList.Create(True);
+  LoadPresentationDataIntoSlideList(PPTXSlideList);
+  PPTXExporter.AddSlides(PPTXSlideList);
+  OpenURL('file://' + PPTXExporter.SaveJavaScriptToFile);
+  PPTXSlideList.Destroy;
+  PPTXExporter.Destroy;
 end;
 
 procedure TfrmSongs.itemExportTeXFileClick(Sender: TObject);
@@ -703,7 +709,7 @@ begin
   if lbxSSelected.Count > 0 then
   begin
     PresentationSlideCounter := 0;
-    CreatePresentationData;
+    LoadPresentationDataIntoSlideList(frmPresent.SlideList);
     // Passe Hauptfenster an, falls Multi-Fenster-Modus ausgewählt wurde.
     if chkMultiWindowMode.Checked Then
       Begin
@@ -781,7 +787,7 @@ begin
   end;
 end;
 
-procedure TfrmSongs.CreatePresentationData;
+procedure TfrmSongs.LoadPresentationDataIntoSlideList(ASlideList: TSlideList);
 var i,j, MaxSlideLineLength: integer;
     completefilename: String;
     songname: string;
@@ -790,11 +796,12 @@ var i,j, MaxSlideLineLength: integer;
     SongList: lyrics.TSongList;
     SlideList: TSlideList;
 begin
+  ASlideList.Clear;
   frmPresent.cur:=0;
   Songlist := lyrics.TSongList.Create;
   Songlist.FreeObjects:=False;
   // CreateSlideList
-  SlideList := TSlideList.Create(True);
+  //SlideList := TSlideList.Create(True);
   for i := 0 to lbxSSelected.Count-1 do
     begin
     Song := lyrics.TSong.Create;
@@ -810,16 +817,15 @@ begin
       // show error if the song file can not be found or opened
       Application.MessageBox(PChar(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll])), PChar(StrError), MB_OK+MB_ICONERROR);
     end;
-    // Lade Song-menuFile abhängig von der Erweiterung!
+    // Lade Songfile abhängig von der Erweiterung!
     completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
     Song.importSongfile(completefilename);
     Songlist.Add(song);
     MetaSyntax := frmSettings.memoMetaData.Lines.Text;
-    SlideList.AddList(CreatePresentationDataFromSong(Song, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
+    ASlideList.AddList(CreatePresentationDataFromSong(Song, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
   end;
   // Kopiere Lieder in Zwischenablage
   // if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);
-  frmPresent.SlideList := SlideList;
   if Assigned(SongList) then SongList.Free;
   end;
 

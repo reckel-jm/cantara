@@ -13,21 +13,33 @@
 
     pres.defineSlideMaster({
       title: "SlideWithSpoiler",
-      background: { color: "FFFFFF" },
       objects: [
         { placeholder: {
           options: { name: "maincontent", type: "body", x: 0, y: 0, w: 10, h: 3.5, align: "center", valign: "middle", autoFit: true },
-          text: "(custom placeholder text!)",
+          text: "",
         } },
         { placeholder: {
           options: { name: "spoiler", type: "body", x: 0, y: 3.5, w: 10, h: 2.1, align: "center", valign: "middle", fontSize: "18", autoFit: true },
-          text: "(custom placeholder text!)",
+          text: "",
+        } },
+      ]
+    });
+
+    pres.defineSlideMaster({
+      title: "TitleSlide",
+        objects: [
+        { placeholder: {
+          options: { name: "title", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", autoFit: true, bold: true },
+          text: "",
         } },
       ]
     });
 
     // 2. Add a Slide
-    let slide = pres.addSlide({ masterName: "SlideWithSpoiler" });
+    let slide = pres.addSlide({ masterName: "TitleSlide" });
+    slide.addText("Amazing Grace", { placeholder: "title" });
+
+    slide = pres.addSlide({ masterName: "SlideWithSpoiler" });
 
     // Add text, charts, etc. to any placeholder using its `name`
     slide.addText("Amazing Grace, How sweet the sound!\nThat saved a wretch like me.\nI once was lost, but now was found.\nWas blind, but now I see.", { placeholder: "maincontent" });
@@ -38,6 +50,7 @@
     // Add text, charts, etc. to any placeholder using its `name`
     slide.addText("How sweet the sound!\nThat saved a wretch like me.\nI once was lost, but now was found.\nWas blind, but now I see.", { placeholder: "maincontent" });
     slide.addText("The next slide here", { placeholder: "spoiler" });
+    slide.addText("And more text", { placeholder: "spoiler" });
 
     // 4. Save the Presentation
     pres.writeFile({ fileName: "Presentation.pptx" });

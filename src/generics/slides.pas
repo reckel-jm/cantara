@@ -126,6 +126,7 @@ implementation
     Slide.Song := Song;
     Slide.PartContent.MainText:= stanza;
     Slide.ID := SlideCounter;
+    Slide.SlideType:=SlideWithoutSpoiler;
     inc(SlideCounter);
     CurrentSongSlideList.Add(Slide);
     { Add Spoiler Text to the slides if desired in the settings }

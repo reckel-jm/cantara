@@ -179,6 +179,7 @@ begin
   FullScreen := False;
   self.WindowState:= wsMaximized;
   PresentationCanvas := TPresentationCanvasHandler.Create;
+  self.SlideList := TSlideLIst.Create(True);
 end;
 
 procedure TfrmPresent.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -188,6 +189,7 @@ end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);
 begin
+  SlideList.Destroy;
   PresentationCanvas.Destroy;
 end;
 

@@ -14,17 +14,19 @@ type
       SlideSettings: TSlideSettings;
       constructor Create; overload;
       destructor Destroy; override;
+      function SaveJavaScriptToFile: String;
+      procedure AddSlides(ASlideList: TSlideList);
     private
       TempDir: String;
       pptxgenjs, template, exportedJs, content: TStringList;
       procedure AddSlide(Slide: TSlide);
-      function SaveJavaScriptToFile: String;
   end;
 
 implementation
 
 function PrepareText(Input: String): String;
 begin
+  Input := Trim(Input);
   Result := StringReplace(Input, LineEnding, '\n', [rfReplaceAll]);
 end;
 
@@ -51,10 +53,15 @@ begin
     content.Add('slide = pres.addSlide({ masterName: "SlideWithSpoiler" });');
     content.Add('slide.addText("' + PrepareText(Slide.PartContent.MainText) + '", { placeholder: "maincontent" })');
     content.Add('slide.addText("' + PrepareText(Slide.PartContent.SpoilerText) + '", { placeholder: "spoiler" })');
-  end;
+  end else
   if Slide.SlideType = EmptySlide then
   begin
     content.Add('slide = pres.addSlide({ masterName: "EmptySlide" });');
+  end else
+  if Slide.SlideType = TitleSlide then
+  begin
+    content.Add('slide = pres.addSlide({ masterName: "TitleSlide" })');
+    content.Add('slide.addText("' + PrepareText(Slide.PartContent.MainText) + '", { placeholder: "title" })');
   end;
 end;
 
@@ -76,6 +83,15 @@ begin
   exportedJs.Destroy;
   content.Destroy;
   inherited;
+end;
+
+procedure TPPTXExporter.AddSlides(ASlideList: TSlideList);
+var Slide: TSlide;
+begin
+  for Slide in ASlideList do
+  begin
+    AddSlide(Slide);
+  end;
 end;
 
 end.
