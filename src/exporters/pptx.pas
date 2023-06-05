@@ -19,6 +19,7 @@ type
     private
       TempDir: String;
       pptxgenjs, template, exportedJs, content: TStringList;
+      lastSongName: String;
       procedure AddSlide(Slide: TSlide);
   end;
 
@@ -43,6 +44,11 @@ end;
 
 procedure TPPTXExporter.AddSlide(Slide: TSlide);
 begin
+  if Slide.Song.FileNameWithoutEnding <> lastSongName then
+  begin
+    content.add('pres.addSection({ title: "' + Slide.Song.FileNameWithoutEnding + '" });');
+    lastSongName := Slide.Song.FileNameWithoutEnding;
+  end;
   if Slide.SlideType = SlideWithoutSpoiler then // this is a slide without spoiler
   begin
     content.Add('slide = pres.addSlide({ masterName: "SlideWithoutSpoiler" });');
@@ -63,6 +69,7 @@ begin
     content.Add('slide = pres.addSlide({ masterName: "TitleSlide" })');
     content.Add('slide.addText("' + PrepareText(Slide.PartContent.MainText) + '", { placeholder: "title" })');
   end;
+  content.Add('slide.addNotes("' + PrepareText(Slide.PartContent.MainText) + '");');
 end;
 
 function TPPTXExporter.SaveJavaScriptToFile: String;
