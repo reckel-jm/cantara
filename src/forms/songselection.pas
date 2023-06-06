@@ -432,7 +432,9 @@ end;
 
 procedure TfrmSongs.itemMarkupExportClick(Sender: TObject);
 begin
+  CreateSongListData;
   FrmMarkupExport.Show;
+  FrmMarkupExport.SongList:=LoadedSongList;
 end;
 
 procedure TfrmSongs.itemOpenInEditorClick(Sender: TObject);
@@ -803,89 +805,53 @@ begin
 end;
 
 procedure TfrmSongs.CreateSongListData;
-var i,j, MaxSlideLineLength: integer;
+var i,j: integer;
     completefilename: String;
     songname: string;
-    MetaSyntax: String;
     Song: lyrics.TSong;
     SongList: lyrics.TSongList;
 begin
   SongList := LoadedSongList;
-  for Song in SongList do
-  begin
-    Song.Destroy;
-  end;
   SongList.Clear;
   // CreateSlideList
   //SlideList := TSlideList.Create(True);
   for i := 0 to lbxSSelected.Count-1 do
     begin
-    Song := lyrics.TSong.Create;
-    MaxSlideLineLength:=Settings.frmSettings.seWrapLines.Value;
-    //Get Song Name
-    songname := lbxSSelected.Items.Strings[i];
-    //suche Dateinamen in repo-Array
-    j := 0;
-    try
-      while repo[j].Name <> songname do
-        inc(j);
-    except
-      // show error if the song file can not be found or opened
-      Application.MessageBox(PChar(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll])), PChar(StrError), MB_OK+MB_ICONERROR);
+      Song := lyrics.TSong.Create;
+      //Get Song Name
+      songname := lbxSSelected.Items.Strings[i];
+      //suche Dateinamen in repo-Array
+      j := 0;
+      try
+        while repo[j].Name <> songname do
+          inc(j);
+      except
+        // show error if the song file can not be found or opened
+        Application.MessageBox(PChar(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll])), PChar(StrError), MB_OK+MB_ICONERROR);
+      end;
+      // Lade Songfile abhängig von der Erweiterung!
+      completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
+      Song.importSongfile(completefilename);
+      Songlist.Add(song);
     end;
-    // Lade Songfile abhängig von der Erweiterung!
-    completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
-    Song.importSongfile(completefilename);
-    Songlist.Add(song);
 end;
 
 procedure TfrmSongs.CreateSongListDataAndLoadItIntoSlideList(ASlideList: TSlideList);
-var i,j, MaxSlideLineLength: integer;
-    completefilename: String;
-    songname: string;
-    MetaSyntax: String;
-    Song: lyrics.TSong;
-    SongList: lyrics.TSongList;
-    SlideList: TSlideList;
+var Song: TSong;
 begin
+  CreateSongListData;
   ASlideList.Clear;
   frmPresent.cur:=0;
-  Songlist := lyrics.TSongList.Create;
-  Songlist.FreeObjects:=False;
-  // CreateSlideList
-  //SlideList := TSlideList.Create(True);
-  for i := 0 to lbxSSelected.Count-1 do
-    begin
-    Song := lyrics.TSong.Create;
-    MaxSlideLineLength:=Settings.frmSettings.seWrapLines.Value;
-    //Get Song Name
-    songname := lbxSSelected.Items.Strings[i];
-    //suche Dateinamen in repo-Array
-    j := 0;
-    try
-      while repo[j].Name <> songname do
-        inc(j);
-    except
-      // show error if the song file can not be found or opened
-      Application.MessageBox(PChar(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll])), PChar(StrError), MB_OK+MB_ICONERROR);
-    end;
-    // Lade Songfile abhängig von der Erweiterung!
-    completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
-    Song.importSongfile(completefilename);
-    Songlist.Add(song);
-    MetaSyntax := frmSettings.memoMetaData.Lines.Text;
+  for Song in LoadedSongList do
+  begin
     ASlideList.AddList(CreatePresentationDataFromSong(Song, frmSettings.ExportSlideSettings(), PresentationSlideCounter));
   end;
-  // Kopiere Lieder in Zwischenablage
-  // if frmSettings.cbLyricsToClipboard.Checked = True Then Clipboard.AsText := lyrics.StringListToString(present.textList);
-  if Assigned(SongList) then SongList.Free;
-  end;
+end;
 
 function TFrmSongs.GetCurrentSongPosition: TSongPosition;
 var
-    SongPosition: TSongPosition;
-    i: integer;
-
+  SongPosition: TSongPosition;
+  i: integer;
 begin
   SongPosition.song := frmPresent.SlideList.Items[frmPresent.cur].Song;
   SongPosition.songname:= SongPosition.song.FileNameWithoutEnding;

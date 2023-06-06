@@ -297,7 +297,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="21">
+    <Units Count="22">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -428,6 +428,10 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormMarkupExport"/>
       </Unit20>
+      <Unit21>
+        <Filename Value="exporters/markup.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit21>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
