@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, StdCtrls, ExtCtrls, Menus, Lyrics,
-  Settings, ComCtrls, Dialogs;
+  Settings, ComCtrls, Dialogs, SynEdit, SynCompletion, SynMacroRecorder,
+  SynPluginSyncroEdit, SynHighlighterAny, Types, LCLType;
 
 type
 
@@ -22,10 +23,11 @@ type
     labelCCLIImportHint: TLabel;
     lblSongNameContent: TLabel;
     lblSongName: TLabel;
-    memoCode: TMemo;
     ccliimporthint: TPanel;
+    memoCode: TSynEdit;
     Save: TMenuItem;
     menuSong: TMenuItem;
+    SynSongFormatHighlighter: TSynAnySyn;
     procedure btnArchivateClick(Sender: TObject);
     procedure btnCopyClick(Sender: TObject);
     procedure btnRenameClick(Sender: TObject);
@@ -36,6 +38,9 @@ type
     procedure btnConvertCCLIFileToSongFormatClick(Sender: TObject);
     procedure lblSongNameContentDblClick(Sender: TObject);
     procedure memoCodeKeyPress(Sender: TObject; var Key: char);
+    procedure SynCompletion1CodeCompletion(var Value: string;
+      SourceValue: string; var SourceStart, SourceEnd: TPoint;
+      KeyChar: TUTF8Char; Shift: TShiftState);
    //  procedure lblSongNameContentDblClick(Sender: TObject);
   private
     procedure markAsChanged(FileHasChanged: Boolean);
@@ -145,6 +150,13 @@ procedure TfrmDisplaySongContent.memoCodeKeyPress(Sender: TObject; var Key: char
   );
 begin
   self.markAsChanged(True);
+end;
+
+procedure TfrmDisplaySongContent.SynCompletion1CodeCompletion(
+  var Value: string; SourceValue: string; var SourceStart, SourceEnd: TPoint;
+  KeyChar: TUTF8Char; Shift: TShiftState);
+begin
+
 end;
 
 procedure TfrmDisplaySongContent.loadFile(repofile: TRepoFile);

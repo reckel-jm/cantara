@@ -332,6 +332,26 @@ msgstr "Cantara"
 msgid "lblVersion"
 msgstr "lblVersion"
 
+#: tfrmmarkupexport.btnsavetofile.caption
+msgid "Save to File..."
+msgstr ""
+
+#: tfrmmarkupexport.button1.caption
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: tfrmmarkupexport.caption
+msgid "FrmMarkupExport"
+msgstr ""
+
+#: tfrmmarkupexport.result.caption
+msgid "Result"
+msgstr ""
+
+#: tfrmmarkupexport.templatebox.caption
+msgid "Template"
+msgstr ""
+
 #: tfrmpresent.caption
 msgid "Presentation"
 msgstr "Presentatie"
@@ -568,7 +588,7 @@ msgid "Close"
 msgstr "Sluiten"
 
 #: tfrmsongs.itemexportpptx.caption
-msgid "Powerpoint-Präsentation (pptx)"
+msgid "Powerpoint Presentation (pptx)"
 msgstr ""
 
 #: tfrmsongs.itemfulltextsearch.caption
@@ -577,6 +597,10 @@ msgstr ""
 
 #: tfrmsongs.itemloadselection.caption
 msgid "Load Song Selection..."
+msgstr ""
+
+#: tfrmsongs.itemmarkupexport.caption
+msgid "Markup Text..."
 msgstr ""
 
 #: tfrmsongs.itemopenineditor.caption

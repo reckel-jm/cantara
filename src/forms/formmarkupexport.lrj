@@ -1,0 +1,7 @@
+{"version":1,"strings":[
+{"hash":116902340,"name":"tfrmmarkupexport.caption","sourcebytes":[70,114,109,77,97,114,107,117,112,69,120,112,111,114,116],"value":"FrmMarkupExport"},
+{"hash":205991173,"name":"tfrmmarkupexport.templatebox.caption","sourcebytes":[84,101,109,112,108,97,116,101],"value":"Template"},
+{"hash":93105204,"name":"tfrmmarkupexport.result.caption","sourcebytes":[82,101,115,117,108,116],"value":"Result"},
+{"hash":127170340,"name":"tfrmmarkupexport.button1.caption","sourcebytes":[67,111,112,121,32,116,111,32,67,108,105,112,98,111,97,114,100],"value":"Copy to Clipboard"},
+{"hash":10127822,"name":"tfrmmarkupexport.btnsavetofile.caption","sourcebytes":[83,97,118,101,32,116,111,32,70,105,108,101,46,46,46],"value":"Save to File..."}
+]}

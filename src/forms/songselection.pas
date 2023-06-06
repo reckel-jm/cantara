@@ -7,7 +7,8 @@ interface
 uses
   LCLType, LCLIntf, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils, Math,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
-  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch, PPTX, PresentationCanvas;
+  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch, PPTX, PresentationCanvas,
+  formMarkupExport;
 
 type
   TSongPosition = record
@@ -63,6 +64,7 @@ type
     itemSaveSelection: TMenuItem;
     itemSaveSelectionAs: TMenuItem;
     itemExportPptx: TMenuItem;
+    itemMarkupExport: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     PanelSongTeXStatus: TPanel;
@@ -103,6 +105,7 @@ type
     procedure itemImportTeXFileClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
     procedure itemLoadSelectionClick(Sender: TObject);
+    procedure itemMarkupExportClick(Sender: TObject);
     procedure itemOpenInEditorClick(Sender: TObject);
     procedure itemSaveClick(Sender: TObject);
     procedure itemSaveSelectionAsClick(Sender: TObject);
@@ -133,8 +136,10 @@ type
     procedure pnlMultiScreenClick(Sender: TObject);
     procedure pnlMultiScreenResize(Sender: TObject);
     procedure PnlSplitterMoved(Sender: TObject);
+    { Creates the song list data }
+    procedure CreateSongListData;
     { Opens the selected songs and creates the presentation data from the selected songs. }
-    procedure LoadPresentationDataIntoSlideList(ASlideList: TSlideList);
+    procedure CreateSongListDataAndLoadItIntoSlideList(ASlideList: TSlideList);
     function GetCurrentSongPosition: TSongPosition;
     procedure SongPopupMenuPopup(Sender: TObject);
     procedure UpdateSongPositionInLbxSSelected;
@@ -149,6 +154,8 @@ type
     LoadedSongSelectionFilePath: String;
     { This integer counts for the presentation slide id's }
     PresentationSlideCounter: Integer;
+    { Songlist which conatains the loaded songs }
+    LoadedSongList: TSongList;
     { Filters the Listbox lbxSRepo after a search pattern. If s is empty, no filter will be applied.
     @param(s: the search pattern) }
     procedure FilterListBox(s: String);
@@ -368,7 +375,7 @@ var PPTXExporter: TPPTXExporter;
 begin
   PPTXExporter := TPPTXExporter.Create;
   PPTXSlideList := TSlideList.Create(True);
-  LoadPresentationDataIntoSlideList(PPTXSlideList);
+  CreateSongListDataAndLoadItIntoSlideList(PPTXSlideList);
   PPTXExporter.AddSlides(PPTXSlideList);
   OpenURL('file://' + PPTXExporter.SaveJavaScriptToFile);
   PPTXSlideList.Destroy;
@@ -421,6 +428,11 @@ begin
   PanelSongTeXStatus.Visible:=True;
   PanelSongTeXStatus.Height:=EdtSearch.Height;
   PanelSongTeXStatus.Caption := StrActiveSongTeXFile + LoadedSongSelectionFilePath;
+end;
+
+procedure TfrmSongs.itemMarkupExportClick(Sender: TObject);
+begin
+  FrmMarkupExport.Show;
 end;
 
 procedure TfrmSongs.itemOpenInEditorClick(Sender: TObject);
@@ -619,6 +631,8 @@ begin
   PanelSongTeXStatus.Visible:=False;
   PanelSongTeXStatus.Height:=0;
   PanelSongTeXStatus.Caption:='';
+
+  Self.LoadedSongList := TSongList.Create;
 end;
 
 procedure TfrmSongs.FormDestroy(Sender: TObject);
@@ -627,6 +641,7 @@ begin
   // Distroy all Song Data
   for i := 0 to length(repo)-1 do
     repo[i].Free;
+  LoadedSongList.Destroy;
 end;
 
 procedure TfrmSongs.FormKeyDown(Sender: TObject; var Key: Word;
@@ -709,7 +724,7 @@ begin
   if lbxSSelected.Count > 0 then
   begin
     PresentationSlideCounter := 0;
-    LoadPresentationDataIntoSlideList(frmPresent.SlideList);
+    CreateSongListDataAndLoadItIntoSlideList(frmPresent.SlideList);
     // Passe Hauptfenster an, falls Multi-Fenster-Modus ausgewählt wurde.
     if chkMultiWindowMode.Checked Then
       Begin
@@ -787,7 +802,44 @@ begin
   end;
 end;
 
-procedure TfrmSongs.LoadPresentationDataIntoSlideList(ASlideList: TSlideList);
+procedure TfrmSongs.CreateSongListData;
+var i,j, MaxSlideLineLength: integer;
+    completefilename: String;
+    songname: string;
+    MetaSyntax: String;
+    Song: lyrics.TSong;
+    SongList: lyrics.TSongList;
+begin
+  SongList := LoadedSongList;
+  for Song in SongList do
+  begin
+    Song.Destroy;
+  end;
+  SongList.Clear;
+  // CreateSlideList
+  //SlideList := TSlideList.Create(True);
+  for i := 0 to lbxSSelected.Count-1 do
+    begin
+    Song := lyrics.TSong.Create;
+    MaxSlideLineLength:=Settings.frmSettings.seWrapLines.Value;
+    //Get Song Name
+    songname := lbxSSelected.Items.Strings[i];
+    //suche Dateinamen in repo-Array
+    j := 0;
+    try
+      while repo[j].Name <> songname do
+        inc(j);
+    except
+      // show error if the song file can not be found or opened
+      Application.MessageBox(PChar(StringReplace(StrCanNotOpenSong, '{songname}', songname, [rfReplaceAll])), PChar(StrError), MB_OK+MB_ICONERROR);
+    end;
+    // Lade Songfile abhängig von der Erweiterung!
+    completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
+    Song.importSongfile(completefilename);
+    Songlist.Add(song);
+end;
+
+procedure TfrmSongs.CreateSongListDataAndLoadItIntoSlideList(ASlideList: TSlideList);
 var i,j, MaxSlideLineLength: integer;
     completefilename: String;
     songname: string;
