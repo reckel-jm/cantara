@@ -90,6 +90,7 @@ type
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormDropFiles(Sender: TObject; const FileNames: array of string);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure FormResize(Sender: TObject);
@@ -166,6 +167,7 @@ type
       @param(FilePath: The full File Path where to save the song selection)
     }
     procedure SaveSelection(FilePath: String);
+    procedure LoadSongTeXFile(FilePath: String);
   public
     { public declarations }
     procedure AskToReloadRepo;
@@ -416,15 +418,20 @@ begin
     Application.MessageBox(PChar(strFileDoesNotExist), PChar(strError), MB_ICONWARNING or MB_OK);
     Exit;
   end;
+  LoadSongTeXFile(OpenFilePath);
+end;
+
+procedure TfrmSongs.LoadSongTeXFile(FilePath: String);
+begin
   lbxSSelected.Clear;
-  If ExtractFileExt(OpenFilePath) = '.songtex' then
-    ImportTeXFileAsSelection(OpenFilePath)
-  else if ExtractFileExt(OpenFilePath) = '.csswc' then
+  If ExtractFileExt(FilePath) = '.songtex' then
+    ImportTeXFileAsSelection(FilePath)
+  else if ExtractFileExt(FilePath) = '.csswc' then
   begin
     { This is really depreciated and should not be used anymore... }
     lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
   end;
-  self.LoadedSongSelectionFilePath := OpenFilePath;
+  self.LoadedSongSelectionFilePath := FilePath;
   PanelSongTeXStatus.Visible:=True;
   PanelSongTeXStatus.Height:=EdtSearch.Height;
   PanelSongTeXStatus.Caption := StrActiveSongTeXFile + LoadedSongSelectionFilePath;
@@ -649,6 +656,15 @@ begin
   for i := 0 to length(repo)-1 do
     repo[i].Free;
   LoadedSongList.Destroy;
+end;
+
+procedure TfrmSongs.FormDropFiles(Sender: TObject;
+  const FileNames: array of string);
+begin
+  try
+    LoadSongTeXFile(FileNames[0]);
+  finally
+  end;
 end;
 
 procedure TfrmSongs.FormKeyDown(Sender: TObject; var Key: Word;
