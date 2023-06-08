@@ -1,0 +1,14 @@
+\header {
+<html>
+<head>
+<title>Cantara Song Export</title>
+</head>
+<body>
+<h1>Cantara Song Export</h1>}
+\lineending {<br/>}
+\songloop { <h2>\title</h2>\newline
+\lyrics}
+\footer {
+</body>
+</html>
+}

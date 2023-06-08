@@ -335,12 +335,13 @@ msgstr "Versione lbl "
 msgid "Save to File..."
 msgstr ""
 
-#: tfrmmarkupexport.button1.caption
-msgid "Copy to Clipboard"
+#: tfrmmarkupexport.caption
+msgid "Export Songs as Markup"
 msgstr ""
 
-#: tfrmmarkupexport.caption
-msgid "FrmMarkupExport"
+#: tfrmmarkupexport.clipboardbutton.caption
+msgctxt "tfrmmarkupexport.clipboardbutton.caption"
+msgid "Copy to Clipboard"
 msgstr ""
 
 #: tfrmmarkupexport.result.caption
@@ -349,6 +350,10 @@ msgstr ""
 
 #: tfrmmarkupexport.templatebox.caption
 msgid "Template"
+msgstr ""
+
+#: tfrmmarkupexport.templatecombo.text
+msgid "Load From Template..."
 msgstr ""
 
 #: tfrmpresent.caption

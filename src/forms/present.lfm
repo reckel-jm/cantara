@@ -34,6 +34,7 @@ object frmPresent: TfrmPresent
     Width = 1070
     AntialiasingMode = amOn
     Align = alClient
+    OnClick = imageShowerClick
     Proportional = True
   end
 end

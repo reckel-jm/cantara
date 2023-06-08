@@ -1,0 +1,1 @@
+\songloop { *\title*\newline\newline\lyrics }

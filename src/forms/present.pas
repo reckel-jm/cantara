@@ -33,6 +33,7 @@ type
     procedure FormPaint(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure imageShowerClick(Sender: TObject);
     procedure showItem(index: integer);
     procedure SwitchFullScreen;
     procedure SwitchFullScreen(WantFullScreen: Boolean);
@@ -156,6 +157,11 @@ begin
   PresentationCanvas.LoadBackgroundBitmap;
   if SlideList.Count >0 then showItem(0) else self.Hide;
   Refresh;
+end;
+
+procedure TfrmPresent.imageShowerClick(Sender: TObject);
+begin
+  self.GoNext;
 end;
 
 procedure TfrmPresent.showItem(index: integer);

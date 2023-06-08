@@ -175,12 +175,15 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Width = 892
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
+    Font.Height = 13
+    Font.Name = 'DejaVu Sans Mono'
+    Font.Pitch = fpFixed
     Font.Quality = fqAntialiased
     ParentColor = False
     ParentFont = False
     TabOrder = 6
     OnKeyPress = memoCodeKeyPress
-    Gutter.Width = 67
+    Gutter.Width = 57
     Gutter.MouseActions = <>
     RightGutter.Width = 0
     RightGutter.MouseActions = <>
@@ -609,6 +612,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     MouseActions = <>
     MouseTextActions = <>
     MouseSelActions = <>
+    Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoShowSpecialChars, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces]
     VisibleSpecialChars = [vscSpace, vscTabAtLast]
     ScrollBars = ssAutoVertical
     SelectedColor.BackPriority = 50
@@ -635,7 +639,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
         MouseActions = <>
       end
       object SynGutterLineNumber1: TSynGutterLineNumber
-        Width = 27
+        Width = 17
         MouseActions = <>
         MarkupInfo.Background = clBtnFace
         MarkupInfo.Foreground = clNone
@@ -666,6 +670,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     end
   end
   object SynSongFormatHighlighter: TSynAnySyn
+    Enabled = False
     Comments = []
     DetectPreprocessor = False
     IdentifierChars = '0123456789?ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'

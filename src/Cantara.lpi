@@ -19,10 +19,14 @@
         <TextDesc Value="Song Presentation Software"/>
       </XPManifest>
       <Icon Value="0"/>
-      <Resources Count="3">
+      <Resources Count="7">
         <Resource_0 FileName="resources/Amazing Grace.song" Type="RCDATA" ResourceName="AMAZING GRACE"/>
         <Resource_1 FileName="exporters/templates/pptx/pptxgen.bundle.js" Type="RCDATA" ResourceName="PPTXGEN.BUNDLE"/>
         <Resource_2 FileName="exporters/templates/pptx/pptxexport_template.html" Type="RCDATA" ResourceName="PPTXEXPORT_TEMPLATE"/>
+        <Resource_3 FileName="exporters/templates/markup/html.txt" Type="RCDATA" ResourceName="MARKUP.HTML"/>
+        <Resource_4 FileName="exporters/templates/markup/Markdown.txt" Type="RCDATA" ResourceName="MARKUP.MARKDOWN"/>
+        <Resource_5 FileName="exporters/templates/markup/Telegram.txt" Type="RCDATA" ResourceName="MARKUP.TELEGRAM"/>
+        <Resource_6 FileName="exporters/templates/markup/WhatsApp.txt" Type="RCDATA" ResourceName="MARKUP.WHATSAPP"/>
       </Resources>
     </General>
     <i18n>

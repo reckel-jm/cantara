@@ -14,7 +14,6 @@ object frmSettings: TfrmSettings
   OnHide = FormHide
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.6.0'
   object labelSongDir: TLabel
     AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = edtRepoPath
@@ -110,8 +109,8 @@ object frmSettings: TfrmSettings
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
-    ClientHeight = 402
-    ClientWidth = 912
+    ClientHeight = 380
+    ClientWidth = 920
     TabOrder = 6
     OnClick = gbPresentationClick
     object btnBackgroundColor: TButton
@@ -119,7 +118,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnFontSizeManually
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = ImagePresentationPreview
-      Left = 349
+      Left = 354
       Height = 23
       Top = 59
       Width = 344
@@ -134,7 +133,7 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = lblWrapAfter
       AnchorSideRight.Control = ImagePresentationPreview
-      Left = 349
+      Left = 354
       Height = 23
       Top = 36
       Width = 344
@@ -151,7 +150,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnBackgroundColor
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = ImagePresentationPreview
-      Left = 349
+      Left = 354
       Height = 23
       Top = 82
       Width = 344
@@ -244,7 +243,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = ImagePresentationPreview
-      Left = 349
+      Left = 354
       Height = 23
       Top = 105
       Width = 344
@@ -261,7 +260,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnTextColor
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = btnBackgroundImage
-      Left = 132
+      Left = 137
       Height = 26
       Top = 105
       Width = 209
@@ -278,7 +277,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = btnBackgroundImage
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = ImagePresentationPreview
-      Left = 349
+      Left = 354
       Height = 21
       Hint = 'A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture.'
       Top = 128
@@ -293,7 +292,7 @@ object frmSettings: TfrmSettings
     object lblImageBrightness: TLabel
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideRight.Control = sbImageBrightness
-      Left = 57
+      Left = 62
       Height = 22
       Top = 128
       Width = 287
@@ -307,7 +306,7 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
-      Left = 457
+      Left = 462
       Height = 22
       Top = 149
       Width = 128
@@ -320,7 +319,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = lblWrapAfter
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = cbShowBackgroundImage
-      Left = 72
+      Left = 77
       Height = 36
       Top = 58
       Width = 50
@@ -337,7 +336,7 @@ object frmSettings: TfrmSettings
       Left = 0
       Height = 22
       Top = 36
-      Width = 341
+      Width = 346
       Anchors = [akTop, akLeft, akRight]
       Caption = 'Automatic wrap after how many lines (0 = off):'
       ParentColor = False
@@ -350,10 +349,10 @@ object frmSettings: TfrmSettings
       AnchorSideRight.Control = gbPresentation
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = memoMetaData
-      Left = 698
+      Left = 703
       Height = 201
       Top = 36
-      Width = 220
+      Width = 215
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Left = 5
       BorderSpacing.Right = 2
@@ -386,7 +385,7 @@ object frmSettings: TfrmSettings
       Left = 0
       Height = 22
       Top = 7
-      Width = 344
+      Width = 349
       Alignment = taRightJustify
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Right = 5
@@ -396,7 +395,7 @@ object frmSettings: TfrmSettings
     object comboHorizontal: TComboBox
       AnchorSideLeft.Control = btnFontSizeManually
       AnchorSideTop.Control = gbPresentation
-      Left = 349
+      Left = 354
       Height = 36
       Top = 0
       Width = 190
@@ -407,8 +406,7 @@ object frmSettings: TfrmSettings
         'Center'
         'Right'
       )
-      ReadOnly = True
-      Style = csSimple
+      Style = csDropDownList
       TabOrder = 11
       Text = 'Center'
     end
@@ -416,7 +414,7 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Control = comboHorizontal
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = gbPresentation
-      Left = 544
+      Left = 549
       Height = 36
       Top = 0
       Width = 190
@@ -428,8 +426,7 @@ object frmSettings: TfrmSettings
         'Middle'
         'Buttom'
       )
-      ReadOnly = True
-      Style = csSimple
+      Style = csOwnerDrawEditableFixed
       TabOrder = 12
       Text = 'Middle'
     end
@@ -439,7 +436,7 @@ object frmSettings: TfrmSettings
       AnchorSideTop.Control = comboVertical
       AnchorSideBottom.Control = comboVertical
       AnchorSideBottom.Side = asrBottom
-      Left = 739
+      Left = 744
       Height = 36
       Top = 0
       Width = 74

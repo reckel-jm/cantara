@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls, StdCtrls, lclintf, LCLTranslator, fileinfo;
+  ExtCtrls, StdCtrls, lclintf, LCLTranslator, fileinfo, LCLType;
 
 type
 
@@ -24,6 +24,7 @@ type
     procedure btnOpenGitRepoClick(Sender: TObject);
     procedure btnOpenWebpageClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure lblInfoClick(Sender: TObject);
   private
     { private declarations }
@@ -66,6 +67,12 @@ begin
   finally
     FileVerInfo.Free;
   end;
+end;
+
+procedure TfrmInfo.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = VK_Escape then self.Close;
 end;
 
 procedure TfrmInfo.btnOpenGitRepoClick(Sender: TObject);

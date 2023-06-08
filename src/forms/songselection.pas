@@ -432,9 +432,14 @@ end;
 
 procedure TfrmSongs.itemMarkupExportClick(Sender: TObject);
 begin
-  CreateSongListData;
-  FrmMarkupExport.Show;
-  FrmMarkupExport.SongList:=LoadedSongList;
+  if lbxSSelected.Count > 0 then
+  begin
+    CreateSongListData;
+    FrmMarkupExport.Show;
+    FrmMarkupExport.SongList:=LoadedSongList;
+    FrmMarkupExport.ParseTemplate;
+  end else
+  Application.MessageBox(PChar(StrFehlerKeineLiederBeiPraesentation), PChar(StrError), MB_OK+MB_ICONWARNING);
 end;
 
 procedure TfrmSongs.itemOpenInEditorClick(Sender: TObject);
