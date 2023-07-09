@@ -30,7 +30,7 @@ msgstr "Die Datei kann nicht umbenannt werden. Bitte stellen Sie sicher, dass Si
 
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
-msgstr ""
+msgstr "Liedtitel"
 
 #: info.strauthor
 msgid "Author"
@@ -60,7 +60,7 @@ msgstr "https://www.cantara.app"
 #: present.strmorelyricsindicator
 msgctxt "present.strmorelyricsindicator"
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: settings.strbrightness
 msgid "Increase brightness by "
@@ -125,7 +125,7 @@ msgstr "Willkommen"
 
 #: songselection.stractivesongtexfile
 msgid "The following file is opened at the moment: "
-msgstr ""
+msgstr "Die folgende Datei ist derzeit geöffnet: "
 
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
@@ -174,23 +174,23 @@ msgstr ""
 
 #: tframesettingsdetailed.groupboxpadding.caption
 msgid "Padding"
-msgstr ""
+msgstr "Rand"
 
 #: tframesettingsdetailed.labalbottom.caption
 msgid "Bottom: "
-msgstr ""
+msgstr "Unten: "
 
 #: tframesettingsdetailed.labelleft.caption
 msgid "Left:"
-msgstr ""
+msgstr "Links: "
 
 #: tframesettingsdetailed.labelright.caption
 msgid "Right: "
-msgstr ""
+msgstr "Rechts: "
 
 #: tframesettingsdetailed.labeltop.caption
 msgid "Top: "
-msgstr ""
+msgstr "Oben"
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
 #, fuzzy
@@ -273,22 +273,24 @@ msgstr "Herzlich Willkommen beim Editor!"
 #: tfrmfulltextsearch.labalcreateindex.caption
 msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
 msgid "Create Index..."
-msgstr ""
+msgstr "Der Index wird erstellt..."
 
 #: tfrmfulltextsearch.labelenterkeyword.caption
 msgid "Enter a search term..."
-msgstr ""
+msgstr "Geben Sie einen Suchbegriff ein..."
 
 #: tfrmfulltextsearch.labelentersearchterm.caption
 msgid "Enter search term"
-msgstr ""
+msgstr "Geben Sie einen Suchbegriff ein"
 
 #: tfrmfulltextsearch.labelnoitemsfound.caption
 msgid ""
 "No items found...\n"
 "\n"
 "Try changing the search terms."
-msgstr ""
+msgstr "Kein Ergebniss gefunden...\n"
+"\n"
+"Versuchen Sie den Suchbegriff zu ändern."
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
@@ -335,28 +337,28 @@ msgstr ""
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
-msgstr ""
+msgstr "In Datei speichern..."
 
 #: tfrmmarkupexport.caption
 msgid "Export Songs as Markup"
-msgstr ""
+msgstr "Die Liedauswahl in einer Markupsprache exportieren"
 
 #: tfrmmarkupexport.clipboardbutton.caption
 msgctxt "tfrmmarkupexport.clipboardbutton.caption"
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "In die Zwischenablage kopieren"
 
 #: tfrmmarkupexport.result.caption
 msgid "Result"
-msgstr ""
+msgstr "Ergebnis"
 
 #: tfrmmarkupexport.templatebox.caption
 msgid "Template"
-msgstr ""
+msgstr "Vorlage"
 
 #: tfrmmarkupexport.templatecombo.text
 msgid "Load From Template..."
-msgstr ""
+msgstr "Lade aus einer Vorlage..."
 
 #: tfrmpresent.caption
 msgid "Presentation"
@@ -385,7 +387,7 @@ msgstr "Schließen"
 
 #: tfrmsettings.btndetails.caption
 msgid "Details..."
-msgstr ""
+msgstr "Details..."
 
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
@@ -394,7 +396,7 @@ msgstr "Schriftgröße und -art bearbeiten..."
 #: tfrmsettings.btnselectdir.caption
 msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: tfrmsettings.btntextcolor.caption
 msgid "Text Color..."
@@ -422,7 +424,7 @@ msgstr "bei der letzten Folie"
 
 #: tfrmsettings.cbmetatitleslide.caption
 msgid "at special title slide"
-msgstr ""
+msgstr "Auf einer gesonderten Titelfolie"
 
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
@@ -434,11 +436,11 @@ msgstr "Die nächste Folie andeuten"
 
 #: tfrmsettings.combohorizontal.text
 msgid "Center"
-msgstr ""
+msgstr "Zentriert"
 
 #: tfrmsettings.combovertical.text
 msgid "Middle"
-msgstr ""
+msgstr "Mittig"
 
 #: tfrmsettings.fontdialog.title
 msgid "Select font"
@@ -454,7 +456,7 @@ msgstr "Pfad des Liederverzeichnisses:"
 
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
-msgstr ""
+msgstr "Ausrichtung: "
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency/Brightness:"
@@ -684,37 +686,39 @@ msgstr "Speichere Liederliste"
 
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr ""
+msgstr "Füge „Amazing Grace“ als ein Beispiellied hinzu"
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr ""
+msgstr "Zurück..."
 
 #: tfrmwelcome.btnnext.caption
 msgid "Continue..."
-msgstr ""
+msgstr "Weiter..."
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr ""
+msgstr "Öffne das Github-Repository..."
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr ""
+msgstr "Öffne die Internetseite mit Dokumentation..."
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr ""
+msgstr "Wähle das Liederverzeichnis..."
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr ""
+msgstr "Cantara-Einrichtungsassistent"
 
 #: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
+"Cantara ist eine freie Open-Source-Liedpräsentationssoftware.\n"
+"Alle zu verwendenden Lieder sollten sich in einem Liederverzeichnis befinden. Bitte wählen Sie nun einen Ordner auf ihrem Dateisystem aus, welches Cantara als Liederverzeichnis verwenden wird. Falls Sie noch keine Lieder gesammelt haben, können Sie zunächst einen neuen Ordner erstellen oder einen leeren auswählen."
 
 #: tfrmwelcome.labelwelcomeheadline.caption
 msgid "Welcome to Cantara!"
@@ -771,4 +775,3 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
-
