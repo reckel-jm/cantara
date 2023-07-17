@@ -156,7 +156,7 @@ msgid "Slide"
 msgstr ""
 
 #: tformpadding.caption
-msgid "FormPadding"
+msgid "Additional Settings"
 msgstr ""
 
 #: tframesettingsdetailed.groupboxpadding.caption

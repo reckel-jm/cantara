@@ -3,9 +3,10 @@ object FormPadding: TFormPadding
   Height = 240
   Top = 100
   Width = 320
-  Caption = 'FormPadding'
+  Caption = 'Additional Settings'
   ClientHeight = 240
   ClientWidth = 320
+  LCLVersion = '2.2.6.0'
   inline frmSettingsDetailed: TFrameSettingsDetailed
     Height = 240
     Width = 320
@@ -15,8 +16,8 @@ object FormPadding: TFormPadding
     inherited GroupBoxPadding: TGroupBox
       Height = 240
       Width = 320
-      ClientHeight = 206
-      ClientWidth = 316
+      ClientHeight = 228
+      ClientWidth = 308
       inherited LeftSpin: TSpinEdit
         Top = 85
       end

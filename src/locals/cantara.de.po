@@ -169,7 +169,7 @@ msgid "Slide"
 msgstr "Folie"
 
 #: tformpadding.caption
-msgid "FormPadding"
+msgid "Additional Settings"
 msgstr ""
 
 #: tframesettingsdetailed.groupboxpadding.caption
@@ -288,7 +288,8 @@ msgid ""
 "No items found...\n"
 "\n"
 "Try changing the search terms."
-msgstr "Kein Ergebniss gefunden...\n"
+msgstr ""
+"Kein Ergebniss gefunden...\n"
 "\n"
 "Versuchen Sie den Suchbegriff zu ändern."
 
@@ -775,3 +776,4 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
+

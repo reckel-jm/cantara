@@ -168,7 +168,7 @@ msgid "Slide"
 msgstr "Pauze"
 
 #: tformpadding.caption
-msgid "FormPadding"
+msgid "Additional Settings"
 msgstr ""
 
 #: tframesettingsdetailed.groupboxpadding.caption

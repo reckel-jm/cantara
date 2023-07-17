@@ -169,7 +169,7 @@ msgid "Slide"
 msgstr "投影片"
 
 #: tformpadding.caption
-msgid "FormPadding"
+msgid "Additional Settings"
 msgstr ""
 
 #: tframesettingsdetailed.groupboxpadding.caption

@@ -52,7 +52,7 @@ begin
     SetFocusedControl(Wrapper.EditSearchTerm);
     // Good Positioning
     self.ParentForm := Caller;
-    self.Width:=ParentForm.Width div 2;
+    self.Width:=ParentForm.Width;
     self.Height:=Parentform.Height div 2;
   end;
   Result := inherited ShowModal;
