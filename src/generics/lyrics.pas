@@ -307,10 +307,14 @@ begin
   if self.MaxSlideLineLength <= 0 then exit; // Just as a protective measure, actually not needed anymore.
   if self.MaxSlideLineLength = 1 then       // it means to have one line per slide, so we take a shortpath
   begin
-    for i := 0 to output.Count-2 do
-      if output.Strings[i] <> '' then
-        output.Insert(i+1, '');
-    Exit;
+    i := 0;
+    while i < output.count-1 do
+      begin
+        if output.Strings[i] <> '' then
+          output.Insert(i+1, '');
+        i := i+1;
+      end;
+    Break;
   end;
   n1 := 0;
   n2 := 0;
@@ -339,6 +343,7 @@ begin
          changed := True;
      end;
   end until changed = False;
+  output.Text:=StringReplace(output.Text, LineEnding+LineEnding+LineEnding, LineEnding+LineEnding, [rfReplaceAll]);
 end;
 
 procedure TSong.DecideFileFormatAndContinue;
