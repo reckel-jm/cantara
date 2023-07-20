@@ -220,7 +220,7 @@ begin
   foundChorus := False;
   for i := 0 to self.PositionDict.Count-1 do
   begin
-    if (self.PositionDict.Keys[i] = 'PreChorus') or (self.PositionDict.Keys[i] = 'Pre-Chorus') then WritePart(self.PositionDict.Data[i]);
+    if (LowerCase(self.PositionDict.Keys[i]) = LowerCase('PreChorus')) or (LowerCase(self.PositionDict.Keys[i]) = LowerCase('Pre-Chorus')) then WritePart(self.PositionDict.Data[i]);
     if pos('Chorus',self.PositionDict.Keys[i]) > 0 then
     begin
       key := self.PositionDict.Data[i]; foundChorus := True;
