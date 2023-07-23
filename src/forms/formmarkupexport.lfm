@@ -1,10 +1,10 @@
 object FrmMarkupExport: TFrmMarkupExport
   Left = 200
-  Height = 494
+  Height = 515
   Top = 100
   Width = 831
   Caption = 'Export Songs as Markup'
-  ClientHeight = 494
+  ClientHeight = 515
   ClientWidth = 831
   KeyPreview = True
   OnCreate = FormCreate
@@ -18,32 +18,51 @@ object FrmMarkupExport: TFrmMarkupExport
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 494
+    Height = 515
     Top = 0
     Width = 411
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Template'
-    ClientHeight = 460
+    ClientHeight = 481
     ClientWidth = 407
     TabOrder = 0
-    inline TemplateEdit: TSynEdit
+    object TemplateCombo: TListBox
       AnchorSideLeft.Control = TemplateBox
       AnchorSideTop.Control = TemplateBox
       AnchorSideRight.Control = TemplateBox
       AnchorSideRight.Side = asrBottom
-      AnchorSideBottom.Control = TemplateCombo
+      AnchorSideBottom.Control = TemplateBox
+      AnchorSideBottom.Side = asrBottom
       Left = 0
-      Height = 460
+      Height = 140
       Top = 0
       Width = 407
-      Align = alClient
+      Anchors = [akTop, akLeft, akRight]
+      IntegralHeight = True
+      ItemHeight = 0
+      OnSelectionChange = TemplateComboSelectionChange
+      TabOrder = 0
+    end
+    inline TemplateEdit: TSynEdit
+      AnchorSideLeft.Control = TemplateBox
+      AnchorSideTop.Control = TemplateCombo
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = TemplateBox
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = TemplateBox
+      AnchorSideBottom.Side = asrBottom
+      Left = 0
+      Height = 481
+      Top = 140
+      Width = 407
+      Anchors = [akTop, akLeft, akRight]
       Font.Height = 13
       Font.Name = 'DejaVu Sans Mono'
       Font.Pitch = fpFixed
       Font.Quality = fqNonAntialiased
       ParentColor = False
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 1
       Gutter.Width = 57
       Gutter.MouseActions = <>
       RightGutter.Width = 0
@@ -528,27 +547,6 @@ object FrmMarkupExport: TFrmMarkupExport
         end
       end
     end
-    object TemplateCombo: TComboBox
-      AnchorSideLeft.Control = TemplateBox
-      AnchorSideRight.Control = TemplateBox
-      AnchorSideRight.Side = asrBottom
-      AnchorSideBottom.Control = TemplateBox
-      AnchorSideBottom.Side = asrBottom
-      Left = 0
-      Height = 36
-      Top = 424
-      Width = 407
-      Anchors = [akLeft, akRight, akBottom]
-      ItemHeight = 28
-      ItemIndex = 0
-      Items.Strings = (
-        'Load From Template...'
-      )
-      OnChange = TemplateComboChange
-      Style = csDropDownList
-      TabOrder = 1
-      Text = 'Load From Template...'
-    end
   end
   object Result: TGroupBox
     AnchorSideLeft.Control = Splitter1
@@ -559,12 +557,12 @@ object FrmMarkupExport: TFrmMarkupExport
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 411
-    Height = 494
+    Height = 515
     Top = 0
     Width = 420
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Result'
-    ClientHeight = 460
+    ClientHeight = 481
     ClientWidth = 416
     TabOrder = 1
     inline ResultEdit: TSynEdit
@@ -574,7 +572,7 @@ object FrmMarkupExport: TFrmMarkupExport
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = ClipboardButton
       Left = 0
-      Height = 390
+      Height = 411
       Top = 0
       Width = 416
       Anchors = [akTop, akLeft, akRight, akBottom]
@@ -1075,7 +1073,7 @@ object FrmMarkupExport: TFrmMarkupExport
       AnchorSideBottom.Control = btnSaveToFile
       Left = 0
       Height = 35
-      Top = 390
+      Top = 411
       Width = 416
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Copy to Clipboard'
@@ -1090,7 +1088,7 @@ object FrmMarkupExport: TFrmMarkupExport
       AnchorSideBottom.Side = asrBottom
       Left = 0
       Height = 35
-      Top = 425
+      Top = 446
       Width = 416
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Save to File...'
@@ -1103,7 +1101,7 @@ object FrmMarkupExport: TFrmMarkupExport
     AnchorSideLeft.Side = asrBottom
     Left = 402
     Height = 417
-    Top = 46
+    Top = 57
     Width = 9
     Align = alNone
     Anchors = []

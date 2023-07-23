@@ -18,18 +18,19 @@ type
     ClipboardButton: TButton;
     btnSaveToFile: TButton;
     SaveDialog: TSaveDialog;
-    TemplateCombo: TComboBox;
     Result: TGroupBox;
     ResultEdit: TSynEdit;
     Splitter1: TSplitter;
-    TemplateEdit: TSynEdit;
+    TemplateCombo: TListBox;
     TemplateBox: TGroupBox;
+    TemplateEdit: TSynEdit;
     procedure btnSaveToFileClick(Sender: TObject);
     procedure ClipboardButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure TemplateComboChange(Sender: TObject);
+    procedure TemplateComboSelectionChange(Sender: TObject; User: boolean);
     procedure TemplateEditChange(Sender: TObject);
   private
     TemplateDict: TTemplateDict;
@@ -105,6 +106,12 @@ begin
 end;
 
 procedure TFrmMarkupExport.TemplateComboChange(Sender: TObject);
+begin
+
+end;
+
+procedure TFrmMarkupExport.TemplateComboSelectionChange(Sender: TObject;
+  User: boolean);
 begin
   try
     TemplateEdit.Lines.Assign(TemplateDict.KeyData[TemplateCombo.Items[TemplateCombo.ItemIndex]]);

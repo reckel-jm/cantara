@@ -326,10 +326,6 @@ msgstr ""
 msgid "Template"
 msgstr ""
 
-#: tfrmmarkupexport.templatecombo.text
-msgid "Load From Template..."
-msgstr ""
-
 #: tfrmpresent.caption
 msgid "Presentation"
 msgstr ""

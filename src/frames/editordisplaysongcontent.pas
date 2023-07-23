@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, StdCtrls, ExtCtrls, Menus, Lyrics,
   Settings, ComCtrls, Dialogs, SynEdit, SynCompletion, SynMacroRecorder,
-  SynPluginSyncroEdit, SynHighlighterAny, Types, LCLType;
+  SynPluginSyncroEdit, SynHighlighterAny, Types, LCLType, SynEditTypes;
 
 type
 
@@ -38,6 +38,9 @@ type
     procedure btnConvertCCLIFileToSongFormatClick(Sender: TObject);
     procedure lblSongNameContentDblClick(Sender: TObject);
     procedure memoCodeKeyPress(Sender: TObject; var Key: char);
+    procedure memoCodePaste(Sender: TObject; var AText: String;
+      var AMode: TSynSelectionMode; ALogStartPos: TPoint;
+      var AnAction: TSynCopyPasteAction);
     procedure SynCompletion1CodeCompletion(var Value: string;
       SourceValue: string; var SourceStart, SourceEnd: TPoint;
       KeyChar: TUTF8Char; Shift: TShiftState);
@@ -150,6 +153,13 @@ procedure TfrmDisplaySongContent.memoCodeKeyPress(Sender: TObject; var Key: char
   );
 begin
   self.markAsChanged(True);
+end;
+
+procedure TfrmDisplaySongContent.memoCodePaste(Sender: TObject;
+  var AText: String; var AMode: TSynSelectionMode; ALogStartPos: TPoint;
+  var AnAction: TSynCopyPasteAction);
+begin
+
 end;
 
 procedure TfrmDisplaySongContent.SynCompletion1CodeCompletion(
