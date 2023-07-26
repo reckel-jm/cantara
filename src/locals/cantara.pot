@@ -46,11 +46,6 @@ msgstr ""
 msgid "https://www.cantara.app"
 msgstr ""
 
-#: present.strmorelyricsindicator
-msgctxt "present.strmorelyricsindicator"
-msgid "..."
-msgstr ""
-
 #: settings.strbrightness
 msgid "Increase brightness by "
 msgstr ""
@@ -153,6 +148,47 @@ msgstr ""
 
 #: songselection.strfolie
 msgid "Slide"
+msgstr ""
+
+#: tformimageexport.buttonchoose.caption
+msgid "Choose..."
+msgstr ""
+
+#: tformimageexport.buttonexportall.caption
+msgid "Export All"
+msgstr ""
+
+#: tformimageexport.buttonexportall1.caption
+msgid "Export Current"
+msgstr ""
+
+#: tformimageexport.buttonreloadpreview.caption
+msgid "Reload Preview..."
+msgstr ""
+
+#: tformimageexport.caption
+msgid "Image Exporter"
+msgstr ""
+
+#: tformimageexport.checkboxsync.caption
+msgid "Sync"
+msgstr ""
+
+#: tformimageexport.groupsettings.caption
+msgctxt "tformimageexport.groupsettings.caption"
+msgid "Settings"
+msgstr ""
+
+#: tformimageexport.labelfolder.caption
+msgid "Folder: "
+msgstr ""
+
+#: tformimageexport.labelheight.caption
+msgid "Height:"
+msgstr ""
+
+#: tformimageexport.labelwidth.caption
+msgid "Width: "
 msgstr ""
 
 #: tformpadding.caption
@@ -369,6 +405,7 @@ msgid "Text Color..."
 msgstr ""
 
 #: tfrmsettings.caption
+msgctxt "tfrmsettings.caption"
 msgid "Settings"
 msgstr ""
 
@@ -557,6 +594,10 @@ msgstr ""
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
+msgstr ""
+
+#: tfrmsongs.itemexportpictures.caption
+msgid "Images..."
 msgstr ""
 
 #: tfrmsongs.itemexportpptx.caption

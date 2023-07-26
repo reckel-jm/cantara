@@ -1,7 +1,7 @@
 object frmInfo: TfrmInfo
-  Left = 226
+  Left = -3
   Height = 316
-  Top = 274
+  Top = -30
   Width = 497
   AutoSize = True
   BorderIcons = [biSystemMenu]
@@ -13,11 +13,11 @@ object frmInfo: TfrmInfo
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poMainFormCenter
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   object lblAuthor: TLabel
     Left = 0
-    Height = 22
-    Top = 55
+    Height = 21
+    Top = 67
     Width = 497
     Align = alTop
     Caption = 'Autor: Jan Martin Reckel'
@@ -26,8 +26,8 @@ object frmInfo: TfrmInfo
   end
   object lblCompDate: TLabel
     Left = 0
-    Height = 22
-    Top = 77
+    Height = 21
+    Top = 88
     Width = 497
     Align = alTop
     Caption = 'lblCompDate'
@@ -36,8 +36,8 @@ object frmInfo: TfrmInfo
   end
   object lblVersion: TLabel
     Left = 0
-    Height = 22
-    Top = 33
+    Height = 21
+    Top = 46
     Width = 497
     Align = alTop
     Caption = 'lblVersion'
@@ -46,7 +46,7 @@ object frmInfo: TfrmInfo
   end
   object lblName: TLabel
     Left = 0
-    Height = 33
+    Height = 46
     Top = 0
     Width = 497
     Align = alTop
@@ -59,8 +59,8 @@ object frmInfo: TfrmInfo
   end
   object lblInfo: TLabel
     Left = 0
-    Height = 142
-    Top = 114
+    Height = 147
+    Top = 124
     Width = 497
     Align = alTop
     BorderSpacing.Top = 15
@@ -76,7 +76,7 @@ object frmInfo: TfrmInfo
     AnchorSideRight.Side = asrBottom
     Left = 0
     Height = 25
-    Top = 266
+    Top = 281
     Width = 497
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 10
@@ -661,7 +661,7 @@ object frmInfo: TfrmInfo
     AnchorSideRight.Side = asrBottom
     Left = 0
     Height = 25
-    Top = 291
+    Top = 306
     Width = 497
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Open Project''s Webpage with Browser'

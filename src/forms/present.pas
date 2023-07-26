@@ -28,8 +28,6 @@ type
     procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
-    procedure FormMouseWheelHorz(Sender: TObject; Shift: TShiftState;
-      WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure FormPaint(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -111,13 +109,6 @@ begin
 
 end;
 
-procedure TfrmPresent.FormMouseWheelHorz(Sender: TObject; Shift: TShiftState;
-  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
-begin
-  {if WheelDelta > 0 then GoNext
-  else if WheelDelta < 0 then GoPrevious;
-  Handled := True;}
-end;
 
 procedure TfrmPresent.FormPaint(Sender: TObject);
 begin

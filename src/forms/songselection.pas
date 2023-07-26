@@ -8,7 +8,7 @@ uses
   LCLType, LCLIntf, Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Dialogs, StrUtils, Math,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles, DefaultTranslator, Clipbrd,
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides, FormFulltextSearch, PPTX, PresentationCanvas,
-  formMarkupExport;
+  formMarkupExport, imageexport;
 
 type
   TSongPosition = record
@@ -65,6 +65,7 @@ type
     itemSaveSelectionAs: TMenuItem;
     itemExportPptx: TMenuItem;
     itemMarkupExport: TMenuItem;
+    itemExportPictures: TMenuItem;
     OpenDialog: TOpenDialog;
     Control: TPanel;
     PanelSongTeXStatus: TPanel;
@@ -100,6 +101,7 @@ type
     procedure ImageUpdaterStopTimer(Sender: TObject);
     procedure ImageUpdaterTimer(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
+    procedure itemExportPicturesClick(Sender: TObject);
     procedure itemExportPptxClick(Sender: TObject);
     procedure itemExportTeXFileClick(Sender: TObject);
     procedure itemFulltextSearchClick(Sender: TObject);
@@ -369,6 +371,21 @@ end;
 procedure TfrmSongs.itemEndClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TfrmSongs.itemExportPicturesClick(Sender: TObject);
+begin
+  if lbxSSelected.Count > 0 then
+  begin
+    CreateSongListDataAndLoadItIntoSlideList(FormImageExport.SlideList);
+    FormImageExport.PresentationCanvas.PresentationStyleSettings:=frmSettings.ExportPresentationStyleSettings;
+    FormImageExport.PresentationCanvas.SlideSettings:=frmSettings.ExportSlideSettings();
+    FormImageExport.Show;
+    Application.ProcessMessages;
+    Invalidate;
+    FormImageExport.LoadImages;
+  end else
+  Application.MessageBox(PChar(StrFehlerKeineLiederBeiPraesentation), PChar(StrError), MB_OK+MB_ICONWARNING);
 end;
 
 procedure TfrmSongs.itemExportPptxClick(Sender: TObject);

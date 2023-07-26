@@ -11,7 +11,8 @@ uses
   info, welcome, songeditor,
   { you can add units after this }
   slides, fulltextsearch, FormFulltextSearch, pptx, resourcehandling,
-PresentationCanvas, settingsdetailed, settingspadding, formMarkupExport, markup;
+  PresentationCanvas, settingsdetailed, settingspadding, formMarkupExport,
+  markup, imageexport;
 {$R *.res}
 
 begin
@@ -26,6 +27,7 @@ begin
   Application.CreateForm(TfrmWrapperFulltextSearch, frmWrapperFulltextSearch);
   Application.CreateForm(TFormPadding, FormPadding);
   Application.CreateForm(TFrmMarkupExport, FrmMarkupExport);
+  Application.CreateForm(TFormImageExport, FormImageExport);
   Application.Run;
 end.
 

@@ -112,7 +112,7 @@ implementation
         begin
           Slide := TSlide.Create;
           Slide.Song := Song;
-          Slide.PartContent.MainText:= stanza;
+          Slide.PartContent.MainText:= Trim(stanza);
           Slide.SlideType:=SlideWithoutSpoiler;
           Slide.ID := SlideCounter;
           SlideCounter += 1;
@@ -124,7 +124,7 @@ implementation
     { Add the last stanza }
     Slide := TSlide.Create;
     Slide.Song := Song;
-    Slide.PartContent.MainText:= stanza;
+    Slide.PartContent.MainText:= Trim(stanza);
     Slide.ID := SlideCounter;
     Slide.SlideType:=SlideWithoutSpoiler;
     inc(SlideCounter);
@@ -136,7 +136,7 @@ implementation
       for j := 0 to CurrentSongSlideList.Count-2 do
         if CurrentSongSlideList.Items[j].PartContent.SpoilerText = '' then
         begin
-          CurrentSongSlideList.Items[j].PartContent.SpoilerText:=CurrentSongSlideList.Items[j+1].PartContent.MainText;
+          CurrentSongSlideList.Items[j].PartContent.SpoilerText:=Trim(CurrentSongSlideList.Items[j+1].PartContent.MainText);
           CurrentSongSlideList.Items[j].SlideType:=SlideWithSpoiler;
         end;
     end;
@@ -172,8 +172,8 @@ implementation
     begin
       Slide := TSlide.Create;
       Slide.Song := Song;
-      Slide.PartContent.MainText:=Song.MetaDict['title'];
-      Slide.PartContent.SpoilerText:= Song.ParseMetaData(SlideSettings.MetaSyntax);
+      Slide.PartContent.MainText:=Trim(Song.MetaDict['title']);
+      Slide.PartContent.SpoilerText:=Trim(Song.ParseMetaData(SlideSettings.MetaSyntax));
       Slide.SlideType:=TitleSlide;
       CurrentSongSlideList.Insert(0, Slide);
     end;

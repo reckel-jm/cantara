@@ -1,7 +1,7 @@
 object frmWrapperFulltextSearch: TfrmWrapperFulltextSearch
-  Left = 420
+  Left = -3
   Height = 283
-  Top = 34
+  Top = -30
   Width = 535
   BorderWidth = 5
   Caption = 'Fulltext Search'
@@ -13,7 +13,7 @@ object frmWrapperFulltextSearch: TfrmWrapperFulltextSearch
   OnShow = FormShow
   Position = poOwnerFormCenter
   ShowInTaskBar = stNever
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   inline Wrapper: TFrmFulltextsearch
     Left = 5
     Height = 273
@@ -26,18 +26,22 @@ object frmWrapperFulltextSearch: TfrmWrapperFulltextSearch
       AnchorSideLeft.Control = Wrapper
       AnchorSideTop.Control = Wrapper
       AnchorSideRight.Control = Wrapper
+      Height = 28
       Width = 525
     end
     inherited Content: TNotebook
       AnchorSideLeft.Control = Wrapper
       AnchorSideRight.Control = Wrapper
       AnchorSideBottom.Control = Wrapper
-      Height = 232
+      Height = 240
+      Top = 33
       Width = 525
       inherited LoadIndex: TPage
         inherited LabalCreateIndex: TLabel
           Left = 211
-          Top = 105
+          Height = 21
+          Top = 110
+          Width = 102
         end
       end
     end

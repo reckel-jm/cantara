@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, StdCtrls, ExtCtrls, Menus, Lyrics,
   Settings, ComCtrls, Dialogs, SynEdit, SynCompletion, SynMacroRecorder,
-  SynPluginSyncroEdit, SynHighlighterAny, Types, LCLType, SynEditTypes;
+  SynPluginSyncroEdit, SynHighlighterAny, Types, LCLType, LConvEncoding,
+  SynEditTypes;
 
 type
 
@@ -159,7 +160,7 @@ procedure TfrmDisplaySongContent.memoCodePaste(Sender: TObject;
   var AText: String; var AMode: TSynSelectionMode; ALogStartPos: TPoint;
   var AnAction: TSynCopyPasteAction);
 begin
-
+  AText:=ISO_8859_1ToUTF8(AText);
 end;
 
 procedure TfrmDisplaySongContent.SynCompletion1CodeCompletion(

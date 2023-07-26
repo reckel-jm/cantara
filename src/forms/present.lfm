@@ -1,8 +1,8 @@
 object frmPresent: TfrmPresent
   Cursor = crNone
-  Left = 506
+  Left = -3
   Height = 535
-  Top = 279
+  Top = -30
   Width = 1070
   Caption = 'Presentation'
   ClientHeight = 535
@@ -15,11 +15,11 @@ object frmPresent: TfrmPresent
   OnKeyDown = FormKeyDown
   OnMouseMove = FormMouseMove
   OnMouseWheelDown = FormMouseWheelDown
-  OnMouseWheelHorz = FormMouseWheelHorz
   OnPaint = FormPaint
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
+  LCLVersion = '3.0.0.1'
   WindowState = wsMaximized
   object imageShower: TImage
     AnchorSideLeft.Control = Owner

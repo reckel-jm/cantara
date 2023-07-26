@@ -1,7 +1,7 @@
 object frmWelcome: TfrmWelcome
-  Left = 337
+  Left = -3
   Height = 489
-  Top = 34
+  Top = -30
   Width = 689
   BorderStyle = bsDialog
   Caption = 'Cantara Setup'
@@ -10,6 +10,7 @@ object frmWelcome: TfrmWelcome
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
+  LCLVersion = '3.0.0.1'
   object Notebook: TNotebook
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -29,7 +30,7 @@ object frmWelcome: TfrmWelcome
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = Page1
         Left = 261
-        Height = 23
+        Height = 22
         Top = 20
         Width = 166
         BorderSpacing.Top = 20
@@ -47,8 +48,8 @@ object frmWelcome: TfrmWelcome
         AnchorSideRight.Control = Page1
         AnchorSideRight.Side = asrBottom
         Left = 0
-        Height = 82
-        Top = 43
+        Height = 84
+        Top = 42
         Width = 689
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Cantara is a free and open source song presentation software.'#10'All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven''t collected any songs yet, you can create a new folder first or choose an empty one.'
@@ -63,7 +64,7 @@ object frmWelcome: TfrmWelcome
         AnchorSideRight.Side = asrBottom
         Left = 0
         Height = 40
-        Top = 135
+        Top = 136
         Width = 689
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
@@ -79,7 +80,7 @@ object frmWelcome: TfrmWelcome
         AnchorSideRight.Side = asrBottom
         Left = 0
         Height = 1
-        Top = 180
+        Top = 181
         Width = 689
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
@@ -95,7 +96,7 @@ object frmWelcome: TfrmWelcome
         AnchorSideRight.Side = asrBottom
         Left = 0
         Height = 25
-        Top = 181
+        Top = 182
         Width = 689
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Add "Amazing Grace" as an example'
@@ -110,8 +111,8 @@ object frmWelcome: TfrmWelcome
         AnchorSideRight.Control = Page1
         AnchorSideRight.Side = asrBottom
         Left = 0
-        Height = 22
-        Top = 206
+        Height = 21
+        Top = 207
         Width = 689
         Anchors = [akTop, akLeft, akRight]
         Caption = '"Amazing Grace" has been added to your repository. You can now continue.'
@@ -199,8 +200,8 @@ object frmWelcome: TfrmWelcome
     Top = 439
     Width = 689
     Anchors = [akLeft, akRight, akBottom]
-    ClientHeight = 46
-    ClientWidth = 685
+    ClientHeight = 42
+    ClientWidth = 683
     ParentBackground = False
     TabOrder = 1
     object btnBack: TButton
@@ -208,14 +209,13 @@ object frmWelcome: TfrmWelcome
       AnchorSideRight.Control = btnNext
       AnchorSideBottom.Control = ControlPanel
       AnchorSideBottom.Side = asrBottom
-      Left = 339
-      Height = 46
+      Left = 337
+      Height = 42
       Top = 0
       Width = 123
       Anchors = [akTop, akRight, akBottom]
       BorderSpacing.Right = 5
       Caption = 'Back...'
-      Color = clNone
       Enabled = False
       OnClick = btnBackClick
       TabOrder = 0
@@ -226,13 +226,12 @@ object frmWelcome: TfrmWelcome
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = ControlPanel
       AnchorSideBottom.Side = asrBottom
-      Left = 467
-      Height = 46
+      Left = 465
+      Height = 42
       Top = 0
       Width = 218
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Continue...'
-      Color = clNone
       Enabled = False
       OnClick = btnNextClick
       TabOrder = 1
@@ -244,9 +243,9 @@ object frmWelcome: TfrmWelcome
       AnchorSideBottom.Control = ControlPanel
       AnchorSideBottom.Side = asrBottom
       Left = 0
-      Height = 46
+      Height = 42
       Top = 0
-      Width = 339
+      Width = 337
       Anchors = [akTop, akLeft, akRight, akBottom]
       TabOrder = 2
     end

@@ -228,6 +228,7 @@ begin
       begin
         SpoilerText := '';
         SpoilerTextHeight := 0;
+        SpoilerDistance := 0;
       end;
     end;
   end

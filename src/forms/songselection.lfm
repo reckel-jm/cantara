@@ -1,7 +1,7 @@
 object frmSongs: TfrmSongs
-  Left = 527
+  Left = -3
   Height = 700
-  Top = 0
+  Top = -30
   Width = 1200
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
@@ -20,6 +20,7 @@ object frmSongs: TfrmSongs
   OnShow = FormShow
   OnWindowStateChange = FormResize
   Position = poScreenCenter
+  LCLVersion = '2.2.6.0'
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
@@ -405,6 +406,7 @@ object frmSongs: TfrmSongs
     ClientHeight = 36
     ClientWidth = 385
     Color = clInactiveCaption
+    ParentBackground = False
     ParentColor = False
     TabOrder = 7
     object ButtonCloseSongtexFile: TButton
@@ -489,6 +491,10 @@ object frmSongs: TfrmSongs
       object itemExportPptx: TMenuItem
         Caption = 'Powerpoint Presentation (pptx)'
         OnClick = itemExportPptxClick
+      end
+      object itemExportPictures: TMenuItem
+        Caption = 'Images...'
+        OnClick = itemExportPicturesClick
       end
       object itemMarkupExport: TMenuItem
         Caption = 'Markup Text...'

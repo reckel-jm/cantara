@@ -1,18 +1,18 @@
 object frmSongEdit: TfrmSongEdit
-  Left = 409
+  Left = -3
   Height = 562
-  Top = 34
+  Top = -30
   Width = 1029
   Caption = 'Edit Files'
-  ClientHeight = 206
-  ClientWidth = 320
+  ClientHeight = 562
+  ClientWidth = 1029
   Menu = EditorMenu
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDblClick = FormDblClick
   OnShow = FormShow
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   WindowState = wsMaximized
   object lsSongs: TListBox
     AnchorSideLeft.Control = Owner
@@ -21,9 +21,9 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 528
+    Height = 562
     Top = 0
-    Width = 3129
+    Width = 10068
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
     OnClick = lsSongsClick
@@ -37,8 +37,8 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideRight.Control = PageControl
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 3129
-    Height = 528
+    Left = 10068
+    Height = 562
     Top = 0
     Width = 6
     Align = alCustom
@@ -54,8 +54,8 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 3135
-    Height = 528
+    Left = 10074
+    Height = 562
     Top = 0
     Width = 0
     Anchors = [akTop, akLeft, akRight, akBottom]
