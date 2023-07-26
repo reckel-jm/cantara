@@ -380,7 +380,7 @@ begin
     CreateSongListDataAndLoadItIntoSlideList(FormImageExport.SlideList);
     FormImageExport.PresentationCanvas.PresentationStyleSettings:=frmSettings.ExportPresentationStyleSettings;
     FormImageExport.PresentationCanvas.SlideSettings:=frmSettings.ExportSlideSettings();
-    FormImageExport.Show;
+    FormImageExport.ShowOnTop;
     Application.ProcessMessages;
     Invalidate;
     FormImageExport.LoadImages;

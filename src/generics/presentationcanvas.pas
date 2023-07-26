@@ -54,7 +54,6 @@ type
 
 const
   PADDING:integer = 15;
-  DEFAULTSPOILERDISTANCE:integer = 20;
   MINSPOILERDISTANCE:Integer = 10;
   MORELYRICSINDICATOR:String = '...';
 
@@ -188,6 +187,7 @@ var
   SpoilerRectWidth: Integer;
   SpoilerDistance: Integer;
   SpoilerText: String;
+  DefaultSpoilerDistance: Integer;
 begin
   Bitmap.Clear;
   Bitmap.SetSize(self.Width, self.Height);
@@ -195,9 +195,11 @@ begin
   NormalTextFont := TFont.Create;
   NormalTextFont.Assign(PresentationStyleSettings.Font);
   NormalTextFont.Color:=PresentationStyleSettings.TextColor;
+  DefaultSpoilerDistance := Round(NormalTextFont.GetTextHeight('gJ')*2.6);
   SpoilerTextFont := TFont.Create;
   SpoilerTextFont.Assign(NormalTextFont);
   SpoilerTextFont.Height:=NormalTextFont.Height div 2;
+  SpoilerRectWidth := Round((self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right)*2/3);
   MetaTextFont := TFont.Create;
   MetaTextFont.Assign(NormalTextFont);
   MetaTextFont.Height:=NormalTextFont.Height div 3;
@@ -214,8 +216,7 @@ begin
   SpoilerText := Slide.PartContent.SpoilerText;
   if SpoilerText <> '' then
   begin
-    SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right, SpoilerText);
-    SpoilerRectWidth := Round((self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right)*2/3);
+    SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, SpoilerRectWidth, SpoilerText);
     // Check whether spoiler fits
     SpoilerDistance := Min(DEFAULTSPOILERDISTANCE, Height-(PresentationStyleSettings.Padding.Top+PresentationStyleSettings.Padding.Bottom+MainTextHeight+SpoilerTextHeight+DEFAULTSPOILERDISTANCE-MINSPOILERDISTANCE-MetaTextHeight));
     if SpoilerDistance < DEFAULTSPOILERDISTANCE then
@@ -223,7 +224,7 @@ begin
       SpoilerText := SplitString(SpoilerText, LineEnding)[0] + MoreLyricsIndicator;
       // Now we calculate the height again
       SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right, SpoilerText);
-      SpoilerDistance := Min(MINSPOILERDISTANCE, Height-(PresentationStyleSettings.Padding.Top+PresentationStyleSettings.Padding.Bottom+MainTextHeight+SpoilerTextHeight+DEFAULTSPOILERDISTANCE-MINSPOILERDISTANCE-MetaTextHeight));
+      SpoilerDistance := (Height-(PresentationStyleSettings.Padding.Top+PresentationStyleSettings.Padding.Bottom+MainTextHeight+SpoilerTextHeight-MetaTextHeight)) div 2;
       if SpoilerDistance < MINSPOILERDISTANCE then
       begin
         SpoilerText := '';
@@ -269,7 +270,7 @@ begin
         tlCenter: Top := Max(PresentationStyleSettings.Padding.Top, PresentationStyleSettings.Padding.Top+(self.Height-PresentationStyleSettings.Padding.Top-PresentationStyleSettings.Padding.Bottom-MainTextHeight-SpoilerTextHeight-2*SpoilerDistance) div 2);
         tlBottom: Top := self.Height - PresentationStyleSettings.Padding.Bottom - MainTextHeight-SpoilerTextHeight-SpoilerDistance;
       end;
-      Width := self.Width-PresentationStyleSettings.Padding.Right;
+      Width := self.Width-PresentationStyleSettings.Padding.Right-PresentationStyleSettings.Padding.Left;
       Height := MainTextHeight;
     end;
     TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.MainText);
