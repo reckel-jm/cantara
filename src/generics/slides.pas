@@ -88,6 +88,22 @@ implementation
     inherited;
   end;
 
+  function IsBilingual(var MainPart: String): String;
+  var
+    LanguageSeperatorPosition: Integer;
+    SecondLanguagePart: String;
+  begin
+    LanguageSeperatorPosition := Pos('---', MainPart);
+    if (LanguageSeperatorPosition > 0) and (Length(MainPart) > LanguageSeperatorPosition + 3) then
+    begin
+      SecondLanguagePart := Copy(MainPart, LanguageSeperatorPosition+3,
+      Length(MainPart)-LanguageSeperatorPosition-2+1);
+      MainPart := Trim(Copy(MainPart, 1, LanguageSeperatorPosition-1));
+    end else
+    SecondLanguagePart := '';
+    Result := Trim(SecondLanguagePart);
+  end;
+
   function CreatePresentationDataFromSong(Song: TSong; SlideSettings: TSlideSettings; var SlideCounter: Integer): TSlideList;
   var songfile: TStringList;
     completefilename: String;
@@ -96,6 +112,7 @@ implementation
     CurrentSongSlideList: TSlideList;
     Slide: TSlide;
     j: Integer;
+    SecondLanguageText: String;
   begin
     { Create the SlideList which later will be returned }
     CurrentSongSlideList := TSlideList.Create(False);
@@ -117,6 +134,14 @@ implementation
           Slide.ID := SlideCounter;
           SlideCounter += 1;
           stanza := '';
+          { Find out whether song is billingual }
+          SecondLanguageText := IsBilingual(Slide.PartContent.MainText);
+          if SecondLanguageText <> '' then
+          begin
+            Slide.PartContent.SpoilerText:=SecondLanguageText;
+            Slide.SlideType:=SlideWithSpoiler;
+          end;
+
           CurrentSongSlideList.Add(Slide);
         end
         else stanza := stanza + songfile.Strings[j] + LineEnding;
@@ -128,7 +153,17 @@ implementation
     Slide.ID := SlideCounter;
     Slide.SlideType:=SlideWithoutSpoiler;
     inc(SlideCounter);
+
+    { Find out whether song is billingual }
+    SecondLanguageText := IsBilingual(Slide.PartContent.MainText);
+    if SecondLanguageText <> '' then
+    begin
+      Slide.PartContent.SpoilerText:=SecondLanguageText;
+      Slide.SlideType:=SlideWithSpoiler;
+    end;
+
     CurrentSongSlideList.Add(Slide);
+
     { Add Spoiler Text to the slides if desired in the settings }
 
     if SlideSettings.SpoilerText then
@@ -181,5 +216,7 @@ implementation
     { Return CurrentSongSlideList }
     Result := CurrentSongSlideList;
   end;
+
+
 end.
 

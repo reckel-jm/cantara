@@ -33,6 +33,8 @@ type
     ImageListViewMenu: TPopupMenu;
     ProgressBar: TProgressBar;
     SaveDialog: TSaveDialog;
+    Splitter: TSplitter;
+    procedure ButtonExportAll1Click(Sender: TObject);
     procedure ButtonExportAllClick(Sender: TObject);
     procedure ButtonReloadPreviewClick(Sender: TObject);
     procedure ButtonChooseClick(Sender: TObject);
@@ -55,6 +57,9 @@ type
 
 var
   FormImageExport: TFormImageExport;
+
+ResourceString
+  strFolderNotValid = 'Please select a folder in which you want to save the pictures.';
 
 implementation
 
@@ -79,10 +84,11 @@ var
   ListItem: TListItem;
   ContainerImage: TImage;
 begin
-  ContainerImage := TImage.Create(FormImageExport);
-  i := 0;
+  if ImageListView.Items.Count <= 0 then Exit;
   if DirectoryExists(EditFolder.Text) then
   begin
+    ContainerImage := TImage.Create(FormImageExport);
+    i := 0;
     for ListItem in ImageListView.Items do
     begin
       ImageList.GetBitmap(ListItem.ImageIndex, ContainerImage.Picture.Bitmap);
@@ -91,8 +97,17 @@ begin
       ProgressBar.Position:=Round((i+1)/ImageListView.Items.Count*100);
       FormImageExport.Invalidate;
     end;
+    ContainerImage.Destroy;
+  end else
+  begin
+    ShowMessage(strFolderNotValid);
+    ButtonChooseClick(FormImageExport);
   end;
-  ContainerImage.Destroy;
+end;
+
+procedure TFormImageExport.ButtonExportAll1Click(Sender: TObject);
+begin
+  ItemExportClick(ButtonExportAll1);
 end;
 
 procedure TFormImageExport.EditHeightChange(Sender: TObject);
@@ -147,6 +162,8 @@ procedure TFormImageExport.ItemExportClick(Sender: TObject);
 var Picture: TPicture;
   ListItem: TListItem;
 begin
+  if ImageListView.Items.Count <= 0 then Exit;
+  if ImageListView.ItemIndex < 0 then ImageListView.ItemIndex := 0;
   if SaveDialog.Execute = False then Exit;
   Picture := TPicture.Create;
   ListItem := ImageListView.Items[ImageListView.ItemIndex];

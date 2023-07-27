@@ -21,6 +21,10 @@ msgstr ""
 msgid "Song Title"
 msgstr ""
 
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr ""
+
 #: info.strauthor
 msgid "Author"
 msgstr ""

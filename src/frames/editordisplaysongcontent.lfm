@@ -6,8 +6,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
   ClientHeight = 452
   ClientWidth = 892
   TabOrder = 0
-  DesignLeft = -3
-  DesignTop = -30
+  DesignLeft = 571
+  DesignTop = 172
   object lblSongName: TLabel
     Left = 0
     Height = 22
@@ -90,10 +90,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnArchivate
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 678
+    Left = 670
     Height = 22
     Top = 0
-    Width = 49
+    Width = 51
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Copy'
@@ -105,10 +105,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnSave
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 727
+    Left = 721
     Height = 22
     Top = 0
-    Width = 66
+    Width = 68
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Archive'
@@ -123,10 +123,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 840
+    Left = 838
     Height = 22
     Top = 0
-    Width = 52
+    Width = 54
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Close'
@@ -138,10 +138,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnCopy
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 606
+    Left = 596
     Height = 22
     Top = 0
-    Width = 72
+    Width = 74
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Rename'
@@ -153,10 +153,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnClose
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 793
+    Left = 789
     Height = 22
     Top = 0
-    Width = 47
+    Width = 49
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Save'
@@ -176,6 +176,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Width = 892
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = clWindow
+    Font.Color = clBtnText
     Font.Height = 13
     Font.Name = 'DejaVu Sans Mono'
     Font.Pitch = fpFixed

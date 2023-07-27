@@ -310,7 +310,7 @@ begin
     i := 0;
     while i < output.count-1 do
       begin
-        if output.Strings[i] <> '' then
+        if (output.Strings[i] <> '') and (output.Strings[i] <> '---') then
           output.Insert(i+1, '');
         i := i+1;
       end;
@@ -320,7 +320,7 @@ begin
   n2 := 0;
   for i := 0 to output.Count-1 do
   begin
-    if output.Strings[i] = '' then
+    if (output.Strings[i] = '') or (output.Strings[i] = '---') then
     begin
        n2 := i;
        if (n2-n1) > self.MaxSlideLineLength then

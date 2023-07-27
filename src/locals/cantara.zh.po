@@ -32,6 +32,10 @@ msgstr "此文檔不可被重命名。請確認您已獲取寫入曲庫的權限
 msgid "Song Title"
 msgstr ""
 
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr ""
+
 #: info.strauthor
 msgid "Author"
 msgstr "作者"

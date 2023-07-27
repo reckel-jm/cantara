@@ -32,6 +32,10 @@ msgstr "Die Datei kann nicht umbenannt werden. Bitte stellen Sie sicher, dass Si
 msgid "Song Title"
 msgstr "Liedtitel"
 
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr ""
+
 #: info.strauthor
 msgid "Author"
 msgstr "Autor"

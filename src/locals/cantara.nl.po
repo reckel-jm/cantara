@@ -33,6 +33,10 @@ msgstr "De naam kan niet worden gewijzigd. Zorg er voor dat u over de juiste map
 msgid "Song Title"
 msgstr ""
 
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr ""
+
 #: info.strauthor
 msgid "Author"
 msgstr "Maker"

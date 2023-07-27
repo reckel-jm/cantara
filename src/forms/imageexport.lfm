@@ -1,11 +1,11 @@
 object FormImageExport: TFormImageExport
   Left = 471
-  Height = 376
+  Height = 523
   Top = 156
-  Width = 827
+  Width = 897
   Caption = 'Image Exporter'
-  ClientHeight = 376
-  ClientWidth = 827
+  ClientHeight = 523
+  ClientWidth = 897
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -14,16 +14,17 @@ object FormImageExport: TFormImageExport
   object GroupSettings: TGroupBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Splitter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 376
+    Height = 523
     Top = 0
-    Width = 369
-    Anchors = [akTop, akLeft, akBottom]
+    Width = 408
+    Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Settings'
-    ClientHeight = 342
-    ClientWidth = 365
+    ClientHeight = 489
+    ClientWidth = 404
     TabOrder = 0
     OnClick = GroupSettingsClick
     object LabelFolder: TLabel
@@ -45,7 +46,7 @@ object FormImageExport: TFormImageExport
       Left = 58
       Height = 36
       Top = 0
-      Width = 228
+      Width = 267
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 5
       Enabled = False
@@ -59,7 +60,7 @@ object FormImageExport: TFormImageExport
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = EditFolder
       AnchorSideBottom.Side = asrBottom
-      Left = 286
+      Left = 325
       Height = 36
       Top = 0
       Width = 79
@@ -137,7 +138,7 @@ object FormImageExport: TFormImageExport
       AnchorSideBottom.Side = asrBottom
       Left = 0
       Height = 40
-      Top = 302
+      Top = 449
       Width = 144
       Anchors = [akLeft, akBottom]
       Caption = 'Export All'
@@ -153,13 +154,14 @@ object FormImageExport: TFormImageExport
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = GroupSettings
       AnchorSideBottom.Side = asrBottom
-      Left = 219
+      Left = 258
       Height = 40
-      Top = 302
+      Top = 449
       Width = 146
       Anchors = [akRight, akBottom]
       Caption = 'Export Current'
       ModalResult = 6
+      OnClick = ButtonExportAll1Click
       ParentFont = False
       TabOrder = 6
     end
@@ -187,7 +189,7 @@ object FormImageExport: TFormImageExport
       Left = 0
       Height = 20
       Top = 208
-      Width = 365
+      Width = 404
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 15
       Enabled = False
@@ -197,19 +199,19 @@ object FormImageExport: TFormImageExport
     end
   end
   object ImageListView: TListView
-    AnchorSideLeft.Control = GroupSettings
+    AnchorSideLeft.Control = Splitter
     AnchorSideLeft.Side = asrBottom
-    Left = 369
-    Height = 376
+    Left = 416
+    Height = 523
     Top = 0
-    Width = 458
+    Width = 481
     Align = alRight
     Anchors = [akTop, akLeft, akRight, akBottom]
     Columns = <>
     GridLines = True
     IconOptions.AutoArrange = True
     LargeImages = ImageList
-    LargeImagesWidth = 800
+    LargeImagesWidth = 600
     PopupMenu = ImageListViewMenu
     ShowColumnHeaders = False
     SmallImages = ImageList
@@ -220,9 +222,20 @@ object FormImageExport: TFormImageExport
     TabOrder = 1
     ViewStyle = vsIcon
   end
+  object Splitter: TSplitter
+    AnchorSideTop.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 408
+    Height = 523
+    Top = 0
+    Width = 8
+    Align = alNone
+    ResizeAnchor = akRight
+  end
   object PictureDirectoryDialog: TSelectDirectoryDialog
-    Left = 312
-    Top = 136
+    Left = 8
+    Top = 408
   end
   object ImageList: TImageList
     Height = 1000

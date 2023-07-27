@@ -159,8 +159,12 @@ end;
 procedure TfrmDisplaySongContent.memoCodePaste(Sender: TObject;
   var AText: String; var AMode: TSynSelectionMode; ALogStartPos: TPoint;
   var AnAction: TSynCopyPasteAction);
+var
+  GuessedCoding: String;
+  Encoded: Boolean;
 begin
-  AText:=ISO_8859_1ToUTF8(AText);
+  GuessedCoding := GuessEncoding(AText);
+  AText:=ConvertEncodingToUTF8(AText, GuessedCoding, Encoded);
 end;
 
 procedure TfrmDisplaySongContent.SynCompletion1CodeCompletion(

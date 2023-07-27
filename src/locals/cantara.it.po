@@ -32,6 +32,10 @@ msgstr "Il file non può essere rinominato. Assicuratevi di avere i permessi per
 msgid "Song Title"
 msgstr ""
 
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr ""
+
 #: info.strauthor
 msgid "Author"
 msgstr "Autore"
