@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Spin, ComCtrls, Slides, PresentationCanvas;
+  Spin, ComCtrls, Menus, Slides, PresentationCanvas;
 
 type
 
@@ -26,9 +26,14 @@ type
     LabelHeight: TLabel;
     LabelWidth: TLabel;
     ImageListView: TListView;
+    ItemExport: TMenuItem;
+    ItemRemove: TMenuItem;
     PictureDirectoryDialog: TSelectDirectoryDialog;
     EditWidth: TSpinEdit;
+    ImageListViewMenu: TPopupMenu;
     ProgressBar: TProgressBar;
+    SaveDialog: TSaveDialog;
+    procedure ButtonExportAllClick(Sender: TObject);
     procedure ButtonReloadPreviewClick(Sender: TObject);
     procedure ButtonChooseClick(Sender: TObject);
     procedure EditHeightChange(Sender: TObject);
@@ -37,6 +42,8 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure GroupSettingsClick(Sender: TObject);
+    procedure ItemExportClick(Sender: TObject);
+    procedure ItemRemoveClick(Sender: TObject);
   private
     Scale: Double;
     procedure ReadjustScale;
@@ -66,6 +73,28 @@ begin
   LoadImages;
 end;
 
+procedure TFormImageExport.ButtonExportAllClick(Sender: TObject);
+var
+  i: Integer;
+  ListItem: TListItem;
+  ContainerImage: TImage;
+begin
+  ContainerImage := TImage.Create(FormImageExport);
+  i := 0;
+  if DirectoryExists(EditFolder.Text) then
+  begin
+    for ListItem in ImageListView.Items do
+    begin
+      ImageList.GetBitmap(ListItem.ImageIndex, ContainerImage.Picture.Bitmap);
+      ContainerImage.Picture.SaveToFile(EditFolder.Text + PathDelim + ListItem.Caption + '.png', '.png');
+      Inc(i);
+      ProgressBar.Position:=Round((i+1)/ImageListView.Items.Count*100);
+      FormImageExport.Invalidate;
+    end;
+  end;
+  ContainerImage.Destroy;
+end;
+
 procedure TFormImageExport.EditHeightChange(Sender: TObject);
 begin
   if CheckBoxSync.Checked then
@@ -79,7 +108,10 @@ end;
 procedure TFormImageExport.EditWidthChange(Sender: TObject);
 begin
   if CheckBoxSync.Checked then
-     EditHeight.Value := Round(EditWidth.Value/Scale)
+  begin
+    if Scale = 0 then Scale := 8/6;
+    EditHeight.Value := Round(EditWidth.Value/Scale)
+  end
   else
   begin
     ReadjustScale;
@@ -109,6 +141,24 @@ end;
 procedure TFormImageExport.GroupSettingsClick(Sender: TObject);
 begin
 
+end;
+
+procedure TFormImageExport.ItemExportClick(Sender: TObject);
+var Picture: TPicture;
+  ListItem: TListItem;
+begin
+  if SaveDialog.Execute = False then Exit;
+  Picture := TPicture.Create;
+  ListItem := ImageListView.Items[ImageListView.ItemIndex];
+  ImageList.GetBitmap(ListItem.ImageIndex, Picture.Bitmap);
+  if LowerCase(ExtractFileExt(SaveDialog.FileName)) <> '.png' then SaveDialog.FileName := SaveDialog.FileName + '.png';
+  Picture.SaveToFile(SaveDialog.FileName, '.png');
+  Picture.Destroy;
+end;
+
+procedure TFormImageExport.ItemRemoveClick(Sender: TObject);
+begin
+  ImageListView.Items.Delete(ImageListView.ItemIndex);
 end;
 
 procedure TFormImageExport.ReadjustScale;

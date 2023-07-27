@@ -267,7 +267,7 @@ begin
       Left := PresentationStyleSettings.Padding.Left;
       case PresentationStyleSettings.VerticalAlign of
         tlTop: Top := PresentationStyleSettings.Padding.Top;
-        tlCenter: Top := Max(PresentationStyleSettings.Padding.Top, PresentationStyleSettings.Padding.Top+(self.Height-PresentationStyleSettings.Padding.Top-PresentationStyleSettings.Padding.Bottom-MainTextHeight-SpoilerTextHeight-2*SpoilerDistance) div 2);
+        tlCenter: Top := PresentationStyleSettings.Padding.Top+(self.Height-PresentationStyleSettings.Padding.Top-PresentationStyleSettings.Padding.Bottom-MainTextHeight-SpoilerTextHeight-SpoilerDistance) div 2;
         tlBottom: Top := self.Height - PresentationStyleSettings.Padding.Bottom - MainTextHeight-SpoilerTextHeight-SpoilerDistance;
       end;
       Width := self.Width-PresentationStyleSettings.Padding.Right-PresentationStyleSettings.Padding.Left;

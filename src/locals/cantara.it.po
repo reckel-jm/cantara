@@ -193,6 +193,15 @@ msgctxt "tformimageexport.groupsettings.caption"
 msgid "Settings"
 msgstr "Impostazioni"
 
+#: tformimageexport.itemexport.caption
+msgctxt "tformimageexport.itemexport.caption"
+msgid "Export"
+msgstr ""
+
+#: tformimageexport.itemremove.caption
+msgid "Remove"
+msgstr ""
+
 #: tformimageexport.labelfolder.caption
 msgid "Folder: "
 msgstr ""
@@ -691,6 +700,7 @@ msgid "Edit"
 msgstr "Modifica"
 
 #: tfrmsongs.menuexport.caption
+msgctxt "tfrmsongs.menuexport.caption"
 msgid "Export"
 msgstr ""
 

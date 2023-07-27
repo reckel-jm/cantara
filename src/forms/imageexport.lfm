@@ -48,6 +48,7 @@ object FormImageExport: TFormImageExport
       Width = 228
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 5
+      Enabled = False
       TabOrder = 0
     end
     object ButtonChoose: TButton
@@ -142,6 +143,7 @@ object FormImageExport: TFormImageExport
       Caption = 'Export All'
       Font.Style = [fsBold]
       ModalResult = 10
+      OnClick = ButtonExportAllClick
       ParentFont = False
       TabOrder = 5
     end
@@ -208,6 +210,7 @@ object FormImageExport: TFormImageExport
     IconOptions.AutoArrange = True
     LargeImages = ImageList
     LargeImagesWidth = 800
+    PopupMenu = ImageListViewMenu
     ShowColumnHeaders = False
     SmallImages = ImageList
     SmallImagesWidth = 200
@@ -228,5 +231,22 @@ object FormImageExport: TFormImageExport
     Width = 600
     Left = 384
     Top = 16
+  end
+  object ImageListViewMenu: TPopupMenu
+    Left = 288
+    Top = 80
+    object ItemExport: TMenuItem
+      Caption = 'Export'
+      OnClick = ItemExportClick
+    end
+    object ItemRemove: TMenuItem
+      Caption = 'Remove'
+      OnClick = ItemRemoveClick
+    end
+  end
+  object SaveDialog: TSaveDialog
+    Filter = 'png-File|*.png'
+    Left = 417
+    Top = 92
   end
 end
