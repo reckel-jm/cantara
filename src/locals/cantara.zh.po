@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
@@ -26,15 +26,15 @@ msgstr "此文檔不可被轉換。請確認您已獲取寫入曲庫的權限。
 
 #: editordisplaysongcontent.strfilecannotberenamed
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
-msgstr "此文檔不可被重命名。請確認您已獲取寫入曲庫的權限。"
+msgstr "此文檔不可被重命名。請確認您已獲取寫入曲庫的權限！"
 
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
-msgstr ""
+msgstr "歌名"
 
 #: imageexport.strfoldernotvalid
 msgid "Please select a folder in which you want to save the pictures."
-msgstr ""
+msgstr "請選擇您要保存圖片的文件夾。"
 
 #: info.strauthor
 msgid "Author"
@@ -80,7 +80,7 @@ msgstr "增加透明度："
 
 #: settings.strvalidsongrepository
 msgid "Please choose a valid folder for the song repository!"
-msgstr "請選擇有效的曲庫資料夾。"
+msgstr "請選擇有效的曲庫資料夾！"
 
 #: songeditor.strcannotarchivate
 msgid "No valid file selected."
@@ -134,11 +134,11 @@ msgstr "設定…"
 #: songselection.strbuttonpraesentation
 msgctxt "songselection.strbuttonpraesentation"
 msgid "Presentation..."
-msgstr "展示"
+msgstr "展示..."
 
 #: songselection.strcannotopensong
 msgid "Error: The Song \"{songname}\" is not available. Skipping."
-msgstr "錯誤：歌曲 \"{songname}\" 不可用。正在跳過該歌曲……"
+msgstr "錯誤：歌曲 \"{songname}\" 不可用。正在跳過該歌曲。"
 
 #: songselection.strerror
 msgctxt "songselection.strerror"
@@ -167,6 +167,14 @@ msgstr "您要開啟的文檔不存在。"
 msgid "Slide"
 msgstr "投影片"
 
+#: songselection.strhint
+msgid "Hint"
+msgstr ""
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
 msgstr ""
@@ -194,7 +202,7 @@ msgstr ""
 #: tformimageexport.groupsettings.caption
 msgctxt "tformimageexport.groupsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: tformimageexport.itemexport.caption
 msgctxt "tformimageexport.itemexport.caption"
@@ -249,25 +257,26 @@ msgstr ""
 #: tfrmdisplaysongcontent.btnclose.caption
 msgctxt "tfrmdisplaysongcontent.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
 msgid "Convert CCLI File to Song Format"
-msgstr ""
+msgstr "轉換CCLI文檔至歌曲格式"
 
 #: tfrmdisplaysongcontent.btncopy.caption
 msgctxt "tfrmdisplaysongcontent.btncopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "複製"
 
 #: tfrmdisplaysongcontent.btnrename.caption
 msgid "Rename"
-msgstr ""
+msgstr "重命名"
 
 #: tfrmdisplaysongcontent.btnsave.caption
+#, fuzzy
 msgctxt "tfrmdisplaysongcontent.btnsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: tfrmdisplaysongcontent.labelccliimporthint.caption
 msgid ""
@@ -280,15 +289,15 @@ msgstr ""
 
 #: tfrmdisplaysongcontent.lblsongname.caption
 msgid "Name: "
-msgstr ""
+msgstr "名稱："
 
 #: tfrmeditorwelcome.btnclose.caption
 msgid "Close the Editor"
-msgstr ""
+msgstr "退出編輯器"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
-msgstr ""
+msgstr "在瀏覽器中打開文檔…"
 
 #: tfrmeditorwelcome.lbldescription.caption
 msgid ""
@@ -296,14 +305,17 @@ msgid ""
 "\n"
 "For detailed information about the syntax, please consider the documentation."
 msgstr ""
+"您可以在這裏更改您想要顯示的歌曲。\n"
+"\n"
+"對於句法的詳細信息，請參閱支持文檔。"
 
 #: tfrmeditorwelcome.lblhint.caption
 msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
-msgstr ""
+msgstr "請注意：歌詞文檔是簡單的文本文檔，可由您操作系統的任何文本編輯器進行編輯。 Cantara 只會提供最基本的文本修改功能。"
 
 #: tfrmeditorwelcome.lblsupport.caption
 msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
-msgstr ""
+msgstr "Cantara 是一個免費軟體，它的開發希望它能弘益諸位用戶。我們歡迎Github上的貢獻，歡迎提出issues，feature requests或pull requests。榮耀歸主！Soli Deo Gloria."
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
@@ -331,21 +343,20 @@ msgstr ""
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
-msgstr ""
+msgstr "使用瀏覽器開啟 GitHub 存儲庫"
 
 #: tfrminfo.btnopenwebpage.caption
 msgid "Open Project's Webpage with Browser"
-msgstr ""
+msgstr "使用瀏覽器打開項目網站"
 
 #: tfrminfo.caption
-#, fuzzy
 msgctxt "tfrminfo.caption"
 msgid "About this Program"
 msgstr "關於本程式"
 
 #: tfrminfo.lblauthor.caption
 msgid "Autor: Jan Martin Reckel"
-msgstr ""
+msgstr "作者：Jan Martin Reckel"
 
 #: tfrminfo.lblcompdate.caption
 msgid "lblCompDate"
@@ -359,10 +370,15 @@ msgid ""
 "\n"
 "The author wishes God's blessing for the use of the program!"
 msgstr ""
+"本應用程式經GPL3許可下發布。 \n"
+"本應用程式的源碼可以在GitHub的資源庫找到，項目頁面中可以找到本程式的說明文檔。\n"
+"在GPL3許可所規定的條款與條件下，本程式可以被修改和重新使用。\n"
+"\n"
+"上帝保佑您使用這個程式！"
 
 #: tfrminfo.lblname.caption
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
@@ -370,7 +386,7 @@ msgstr ""
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
-msgstr ""
+msgstr "儲存 SongTeX 文檔"
 
 #: tfrmmarkupexport.caption
 msgid "Export Songs as Markup"
@@ -391,28 +407,28 @@ msgstr ""
 
 #: tfrmpresent.caption
 msgid "Presentation"
-msgstr ""
+msgstr "投影片"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
-msgstr ""
+msgstr "選擇背景顏色"
 
 #: tfrmsettings.bgpicturedialog.title
 msgid "Open image file"
-msgstr ""
+msgstr "開啟圖像文檔"
 
 #: tfrmsettings.btnbackgroundcolor.caption
 msgid "Background Color..."
-msgstr ""
+msgstr "背景顏色…"
 
 #: tfrmsettings.btnbackgroundimage.caption
 msgid "Background Image..."
-msgstr ""
+msgstr "背景圖像…"
 
 #: tfrmsettings.btnclose.caption
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: tfrmsettings.btndetails.caption
 msgid "Details..."
@@ -420,7 +436,7 @@ msgstr ""
 
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
-msgstr ""
+msgstr "更改字體設定…"
 
 #: tfrmsettings.btnselectdir.caption
 msgctxt "tfrmsettings.btnselectdir.caption"
@@ -429,28 +445,28 @@ msgstr ""
 
 #: tfrmsettings.btntextcolor.caption
 msgid "Text Color..."
-msgstr ""
+msgstr "文本顏色..."
 
 #: tfrmsettings.caption
 msgctxt "tfrmsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
-msgstr ""
+msgstr "歌曲之間的空投影片"
 
 #: tfrmsettings.cblyricstoclipboard.caption
 msgid "Copy lyrics to clipboard"
-msgstr ""
+msgstr "將文本複製到剪貼板"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
-msgstr ""
+msgstr "首投影片"
 
 #: tfrmsettings.cbmetadatalastslide.caption
 msgid "at last slide"
-msgstr ""
+msgstr "末投影片"
 
 #: tfrmsettings.cbmetatitleslide.caption
 msgid "at special title slide"
@@ -458,11 +474,11 @@ msgstr ""
 
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
-msgstr ""
+msgstr "顯示背景圖像："
 
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
-msgstr ""
+msgstr "提示次投影片"
 
 #: tfrmsettings.combohorizontal.text
 msgid "Center"
@@ -474,22 +490,22 @@ msgstr ""
 
 #: tfrmsettings.fontdialog.title
 msgid "Select font"
-msgstr ""
+msgstr "選擇字體及字號"
 
 #: tfrmsettings.gbpresentation.caption
 msgid "Presentation View"
-msgstr ""
+msgstr "投影片展示模式"
 
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
-msgstr ""
+msgstr "曲庫路徑："
 
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparency/Brightness:"
+msgid "Change Image Transparency:"
 msgstr ""
 
 #: tfrmsettings.lblimageexplainer.caption
@@ -498,36 +514,36 @@ msgstr ""
 
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
-msgstr ""
+msgstr "顯示元資料："
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
-msgstr ""
+msgstr "元資料內容："
 
 #: tfrmsettings.lblwrapafter.caption
 msgid "Automatic wrap after how many lines (0 = off):"
-msgstr ""
+msgstr "在特定行歌詞後自動翻頁（0 = 關閉）："
 
 #: tfrmsettings.sbimagebrightness.hint
-msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgid "The transparency of the background picture towards the background color"
 msgstr ""
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
-msgstr ""
+msgstr "選擇曲庫目錄"
 
 #: tfrmsettings.textcolordialog.title
 msgid "Select text color"
-msgstr ""
+msgstr "選擇文本顏色"
 
 #: tfrmsongedit.caption
 msgid "Edit Files"
-msgstr ""
+msgstr "編輯"
 
 #: tfrmsongedit.menufile.caption
 msgctxt "tfrmsongedit.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: tfrmsongedit.menuitemarchivate.caption
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
@@ -536,21 +552,21 @@ msgstr ""
 
 #: tfrmsongedit.menuitemclose.caption
 msgid "Close Editor"
-msgstr ""
+msgstr "關閉編輯器"
 
 #: tfrmsongedit.menuitemcopy.caption
 msgctxt "tfrmsongedit.menuitemcopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "複製"
 
 #: tfrmsongedit.menuitemnew.caption
 msgid "New"
-msgstr ""
+msgstr "新歌曲"
 
 #: tfrmsongedit.menuitemsave.caption
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
@@ -558,7 +574,7 @@ msgstr ""
 
 #: tfrmsongs.btnclear.caption
 msgid "🗑"
-msgstr ""
+msgstr "🗑"
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
@@ -566,7 +582,7 @@ msgstr ""
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
-msgstr ""
+msgstr "🠗"
 
 #: tfrmsongs.btngoleft.caption
 msgid "←"
@@ -585,20 +601,18 @@ msgid "-"
 msgstr ""
 
 #: tfrmsongs.btnsettings.caption
-#, fuzzy
 msgctxt "tfrmsongs.btnsettings.caption"
 msgid "Settings..."
 msgstr "設定…"
 
 #: tfrmsongs.btnstartpresentation.caption
-#, fuzzy
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
-msgstr "展示"
+msgstr "展示..."
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr ""
+msgstr "🠕"
 
 #: tfrmsongs.buttonclosesongtexfile.caption
 msgid "Close File"
@@ -606,24 +620,24 @@ msgstr ""
 
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"
-msgstr ""
+msgstr "歌曲選集 (Cantara)"
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Multi-Screen-Mode (suitable for multiple screens)"
-msgstr ""
+msgstr "多熒幕模式（多熒幕或視訊會議）"
 
 #: tfrmsongs.edtsearch.hint
-msgid "Suchen..."
+msgid "Search..."
 msgstr ""
 
 #: tfrmsongs.itemabout.caption
 msgid "Information about the Program"
-msgstr ""
+msgstr "關於本程式"
 
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: tfrmsongs.itemexportpictures.caption
 msgid "Images..."
@@ -647,15 +661,15 @@ msgstr ""
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
-msgstr ""
+msgstr "在編輯器中開啟…"
 
 #: tfrmsongs.itempresentation.caption
 msgid "Run Presentation"
-msgstr ""
+msgstr "開始投影片放映"
 
 #: tfrmsongs.itemreloadsonglist.caption
 msgid "Reload Song Repository"
-msgstr ""
+msgstr "重新加載曲庫"
 
 #: tfrmsongs.itemsaveselection.caption
 msgid "Save Song Selection..."
@@ -666,30 +680,29 @@ msgid "Save Song Selection As..."
 msgstr ""
 
 #: tfrmsongs.itemsettings.caption
-#, fuzzy
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."
 msgstr "設定…"
 
 #: tfrmsongs.itemshowwelcomeassistent.caption
 msgid "Show Welcome Assistent..."
-msgstr ""
+msgstr "開啟歡迎助手…"
 
 #: tfrmsongs.itemsongeditor.caption
 msgid "Song Lyrics..."
-msgstr ""
+msgstr "歌詞…"
 
 #: tfrmsongs.lblfoilnumber.caption
-msgid "Foliennummern"
+msgid "Slide Numbers"
 msgstr ""
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Presentation is running:"
-msgstr ""
+msgstr "投影展示正在運行："
 
 #: tfrmsongs.menuedit.caption
 msgid "Edit"
-msgstr ""
+msgstr "編輯"
 
 #: tfrmsongs.menuexport.caption
 msgctxt "tfrmsongs.menuexport.caption"
@@ -699,15 +712,15 @@ msgstr ""
 #: tfrmsongs.menufile.caption
 msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
-msgstr ""
+msgstr "幫助"
 
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"
-msgstr ""
+msgstr "打開歌曲列表"
 
 #: tfrmsongs.panelsongtexstatus.caption
 msgid "PanelSongTeXStatus"
@@ -715,15 +728,15 @@ msgstr ""
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
-msgstr ""
+msgstr "儲存歌曲列表"
 
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr ""
+msgstr "添加「奇異恩典」作為示例"
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr ""
+msgstr "返回…"
 
 #: tfrmwelcome.btnnext.caption
 msgid "Continue..."
@@ -731,29 +744,31 @@ msgstr ""
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr ""
+msgstr "開啟 GitHub 存儲庫"
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr ""
+msgstr "在瀏覽器中打開文檔…"
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr ""
+msgstr "選擇曲庫目錄…"
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr ""
+msgstr "Cantara 設置"
 
 #: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
+"Cantara 是一個免費的開源歌曲展示軟體。\n"
+"所有歌曲文檔應當置於曲庫目錄。請選擇 Cantara 的曲庫資料夾目錄。若您尚未蒐集任何歌曲，您可以首先創建或選擇一個空資料夾。"
 
 #: tfrmwelcome.labelwelcomeheadline.caption
 msgid "Welcome to Cantara!"
-msgstr ""
+msgstr "歡迎來到 Cantara ！"
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
@@ -765,14 +780,21 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
+"您可能想要在設置對話框中更改展示的樣式。此外，您可以通過編輯器添加、修改、克隆以及轉換歌曲文檔。兩者都可在主視窗的編輯菜單中找到。\n"
+"Cantara 支援兩種歌曲格式：CCLI與歌曲（song）格式。 從互聯網上下載或導入歌曲會因此簡化。請注意根據您的位置或者特定歌曲，可能應用不同的公開展示版權許可。僅有本軟體的用戶對展示歌曲負有法律責任。\n"
+"關於本程式的更多信息，請參閱線上文檔 https://www.cantara.app.\n"
+"\n"
+"本應用程式經GPL3許可下發布。 \n"
+"本應用程式的源碼可以在 GitHub 資源庫找到，項目頁面中可以找到本程式的說明文檔。若您喜歡本應用程式，請考慮在 GitHub 上給我們一顆星！我們也歡迎反饋、報告以及推送問題\n"
+"上帝保佑您使用這個程式！"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr ""
+msgstr "「奇異恩典」已被添加至您的曲庫。您現在可以繼續。"
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr ""
+msgstr "恭喜！您可以現在使用 Cantara！"
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"

@@ -1,7 +1,7 @@
 object frmSongs: TfrmSongs
-  Left = 115
+  Left = 331
   Height = 700
-  Top = 143
+  Top = 187
   Width = 1200
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
@@ -20,7 +20,6 @@ object frmSongs: TfrmSongs
   OnShow = FormShow
   OnWindowStateChange = FormResize
   Position = poScreenCenter
-  LCLVersion = '2.2.6.0'
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
@@ -56,7 +55,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Side = asrBottom
     Left = 0
     Height = 36
-    Hint = 'Suchen...'
+    Hint = 'Search...'
     Top = 0
     Width = 416
     Alignment = taCenter
@@ -194,7 +193,7 @@ object frmSongs: TfrmSongs
       Width = 350
       Align = alTop
       BorderSpacing.Left = 3
-      Caption = 'Foliennummern'
+      Caption = 'Slide Numbers'
       ParentColor = False
     end
   end

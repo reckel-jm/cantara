@@ -1,7 +1,7 @@
 object FormImageExport: TFormImageExport
-  Left = 471
+  Left = 559
   Height = 523
-  Top = 156
+  Top = 332
   Width = 897
   Caption = 'Image Exporter'
   ClientHeight = 523
@@ -23,8 +23,8 @@ object FormImageExport: TFormImageExport
     Width = 408
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Settings'
-    ClientHeight = 489
-    ClientWidth = 404
+    ClientHeight = 490
+    ClientWidth = 392
     TabOrder = 0
     OnClick = GroupSettingsClick
     object LabelFolder: TLabel
@@ -46,7 +46,7 @@ object FormImageExport: TFormImageExport
       Left = 58
       Height = 36
       Top = 0
-      Width = 267
+      Width = 253
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 5
       Enabled = False
@@ -60,10 +60,10 @@ object FormImageExport: TFormImageExport
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = EditFolder
       AnchorSideBottom.Side = asrBottom
-      Left = 325
+      Left = 311
       Height = 36
       Top = 0
-      Width = 79
+      Width = 81
       Anchors = [akTop, akRight, akBottom]
       AutoSize = True
       Caption = 'Choose...'
@@ -76,7 +76,7 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Control = EditFolder
       AnchorSideTop.Side = asrBottom
       Left = 60
-      Height = 36
+      Height = 42
       Top = 51
       Width = 82
       BorderSpacing.Left = 10
@@ -91,7 +91,7 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Side = asrCenter
       Left = 0
       Height = 22
-      Top = 58
+      Top = 61
       Width = 50
       Caption = 'Width: '
       ParentColor = False
@@ -102,8 +102,8 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Control = EditWidth
       AnchorSideTop.Side = asrBottom
       Left = 62
-      Height = 36
-      Top = 102
+      Height = 42
+      Top = 108
       Width = 80
       BorderSpacing.Left = 10
       BorderSpacing.Top = 15
@@ -117,16 +117,16 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Side = asrCenter
       Left = 0
       Height = 22
-      Top = 109
+      Top = 118
       Width = 52
       Caption = 'Height:'
       ParentColor = False
     end
     object CheckBoxSync: TCheckBox
       Left = 160
-      Height = 26
+      Height = 28
       Top = 80
-      Width = 61
+      Width = 63
       Caption = 'Sync'
       Checked = True
       State = cbChecked
@@ -138,7 +138,7 @@ object FormImageExport: TFormImageExport
       AnchorSideBottom.Side = asrBottom
       Left = 0
       Height = 40
-      Top = 449
+      Top = 450
       Width = 144
       Anchors = [akLeft, akBottom]
       Caption = 'Export All'
@@ -154,9 +154,9 @@ object FormImageExport: TFormImageExport
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = GroupSettings
       AnchorSideBottom.Side = asrBottom
-      Left = 258
+      Left = 246
       Height = 40
-      Top = 449
+      Top = 450
       Width = 146
       Anchors = [akRight, akBottom]
       Caption = 'Export Current'
@@ -172,7 +172,7 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Side = asrBottom
       Left = 142
       Height = 40
-      Top = 153
+      Top = 165
       Width = 157
       BorderSpacing.Top = 15
       Caption = 'Reload Preview...'
@@ -188,8 +188,8 @@ object FormImageExport: TFormImageExport
       AnchorSideRight.Side = asrBottom
       Left = 0
       Height = 20
-      Top = 208
-      Width = 404
+      Top = 220
+      Width = 392
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 15
       Enabled = False

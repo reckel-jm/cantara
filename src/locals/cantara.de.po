@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
@@ -34,7 +34,7 @@ msgstr "Liedtitel"
 
 #: imageexport.strfoldernotvalid
 msgid "Please select a folder in which you want to save the pictures."
-msgstr ""
+msgstr "Bitte wählen Sie einen Ordner aus, indem Sie die Bilder speichern möchten."
 
 #: info.strauthor
 msgid "Author"
@@ -167,32 +167,39 @@ msgstr "Die Datei, welche Sie öffnen möchten, existiert nicht."
 msgid "Slide"
 msgstr "Folie"
 
+#: songselection.strhint
+msgid "Hint"
+msgstr ""
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
-msgstr ""
+msgstr "Auswählen..."
 
 #: tformimageexport.buttonexportall.caption
 msgid "Export All"
-msgstr ""
+msgstr "Alles exportieren"
 
 #: tformimageexport.buttonexportall1.caption
 msgid "Export Current"
-msgstr ""
+msgstr "Das Ausgewählte exportieren"
 
 #: tformimageexport.buttonreloadpreview.caption
 msgid "Reload Preview..."
-msgstr ""
+msgstr "Vorschau neu laden..."
 
 #: tformimageexport.caption
 msgid "Image Exporter"
-msgstr ""
+msgstr "Bildexport"
 
 #: tformimageexport.checkboxsync.caption
 msgid "Sync"
-msgstr ""
+msgstr "Synchronisieren"
 
 #: tformimageexport.groupsettings.caption
-#, fuzzy
 msgctxt "tformimageexport.groupsettings.caption"
 msgid "Settings"
 msgstr "Einstellungen"
@@ -200,27 +207,27 @@ msgstr "Einstellungen"
 #: tformimageexport.itemexport.caption
 msgctxt "tformimageexport.itemexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "Exportieren"
 
 #: tformimageexport.itemremove.caption
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 #: tformimageexport.labelfolder.caption
 msgid "Folder: "
-msgstr ""
+msgstr "Ordner: "
 
 #: tformimageexport.labelheight.caption
 msgid "Height:"
-msgstr ""
+msgstr "Höhe:"
 
 #: tformimageexport.labelwidth.caption
 msgid "Width: "
-msgstr ""
+msgstr "Breite: "
 
 #: tformpadding.caption
 msgid "Additional Settings"
-msgstr ""
+msgstr "Zusätzliche Einstellungen"
 
 #: tframesettingsdetailed.groupboxpadding.caption
 msgid "Padding"
@@ -232,7 +239,7 @@ msgstr "Unten: "
 
 #: tframesettingsdetailed.labelleft.caption
 msgid "Left:"
-msgstr "Links: "
+msgstr "Links:"
 
 #: tframesettingsdetailed.labelright.caption
 msgid "Right: "
@@ -240,11 +247,9 @@ msgstr "Rechts: "
 
 #: tframesettingsdetailed.labeltop.caption
 msgid "Top: "
-msgstr "Oben"
+msgstr "Oben:"
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
-#, fuzzy
-#| msgid "Archivate"
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
 msgid "Archive"
 msgstr "Archivieren"
@@ -507,8 +512,8 @@ msgid "Alignment: "
 msgstr "Ausrichtung: "
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparency/Brightness:"
-msgstr "Transparenz/Helligkeit des Bilds ändern:"
+msgid "Change Image Transparency:"
+msgstr "Transparenz des Bilds ändern:"
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
@@ -527,8 +532,8 @@ msgid "Automatic wrap after how many lines (0 = off):"
 msgstr "Automatischer Seitenumbruch nach wie vielen Zeilen (0 = aus)"
 
 #: tfrmsettings.sbimagebrightness.hint
-msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
-msgstr "Ein Wert kleiner als 0% erhöht die Transparenz des Hintergrundbilds, sodass die Hintergrundfarbe durchscheint. Ein Wert größer als 0% erhöht die Helligkeit des Hintergrunds."
+msgid "The transparency of the background picture towards the background color"
+msgstr "Die Transparenz des Hintergrundbilds im Bezug auf die Hintergrundfarbe"
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
@@ -548,8 +553,6 @@ msgid "File"
 msgstr "Datei"
 
 #: tfrmsongedit.menuitemarchivate.caption
-#, fuzzy
-#| msgid "Archivate"
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
 msgid "Archive"
 msgstr "Archivieren"
@@ -575,11 +578,11 @@ msgstr "Speichern"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: tfrmsongs.btnclear.caption
 msgid "🗑"
-msgstr ""
+msgstr "🗑"
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
@@ -587,23 +590,23 @@ msgstr ""
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
-msgstr ""
+msgstr "🠗"
 
 #: tfrmsongs.btngoleft.caption
 msgid "←"
-msgstr ""
+msgstr "←"
 
 #: tfrmsongs.btngoright.caption
 msgid "→"
-msgstr ""
+msgstr "→"
 
 #: tfrmsongs.btnquitpresentation.caption
 msgid "×"
-msgstr ""
+msgstr "×"
 
 #: tfrmsongs.btnremove.caption
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tfrmsongs.btnsettings.caption
 msgctxt "tfrmsongs.btnsettings.caption"
@@ -617,11 +620,11 @@ msgstr "Präsentation..."
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr ""
+msgstr "🠕"
 
 #: tfrmsongs.buttonclosesongtexfile.caption
 msgid "Close File"
-msgstr ""
+msgstr "Datei schließen"
 
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"
@@ -632,8 +635,8 @@ msgid "Multi-Screen-Mode (suitable for multiple screens)"
 msgstr "Zwei-Bildschirm-Modus (für Beamer etc. geeignet)"
 
 #: tfrmsongs.edtsearch.hint
-msgid "Suchen..."
-msgstr ""
+msgid "Search..."
+msgstr "Suchen..."
 
 #: tfrmsongs.itemabout.caption
 msgid "Information about the Program"
@@ -646,23 +649,23 @@ msgstr "Schließen"
 
 #: tfrmsongs.itemexportpictures.caption
 msgid "Images..."
-msgstr ""
+msgstr "Bilder..."
 
 #: tfrmsongs.itemexportpptx.caption
 msgid "Powerpoint Presentation (pptx)"
-msgstr ""
+msgstr "Powerpoint-Präsentation"
 
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
-msgstr ""
+msgstr "Volltextsuche..."
 
 #: tfrmsongs.itemloadselection.caption
 msgid "Load Song Selection..."
-msgstr ""
+msgstr "Lade Liedauswahl..."
 
 #: tfrmsongs.itemmarkupexport.caption
 msgid "Markup Text..."
-msgstr ""
+msgstr "Markup-Text..."
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
@@ -678,11 +681,11 @@ msgstr "Liederverzeichnis erneut laden"
 
 #: tfrmsongs.itemsaveselection.caption
 msgid "Save Song Selection..."
-msgstr ""
+msgstr "Liedauswahl speichern..."
 
 #: tfrmsongs.itemsaveselectionas.caption
 msgid "Save Song Selection As..."
-msgstr ""
+msgstr "Liedauswahl speichern unter..."
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
@@ -698,8 +701,8 @@ msgid "Song Lyrics..."
 msgstr "Liedtexte..."
 
 #: tfrmsongs.lblfoilnumber.caption
-msgid "Foliennummern"
-msgstr ""
+msgid "Slide Numbers"
+msgstr "Foliennummern"
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Presentation is running:"
@@ -712,11 +715,9 @@ msgstr "Bearbeiten"
 #: tfrmsongs.menuexport.caption
 msgctxt "tfrmsongs.menuexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "Exportieren"
 
 #: tfrmsongs.menufile.caption
-#, fuzzy
-#| msgid "File"
 msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
 msgstr "Datei"
@@ -787,18 +788,25 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
+"Sie können das Erscheinungsbild der Präsentation im Einstellungsdialog anpassen. Darüber hinaus können Sie über den Editor Lieddateien hinzufügen, bearbeiten, kopieren und konvertieren. Beides finden Sie im Menü Bearbeiten im Hauptfenster.\n"
+"Cantara unterstützt zwei Songformate: Das CCLI Songselect-Format und das Song-Format. Das macht es einfach, Lieder aus dem Internet herunterzuladen und zu importieren. Bitte beachten Sie, dass je nach Standort und Lied Lizenzbestimmungen für die öffentliche Wiedergabe von Liedtexten gelten können. Für die legale Nutzung dieser Software ist allein der Benutzer verantwortlich.\n"
+"Für weitere Informationen über das Programm konsultieren Sie bitte die Online-Dokumentation auf der Internetseite https://www.cantara.app.\n"
+"\n"
+"Cantara ist freie Software und wird unter der GPL3-Lizenz veröffentlicht. Der Quellcode ist öffentlich auf Github einsehbar. Wenn Ihnen das Projekt gefällt, geben Sie ihm einen Stern auf Github! Feedback, Fehlerberichte und Pull-Requests sind ebenfalls mehr als willkommen.\n"
+"\n"
+"Möge Gott die Software zum gesegneten Gebrauch werden lassen!"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr ""
+msgstr "\"Amazing Grace\" wurde zu Ihrem Liedverzeichnis hinzugefügt. Sie könnnen nun fortfahren."
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr ""
+msgstr "Herzlichen Glückwunsch! Cantara ist nun fertig eingerichtet!"
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"
-msgstr ""
+msgstr "Volltextsuche"
 
 #: welcome.btnnextfinish
 msgid "Finish"

@@ -31,6 +31,7 @@ type
   TSongTeXFile = Class
   public
     NextSongFile: TStringList;
+    SongTeXIsSelection: Boolean;
     constructor Create;
     destructor Destroy;
     procedure AddFile(SongFile: TRepoFile);
@@ -52,6 +53,7 @@ begin
   FileContent.Add('% This file has been created automatically');
   FileContent.Add('% It can be opened with Cantara (https://cantara.app)');
   FileContent.Add('% Manually editing the content may damage the import');
+  SongTeXIsSelection := True;
   ParsingIndex := -1;
   NextSongFile := TStringList.Create;
 end;
@@ -84,6 +86,9 @@ begin
   FileContent.Clear;
   FileContent.LoadFromFile(FileName);
   ParsingIndex := 0;
+  SongTeXIsSelection := not (
+                     (Pos('\noselection', FileContent.Text) > 0)
+                     );
 end;
 
 {

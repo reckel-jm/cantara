@@ -33,10 +33,10 @@ parts:
     - wget
     - libgtk2.0-dev
     override-build: |
-      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.2/lazarus-project_2.2.2-0_amd64.deb
-      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.2/fpc-laz_3.2.2-210709_amd64.deb
-      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.2/fpc-src_3.2.2-210709_amd64.deb
-      apt install ./lazarus-project_2.2.2-0_amd64.deb ./fpc-laz_3.2.2-210709_amd64.deb ./fpc-src_3.2.2-210709_amd64.deb
+      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.6/lazarus-project_2.2.6-0_amd64.deb
+      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.6/fpc-laz_3.2.2-210709_amd64.deb
+      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.6/fpc-src_3.2.2-210709_amd64.deb
+      apt install ./lazarus-project_2.2.6-0_amd64.deb ./fpc-laz_3.2.2-210709_amd64.deb ./fpc-src_3.2.2-210709_amd64.deb
     prime: [-*]
   cantara:
     after: [lazarus]
@@ -54,7 +54,7 @@ parts:
 
     override-build: |
       cd src
-      lazbuild -B --bm="Release" --ws="qt5" Cantara.lpi
+      lazbuild -B --bm="ReleaseConfined" --ws="qt5" Cantara.lpi
       cp -r languages $SNAPCRAFT_PART_INSTALL/
       install Cantara.ico $SNAPCRAFT_PART_INSTALL/
       install cantara $SNAPCRAFT_PART_INSTALL/

@@ -164,7 +164,7 @@ type
     procedure FilterListBox(s: String);
     procedure BringToFront;
     procedure ExportSelectionAsTeXFile(FilePath: String);
-    procedure ImportTeXFileAsSelection(FilePath: String);
+    function ImportSongTeXFileAsSelection(FilePath: String): Boolean;
     { Saves the Selection at the place FilePath
       @param(FilePath: The full File Path where to save the song selection)
     }
@@ -199,7 +199,9 @@ ResourceString
   StrFolie = 'Slide';
   StrFileDoesNotExist = 'The File you would like to open does not exists.';
   StrError = 'Error';
+  StrHint = 'Hint';
   StrActiveSongTeXFile = 'The following file is opened at the moment: ';
+  StrSongTeXFileSongsImported = 'The songs from the file have been imported to your song repository.';
 
 implementation
 
@@ -382,7 +384,8 @@ begin
     FormImageExport.PresentationCanvas.SlideSettings:=frmSettings.ExportSlideSettings();
     FormImageExport.ShowOnTop;
     Application.ProcessMessages;
-    Invalidate;
+    FormImageExport.Invalidate;
+    FormImageExport.Repaint;
     FormImageExport.LoadImages;
   end else
   Application.MessageBox(PChar(StrFehlerKeineLiederBeiPraesentation), PChar(StrError), MB_OK+MB_ICONWARNING);
@@ -391,9 +394,20 @@ end;
 procedure TfrmSongs.itemExportPptxClick(Sender: TObject);
 var PPTXExporter: TPPTXExporter;
     PPTXSlideList: TSlideList;
+    {$IF not defined(CONTAINER)}
+    TempDir: String;
+    {$ENDIF}
 begin
   PPTXExporter := TPPTXExporter.Create;
   PPTXSlideList := TSlideList.Create(True);
+  {$IF defined(CONTAINER)}
+  PPTXExporter.Folder := frmSettings.edtRepoPath.Text + PathDelim + 'exports';
+  if not DirectoryExists(PPTXExporter.Folder) then
+    if not CreateDir(PPTXExporter.Folder) then Exit;
+  {$ELSE}
+  TempDir := GetTempDir(False); // get the users temp dir
+  PPTXEXporter.Folder:=TempDir;
+  {$ENDIF}
   CreateSongListDataAndLoadItIntoSlideList(PPTXSlideList);
   PPTXExporter.AddSlides(PPTXSlideList);
   OpenURL('file://' + PPTXExporter.SaveJavaScriptToFile);
@@ -408,6 +422,9 @@ end;
 procedure TfrmSongs.itemFulltextSearchClick(Sender: TObject);
 begin
   frmWrapperFulltextSearch.ShowModal(self); // We overload this function so that the child know the parent and it's size
+  Application.ProcessMessages;
+  frmWrapperFulltextSearch.Invalidate;
+  frmWrapperFulltextSearch.Repaint;
 end;
 
 procedure TfrmSongs.itemImportTeXFileClick(Sender: TObject);
@@ -439,19 +456,25 @@ begin
 end;
 
 procedure TfrmSongs.LoadSongTeXFile(FilePath: String);
+var SongTexFileIsSelection: Boolean;
 begin
+  SongTexFileIsSelection := True;
   lbxSSelected.Clear;
   If ExtractFileExt(FilePath) = '.songtex' then
-    ImportTeXFileAsSelection(FilePath)
+    SongTexFileIsSelection := ImportSongTeXFileAsSelection(FilePath)
   else if ExtractFileExt(FilePath) = '.csswc' then
   begin
     { This is really depreciated and should not be used anymore... }
     lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
-  end;
-  self.LoadedSongSelectionFilePath := FilePath;
-  PanelSongTeXStatus.Visible:=True;
-  PanelSongTeXStatus.Height:=EdtSearch.Height;
-  PanelSongTeXStatus.Caption := StrActiveSongTeXFile + LoadedSongSelectionFilePath;
+  end else Exit;
+  if SongTexFileIsSelection then
+  begin
+    self.LoadedSongSelectionFilePath := FilePath;
+    PanelSongTeXStatus.Visible:=True;
+    PanelSongTeXStatus.Height:=EdtSearch.Height;
+    PanelSongTeXStatus.Caption := StrActiveSongTeXFile + LoadedSongSelectionFilePath;
+  end
+  else Application.MessageBox(PChar(StrSongTeXFileSongsImported), PChar(StrHint), MB_ICONINFORMATION);
 end;
 
 procedure TfrmSongs.itemMarkupExportClick(Sender: TObject);
@@ -1031,7 +1054,7 @@ begin
   Exit(nil);
 end;
 
-procedure TfrmSongs.ImportTeXFileAsSelection(FilePath: String);
+function TfrmSongs.ImportSongTeXFileAsSelection(FilePath: String): Boolean;
 var SongTexFile: TSongTeXFile;
   NextFileName, RepoPath: String;
   RepoFileStrings: TStringList;
@@ -1053,7 +1076,8 @@ begin
       if RepoFileStrings.Equals(SongTeXFile.NextSongFile) then
       begin
         // Add the entry from local repo
-        lbxSSelected.Items.Add(Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName))));
+        if SongTexFile.SongTeXIsSelection then
+          lbxSSelected.Items.Add(Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName))));
       end else // The song is available but not equal
       begin
         // We save the song under an imported flag and add it
@@ -1062,7 +1086,8 @@ begin
         DateTimeToString(DateTimeStr, 'yyyy-mm-dd', Now);
         SongName := SongName + ' [' + DateTimeStr + ']';
         SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + SongName + SongExtension);
-        lbxSSelected.Items.Add(SongName);
+        if SongTexFile.SongTeXIsSelection then
+           lbxSSelected.Items.Add(SongName);
         ItemReloadSongListClick(nil);
       end;
       FreeAndNil(RepoFileStrings);
@@ -1070,12 +1095,14 @@ begin
     begin
       SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + NextFileName);
       SongName := Copy(NextFileName, 1, Length(NextFileName)-Length(ExtractFileExt(NextFileName)));
-      lbxSSelected.Items.Add(SongName);
+      if SongTexFile.SongTeXIsSelection then
+        lbxSSelected.Items.Add(SongName);
       ItemReloadSongListClick(nil);
     end;
     NextFileName := SongTexFile.HasNextSongfile;
   end;
-  FreeAndNil(SongTeXFile);
+  Result := SongTexFile.SongTeXIsSelection;
+  SongTexFile.Destroy;
 end;
 
 end.

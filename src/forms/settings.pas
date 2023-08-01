@@ -318,7 +318,7 @@ begin
   cbShowBackgroundImage.Checked := settingsFile.ReadBool('Config', 'BackgroundPicture', false);
   cbShowBackgroundImageChange(frmSettings);
   BgPictureDialog.FileName := settingsFile.ReadString('Config', 'BackgroundPicture-Path', '');
-  sbImageBrightness.Position:=settingsFile.ReadInteger('Config', 'ImageBrightness', 0);
+  sbImageBrightness.Position:=Abs(settingsFile.ReadInteger('Config', 'ImageBrightness', 0));
   seWrapLines.Value:=settingsFile.ReadInteger('Config', 'AutoWrap', 8);
   comboHorizontal.ItemIndex := settingsFile.ReadInteger('Config', 'AlignHorizontal', Ord(Align_Center)); // default is centering
   comboVertical.ItemIndex := settingsFile.ReadInteger('Config', 'AlignVertical', Ord(tlCenter)); // default is in the middle
@@ -339,13 +339,10 @@ end;
 
 procedure TfrmSettings.sbImageBrightnessChange(Sender: TObject);
 begin
-  if sbImageBrightness.Position < 0 then
+  if sbImageBrightness.Position > 0 then
      lblImageExplainer.Caption:=strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position))+'%'
   else if sbImageBrightness.Position = 0 then
-     lblImageExplainer.Caption := strPictureOriginalState
-  else
-     lblImageExplainer.Caption:=strBrightness + ' ' + IntToStr(sbImageBrightness.Position) + '%';
-  changedBackground := True;
+     lblImageExplainer.Caption := strPictureOriginalState;
 end;
 
 procedure TfrmSettings.seWrapLinesChange(Sender: TObject);
@@ -458,7 +455,7 @@ begin
   PresentationStyleSettings.ShowBackgroundImage:=cbShowBackgroundImage.Checked;
   PresentationStyleSettings.TextColor:=textColorDialog.Color;
   PresentationStyleSettings.BackgroundImageFilePath:=BgPictureDialog.FileName;
-  PresentationStyleSettings.Transparency:=sbImageBrightness.Position;
+  PresentationStyleSettings.Transparency:=-Abs(sbImageBrightness.Position);
   PresentationStyleSettings.VerticalAlign:=TTextLayout(comboVertical.ItemIndex);
   PresentationStyleSettings.HorizontalAlign:=THorizontalAlignEnum(comboHorizontal.ItemIndex);
   PresentationStyleSettings.Padding:=FormPadding.frmSettingsDetailed.ExportPadding;

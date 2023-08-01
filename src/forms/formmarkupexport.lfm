@@ -10,6 +10,7 @@ object FrmMarkupExport: TFrmMarkupExport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
+  LCLVersion = '2.2.6.0'
   object TemplateBox: TGroupBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -52,10 +53,10 @@ object FrmMarkupExport: TFrmMarkupExport
       AnchorSideBottom.Control = TemplateBox
       AnchorSideBottom.Side = asrBottom
       Left = 0
-      Height = 481
+      Height = 341
       Top = 140
       Width = 407
-      Anchors = [akTop, akLeft, akRight]
+      Anchors = [akTop, akLeft, akRight, akBottom]
       Font.Height = 13
       Font.Name = 'DejaVu Sans Mono'
       Font.Pitch = fpFixed

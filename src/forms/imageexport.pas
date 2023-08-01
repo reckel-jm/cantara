@@ -95,6 +95,7 @@ begin
       ContainerImage.Picture.SaveToFile(EditFolder.Text + PathDelim + ListItem.Caption + '.png', '.png');
       Inc(i);
       ProgressBar.Position:=Round((i+1)/ImageListView.Items.Count*100);
+      Application.ProcessMessages;
       FormImageExport.Invalidate;
     end;
     ContainerImage.Destroy;
@@ -215,6 +216,7 @@ begin
     LI.Caption := 'Image ' + FormatFloat('000', (i+1));
     LI.ImageIndex:=i;
     ProgressBar.Position:=Round((i+1)/SlideList.Count*100);
+    Application.ProcessMessages;
     FormImageExport.Invalidate;
   end;
 end;

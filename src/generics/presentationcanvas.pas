@@ -224,7 +224,7 @@ begin
       SpoilerText := SplitString(SpoilerText, LineEnding)[0] + MoreLyricsIndicator;
       // Now we calculate the height again
       SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right, SpoilerText);
-      SpoilerDistance := (Height-(PresentationStyleSettings.Padding.Top+PresentationStyleSettings.Padding.Bottom+MainTextHeight+SpoilerTextHeight-MetaTextHeight)) div 2;
+      SpoilerDistance := (Height-(PresentationStyleSettings.Padding.Top+PresentationStyleSettings.Padding.Bottom+MainTextHeight+2*SpoilerTextHeight-MetaTextHeight)) div 2;
       if SpoilerDistance < MINSPOILERDISTANCE then
       begin
         SpoilerText := '';

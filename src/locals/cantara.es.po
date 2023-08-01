@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
@@ -164,6 +164,14 @@ msgstr "El archivo que desea abrir no existe."
 #: songselection.strfolie
 msgid "Slide"
 msgstr "Diapositiva"
+
+#: songselection.strhint
+msgid "Hint"
+msgstr ""
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr ""
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
@@ -502,8 +510,8 @@ msgid "Alignment: "
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparency/Brightness:"
-msgstr "Cambiar la transparencia/brillo de la imagen:"
+msgid "Change Image Transparency:"
+msgstr "Cambiar la transparencia de la imagen:"
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
@@ -522,8 +530,8 @@ msgid "Automatic wrap after how many lines (0 = off):"
 msgstr "Ajuste automático después de cuántas líneas (0 = desactivado):"
 
 #: tfrmsettings.sbimagebrightness.hint
-msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
-msgstr "Un valor inferior a 0% hará que la imagen sea transparente y el color de fondo brille a través de ella, un valor > 0% aumentará el brillo de la imagen."
+msgid "The transparency of the background picture towards the background color"
+msgstr "La transparencia de la imagen de fondo hacia el color de fondo"
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
@@ -543,8 +551,6 @@ msgid "File"
 msgstr "Archivo"
 
 #: tfrmsongedit.menuitemarchivate.caption
-#, fuzzy
-#| msgid "Archivate"
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
 msgid "Archive"
 msgstr "Archivar"
@@ -615,7 +621,7 @@ msgstr "🠕"
 
 #: tfrmsongs.buttonclosesongtexfile.caption
 msgid "Close File"
-msgstr ""
+msgstr "Cerrar archivo"
 
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"
@@ -626,7 +632,7 @@ msgid "Multi-Screen-Mode (suitable for multiple screens)"
 msgstr "Modo multipantalla (apto para varias pantallas)"
 
 #: tfrmsongs.edtsearch.hint
-msgid "Suchen..."
+msgid "Search..."
 msgstr "Buscar..."
 
 #: tfrmsongs.itemabout.caption
@@ -692,7 +698,9 @@ msgid "Song Lyrics..."
 msgstr "Letras de canciones..."
 
 #: tfrmsongs.lblfoilnumber.caption
-msgid "Foliennummern"
+#, fuzzy
+#| msgid "Foliennummern"
+msgid "Slide Numbers"
 msgstr "Números de diapositivas"
 
 #: tfrmsongs.lblpresentation.caption
@@ -709,8 +717,6 @@ msgid "Export"
 msgstr ""
 
 #: tfrmsongs.menufile.caption
-#, fuzzy
-#| msgid "File"
 msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
 msgstr "Archivo"

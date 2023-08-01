@@ -38,7 +38,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="5"/>
+      <BuildNr Value="6"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.5"/>
@@ -46,7 +46,7 @@
     <MacroValues Count="1">
       <Macro3 Name="LCLWidgetType" Value="qt5"/>
     </MacroValues>
-    <BuildModes Count="6">
+    <BuildModes Count="7">
       <Item1 Name="Release" Default="True"/>
       <Item2 Name="Linux WPO Pass1">
         <CompilerOptions>
@@ -274,8 +274,50 @@
               </Win32>
             </Options>
           </Linking>
+          <Other>
+            <CustomOptions Value="-dQT_NATIVE_DIALOGS"/>
+          </Other>
         </CompilerOptions>
       </Item6>
+      <Item7 Name="ReleaseConfined">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="cantara"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <RelocatableUnit Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <DebugInfoType Value="dsDwarf3"/>
+              <StripSymbols Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-FcUTF8
+-dCONTAINER"/>
+          </Other>
+        </CompilerOptions>
+      </Item7>
       <SharedMatrixOptions Count="2">
         <Item1 ID="861867067291" Type="IDEMacro" MacroName="fpGUIPlatform" Value="wayland"/>
         <Item2 ID="839485512827" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>

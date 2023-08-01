@@ -154,6 +154,14 @@ msgstr ""
 msgid "Slide"
 msgstr ""
 
+#: songselection.strhint
+msgid "Hint"
+msgstr ""
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
 msgstr ""
@@ -475,7 +483,7 @@ msgid "Alignment: "
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparency/Brightness:"
+msgid "Change Image Transparency:"
 msgstr ""
 
 #: tfrmsettings.lblimageexplainer.caption
@@ -495,7 +503,7 @@ msgid "Automatic wrap after how many lines (0 = off):"
 msgstr ""
 
 #: tfrmsettings.sbimagebrightness.hint
-msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgid "The transparency of the background picture towards the background color"
 msgstr ""
 
 #: tfrmsettings.selectdirectorydialog.title
@@ -597,7 +605,7 @@ msgid "Multi-Screen-Mode (suitable for multiple screens)"
 msgstr ""
 
 #: tfrmsongs.edtsearch.hint
-msgid "Suchen..."
+msgid "Search..."
 msgstr ""
 
 #: tfrmsongs.itemabout.caption
@@ -663,7 +671,7 @@ msgid "Song Lyrics..."
 msgstr ""
 
 #: tfrmsongs.lblfoilnumber.caption
-msgid "Foliennummern"
+msgid "Slide Numbers"
 msgstr ""
 
 #: tfrmsongs.lblpresentation.caption

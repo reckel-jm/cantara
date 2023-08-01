@@ -167,6 +167,14 @@ msgstr "Il file che desideri aprire non esiste."
 msgid "Slide"
 msgstr "Diapositiva"
 
+#: songselection.strhint
+msgid "Hint"
+msgstr ""
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
 msgstr ""
@@ -502,7 +510,9 @@ msgid "Alignment: "
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparency/Brightness:"
+#, fuzzy
+#| msgid "Change Image Transparency/Brightness:"
+msgid "Change Image Transparency:"
 msgstr "Cambia trasparenza/luminosità dell'immagine:"
 
 #: tfrmsettings.lblimageexplainer.caption
@@ -522,7 +532,9 @@ msgid "Automatic wrap after how many lines (0 = off):"
 msgstr "A capo automatico dopo quante righe (0 = disattivato):"
 
 #: tfrmsettings.sbimagebrightness.hint
-msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+#, fuzzy
+#| msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgid "The transparency of the background picture towards the background color"
 msgstr "Un valore inferiore a 0% renderà l'immagine trasparente e risplenderà il colore dello sfondo, un valore > 0% aumenterà la luminosità dell'immagine."
 
 #: tfrmsettings.selectdirectorydialog.title
@@ -626,7 +638,9 @@ msgid "Multi-Screen-Mode (suitable for multiple screens)"
 msgstr "Modalità multischermo (adatta per più schermi)"
 
 #: tfrmsongs.edtsearch.hint
-msgid "Suchen..."
+#, fuzzy
+#| msgid "Suchen..."
+msgid "Search..."
 msgstr "Cerca..."
 
 #: tfrmsongs.itemabout.caption
@@ -692,7 +706,9 @@ msgid "Song Lyrics..."
 msgstr "Testi brani..."
 
 #: tfrmsongs.lblfoilnumber.caption
-msgid "Foliennummern"
+#, fuzzy
+#| msgid "Foliennummern"
+msgid "Slide Numbers"
 msgstr "numero diapositiva "
 
 #: tfrmsongs.lblpresentation.caption

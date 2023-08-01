@@ -166,6 +166,14 @@ msgstr "Het te openen bestand bestaat niet."
 msgid "Slide"
 msgstr "Pauze"
 
+#: songselection.strhint
+msgid "Hint"
+msgstr ""
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
 msgstr ""
@@ -503,7 +511,9 @@ msgid "Alignment: "
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparency/Brightness:"
+#, fuzzy
+#| msgid "Change Image Transparency/Brightness:"
+msgid "Change Image Transparency:"
 msgstr "Achtergrondhelderheid/-doorzichtigheid wijzigen:"
 
 #: tfrmsettings.lblimageexplainer.caption
@@ -523,7 +533,9 @@ msgid "Automatic wrap after how many lines (0 = off):"
 msgstr "Automatisch afbreken na x-aantal regels (0 = uit):"
 
 #: tfrmsettings.sbimagebrightness.hint
-msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+#, fuzzy
+#| msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgid "The transparency of the background picture towards the background color"
 msgstr "Een waarde lager dan 0% maakt de afbeelding doorzichtig en de achtergrondkleur doorschijnend - hoger dan 0% verhoogt de helderheid."
 
 #: tfrmsettings.selectdirectorydialog.title
@@ -627,7 +639,9 @@ msgid "Multi-Screen-Mode (suitable for multiple screens)"
 msgstr "Meerschermmodus (voor meerdere beeldschermen)"
 
 #: tfrmsongs.edtsearch.hint
-msgid "Suchen..."
+#, fuzzy
+#| msgid "Suchen..."
+msgid "Search..."
 msgstr "Zoeken…"
 
 #: tfrmsongs.itemabout.caption
@@ -693,7 +707,9 @@ msgid "Song Lyrics..."
 msgstr "Songtekst…"
 
 #: tfrmsongs.lblfoilnumber.caption
-msgid "Foliennummern"
+#, fuzzy
+#| msgid "Foliennummern"
+msgid "Slide Numbers"
 msgstr "Volgnummer"
 
 #: tfrmsongs.lblpresentation.caption

@@ -12,12 +12,12 @@ type
     public
       InputSongs: TSongList;
       SlideSettings: TSlideSettings;
+      Folder: String;
       constructor Create; overload;
       destructor Destroy; override;
       function SaveJavaScriptToFile: String;
       procedure AddSlides(ASlideList: TSlideList);
     private
-      TempDir: String;
       pptxgenjs, template, exportedJs, content: TStringList;
       lastSongName: String;
       procedure AddSlide(Slide: TSlide);
@@ -34,7 +34,6 @@ end;
 constructor TPPTXExporter.Create;
 begin
   inherited;
-  TempDir := GetTempDir(False); // get the users temp dir
   // Load the Ressource Files here
   pptxgenjs := LoadResourceFileIntoStringList('PPTXGEN.BUNDLE');
   template := LoadResourceFileIntoStringList('PPTXEXPORT_TEMPLATE');
@@ -75,9 +74,9 @@ end;
 function TPPTXExporter.SaveJavaScriptToFile: String;
 var ExportedFilePath: String;
 begin
-  pptxgenjs.SaveToFile(TempDir + 'pptxgen.bundle.js');
+  pptxgenjs.SaveToFile(Folder + PathDelim + 'pptxgen.bundle.js');
   exportedJs.Text := StringReplace(template.Text, '{{SLIDECONTENT}}', content.Text, [rfReplaceAll]);
-  ExportedFilePath := TempDir + 'pptx-export.html';
+  ExportedFilePath := Folder + PathDelim + 'pptx-export.html';
   exportedJs.SaveToFile(ExportedFilePath);
   Result := ExportedFilePath;
 end;

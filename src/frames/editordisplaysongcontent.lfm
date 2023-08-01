@@ -6,8 +6,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
   ClientHeight = 452
   ClientWidth = 892
   TabOrder = 0
-  DesignLeft = 571
-  DesignTop = 172
+  DesignLeft = 626
+  DesignTop = 266
   object lblSongName: TLabel
     Left = 0
     Height = 22
@@ -90,10 +90,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnArchivate
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 670
+    Left = 678
     Height = 22
     Top = 0
-    Width = 51
+    Width = 49
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Copy'
@@ -105,10 +105,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnSave
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 721
+    Left = 727
     Height = 22
     Top = 0
-    Width = 68
+    Width = 66
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Archive'
@@ -123,10 +123,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 838
+    Left = 840
     Height = 22
     Top = 0
-    Width = 54
+    Width = 52
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Close'
@@ -138,10 +138,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnCopy
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 596
+    Left = 606
     Height = 22
     Top = 0
-    Width = 74
+    Width = 72
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Rename'
@@ -153,10 +153,10 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     AnchorSideRight.Control = btnClose
     AnchorSideBottom.Control = lblSongName
     AnchorSideBottom.Side = asrBottom
-    Left = 789
+    Left = 793
     Height = 22
     Top = 0
-    Width = 49
+    Width = 47
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Save'
@@ -178,7 +178,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Anchors = [akTop, akLeft, akRight, akBottom]
     Color = clWindow
     Font.Color = clBtnText
-    Font.Height = 13
+    Font.Height = 16
     Font.Name = 'DejaVu Sans Mono'
     Font.Pitch = fpFixed
     Font.Quality = fqAntialiased
@@ -186,7 +186,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     ParentFont = False
     TabOrder = 6
     OnKeyPress = memoCodeKeyPress
-    Gutter.Width = 57
+    Gutter.Width = 61
     Gutter.MouseActions = <>
     RightGutter.Width = 0
     RightGutter.MouseActions = <>
@@ -643,7 +643,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
         MouseActions = <>
       end
       object SynGutterLineNumber1: TSynGutterLineNumber
-        Width = 17
+        Width = 21
         MouseActions = <>
         MarkupInfo.Background = clBtnFace
         MarkupInfo.Foreground = clNone
