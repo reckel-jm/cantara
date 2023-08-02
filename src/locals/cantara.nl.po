@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-03-03 13:34+0100\n"
+"PO-Revision-Date: 2023-08-02 21:27+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
@@ -31,11 +31,11 @@ msgstr "De naam kan niet worden gewijzigd. Zorg er voor dat u over de juiste map
 
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
-msgstr ""
+msgstr "Titel van het nummer"
 
 #: imageexport.strfoldernotvalid
 msgid "Please select a folder in which you want to save the pictures."
-msgstr ""
+msgstr "Selecteer een map waarin u de foto's wilt opslaan."
 
 #: info.strauthor
 msgid "Author"
@@ -125,7 +125,7 @@ msgstr "Welkom"
 
 #: songselection.stractivesongtexfile
 msgid "The following file is opened at the moment: "
-msgstr ""
+msgstr "Het volgende bestand is op dit moment geopend: "
 
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
@@ -168,38 +168,37 @@ msgstr "Pauze"
 
 #: songselection.strhint
 msgid "Hint"
-msgstr ""
+msgstr "Tip"
 
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
-msgstr ""
+msgstr "De nummers uit het bestand zijn geïmporteerd naar uw nummerrepository."
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
-msgstr ""
+msgstr "Kiezen..."
 
 #: tformimageexport.buttonexportall.caption
 msgid "Export All"
-msgstr ""
+msgstr "Alles exporteren"
 
 #: tformimageexport.buttonexportall1.caption
 msgid "Export Current"
-msgstr ""
+msgstr "Huidige exporteren"
 
 #: tformimageexport.buttonreloadpreview.caption
 msgid "Reload Preview..."
-msgstr ""
+msgstr "Voorvertoning opnieuw laden..."
 
 #: tformimageexport.caption
 msgid "Image Exporter"
-msgstr ""
+msgstr "Afbeeldingsexporteur"
 
 #: tformimageexport.checkboxsync.caption
 msgid "Sync"
-msgstr ""
+msgstr "Synchroniseren"
 
 #: tformimageexport.groupsettings.caption
-#, fuzzy
 msgctxt "tformimageexport.groupsettings.caption"
 msgid "Settings"
 msgstr "Instellingen"
@@ -207,51 +206,49 @@ msgstr "Instellingen"
 #: tformimageexport.itemexport.caption
 msgctxt "tformimageexport.itemexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "Exporteren"
 
 #: tformimageexport.itemremove.caption
 msgid "Remove"
-msgstr ""
+msgstr "Verwijderen"
 
 #: tformimageexport.labelfolder.caption
 msgid "Folder: "
-msgstr ""
+msgstr "Map: "
 
 #: tformimageexport.labelheight.caption
 msgid "Height:"
-msgstr ""
+msgstr "Hoogte:"
 
 #: tformimageexport.labelwidth.caption
 msgid "Width: "
-msgstr ""
+msgstr "Breedte: "
 
 #: tformpadding.caption
 msgid "Additional Settings"
-msgstr ""
+msgstr "Aanvullende instellingen"
 
 #: tframesettingsdetailed.groupboxpadding.caption
 msgid "Padding"
-msgstr ""
+msgstr "Vulling"
 
 #: tframesettingsdetailed.labalbottom.caption
 msgid "Bottom: "
-msgstr ""
+msgstr "Onderkant: "
 
 #: tframesettingsdetailed.labelleft.caption
 msgid "Left:"
-msgstr ""
+msgstr "Links:"
 
 #: tframesettingsdetailed.labelright.caption
 msgid "Right: "
-msgstr ""
+msgstr "Rechts: "
 
 #: tframesettingsdetailed.labeltop.caption
 msgid "Top: "
-msgstr ""
+msgstr "Bovenkant: "
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
-#, fuzzy
-#| msgid "Archivate"
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
 msgid "Archive"
 msgstr "Archiveren"
@@ -330,15 +327,15 @@ msgstr "Welkom in de bewerker!"
 #: tfrmfulltextsearch.labalcreateindex.caption
 msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
 msgid "Create Index..."
-msgstr ""
+msgstr "Index maken..."
 
 #: tfrmfulltextsearch.labelenterkeyword.caption
 msgid "Enter a search term..."
-msgstr ""
+msgstr "Voer een zoekterm in..."
 
 #: tfrmfulltextsearch.labelentersearchterm.caption
 msgid "Enter search term"
-msgstr ""
+msgstr "Voer een zoekterm in"
 
 #: tfrmfulltextsearch.labelnoitemsfound.caption
 msgid ""
@@ -346,6 +343,9 @@ msgid ""
 "\n"
 "Try changing the search terms."
 msgstr ""
+"Geen items gevonden...\n"
+"\n"
+"Probeer de zoektermen te veranderen."
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
@@ -392,24 +392,24 @@ msgstr "lblVersion"
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
-msgstr ""
+msgstr "Opslaan in bestand..."
 
 #: tfrmmarkupexport.caption
 msgid "Export Songs as Markup"
-msgstr ""
+msgstr "Liedjes exporteren als markup"
 
 #: tfrmmarkupexport.clipboardbutton.caption
 msgctxt "tfrmmarkupexport.clipboardbutton.caption"
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Kopiëren naar klembord"
 
 #: tfrmmarkupexport.result.caption
 msgid "Result"
-msgstr ""
+msgstr "Resultaat"
 
 #: tfrmmarkupexport.templatebox.caption
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 #: tfrmpresent.caption
 msgid "Presentation"
@@ -438,7 +438,7 @@ msgstr "Sluiten"
 
 #: tfrmsettings.btndetails.caption
 msgid "Details..."
-msgstr ""
+msgstr "Details..."
 
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
@@ -476,7 +476,7 @@ msgstr "na laatste pauze"
 
 #: tfrmsettings.cbmetatitleslide.caption
 msgid "at special title slide"
-msgstr ""
+msgstr "op een speciale titelpauze"
 
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
@@ -488,11 +488,11 @@ msgstr "Volgende pauzes overslaan"
 
 #: tfrmsettings.combohorizontal.text
 msgid "Center"
-msgstr ""
+msgstr "Center"
 
 #: tfrmsettings.combovertical.text
 msgid "Middle"
-msgstr ""
+msgstr "Midden"
 
 #: tfrmsettings.fontdialog.title
 msgid "Select font"
@@ -508,13 +508,11 @@ msgstr "Locatie van nummer:"
 
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
-msgstr ""
+msgstr "Uitlijning: "
 
 #: tfrmsettings.lblimagebrightness.caption
-#, fuzzy
-#| msgid "Change Image Transparency/Brightness:"
 msgid "Change Image Transparency:"
-msgstr "Achtergrondhelderheid/-doorzichtigheid wijzigen:"
+msgstr "Achtergronddoorzichtigheid wijzigen:"
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
@@ -533,10 +531,8 @@ msgid "Automatic wrap after how many lines (0 = off):"
 msgstr "Automatisch afbreken na x-aantal regels (0 = uit):"
 
 #: tfrmsettings.sbimagebrightness.hint
-#, fuzzy
-#| msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
 msgid "The transparency of the background picture towards the background color"
-msgstr "Een waarde lager dan 0% maakt de afbeelding doorzichtig en de achtergrondkleur doorschijnend - hoger dan 0% verhoogt de helderheid."
+msgstr "De transparantie van de achtergrondafbeelding ten opzichte van de achtergrondkleur"
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
@@ -556,8 +552,6 @@ msgid "File"
 msgstr "Bestand"
 
 #: tfrmsongedit.menuitemarchivate.caption
-#, fuzzy
-#| msgid "Archivate"
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
 msgid "Archive"
 msgstr "Archiveren"
@@ -628,7 +622,7 @@ msgstr "🠕"
 
 #: tfrmsongs.buttonclosesongtexfile.caption
 msgid "Close File"
-msgstr ""
+msgstr "Sluit bestand"
 
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"
@@ -639,8 +633,6 @@ msgid "Multi-Screen-Mode (suitable for multiple screens)"
 msgstr "Meerschermmodus (voor meerdere beeldschermen)"
 
 #: tfrmsongs.edtsearch.hint
-#, fuzzy
-#| msgid "Suchen..."
 msgid "Search..."
 msgstr "Zoeken…"
 
@@ -655,23 +647,23 @@ msgstr "Sluiten"
 
 #: tfrmsongs.itemexportpictures.caption
 msgid "Images..."
-msgstr ""
+msgstr "Afbeeldingen..."
 
 #: tfrmsongs.itemexportpptx.caption
 msgid "Powerpoint Presentation (pptx)"
-msgstr ""
+msgstr "Powerpoint-presentatie (pptx)"
 
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
-msgstr ""
+msgstr "Volledige tekst zoeken..."
 
 #: tfrmsongs.itemloadselection.caption
 msgid "Load Song Selection..."
-msgstr ""
+msgstr "Songselectie laden..."
 
 #: tfrmsongs.itemmarkupexport.caption
 msgid "Markup Text..."
-msgstr ""
+msgstr "Tekst markeren..."
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
@@ -683,15 +675,15 @@ msgstr "Presentatie houden"
 
 #: tfrmsongs.itemreloadsonglist.caption
 msgid "Reload Song Repository"
-msgstr "Nummermap herladen"
+msgstr "Songmap herladen"
 
 #: tfrmsongs.itemsaveselection.caption
 msgid "Save Song Selection..."
-msgstr ""
+msgstr "Songselectie opslaan..."
 
 #: tfrmsongs.itemsaveselectionas.caption
 msgid "Save Song Selection As..."
-msgstr ""
+msgstr "Songs opslaan als..."
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
@@ -707,8 +699,6 @@ msgid "Song Lyrics..."
 msgstr "Songtekst…"
 
 #: tfrmsongs.lblfoilnumber.caption
-#, fuzzy
-#| msgid "Foliennummern"
 msgid "Slide Numbers"
 msgstr "Volgnummer"
 
@@ -723,11 +713,9 @@ msgstr "Bewerken"
 #: tfrmsongs.menuexport.caption
 msgctxt "tfrmsongs.menuexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "Exporteer"
 
 #: tfrmsongs.menufile.caption
-#, fuzzy
-#| msgid "File"
 msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
 msgstr "Bestand"
@@ -742,7 +730,7 @@ msgstr "Nummerlijst tonen"
 
 #: tfrmsongs.panelsongtexstatus.caption
 msgid "PanelSongTeXStatus"
-msgstr ""
+msgstr "PanelSongTeXStatus"
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
@@ -750,41 +738,43 @@ msgstr "Nummerlijst opslaan"
 
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr ""
+msgstr "‘Amazing Grace’ toevoegen als voorbeeldnummer"
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr ""
+msgstr "Terug…"
 
 #: tfrmwelcome.btnnext.caption
 msgid "Continue..."
-msgstr ""
+msgstr "Volgende…"
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr ""
+msgstr "GitHub-opslagruimte openen…"
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr ""
+msgstr "Lees de documentatie in uw webbrowser…"
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr ""
+msgstr "Kies de nummermap…"
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr ""
+msgstr "Cantara-instelhulp"
 
 #: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
+"Cantara is een gratis en open source nummerpresentatieprogramma.\n"
+"Alle nummers dienen aanwezig te zijn in de gekozen map. Kies nu een map op uw systeem die gebruikt dient te worden als opslag. Als u nog geen muziekverzameling heeft, dan kunt u eerst een nieuwe map aanmaken of een lege map kiezen."
 
 #: tfrmwelcome.labelwelcomeheadline.caption
 msgid "Welcome to Cantara!"
-msgstr ""
+msgstr "Welkom bij Cantara!"
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
@@ -796,18 +786,25 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
+"U kunt, indien gewenst, de vormgeving van de presentatie aanpassen in de instellingen. In de bewerker kunt u nummers toevoegen, bewerken, klonen en converteren.  Dit alles is beschikbaar in het menu ‘Bewerken’ in het hoofdvenster.\n"
+"Cantara ondersteunt twee formaten: CCLI Songselect- en reguliere nummerformaten. Hierdoor is het eenvoudig om nummers van het internet op te halen en importeren. Let op: er kunnen licentiebeperkingen van kracht zijn op nummers en locaties, waardoor openbaar vertonen van songteksten mogelijk niet rechtsgeldig is. Gebruikers zijn zélf verantwoordelijk voor het gebruik van deze software.\n"
+"Meer informatie over het programma is te vinden in de online- documentatie op https://www.cantara.app.\n"
+"\n"
+"Cantara is vrije software, uitgebracht onder de voorwaarden van de GPL3-licentie. De broncode is openbaar te verkrijgen op GitHub. Als u de software graag gebruikt, overweeg dan een ster op GitHub te geven! Feedback, probleemmeldingen en pull requests zijn ook van harte welkom.\n"
+"\n"
+"God zij u en het gebruik van deze software!"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr ""
+msgstr "‘Amazing Grace’ is toegevoegd - u kunt nu doorgaan."
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr ""
+msgstr "Geweldig! Cantara is nu klaar voor gebruik!"
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"
-msgstr ""
+msgstr "Volledige tekst zoeken"
 
 #: welcome.btnnextfinish
 msgid "Finish"
@@ -836,4 +833,3 @@ msgstr "De gekozen map kan in Cantara worden gebruikt."
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Kies een map met nummers voordat u de instelhulp afsluit. Zonder deze map werkt Cantara niet."
-
