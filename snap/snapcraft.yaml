@@ -10,7 +10,9 @@ grade: stable
 
 architectures:
     - build-on: amd64
+      build-for: amd64
     - build-on: arm64
+      build-for: arm64
 
 plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   gtk-3-themes:
@@ -28,7 +30,6 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
 
 parts:
   cantara:
-    after: [lazarus]
     plugin: nil
     source: .
     source-type: local
