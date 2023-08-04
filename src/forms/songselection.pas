@@ -400,6 +400,7 @@ var PPTXExporter: TPPTXExporter;
 begin
   PPTXExporter := TPPTXExporter.Create;
   PPTXSlideList := TSlideList.Create(True);
+  PPTXExporter.PresentationStyleSettings := frmSettings.ExportPresentationStyleSettings;
   {$IF defined(CONTAINER)}
   PPTXExporter.Folder := frmSettings.edtRepoPath.Text + PathDelim + 'exports';
   if not DirectoryExists(PPTXExporter.Folder) then

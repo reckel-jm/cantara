@@ -37,6 +37,8 @@ type
       PresentationStyleSettings: TPresentationStyleSettings;
       Width, Height: Integer;
       Bitmap: TBitmap;
+      AdjustedBackgroundPicture: TPicture;
+      ResizedBackgroundBitmap: TBitmap;
       constructor Create; overload;
       constructor Create(aPresentationStyleSettings: TPresentationStyleSettings; aSlideSettings: TSlideSettings); overload;
       destructor Destroy; override;
@@ -47,8 +49,6 @@ type
       function PaintSlide(Slide: TSlide): TBitmap;
     private
       BackgroundPicture: TPicture;
-      AdjustedBackgroundPicture: TPicture;
-      ResizedBackgroundBitmap: TBitmap;
       function CalculateTextHeight(Font: TFont; RectWidth: Integer; TextString: String): Integer;
   end;
 

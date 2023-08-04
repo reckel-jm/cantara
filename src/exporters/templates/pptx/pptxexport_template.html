@@ -13,13 +13,15 @@
 
     pres.defineSlideMaster({
       title: "SlideWithSpoiler",
+      {{BACKGROUND}}
       objects: [
+        {{BACKGROUNDIMAGE}}
         { placeholder: {
-          options: { name: "maincontent", type: "body", x: 0, y: 0, w: 10, h: 3.5, align: "center", valign: "middle", autoFit: true },
+          options: { name: "maincontent", type: "body", x: 0, y: 0, w: 10, h: 3.5, align: "center", valign: "middle", fontSize: "32", color: "{{TEXTCOLOR}}", autoFit: true },
           text: "",
         } },
         { placeholder: {
-          options: { name: "spoiler", type: "body", x: 0, y: 3.5, w: 10, h: 2.1, align: "center", valign: "middle", fontSize: "18", autoFit: true },
+          options: { name: "spoiler", type: "body", x: 0, y: 3.5, w: 10, h: 2.1, align: "center", valign: "middle", fontSize: "18", color: "{{TEXTCOLOR}}", autoFit: true },
           text: "",
         } },
       ]
@@ -27,9 +29,11 @@
 
     pres.defineSlideMaster({
       title: "SlideWithoutSpoiler",
+      {{BACKGROUND}}
       objects: [
+        {{BACKGROUNDIMAGE}}
         { placeholder: {
-          options: { name: "maincontent", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", autoFit: true },
+          options: { name: "maincontent", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", fontSize: "32", color: "{{TEXTCOLOR}}", autoFit: true },
           text: "",
         } },
       ]
@@ -37,9 +41,11 @@
 
     pres.defineSlideMaster({
       title: "EmptySlide",
+      {{BACKGROUND}}
       objects: [
+        {{BACKGROUNDIMAGE}}
         { placeholder: {
-          options: { name: "emptycontent", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", autoFit: true },
+          options: { name: "emptycontent", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", fontSize: "32", color: "{{TEXTCOLOR}}", autoFit: true },
           text: "",
         } },
       ]
@@ -47,9 +53,11 @@
 
    pres.defineSlideMaster({
       title: "TitleSlide",
+      {{BACKGROUND}}
         objects: [
+        {{BACKGROUNDIMAGE}}
         { placeholder: {
-          options: { name: "title", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", autoFit: true, bold: true },
+          options: { name: "title", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", fontSize: "32", color: "{{TEXTCOLOR}}", autoFit: true, bold: true },
           text: "",
         } },
       ]
