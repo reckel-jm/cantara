@@ -159,6 +159,8 @@ type
     PresentationSlideCounter: Integer;
     { Songlist which conatains the loaded songs }
     LoadedSongList: TSongList;
+    { User agrees to use PPTXGenjs }
+    UserAgreesPptxGenJs: Boolean;
     { Filters the Listbox lbxSRepo after a search pattern. If s is empty, no filter will be applied.
     @param(s: the search pattern) }
     procedure FilterListBox(s: String);
@@ -202,6 +204,7 @@ ResourceString
   StrHint = 'Hint';
   StrActiveSongTeXFile = 'The following file is opened at the moment: ';
   StrSongTeXFileSongsImported = 'The songs from the file have been imported to your song repository.';
+  StrPptxGenjs = 'Cantara is using your local default web browser''s Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won''t show up again next time. If you don''t want to continue, please press Cancel.';
 
 implementation
 
@@ -328,6 +331,7 @@ begin
     begin
       frmWelcome.ShowModal;
     end;
+  self.UserAgreesPptxGenJs:=SettingsFile.ReadBool('Exporter', 'pptxgenjs', False);
   loadRepo(frmSettings.edtRepoPath.Text);
   self.FormResize(frmSongs);
   PanelMultiScreenLeft := Round(frmSongs.Width/2);
@@ -398,22 +402,28 @@ var PPTXExporter: TPPTXExporter;
     TempDir: String;
     {$ENDIF}
 begin
-  PPTXExporter := TPPTXExporter.Create;
-  PPTXSlideList := TSlideList.Create(True);
-  PPTXExporter.PresentationStyleSettings := frmSettings.ExportPresentationStyleSettings;
-  {$IF defined(CONTAINER)}
-  PPTXExporter.Folder := frmSettings.edtRepoPath.Text + PathDelim + 'exports';
-  if not DirectoryExists(PPTXExporter.Folder) then
-    if not CreateDir(PPTXExporter.Folder) then Exit;
-  {$ELSE}
-  TempDir := GetTempDir(False); // get the users temp dir
-  PPTXEXporter.Folder:=TempDir;
-  {$ENDIF}
-  CreateSongListDataAndLoadItIntoSlideList(PPTXSlideList);
-  PPTXExporter.AddSlides(PPTXSlideList);
-  OpenURL('file://' + PPTXExporter.SaveJavaScriptToFile);
-  PPTXSlideList.Destroy;
-  PPTXExporter.Destroy;
+  if lbxSSelected.Count > 0 then
+  begin
+    if (not self.UserAgreesPptxGenJs) and (Application.MessageBox(PChar(StrPptxGenjs), PChar(StrHint), MB_OKCANCEL+MB_ICONINFORMATION) <> 1) then Exit;
+    self.UserAgreesPptxGenJs := True;
+    PPTXExporter := TPPTXExporter.Create;
+    PPTXSlideList := TSlideList.Create(True);
+    PPTXExporter.PresentationStyleSettings := frmSettings.ExportPresentationStyleSettings;
+    {$IF defined(CONTAINER)}
+    PPTXExporter.Folder := frmSettings.edtRepoPath.Text + PathDelim + 'exports';
+    if not DirectoryExists(PPTXExporter.Folder) then
+      if not CreateDir(PPTXExporter.Folder) then Exit;
+    {$ELSE}
+    TempDir := GetTempDir(False); // get the users temp dir
+    PPTXEXporter.Folder:=TempDir;
+    {$ENDIF}
+    CreateSongListDataAndLoadItIntoSlideList(PPTXSlideList);
+    PPTXExporter.AddSlides(PPTXSlideList);
+    OpenURL('file://' + PPTXExporter.SaveJavaScriptToFile);
+    PPTXSlideList.Destroy;
+    PPTXExporter.Destroy;
+  end else
+    Application.MessageBox(PChar(StrFehlerKeineLiederBeiPraesentation), PChar(StrError), MB_OK+MB_ICONWARNING);
 end;
 
 procedure TfrmSongs.itemExportTeXFileClick(Sender: TObject);
@@ -999,6 +1009,7 @@ begin
   // Save WindowStates to File
   settings.settingsFile.WriteBool('Size', 'main-window-maximized',frmSongs.WindowState = TWindowState.wsMaximized);
   settings.settingsfile.WriteInteger('Size', 'panel-mutliscreen-position', PanelMultiScreenLeft);
+  settings.settingsFile.WriteBool('Exporter', 'pptxgenjs', self.UserAgreesPptxGenJs);
   settings.settingsFile.UpdateFile;
   settings.settingsFile.FreeInstance;
 end;

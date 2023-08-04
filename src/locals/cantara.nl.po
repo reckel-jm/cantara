@@ -170,6 +170,10 @@ msgstr "Pauze"
 msgid "Hint"
 msgstr "Tip"
 
+#: songselection.strpptxgenjs
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr ""
+
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
 msgstr "De nummers uit het bestand zijn geïmporteerd naar uw nummerrepository."
@@ -833,3 +837,4 @@ msgstr "De gekozen map kan in Cantara worden gebruikt."
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Kies een map met nummers voordat u de instelhulp afsluit. Zonder deze map werkt Cantara niet."
+
