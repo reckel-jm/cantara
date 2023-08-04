@@ -8,11 +8,7 @@ icon: app.cantara.Cantara.png
 base: core22
 grade: stable
 
-architectures:
-    - build-on: amd64
-      build-for: amd64
-    - build-on: arm64
-      build-for: arm64
+architectures: [amd64, arm64]
 
 plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   gtk-3-themes:
@@ -29,7 +25,21 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
     default-provider: gtk-common-themes:sounds-themes
 
 parts:
+  lazarus:
+    plugin: nil
+    source: .
+    source-type: local
+    build-packages:
+    - wget
+    - libgtk2.0-dev
+    override-build: |
+      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.6/lazarus-project_2.2.6-0_amd64.deb
+      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.6/fpc-laz_3.2.2-210709_amd64.deb
+      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.6/fpc-src_3.2.2-210709_amd64.deb
+      apt install ./lazarus-project_2.2.6-0_amd64.deb ./fpc-laz_3.2.2-210709_amd64.deb ./fpc-src_3.2.2-210709_amd64.deb
+    prime: [-*]
   cantara:
+    after: [lazarus]
     plugin: nil
     source: .
     source-type: local
@@ -37,7 +47,6 @@ parts:
     - build-essential
     - libqt5pas-dev
     - libqt5pas1
-    - lazarus
     stage-packages:
     - libqt5pas1
     - qt5-gtk-platformtheme
