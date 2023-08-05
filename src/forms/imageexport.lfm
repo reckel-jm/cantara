@@ -9,7 +9,6 @@ object FormImageExport: TFormImageExport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
-  LCLVersion = '2.2.6.0'
   WindowState = wsMaximized
   object GroupSettings: TGroupBox
     AnchorSideLeft.Control = Owner
@@ -214,11 +213,7 @@ object FormImageExport: TFormImageExport
     LargeImagesWidth = 600
     PopupMenu = ImageListViewMenu
     ShowColumnHeaders = False
-    SmallImages = ImageList
-    SmallImagesWidth = 200
     SortType = stText
-    StateImages = ImageList
-    StateImagesWidth = 200
     TabOrder = 1
     ViewStyle = vsIcon
   end
