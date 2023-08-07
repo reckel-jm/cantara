@@ -66,6 +66,8 @@ type
 
   { Create Presentation Data from a TSong with appropriate settings }
   function CreatePresentationDataFromSong(Song: TSong; SlideSettings: TSlideSettings; var SlideCounter: Integer): TSlideList;
+  { Splits the song source slides }
+  function SplitSlides(Input: TStringList; MaxSlides: Integer): String;
 
 implementation
   constructor TPartContent.Create;
@@ -109,18 +111,22 @@ implementation
     completefilename: String;
     songname: string;
     stanza: string;
+    slidestring: string;
+    slides: array of String;
+    InputSlides: TStringList;
     CurrentSongSlideList: TSlideList;
     Slide: TSlide;
-    j: Integer;
+    i, j: Integer;
     SecondLanguageText: String;
   begin
     { Create the SlideList which later will be returned }
     CurrentSongSlideList := TSlideList.Create(False);
-
-    Song.MaxSlideLineLength:=SlideSettings.MaxSlideLineLength;
-    Song.slideWrap;
-
-    songfile := song.output;
+    SongFile := TStringList.Create;
+    { Split the slides if desired }
+    if SlideSettings.MaxSlideLineLength > 0 then
+      songfile.Text := SplitSlides(Song.output, SlideSettings.MaxSlideLineLength)
+    else
+      songfile.Assign(song.output);
     //gehe durch Songdatei und füge gleiche Strophen zu einem String zusammen
     stanza := '';
     for j := 0 to songfile.Count-1 do
@@ -212,11 +218,65 @@ implementation
       Slide.SlideType:=TitleSlide;
       CurrentSongSlideList.Insert(0, Slide);
     end;
-
+    { Clean Up }
+    SongFile.Destroy;
     { Return CurrentSongSlideList }
     Result := CurrentSongSlideList;
   end;
 
+function SplitSlides(Input: TStringList; MaxSlides: Integer): String;
+var n1, n2,i: integer;
+  changed: boolean;
+  output: TStringList;
+begin
+  output := TStringList.Create;
+  output.Assign(input);
+  repeat
+  begin
+  changed := False;
+  if MaxSlides <= 0 then exit; // Just as a protective measure, actually not needed anymore.
+  if MaxSlides = 1 then       // it means to have one line per slide, so we take a shortpath
+  begin
+    i := 0;
+    while i < output.count-1 do
+      begin
+        if (output.Strings[i] <> '') and (output.Strings[i] <> '---') then
+          output.Insert(i+1, '');
+        i := i+1;
+      end;
+    Break;
+  end;
+  n1 := 0;
+  n2 := 0;
+  for i := 0 to output.Count-1 do
+  begin
+    if (output.Strings[i] = '') or (output.Strings[i] = '---') then
+    begin
+       n2 := i;
+       if (n2-n1) > MaxSlides then
+         begin
+           if MaxSlides mod 2 = 0 then
+             output.Insert((n1+(n2-n1) div 2), '')
+           else output.Insert((n1+(n2-n1) div 2) + 1, '');
+           changed := True;
+         end;
+       n1 := n2+1;
+    end;
+  end;
+  // For the last slide
+  n2 := output.Count;
+  if (n2-n1) > MaxSlides then
+     begin
+         if MaxSlides mod 2 = 0 then
+           output.Insert((n1+(n2-n1) div 2), '')
+         else output.Insert((n1+(n2-n1) div 2) + 1, '');
+         changed := True;
+     end;
+  end until changed = False;
+  output.Text:=StringReplace(output.Text, LineEnding+LineEnding+LineEnding, LineEnding+LineEnding, [rfReplaceAll]);
+  Result := output.Text;
+  Output.Destroy;
+end;
 
 end.
 

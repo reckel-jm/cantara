@@ -46,7 +46,6 @@ type
       It is public – that means can be called outside – but will call private class functions when needed.
       }
       procedure ConvertCCLIFile;
-      procedure slideWrap;
       function ParseMetaData(MetaLogic: string): string;
       procedure exportAsSongFile(outputfilename: String);
       function IsCCLIFile: Boolean;
@@ -297,55 +296,6 @@ begin
   //self.output.Assign(self.inputFile);
 end;
 
-procedure TSong.slideWrap;
-var n1, n2,i: integer;
-  changed: boolean;
-begin
-  repeat
-  begin
-  changed := False;
-  if self.MaxSlideLineLength <= 0 then exit; // Just as a protective measure, actually not needed anymore.
-  if self.MaxSlideLineLength = 1 then       // it means to have one line per slide, so we take a shortpath
-  begin
-    i := 0;
-    while i < output.count-1 do
-      begin
-        if (output.Strings[i] <> '') and (output.Strings[i] <> '---') then
-          output.Insert(i+1, '');
-        i := i+1;
-      end;
-    Break;
-  end;
-  n1 := 0;
-  n2 := 0;
-  for i := 0 to output.Count-1 do
-  begin
-    if (output.Strings[i] = '') or (output.Strings[i] = '---') then
-    begin
-       n2 := i;
-       if (n2-n1) > self.MaxSlideLineLength then
-         begin
-           if self.MaxSlideLineLength mod 2 = 0 then
-             output.Insert((n1+(n2-n1) div 2), '')
-           else output.Insert((n1+(n2-n1) div 2) + 1, '');
-           changed := True;
-         end;
-       n1 := n2+1;
-    end;
-  end;
-  // For the last slide
-  n2 := output.Count;
-  if (n2-n1) > self.MaxSlideLineLength then
-     begin
-         if self.MaxSlideLineLength mod 2 = 0 then
-           output.Insert((n1+(n2-n1) div 2), '')
-         else output.Insert((n1+(n2-n1) div 2) + 1, '');
-         changed := True;
-     end;
-  end until changed = False;
-  output.Text:=StringReplace(output.Text, LineEnding+LineEnding+LineEnding, LineEnding+LineEnding, [rfReplaceAll]);
-end;
-
 procedure TSong.DecideFileFormatAndContinue;
 var songfileextension: String;
 begin
@@ -354,7 +304,6 @@ begin
     self.importSongFormatFile
   else if self.IsCCLIFile then // CCLI-Songselect file
     self.importCCLISongFile;
-  if self.MaxSlideLineLength>0 then self.slideWrap;
 end;
 
 { This function finds out which format the song has and calls the specific import function }
@@ -378,7 +327,6 @@ begin
   if self.IsCCLIFile then // CCLI-Songselect file
     self.importCCLISongFile
   else self.importSongFormatFile;
-  if self.MaxSlideLineLength>0 then self.slideWrap;
   self.strip;
 end;
 
