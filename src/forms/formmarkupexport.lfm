@@ -10,7 +10,6 @@ object FrmMarkupExport: TFrmMarkupExport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
-  LCLVersion = '2.2.6.0'
   object TemplateBox: TGroupBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner

@@ -698,6 +698,10 @@ begin
   PanelSongTeXStatus.Caption:='';
 
   Self.LoadedSongList := TSongList.Create;
+
+  // load home directory into file/folder dialogs
+  OpenDialog.InitialDir:=GetUserDir;
+  SaveDialog.InitialDir:=GetUserDir;
 end;
 
 procedure TfrmSongs.FormDestroy(Sender: TObject);

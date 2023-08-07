@@ -16,7 +16,7 @@ type
     ButtonReloadPreview: TButton;
     ButtonExportAll: TButton;
     ButtonChoose: TButton;
-    ButtonExportAll1: TButton;
+    ButtonExportCurrent: TButton;
     CheckBoxSync: TCheckBox;
     EditFolder: TEdit;
     EditHeight: TSpinEdit;
@@ -34,7 +34,7 @@ type
     ProgressBar: TProgressBar;
     SaveDialog: TSaveDialog;
     Splitter: TSplitter;
-    procedure ButtonExportAll1Click(Sender: TObject);
+    procedure ButtonExportCurrentClick(Sender: TObject);
     procedure ButtonExportAllClick(Sender: TObject);
     procedure ButtonReloadPreviewClick(Sender: TObject);
     procedure ButtonChooseClick(Sender: TObject);
@@ -106,9 +106,9 @@ begin
   end;
 end;
 
-procedure TFormImageExport.ButtonExportAll1Click(Sender: TObject);
+procedure TFormImageExport.ButtonExportCurrentClick(Sender: TObject);
 begin
-  ItemExportClick(ButtonExportAll1);
+  ItemExportClick(ButtonExportCurrent);
 end;
 
 procedure TFormImageExport.EditHeightChange(Sender: TObject);
@@ -141,6 +141,10 @@ begin
   ReadjustScale;
   SlideList := TSlideList.Create();
   PresentationCanvas := TPresentationCanvasHandler.Create();
+
+  // load home directory into file/folder dialogs
+  PictureDirectoryDialog.InitialDir:=GetUserDir;
+  SaveDialog.InitialDir:=GetUserDir;
 end;
 
 procedure TFormImageExport.FormDestroy(Sender: TObject);

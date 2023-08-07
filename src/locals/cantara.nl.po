@@ -186,7 +186,9 @@ msgstr "Kiezen..."
 msgid "Export All"
 msgstr "Alles exporteren"
 
-#: tformimageexport.buttonexportall1.caption
+#: tformimageexport.buttonexportcurrent.caption
+#, fuzzy
+msgctxt "tformimageexport.buttonexportcurrent.caption"
 msgid "Export Current"
 msgstr "Huidige exporteren"
 

@@ -7,7 +7,7 @@
 {"hash":247455546,"name":"tformimageexport.labelheight.caption","sourcebytes":[72,101,105,103,104,116,58],"value":"Height:"},
 {"hash":372803,"name":"tformimageexport.checkboxsync.caption","sourcebytes":[83,121,110,99],"value":"Sync"},
 {"hash":110266716,"name":"tformimageexport.buttonexportall.caption","sourcebytes":[69,120,112,111,114,116,32,65,108,108],"value":"Export All"},
-{"hash":96410324,"name":"tformimageexport.buttonexportall1.caption","sourcebytes":[69,120,112,111,114,116,32,67,117,114,114,101,110,116],"value":"Export Current"},
+{"hash":96410324,"name":"tformimageexport.buttonexportcurrent.caption","sourcebytes":[69,120,112,111,114,116,32,67,117,114,114,101,110,116],"value":"Export Current"},
 {"hash":197213342,"name":"tformimageexport.buttonreloadpreview.caption","sourcebytes":[82,101,108,111,97,100,32,80,114,101,118,105,101,119,46,46,46],"value":"Reload Preview..."},
 {"hash":80705172,"name":"tformimageexport.itemexport.caption","sourcebytes":[69,120,112,111,114,116],"value":"Export"},
 {"hash":93079237,"name":"tformimageexport.itemremove.caption","sourcebytes":[82,101,109,111,118,101],"value":"Remove"}

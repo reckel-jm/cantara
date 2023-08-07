@@ -63,6 +63,7 @@ type
     procedure cbMetaDataLastSlideChange(Sender: TObject);
     procedure cbMetaTitleSlideChange(Sender: TObject);
     procedure cbShowBackgroundImageChange(Sender: TObject);
+    procedure comboVerticalChange(Sender: TObject);
     procedure edtRepoPathChange(Sender: TObject);
     procedure edtRepoPathEditingDone(Sender: TObject);
     procedure edtRepoPathExit(Sender: TObject);
@@ -78,6 +79,7 @@ type
     procedure loadSettings();
     procedure memoMetaDataEditingDone(Sender: TObject);
     procedure sbImageBrightnessChange(Sender: TObject);
+    procedure sbImageBrightnessExit(Sender: TObject);
     procedure seWrapLinesChange(Sender: TObject);
     procedure UpdatePreviewTimerTimer(Sender: TObject);
   private
@@ -162,12 +164,14 @@ begin
   ExampleSong.MetaDict.Add('title', 'Amazing Grace');
   ExampleSong.importSongFromStringList(DummySongFile);
   DummySongFile.Destroy;
+  SlideList := TSlideList.Create(True);
 end;
 
 procedure TfrmSettings.FormDestroy(Sender: TObject);
 begin
   PresentationPreviewCanvas.Destroy;
   ExampleSong.Destroy;
+  SlideList.Destroy;
 end;
 
 procedure TfrmSettings.FormHide(Sender: TObject);
@@ -268,6 +272,11 @@ begin
   changedBackground := True;
 end;
 
+procedure TfrmSettings.comboVerticalChange(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmSettings.edtRepoPathChange(Sender: TObject);
 begin
 
@@ -314,7 +323,6 @@ begin
   FontDialog.Font.Name:=settingsFile.ReadString('Config', 'Font-Name', 'default');
   FontDialog.Font.Style := StrToStyle(settingsFile.ReadString('Config', 'Font-Style', 'ssss'));
   FontDialog.Font.Size:= settingsFile.ReadInteger('Config', 'Font-Size', 42);
-  //edtLineDistance.Value:=settingsFile.ReadFloat('Config', 'Line-Distance', 1);
   cbShowBackgroundImage.Checked := settingsFile.ReadBool('Config', 'BackgroundPicture', false);
   cbShowBackgroundImageChange(frmSettings);
   BgPictureDialog.FileName := settingsFile.ReadString('Config', 'BackgroundPicture-Path', '');
@@ -343,6 +351,12 @@ begin
      lblImageExplainer.Caption:=strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position))+'%'
   else if sbImageBrightness.Position = 0 then
      lblImageExplainer.Caption := strPictureOriginalState;
+  ChangedBackground := True;
+end;
+
+procedure TfrmSettings.sbImageBrightnessExit(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmSettings.seWrapLinesChange(Sender: TObject);
@@ -436,8 +450,7 @@ begin
   ExampleSong.Reset;
   SlideSettings := self.ExportSlideSettings;
   ExampleSong.MaxSlideLineLength:=SlideSettings.MaxSlideLineLength;
-  if Assigned(SlideList) then SlideList.Free;
-  SlideList := TSlideList.Create(True);
+  SlideList.Clear;
   PresentationSlideCounter := 0;
   SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, SlideSettings, PresentationSlideCounter));
   PresentationPreviewCanvas.Height:=Screen.Height;

@@ -14,7 +14,6 @@ object frmSettings: TfrmSettings
   OnHide = FormHide
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.6.0'
   object labelSongDir: TLabel
     AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = edtRepoPath
@@ -288,6 +287,7 @@ object frmSettings: TfrmSettings
       ShowHint = True
       TabOrder = 8
       OnChange = sbImageBrightnessChange
+      OnExit = sbImageBrightnessExit
     end
     object lblImageBrightness: TLabel
       AnchorSideTop.Control = sbImageBrightness
@@ -306,10 +306,13 @@ object frmSettings: TfrmSettings
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = sbImageBrightness
       AnchorSideTop.Side = asrBottom
-      Left = 462
+      AnchorSideRight.Control = ImagePresentationPreview
+      Left = 570
       Height = 22
       Top = 149
       Width = 128
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 5
       Caption = 'lblImageExplainer'
       ParentColor = False
     end
@@ -426,6 +429,7 @@ object frmSettings: TfrmSettings
         'Middle'
         'Buttom'
       )
+      OnChange = comboVerticalChange
       Style = csDropDownList
       TabOrder = 12
       Text = 'Middle'

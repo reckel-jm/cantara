@@ -187,7 +187,8 @@ msgstr ""
 msgid "Export All"
 msgstr ""
 
-#: tformimageexport.buttonexportall1.caption
+#: tformimageexport.buttonexportcurrent.caption
+msgctxt "tformimageexport.buttonexportcurrent.caption"
 msgid "Export Current"
 msgstr ""
 

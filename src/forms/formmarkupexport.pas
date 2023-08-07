@@ -73,6 +73,9 @@ begin
   TemplateDict.Add('WhatsApp', LoadResourceFileIntoStringList('MARKUP.WHATSAPP'));
   for i := 0 to TemplateDict.Count-1 do
     TemplateCombo.Items.Add(TemplateDict.Keys[i]);
+
+  // load home directory into file/folder dialogs
+  SaveDialog.InitialDir:=GetUserDir;
 end;
 
 procedure TFrmMarkupExport.btnSaveToFileClick(Sender: TObject);

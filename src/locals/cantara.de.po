@@ -187,7 +187,9 @@ msgstr "Auswählen..."
 msgid "Export All"
 msgstr "Alles exportieren"
 
-#: tformimageexport.buttonexportall1.caption
+#: tformimageexport.buttonexportcurrent.caption
+#, fuzzy
+msgctxt "tformimageexport.buttonexportcurrent.caption"
 msgid "Export Current"
 msgstr "Das Ausgewählte exportieren"
 
@@ -840,3 +842,4 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
+
