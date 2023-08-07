@@ -24,7 +24,7 @@ unit slides;
 interface
 
 uses
-  Classes, SysUtils, Lyrics, fgl;
+  Classes, SysUtils, Lyrics, fgl, Dialogs;
 
 type
 
@@ -289,6 +289,7 @@ begin
   end until changed = False;
   output.Text:=StringReplace(output.Text, LineEnding+LineEnding+LineEnding, LineEnding+LineEnding, [rfReplaceAll]);
   Result := output.Text;
+  ShowMessage(output.Text);
   Output.Destroy;
 end;
 
