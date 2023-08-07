@@ -24,7 +24,7 @@ unit slides;
 interface
 
 uses
-  Classes, SysUtils, Lyrics, fgl;
+  Classes, SysUtils, Lyrics, fgl, Dialogs;
 
 type
 
@@ -225,7 +225,7 @@ implementation
   end;
 
 function SplitSlides(Input: TStringList; MaxSlides: Integer): String;
-var n1, n2,i: integer;
+var n1, n2,i,t,place: integer;
   changed: boolean;
   output: TStringList;
 begin
@@ -256,8 +256,22 @@ begin
        if (n2-n1) > MaxSlides then
          begin
            if MaxSlides mod 2 = 0 then
-             output.Insert((n1+(n2-n1) div 2), '')
-           else output.Insert((n1+(n2-n1) div 2) + 1, '');
+             place := (n1+(n2-n1) div 2)
+           else place := (n1+(n2-n1) div 2) + 1;
+           output.Insert(place, '');
+           if (output.Strings[i+1] = '---') then
+           begin
+             if output.count > n2+1+place-n1 then
+             begin
+               output.Strings[place] := '---';
+               for t := 0 to place-n1 do
+               begin
+                 output.Move(n2+1+t, place+t);
+               end;
+               output.Strings[n2+1] := '';
+               output.Strings[n2+1+place-n1] := '---';
+             end;
+           end;
            changed := True;
          end;
        n1 := n2+1;
@@ -275,6 +289,7 @@ begin
   end until changed = False;
   output.Text:=StringReplace(output.Text, LineEnding+LineEnding+LineEnding, LineEnding+LineEnding, [rfReplaceAll]);
   Result := output.Text;
+  ShowMessage(output.Text);
   Output.Destroy;
 end;
 

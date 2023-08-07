@@ -292,8 +292,6 @@ begin
       contentStarted := True;
     end;
   end;
-
-  //self.output.Assign(self.inputFile);
 end;
 
 procedure TSong.DecideFileFormatAndContinue;
@@ -327,7 +325,7 @@ begin
   if self.IsCCLIFile then // CCLI-Songselect file
     self.importCCLISongFile
   else self.importSongFormatFile;
-  self.strip;
+  //self.strip;
 end;
 
 function TSong.ParseMetaData(MetaLogic: string): string;

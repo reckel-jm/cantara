@@ -299,6 +299,7 @@ procedure TfrmSongEdit.FormShow(Sender: TObject);
 begin
   if PageControl.PageCount = 0 then CreateNewTab;
   splitter.Left := SettingsFile.ReadInteger('Size', 'editor-splitter-location', 500);
+  if splitter.left > frmSongEdit.Width div 2 then splitter.left := frmSongEdit.Width div 3;
 end;
 
 procedure TfrmSongEdit.btnOpenDocsClick(Sender: TObject);
