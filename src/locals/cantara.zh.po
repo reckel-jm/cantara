@@ -61,6 +61,14 @@ msgstr "版本"
 msgid "https://www.cantara.app"
 msgstr "https://www.cantara.app/de"
 
+#: pptx.strcantaraexport
+msgid "Cantara Song Presentation Export"
+msgstr ""
+
+#: pptx.strsongs
+msgid "Songs"
+msgstr ""
+
 #: settings.strbrightness
 msgid "Increase brightness by "
 msgstr "增加亮度："

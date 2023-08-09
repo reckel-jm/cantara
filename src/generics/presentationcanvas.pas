@@ -273,8 +273,11 @@ begin
       Width := self.Width-PresentationStyleSettings.Padding.Right-PresentationStyleSettings.Padding.Left;
       Height := MainTextHeight;
     end;
+    { Make the Title bold }
+    if Slide.SlideType = TitleSlide then
+      Font.Bold := True;
     TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.MainText);
-    // We paint the spoiler if desired
+    { Paint the spoiler if desired }
     if SpoilerText <> '' then
     begin
       Font.Assign(SpoilerTextFont);

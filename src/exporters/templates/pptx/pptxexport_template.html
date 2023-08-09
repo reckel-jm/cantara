@@ -8,36 +8,10 @@
     <script type="text/javascript">
     let pres = new PptxGenJS();
 
+    pres.title = "{{TITLE}}";
+    pres.subject = "{{SUBJECT}}";
     pres.author = "Cantara";
     pres.layout = "LAYOUT_16x9";
-
-    pres.defineSlideMaster({
-      title: "SlideWithSpoiler",
-      {{BACKGROUND}}
-      objects: [
-        {{BACKGROUNDIMAGE}}
-        { placeholder: {
-          options: { name: "maincontent", type: "body", x: 0, y: 0, w: 10, h: 3.5, align: "center", valign: "middle", fontSize: "32", color: "{{TEXTCOLOR}}", autoFit: true },
-          text: "",
-        } },
-        { placeholder: {
-          options: { name: "spoiler", type: "body", x: 0, y: 3.5, w: 10, h: 2.1, align: "center", valign: "middle", fontSize: "18", color: "{{TEXTCOLOR}}", autoFit: true },
-          text: "",
-        } },
-      ]
-    });
-
-    pres.defineSlideMaster({
-      title: "SlideWithoutSpoiler",
-      {{BACKGROUND}}
-      objects: [
-        {{BACKGROUNDIMAGE}}
-        { placeholder: {
-          options: { name: "maincontent", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", fontSize: "32", color: "{{TEXTCOLOR}}", autoFit: true },
-          text: "",
-        } },
-      ]
-    });
 
     pres.defineSlideMaster({
       title: "EmptySlide",
@@ -45,7 +19,7 @@
       objects: [
         {{BACKGROUNDIMAGE}}
         { placeholder: {
-          options: { name: "emptycontent", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", fontSize: "32", color: "{{TEXTCOLOR}}", autoFit: true },
+          options: { name: "emptycontent", type: "body", x: 0, y: 0, w: "100%", h: "100%", align: "{{HALIGN}}", valign: "{{VALIGN}}", fontSize: "32", color: "{{TEXTCOLOR}}", margin: 15, autoFit: true },
           text: "",
         } },
       ]
@@ -57,7 +31,19 @@
         objects: [
         {{BACKGROUNDIMAGE}}
         { placeholder: {
-          options: { name: "title", type: "body", x: 0, y: 0, w: 10, h: 5.6, align: "center", valign: "middle", fontSize: "32", color: "{{TEXTCOLOR}}", autoFit: true, bold: true },
+          options: { name: "title", type: "body", x: 0, y: 0, w: "100%", h: "100%", align: "{{HALIGN}}", valign: "{{VALIGN}}", fontSize: "32", color: "{{TEXTCOLOR}}", margin: 15, autoFit: true, bold: true },
+          text: "",
+        } },
+      ]
+    });
+
+    pres.defineSlideMaster({
+      title: "DefaultSlide",
+      {{BACKGROUND}}
+      objects: [
+        {{BACKGROUNDIMAGE}}
+        { placeholder: {
+          options: { name: "defaultcontent", type: "body", x: 0, y: 0, w: "100%", h: "100%", align: "{{HALIGN}}", valign: "{{VALIGN}}", fontSize: "32", color: "{{TEXTCOLOR}}", margin: 15, autoFit: true },
           text: "",
         } },
       ]

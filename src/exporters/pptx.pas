@@ -24,9 +24,26 @@ type
       function GenerateBackgroundColorSettings: String;
       procedure AddSlide(Slide: TSlide);
       function ColorToHexString(AColor: TColor): String;
-      function GenerateBackgroundImageSettings(ImageFileEnding: String): String;
+      function GenerateBackgroundImageSettings: String;
       function ImageToBase64: String;
   end;
+
+const
+  CodeAddSlide:String = 'slide = pres.addSlide({ masterName: "%s" });';
+  CodeAddSpoileredText:String = 'slide.addText(' +
+                                 '[' +
+                                 '{ text: "%s\n\n", options: {} }, '+
+                                 '{ text: "%s", options: { fontSize: "18" } },'+
+                                 '],'+
+                                 '{ placeholder: "defaultcontent" }'+
+                                 ');';
+  CodeAddTitleText:String = 'slide.addText("%s", { placeholder: "title" })';
+  CodeAddUnspoileredText:String = 'slide.addText("%s", { placeholder: "defaultcontent" })';
+  CodeAddSection:String = 'pres.addSection({ title: "%s" });';
+
+ResourceString
+  StrCantaraExport = 'Cantara Song Presentation Export';
+  StrSongs = 'Songs';
 
 implementation
 
@@ -50,35 +67,34 @@ procedure TPPTXExporter.AddSlide(Slide: TSlide);
 begin
   if Slide.Song.FileNameWithoutEnding <> lastSongName then
   begin
-    content.add('pres.addSection({ title: "' + Slide.Song.FileNameWithoutEnding + '" });');
+    content.Add(Format(CodeAddSection, [PrepareText(Slide.Song.FileNameWithoutEnding)]));
     lastSongName := Slide.Song.FileNameWithoutEnding;
   end;
   if Slide.SlideType = SlideWithoutSpoiler then // this is a slide without spoiler
   begin
-    content.Add('slide = pres.addSlide({ masterName: "SlideWithoutSpoiler" });');
-    content.Add('slide.addText("' + PrepareText(Slide.PartContent.MainText) + '", { placeholder: "maincontent" })');
+    content.Add(Format(CodeAddSlide, ['DefaultSlide']));
+    content.Add(Format(CodeAddUnspoileredText, [PrepareText(Slide.PartContent.MainText)]));
   end else
   if Slide.SlideType = SlideWithSpoiler then
   begin
-    content.Add('slide = pres.addSlide({ masterName: "SlideWithSpoiler" });');
-    content.Add('slide.addText("' + PrepareText(Slide.PartContent.MainText) + '", { placeholder: "maincontent" })');
-    content.Add('slide.addText("' + PrepareText(Slide.PartContent.SpoilerText) + '", { placeholder: "spoiler" })');
+    content.Add(Format(CodeAddSlide, ['DefaultSlide']));
+    content.Add(Format(CodeAddSpoileredText, [PrepareText(Slide.PartContent.MainText), PrepareText(Slide.PartContent.SpoilerText)]));
   end else
   if Slide.SlideType = EmptySlide then
   begin
-    content.Add('slide = pres.addSlide({ masterName: "EmptySlide" });');
+    content.Add(Format(CodeAddSlide, ['EmptySlide']));
   end else
   if Slide.SlideType = TitleSlide then
   begin
-    content.Add('slide = pres.addSlide({ masterName: "TitleSlide" })');
-    content.Add('slide.addText("' + PrepareText(Slide.PartContent.MainText) + '", { placeholder: "title" })');
+    content.Add(Format(CodeAddSlide, ['TitleSlide']));
+    content.Add(Format(CodeAddTitleText, [PrepareText(Slide.PartContent.MainText)]));
   end;
   content.Add('slide.addNotes("' + PrepareText(Slide.PartContent.MainText) + '");');
 end;
 
 function TPPTXExporter.SaveJavaScriptToFile: String;
 var ExportedFilePath: String;
-ImageFileExtension: String;
+  halign, valign: String;
 begin
   pptxgenjs.SaveToFile(Folder + PathDelim + 'pptxgen.bundle.js');
   exportedJs.Text := StringReplace(template.Text, '{{SLIDECONTENT}}', content.Text, [rfReplaceAll]);
@@ -86,13 +102,27 @@ begin
   exportedJs.Text := StringReplace(exportedJs.Text, '{{TEXTCOLOR}}', ColorToHexString(PresentationStyleSettings.TextColor), [rfReplaceAll]);
   if PresentationStyleSettings.ShowBackgroundImage and FileExists(PresentationStyleSettings.BackgroundImageFilePath) then
   begin
-    ImageFileExtension := ExtractFileExt(PresentationStyleSettings.BackgroundImageFilePath);
-    CopyFile(PresentationStyleSettings.BackgroundImageFilePath,
-      Folder + PathDelim + 'background' + ImageFileExtension);
     exportedJs.Text := StringReplace(exportedJs.Text, '{{BACKGROUNDIMAGE}}',
-                    GenerateBackgroundImageSettings(ImageFileExtension), [rfReplaceAll]);
+                    GenerateBackgroundImageSettings, [rfReplaceAll]);
   end else
     exportedJs.Text := StringReplace(exportedJs.Text, '{{BACKGROUNDIMAGE}}', '', [rfReplaceAll]);
+
+  { Add Meta-Data }
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{TITLE}}', StrCantaraExport, [rfReplaceAll]);
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{SUBJECT}}', StrSongs, [rfReplaceAll]);
+  { Horizontal and Vertical Align }
+  case PresentationStyleSettings.HorizontalAlign of
+    Align_Left: halign := 'left';
+    Align_Center: halign := 'center';
+    Align_Right: halign := 'right';
+  end;
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{HALIGN}}', halign, [rfReplaceAll]);
+  case PresentationStyleSettings.VerticalAlign of
+    tlTop   : valign := 'top';
+    tlCenter: valign := 'middle';
+    tlBottom: valign := 'bottom';
+  end;
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{VALIGN}}', valign, [rfReplaceAll]);
   ExportedFilePath := Folder + PathDelim + 'pptx-export.html';
   exportedJs.SaveToFile(ExportedFilePath);
   Result := ExportedFilePath;
@@ -123,11 +153,11 @@ begin
          ColorToHexString(PresentationStyleSettings.BackgroundColor) + '" },';
 end;
 
-function TPPTXExporter.GenerateBackgroundImageSettings(ImageFileEnding: String): String;
+function TPPTXExporter.GenerateBackgroundImageSettings: String;
 begin
   if PresentationStyleSettings.ShowBackgroundImage then
-     Result := Format('{ image: { x:0, y:0, w:10, h:5.6, data:"%s", transparancy: %s } }, ',
-     [ImageToBase64, IntToStr(Abs(PresentationStyleSettings.Transparency))])
+     Result := Format('{ image: { x:0, y:0, w:10, h:5.6, data:"%s" } }, ',
+     [ImageToBase64])
   else Result := '';
 end;
 
@@ -166,9 +196,9 @@ begin
     jpg.CompressionQuality:=75;
     jpg.SaveToStream(imgstream);
     imgstream.Position:= 0;
-    Encoder.CopyFrom(TStringStream(imgstream), imgstream.Size);
+    Encoder.CopyFrom(imgstream, imgstream.Size);
     Encoder.Flush;
-    Result:='data:image/jpg;base64,'+ TStringStream(Outputstream).DataString;
+    Result:='data:image/jpg;base64,'+ (Outputstream as TStringStream).DataString;
   finally
     imgstream.Free;
     Encoder.Free;

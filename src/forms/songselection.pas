@@ -1011,7 +1011,7 @@ end;
 procedure TfrmSongs.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   // Save WindowStates to File
-  settings.settingsFile.WriteBool('Size', 'main-window-maximized',frmSongs.WindowState = TWindowState.wsMaximized);
+  settings.settingsFile.WriteBool('Size', 'main-window-maximized',frmSongs.WindowState = wsMaximized);
   settings.settingsfile.WriteInteger('Size', 'panel-mutliscreen-position', PanelMultiScreenLeft);
   settings.settingsFile.WriteBool('Exporter', 'pptxgenjs', self.UserAgreesPptxGenJs);
   settings.settingsFile.UpdateFile;
