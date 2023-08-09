@@ -98,6 +98,10 @@ type
     function ExportPresentationStyleSettings: TPresentationStyleSettings;
   end;
 
+  { This function returns the path of the folder with the default pictures.
+  If the folder can not be found, the returning string will be empty. }
+  function GetDefaultPictureDir: String;
+
 var
   frmSettings: TfrmSettings;
   settingsFile: TINIFile;
@@ -152,9 +156,19 @@ begin
     Include(Result, fsStrikeOut);
 end;
 
+function GetDefaultPictureDir: String;
+begin
+  Result := '';
+  if DirectoryExists('backgrounds') then Result := 'backgrounds';
+  {$ IFDEF LINUX }
+  if DirectoryExists('/usr/share/cantara/backgrounds') then Result := '/usr/share/cantara/backgrounds';
+  {$ ENDIF }
+end;
+
 procedure TfrmSettings.FormCreate(Sender: TObject);
 var
   DummySongFile: TStringList;
+  PictureDir: String;
 begin
   changedBackground := False;
   PresentationPreviewCanvas := TPresentationCanvasHandler.Create;
@@ -165,6 +179,8 @@ begin
   ExampleSong.importSongFromStringList(DummySongFile);
   DummySongFile.Destroy;
   SlideList := TSlideList.Create(True);
+  PictureDir := GetDefaultPictureDir;
+  if PictureDir <> '' then BgPictureDialog.InitialDir:=PictureDir;
 end;
 
 procedure TfrmSettings.FormDestroy(Sender: TObject);
