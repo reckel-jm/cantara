@@ -136,7 +136,7 @@ end;
 
 procedure TPresentationCanvasHandler.LoadBackgroundBitmap;
 begin
-  if PresentationStyleSettings.ShowBackgroundImage then
+  if (PresentationStyleSettings.ShowBackgroundImage) then
   begin
     try
       BackgroundPicture.Clear;
