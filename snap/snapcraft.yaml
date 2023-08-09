@@ -58,7 +58,7 @@ parts:
       cp -r languages $SNAPCRAFT_PART_INSTALL/
       install Cantara.ico $SNAPCRAFT_PART_INSTALL/
       install cantara $SNAPCRAFT_PART_INSTALL/
-      install backgrounds $SNAPCRAFT_PART_INSTALL/
+      cp -r backgrounds $SNAPCRAFT_PART_INSTALL/
       cd ..
       install cantara.desktop $SNAPCRAFT_PART_INSTALL/
       install app.cantara.Cantara.png $SNAPCRAFT_PART_INSTALL/
