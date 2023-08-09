@@ -561,6 +561,42 @@ msgstr "Schriftfarbe auswählen"
 msgid "Edit Files"
 msgstr "Dateieditor"
 
+#: tfrmsongedit.itemcopy.caption
+#, fuzzy
+msgctxt "tfrmsongedit.itemcopy.caption"
+msgid "Copy"
+msgstr "Kopieren"
+
+#: tfrmsongedit.itemcut.caption
+msgid "Cut"
+msgstr ""
+
+#: tfrmsongedit.itemfadein.caption
+msgid "Zoom In"
+msgstr ""
+
+#: tfrmsongedit.itemfadeout.caption
+msgid "Zoom Out"
+msgstr ""
+
+#: tfrmsongedit.itempaste.caption
+msgid "Paste"
+msgstr ""
+
+#: tfrmsongedit.itemredo.caption
+msgid "Redo"
+msgstr ""
+
+#: tfrmsongedit.itemundo.caption
+msgid "Undo"
+msgstr ""
+
+#: tfrmsongedit.menuedit.caption
+#, fuzzy
+msgctxt "tfrmsongedit.menuedit.caption"
+msgid "Edit"
+msgstr "Bearbeiten"
+
 #: tfrmsongedit.menufile.caption
 msgctxt "tfrmsongedit.menufile.caption"
 msgid "File"
@@ -577,8 +613,10 @@ msgid "Close Editor"
 msgstr "Schließe den Editor"
 
 #: tfrmsongedit.menuitemcopy.caption
+#, fuzzy
+#| msgid "Copy"
 msgctxt "tfrmsongedit.menuitemcopy.caption"
-msgid "Copy"
+msgid "Duplicate"
 msgstr "Kopieren"
 
 #: tfrmsongedit.menuitemnew.caption
@@ -589,6 +627,10 @@ msgstr "Neu"
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
 msgstr "Speichern"
+
+#: tfrmsongedit.view.caption
+msgid "View"
+msgstr ""
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
@@ -723,6 +765,7 @@ msgid "Presentation is running:"
 msgstr "Die Präsentation läuft:"
 
 #: tfrmsongs.menuedit.caption
+msgctxt "tfrmsongs.menuedit.caption"
 msgid "Edit"
 msgstr "Bearbeiten"
 

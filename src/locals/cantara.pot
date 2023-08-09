@@ -531,6 +531,40 @@ msgstr ""
 msgid "Edit Files"
 msgstr ""
 
+#: tfrmsongedit.itemcopy.caption
+msgctxt "tfrmsongedit.itemcopy.caption"
+msgid "Copy"
+msgstr ""
+
+#: tfrmsongedit.itemcut.caption
+msgid "Cut"
+msgstr ""
+
+#: tfrmsongedit.itemfadein.caption
+msgid "Zoom In"
+msgstr ""
+
+#: tfrmsongedit.itemfadeout.caption
+msgid "Zoom Out"
+msgstr ""
+
+#: tfrmsongedit.itempaste.caption
+msgid "Paste"
+msgstr ""
+
+#: tfrmsongedit.itemredo.caption
+msgid "Redo"
+msgstr ""
+
+#: tfrmsongedit.itemundo.caption
+msgid "Undo"
+msgstr ""
+
+#: tfrmsongedit.menuedit.caption
+msgctxt "tfrmsongedit.menuedit.caption"
+msgid "Edit"
+msgstr ""
+
 #: tfrmsongedit.menufile.caption
 msgctxt "tfrmsongedit.menufile.caption"
 msgid "File"
@@ -547,7 +581,7 @@ msgstr ""
 
 #: tfrmsongedit.menuitemcopy.caption
 msgctxt "tfrmsongedit.menuitemcopy.caption"
-msgid "Copy"
+msgid "Duplicate"
 msgstr ""
 
 #: tfrmsongedit.menuitemnew.caption
@@ -557,6 +591,10 @@ msgstr ""
 #: tfrmsongedit.menuitemsave.caption
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
+msgstr ""
+
+#: tfrmsongedit.view.caption
+msgid "View"
 msgstr ""
 
 #: tfrmsongs.btnadd.caption
@@ -692,6 +730,7 @@ msgid "Presentation is running:"
 msgstr ""
 
 #: tfrmsongs.menuedit.caption
+msgctxt "tfrmsongs.menuedit.caption"
 msgid "Edit"
 msgstr ""
 

@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   editordisplaysongcontent, editorwelcome, lyrics, LCLType,
-  lclintf, LCLTranslator, DefaultTranslator, ComCtrls, Menus, Settings;
+  lclintf, LCLTranslator, DefaultTranslator, ComCtrls, Menus, Settings,
+  SynEdit, SynEditKeyCmds;
 
 type
   { TfrmSongEdit }
@@ -16,12 +17,22 @@ type
     lsSongs: TListBox;
     EditorMenu: TMainMenu;
     menuFile: TMenuItem;
+    MenuEdit: TMenuItem;
+    ItemCut: TMenuItem;
+    ItemCopy: TMenuItem;
+    ItemPaste: TMenuItem;
+    ItemUndo: TMenuItem;
+    ItemRedo: TMenuItem;
+    ItemFadeIn: TMenuItem;
+    ItemFadeOut: TMenuItem;
+    View: TMenuItem;
     menuItemCopy: TMenuItem;
     menuItemClose: TMenuItem;
     menuItemArchivate: TMenuItem;
     menuItemNew: TMenuItem;
     menuItemSave: TMenuItem;
     PageControl: TPageControl;
+    Separator1: TMenuItem;
     splitter: TSplitter;
     procedure btnOpenDocsClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -29,6 +40,13 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDblClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure ItemCopyClick(Sender: TObject);
+    procedure ItemCutClick(Sender: TObject);
+    procedure ItemFadeInClick(Sender: TObject);
+    procedure ItemFadeOutClick(Sender: TObject);
+    procedure ItemPasteClick(Sender: TObject);
+    procedure ItemRedoClick(Sender: TObject);
+    procedure ItemUndoClick(Sender: TObject);
     procedure lsSongsClick(Sender: TObject);
     procedure menuItemCloseClick(Sender: TObject);
     procedure menuItemArchivateClick(Sender: TObject);
@@ -300,6 +318,90 @@ begin
   if PageControl.PageCount = 0 then CreateNewTab;
   splitter.Left := SettingsFile.ReadInteger('Size', 'editor-splitter-location', 500);
   if splitter.left > frmSongEdit.Width div 2 then splitter.left := frmSongEdit.Width div 3;
+end;
+
+procedure TfrmSongEdit.ItemCopyClick(Sender: TObject);
+var Frame: TFrame;
+EditorFrame: TfrmDisplaySongContent;
+begin
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if Frame.ClassType = TfrmDisplaySongContent then
+  begin
+    EditorFrame := Frame as TfrmDisplaySongContent;
+    EditorFrame.memoCode.CommandProcessor(TSynEditorCommand(ecCopy), ' ', nil);
+  end;
+end;
+
+procedure TfrmSongEdit.ItemCutClick(Sender: TObject);
+var Frame: TFrame;
+EditorFrame: TfrmDisplaySongContent;
+begin
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if Frame.ClassType = TfrmDisplaySongContent then
+  begin
+    EditorFrame := Frame as TfrmDisplaySongContent;
+    EditorFrame.memoCode.CommandProcessor(TSynEditorCommand(ecCut), ' ', nil);
+  end;
+end;
+
+procedure TfrmSongEdit.ItemFadeInClick(Sender: TObject);
+var Frame: TFrame;
+EditorFrame: TfrmDisplaySongContent;
+begin
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if Frame.ClassType = TfrmDisplaySongContent then
+  begin
+    EditorFrame := Frame as TfrmDisplaySongContent;
+    EditorFrame.memoCode.CommandProcessor(TSynEditorCommand(ecZoomIn), ' ', nil);
+  end;
+end;
+
+procedure TfrmSongEdit.ItemFadeOutClick(Sender: TObject);
+var Frame: TFrame;
+EditorFrame: TfrmDisplaySongContent;
+begin
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if Frame.ClassType = TfrmDisplaySongContent then
+  begin
+    EditorFrame := Frame as TfrmDisplaySongContent;
+    EditorFrame.memoCode.CommandProcessor(TSynEditorCommand(ecZoomOut), ' ', nil);
+  end;
+end;
+
+procedure TfrmSongEdit.ItemPasteClick(Sender: TObject);
+var Frame: TFrame;
+EditorFrame: TfrmDisplaySongContent;
+begin
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if Frame.ClassType = TfrmDisplaySongContent then
+  begin
+    EditorFrame := Frame as TfrmDisplaySongContent;
+    EditorFrame.memoCode.CommandProcessor(TSynEditorCommand(ecPaste), ' ', nil);
+  end;
+end;
+
+procedure TfrmSongEdit.ItemRedoClick(Sender: TObject);
+var Frame: TFrame;
+EditorFrame: TfrmDisplaySongContent;
+begin
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if Frame.ClassType = TfrmDisplaySongContent then
+  begin
+    EditorFrame := Frame as TfrmDisplaySongContent;
+    EditorFrame.memoCode.CommandProcessor(TSynEditorCommand(ecRedo), ' ', nil);
+  end;
+end;
+
+procedure TfrmSongEdit.ItemUndoClick(Sender: TObject);
+var Frame: TFrame;
+EditorFrame: TfrmDisplaySongContent;
+begin
+  Frame := PageControl.ActivePage.FindChildControl('ContentFrame') as TFrame;
+  if Frame.ClassType = TfrmDisplaySongContent then
+  begin
+    EditorFrame := Frame as TfrmDisplaySongContent;
+    EditorFrame.memoCode.CommandProcessor(TSynEditorCommand(ecUndo), ' ', nil);
+  end;
 end;
 
 procedure TfrmSongEdit.btnOpenDocsClick(Sender: TObject);

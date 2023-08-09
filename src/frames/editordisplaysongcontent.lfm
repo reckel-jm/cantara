@@ -178,7 +178,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Anchors = [akTop, akLeft, akRight, akBottom]
     Color = clWindow
     Font.Color = clBtnText
-    Font.Height = 16
+    Font.Height = 15
     Font.Name = 'DejaVu Sans Mono'
     Font.Pitch = fpFixed
     Font.Quality = fqAntialiased
@@ -186,7 +186,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     ParentFont = False
     TabOrder = 6
     OnKeyPress = memoCodeKeyPress
-    Gutter.Width = 61
+    Gutter.Width = 59
     Gutter.MouseActions = <>
     RightGutter.Width = 0
     RightGutter.MouseActions = <>
@@ -617,7 +617,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     MouseSelActions = <>
     Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoShowSpecialChars, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces]
     VisibleSpecialChars = [vscSpace, vscTabAtLast]
-    ScrollBars = ssAutoVertical
+    ScrollBars = ssAutoBoth
     SelectedColor.BackPriority = 50
     SelectedColor.ForePriority = 50
     SelectedColor.FramePriority = 50
@@ -643,7 +643,7 @@ object frmDisplaySongContent: TfrmDisplaySongContent
         MouseActions = <>
       end
       object SynGutterLineNumber1: TSynGutterLineNumber
-        Width = 21
+        Width = 19
         MouseActions = <>
         MarkupInfo.Background = clBtnFace
         MarkupInfo.Foreground = clNone

@@ -78,7 +78,7 @@ object frmSongEdit: TfrmSongEdit
         OnClick = menuItemSaveClick
       end
       object menuItemCopy: TMenuItem
-        Caption = 'Copy'
+        Caption = 'Duplicate'
         OnClick = menuItemCopyClick
       end
       object menuItemArchivate: TMenuItem
@@ -88,6 +88,45 @@ object frmSongEdit: TfrmSongEdit
       object menuItemClose: TMenuItem
         Caption = 'Close Editor'
         OnClick = menuItemCloseClick
+      end
+    end
+    object MenuEdit: TMenuItem
+      Caption = 'Edit'
+      object ItemCut: TMenuItem
+        Caption = 'Cut'
+        OnClick = ItemCutClick
+      end
+      object ItemCopy: TMenuItem
+        Caption = 'Copy'
+        OnClick = ItemCopyClick
+      end
+      object ItemPaste: TMenuItem
+        Caption = 'Paste'
+        OnClick = ItemPasteClick
+      end
+      object Separator1: TMenuItem
+        Caption = '-'
+      end
+      object ItemUndo: TMenuItem
+        Caption = 'Undo'
+        OnClick = ItemUndoClick
+      end
+      object ItemRedo: TMenuItem
+        Caption = 'Redo'
+        OnClick = ItemRedoClick
+      end
+    end
+    object View: TMenuItem
+      Caption = 'View'
+      object ItemFadeIn: TMenuItem
+        Caption = 'Zoom In'
+        ShortCut = 16491
+        OnClick = ItemFadeInClick
+      end
+      object ItemFadeOut: TMenuItem
+        Caption = 'Zoom Out'
+        ShortCut = 16493
+        OnClick = ItemFadeOutClick
       end
     end
   end
