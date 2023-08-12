@@ -36,7 +36,6 @@ type
       output: TStringList;
       { contains all the MetaData of the songs }
       MetaDict: TStringDict;
-      MaxSlideLineLength: Integer; { When should slices be cut into two parts }
       constructor Create; overload;
       destructor Destroy; override;
       procedure importSongFile;
@@ -322,10 +321,7 @@ end;
 procedure TSong.importSongFromStringList(stringlist: TStringList);
 begin
   self.inputFile.Assign(stringlist);
-  if self.IsCCLIFile then // CCLI-Songselect file
-    self.importCCLISongFile
-  else self.importSongFormatFile;
-  //self.strip;
+  self.importSongFormatFile;
 end;
 
 function TSong.ParseMetaData(MetaLogic: string): string;
@@ -443,7 +439,6 @@ procedure TSong.Reset;
 begin
   if (self.inputFile.Text = '') or (self.output.Text = '') then exit;
   self.output.Clear;
-  self.MaxSlideLineLength:=0;
   self.FileNameWithoutEnding:='';
   self.importSongFile;
 end;

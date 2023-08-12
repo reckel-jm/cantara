@@ -463,9 +463,7 @@ procedure TFrmSettings.ReloadSlideAndPresentationCanvas;
     PresentationSlideCounter: Integer;
     SlideSettings: TSlideSettings;
 begin
-  ExampleSong.Reset;
   SlideSettings := self.ExportSlideSettings;
-  ExampleSong.MaxSlideLineLength:=SlideSettings.MaxSlideLineLength;
   SlideList.Clear;
   PresentationSlideCounter := 0;
   SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, SlideSettings, PresentationSlideCounter));

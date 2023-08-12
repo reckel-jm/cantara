@@ -1,3 +1,32 @@
+{ <description>
+
+  Copyright (C) 2023 Jan Martin Reckel <jm.reckel@t-online.de>
+
+  This source is free software; you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free
+  Software Foundation; either version 3 of the License, or (at your option)
+  any later version.
+
+  This code is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  A copy of the GNU General Public License is available on the World Wide Web
+  at <https://www.gnu.org/licenses/gpl-3.0.html>. You can also obtain it by writing
+  to the Free Software Foundation, Inc., 51 Franklin Street - Fifth Floor,
+  Boston, MA 02110-1335, USA.
+
+  This unit uses pptxgenjs <https://pptxgenjs.github.io> which is published by
+  Brent Ely under the terms and regulations of the MIT license.
+
+  pptxgenjs: Copyright (c) 2015-Present Brent Ely
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+}
+
 unit pptx;
 
 {$mode ObjFPC}{$H+}

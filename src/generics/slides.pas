@@ -24,7 +24,7 @@ unit slides;
 interface
 
 uses
-  Classes, SysUtils, Lyrics, fgl;
+  Classes, SysUtils, Lyrics, fgl, Dialogs;
 
 type
 
@@ -225,71 +225,117 @@ implementation
   end;
 
 function SplitSlides(Input: TStringList; MaxSlides: Integer): String;
-var n1, n2,i,t,place: integer;
+var n1, n2,i,j,t,place: integer;
   changed: boolean;
   output: TStringList;
+  LastNormalStanza: Integer;
+  SecondLanguageStringList: TStringList;
+  LastDelim: String;
 begin
   output := TStringList.Create;
   output.Assign(input);
-  repeat
-  begin
-  changed := False;
   if MaxSlides <= 0 then exit; // Just as a protective measure, actually not needed anymore.
   if MaxSlides = 1 then       // it means to have one line per slide, so we take a shortpath
   begin
+    SecondLanguageStringList := TStringList.Create;
     i := 0;
+    LastDelim := '';
+    LastNormalStanza := 0;
     while i < output.count-1 do
       begin
+        if (output.Strings[i] = '') or (output.Strings[i] = '---') then
+        begin
+          LastDelim := output.Strings[i];
+          if (output.Strings[i] = '') and (i < output.Count - 1) then
+            LastNormalStanza := i+1 else
+          if output.Strings[i] = '---' then
+          begin
+            if i < output.Count-1 then
+            begin
+              output.Delete(i);
+              j := i;
+              SecondLanguageStringList.Clear;
+              while (j < output.Count) and (output.Strings[j] <> '') do
+              begin
+                SecondLanguageStringList.Add(output.Strings[j]);
+                output.Delete(j);
+              end;
+              i := LastNormalStanza;
+              for t := 0 to SecondLanguageStringlist.Count - 1 do
+              begin
+                if i < output.count-1 then output.Insert(i+1, '---')
+                  else output.Add('---');
+                if i < output.count-2 then
+                  output.Insert(i+2, SecondLanguageStringlist.Strings[t])
+                  else output.Add(SecondLanguageStringlist.Strings[t]);
+                if i < output.count-3 then output.Insert(i+3, '') else
+                  output.Add('');
+                i := i+5;
+              end;
+              while (i < output.count) and (output.Strings[i] <> '') do i += 1;
+              if i < output.Count -1 then LastNormalStanza := i+1;
+            end;
+          end;
+        end else
         if (output.Strings[i] <> '') and (output.Strings[i] <> '---') then
+        begin
           output.Insert(i+1, '');
+          i := i+1;
+        end;
         i := i+1;
       end;
-    Break;
-  end;
-  n1 := 0;
-  n2 := 0;
-  for i := 0 to output.Count-1 do
+    SecondLanguageStringList.Destroy;
+    //ShowMessage(output.Text);
+  end else
   begin
-    if (output.Strings[i] = '') or (output.Strings[i] = '---') then
+    repeat
     begin
-       n2 := i;
-       if (n2-n1) > MaxSlides then
-         begin
-           if MaxSlides mod 2 = 0 then
-             place := (n1+(n2-n1) div 2)
-           else place := (n1+(n2-n1) div 2) + 1;
-           output.Insert(place, '');
-           if (output.Strings[i+1] = '---') then
+    changed := False;
+    n1 := 0;
+    n2 := 0;
+    for i := 0 to output.Count-1 do
+    begin
+      if (output.Strings[i] = '') or (output.Strings[i] = '---') then
+      begin
+         n2 := i;
+         if (n2-n1) > MaxSlides then
            begin
-             if output.count > n2+1+place-n1 then
+             if MaxSlides mod 2 = 0 then
+               place := (n1+(n2-n1) div 2)
+             else place := (n1+(n2-n1) div 2) + 1;
+             output.Insert(place, '');
+             if (output.Strings[i+1] = '---') then
              begin
-               output.Strings[place] := '---';
-               for t := 0 to place-n1 do
+               if output.count > n2+1+place-n1 then
                begin
-                 output.Move(n2+1+t, place+t);
+                 output.Strings[place] := '---';
+                 for t := 0 to place-n1 do
+                 begin
+                   output.Move(n2+1+t, place+t);
+                 end;
+                 output.Strings[n2+1] := '';
+                 output.Strings[n2+1+place-n1] := '---';
                end;
-               output.Strings[n2+1] := '';
-               output.Strings[n2+1+place-n1] := '---';
              end;
+             changed := True;
            end;
-           changed := True;
-         end;
-       n1 := n2+1;
+         n1 := n2+1;
+      end;
     end;
-  end;
-  // For the last slide
-  n2 := output.Count;
-  if (n2-n1) > MaxSlides then
-     begin
-         if MaxSlides mod 2 = 0 then
-           output.Insert((n1+(n2-n1) div 2), '')
-         else output.Insert((n1+(n2-n1) div 2) + 1, '');
-         changed := True;
-     end;
-  end until changed = False;
-  output.Text:=StringReplace(output.Text, LineEnding+LineEnding+LineEnding, LineEnding+LineEnding, [rfReplaceAll]);
-  Result := output.Text;
-  Output.Destroy;
+    // For the last slide
+    n2 := output.Count;
+    if (n2-n1) > MaxSlides then
+       begin
+           if MaxSlides mod 2 = 0 then
+             output.Insert((n1+(n2-n1) div 2), '')
+           else output.Insert((n1+(n2-n1) div 2) + 1, '');
+           changed := True;
+       end;
+    end until changed = False;
+    end;
+    output.Text:=StringReplace(output.Text, LineEnding+LineEnding+LineEnding, LineEnding+LineEnding, [rfReplaceAll]);
+    Result := output.Text;
+    Output.Destroy;
 end;
 
 end.
