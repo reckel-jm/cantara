@@ -488,10 +488,6 @@ msgstr "Einstellungen"
 msgid "Empty slide between songs"
 msgstr "Leerfolie zwischen den Liedern einfügen"
 
-#: tfrmsettings.cblyricstoclipboard.caption
-msgid "Copy lyrics to clipboard"
-msgstr "Liedtexte in die Zwischenablage kopieren"
-
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "bei der ersten Folie"
@@ -900,3 +896,4 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
+

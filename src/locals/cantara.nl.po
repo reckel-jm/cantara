@@ -487,10 +487,6 @@ msgstr "Instellingen"
 msgid "Empty slide between songs"
 msgstr "Pauze tussen nummers"
 
-#: tfrmsettings.cblyricstoclipboard.caption
-msgid "Copy lyrics to clipboard"
-msgstr "Songtekst kopiëren naar klembord"
-
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "na eerste pauze"
@@ -897,3 +893,4 @@ msgstr "De gekozen map kan in Cantara worden gebruikt."
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Kies een map met nummers voordat u de instelhulp afsluit. Zonder deze map werkt Cantara niet."
+

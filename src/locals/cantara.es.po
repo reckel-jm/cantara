@@ -486,10 +486,6 @@ msgstr "Ajustes"
 msgid "Empty slide between songs"
 msgstr "Diapositiva vacía entre canciones"
 
-#: tfrmsettings.cblyricstoclipboard.caption
-msgid "Copy lyrics to clipboard"
-msgstr "Copiar letras al portapapeles"
-
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "en la primera diapositiva"

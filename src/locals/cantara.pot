@@ -459,10 +459,6 @@ msgstr ""
 msgid "Empty slide between songs"
 msgstr ""
 
-#: tfrmsettings.cblyricstoclipboard.caption
-msgid "Copy lyrics to clipboard"
-msgstr ""
-
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr ""

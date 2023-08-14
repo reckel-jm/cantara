@@ -481,10 +481,6 @@ msgstr "設定"
 msgid "Empty slide between songs"
 msgstr "歌曲之間的空投影片"
 
-#: tfrmsettings.cblyricstoclipboard.caption
-msgid "Copy lyrics to clipboard"
-msgstr "將文本複製到剪貼板"
-
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "首投影片"

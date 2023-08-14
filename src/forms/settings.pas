@@ -26,7 +26,6 @@ type
     cbShowBackgroundImage: TCheckBox;
     cbMetaDataLastSlide: TCheckBox;
     cbSpoiler: TCheckBox;
-    cbLyricsToClipboard: TCheckBox;
     comboVertical: TComboBox;
     comboHorizontal: TComboBox;
     FontDialog: TFontDialog;
@@ -327,7 +326,6 @@ var str: String;
 begin
   edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
-  cbLyricsToClipboard.Checked := settingsFile.ReadBool('Config', 'copy-lyrics-to-clipboard', True);
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Text-Color', 'clWhite'));
   bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Background-Color', 'clBlack'));
   cbSpoiler.Checked:=settingsFile.ReadBool('Config', 'Spoiler', True);
@@ -406,7 +404,6 @@ begin
     settingsFile.WriteInteger('Config', 'Font-Size', FontDialog.Font.Size);
     settingsFile.WriteString('Config', 'Font-Style', StyleToStr(FontDialog.Font.Style));
     //settingsFile.WriteFloat('Config', 'Line-Distance', edtLineDistance.Value);
-    settingsFile.WriteBool('Config', 'copy-lyrics-to-clipboard', cbLyricsToClipboard.Checked);
     settingsFile.WriteBool('Config', 'TitleSlide', cbMetaTitleSlide.Checked);
     settingsFile.WriteBool('Config', 'MetaDataFirstSlide', cbMetaDataFirstSlide.Checked);
     settingsFile.WriteBool('Config', 'MetaDataLastSlide', cbMetaDataLastSlide.Checked);
