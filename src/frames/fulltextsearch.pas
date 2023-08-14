@@ -136,15 +136,24 @@ procedure TFrmFulltextsearch.ListBoxResultsDrawItem(Control: TWinControl;
   Index: Integer; ARect: TRect; State: TOwnerDrawState);
 var
   aColor: TColor;
-  headingStyle: TTextStyle;
   FontBaseHeight: Integer;
   StringParts: TStringArray;
 begin
-  if odSelected in State then aColor := clActiveCaption
-  else aColor := clDefault;
+  ARect.Height:=500;
+  if odSelected in State then
+  begin
+    aColor := clActiveCaption;
+    ListBoxResults.Canvas.Font.Color := clCaptionText;
+  end
+  else
+  begin
+    aColor := clDefault;
+    ListBoxResults.Canvas.Font.Color := clWindowText;
+  end;
   FontBaseHeight := abs(GetFontData(Font.Reference.Handle).Height);
   ListBoxResults.Canvas.Brush.Color := aColor;
   ListBoxResults.Canvas.FillRect(aRect);
+  ListBoxResults.Canvas.Brush.Color := ListBoxResults.Canvas.Font.Color;
   ListBoxResults.Canvas.Font.Bold:=True;
   ListBoxResults.Canvas.Font.Underline:=True;
   with ListBoxResults.Canvas.TextStyle do
@@ -164,7 +173,6 @@ begin
     ListBoxResults.Canvas.Font.Underline:=False;
     ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top+2+Round(FontBaseHeight*1.33), StringParts[1]);
   end;
-  ARect.Height:=500;
 end;
 
 procedure TFrmFulltextsearch.NoResultBeforeShow(ASender: TObject;

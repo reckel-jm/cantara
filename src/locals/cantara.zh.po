@@ -28,6 +28,14 @@ msgstr "此文檔不可被轉換。請確認您已獲取寫入曲庫的權限。
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
 msgstr "此文檔不可被重命名。請確認您已獲取寫入曲庫的權限！"
 
+#: formmarkupexport.strloadtemplatefromfile
+msgid "Load Template From File..."
+msgstr ""
+
+#: formmarkupexport.strtitleonly
+msgid "Title Only"
+msgstr ""
+
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
 msgstr "歌名"
@@ -408,6 +416,10 @@ msgstr ""
 #: tfrmmarkupexport.clipboardbutton.caption
 msgctxt "tfrmmarkupexport.clipboardbutton.caption"
 msgid "Copy to Clipboard"
+msgstr ""
+
+#: tfrmmarkupexport.opendialog.title
+msgid "Load Template File"
 msgstr ""
 
 #: tfrmmarkupexport.result.caption

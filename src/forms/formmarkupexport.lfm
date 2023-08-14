@@ -23,8 +23,8 @@ object FrmMarkupExport: TFrmMarkupExport
     Width = 411
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Template'
-    ClientHeight = 481
-    ClientWidth = 407
+    ClientHeight = 482
+    ClientWidth = 395
     TabOrder = 0
     object TemplateCombo: TListBox
       AnchorSideLeft.Control = TemplateBox
@@ -34,12 +34,13 @@ object FrmMarkupExport: TFrmMarkupExport
       AnchorSideBottom.Control = TemplateBox
       AnchorSideBottom.Side = asrBottom
       Left = 0
-      Height = 140
+      Height = 184
       Top = 0
-      Width = 407
+      Width = 395
       Anchors = [akTop, akLeft, akRight]
       IntegralHeight = True
       ItemHeight = 0
+      OnClick = TemplateComboClick
       OnSelectionChange = TemplateComboSelectionChange
       TabOrder = 0
     end
@@ -52,9 +53,9 @@ object FrmMarkupExport: TFrmMarkupExport
       AnchorSideBottom.Control = TemplateBox
       AnchorSideBottom.Side = asrBottom
       Left = 0
-      Height = 341
-      Top = 140
-      Width = 407
+      Height = 298
+      Top = 184
+      Width = 395
       Anchors = [akTop, akLeft, akRight, akBottom]
       Font.Height = 13
       Font.Name = 'DejaVu Sans Mono'
@@ -562,8 +563,8 @@ object FrmMarkupExport: TFrmMarkupExport
     Width = 420
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Result'
-    ClientHeight = 481
-    ClientWidth = 416
+    ClientHeight = 482
+    ClientWidth = 404
     TabOrder = 1
     inline ResultEdit: TSynEdit
       AnchorSideLeft.Control = Result
@@ -572,9 +573,9 @@ object FrmMarkupExport: TFrmMarkupExport
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = ClipboardButton
       Left = 0
-      Height = 411
+      Height = 412
       Top = 0
-      Width = 416
+      Width = 404
       Anchors = [akTop, akLeft, akRight, akBottom]
       Font.Height = 13
       Font.Name = 'DejaVu Sans Mono'
@@ -1073,8 +1074,8 @@ object FrmMarkupExport: TFrmMarkupExport
       AnchorSideBottom.Control = btnSaveToFile
       Left = 0
       Height = 35
-      Top = 411
-      Width = 416
+      Top = 412
+      Width = 404
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Copy to Clipboard'
       OnClick = ClipboardButtonClick
@@ -1088,8 +1089,8 @@ object FrmMarkupExport: TFrmMarkupExport
       AnchorSideBottom.Side = asrBottom
       Left = 0
       Height = 35
-      Top = 446
-      Width = 416
+      Top = 447
+      Width = 404
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Save to File...'
       OnClick = btnSaveToFileClick
@@ -1108,5 +1109,11 @@ object FrmMarkupExport: TFrmMarkupExport
   end
   object SaveDialog: TSaveDialog
     Left = 432
+  end
+  object OpenDialog: TOpenDialog
+    Title = 'Load Template File'
+    Options = [ofPathMustExist, ofFileMustExist, ofEnableSizing, ofViewDetail]
+    Left = 474
+    Top = 281
   end
 end

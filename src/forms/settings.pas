@@ -379,7 +379,7 @@ procedure TfrmSettings.seWrapLinesChange(Sender: TObject);
 begin
   if seWrapLines.Value < 0 then seWrapLines.Value:=0;
   try
-     ReloadSlideAndPresentationCanvas;
+    ReloadSlideAndPresentationCanvas;
   finally
   end;
 end;
@@ -463,6 +463,7 @@ procedure TFrmSettings.ReloadSlideAndPresentationCanvas;
     PresentationSlideCounter: Integer;
     SlideSettings: TSlideSettings;
 begin
+  SlideListCur := 0; // to prevent exceptions if something cant be found anymore
   SlideSettings := self.ExportSlideSettings;
   SlideList.Clear;
   PresentationSlideCounter := 0;

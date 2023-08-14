@@ -316,7 +316,7 @@ begin
 end;
 
 procedure TfrmSongs.FormShow(Sender: TObject);
-var filename: string;
+var filename,openfilepath: string;
 begin
   filename := GetAppConfigFile(false);
   settings.settingsFile := TINIFile.Create(filename);
@@ -336,6 +336,16 @@ begin
   self.FormResize(frmSongs);
   PanelMultiScreenLeft := Round(frmSongs.Width/2);
   PanelMultiScreenLeft := Max(Trunc(0.8*frmSongs.Width), settingsfile.ReadInteger('Size', 'panel-mutliscreen-position', PanelMultiScreenLeft));
+  // Load Song File if the program reveived one
+  try
+    if ParamCount = 1 then
+    begin
+      OpenFilePath := ParamStr(1);
+      if FileExists(OpenFilePath) and (ExtractFileExt(OpenFilePath) = '.songtex') then
+        LoadSongTeXFile(OpenFilePath);
+    end;
+  finally
+  end;
 end;
 
 procedure TfrmSongs.grbControlClick(Sender: TObject);
@@ -682,6 +692,7 @@ begin
 end;
 
 procedure TfrmSongs.FormCreate(Sender: TObject);
+var OpenFilePath: String;
 begin
   ProgramMode := ModeSelection;
   //self.LocaliseCaptions;
@@ -702,6 +713,7 @@ begin
   // load home directory into file/folder dialogs
   OpenDialog.InitialDir:=GetUserDir;
   SaveDialog.InitialDir:=GetUserDir;
+
 end;
 
 procedure TfrmSongs.FormDestroy(Sender: TObject);

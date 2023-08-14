@@ -28,6 +28,14 @@ msgstr "El archivo no se puede convertir. ¡Asegúrese de que tiene permisos par
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
 msgstr "El archivo no puede ser renombrado. ¡Asegúrese de que tiene permisos para escribir en el repositorio de canciones!"
 
+#: formmarkupexport.strloadtemplatefromfile
+msgid "Load Template From File..."
+msgstr ""
+
+#: formmarkupexport.strtitleonly
+msgid "Title Only"
+msgstr ""
+
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
 msgstr ""
@@ -413,6 +421,10 @@ msgstr ""
 #: tfrmmarkupexport.clipboardbutton.caption
 msgctxt "tfrmmarkupexport.clipboardbutton.caption"
 msgid "Copy to Clipboard"
+msgstr ""
+
+#: tfrmmarkupexport.opendialog.title
+msgid "Load Template File"
 msgstr ""
 
 #: tfrmmarkupexport.result.caption

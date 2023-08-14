@@ -17,6 +17,7 @@ type
   TFrmMarkupExport = class(TForm)
     ClipboardButton: TButton;
     btnSaveToFile: TButton;
+    OpenDialog: TOpenDialog;
     SaveDialog: TSaveDialog;
     Result: TGroupBox;
     ResultEdit: TSynEdit;
@@ -30,6 +31,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure TemplateComboChange(Sender: TObject);
+    procedure TemplateComboClick(Sender: TObject);
     procedure TemplateComboSelectionChange(Sender: TObject; User: boolean);
     procedure TemplateEditChange(Sender: TObject);
   private
@@ -40,7 +42,9 @@ type
     procedure ParseTemplate;
   end;
 
-
+ResourceString
+  strTitleOnly = 'Title Only';
+  strLoadTemplateFromFile = 'Load Template From File...';
 
 var
   FrmMarkupExport: TFrmMarkupExport;
@@ -66,24 +70,29 @@ end;
 procedure TFrmMarkupExport.FormCreate(Sender: TObject);
 var i: Integer;
 begin
+
   TemplateDict := TTemplateDict.create;
+  TemplateDict.Add(strTitleOnly, LoadResourceFileIntoStringList('MARKUP.TITLEONLY'));
   TemplateDict.Add('Markdown', LoadResourceFileIntoStringList('MARKUP.MARKDOWN'));
   TemplateDict.Add('HTML', LoadResourceFileIntoStringList('MARKUP.HTML'));
   TemplateDict.Add('Telegram', LoadResourceFileIntoStringList('MARKUP.TELEGRAM'));
   TemplateDict.Add('WhatsApp', LoadResourceFileIntoStringList('MARKUP.WHATSAPP'));
+
   for i := 0 to TemplateDict.Count-1 do
     TemplateCombo.Items.Add(TemplateDict.Keys[i]);
 
+  TemplateCombo.Items.Add(strLoadTemplateFromFile);
   // load home directory into file/folder dialogs
-  SaveDialog.InitialDir:=GetUserDir;
+  OpenDialog.InitialDir:=GetUserDir;
+  SaveDialog.InitialDir:=OpenDialog.InitialDir;
 end;
 
 procedure TFrmMarkupExport.btnSaveToFileClick(Sender: TObject);
 begin
   SaveDialog.DefaultExt:=CurrentFileExtension;
-  SaveDialog.InitialDir:=GetUserDir;
   if SaveDialog.Execute then
     ResultEdit.Lines.SaveToFile(SaveDialog.FileName);
+
 end;
 
 procedure TFrmMarkupExport.ClipboardButtonClick(Sender: TObject);
@@ -113,11 +122,22 @@ begin
 
 end;
 
+procedure TFrmMarkupExport.TemplateComboClick(Sender: TObject);
+begin
+
+end;
+
 procedure TFrmMarkupExport.TemplateComboSelectionChange(Sender: TObject;
   User: boolean);
 begin
   try
-    TemplateEdit.Lines.Assign(TemplateDict.KeyData[TemplateCombo.Items[TemplateCombo.ItemIndex]]);
+    if (TemplateCombo.ItemIndex < TemplateCombo.Count-1) and (TemplateCombo.ItemIndex >= 0) then
+      TemplateEdit.Lines.Assign(TemplateDict.KeyData[TemplateCombo.Items[TemplateCombo.ItemIndex]])
+    else if TemplateCombo.ItemIndex = TemplateCombo.Count-1 then
+    begin
+      if (OpenDialog.Execute) and FileExists(OpenDialog.FileName) then
+        TemplateEdit.Lines.LoadFromFile(OpenDialog.FileName);
+    end;
     ParseTemplate;
   finally
   end;

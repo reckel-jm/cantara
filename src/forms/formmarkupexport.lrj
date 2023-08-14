@@ -3,5 +3,6 @@
 {"hash":205991173,"name":"tfrmmarkupexport.templatebox.caption","sourcebytes":[84,101,109,112,108,97,116,101],"value":"Template"},
 {"hash":93105204,"name":"tfrmmarkupexport.result.caption","sourcebytes":[82,101,115,117,108,116],"value":"Result"},
 {"hash":127170340,"name":"tfrmmarkupexport.clipboardbutton.caption","sourcebytes":[67,111,112,121,32,116,111,32,67,108,105,112,98,111,97,114,100],"value":"Copy to Clipboard"},
-{"hash":10127822,"name":"tfrmmarkupexport.btnsavetofile.caption","sourcebytes":[83,97,118,101,32,116,111,32,70,105,108,101,46,46,46],"value":"Save to File..."}
+{"hash":10127822,"name":"tfrmmarkupexport.btnsavetofile.caption","sourcebytes":[83,97,118,101,32,116,111,32,70,105,108,101,46,46,46],"value":"Save to File..."},
+{"hash":98954485,"name":"tfrmmarkupexport.opendialog.title","sourcebytes":[76,111,97,100,32,84,101,109,112,108,97,116,101,32,70,105,108,101],"value":"Load Template File"}
 ]}
