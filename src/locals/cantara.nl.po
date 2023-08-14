@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-08-02 21:27+0200\n"
+"PO-Revision-Date: 2023-08-14 20:34+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
@@ -31,11 +31,11 @@ msgstr "De naam kan niet worden gewijzigd. Zorg er voor dat u over de juiste map
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
-msgstr ""
+msgstr "Sjabloon laden uit bestand..."
 
 #: formmarkupexport.strtitleonly
 msgid "Title Only"
-msgstr ""
+msgstr "Alleen de titel"
 
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
@@ -72,11 +72,11 @@ msgstr "https://www.cantara.app"
 
 #: pptx.strcantaraexport
 msgid "Cantara Song Presentation Export"
-msgstr ""
+msgstr "Cantara Lied Presentatie Export"
 
 #: pptx.strsongs
 msgid "Songs"
-msgstr ""
+msgstr "Liedjes"
 
 #: settings.strbrightness
 msgid "Increase brightness by "
@@ -188,7 +188,7 @@ msgstr "Tip"
 
 #: songselection.strpptxgenjs
 msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
-msgstr ""
+msgstr "Cantara gebruikt de Java Script-engine van uw lokale standaardwebbrowser en de open source Java Script-bibliotheek PptxGenJs (https://gitbrent.github.io/PptxGenJS/) om het pptx-bestand te genereren. Daarom, na op OK te hebben gedrukt, zal uw webbrowser openen en u vragen om een plaats om het pptx-bestand op te slaan wanneer het genereren succesvol is voltooid. Tijdens dit proces is er geen internetverbinding nodig en worden er ondanks uw webbrowser geen gegevens met iemand anders gedeeld. Als u wilt doorgaan, drukt u op OK en dit bericht zal de volgende keer niet meer verschijnen. Als u niet wilt doorgaan, drukt u op Annuleren."
 
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
@@ -203,7 +203,6 @@ msgid "Export All"
 msgstr "Alles exporteren"
 
 #: tformimageexport.buttonexportcurrent.caption
-#, fuzzy
 msgctxt "tformimageexport.buttonexportcurrent.caption"
 msgid "Export Current"
 msgstr "Huidige exporteren"
@@ -427,7 +426,7 @@ msgstr "Kopiëren naar klembord"
 
 #: tfrmmarkupexport.opendialog.title
 msgid "Load Template File"
-msgstr ""
+msgstr "Sjabloon laden uit bestand"
 
 #: tfrmmarkupexport.result.caption
 msgid "Result"
@@ -573,37 +572,35 @@ msgid "Edit Files"
 msgstr "Bestanden bewerken"
 
 #: tfrmsongedit.itemcopy.caption
-#, fuzzy
 msgctxt "tfrmsongedit.itemcopy.caption"
 msgid "Copy"
 msgstr "Kopiëren"
 
 #: tfrmsongedit.itemcut.caption
 msgid "Cut"
-msgstr ""
+msgstr "Knip"
 
 #: tfrmsongedit.itemfadein.caption
 msgid "Zoom In"
-msgstr ""
+msgstr "In zoomen"
 
 #: tfrmsongedit.itemfadeout.caption
 msgid "Zoom Out"
-msgstr ""
+msgstr "Uitzoomen"
 
 #: tfrmsongedit.itempaste.caption
 msgid "Paste"
-msgstr ""
+msgstr "Plak"
 
 #: tfrmsongedit.itemredo.caption
 msgid "Redo"
-msgstr ""
+msgstr "Opnieuw doen"
 
 #: tfrmsongedit.itemundo.caption
 msgid "Undo"
-msgstr ""
+msgstr "Ongedaan maken"
 
 #: tfrmsongedit.menuedit.caption
-#, fuzzy
 msgctxt "tfrmsongedit.menuedit.caption"
 msgid "Edit"
 msgstr "Bewerken"
@@ -623,8 +620,6 @@ msgid "Close Editor"
 msgstr "Bewerker sluiten"
 
 #: tfrmsongedit.menuitemcopy.caption
-#, fuzzy
-#| msgid "Copy"
 msgctxt "tfrmsongedit.menuitemcopy.caption"
 msgid "Duplicate"
 msgstr "Kopiëren"
@@ -640,7 +635,7 @@ msgstr "Opslaan"
 
 #: tfrmsongedit.view.caption
 msgid "View"
-msgstr ""
+msgstr "Weergave"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
@@ -902,4 +897,3 @@ msgstr "De gekozen map kan in Cantara worden gebruikt."
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Kies een map met nummers voordat u de instelhulp afsluit. Zonder deze map werkt Cantara niet."
-

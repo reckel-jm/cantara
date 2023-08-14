@@ -30,11 +30,11 @@ msgstr "Die Datei kann nicht umbenannt werden. Bitte stellen Sie sicher, dass Si
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
-msgstr ""
+msgstr "Template aus Datei laden..."
 
 #: formmarkupexport.strtitleonly
 msgid "Title Only"
-msgstr ""
+msgstr "Nur der Titel"
 
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
@@ -71,11 +71,11 @@ msgstr "https://www.cantara.app"
 
 #: pptx.strcantaraexport
 msgid "Cantara Song Presentation Export"
-msgstr ""
+msgstr "Cantara Liedpräsentations-Export"
 
 #: pptx.strsongs
 msgid "Songs"
-msgstr ""
+msgstr "Lieder"
 
 #: settings.strbrightness
 msgid "Increase brightness by "
@@ -204,7 +204,6 @@ msgid "Export All"
 msgstr "Alles exportieren"
 
 #: tformimageexport.buttonexportcurrent.caption
-#, fuzzy
 msgctxt "tformimageexport.buttonexportcurrent.caption"
 msgid "Export Current"
 msgstr "Das Ausgewählte exportieren"
@@ -428,7 +427,7 @@ msgstr "In die Zwischenablage kopieren"
 
 #: tfrmmarkupexport.opendialog.title
 msgid "Load Template File"
-msgstr ""
+msgstr "Datei aus Template laden"
 
 #: tfrmmarkupexport.result.caption
 msgid "Result"
@@ -574,37 +573,35 @@ msgid "Edit Files"
 msgstr "Dateieditor"
 
 #: tfrmsongedit.itemcopy.caption
-#, fuzzy
 msgctxt "tfrmsongedit.itemcopy.caption"
 msgid "Copy"
 msgstr "Kopieren"
 
 #: tfrmsongedit.itemcut.caption
 msgid "Cut"
-msgstr ""
+msgstr "Ausschneiden"
 
 #: tfrmsongedit.itemfadein.caption
 msgid "Zoom In"
-msgstr ""
+msgstr "Vergrößern"
 
 #: tfrmsongedit.itemfadeout.caption
 msgid "Zoom Out"
-msgstr ""
+msgstr "Verkleinern"
 
 #: tfrmsongedit.itempaste.caption
 msgid "Paste"
-msgstr ""
+msgstr "Einfügen"
 
 #: tfrmsongedit.itemredo.caption
 msgid "Redo"
-msgstr ""
+msgstr "Wiederholen"
 
 #: tfrmsongedit.itemundo.caption
 msgid "Undo"
-msgstr ""
+msgstr "Rückgängig"
 
 #: tfrmsongedit.menuedit.caption
-#, fuzzy
 msgctxt "tfrmsongedit.menuedit.caption"
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -625,8 +622,6 @@ msgid "Close Editor"
 msgstr "Schließe den Editor"
 
 #: tfrmsongedit.menuitemcopy.caption
-#, fuzzy
-#| msgid "Copy"
 msgctxt "tfrmsongedit.menuitemcopy.caption"
 msgid "Duplicate"
 msgstr "Kopieren"
@@ -642,7 +637,7 @@ msgstr "Speichern"
 
 #: tfrmsongedit.view.caption
 msgid "View"
-msgstr ""
+msgstr "Ansicht"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
@@ -905,4 +900,3 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
-
