@@ -282,7 +282,7 @@ begin
           key := trim(key);
           value := trim(value);
         end;
-      self.MetaDict.Add(lowerCase(key), value);
+      self.MetaDict.AddOrSetData(lowerCase(key), value);
     end else
     if (Trim(curLineText) = '') and (contentStarted = True) then output.Add(curLineText)
     else if (Trim(curLineText) <> '') then
