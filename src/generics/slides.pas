@@ -292,6 +292,7 @@ begin
     changed := False;
     n1 := 0;
     n2 := 0;
+    output.Add('');
     for i := 0 to output.Count-1 do
     begin
       if (output.Strings[i] = '') or (output.Strings[i] = '---') then
@@ -307,13 +308,13 @@ begin
              begin
                if output.count > n2+1+place-n1 then
                begin
-                 output.Strings[place] := '---';
+                 //output.Strings[place] := '---';
                  for t := 0 to place-n1 do
                  begin
                    output.Move(n2+1+t, place+t);
                  end;
                  output.Strings[n2+1] := '';
-                 output.Strings[n2+1+place-n1] := '---';
+                 output.insert(n2+1+place-n1+1, '---');
                end;
              end;
              changed := True;
@@ -321,17 +322,9 @@ begin
          n1 := n2+1;
       end;
     end;
-    // For the last slide
-    n2 := output.Count;
-    if (n2-n1) > MaxSlides then
-       begin
-           if MaxSlides mod 2 = 0 then
-             output.Insert((n1+(n2-n1) div 2), '')
-           else output.Insert((n1+(n2-n1) div 2) + 1, '');
-           changed := True;
-       end;
     end until changed = False;
     end;
+    while (output.Strings[output.count-1] = '') do output.Delete(output.count-1);
     output.Text:=StringReplace(output.Text, LineEnding+LineEnding+LineEnding, LineEnding+LineEnding, [rfReplaceAll]);
     Result := output.Text;
     Output.Destroy;

@@ -43,7 +43,7 @@ unit lyrics;
 interface
 
 uses
-  Classes, SysUtils, Strings, fgl, Dialogs, LazFileUtils;
+  Classes, SysUtils, Strings, fgl, Dialogs;
 
 function StringListToString(StringList: TStringList): String;
 
