@@ -1,3 +1,41 @@
+{ <description>
+
+  Copyright (C) 2023 Jan Martin Reckel <jm.reckel@t-online.de>
+
+  This library is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Library General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or (at your
+  option) any later version with the following modification:
+
+  As a special exception, the copyright holders of this library give you
+  permission to link this library with independent modules to produce an
+  executable, regardless of the license terms of these independent modules,and
+  to copy and distribute the resulting executable under terms of your choice,
+  provided that you also meet, for each linked independent module, the terms
+  and conditions of the license of that module. An independent module is a
+  module which is not derived from or based on this library. If you modify
+  this library, you may extend this exception to your version of the library,
+  but you are not obligated to do so. If you do not wish to do so, delete this
+  exception statement from your version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
+  for more details.
+
+  You should have received a copy of the GNU Library General Public License
+  along with this library; if not, write to the Free Software Foundation,
+  Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1335, USA.
+
+}
+
+{
+This Unit contains all functions for handling a song file which contains only
+lyrics. It implements parsing of several input file formats (CCLI/Song file format)
+and provides structures for handling song parts with text.
+
+@author(Jan Martin Reckel)
+}
 unit lyrics;
 
 {$mode ObjFPC}{$H+}
@@ -38,13 +76,8 @@ type
       MetaDict: TStringDict;
       constructor Create; overload;
       destructor Destroy; override;
-      procedure importSongFile;
+      { Function to import a song file into the song }
       procedure importSongfile(filepath: string);
-      {
-      This is the main function which converts a CCLI file into the linear song format.
-      It is public – that means can be called outside – but will call private class functions when needed.
-      }
-      procedure ConvertCCLIFile;
       function ParseMetaData(MetaLogic: string): string;
       procedure exportAsSongFile(outputfilename: String);
       function IsCCLIFile: Boolean;
@@ -55,6 +88,13 @@ type
     private
       inputFile: TStringList;
       PositionDict: TStringIntegerDict;
+      procedure importSongFile;
+      {
+      This is the main function which converts a CCLI file into the linear song format.
+      It is not public to prevent exceptions if the file is not a CCLI file.
+      It will be called by importSongFile if necessary.
+      }
+      procedure ConvertCCLIFile;
       procedure WritePart(index: Integer);
       { For CCLI-to-Song-Convertion: Finds and inserts the appropriate repetitional parts (mostly used after stanza):
       1. Pre-Chorus(es)

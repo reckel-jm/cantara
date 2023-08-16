@@ -235,7 +235,7 @@ begin
   output := TStringList.Create;
   output.Assign(input);
   if MaxSlides <= 0 then exit; // Just as a protective measure, actually not needed anymore.
-  if MaxSlides = 1 then       // it means to have one line per slide, so we take a shortpath
+  if MaxSlides = 1 then        // it means to have one line per slide, so we take a shortpath
   begin
     SecondLanguageStringList := TStringList.Create;
     i := 0;
@@ -285,7 +285,6 @@ begin
         i := i+1;
       end;
     SecondLanguageStringList.Destroy;
-    //ShowMessage(output.Text);
   end else
   begin
     repeat
