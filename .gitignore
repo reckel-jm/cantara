@@ -54,3 +54,5 @@ fpccantaratest
 *.wpo
 
 src/locals/*.mo
+src/cantaracli
+cataracli
