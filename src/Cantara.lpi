@@ -279,7 +279,8 @@
             </Options>
           </Linking>
           <Other>
-            <CustomOptions Value="-dQT_NATIVE_DIALOGS"/>
+            <CustomOptions Value="-dQT_NATIVE_DIALOGS
+-dUseCThreads"/>
           </Other>
         </CompilerOptions>
       </Item6>
@@ -318,7 +319,8 @@
           </Linking>
           <Other>
             <CustomOptions Value="-FcUTF8
--dCONTAINER"/>
+-dCONTAINER
+-dUseCThreads"/>
           </Other>
         </CompilerOptions>
       </Item7>

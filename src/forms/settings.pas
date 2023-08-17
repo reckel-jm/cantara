@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
   LCLINTF, LCLType, ExtCtrls, ActnList, Arrow, Present, Lyrics, Slides,
-  ResourceHandling, PresentationCanvas, settingspadding;
+  ResourceHandling, PresentationCanvas, settingspadding, loadimagethread;
 
 type
 
@@ -48,7 +48,6 @@ type
     edtRepoPath: TEdit;
     labelSongDir: TLabel;
     SelectDirectoryDialog: TSelectDirectoryDialog;
-    UpdatePreviewTimer: TTimer;
     procedure btnBackgroundImageClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure btnDetailsClick(Sender: TObject);
@@ -62,6 +61,7 @@ type
     procedure cbMetaDataLastSlideChange(Sender: TObject);
     procedure cbMetaTitleSlideChange(Sender: TObject);
     procedure cbShowBackgroundImageChange(Sender: TObject);
+    procedure comboHorizontalChange(Sender: TObject);
     procedure comboVerticalChange(Sender: TObject);
     procedure edtRepoPathChange(Sender: TObject);
     procedure edtRepoPathEditingDone(Sender: TObject);
@@ -76,6 +76,7 @@ type
     procedure ImagePresentationPreviewClick(Sender: TObject);
     procedure ImagePresentationPreviewDblClick(Sender: TObject);
     procedure loadSettings();
+    procedure memoMetaDataChange(Sender: TObject);
     procedure memoMetaDataEditingDone(Sender: TObject);
     procedure sbImageBrightnessChange(Sender: TObject);
     procedure sbImageBrightnessExit(Sender: TObject);
@@ -87,8 +88,10 @@ type
     SlideList: TSlideList;
     slidelistcur: Integer;
     ExampleSong: TSong;
+    LoadImageThread: TLoadImageThread;
     procedure LoadPreviewImage;
     procedure ReloadSlideAndPresentationCanvas;
+    procedure AdjustImageBrightnessText;
   public
     { public declarations }
     changedBackground: Boolean;
@@ -180,6 +183,8 @@ begin
   SlideList := TSlideList.Create(True);
   PictureDir := GetDefaultPictureDir;
   if PictureDir <> '' then BgPictureDialog.InitialDir:=PictureDir;
+  LoadImageThread := TLoadImageThread.Create(True);
+  LoadImageThread.Start;
 end;
 
 procedure TfrmSettings.FormDestroy(Sender: TObject);
@@ -187,19 +192,19 @@ begin
   PresentationPreviewCanvas.Destroy;
   ExampleSong.Destroy;
   SlideList.Destroy;
+  LoadImageThread.Terminate;
 end;
 
 procedure TfrmSettings.FormHide(Sender: TObject);
 begin
-  UpdatePreviewTimer.Enabled:=False;
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
 begin
   sbImageBrightnessChange(frmSettings);
   changedBackground := False;
+  AdjustImageBrightnessText;
   ReloadSlideAndPresentationCanvas;
-  UpdatePreviewTimer.Enabled:=True;
 end;
 
 procedure TfrmSettings.gbPresentationClick(Sender: TObject);
@@ -228,6 +233,7 @@ end;
 procedure TfrmSettings.btnFontSizeManuallyClick(Sender: TObject);
 begin
   FontDialog.Execute;
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.btnCloseClick(Sender: TObject);
@@ -238,22 +244,26 @@ end;
 procedure TfrmSettings.btnDetailsClick(Sender: TObject);
 begin
   FormPadding.ShowModal;
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.btnBackgroundImageClick(Sender: TObject);
 begin
   BgPictureDialog.Execute;
   changedBackground := True;
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.btnBackgroundColorClick(Sender: TObject);
 begin
   bgColorDialog.Execute;
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.btnTextColorClick(Sender: TObject);
 begin
   textColorDialog.Execute;
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.cbAutoWordWrapChange(Sender: TObject);
@@ -285,11 +295,17 @@ procedure TfrmSettings.cbShowBackgroundImageChange(Sender: TObject);
 begin
   btnBackgroundImage.Enabled:=cbShowBackgroundImage.Checked;
   changedBackground := True;
+  LoadPreviewImage;
+end;
+
+procedure TfrmSettings.comboHorizontalChange(Sender: TObject);
+begin
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.comboVerticalChange(Sender: TObject);
 begin
-
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.edtRepoPathChange(Sender: TObject);
@@ -350,8 +366,12 @@ begin
   Padding.Top:=settingsFile.ReadInteger('Config', 'Padding-Top', PresentationCanvas.PADDING);
   Padding.Bottom:=settingsFile.ReadInteger('Config', 'Padding-Bottom', PresentationCanvas.PADDING);
   FormPadding.frmSettingsDetailed.ImportPadding(Padding);
+  AdjustImageBrightnessText;
+end;
 
-  sbImageBrightnessChange(frmPresent);
+procedure TfrmSettings.memoMetaDataChange(Sender: TObject);
+begin
+  ReloadSlideAndPresentationCanvas;
 end;
 
 procedure TfrmSettings.memoMetaDataEditingDone(Sender: TObject);
@@ -366,6 +386,7 @@ begin
   else if sbImageBrightness.Position = 0 then
      lblImageExplainer.Caption := strPictureOriginalState;
   ChangedBackground := True;
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.sbImageBrightnessExit(Sender: TObject);
@@ -379,6 +400,7 @@ begin
   try
     ReloadSlideAndPresentationCanvas;
   finally
+    LoadPreviewImage;
   end;
 end;
 
@@ -430,19 +452,19 @@ end;
 procedure TfrmSettings.LoadPreviewImage;
 begin
   try
-    PresentationPreviewCanvas.SlideSettings := self.ExportSlideSettings;
-    PresentationPreviewCanvas.PresentationStyleSettings := self.ExportPresentationStyleSettings;
-    PresentationPreviewCanvas.Width:=Screen.Width;
-    PresentationPreviewCanvas.Height:=Screen.Height;
-    if ChangedBackground then
-      PresentationPreviewCanvas.LoadBackgroundBitmap;
-    PresentationPreviewCanvas.ResizeBackgroundBitmap;
-    ImagePresentationPreview.Picture.Assign(PresentationPreviewCanvas.PaintSlide(SlideList[slidelistcur]));
+    LoadImageThread.LoadData(self.ExportPresentationStyleSettings,
+    self.ExportSlideSettings,
+    PresentationPreviewCanvas,
+    Screen,
+    ChangedBackground,
+    self.SlideList[slidelistcur],
+    ImagePresentationPreview.Picture);
+    LoadImageThread.RunOnce;
   finally
   end;
 end;
 
-function TFrmSettings.ExportSlideSettings(): TSlideSettings;
+function TfrmSettings.ExportSlideSettings: TSlideSettings;
 var SlideSettings: TSlideSettings;
 begin
   SlideSettings.EmptyFrame := cbEmptyFrame.Checked;
@@ -455,7 +477,7 @@ begin
   Result := SlideSettings;
 end;
 
-procedure TFrmSettings.ReloadSlideAndPresentationCanvas;
+procedure TfrmSettings.ReloadSlideAndPresentationCanvas;
   var
     PresentationSlideCounter: Integer;
     SlideSettings: TSlideSettings;
@@ -469,6 +491,14 @@ begin
   PresentationPreviewCanvas.Width:=Screen.Width;
   PresentationPreviewCanvas.PresentationStyleSettings := ExportPresentationStyleSettings;
   PresentationPreviewCanvas.LoadBackgroundBitmap;
+end;
+
+procedure TfrmSettings.AdjustImageBrightnessText;
+begin
+  if sbImageBrightness.Position > 0 then
+     lblImageExplainer.Caption:=strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position))+'%'
+  else if sbImageBrightness.Position = 0 then
+     lblImageExplainer.Caption := strPictureOriginalState;
 end;
 
 function TfrmSettings.ExportPresentationStyleSettings: TPresentationStyleSettings;
