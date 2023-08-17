@@ -48,6 +48,7 @@ type
     procedure ItemRemoveClick(Sender: TObject);
   private
     Scale: Double;
+    ShowFirstTime: Boolean;
     procedure ReadjustScale;
   public
     PresentationCanvas: TPresentationCanvasHandler;
@@ -125,7 +126,7 @@ procedure TFormImageExport.EditWidthChange(Sender: TObject);
 begin
   if CheckBoxSync.Checked then
   begin
-    if Scale = 0 then Scale := 8/6;
+    if Scale = 0 then Scale := 16/9;
     EditHeight.Value := Round(EditWidth.Value/Scale)
   end
   else
@@ -136,15 +137,14 @@ end;
 
 procedure TFormImageExport.FormCreate(Sender: TObject);
 begin
-  EditWidth.Value := Screen.Monitors[Screen.MonitorCount-1].Width;
-  EditHeight.Value := Screen.Monitors[Screen.MonitorCount-1].Height;
-  ReadjustScale;
   SlideList := TSlideList.Create();
   PresentationCanvas := TPresentationCanvasHandler.Create();
 
   // load home directory into file/folder dialogs
   PictureDirectoryDialog.InitialDir:=GetUserDir;
   SaveDialog.InitialDir:=GetUserDir;
+
+  ShowFirstTime := True;
 end;
 
 procedure TFormImageExport.FormDestroy(Sender: TObject);
@@ -155,7 +155,15 @@ end;
 
 procedure TFormImageExport.FormShow(Sender: TObject);
 begin
-
+  if ShowFirstTime then
+  begin
+    Screen.UpdateMonitors;
+    EditWidth.Value := Screen.Monitors[Screen.MonitorCount-1].Width;
+    EditHeight.Value := Screen.Monitors[Screen.MonitorCount-1].Height;
+    if EditHeight.Value <> 0 then Scale := EditWidth.Value / EditHeight.Value
+      else ReadjustScale;
+    ShowFirstTime := False;
+  end;
 end;
 
 procedure TFormImageExport.GroupSettingsClick(Sender: TObject);
@@ -185,14 +193,14 @@ end;
 
 procedure TFormImageExport.ReadjustScale;
 begin
-  if EditWidth.Value = 0 then EditWidth.Value := 800;
-  if EditHeight.Value = 0 then EditHeight.Value := 600;
+  if EditWidth.Value = 0 then EditWidth.Value := 1600;
+  if EditHeight.Value = 0 then EditHeight.Value := 900;
   Scale := EditWidth.Value / EditHeight.Value;
   if Scale = 0 then
   begin
-    Scale := 800/600;
-    EditWidth.Value := 800;
-    EditHeight.Value := 600;
+    Scale := 1600/900      ;
+    EditWidth.Value := 1600;
+    EditHeight.Value := 900;
   end;
 end;
 

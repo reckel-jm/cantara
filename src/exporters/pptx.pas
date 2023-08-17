@@ -40,7 +40,6 @@ uses
 type
   TPPTXExporter = class
     public
-      InputSongs: TSongList;
       PresentationStyleSettings: TPresentationStyleSettings;
       Folder: String;
       constructor Create; overload;
@@ -61,14 +60,22 @@ const
   CodeAddSlide:String = 'slide = pres.addSlide({ masterName: "%s" });';
   CodeAddSpoileredText:String = 'slide.addText(' +
                                  '[' +
-                                 '{ text: "%s\n\n", options: {} }, '+
-                                 '{ text: "%s", options: { fontSize: "18" } },'+
+                                 '{ text: "%s\n\n", options: { align: "{{HALIGN}}" } }, '+
+                                 '{ text: "%s", options: { fontSize: "18" }, align: "{{HALIGN}}" },'+
                                  '],'+
                                  '{ placeholder: "defaultcontent" }'+
                                  ');';
-  CodeAddTitleText:String = 'slide.addText("%s", { placeholder: "title" })';
-  CodeAddUnspoileredText:String = 'slide.addText("%s", { placeholder: "defaultcontent" })';
+  CodeAddTitleText:String = 'slide.addText("%s", { placeholder: "title", align: "{{HALIGN}}" })';
+  CodaAddTitleTextWithMetaData:String = 'slide.addText(' +
+                                 '[' +
+                                 '{ text: "%s\n\n", options: { bold: true, align: "{{HALIGN}}" } }, '+
+                                 '{ text: "%s", options: { fontSize: "18", bold: false, align: "{{HALIGN}}" } },'+
+                                 '],'+
+                                 '{ placeholder: "title" }'+
+                                 ');';
+  CodeAddUnspoileredText:String = 'slide.addText("%s", { placeholder: "defaultcontent" });';
   CodeAddSection:String = 'pres.addSection({ title: "%s" });';
+  CodeAddMetaText:String = 'slide.addText("[text]", { x: 0.15, y: "90%", h: "6%", valign: "bottom", color: "{{TEXTCOLOR}}", fontSize: "12", autoFit: true });';
 
 ResourceString
   StrCantaraExport = 'Cantara Song Presentation Export';
@@ -116,8 +123,19 @@ begin
   if Slide.SlideType = TitleSlide then
   begin
     content.Add(Format(CodeAddSlide, ['TitleSlide']));
-    content.Add(Format(CodeAddTitleText, [PrepareText(Slide.PartContent.MainText)]));
+    if Trim(Slide.PartContent.SpoilerText) = '' then
+      content.Add(Format(CodeAddTitleText, [PrepareText(Slide.PartContent.MainText)]))
+    else
+      content.Add(Format(CodaAddTitleTextWithMetaData,
+          [
+            PrepareText(Slide.PartContent.MainText),
+            PrepareText(Slide.PartContent.SpoilerText)
+          ]
+        )
+      );
   end;
+  if Trim(Slide.PartContent.MetaText) <> '' then
+    content.Add(StringReplace(CodeAddMetaText, '[text]', PrepareText(Slide.PartContent.MetaText), [rfReplaceAll]));
   content.Add('slide.addNotes("' + PrepareText(Slide.PartContent.MainText) + '");');
 end;
 
@@ -159,7 +177,6 @@ end;
 
 destructor TPPTXExporter.Destroy;
 begin
-  if Assigned(InputSongs) then FreeAndNil(InputSongs);
   FreeAndNil(pptxgenjs);
   FreeAndNil(template);
   exportedJs.Destroy;

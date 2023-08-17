@@ -12,7 +12,7 @@ uses
   { you can add units after this }
   slides, fulltextsearch, FormFulltextSearch, pptx, resourcehandling,
   PresentationCanvas, settingsdetailed, settingspadding, formMarkupExport,
-  markup, imageexport;
+  markup, imageexport, loadimagethread;
 {$R *.res}
 
 begin

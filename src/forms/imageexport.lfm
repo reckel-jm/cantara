@@ -177,10 +177,13 @@ object FormImageExport: TFormImageExport
       AnchorSideLeft.Control = EditHeight
       AnchorSideTop.Control = EditHeight
       AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = GroupSettings
+      AnchorSideRight.Side = asrBottom
       Left = 214
       Height = 40
       Top = 102
-      Width = 157
+      Width = 190
+      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 15
       Caption = 'Reload Preview...'
       ModalResult = 1

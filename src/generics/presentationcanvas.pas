@@ -195,7 +195,7 @@ begin
   NormalTextFont := TFont.Create;
   NormalTextFont.Assign(PresentationStyleSettings.Font);
   NormalTextFont.Color:=PresentationStyleSettings.TextColor;
-  DefaultSpoilerDistance := Round(NormalTextFont.GetTextHeight('gJ')*2.6);
+  DefaultSpoilerDistance := Round(NormalTextFont.GetTextHeight('gJ')*3.5);
   SpoilerTextFont := TFont.Create;
   SpoilerTextFont.Assign(NormalTextFont);
   SpoilerTextFont.Height:=NormalTextFont.Height div 2;
