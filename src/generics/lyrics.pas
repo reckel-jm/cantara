@@ -85,6 +85,7 @@ type
       procedure importSongFromStringList(stringlist: TStringList);
       { Resets the song to its original state }
       procedure Reset;
+      function IsEmpty: Boolean;
     private
       inputFile: TStringList;
       PositionDict: TStringIntegerDict;
@@ -166,7 +167,7 @@ begin
   ConvertCCLIFile;
 end;
 
-procedure TSong.importCCLISongFile(filepath: String);
+procedure TSong.importCCLISongFile(filepath: string);
 begin
   self.CompleteFilePath := filepath;
   self.importCCLISongFile;
@@ -352,7 +353,7 @@ begin
   self.strip;
 end;
 
-procedure TSong.importSongFile(filepath: String);
+procedure TSong.importSongfile(filepath: string);
 begin
   self.CompleteFilePath:=filepath;
   importSongFile;
@@ -481,6 +482,11 @@ begin
   self.output.Clear;
   self.FileNameWithoutEnding:='';
   self.importSongFile;
+end;
+
+function TSong.IsEmpty: Boolean;
+begin
+  Result := (output.Count=0);
 end;
 
 end.

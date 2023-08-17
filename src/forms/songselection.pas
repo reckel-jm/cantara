@@ -205,6 +205,7 @@ ResourceString
   StrActiveSongTeXFile = 'The following file is opened at the moment: ';
   StrSongTeXFileSongsImported = 'The songs from the file have been imported to your song repository.';
   StrPptxGenjs = 'Cantara is using your local default web browser''s Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won''t show up again next time. If you don''t want to continue, please press Cancel.';
+  StrSongIsEmpty = 'The song {songname} is empty. It will not be added.';
 
 implementation
 
@@ -815,6 +816,7 @@ begin
   begin
     PresentationSlideCounter := 0;
     CreateSongListDataAndLoadItIntoSlideList(frmPresent.SlideList);
+    if frmPresent.SlideList.Count <= 0 then Exit;
     // Passe Hauptfenster an, falls Multi-Fenster-Modus ausgewählt wurde.
     if chkMultiWindowMode.Checked Then
       Begin
@@ -920,7 +922,9 @@ begin
       // Lade Songfile abhängig von der Erweiterung!
       completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
       Song.importSongfile(completefilename);
-      Songlist.Add(song);
+      if Song.IsEmpty then
+        Application.MessageBox(PChar(StringReplace(StrSongIsEmpty, '{songname}', songname, [rfReplaceAll])), PChar(StrError), MB_OK+MB_ICONERROR)
+      else Songlist.Add(song);
     end;
 end;
 
@@ -930,6 +934,7 @@ begin
   CreateSongListData;
   ASlideList.Clear;
   frmPresent.cur:=0;
+  if LoadedSongList.Count <= 0 then Exit; // Prevent loading an empty Presentation
   for Song in LoadedSongList do
   begin
     ASlideList.AddList(CreatePresentationDataFromSong(Song, frmSettings.ExportSlideSettings(), PresentationSlideCounter));

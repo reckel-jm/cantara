@@ -65,6 +65,7 @@ object frmSettings: TfrmSettings
     Width = 220
     Caption = 'Empty slide between songs'
     Checked = True
+    OnChange = cbEmptyFrameChange
     ParentFont = False
     State = cbChecked
     TabOrder = 2
@@ -79,6 +80,7 @@ object frmSettings: TfrmSettings
     Width = 141
     Caption = 'Spoil next slides'
     Checked = True
+    OnChange = cbSpoilerChange
     ParentFont = False
     State = cbChecked
     TabOrder = 4
@@ -273,6 +275,9 @@ object frmSettings: TfrmSettings
       ShowHint = True
       TabOrder = 8
       OnChange = sbImageBrightnessChange
+      OnDragOver = sbImageBrightnessDragOver
+      OnEndDrag = sbImageBrightnessEndDrag
+      OnEnter = sbImageBrightnessEnter
       OnExit = sbImageBrightnessExit
     end
     object lblImageBrightness: TLabel

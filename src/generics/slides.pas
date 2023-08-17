@@ -234,6 +234,11 @@ var n1, n2,i,j,t,place: integer;
 begin
   output := TStringList.Create;
   output.Assign(input);
+  if output.Count = 0 then // If we have an empty document
+  begin
+    Result := '';
+    Exit;
+  end;
   if MaxSlides <= 0 then exit; // Just as a protective measure, actually not needed anymore.
   if MaxSlides = 1 then        // it means to have one line per slide, so we take a shortpath
   begin

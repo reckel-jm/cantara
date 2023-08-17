@@ -191,6 +191,10 @@ msgstr "Suggerimento"
 msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
 msgstr "Per generare il file pptx, Cantara utilizza il motore Java Script predefinito del browser Web locale e la libreria Java Script open source PptxGenJs (https://gitbrent.github.io/PptxGenJS/). Pertanto, dopo aver premuto OK, il browser Web si aprirà e chiederà di salvare il file pptx quando la generazione sarà avvenuta con successo. Durante questo processo, non è necessaria alcuna connessione a Internet e i dati non vengono condivisi con nessun altro nonostante il browser web. Se volete continuare, premete OK e questo messaggio non verrà più visualizzato la prossima volta. Se non si desidera continuare, premere Annulla."
 
+#: songselection.strsongisempty
+msgid "The song {songname} is empty. It will not be added."
+msgstr ""
+
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
 msgstr "I brani del file sono stati importati nell'archivio dei brani."
@@ -893,3 +897,4 @@ msgstr "La directory selezionata può essere utilizzata con successo come reposi
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Seleziona un percorso di repository di brani prima di lasciare l'assistente. Cantara non può funzionare senza di esso."
+

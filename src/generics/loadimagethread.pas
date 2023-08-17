@@ -13,16 +13,17 @@ type
 
   TLoadImageThread = class(TThread)
   public
-  Constructor Create(CreateSuspended : boolean);
-  procedure LoadData(PresentationStyleSettings: TPresentationStyleSettings;
-    SlideSettings: TSlideSettings;
-    PresentationCanvas: TPresentationCanvasHandler;
-    Screen: TScreen;
-    ChangeBackground: Boolean;
-    Slide: TSlide;
-    TargetPicture: TPicture);
+    Constructor Create(CreateSuspended : boolean);
+    procedure LoadData(PresentationStyleSettings: TPresentationStyleSettings;
+      SlideSettings: TSlideSettings;
+      PresentationCanvas: TPresentationCanvasHandler;
+      Screen: TScreen;
+      ChangeBackground: Boolean;
+      Slide: TSlide;
+      TargetPicture: TPicture);
   procedure RunOnce;
   private
+    blocked: Boolean;
     PresentationStyleSettings: TPresentationStyleSettings;
     SlideSettings: TSlideSettings;
     TargetPicture: TPicture;
@@ -31,11 +32,10 @@ type
     ChangeBackground: Boolean;
     Slide: TSlide;
     halted: Boolean;
-    blocked: Boolean;
+    Paused: Boolean;
     procedure LoadImage;
   protected
     procedure Execute; override;
-
   end;
 
 implementation
@@ -46,7 +46,7 @@ Uses Settings;
 
 constructor TLoadImageThread.Create(CreateSuspended: boolean);
 begin
-  FreeOnTerminate := True;
+  FreeOnTerminate := False;
   inherited Create(CreateSuspended);
   halted := True;
   blocked := False;
@@ -58,11 +58,16 @@ procedure TLoadImageThread.LoadData(
   PresentationCanvas: TPresentationCanvasHandler; Screen: TScreen;
   ChangeBackground: Boolean; Slide: TSlide; TargetPicture: TPicture);
 begin
+  self.ChangeBackground:=ChangeBackground;
+  if self.PresentationStyleSettings.Transparency <> PresentationStyleSettings.Transparency then
+  begin
+    blocked := False;
+    self.ChangeBackground:=True;
+  end;
   self.PresentationStyleSettings:=PresentationStyleSettings;
   self.SlideSettings:=SlideSettings;
   self.PresentationCanvas:=PresentationCanvas;
   self.Screen:=Screen;
-  self.ChangeBackground:=ChangeBackground;
   self.Slide := Slide;
   self.TargetPicture:=TargetPicture;
 end;
@@ -81,14 +86,12 @@ procedure TLoadImageThread.Execute;
 var Skip: Boolean;
 begin
   if Blocked then Exit else Blocked := True;
-  while not Terminated do
+  while (not Terminated) do
   begin
     if not halted and frmSettings.Visible then
     begin
       Skip := False;
       if not Assigned(PresentationCanvas) then Skip := True;
-      //if not Assigned(self.SlideSettings) then Skip := True;
-      //if not Assigned(self.PresentationStyleSettings) then Skip := True;
       if not Assigned(Screen) then Skip := True;
       if Screen.Width = 0 then Skip := True;
       if Screen.Height = 0 then Skip := True;
@@ -105,7 +108,7 @@ begin
         Synchronize(@LoadImage);
       end;
       halted := True;
-    end else Sleep(10);
+    end else Sleep(2);
   end;
   Blocked := False;
 end;

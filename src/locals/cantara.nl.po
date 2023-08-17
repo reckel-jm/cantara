@@ -190,6 +190,10 @@ msgstr "Tip"
 msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
 msgstr "Cantara gebruikt de Java Script-engine van uw lokale standaardwebbrowser en de open source Java Script-bibliotheek PptxGenJs (https://gitbrent.github.io/PptxGenJS/) om het pptx-bestand te genereren. Daarom, na op OK te hebben gedrukt, zal uw webbrowser openen en u vragen om een plaats om het pptx-bestand op te slaan wanneer het genereren succesvol is voltooid. Tijdens dit proces is er geen internetverbinding nodig en worden er ondanks uw webbrowser geen gegevens met iemand anders gedeeld. Als u wilt doorgaan, drukt u op OK en dit bericht zal de volgende keer niet meer verschijnen. Als u niet wilt doorgaan, drukt u op Annuleren."
 
+#: songselection.strsongisempty
+msgid "The song {songname} is empty. It will not be added."
+msgstr ""
+
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
 msgstr "De nummers uit het bestand zijn geïmporteerd naar uw nummerrepository."

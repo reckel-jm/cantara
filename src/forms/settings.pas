@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
-  LCLINTF, LCLType, ExtCtrls, ActnList, Arrow, Present, Lyrics, Slides,
+  LCLINTF, LCLType, ExtCtrls, ActnList, Present, Lyrics, Slides,
   ResourceHandling, PresentationCanvas, settingspadding, loadimagethread;
 
 type
@@ -56,11 +56,12 @@ type
     procedure btnBackgroundColorClick(Sender: TObject);
     procedure btnTextColorClick(Sender: TObject);
     procedure cbAutoWordWrapChange(Sender: TObject);
-    procedure cbLyricsToClipboardChange(Sender: TObject);
+    procedure cbEmptyFrameChange(Sender: TObject);
     procedure cbMetaDataFirstSlideChange(Sender: TObject);
     procedure cbMetaDataLastSlideChange(Sender: TObject);
     procedure cbMetaTitleSlideChange(Sender: TObject);
     procedure cbShowBackgroundImageChange(Sender: TObject);
+    procedure cbSpoilerChange(Sender: TObject);
     procedure comboHorizontalChange(Sender: TObject);
     procedure comboVerticalChange(Sender: TObject);
     procedure edtRepoPathChange(Sender: TObject);
@@ -79,6 +80,10 @@ type
     procedure memoMetaDataChange(Sender: TObject);
     procedure memoMetaDataEditingDone(Sender: TObject);
     procedure sbImageBrightnessChange(Sender: TObject);
+    procedure sbImageBrightnessDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure sbImageBrightnessEndDrag(Sender, Target: TObject; X, Y: Integer);
+    procedure sbImageBrightnessEnter(Sender: TObject);
     procedure sbImageBrightnessExit(Sender: TObject);
     procedure seWrapLinesChange(Sender: TObject);
     procedure UpdatePreviewTimerTimer(Sender: TObject);
@@ -96,7 +101,7 @@ type
     { public declarations }
     changedBackground: Boolean;
     {Exports the slide settings as TSlideSettings record }
-    function ExportSlideSettings(): TSlideSettings;
+    function ExportSlideSettings: TSlideSettings;
     function ExportPresentationStyleSettings: TPresentationStyleSettings;
   end;
 
@@ -162,9 +167,9 @@ function GetDefaultPictureDir: String;
 begin
   Result := '';
   if DirectoryExists('backgrounds') then Result := 'backgrounds';
-  {$ IFDEF LINUX }
+  {$IFDEF LINUX }
   if DirectoryExists('/usr/share/cantara/backgrounds') then Result := '/usr/share/cantara/backgrounds';
-  {$ ENDIF }
+  {$ENDIF }
 end;
 
 procedure TfrmSettings.FormCreate(Sender: TObject);
@@ -183,8 +188,6 @@ begin
   SlideList := TSlideList.Create(True);
   PictureDir := GetDefaultPictureDir;
   if PictureDir <> '' then BgPictureDialog.InitialDir:=PictureDir;
-  LoadImageThread := TLoadImageThread.Create(True);
-  LoadImageThread.Start;
 end;
 
 procedure TfrmSettings.FormDestroy(Sender: TObject);
@@ -192,7 +195,6 @@ begin
   PresentationPreviewCanvas.Destroy;
   ExampleSong.Destroy;
   SlideList.Destroy;
-  LoadImageThread.Terminate;
 end;
 
 procedure TfrmSettings.FormHide(Sender: TObject);
@@ -201,6 +203,8 @@ end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
 begin
+  LoadImageThread := TLoadImageThread.Create(True);
+  LoadImageThread.Start;
   sbImageBrightnessChange(frmSettings);
   changedBackground := False;
   AdjustImageBrightnessText;
@@ -271,9 +275,9 @@ begin
 
 end;
 
-procedure TfrmSettings.cbLyricsToClipboardChange(Sender: TObject);
+procedure TfrmSettings.cbEmptyFrameChange(Sender: TObject);
 begin
-
+  ReloadSlideAndPresentationCanvas;
 end;
 
 procedure TfrmSettings.cbMetaDataFirstSlideChange(Sender: TObject);
@@ -296,6 +300,11 @@ begin
   btnBackgroundImage.Enabled:=cbShowBackgroundImage.Checked;
   changedBackground := True;
   LoadPreviewImage;
+end;
+
+procedure TfrmSettings.cbSpoilerChange(Sender: TObject);
+begin
+  ReloadSlideAndPresentationCanvas
 end;
 
 procedure TfrmSettings.comboHorizontalChange(Sender: TObject);
@@ -334,6 +343,8 @@ begin
   end;
   //if changedBackground then frmPresent.loadSettings;
   frmSongs.edtSearch.Text := '';
+  LoadImageThread.Terminate;
+  LoadImageThread.Destroy;
 end;
 
 procedure TfrmSettings.loadSettings();
@@ -380,18 +391,45 @@ begin
 end;
 
 procedure TfrmSettings.sbImageBrightnessChange(Sender: TObject);
+var i: 0..2;
 begin
   if sbImageBrightness.Position > 0 then
      lblImageExplainer.Caption:=strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position))+'%'
   else if sbImageBrightness.Position = 0 then
      lblImageExplainer.Caption := strPictureOriginalState;
+  for i := 0 to 2 do
+  begin
+    ChangedBackground := True;
+    LoadPreviewImage;
+    Application.ProcessMessages;
+    Sleep(5);
+  end;
+end;
+
+procedure TfrmSettings.sbImageBrightnessDragOver(Sender, Source: TObject; X,
+  Y: Integer; State: TDragState; var Accept: Boolean);
+begin
+  ChangedBackground := True;
+  LoadPreviewImage;
+end;
+
+procedure TfrmSettings.sbImageBrightnessEndDrag(Sender, Target: TObject; X,
+  Y: Integer);
+begin
+  ChangedBackground := True;
+  LoadPreviewImage;
+end;
+
+procedure TfrmSettings.sbImageBrightnessEnter(Sender: TObject);
+begin
   ChangedBackground := True;
   LoadPreviewImage;
 end;
 
 procedure TfrmSettings.sbImageBrightnessExit(Sender: TObject);
 begin
-
+  ChangedBackground := True;
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.seWrapLinesChange(Sender: TObject);
@@ -451,6 +489,7 @@ end;
 
 procedure TfrmSettings.LoadPreviewImage;
 begin
+  if not Assigned(LoadImageThread) then Exit;
   try
     LoadImageThread.LoadData(self.ExportPresentationStyleSettings,
     self.ExportSlideSettings,
@@ -487,10 +526,11 @@ begin
   SlideList.Clear;
   PresentationSlideCounter := 0;
   SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, SlideSettings, PresentationSlideCounter));
-  PresentationPreviewCanvas.Height:=Screen.Height;
+  {PresentationPreviewCanvas.Height:=Screen.Height;
   PresentationPreviewCanvas.Width:=Screen.Width;
   PresentationPreviewCanvas.PresentationStyleSettings := ExportPresentationStyleSettings;
-  PresentationPreviewCanvas.LoadBackgroundBitmap;
+  PresentationPreviewCanvas.LoadBackgroundBitmap; }
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.AdjustImageBrightnessText;
