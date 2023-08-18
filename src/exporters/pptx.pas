@@ -60,7 +60,7 @@ const
   CodeAddSlide:String = 'slide = pres.addSlide({ masterName: "%s" });';
   CodeAddSpoileredText:String = 'slide.addText(' +
                                  '[' +
-                                 '{ text: "%s\n\n", options: { align: "{{HALIGN}}" } }, '+
+                                 '{ text: "%s\n", options: { align: "{{HALIGN}}" } }, '+
                                  '{ text: "%s", options: { fontSize: "18" }, align: "{{HALIGN}}" },'+
                                  '],'+
                                  '{ placeholder: "defaultcontent" }'+
@@ -68,7 +68,7 @@ const
   CodeAddTitleText:String = 'slide.addText("%s", { placeholder: "title", align: "{{HALIGN}}" })';
   CodaAddTitleTextWithMetaData:String = 'slide.addText(' +
                                  '[' +
-                                 '{ text: "%s\n\n", options: { bold: true, align: "{{HALIGN}}" } }, '+
+                                 '{ text: "%s\n", options: { bold: true, align: "{{HALIGN}}" } }, '+
                                  '{ text: "%s", options: { fontSize: "18", bold: false, align: "{{HALIGN}}" } },'+
                                  '],'+
                                  '{ placeholder: "title" }'+
@@ -202,8 +202,8 @@ end;
 function TPPTXExporter.GenerateBackgroundImageSettings: String;
 begin
   if PresentationStyleSettings.ShowBackgroundImage then
-     Result := Format('{ image: { x:0, y:0, w:10, h:5.6, data:"%s" } }, ',
-     [ImageToBase64])
+     Result := Format('{ image: { x:0, y:0, w:%s, h:%s, data:"%s" } }, ',
+     ['"100%"', '"100%"', ImageToBase64])
   else Result := '';
 end;
 

@@ -188,6 +188,8 @@ end;
 
 procedure TFormImageExport.ItemRemoveClick(Sender: TObject);
 begin
+  if ImageListView.Items.Count <= 0 then Exit;
+  if ImageListView.ItemIndex < 0 then ImageListView.ItemIndex := 0;
   ImageListView.Items.Delete(ImageListView.ItemIndex);
 end;
 

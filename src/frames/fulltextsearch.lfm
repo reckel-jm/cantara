@@ -6,6 +6,7 @@ object FrmFulltextsearch: TFrmFulltextsearch
   ClientHeight = 255
   ClientWidth = 424
   Color = clCaptionText
+  OnClick = FrameClick
   ParentBackground = False
   ParentColor = False
   TabOrder = 0
@@ -17,7 +18,7 @@ object FrmFulltextsearch: TFrmFulltextsearch
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 0
-    Height = 36
+    Height = 25
     Top = 0
     Width = 424
     Alignment = taCenter
@@ -34,12 +35,12 @@ object FrmFulltextsearch: TFrmFulltextsearch
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 214
-    Top = 41
+    Height = 229
+    Top = 26
     Width = 424
     PageIndex = 1
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Top = 5
+    BorderSpacing.Top = 1
     Color = clNone
     TabOrder = 0
     object LoadIndex: TPage
@@ -48,10 +49,10 @@ object FrmFulltextsearch: TFrmFulltextsearch
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = LoadIndex
         AnchorSideTop.Side = asrCenter
-        Left = 161
-        Height = 22
-        Top = 96
-        Width = 102
+        Left = 171
+        Height = 17
+        Top = 106
+        Width = 82
         Caption = 'Create Index...'
         ParentColor = False
       end
@@ -59,7 +60,7 @@ object FrmFulltextsearch: TFrmFulltextsearch
     object SearchResults: TPage
       object ListBoxResults: TListBox
         Left = 0
-        Height = 214
+        Height = 229
         Top = 0
         Width = 424
         Align = alClient
@@ -75,10 +76,10 @@ object FrmFulltextsearch: TFrmFulltextsearch
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = ListBoxResults
         AnchorSideTop.Side = asrCenter
-        Left = 149
-        Height = 22
-        Top = 96
-        Width = 126
+        Left = 161
+        Height = 17
+        Top = 106
+        Width = 103
         Alignment = taCenter
         Caption = 'Enter search term'
         ParentColor = False

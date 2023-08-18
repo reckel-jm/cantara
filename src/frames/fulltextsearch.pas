@@ -35,6 +35,7 @@ type
     NoResult: TPage;
     SearchResults: TPage;
     procedure EditSearchTermChange(Sender: TObject);
+    procedure FrameClick(Sender: TObject);
     procedure ListBoxResultsDblClick(Sender: TObject);
     procedure ListBoxResultsDrawItem(Control: TWinControl; Index: Integer;
       ARect: TRect; State: TOwnerDrawState);
@@ -45,6 +46,7 @@ type
   public
     IndexList: TIndexList;
     procedure CreateIndex;
+    constructor Create;
     destructor Destroy; override;
   end;
 
@@ -64,7 +66,7 @@ begin
   inherited;
 end;
 
-procedure TFrmFulltextSearch.CreateIndex;
+procedure TFrmFulltextsearch.CreateIndex;
 var TempSong: TSong;
   RepoEntry: TRepoFile;
   IndexEntry: TIndexEntry;
@@ -87,7 +89,15 @@ begin
   Content.PageIndex:=3;
 end;
 
-destructor TFrmFulltextSearch.Destroy;
+constructor TFrmFulltextsearch.Create;
+begin
+  inherited;
+  {$ifdef WINDOWS}
+  self.ListBoxResults.Options:=[lboDrawFocusRect];
+  {$endif}
+end;
+
+destructor TFrmFulltextsearch.Destroy;
 begin
   if Assigned(IndexList) then FreeAndNil(IndexList);
   inherited Destroy;
@@ -127,6 +137,11 @@ begin
   if ListBoxResults.Count = 0 then Content.PageIndex := 2;
 end;
 
+procedure TFrmFulltextsearch.FrameClick(Sender: TObject);
+begin
+
+end;
+
 procedure TFrmFulltextsearch.ListBoxResultsDblClick(Sender: TObject);
 begin
   frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(PathSeparator)[0]);
@@ -139,7 +154,7 @@ var
   FontBaseHeight: Integer;
   StringParts: TStringArray;
 begin
-  ARect.Height:=500;
+  ARect.Height:=ListBoxResults.ItemHeight;
   if odSelected in State then
   begin
     aColor := clActiveCaption;

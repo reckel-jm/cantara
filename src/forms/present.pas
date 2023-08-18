@@ -213,8 +213,12 @@ begin
 end;
 
 procedure TfrmPresent.SwitchFullScreen;
+{$if defined(WINDOWS)}
+var c: Integer;
+{$endif}
 begin
   {$if defined(WINDOWS)}
+  c := cur;
   if BorderStyle <> bsNone then begin
     // To full screen
     OriginalWindowState := WindowState;
@@ -231,6 +235,8 @@ begin
       BoundsRect := OriginalBounds;
     Fullscreen := False;
   end;
+  cur := c;
+  ShowItem(cur);
   {$endif}
   {$if defined(LINUX)}
   if Fullscreen = False then begin
@@ -246,8 +252,12 @@ begin
 end;
 
 procedure TfrmPresent.SwitchFullScreen(WantFullScreen: Boolean);
+{$if defined(WINDOWS)}
+var c: Integer;
+{$endif}
 begin
   {$if defined(WINDOWS)}
+  c := cur;
   if WantFullScreen = True then begin
     // To full screen
     OriginalWindowState := WindowState;
@@ -264,6 +274,8 @@ begin
       BoundsRect := OriginalBounds;
     Fullscreen := False;
   end;
+  cur := c;
+  ShowItem(cur);
   {$endif}
   {$if defined(LINUX)}
   if WantFullScreen = True then begin
