@@ -8,7 +8,11 @@ icon: app.cantara.Cantara.png
 base: core22
 grade: stable
 
-architectures: [amd64, arm64]
+architectures:
+  - build-on: amd64
+    build-for: amd64
+  - build-on: arm64
+    build-for: arm64
 
 plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   gtk-3-themes:
@@ -33,10 +37,10 @@ parts:
     - wget
     - libgtk2.0-dev
     override-build: |
-      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.6/lazarus-project_2.2.6-0_amd64.deb
-      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.6/fpc-laz_3.2.2-210709_amd64.deb
-      wget -nc https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.2.6/fpc-src_3.2.2-210709_amd64.deb
-      apt install ./lazarus-project_2.2.6-0_amd64.deb ./fpc-laz_3.2.2-210709_amd64.deb ./fpc-src_3.2.2-210709_amd64.deb
+      wget -nc "https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20$SNAP_ARCH""%20DEB/Lazarus%202.2.6/lazarus-project_2.2.6-0_$SNAP_ARCH"".deb"
+      wget -nc "https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20$SNAP_ARCH""%20DEB/Lazarus%202.2.6/fpc-laz_3.2.2-210709_$SNAP_ARCH"".deb"
+      wget -nc "https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20$SNAP_ARCH""%20DEB/Lazarus%202.2.6/fpc-src_3.2.2-210709_$SNAP_ARCH"".deb"
+      apt install "./lazarus-project_2.2.6-0_$SNAP_ARCH"".deb" "./fpc-laz_3.2.2-210709_$SNAP_ARCH"".deb" "./fpc-src_3.2.2-210709_$SNAP_ARCH"".deb"
     prime: [-*]
   cantara:
     after: [lazarus]
