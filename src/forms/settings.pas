@@ -119,6 +119,9 @@ ResourceString
   strPictureOriginalState = 'Picture is shown as it is';
   strErrorCaption = 'Error';
   strValidSongRepository = 'Please choose a valid folder for the song repository!';
+  strDefaultMetaTemplate = '{%author%}Author: {author}' + LineEnding +
+                           '{%bible%}Bible Reference: {bible}' + LineEnding +
+                           '{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}';
 
 implementation
 
@@ -359,7 +362,7 @@ begin
   cbMetaTitleSlide.Checked := settingsFile.ReadBool('Config', 'TitleSlide', False);
   cbMetaDataFirstSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataFirstSlide', False);
   cbMetaDataLastSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataLastSlide', False);
-  str := settingsFile.ReadString('Config','MetaDataSyntax', '');
+  str := settingsFile.ReadString('Config','MetaDataSyntax', strDefaultMetaTemplate);
   memoMetaData.lines.Text := StringReplace(str, '</br>', LineEnding, [rfReplaceAll]);
   FontDialog.Font.Name:=settingsFile.ReadString('Config', 'Font-Name', 'default');
   FontDialog.Font.Style := StrToStyle(settingsFile.ReadString('Config', 'Font-Style', 'ssss'));

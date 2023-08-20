@@ -70,6 +70,13 @@ msgstr ""
 msgid "Increase brightness by "
 msgstr ""
 
+#: settings.strdefaultmetatemplate
+msgid ""
+"{%author%}Author: {author}\n"
+"{%bible%}Bible Reference: {bible}\n"
+"{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
+msgstr ""
+
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
 msgid "Error"
