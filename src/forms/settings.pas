@@ -122,6 +122,7 @@ ResourceString
   strDefaultMetaTemplate = '{%author%}Author: {author}' + LineEnding +
                            '{%bible%}Bible Reference: {bible}' + LineEnding +
                            '{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}';
+  strNoBackgroundImageSelected = 'You need to select a background image first.';
 
 implementation
 
@@ -256,9 +257,13 @@ end;
 
 procedure TfrmSettings.btnBackgroundImageClick(Sender: TObject);
 begin
-  BgPictureDialog.Execute;
-  changedBackground := True;
-  LoadPreviewImage;
+  if (BgPictureDialog.Execute) and (FileExists(BgPictureDialog.FileName)) then
+  begin
+    changedBackground := True;
+    cbShowBackgroundImage.Checked:=True;
+    //LoadPreviewImage not needed as this is done by cbShowBackground
+  end else if not (FileExists(BgPictureDialog.FileName)) then
+    cbShowBackgroundImage.Checked:=False;
 end;
 
 procedure TfrmSettings.btnBackgroundColorClick(Sender: TObject);
@@ -300,7 +305,13 @@ end;
 
 procedure TfrmSettings.cbShowBackgroundImageChange(Sender: TObject);
 begin
-  btnBackgroundImage.Enabled:=cbShowBackgroundImage.Checked;
+  if (cbShowBackgroundImage.Checked=True) and (not (FileExists(BgPictureDialog.FileName))) then
+  begin
+    cbShowBackgroundImage.Checked:=False;
+    Application.MessageBox(PChar(strNoBackgroundImageSelected), PChar(strHint), mb_OK+mb_IconError);
+    Exit;
+  end;
+  //btnBackgroundImage.Enabled:=cbShowBackgroundImage.Checked;
   changedBackground := True;
   LoadPreviewImage;
 end;
@@ -367,11 +378,11 @@ begin
   FontDialog.Font.Name:=settingsFile.ReadString('Config', 'Font-Name', 'default');
   FontDialog.Font.Style := StrToStyle(settingsFile.ReadString('Config', 'Font-Style', 'ssss'));
   FontDialog.Font.Size:= settingsFile.ReadInteger('Config', 'Font-Size', 42);
-  cbShowBackgroundImage.Checked := settingsFile.ReadBool('Config', 'BackgroundPicture', false);
-  cbShowBackgroundImageChange(frmSettings);
   BgPictureDialog.FileName := settingsFile.ReadString('Config', 'BackgroundPicture-Path', '');
+  cbShowBackgroundImage.Checked := settingsFile.ReadBool('Config', 'BackgroundPicture', false);  // must be after filename
+  cbShowBackgroundImageChange(frmSettings);
   sbImageBrightness.Position:=Abs(settingsFile.ReadInteger('Config', 'ImageBrightness', 0));
-  seWrapLines.Value:=settingsFile.ReadInteger('Config', 'AutoWrap', 8);
+  seWrapLines.Value:=settingsFile.ReadInteger('Config', 'AutoWrap', 4);
   comboHorizontal.ItemIndex := settingsFile.ReadInteger('Config', 'AlignHorizontal', Ord(Align_Center)); // default is centering
   comboVertical.ItemIndex := settingsFile.ReadInteger('Config', 'AlignVertical', Ord(tlCenter)); // default is in the middle
 
@@ -472,8 +483,8 @@ begin
     settingsFile.WriteBool('Config', 'MetaDataLastSlide', cbMetaDataLastSlide.Checked);
     str := StringReplace(memoMetaData.Lines.Text, LineEnding, '</br>', [rfReplaceAll]);
     settingsFile.WriteString('Config','MetaDataSyntax', str);
+    settingsFile.WriteString('Config', 'BackgroundPicture-Path', BgPictureDialog.FileName); // MUST be before background picture
     settingsFile.WriteBool('Config', 'BackgroundPicture', cbShowBackgroundImage.Checked);
-    settingsFile.WriteString('Config', 'BackgroundPicture-Path', BgPictureDialog.FileName);
     settingsFile.WriteInteger('Config', 'ImageBrightness', sbImageBrightness.Position);
     settingsFile.WriteInteger('Config', 'AutoWrap', seWrapLines.Value);
     settingsFile.WriteInteger('Config', 'AlignHorizontal', comboHorizontal.ItemIndex);

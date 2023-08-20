@@ -93,6 +93,10 @@ msgctxt "settings.strerrorcaption"
 msgid "Error"
 msgstr "錯誤"
 
+#: settings.strnobackgroundimageselected
+msgid "You need to select a background image first."
+msgstr ""
+
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
 msgstr "以原圖像顯示"
@@ -906,3 +910,4 @@ msgstr "選擇的目錄可以被應用為歌曲庫。"
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "請在離開助手前選擇歌曲庫目錄。沒有它，Cantara 就無法工作。"
+

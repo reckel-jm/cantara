@@ -321,9 +321,9 @@ var filename,openfilepath: string;
 begin
   filename := GetAppConfigFile(false);
   settings.settingsFile := TINIFile.Create(filename);
+  frmSettings.loadSettings;
   if FileExists(filename) then
     begin
-      frmSettings.loadSettings;
       // Maximize Window according to saved state
       if settings.settingsfile.ReadBool('Size', 'main-window-maximized', False) = True
          Then frmSongs.WindowState:= TWindowState.wsMaximized

@@ -93,6 +93,10 @@ msgctxt "settings.strerrorcaption"
 msgid "Error"
 msgstr "Errore"
 
+#: settings.strnobackgroundimageselected
+msgid "You need to select a background image first."
+msgstr ""
+
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
 msgstr "L'immagine è mostrata così com'è"
