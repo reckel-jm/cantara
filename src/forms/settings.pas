@@ -492,7 +492,7 @@ end;
 
 procedure TfrmSettings.LoadPreviewImage;
 begin
-  if not Assigned(LoadImageThread) then Exit;
+  if (not Assigned(LoadImageThread)) or (self.SlideList.Count <= 0) then Exit;
   try
     LoadImageThread.LoadData(self.ExportPresentationStyleSettings,
     self.ExportSlideSettings,
