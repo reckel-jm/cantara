@@ -44,12 +44,6 @@
       <CharSet Value="04B0"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.5"/>
     </VersionInfo>
-    <MacroValues Count="4">
-      <Macro3 Name="LCLWidgetType" Value="qt5"/>
-      <Macro4 Name="LCLWidgetType" Value="qt5"/>
-      <Macro5 Name="LCLWidgetType" Value="qt5"/>
-      <Macro6 Name="LCLWidgetType" Value="qt5"/>
-    </MacroValues>
     <BuildModes Count="7">
       <Item1 Name="Release" Default="True"/>
       <Item2 Name="Linux WPO Pass1">
@@ -235,9 +229,6 @@
         </CompilerOptions>
       </Item5>
       <Item6 Name="Debug">
-        <MacroValues Count="1">
-          <Macro3 Name="LCLWidgetType" Value="qt5"/>
-        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>

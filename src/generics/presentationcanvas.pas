@@ -154,6 +154,8 @@ var
   DestRect: TRect;
   NewHeight, NewWidth: Integer;
 begin
+  // Prevent a Division by Zero Exception
+  if (self.Height = 0) or (AdjustedBackgroundPicture.Height = 0) or (AdjustedBackgroundPicture.Width = 0) then Exit;
   ResizedBackgroundBitmap.Clear;
   if self.Width/self.Height >= AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height then
   begin
