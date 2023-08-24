@@ -12,14 +12,14 @@
         <p>Cantara Song is a song presentation software which can be used for presenting songs in churches, small groups or karaoke parties. It supports various input formats and can create beautiful presentation slides or export the presentation to various output formats (pictures, pptx, WhatsApp messages and a lot more) so that it can be used for a variety of purposes.</p>
         <p>Cantara has the following advantages:</p>
         <ul>
-        <li><strong>Super-fast and lightweight</strong>: Cantara is less then 10 MB of size and uses the components available on the local operation system as far as possible. It contains no bloatware. It can be run on an old computer, a raspberry-pi and many more.</li>
-        <li><strong>Very easy to use</strong>: Accepts the most common input format (CCLI songselect lyrics file) and creats the presentation slides for an event in only a few seconds. The usage is very intuitive and user-friendly.</li>
-        <li><strong>Good integration with other presentation software</strong>: Cantara can export presentations to the PPTX format and therefore integrates easily with other presentation software like LibreOffice Impress or MS Powerpoint. It can be included in a complex workflow like a church service or even an online streaming event via OBS. In addition, you can export the lyrics to text formats and share them in messenger groups, as a HTML page etc.</li>
-        <li><strong>Multi-Screen-Support</strong>: Multi Screen is supported out of the box.</li>
-        <li><strong>Customizable Design and good outlook</strong>: The colors and fonts can be configured in the settings. In addition, you can set up a background picture and adjust it’s brightness/transparency. The presentations look beautiful and are easy to read.</li>
-        <li><strong>Multi language support</strong>: Cantara can present and export song presentations in two different languges at the same time.</li>
-        <li><strong>Free and Open Source</strong>: No license fees, no dependence on certain companies–Cantara is licensed under the GPL-3 and can be used everywhere and as you want.</li>
-        <li><strong>Used all over the world and continuously developed</strong>: Although Cantara is still a quite young project, people from many countries are using it. It has been translated to several langauges. In the future, more functions are going to be implemented.</li>
+        <li>Super-fast and lightweight: Cantara is less then 10 MB of size and uses the components available on the local operation system as far as possible. It contains no bloatware. It can be run on an old computer, a raspberry-pi and many more.</li>
+        <li>Very easy to use: Accepts the most common input format (CCLI songselect lyrics file) and creats the presentation slides for an event in only a few seconds. The usage is very intuitive and user-friendly.</li>
+        <li>Good integration with other presentation software: Cantara can export presentations to the PPTX format and therefore integrates easily with other presentation software like LibreOffice Impress or MS Powerpoint. It can be included in a complex workflow like a church service or even an online streaming event via OBS. In addition, you can export the lyrics to text formats and share them in messenger groups, as a HTML page etc.</li>
+        <li>Multi-Screen-Support: Multi Screen is supported out of the box.</li>
+        <li>Customizable Design and good outlook: The colors and fonts can be configured in the settings. In addition, you can set up a background picture and adjust it’s brightness/transparency. The presentations look beautiful and are easy to read.</li>
+        <li>Multi language support: Cantara can present and export song presentations in two different languges at the same time.</li>
+        <li>Free and Open Source: No license fees, no dependence on certain companies–Cantara is licensed under the GPL-3 and can be used everywhere and as you want.</li>
+        <li>Used all over the world and continuously developed: Although Cantara is still a quite young project, people from many countries are using it. It has been translated to several langauges. In the future, more functions are going to be implemented.</li>
         </ul>
     </description>
 
