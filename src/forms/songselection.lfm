@@ -216,7 +216,6 @@ object frmSongs: TfrmSongs
     OnMouseDown = lbxSRepoMouseDown
     ParentFont = False
     PopupMenu = SongPopupMenu
-    ScrollWidth = 398
     Sorted = True
     TabOrder = 0
   end
