@@ -45,6 +45,7 @@ type
     lblPresentation: TLabel;
     lbxSRepo: TListBox;
     lbxSselected: TListBox;
+    SlideTextListBox: TListBox;
     MainMenu: TMainMenu;
     menuFile: TMenuItem;
     itemSeperator1: TMenuItem;
@@ -144,6 +145,12 @@ type
     { Opens the selected songs and creates the presentation data from the selected songs. }
     procedure CreateSongListDataAndLoadItIntoSlideList(ASlideList: TSlideList);
     function GetCurrentSongPosition: TSongPosition;
+    procedure SlideTextListBoxClick(Sender: TObject);
+    procedure SlideTextListBoxKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure SlideTextListBoxKeyPress(Sender: TObject; var Key: char);
+    procedure SlideTextListBoxKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
     procedure SongPopupMenuPopup(Sender: TObject);
     procedure UpdateSongPositionInLbxSSelected;
     procedure UpdateControls;
@@ -172,6 +179,8 @@ type
     }
     procedure SaveSelection(FilePath: String);
     procedure LoadSongTeXFile(FilePath: String);
+    { Loads the Slide Texts in a List View }
+    procedure FillSlideListInPresentationConsole;
   public
     { public declarations }
     procedure AskToReloadRepo;
@@ -206,6 +215,7 @@ ResourceString
   StrSongTeXFileSongsImported = 'The songs from the file have been imported to your song repository.';
   StrPptxGenjs = 'Cantara is using your local default web browser''s Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won''t show up again next time. If you don''t want to continue, please press Cancel.';
   StrSongIsEmpty = 'The song {songname} is empty. It will not be added.';
+  StrTitleSlide = 'Title Slide';
 
 implementation
 
@@ -499,6 +509,24 @@ begin
   else Application.MessageBox(PChar(StrSongTeXFileSongsImported), PChar(StrHint), MB_ICONINFORMATION);
 end;
 
+procedure TfrmSongs.FillSlideListInPresentationConsole;
+var
+  Slide: TSlide;
+  AddedText: String;
+begin
+  SlideTextListBox.Clear;
+  for Slide in frmPresent.SlideList do
+  begin
+    // We make sure that no whitespaces (line breaks) are at the end
+    AddedText := Trim(Slide.PartContent.MainText);
+    // We replace line breaks inside a part with ' // '
+    AddedText := StringReplace(AddedText, LineEnding, ' // ', [rfReplaceAll]);
+    if Slide.SlideType = SlideTypeEnum.TitleSlide then
+       AddedText := AddedText + ' (' + StrTitleSlide + ')';
+    SlideTextListBox.Items.Add(AddedText);
+  end;
+end;
+
 procedure TfrmSongs.itemMarkupExportClick(Sender: TObject);
 begin
   if lbxSSelected.Count > 0 then
@@ -623,6 +651,7 @@ var
   selectedSongName: String;
   i, pos: Integer;
 begin
+  if lbxSSelected.ItemIndex < 0 then Exit;
   if ProgramMode <> ModeSelection then
   begin
     try
@@ -869,6 +898,7 @@ begin
   begin
     Invalidate;
     ReloadPresentationImage;
+    FillSlideListInPresentationConsole;
   end;
   UpdateControls;
 end;
@@ -941,7 +971,7 @@ begin
   end;
 end;
 
-function TFrmSongs.GetCurrentSongPosition: TSongPosition;
+function TfrmSongs.GetCurrentSongPosition: TSongPosition;
 var
   SongPosition: TSongPosition;
   i: integer;
@@ -960,6 +990,34 @@ begin
   end;
   SongPosition.stanzaposition:=frmPresent.cur-SongPosition.stanzapositionstart+1;
   result := SongPosition;
+end;
+
+procedure TfrmSongs.SlideTextListBoxClick(Sender: TObject);
+begin
+  // We display the selected part but make it very defensefly
+  if (SlideTextListBox.ItemIndex > -1) and (SlideTextListBox.ItemIndex < SlideTextListBox.Count) then
+    if SlideTextListBox.ItemIndex < frmPresent.SlideList.Count then
+      begin
+        frmPresent.showItem(SlideTextListBox.ItemIndex);
+        ReloadPresentationImage;
+      end;
+end;
+
+procedure TfrmSongs.SlideTextListBoxKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  Key := VK_Unknown; // We don't want to handle any keys by the List Box.
+end;
+
+procedure TfrmSongs.SlideTextListBoxKeyPress(Sender: TObject; var Key: char);
+begin
+
+end;
+
+procedure TfrmSongs.SlideTextListBoxKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+
 end;
 
 procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);
@@ -1043,6 +1101,7 @@ begin
     begin
     try
       imgLiveViewer.Picture.Assign(frmPresent.PresentationCanvas.Bitmap);
+      if SlideTextListBox.Count > frmPresent.cur then SlideTextListBox.ItemIndex:=frmPresent.cur;
     finally
     end;
     lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(frmPresent.cur + 1) + ' / ' + IntToStr(frmPresent.SlideList.Count);

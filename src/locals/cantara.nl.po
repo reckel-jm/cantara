@@ -209,6 +209,10 @@ msgstr ""
 msgid "The songs from the file have been imported to your song repository."
 msgstr "De nummers uit het bestand zijn geïmporteerd naar uw nummerrepository."
 
+#: songselection.strtitleslide
+msgid "Title Slide"
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
 msgstr "Kiezen..."

@@ -210,6 +210,10 @@ msgstr "歌曲{songname} 是空的。 它不會被添加。"
 msgid "The songs from the file have been imported to your song repository."
 msgstr "文件中的歌曲已導入到您的歌曲存儲庫中。"
 
+#: songselection.strtitleslide
+msgid "Title Slide"
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
 msgstr "選擇..."
