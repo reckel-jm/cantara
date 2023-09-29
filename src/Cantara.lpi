@@ -276,7 +276,8 @@
             </Options>
           </Linking>
           <Other>
-            <CustomOptions Value="-dQT_NATIVE_DIALOGS
+            <CustomOptions Value="-FcUTF8
+-dQT_NATIVE_DIALOGS
 -dUseCThreads"/>
           </Other>
         </CompilerOptions>
@@ -350,7 +351,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="24">
+    <Units Count="25">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -496,6 +497,12 @@
         <Filename Value="generics/loadimagethread.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit23>
+      <Unit24>
+        <Filename Value="frames/presentationcontroller.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FramePresentationController"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit24>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

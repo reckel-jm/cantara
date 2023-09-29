@@ -1,0 +1,125 @@
+object FramePresentationController: TFramePresentationController
+  Left = 0
+  Height = 452
+  Top = 0
+  Width = 749
+  ClientHeight = 452
+  ClientWidth = 749
+  Color = 3750201
+  ParentBackground = False
+  ParentColor = False
+  TabOrder = 0
+  DesignLeft = 354
+  DesignTop = 34
+  object CurrentImage: TImage
+    AnchorSideLeft.Control = Splitter
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 408
+    Height = 242
+    Top = 0
+    Width = 341
+    Anchors = [akTop, akLeft, akRight]
+  end
+  object Splitter: TSplitter
+    AnchorSideTop.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 408
+    Height = 452
+    Top = 0
+    Width = 16
+    Align = alNone
+    Anchors = [akTop, akLeft, akBottom]
+    ResizeAnchor = akRight
+  end
+  object PageControls: TPageControl
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Splitter
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 452
+    Top = 0
+    Width = 408
+    ActivePage = TabSheet1
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 1
+    TabOrder = 1
+    object PageText: TTabSheet
+      Caption = 'Text'
+      Font.Color = clCream
+      ParentFont = False
+    end
+    object TabSheet1: TTabSheet
+      Caption = 'Preview'
+      Font.Color = clCream
+      ParentFont = False
+    end
+  end
+  object ButtonPanal: TPanel
+    AnchorSideLeft.Control = Splitter
+    AnchorSideTop.Control = CurrentImage
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 408
+    Height = 50
+    Top = 242
+    Width = 341
+    Anchors = [akTop, akLeft, akRight]
+    BevelColor = clNone
+    BevelOuter = bvNone
+    ClientHeight = 50
+    ClientWidth = 341
+    TabOrder = 2
+    object ButtonPrevious: TButton
+      AnchorSideLeft.Control = ButtonPanal
+      AnchorSideTop.Control = ButtonPanal
+      AnchorSideBottom.Control = ButtonPanal
+      AnchorSideBottom.Side = asrBottom
+      Left = 0
+      Height = 50
+      Top = 0
+      Width = 75
+      Anchors = [akTop, akLeft, akBottom]
+      Caption = '←'
+      Color = clMedGray
+      TabOrder = 0
+    end
+    object ButtonNext: TButton
+      AnchorSideLeft.Control = ButtonPrevious
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = ButtonPanal
+      AnchorSideBottom.Control = ButtonPanal
+      AnchorSideBottom.Side = asrBottom
+      Left = 78
+      Height = 50
+      Top = 0
+      Width = 75
+      Anchors = [akTop, akLeft, akBottom]
+      BorderSpacing.Left = 3
+      Caption = '→'
+      Color = clMedGray
+      TabOrder = 1
+    end
+    object ButtonCancel: TButton
+      AnchorSideLeft.Control = ButtonNext
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = ButtonPanal
+      AnchorSideBottom.Control = ButtonPanal
+      AnchorSideBottom.Side = asrBottom
+      Left = 156
+      Height = 50
+      Top = 0
+      Width = 75
+      Anchors = [akTop, akLeft, akBottom]
+      BorderSpacing.Left = 3
+      Caption = 'x'
+      Color = clMedGray
+      TabOrder = 2
+    end
+  end
+end

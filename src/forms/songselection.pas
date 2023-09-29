@@ -20,6 +20,15 @@ type
     songposition: integer;
     stanzapositionstart: integer;
   end;
+  { TProgramMode
+    This enum defines the three modes in which the program can be (one mode at time only)
+    - ModeSelection: Presentation has not been started, songs can be selected for presentation
+    - ModeSingleScreenPresentation: Presentation is shown on the same screen as the song selection window, the control of the presentation
+                                    happens in the presentation window
+    - ModeMultiScreenPresentation: Presentation is shown at a second screen, the control happens in the to open section of the song selection window. }
+  TProgramMode = (ModeSelection,
+               ModeSingleScreenPresentation,
+               ModeMultiscreenPresentation);
   { TfrmSongs }
 
   { The main form of Cantara where the songs are choosen from. It is also responsible for managing
@@ -187,17 +196,12 @@ type
     function FindSong(songname: String): TRepoFile;
   end;
 
-const
-  ModeSelection = 'S';
-  ModeSingleScreenPresentation = 'P';
-  ModeMultiscreenPresentation = 'M';
-
 var
   frmSongs: TfrmSongs;
   { The Repository array which contains songs as classes of TSongFile }
   repo: TRepoArray;
   { @deprecated An enum should be used instead, but this has not been changed yet. }
-  ProgramMode: char;
+  ProgramMode: TProgramMode;
   startingPoint: TPoint;
 
 ResourceString
@@ -897,8 +901,11 @@ begin
   if ProgramMode = ModeMultiscreenPresentation Then
   begin
     Invalidate;
+    Application.ProcessMessages;
     ReloadPresentationImage;
+    Application.ProcessMessages;
     FillSlideListInPresentationConsole;
+    SlideTextListBox.ItemIndex:=0;
   end;
   UpdateControls;
 end;

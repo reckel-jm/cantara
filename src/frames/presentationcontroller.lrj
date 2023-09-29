@@ -1,0 +1,7 @@
+{"version":1,"strings":[
+{"hash":371956,"name":"tframepresentationcontroller.pagetext.caption","sourcebytes":[84,101,120,116],"value":"Text"},
+{"hash":126668695,"name":"tframepresentationcontroller.tabsheet1.caption","sourcebytes":[80,114,101,118,105,101,119],"value":"Preview"},
+{"hash":60144,"name":"tframepresentationcontroller.buttonprevious.caption","sourcebytes":[226,134,144],"value":"\u2190"},
+{"hash":60146,"name":"tframepresentationcontroller.buttonnext.caption","sourcebytes":[226,134,146],"value":"\u2192"},
+{"hash":120,"name":"tframepresentationcontroller.buttoncancel.caption","sourcebytes":[120],"value":"x"}
+]}
