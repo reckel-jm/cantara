@@ -269,6 +269,34 @@ msgstr "Breite: "
 msgid "Additional Settings"
 msgstr "Zusätzliche Einstellungen"
 
+#: tframepresentationcontroller.buttoncancel.caption
+msgid "x"
+msgstr ""
+
+#: tframepresentationcontroller.buttonnext.caption
+#, fuzzy
+msgctxt "tframepresentationcontroller.buttonnext.caption"
+msgid "→"
+msgstr "→"
+
+#: tframepresentationcontroller.buttonprevious.caption
+#, fuzzy
+msgctxt "tframepresentationcontroller.buttonprevious.caption"
+msgid "←"
+msgstr "←"
+
+#: tframepresentationcontroller.pagetext.caption
+msgid "Text"
+msgstr ""
+
+#: tframepresentationcontroller.songlistboxcontainer.caption
+msgid "Songs/Parts"
+msgstr ""
+
+#: tframepresentationcontroller.tabsheet1.caption
+msgid "Preview"
+msgstr ""
+
 #: tframesettingsdetailed.groupboxpadding.caption
 msgid "Padding"
 msgstr "Rand"
@@ -671,10 +699,12 @@ msgid "🠗"
 msgstr "🠗"
 
 #: tfrmsongs.btngoleft.caption
+msgctxt "tfrmsongs.btngoleft.caption"
 msgid "←"
 msgstr "←"
 
 #: tfrmsongs.btngoright.caption
+msgctxt "tfrmsongs.btngoright.caption"
 msgid "→"
 msgstr "→"
 

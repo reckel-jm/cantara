@@ -3,5 +3,7 @@
 {"hash":126668695,"name":"tframepresentationcontroller.tabsheet1.caption","sourcebytes":[80,114,101,118,105,101,119],"value":"Preview"},
 {"hash":60144,"name":"tframepresentationcontroller.buttonprevious.caption","sourcebytes":[226,134,144],"value":"\u2190"},
 {"hash":60146,"name":"tframepresentationcontroller.buttonnext.caption","sourcebytes":[226,134,146],"value":"\u2192"},
-{"hash":120,"name":"tframepresentationcontroller.buttoncancel.caption","sourcebytes":[120],"value":"x"}
+{"hash":120,"name":"tframepresentationcontroller.buttoncancel.caption","sourcebytes":[120],"value":"x"},
+{"hash":102559059,"name":"tframepresentationcontroller.songlistboxcontainer.caption","sourcebytes":[83,111,110,103,115,47,80,97,114,116,115],"value":"Songs/Parts"},
+{"hash":185114124,"name":"tframepresentationcontroller.button1.caption","sourcebytes":[66,97,99,107,32,116,111,32,116,104,101,32,111,108,100,32,99,111,110,116,114,111,108],"value":"Back to the old control"}
 ]}
