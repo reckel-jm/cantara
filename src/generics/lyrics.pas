@@ -80,6 +80,7 @@ type
       procedure importSongfile(filepath: string);
       function ParseMetaData(MetaLogic: string): string;
       procedure exportAsSongFile(outputfilename: String);
+      function ExportAsSongFile: String;
       function IsCCLIFile: Boolean;
       procedure strip;
       procedure importSongFromStringList(stringlist: TStringList);
@@ -424,13 +425,26 @@ procedure TSong.exportAsSongFile(outputfilename: String);
 var outputcontent: TStringList;
   i: integer;
 begin
+  try
+    outputcontent := TStringList.Create;
+    outputcontent.Text:=self.ExportAsSongFile;
+    outputcontent.SaveToFile(outputfilename);
+  finally
+    outputcontent.Destroy;
+  end;
+end;
+
+function TSong.ExportAsSongFile: String;
+var outputcontent: TStringList;
+  i: integer;
+begin
   outputcontent := TStringList.Create;
   for i := 0 to self.MetaDict.Count-1 do
     outputcontent.Add('#' + self.MetaDict.Keys[i] + ': ' + self.MetaDict.Data[i]);
   outputcontent.Add('');
   outputcontent.AddStrings(self.output);
-  outputcontent.SaveToFile(outputfilename);
-  FreeAndNil(outputcontent);
+  Result := Trim(outputcontent.Text);
+  OutputContent.Destroy;
 end;
 
 function TSong.IsCCLIFile: Boolean;

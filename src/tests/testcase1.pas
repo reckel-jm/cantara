@@ -9,28 +9,22 @@ uses
 
 type
 
-  TCantaraTest= class(TTestCase)
-  protected
-    procedure SetUp; override;
+  TCantaraCLITest= class(TTestCase)
   published
     procedure TestHookUp;
   end;
 
 implementation
 
-procedure TCantaraTest.TestHookUp;
+procedure TCantaraCLITest.TestHookUp;
 begin
-
+  Fail('Write your own test');
 end;
 
-procedure TCantaraTest.SetUp;
-begin
-
-end;
 
 
 initialization
 
-  RegisterTest(TCantaraTest);
+  RegisterTest(TCantaraCLITest);
 end.
 

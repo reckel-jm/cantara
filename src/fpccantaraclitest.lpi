@@ -3,10 +3,15 @@
   <ProjectOptions>
     <Version Value="12"/>
     <General>
+      <Flags>
+        <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
+        <MainUnitHasScaledStatement Value="False"/>
+      </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <Title Value="fpccantaratest"/>
+      <Title Value="fpccantaraclitest"/>
+      <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
-      <UseXPManifest Value="True"/>
     </General>
     <BuildModes>
       <Item Name="Default" Default="True"/>
@@ -20,10 +25,7 @@
     </RunParams>
     <RequiredPackages>
       <Item>
-        <PackageName Value="fpcunittestrunner"/>
-      </Item>
-      <Item>
-        <PackageName Value="LCL"/>
+        <PackageName Value="LazUtils"/>
       </Item>
       <Item>
         <PackageName Value="FCL"/>
@@ -31,7 +33,7 @@
     </RequiredPackages>
     <Units>
       <Unit>
-        <Filename Value="fpccantaratest.lpr"/>
+        <Filename Value="fpccantaraclitest.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
@@ -39,48 +41,29 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="TestCase1"/>
       </Unit>
-      <Unit>
-        <Filename Value="tests/multilanguage.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="tests/cclitestcase.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="fpccantaratest"/>
+      <Filename Value="fpccantaraclitest"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="tests;generics;exporters"/>
+      <OtherUnitFiles Value="tests;exporters;generics"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
-      <Checks>
-        <IOChecks Value="True"/>
-        <RangeChecks Value="True"/>
-        <OverflowChecks Value="True"/>
-        <StackChecks Value="True"/>
-      </Checks>
-      <VerifyObjMethodCallValidity Value="True"/>
+      <SmartLinkUnit Value="True"/>
       <Optimizations>
         <OptimizationLevel Value="3"/>
       </Optimizations>
+      <SmallerCode Value="True"/>
     </CodeGeneration>
     <Linking>
       <Debugging>
-        <UseValgrind Value="True"/>
-        <UseExternalDbgSyms Value="True"/>
+        <GenerateDebugInfo Value="False"/>
       </Debugging>
-      <Options>
-        <Win32>
-          <GraphicApplication Value="True"/>
-        </Win32>
-      </Options>
     </Linking>
   </CompilerOptions>
   <Debugging>

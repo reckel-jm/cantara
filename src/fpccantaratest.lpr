@@ -3,7 +3,8 @@ program fpccantaratest;
 {$mode objfpc}{$H+}
 
 uses
-  Interfaces, Forms, GuiTestRunner, TestCase1, SongTeXTest, multilanguage;
+  Interfaces, Forms, GuiTestRunner, TestCase1, SongTeXTest, multilanguage,
+  cclitestcase;
 
 {$R *.res}
 

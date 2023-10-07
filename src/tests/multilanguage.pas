@@ -20,7 +20,7 @@ implementation
 
 procedure TSplitMultiLanguage.TestHookUp;
 begin
-  Fail('Write your own test');
+
 end;
 
 procedure TSplitMultiLanguage.SetUp;

@@ -29,6 +29,9 @@ jobs:
     - name: Build the MacOS Application
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: lazbuild -B src/Cantara.lpi
+    - name: Run all Tests on Ubuntu
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      run: lazbuild fpccantaraclitest.lpi && ./fpccantaraclitest -a --format=plain
     - name: Artifacts (Linux)
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       uses: actions/upload-artifact@v3
