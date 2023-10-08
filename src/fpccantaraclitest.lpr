@@ -3,7 +3,7 @@ program fpccantaraclitest;
 {$mode objfpc}{$H+}
 
 uses
-  Classes, consoletestrunner, CCLITestCase, MultiLanguage;
+  Classes, consoletestrunner, LyricsTests, MultiLanguage;
 
 type
 
