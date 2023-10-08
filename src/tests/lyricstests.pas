@@ -68,7 +68,8 @@ var TestSong: Lyrics.TSong;
 begin
   TestSong := TSong.Create;
   try
-    TestSong.importSongfile(TestDataDirectory + PathDelim + 'Oh, What a Savior that He Died For Me.song');
+    TestSong.importSongfile(TestDataDirectory + PathDelim +
+                                              'Oh, What a Savior that He Died For Me.song');
     AssertTrue('Author Tag has not been recognised',
                        Testsong.MetaDict.KeyData['author'] = 'James McGranahan');
     AssertTrue('Title Tag has not been recognised correctly from filename',
