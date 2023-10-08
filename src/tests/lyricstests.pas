@@ -48,7 +48,6 @@ begin
         if not FileExists(SongFormatFileName) then
           Fail(Format('The file "%s" does not exist.', [SongFormatFileName]));
         SongFormatSong.LoadFromFile(SongFormatFileName);
-        //AssertTrue(CCLIFileName, Trim(CCLISongConvert.Text) = Trim(SongFormatSong.Text));
         if Trim(CCLISongConvert.Text) <> Trim(SongFormatSong.Text) then
            Fail('The converted output of ' + CCLIFileName + ' and ' + SongFormatFileName +
            ' is not equal.' + LineEnding + 'This is the output of the conversion: '
