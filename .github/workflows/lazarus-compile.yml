@@ -31,7 +31,7 @@ jobs:
       run: lazbuild -B src/Cantara.lpi
     - name: Run all Tests on Ubuntu
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: lazbuild src/fpccantaraclitest.lpi && cd src && .fpccantaraclitest -a --format=plain
+      run: lazbuild src/fpccantaraclitest.lpi && cd src && ./fpccantaraclitest -a --format=plain
     - name: Artifacts (Linux)
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       uses: actions/upload-artifact@v3
