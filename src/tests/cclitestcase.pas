@@ -35,28 +35,31 @@ begin
   CCLISongFiles := TStringList.Create;
   CCLISongConvert := TStringList.Create;
   SongFormatSong := TStringList.Create;
-  TestSong := TSong.Create;
   try
     FindAllFiles(CCLISongFiles, TestDataDirectory, '*.ccli', True);
     for CCLIFileName in CCLISongFiles do
     begin
-      TestSong.importSongfile(CCLIFileName);
-      CCLISongConvert.Text := TestSong.exportAsSongFile;
-      SongFormatFileName := StringReplace(CCLIFileName, '.ccli', '.song', [rfReplaceAll]);
-      if not FileExists(SongFormatFileName) then
-        Fail(Format('The file "%s" does not exist.', [SongFormatFileName]));
-      SongFormatSong.LoadFromFile(SongFormatFileName);
-      //AssertTrue(CCLIFileName, Trim(CCLISongConvert.Text) = Trim(SongFormatSong.Text));
-      if Trim(CCLISongConvert.Text) <> Trim(SongFormatSong.Text) then
-         Fail('The converted output of ' + CCLIFileName + ' and ' + SongFormatFileName +
-         ' is not equal.' + LineEnding + 'This is the output of the conversion: '
-         + LineEnding + CCLISongConvert.Text);
+      try
+        TestSong := TSong.Create;
+        TestSong.importSongfile(CCLIFileName);
+        CCLISongConvert.Text := TestSong.exportAsSongFile;
+        SongFormatFileName := StringReplace(CCLIFileName, '.ccli', '.song', [rfReplaceAll]);
+        if not FileExists(SongFormatFileName) then
+          Fail(Format('The file "%s" does not exist.', [SongFormatFileName]));
+        SongFormatSong.LoadFromFile(SongFormatFileName);
+        //AssertTrue(CCLIFileName, Trim(CCLISongConvert.Text) = Trim(SongFormatSong.Text));
+        if Trim(CCLISongConvert.Text) <> Trim(SongFormatSong.Text) then
+           Fail('The converted output of ' + CCLIFileName + ' and ' + SongFormatFileName +
+           ' is not equal.' + LineEnding + 'This is the output of the conversion: '
+           + LineEnding + CCLISongConvert.Text);
+      finally
+        TestSong.Destroy;
+      end;
     end;
   finally
     CCLISongConvert.Destroy;
     SongFormatSong.Destroy;
     CCLISongFiles.Destroy;
-    TestSong.Destroy;
   end;
 end;
 
