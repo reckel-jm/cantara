@@ -76,6 +76,7 @@ A big thanks to the following users who helped improving Cantara:
 * @[primores-resugendi](https://github.com/primores-resugendi): Contributing traditional Chinese translation
 * @[albanobattistella](https://github.com/albanobattistella): Contributing Italian translation
 * @[haggen88](https://github.com/haggen88): Contributing Spanish translation
+* @[vistaus](https://github.com/Vistaus): Contributing Dutch translation
 
 ## Licence
 The program is licenced under GPL3. See [COPYING](https://github.com/reckel-jm/cantara/blob/master/COPYING) for details. You may use and change this software and it's source code and share it as you wish, but you need to add a copyright hint and keep the licence.
