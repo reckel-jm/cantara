@@ -87,6 +87,9 @@ msgid ""
 "{%bible%}Bible Reference: {bible}\n"
 "{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
+"{%author%}Autore: {author}\n"
+"{%bible%}Riferimento biblico: {bible}\n"
+"{%ccli-songnumber%}CCLI numero canzone: {ccli-songnumber} | Numero licenza: {ccli-licensenumber}"
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
@@ -95,7 +98,7 @@ msgstr "Errore"
 
 #: settings.strnobackgroundimageselected
 msgid "You need to select a background image first."
-msgstr ""
+msgstr "Devi prima selezionare un'immagine di sfondo."
 
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
@@ -204,7 +207,7 @@ msgstr "Per generare il file pptx, Cantara utilizza il motore Java Script predef
 
 #: songselection.strsongisempty
 msgid "The song {songname} is empty. It will not be added."
-msgstr ""
+msgstr "La canzone {songname} è vuota. Non verrà aggiunta."
 
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
@@ -212,7 +215,7 @@ msgstr "I brani del file sono stati importati nell'archivio dei brani."
 
 #: songselection.strtitleslide
 msgid "Title Slide"
-msgstr ""
+msgstr "Titolo diapositiva"
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
@@ -275,7 +278,7 @@ msgstr "Imbottitura"
 
 #: tframesettingsdetailed.labalbottom.caption
 msgid "Bottom: "
-msgstr "Fondo: "
+msgstr "In basso: "
 
 #: tframesettingsdetailed.labelleft.caption
 msgid "Left:"
@@ -283,7 +286,7 @@ msgstr "A sinistra:"
 
 #: tframesettingsdetailed.labelright.caption
 msgid "Right: "
-msgstr "Giusto: "
+msgstr "Destra: "
 
 #: tframesettingsdetailed.labeltop.caption
 msgid "Top: "
