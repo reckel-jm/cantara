@@ -175,12 +175,12 @@ type
     @param(s: the search pattern) }
     procedure FilterListBox(s: String);
     procedure BringToFront;
-    procedure ExportSelectionAsTeXFile(FilePath: String);
+    procedure ExportSelectionAsTeXFile(var FilePath: String);
     function ImportSongTeXFileAsSelection(FilePath: String): Boolean;
     { Saves the Selection at the place FilePath
       @param(FilePath: The full File Path where to save the song selection)
     }
-    procedure SaveSelection(FilePath: String);
+    procedure SaveSelection(var FilePath: String);
     procedure LoadSongTeXFile(FilePath: String);
     { Loads the Slide Texts in a List View }
     procedure FillSlideListInPresentationConsole;
@@ -639,11 +639,14 @@ begin
 end;
 
 procedure TfrmSongs.itemSaveSelectionAsClick(Sender: TObject);
+var FileName: String;
 begin
   if SaveDialog.Execute then
   begin
-    SaveSelection(SaveDialog.FileName);
-    LoadedSongSelectionFilePath := SaveDialog.FileName;
+    FileName := SaveDialog.FileName;
+    if ExtractFileExt(FileName) = '' then FileName := FileName + '.songtex';
+    SaveSelection(FileName);
+    LoadedSongSelectionFilePath := FileName;
     PanelSongTeXStatus.Visible := True;
     PanelSongTeXStatus.Height := EdtSearch.Height;
     PanelSongTeXStatus.Caption := StrActiveSongTeXFile + LoadedSongSelectionFilePath;
@@ -657,7 +660,7 @@ begin
     SaveSelection(LoadedSongSelectionFilePath);
 end;
 
-procedure TfrmSongs.SaveSelection(FilePath: String);
+procedure TfrmSongs.SaveSelection(var FilePath: String);
 var TextFileHandler: TTextFileHandler;
 begin
   TextFileHandler := TTextFileHandler.Create;
@@ -1194,13 +1197,16 @@ begin
   self.loadRepo(frmSettings.edtRepoPath.Text);
 end;
 
-procedure TfrmSongs.ExportSelectionAsTeXFile(FilePath: String);
+procedure TfrmSongs.ExportSelectionAsTeXFile(var FilePath: String);
 var
   i: Integer;
   songtexfile: TSongTeXFile;
   song: TRepoFile;
   songtexfilename: String;
+  TextFileHandler: TTextFileHandler;
+  TextFile: String;
 begin
+  TextFileHandler := TTextFileHandler.Create;
   songtexfile := TSongTeXFile.Create;
   for i := 0 to lbxSselected.Count - 1 do
   begin
@@ -1210,7 +1216,9 @@ begin
   songtexFileName := FilePath;
   if ExtractFileExt(Filepath) <> '.songtex' then
     songtexFileName := songtexFileName + '.songtex';
-  songtexfile.SaveToFile(songtexFileName);
+  TextFile := songtexfile.Text;
+  TextFileHandler.SaveTextFile(TextFile, FilePath, '.songtex');
+  TextFileHandler.Destroy;
 end;
 
 function TfrmSongs.FindSong(songname: String): TRepoFile;
