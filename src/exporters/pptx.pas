@@ -39,45 +39,43 @@ uses
 
 type
   TPPTXExporter = class
-    public
-      PresentationStyleSettings: TPresentationStyleSettings;
-      Folder: String;
-      constructor Create; overload;
-      destructor Destroy; override;
-      function SaveJavaScriptToFile: String;
-      procedure AddSlides(ASlideList: TSlideList);
-    private
-      pptxgenjs, template, exportedJs, content: TStringList;
-      lastSongName: String;
-      function GenerateBackgroundColorSettings: String;
-      procedure AddSlide(Slide: TSlide);
-      function ColorToHexString(AColor: TColor): String;
-      function GenerateBackgroundImageSettings: String;
-      function ImageToBase64: String;
+  public
+    PresentationStyleSettings: TPresentationStyleSettings;
+    Folder: String;
+    constructor Create; overload;
+    destructor Destroy; override;
+    function SaveJavaScriptToFile: String;
+    procedure AddSlides(ASlideList: TSlideList);
+  private
+    pptxgenjs, template, exportedJs, content: TStringList;
+    lastSongName: String;
+    function GenerateBackgroundColorSettings: String;
+    procedure AddSlide(Slide: TSlide);
+    function ColorToHexString(AColor: TColor): String;
+    function GenerateBackgroundImageSettings: String;
+    function ImageToBase64: String;
   end;
 
 const
-  CodeAddSlide:String = 'slide = pres.addSlide({ masterName: "%s" });';
-  CodeAddSpoileredText:String = 'slide.addText(' +
-                                 '[' +
-                                 '{ text: "%s\n", options: { align: "{{HALIGN}}" } }, '+
-                                 '{ text: "%s", options: { fontSize: "18" }, align: "{{HALIGN}}" },'+
-                                 '],'+
-                                 '{ placeholder: "defaultcontent" }'+
-                                 ');';
-  CodeAddTitleText:String = 'slide.addText("%s", { placeholder: "title", align: "{{HALIGN}}" })';
-  CodaAddTitleTextWithMetaData:String = 'slide.addText(' +
-                                 '[' +
-                                 '{ text: "%s\n", options: { bold: true, align: "{{HALIGN}}" } }, '+
-                                 '{ text: "%s", options: { fontSize: "18", bold: false, align: "{{HALIGN}}" } },'+
-                                 '],'+
-                                 '{ placeholder: "title" }'+
-                                 ');';
-  CodeAddUnspoileredText:String = 'slide.addText("%s", { placeholder: "defaultcontent" });';
-  CodeAddSection:String = 'pres.addSection({ title: "%s" });';
-  CodeAddMetaText:String = 'slide.addText("[text]", { x: 0.15, y: "90%", h: "6%", valign: "bottom", color: "{{TEXTCOLOR}}", fontSize: "12", autoFit: true });';
+  CodeAddSlide: String = 'slide = pres.addSlide({ masterName: "%s" });';
+  CodeAddSpoileredText: String =
+    'slide.addText(' + '[' + '{ text: "%s\n", options: { align: "{{HALIGN}}" } }, ' +
+    '{ text: "%s", options: { fontSize: "18" }, align: "{{HALIGN}}" },' +
+    '],' + '{ placeholder: "defaultcontent" }' + ');';
+  CodeAddTitleText: String =
+    'slide.addText("%s", { placeholder: "title", align: "{{HALIGN}}" })';
+  CodaAddTitleTextWithMetaData: String =
+    'slide.addText(' + '[' +
+    '{ text: "%s\n", options: { bold: true, align: "{{HALIGN}}" } }, ' +
+    '{ text: "%s", options: { fontSize: "18", bold: false, align: "{{HALIGN}}" } },' +
+    '],' + '{ placeholder: "title" }' + ');';
+  CodeAddUnspoileredText: String =
+    'slide.addText("%s", { placeholder: "defaultcontent" });';
+  CodeAddSection: String = 'pres.addSection({ title: "%s" });';
+  CodeAddMetaText: String =
+    'slide.addText("[text]", { x: 0.15, y: "90%", h: "6%", valign: "bottom", color: "{{TEXTCOLOR}}", fontSize: "12", autoFit: true });';
 
-ResourceString
+resourcestring
   StrCantaraExport = 'Cantara Song Presentation Export';
   StrSongs = 'Songs';
 
@@ -109,17 +107,23 @@ begin
   if Slide.SlideType = SlideWithoutSpoiler then // this is a slide without spoiler
   begin
     content.Add(Format(CodeAddSlide, ['DefaultSlide']));
-    content.Add(Format(CodeAddUnspoileredText, [PrepareText(Slide.PartContent.MainText)]));
-  end else
+    content.Add(Format(CodeAddUnspoileredText,
+      [PrepareText(Slide.PartContent.MainText)]));
+  end
+  else
   if Slide.SlideType = SlideWithSpoiler then
   begin
     content.Add(Format(CodeAddSlide, ['DefaultSlide']));
-    content.Add(Format(CodeAddSpoileredText, [PrepareText(Slide.PartContent.MainText), PrepareText(Slide.PartContent.SpoilerText)]));
-  end else
+    content.Add(Format(CodeAddSpoileredText,
+      [PrepareText(Slide.PartContent.MainText),
+      PrepareText(Slide.PartContent.SpoilerText)]));
+  end
+  else
   if Slide.SlideType = EmptySlide then
   begin
     content.Add(Format(CodeAddSlide, ['EmptySlide']));
-  end else
+  end
+  else
   if Slide.SlideType = TitleSlide then
   begin
     content.Add(Format(CodeAddSlide, ['TitleSlide']));
@@ -127,49 +131,58 @@ begin
       content.Add(Format(CodeAddTitleText, [PrepareText(Slide.PartContent.MainText)]))
     else
       content.Add(Format(CodaAddTitleTextWithMetaData,
-          [
-            PrepareText(Slide.PartContent.MainText),
-            PrepareText(Slide.PartContent.SpoilerText)
-          ]
-        )
-      );
+        [PrepareText(Slide.PartContent.MainText),
+        PrepareText(Slide.PartContent.SpoilerText)])
+        );
   end;
   if Trim(Slide.PartContent.MetaText) <> '' then
-    content.Add(StringReplace(CodeAddMetaText, '[text]', PrepareText(Slide.PartContent.MetaText), [rfReplaceAll]));
+    content.Add(StringReplace(CodeAddMetaText, '[text]',
+      PrepareText(Slide.PartContent.MetaText), [rfReplaceAll]));
   content.Add('slide.addNotes("' + PrepareText(Slide.PartContent.MainText) + '");');
 end;
 
 function TPPTXExporter.SaveJavaScriptToFile: String;
-var ExportedFilePath: String;
+var
+  ExportedFilePath: String;
   halign, valign: String;
 begin
   pptxgenjs.SaveToFile(Folder + PathDelim + 'pptxgen.bundle.js');
-  exportedJs.Text := StringReplace(template.Text, '{{SLIDECONTENT}}', content.Text, [rfReplaceAll]);
-  exportedJs.Text := StringReplace(exportedJs.Text, '{{BACKGROUND}}', GenerateBackgroundColorSettings, [rfReplaceAll]);
-  exportedJs.Text := StringReplace(exportedJs.Text, '{{TEXTCOLOR}}', ColorToHexString(PresentationStyleSettings.TextColor), [rfReplaceAll]);
-  if PresentationStyleSettings.ShowBackgroundImage and FileExists(PresentationStyleSettings.BackgroundImageFilePath) then
+  exportedJs.Text := StringReplace(template.Text, '{{SLIDECONTENT}}',
+    content.Text, [rfReplaceAll]);
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{BACKGROUND}}',
+    GenerateBackgroundColorSettings, [rfReplaceAll]);
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{TEXTCOLOR}}',
+    ColorToHexString(PresentationStyleSettings.TextColor), [rfReplaceAll]);
+  if PresentationStyleSettings.ShowBackgroundImage And
+    FileExists(PresentationStyleSettings.BackgroundImageFilePath) then
   begin
     exportedJs.Text := StringReplace(exportedJs.Text, '{{BACKGROUNDIMAGE}}',
-                    GenerateBackgroundImageSettings, [rfReplaceAll]);
-  end else
-    exportedJs.Text := StringReplace(exportedJs.Text, '{{BACKGROUNDIMAGE}}', '', [rfReplaceAll]);
+      GenerateBackgroundImageSettings, [rfReplaceAll]);
+  end
+  else
+    exportedJs.Text := StringReplace(exportedJs.Text, '{{BACKGROUNDIMAGE}}',
+      '', [rfReplaceAll]);
 
   { Add Meta-Data }
-  exportedJs.Text := StringReplace(exportedJs.Text, '{{TITLE}}', StrCantaraExport, [rfReplaceAll]);
-  exportedJs.Text := StringReplace(exportedJs.Text, '{{SUBJECT}}', StrSongs, [rfReplaceAll]);
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{TITLE}}',
+    StrCantaraExport, [rfReplaceAll]);
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{SUBJECT}}',
+    StrSongs, [rfReplaceAll]);
   { Horizontal and Vertical Align }
   case PresentationStyleSettings.HorizontalAlign of
     Align_Left: halign := 'left';
     Align_Center: halign := 'center';
     Align_Right: halign := 'right';
   end;
-  exportedJs.Text := StringReplace(exportedJs.Text, '{{HALIGN}}', halign, [rfReplaceAll]);
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{HALIGN}}',
+    halign, [rfReplaceAll]);
   case PresentationStyleSettings.VerticalAlign of
-    tlTop   : valign := 'top';
+    tlTop: valign := 'top';
     tlCenter: valign := 'middle';
     tlBottom: valign := 'bottom';
   end;
-  exportedJs.Text := StringReplace(exportedJs.Text, '{{VALIGN}}', valign, [rfReplaceAll]);
+  exportedJs.Text := StringReplace(exportedJs.Text, '{{VALIGN}}',
+    valign, [rfReplaceAll]);
   ExportedFilePath := Folder + PathDelim + 'pptx-export.html';
   exportedJs.SaveToFile(ExportedFilePath);
   Result := ExportedFilePath;
@@ -185,9 +198,10 @@ begin
 end;
 
 procedure TPPTXExporter.AddSlides(ASlideList: TSlideList);
-var Slide: TSlide;
+var
+  Slide: TSlide;
 begin
-  for Slide in ASlideList do
+  for Slide In ASlideList do
   begin
     AddSlide(Slide);
   end;
@@ -195,21 +209,22 @@ end;
 
 function TPPTXExporter.GenerateBackgroundColorSettings: String;
 begin
-  Result := 'background: { color: "' +
-         ColorToHexString(PresentationStyleSettings.BackgroundColor) + '" },';
+  Result := 'background: { color: "' + ColorToHexString(
+    PresentationStyleSettings.BackgroundColor) + '" },';
 end;
 
 function TPPTXExporter.GenerateBackgroundImageSettings: String;
 begin
   if PresentationStyleSettings.ShowBackgroundImage then
-     Result := Format('{ image: { x:0, y:0, w:%s, h:%s, data:"%s" } }, ',
-     ['"100%"', '"100%"', ImageToBase64])
-  else Result := '';
+    Result := Format('{ image: { x:0, y:0, w:%s, h:%s, data:"%s" } }, ',
+      ['"100%"', '"100%"', ImageToBase64])
+  else
+    Result := '';
 end;
 
 function TPPTXExporter.ColorToHexString(AColor: TColor): String;
 var
-R, G, B: Byte;
+  R, G, B: Byte;
 begin
   RedGreenBlue(AColor, R, G, B);
   Result := Format('%.2x%.2x%.2x', [R, G, B]);
@@ -228,8 +243,8 @@ begin
   OurPicture.LoadFromFile(PresentationStyleSettings.BackgroundImageFilePath);
   PresentationCanvas := TPresentationCanvasHandler.Create;
   PresentationCanvas.PresentationStyleSettings := PresentationStyleSettings;
-  PresentationCanvas.Width:=OurPicture.Width;
-  PresentationCanvas.Height:=Round(PresentationCanvas.Width/16*9);
+  PresentationCanvas.Width := OurPicture.Width;
+  PresentationCanvas.Height := Round(PresentationCanvas.Width / 16 * 9);
   PresentationCanvas.LoadBackgroundBitmap;
   OurPicture.Bitmap.Assign(PresentationCanvas.ResizedBackgroundBitmap);
   I := GetTickCount64;
@@ -239,12 +254,12 @@ begin
   Encoder := TBase64EncodingStream.Create(Outputstream);
   try
     jpg.Assign(OurPicture.Bitmap);
-    jpg.CompressionQuality:=75;
+    jpg.CompressionQuality := 75;
     jpg.SaveToStream(imgstream);
-    imgstream.Position:= 0;
+    imgstream.Position := 0;
     Encoder.CopyFrom(imgstream, imgstream.Size);
     Encoder.Flush;
-    Result:='data:image/jpg;base64,'+ (Outputstream as TStringStream).DataString;
+    Result := 'data:image/jpg;base64,' + (Outputstream As TStringStream).DataString;
   finally
     imgstream.Free;
     Encoder.Free;
@@ -255,4 +270,3 @@ begin
 end;
 
 end.
-

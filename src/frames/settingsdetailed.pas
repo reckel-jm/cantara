@@ -43,11 +43,10 @@ end;
 
 function TFrameSettingsDetailed.ExportPadding: TPadding;
 begin
-  Result.Left:=LeftSpin.Value;
-  Result.Top:=TopSpin.Value;
-  Result.Right:=RightSpin.Value;
-  Result.Bottom:=BottomSpin.Value;
+  Result.Left := LeftSpin.Value;
+  Result.Top := TopSpin.Value;
+  Result.Right := RightSpin.Value;
+  Result.Bottom := BottomSpin.Value;
 end;
 
 end.
-

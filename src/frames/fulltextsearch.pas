@@ -11,11 +11,11 @@ uses
 type
 
   TIndexEntry = class
-    public
-      Song: TSong;
-      ContentIndex: String;
-      TagIndex: String;
-      destructor Destroy; override;
+  public
+    Song: TSong;
+    ContentIndex: String;
+    TagIndex: String;
+    destructor Destroy; override;
   end;
 
   TIndexList = specialize TFPGObjectList<TIndexEntry>;
@@ -50,7 +50,7 @@ type
     destructor Destroy; override;
   end;
 
-ResourceString
+resourcestring
   StrSongTitle = 'Song Title';
 
 implementation
@@ -67,26 +67,28 @@ begin
 end;
 
 procedure TFrmFulltextsearch.CreateIndex;
-var TempSong: TSong;
+var
+  TempSong: TSong;
   RepoEntry: TRepoFile;
   IndexEntry: TIndexEntry;
 begin
   if Assigned(IndexList) then FreeAndNil(IndexList);
   IndexList := TIndexList.Create(True);
   // Iterate over all loaded songs
-  for RepoEntry in Songselection.Repo do
+  for RepoEntry In Songselection.Repo do
   begin
     IndexEntry := TIndexEntry.Create;
     TempSong := TSong.Create;
     TempSong.importSongfile(RepoEntry.FilePath);
     IndexEntry.Song := TempSong;
-    TempSong.output.Delimiter:= Char(' ');
-    IndexEntry.ContentIndex:=Trim(TempSong.output.Text);
-    IndexEntry.ContentIndex:=StringReplace(IndexEntry.ContentIndex, LineEnding, ' ', [rfReplaceAll]);
+    TempSong.output.Delimiter := Char(' ');
+    IndexEntry.ContentIndex := Trim(TempSong.output.Text);
+    IndexEntry.ContentIndex :=
+      StringReplace(IndexEntry.ContentIndex, LineEnding, ' ', [rfReplaceAll]);
     IndexList.Add(IndexEntry);
   end;
   // Change to the Notebook page with the Listbox
-  Content.PageIndex:=3;
+  Content.PageIndex := 3;
 end;
 
 constructor TFrmFulltextsearch.Create;
@@ -104,35 +106,38 @@ begin
 end;
 
 procedure TFrmFulltextsearch.EditSearchTermChange(Sender: TObject);
-var i: Integer;
+var
+  i: Integer;
   SearchTerm, ContentString, AddedContent: String;
   PosInFileName, PosInContentIndex: Integer;
 begin
   SearchTerm := Trim(EditSearchTerm.Text);
   if SearchTerm = '' then
   begin
-    Content.PageIndex:=3;
+    Content.PageIndex := 3;
     Exit;
   end;
-  Content.PageIndex:=1;
+  Content.PageIndex := 1;
   ListboxResults.Clear;
-  for i := 0 to IndexList.Count-1 do
+  for i := 0 to IndexList.Count - 1 do
   begin
     ContentString := IndexList.Items[i].ContentIndex;
-    PosInFileName := Pos(LowerCase(SearchTerm), LowerCase(IndexList.Items[i].Song.FileNameWithoutEnding));
+    PosInFileName := Pos(LowerCase(SearchTerm),
+      LowerCase(IndexList.Items[i].Song.FileNameWithoutEnding));
     PosInContentIndex := Pos(LowerCase(SearchTerm), LowerCase(ContentString));
-    if (PosInFileName > 0) or
-      (PosInContentIndex > 0) then
-       begin
-         AddedContent := IndexList.Items[i].Song.FileNameWithoutEnding;
-         AddedContent += PathSeparator;
-         ContentString := IndexList.Items[i].ContentIndex;
-         if PosInContentIndex > 0 then
-           AddedContent += ContentString[PosInContentIndex-(Min(PosInContentIndex,70))+1..PosInContentIndex+Min(Length(ContentString)-PosInContentIndex, 70)-1]
-         else if PosInFileName > 0 then
-           AddedContent += StrSongTitle;
-         ListBoxResults.Items.Add(AddedContent);
-       end;
+    if (PosInFileName > 0) Or (PosInContentIndex > 0) then
+    begin
+      AddedContent := IndexList.Items[i].Song.FileNameWithoutEnding;
+      AddedContent += PathSeparator;
+      ContentString := IndexList.Items[i].ContentIndex;
+      if PosInContentIndex > 0 then
+        AddedContent += ContentString[PosInContentIndex -
+          (Min(PosInContentIndex, 70)) + 1..PosInContentIndex + Min(
+          Length(ContentString) - PosInContentIndex, 70) - 1]
+      else if PosInFileName > 0 then
+        AddedContent += StrSongTitle;
+      ListBoxResults.Items.Add(AddedContent);
+    end;
   end;
   if ListBoxResults.Count = 0 then Content.PageIndex := 2;
 end;
@@ -144,7 +149,8 @@ end;
 
 procedure TFrmFulltextsearch.ListBoxResultsDblClick(Sender: TObject);
 begin
-  frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(PathSeparator)[0]);
+  frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(
+    PathSeparator)[0]);
 end;
 
 procedure TFrmFulltextsearch.ListBoxResultsDrawItem(Control: TWinControl;
@@ -154,8 +160,8 @@ var
   FontBaseHeight: Integer;
   StringParts: TStringArray;
 begin
-  ARect.Height:=ListBoxResults.ItemHeight;
-  if odSelected in State then
+  ARect.Height := ListBoxResults.ItemHeight;
+  if odSelected In State then
   begin
     aColor := clActiveCaption;
     ListBoxResults.Canvas.Font.Color := clCaptionText;
@@ -169,24 +175,26 @@ begin
   ListBoxResults.Canvas.Brush.Color := aColor;
   ListBoxResults.Canvas.FillRect(aRect);
   ListBoxResults.Canvas.Brush.Color := ListBoxResults.Canvas.Font.Color;
-  ListBoxResults.Canvas.Font.Bold:=True;
-  ListBoxResults.Canvas.Font.Underline:=True;
+  ListBoxResults.Canvas.Font.Bold := True;
+  ListBoxResults.Canvas.Font.Underline := True;
   with ListBoxResults.Canvas.TextStyle do
-    begin
-      Alignment:= taCenter;
-      Layout:= tlTop;
-      SingleLine := True;
-      WordBreak := False;
-      Opaque := False;
-    end;
+  begin
+    Alignment := taCenter;
+    Layout := tlTop;
+    SingleLine := True;
+    WordBreak := False;
+    Opaque := False;
+  end;
   // Now we split the strings into the two parts
   StringParts := ListBoxResults.Items[Index].Split(PathSeparator);
-  ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top+2, StringParts[0]);
+  ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top + 2, StringParts[0]);
   if length(StringParts) > 1 then
   begin
-    ListBoxResults.Canvas.Font.Bold:=False;
-    ListBoxResults.Canvas.Font.Underline:=False;
-    ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top+2+Round(FontBaseHeight*1.33), StringParts[1]);
+    ListBoxResults.Canvas.Font.Bold := False;
+    ListBoxResults.Canvas.Font.Underline := False;
+    ListBoxResults.Canvas.TextRect(ARect, 2, ARect.Top + 2 +
+      Round(FontBaseHeight * 1.33),
+      StringParts[1]);
   end;
 end;
 
@@ -197,4 +205,3 @@ begin
 end;
 
 end.
-

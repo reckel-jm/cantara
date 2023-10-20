@@ -68,7 +68,7 @@ type
     procedure edtRepoPathEditingDone(Sender: TObject);
     procedure edtRepoPathExit(Sender: TObject);
     procedure FormClose(Sender: TObject);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
@@ -80,8 +80,8 @@ type
     procedure memoMetaDataChange(Sender: TObject);
     procedure memoMetaDataEditingDone(Sender: TObject);
     procedure sbImageBrightnessChange(Sender: TObject);
-    procedure sbImageBrightnessDragOver(Sender, Source: TObject; X, Y: Integer;
-      State: TDragState; var Accept: Boolean);
+    procedure sbImageBrightnessDragOver(Sender, Source: TObject;
+      X, Y: Integer; State: TDragState; var Accept: Boolean);
     procedure sbImageBrightnessEndDrag(Sender, Target: TObject; X, Y: Integer);
     procedure sbImageBrightnessEnter(Sender: TObject);
     procedure sbImageBrightnessExit(Sender: TObject);
@@ -107,38 +107,44 @@ type
 
   { This function returns the path of the folder with the default pictures.
   If the folder can not be found, the returning string will be empty. }
-  function GetDefaultPictureDir: String;
+function GetDefaultPictureDir: String;
 
 var
   frmSettings: TfrmSettings;
   settingsFile: TINIFile;
 
-ResourceString
+resourcestring
   strTransparency = 'Increase transparency by ';
   strBrightness = 'Increase brightness by ';
   strPictureOriginalState = 'Picture is shown as it is';
   strErrorCaption = 'Error';
   strValidSongRepository = 'Please choose a valid folder for the song repository!';
   strDefaultMetaTemplate = '{%author%}Author: {author}' + LineEnding +
-                           '{%bible%}Bible Reference: {bible}' + LineEnding +
-                           '{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}';
+    '{%bible%}Bible Reference: {bible}' + LineEnding +
+    '{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}';
   strNoBackgroundImageSelected = 'You need to select a background image first.';
 
 implementation
 
-Uses
+uses
   SongSelection;
 
-{$R *.lfm}
+  {$R *.lfm}
 
-{ TfrmSettings }
+  { TfrmSettings }
 
-function getRepoDir(): string;
+function getRepoDir(): String;
 begin
-  if DirectoryExists(getUserdir()+'Liederverzeichnis') then result := getUserdir()+'Liederverzeichnis'
-  else if DirectoryExists(getUserdir()+'Dokumente'+ PathDelim + 'Liederverzeichnis') then result := getUserdir()+'Dokumente'+ PathDelim + 'Liederverzeichnis'
-  else if DirectoryExists(ExtractFilePath(Application.ExeName) + 'Liederverzeichnis') then result := ExtractFilePath(Application.ExeName) + 'Liederverzeichnis'
-  else result := '';
+  if DirectoryExists(getUserdir() + 'Liederverzeichnis') then
+    Result := getUserdir() + 'Liederverzeichnis'
+  else if DirectoryExists(getUserdir() + 'Dokumente' + PathDelim +
+    'Liederverzeichnis') then
+    Result := getUserdir() + 'Dokumente' + PathDelim + 'Liederverzeichnis'
+  else if DirectoryExists(ExtractFilePath(Application.ExeName) +
+    'Liederverzeichnis') then
+    Result := ExtractFilePath(Application.ExeName) + 'Liederverzeichnis'
+  else
+    Result := '';
 end;
 
 function StyleToStr(Style: TFontStyles): String;
@@ -191,7 +197,7 @@ begin
   DummySongFile.Destroy;
   SlideList := TSlideList.Create(True);
   PictureDir := GetDefaultPictureDir;
-  if PictureDir <> '' then BgPictureDialog.InitialDir:=PictureDir;
+  if PictureDir <> '' then BgPictureDialog.InitialDir := PictureDir;
 end;
 
 procedure TfrmSettings.FormDestroy(Sender: TObject);
@@ -222,8 +228,9 @@ end;
 
 procedure TfrmSettings.ImagePresentationPreviewClick(Sender: TObject);
 begin
-  if slideListCur < SlideList.Count-1 then slidelistcur += 1
-    else slideListCur := 0;
+  if slideListCur < SlideList.Count - 1 then slidelistcur += 1
+  else
+    slideListCur := 0;
   LoadPreviewImage;
 end;
 
@@ -235,7 +242,7 @@ end;
 procedure TfrmSettings.btnSelectDirClick(Sender: TObject);
 begin
   if SelectDirectoryDialog.Execute then
-    edtRepoPath.Text:=SelectDirectoryDialog.FileName;
+    edtRepoPath.Text := SelectDirectoryDialog.FileName;
 end;
 
 procedure TfrmSettings.btnFontSizeManuallyClick(Sender: TObject);
@@ -257,13 +264,14 @@ end;
 
 procedure TfrmSettings.btnBackgroundImageClick(Sender: TObject);
 begin
-  if (BgPictureDialog.Execute) and (FileExists(BgPictureDialog.FileName)) then
+  if (BgPictureDialog.Execute) And (FileExists(BgPictureDialog.FileName)) then
   begin
     changedBackground := True;
-    cbShowBackgroundImage.Checked:=True;
+    cbShowBackgroundImage.Checked := True;
     //LoadPreviewImage not needed as this is done by cbShowBackground
-  end else if not (FileExists(BgPictureDialog.FileName)) then
-    cbShowBackgroundImage.Checked:=False;
+  end
+  else if Not (FileExists(BgPictureDialog.FileName)) then
+    cbShowBackgroundImage.Checked := False;
 end;
 
 procedure TfrmSettings.btnBackgroundColorClick(Sender: TObject);
@@ -305,10 +313,12 @@ end;
 
 procedure TfrmSettings.cbShowBackgroundImageChange(Sender: TObject);
 begin
-  if (cbShowBackgroundImage.Checked=True) and (not (FileExists(BgPictureDialog.FileName))) then
+  if (cbShowBackgroundImage.Checked = True) And
+    (Not (FileExists(BgPictureDialog.FileName))) then
   begin
-    cbShowBackgroundImage.Checked:=False;
-    Application.MessageBox(PChar(strNoBackgroundImageSelected), PChar(strHint), mb_OK+mb_IconError);
+    cbShowBackgroundImage.Checked := False;
+    Application.MessageBox(PChar(strNoBackgroundImageSelected),
+      PChar(strHint), mb_OK + mb_IconError);
     Exit;
   end;
   //btnBackgroundImage.Enabled:=cbShowBackgroundImage.Checked;
@@ -318,7 +328,7 @@ end;
 
 procedure TfrmSettings.cbSpoilerChange(Sender: TObject);
 begin
-  ReloadSlideAndPresentationCanvas
+  ReloadSlideAndPresentationCanvas;
 end;
 
 procedure TfrmSettings.comboHorizontalChange(Sender: TObject);
@@ -338,8 +348,9 @@ end;
 
 procedure TfrmSettings.edtRepoPathEditingDone(Sender: TObject);
 begin
-  if (edtRepoPath.Text <> '') and (edtRepoPath.Text[length(edtRepoPath.Text)] = PathDelim) then
-    edtRepoPath.Text := copy(edtRepoPath.Text,1,length(edtRepoPath.Text)-1);
+  if (edtRepoPath.Text <> '') And (edtRepoPath.Text[length(edtRepoPath.Text)] =
+    PathDelim) then
+    edtRepoPath.Text := copy(edtRepoPath.Text, 1, length(edtRepoPath.Text) - 1);
 end;
 
 procedure TfrmSettings.edtRepoPathExit(Sender: TObject);
@@ -350,7 +361,7 @@ end;
 procedure TfrmSettings.FormClose(Sender: TObject);
 begin
   // Prevent exceptions from happening
-  if not FileExists(BgPictureDialog.FileName) then
+  if Not FileExists(BgPictureDialog.FileName) then
   begin
     cbShowBackgroundImage.Checked := False;
     cbShowBackgroundImageChange(frmSettings);
@@ -362,34 +373,51 @@ begin
 end;
 
 procedure TfrmSettings.loadSettings();
-var str: String;
+var
+  str: String;
   Padding: TPadding;
 begin
   edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
-  textColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Text-Color', 'clWhite'));
-  bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config', 'Background-Color', 'clBlack'));
-  cbSpoiler.Checked:=settingsFile.ReadBool('Config', 'Spoiler', True);
+  textColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
+    'Text-Color', 'clWhite'));
+  bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
+    'Background-Color', 'clBlack'));
+  cbSpoiler.Checked := settingsFile.ReadBool('Config', 'Spoiler', True);
   cbMetaTitleSlide.Checked := settingsFile.ReadBool('Config', 'TitleSlide', False);
-  cbMetaDataFirstSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataFirstSlide', False);
-  cbMetaDataLastSlide.Checked := settingsFile.ReadBool('Config', 'MetaDataLastSlide', False);
-  str := settingsFile.ReadString('Config','MetaDataSyntax', strDefaultMetaTemplate);
-  memoMetaData.lines.Text := StringReplace(str, '</br>', LineEnding, [rfReplaceAll]);
-  FontDialog.Font.Name:=settingsFile.ReadString('Config', 'Font-Name', 'default');
-  FontDialog.Font.Style := StrToStyle(settingsFile.ReadString('Config', 'Font-Style', 'ssss'));
-  FontDialog.Font.Size:= settingsFile.ReadInteger('Config', 'Font-Size', 42);
-  BgPictureDialog.FileName := settingsFile.ReadString('Config', 'BackgroundPicture-Path', '');
-  cbShowBackgroundImage.Checked := settingsFile.ReadBool('Config', 'BackgroundPicture', false);  // must be after filename
+  cbMetaDataFirstSlide.Checked :=
+    settingsFile.ReadBool('Config', 'MetaDataFirstSlide', False);
+  cbMetaDataLastSlide.Checked :=
+    settingsFile.ReadBool('Config', 'MetaDataLastSlide', False);
+  str := settingsFile.ReadString('Config', 'MetaDataSyntax', strDefaultMetaTemplate);
+  memoMetaData.Lines.Text := StringReplace(str, '</br>', LineEnding, [rfReplaceAll]);
+  FontDialog.Font.Name := settingsFile.ReadString('Config', 'Font-Name', 'default');
+  FontDialog.Font.Style := StrToStyle(settingsFile.ReadString('Config',
+    'Font-Style', 'ssss'));
+  FontDialog.Font.Size := settingsFile.ReadInteger('Config', 'Font-Size', 42);
+  BgPictureDialog.FileName := settingsFile.ReadString('Config',
+    'BackgroundPicture-Path', '');
+  cbShowBackgroundImage.Checked :=
+    settingsFile.ReadBool('Config', 'BackgroundPicture', False);
+  // must be after filename
   cbShowBackgroundImageChange(frmSettings);
-  sbImageBrightness.Position:=Abs(settingsFile.ReadInteger('Config', 'ImageBrightness', 0));
-  seWrapLines.Value:=settingsFile.ReadInteger('Config', 'AutoWrap', 4);
-  comboHorizontal.ItemIndex := settingsFile.ReadInteger('Config', 'AlignHorizontal', Ord(Align_Center)); // default is centering
-  comboVertical.ItemIndex := settingsFile.ReadInteger('Config', 'AlignVertical', Ord(tlCenter)); // default is in the middle
+  sbImageBrightness.Position :=
+    Abs(settingsFile.ReadInteger('Config', 'ImageBrightness', 0));
+  seWrapLines.Value := settingsFile.ReadInteger('Config', 'AutoWrap', 4);
+  comboHorizontal.ItemIndex :=
+    settingsFile.ReadInteger('Config', 'AlignHorizontal', Ord(Align_Center));
+  // default is centering
+  comboVertical.ItemIndex := settingsFile.ReadInteger('Config',
+    'AlignVertical', Ord(tlCenter)); // default is in the middle
 
-  Padding.Left:=settingsFile.ReadInteger('Config', 'Padding-Left', PresentationCanvas.PADDING);
-  Padding.Right:=settingsFile.ReadInteger('Config', 'Padding-Right', PresentationCanvas.PADDING);
-  Padding.Top:=settingsFile.ReadInteger('Config', 'Padding-Top', PresentationCanvas.PADDING);
-  Padding.Bottom:=settingsFile.ReadInteger('Config', 'Padding-Bottom', PresentationCanvas.PADDING);
+  Padding.Left := settingsFile.ReadInteger('Config', 'Padding-Left',
+    PresentationCanvas.PADDING);
+  Padding.Right := settingsFile.ReadInteger('Config', 'Padding-Right',
+    PresentationCanvas.PADDING);
+  Padding.Top := settingsFile.ReadInteger('Config', 'Padding-Top',
+    PresentationCanvas.PADDING);
+  Padding.Bottom := settingsFile.ReadInteger('Config', 'Padding-Bottom',
+    PresentationCanvas.PADDING);
   FormPadding.frmSettingsDetailed.ImportPadding(Padding);
   AdjustImageBrightnessText;
 end;
@@ -405,12 +433,14 @@ begin
 end;
 
 procedure TfrmSettings.sbImageBrightnessChange(Sender: TObject);
-var i: 0..2;
+var
+  i: 0..2;
 begin
   if sbImageBrightness.Position > 0 then
-     lblImageExplainer.Caption:=strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position))+'%'
+    lblImageExplainer.Caption :=
+      strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position)) + '%'
   else if sbImageBrightness.Position = 0 then
-     lblImageExplainer.Caption := strPictureOriginalState;
+    lblImageExplainer.Caption := strPictureOriginalState;
   for i := 0 to 2 do
   begin
     ChangedBackground := True;
@@ -420,15 +450,14 @@ begin
   end;
 end;
 
-procedure TfrmSettings.sbImageBrightnessDragOver(Sender, Source: TObject; X,
-  Y: Integer; State: TDragState; var Accept: Boolean);
+procedure TfrmSettings.sbImageBrightnessDragOver(Sender, Source: TObject;
+  X, Y: Integer; State: TDragState; var Accept: Boolean);
 begin
   ChangedBackground := True;
   LoadPreviewImage;
 end;
 
-procedure TfrmSettings.sbImageBrightnessEndDrag(Sender, Target: TObject; X,
-  Y: Integer);
+procedure TfrmSettings.sbImageBrightnessEndDrag(Sender, Target: TObject; X, Y: Integer);
 begin
   ChangedBackground := True;
   LoadPreviewImage;
@@ -448,7 +477,7 @@ end;
 
 procedure TfrmSettings.seWrapLinesChange(Sender: TObject);
 begin
-  if seWrapLines.Value < 0 then seWrapLines.Value:=0;
+  if seWrapLines.Value < 0 then seWrapLines.Value := 0;
   try
     ReloadSlideAndPresentationCanvas;
   finally
@@ -461,18 +490,22 @@ begin
   LoadPreviewImage;
 end;
 
-procedure TfrmSettings.FormCloseQuery(Sender: TObject; var CanClose: boolean);
-var str: String;
+procedure TfrmSettings.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+var
+  str: String;
   Padding: TPadding;
 begin
   CanClose := False;
-  if DirectoryExists(edtRepoPath.Text) = False then Application.MessageBox(PChar(strValidSongRepository), PChar(strErrorCaption))
+  if DirectoryExists(edtRepoPath.Text) = False then
+    Application.MessageBox(PChar(strValidSongRepository), PChar(strErrorCaption))
   else
   begin
     settingsFile.WriteString('Config', 'Repo-Path', edtRepoPath.Text);
     settingsFile.WriteBool('Config', 'empty-Frame', cbEmptyFrame.Checked);
-    settingsFile.WriteString('Config', 'Text-Color', ColorToString(textColorDialog.Color));
-    settingsFile.WriteString('Config', 'Background-Color', ColorToString(bgColorDialog.Color));
+    settingsFile.WriteString('Config', 'Text-Color',
+      ColorToString(textColorDialog.Color));
+    settingsFile.WriteString('Config', 'Background-Color',
+      ColorToString(bgColorDialog.Color));
     settingsFile.WriteBool('Config', 'Spoiler', cbSpoiler.Checked);
     settingsFile.WriteString('Config', 'Font-Name', FontDialog.Font.Name);
     settingsFile.WriteInteger('Config', 'Font-Size', FontDialog.Font.Size);
@@ -482,8 +515,10 @@ begin
     settingsFile.WriteBool('Config', 'MetaDataFirstSlide', cbMetaDataFirstSlide.Checked);
     settingsFile.WriteBool('Config', 'MetaDataLastSlide', cbMetaDataLastSlide.Checked);
     str := StringReplace(memoMetaData.Lines.Text, LineEnding, '</br>', [rfReplaceAll]);
-    settingsFile.WriteString('Config','MetaDataSyntax', str);
-    settingsFile.WriteString('Config', 'BackgroundPicture-Path', BgPictureDialog.FileName); // MUST be before background picture
+    settingsFile.WriteString('Config', 'MetaDataSyntax', str);
+    settingsFile.WriteString('Config', 'BackgroundPicture-Path',
+      BgPictureDialog.FileName);
+    // MUST be before background picture
     settingsFile.WriteBool('Config', 'BackgroundPicture', cbShowBackgroundImage.Checked);
     settingsFile.WriteInteger('Config', 'ImageBrightness', sbImageBrightness.Position);
     settingsFile.WriteInteger('Config', 'AutoWrap', seWrapLines.Value);
@@ -503,43 +538,45 @@ end;
 
 procedure TfrmSettings.LoadPreviewImage;
 begin
-  if (not Assigned(LoadImageThread)) or (self.SlideList.Count <= 0) then Exit;
+  if (Not Assigned(LoadImageThread)) Or (self.SlideList.Count <= 0) then Exit;
   try
     LoadImageThread.LoadData(self.ExportPresentationStyleSettings,
-    self.ExportSlideSettings,
-    PresentationPreviewCanvas,
-    Screen,
-    ChangedBackground,
-    self.SlideList[slidelistcur],
-    ImagePresentationPreview.Picture);
+      self.ExportSlideSettings,
+      PresentationPreviewCanvas,
+      Screen,
+      ChangedBackground,
+      self.SlideList[slidelistcur],
+      ImagePresentationPreview.Picture);
     LoadImageThread.RunOnce;
   finally
   end;
 end;
 
 function TfrmSettings.ExportSlideSettings: TSlideSettings;
-var SlideSettings: TSlideSettings;
+var
+  SlideSettings: TSlideSettings;
 begin
   SlideSettings.EmptyFrame := cbEmptyFrame.Checked;
   SlideSettings.FirstSlideMeta := cbMetaDataFirstSlide.Checked;
   SlideSettings.LastSlideMeta := cbMetaDataLastSlide.Checked;
-  SlideSettings.MaxSlideLineLength:= seWrapLines.Value;
-  SlideSettings.MetaSyntax:=memoMetaData.Lines.Text;
-  SlideSettings.SpoilerText:=cbSpoiler.Checked;
+  SlideSettings.MaxSlideLineLength := seWrapLines.Value;
+  SlideSettings.MetaSyntax := memoMetaData.Lines.Text;
+  SlideSettings.SpoilerText := cbSpoiler.Checked;
   SlideSettings.TitleSlide := cbMetaTitleSlide.Checked;
   Result := SlideSettings;
 end;
 
 procedure TfrmSettings.ReloadSlideAndPresentationCanvas;
-  var
-    PresentationSlideCounter: Integer;
-    SlideSettings: TSlideSettings;
+var
+  PresentationSlideCounter: Integer;
+  SlideSettings: TSlideSettings;
 begin
   SlideListCur := 0; // to prevent exceptions if something cant be found anymore
   SlideSettings := self.ExportSlideSettings;
   SlideList.Clear;
   PresentationSlideCounter := 0;
-  SlideList.AddList(CreatePresentationDataFromSong(ExampleSong, SlideSettings, PresentationSlideCounter));
+  SlideList.AddList(CreatePresentationDataFromSong(ExampleSong,
+    SlideSettings, PresentationSlideCounter));
   {PresentationPreviewCanvas.Height:=Screen.Height;
   PresentationPreviewCanvas.Width:=Screen.Width;
   PresentationPreviewCanvas.PresentationStyleSettings := ExportPresentationStyleSettings;
@@ -550,24 +587,27 @@ end;
 procedure TfrmSettings.AdjustImageBrightnessText;
 begin
   if sbImageBrightness.Position > 0 then
-     lblImageExplainer.Caption:=strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position))+'%'
+    lblImageExplainer.Caption :=
+      strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position)) + '%'
   else if sbImageBrightness.Position = 0 then
-     lblImageExplainer.Caption := strPictureOriginalState;
+    lblImageExplainer.Caption := strPictureOriginalState;
 end;
 
 function TfrmSettings.ExportPresentationStyleSettings: TPresentationStyleSettings;
-  var PresentationStyleSettings: TPresentationStyleSettings;
+var
+  PresentationStyleSettings: TPresentationStyleSettings;
 begin
-  PresentationStyleSettings.Font:=TFont.Create;
+  PresentationStyleSettings.Font := TFont.Create;
   PresentationStyleSettings.Font.Assign(FontDialog.Font);
-  PresentationStyleSettings.BackgroundColor:=bgColorDialog.Color;
-  PresentationStyleSettings.ShowBackgroundImage:=cbShowBackgroundImage.Checked;
-  PresentationStyleSettings.TextColor:=textColorDialog.Color;
-  PresentationStyleSettings.BackgroundImageFilePath:=BgPictureDialog.FileName;
-  PresentationStyleSettings.Transparency:=-Abs(sbImageBrightness.Position);
-  PresentationStyleSettings.VerticalAlign:=TTextLayout(comboVertical.ItemIndex);
-  PresentationStyleSettings.HorizontalAlign:=THorizontalAlignEnum(comboHorizontal.ItemIndex);
-  PresentationStyleSettings.Padding:=FormPadding.frmSettingsDetailed.ExportPadding;
+  PresentationStyleSettings.BackgroundColor := bgColorDialog.Color;
+  PresentationStyleSettings.ShowBackgroundImage := cbShowBackgroundImage.Checked;
+  PresentationStyleSettings.TextColor := textColorDialog.Color;
+  PresentationStyleSettings.BackgroundImageFilePath := BgPictureDialog.FileName;
+  PresentationStyleSettings.Transparency := -Abs(sbImageBrightness.Position);
+  PresentationStyleSettings.VerticalAlign := TTextLayout(comboVertical.ItemIndex);
+  PresentationStyleSettings.HorizontalAlign :=
+    THorizontalAlignEnum(comboHorizontal.ItemIndex);
+  PresentationStyleSettings.Padding := FormPadding.frmSettingsDetailed.ExportPadding;
   Result := PresentationStyleSettings;
 end;
 

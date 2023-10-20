@@ -33,13 +33,13 @@ type
   end;
 
 const
-  AUTOR:string = 'Jan Martin Reckel';
-  GITHUBREPO:string = 'https://www.github.com/reckel-jm/cantara';
+  AUTOR: String = 'Jan Martin Reckel';
+  GITHUBREPO: String = 'https://www.github.com/reckel-jm/cantara';
 
 var
   frmInfo: TfrmInfo;
 
-resourceString
+resourcestring
   strFormCaption = 'About this Program';
   strProgramCompiled = 'Program compiled';
   strVersion = 'Version';
@@ -55,22 +55,23 @@ implementation
 { TfrmInfo }
 
 procedure TfrmInfo.FormCreate(Sender: TObject);
-var FileVerInfo: TFileVersionInfo;
+var
+  FileVerInfo: TFileVersionInfo;
 begin
   lblCompDate.Caption := strProgramCompiled + ': ' + {$I %DATE%} + ' ' + {$I %TIME%};
   lblAuthor.Caption := strAuthor + ': ' + AUTOR;
   { Fetch the Project Version from the generated Metadata }
   FileVerInfo := TFileVersionInfo.Create(nil);
   try
-     FileVerInfo.ReadFileInfo;
-     lblVersion.Caption := strVersion + ': ' + FileVerInfo.VersionStrings.Values['ProductVersion'];
+    FileVerInfo.ReadFileInfo;
+    lblVersion.Caption := strVersion + ': ' +
+      FileVerInfo.VersionStrings.Values['ProductVersion'];
   finally
     FileVerInfo.Free;
   end;
 end;
 
-procedure TfrmInfo.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TfrmInfo.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if key = VK_Escape then self.Close;
 end;
@@ -91,4 +92,3 @@ begin
 end;
 
 end.
-

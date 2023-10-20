@@ -27,4 +27,3 @@ implementation
 {$R *.lfm}
 
 end.
-

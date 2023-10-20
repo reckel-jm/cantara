@@ -5,7 +5,8 @@ unit editorwelcome;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, StdCtrls, DefaultTranslator, LCLTranslator, lclintf, info;
+  Classes, SysUtils, Forms, Controls, StdCtrls, DefaultTranslator,
+  LCLTranslator, lclintf, info;
 
 type
 
@@ -33,7 +34,7 @@ implementation
 uses
   songeditor;
 
-{ TfrmEditorWelcome }
+  { TfrmEditorWelcome }
 
 procedure TfrmEditorWelcome.btnOpenDocsClick(Sender: TObject);
 begin
@@ -46,4 +47,3 @@ begin
 end;
 
 end.
-

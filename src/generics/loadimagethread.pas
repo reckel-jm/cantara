@@ -13,15 +13,12 @@ type
 
   TLoadImageThread = class(TThread)
   public
-    Constructor Create(CreateSuspended : boolean);
+    constructor Create(CreateSuspended: Boolean);
     procedure LoadData(PresentationStyleSettings: TPresentationStyleSettings;
-      SlideSettings: TSlideSettings;
-      PresentationCanvas: TPresentationCanvasHandler;
-      Screen: TScreen;
-      ChangeBackground: Boolean;
-      Slide: TSlide;
+      SlideSettings: TSlideSettings; PresentationCanvas: TPresentationCanvasHandler;
+      Screen: TScreen; ChangeBackground: Boolean; Slide: TSlide;
       TargetPicture: TPicture);
-  procedure RunOnce;
+    procedure RunOnce;
   private
     blocked: Boolean;
     PresentationStyleSettings: TPresentationStyleSettings;
@@ -40,11 +37,11 @@ type
 
 implementation
 
-Uses Settings;
+uses Settings;
 
-{ TLoadImageThread }
+  { TLoadImageThread }
 
-constructor TLoadImageThread.Create(CreateSuspended: boolean);
+constructor TLoadImageThread.Create(CreateSuspended: Boolean);
 begin
   FreeOnTerminate := False;
   inherited Create(CreateSuspended);
@@ -52,24 +49,24 @@ begin
   blocked := False;
 end;
 
-procedure TLoadImageThread.LoadData(
-  PresentationStyleSettings: TPresentationStyleSettings;
-  SlideSettings: TSlideSettings;
-  PresentationCanvas: TPresentationCanvasHandler; Screen: TScreen;
-  ChangeBackground: Boolean; Slide: TSlide; TargetPicture: TPicture);
+procedure TLoadImageThread.LoadData(PresentationStyleSettings:
+  TPresentationStyleSettings;
+  SlideSettings: TSlideSettings; PresentationCanvas: TPresentationCanvasHandler;
+  Screen: TScreen; ChangeBackground: Boolean; Slide: TSlide; TargetPicture: TPicture);
 begin
-  self.ChangeBackground:=ChangeBackground;
-  if self.PresentationStyleSettings.Transparency <> PresentationStyleSettings.Transparency then
+  self.ChangeBackground := ChangeBackground;
+  if self.PresentationStyleSettings.Transparency <>
+    PresentationStyleSettings.Transparency then
   begin
     blocked := False;
-    self.ChangeBackground:=True;
+    self.ChangeBackground := True;
   end;
-  self.PresentationStyleSettings:=PresentationStyleSettings;
-  self.SlideSettings:=SlideSettings;
-  self.PresentationCanvas:=PresentationCanvas;
-  self.Screen:=Screen;
+  self.PresentationStyleSettings := PresentationStyleSettings;
+  self.SlideSettings := SlideSettings;
+  self.PresentationCanvas := PresentationCanvas;
+  self.Screen := Screen;
   self.Slide := Slide;
-  self.TargetPicture:=TargetPicture;
+  self.TargetPicture := TargetPicture;
 end;
 
 procedure TLoadImageThread.RunOnce;
@@ -83,35 +80,39 @@ begin
 end;
 
 procedure TLoadImageThread.Execute;
-var Skip: Boolean;
+var
+  Skip: Boolean;
 begin
-  if Blocked then Exit else Blocked := True;
-  while (not Terminated) do
+  if Blocked then Exit
+  else
+    Blocked := True;
+  while (Not Terminated) do
   begin
-    if not halted and frmSettings.Visible then
+    if Not halted And frmSettings.Visible then
     begin
       Skip := False;
-      if not Assigned(PresentationCanvas) then Skip := True;
-      if not Assigned(Screen) then Skip := True;
+      if Not Assigned(PresentationCanvas) then Skip := True;
+      if Not Assigned(Screen) then Skip := True;
       if Screen.Width = 0 then Skip := True;
       if Screen.Height = 0 then Skip := True;
-      if not Assigned(TargetPicture) then Skip := True;
-      if not Skip then
+      if Not Assigned(TargetPicture) then Skip := True;
+      if Not Skip then
       begin
         PresentationCanvas.SlideSettings := self.SlideSettings;
         PresentationCanvas.PresentationStyleSettings := self.PresentationStyleSettings;
-        PresentationCanvas.Width:=self.Screen.Width;
-        PresentationCanvas.Height:=self.Screen.Height;
+        PresentationCanvas.Width := self.Screen.Width;
+        PresentationCanvas.Height := self.Screen.Height;
         if ChangeBackground then
           PresentationCanvas.LoadBackgroundBitmap;
         PresentationCanvas.ResizeBackgroundBitmap;
         Synchronize(@LoadImage);
       end;
       halted := True;
-    end else Sleep(2);
+    end
+    else
+      Sleep(2);
   end;
   Blocked := False;
 end;
 
 end.
-

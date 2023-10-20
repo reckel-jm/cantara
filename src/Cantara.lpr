@@ -7,16 +7,32 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, runtimetypeinfocontrols, lazcontrols, SongSelection, Present, settings,
-  info, welcome, songeditor,
+  Forms,
+  runtimetypeinfocontrols,
+  lazcontrols,
+  SongSelection,
+  Present,
+  settings,
+  info,
+  welcome,
+  songeditor,
   { you can add units after this }
-  slides, fulltextsearch, FormFulltextSearch, pptx, resourcehandling,
-  PresentationCanvas, settingsdetailed, settingspadding, formMarkupExport,
-  markup, imageexport, loadimagethread;
-{$R *.res}
+  slides,
+  fulltextsearch,
+  FormFulltextSearch,
+  pptx,
+  resourcehandling,
+  PresentationCanvas,
+  settingsdetailed,
+  settingspadding,
+  formMarkupExport,
+  markup,
+  imageexport,
+  loadimagethread;
+  {$R *.res}
 
 begin
-  Application.Scaled:=True;
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TfrmSongs, frmSongs);
   Application.CreateForm(TfrmSettings, frmSettings);
@@ -30,4 +46,3 @@ begin
   Application.CreateForm(TFormImageExport, FormImageExport);
   Application.Run;
 end.
-

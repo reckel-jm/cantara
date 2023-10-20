@@ -10,7 +10,7 @@ uses
 
 type
 
-  TTemplateDict = specialize TFPGMap<string, TStringList>;
+  TTemplateDict = specialize TFPGMap<String, TStringList>;
 
   { TFrmMarkupExport }
 
@@ -32,7 +32,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure TemplateComboChange(Sender: TObject);
     procedure TemplateComboClick(Sender: TObject);
-    procedure TemplateComboSelectionChange(Sender: TObject; User: boolean);
+    procedure TemplateComboSelectionChange(Sender: TObject; User: Boolean);
     procedure TemplateEditChange(Sender: TObject);
   private
     TemplateDict: TTemplateDict;
@@ -42,7 +42,7 @@ type
     procedure ParseTemplate;
   end;
 
-ResourceString
+resourcestring
   strTitleOnly = 'Title Only';
   strLoadTemplateFromFile = 'Load Template From File...';
 
@@ -54,7 +54,8 @@ implementation
 {$R *.lfm}
 
 procedure TFrmMarkupExport.ParseTemplate;
-var MarkupExporter: TMarkupExporter;
+var
+  MarkupExporter: TMarkupExporter;
 begin
   MarkupExporter := TMarkupExporter.Create(TemplateEdit.Lines.Text, SongList);
   ResultEdit.Lines.Assign(MarkupExporter.ParsingOutput);
@@ -68,28 +69,29 @@ begin
 end;
 
 procedure TFrmMarkupExport.FormCreate(Sender: TObject);
-var i: Integer;
+var
+  i: Integer;
 begin
 
-  TemplateDict := TTemplateDict.create;
+  TemplateDict := TTemplateDict.Create;
   TemplateDict.Add(strTitleOnly, LoadResourceFileIntoStringList('MARKUP.TITLEONLY'));
   TemplateDict.Add('Markdown', LoadResourceFileIntoStringList('MARKUP.MARKDOWN'));
   TemplateDict.Add('HTML', LoadResourceFileIntoStringList('MARKUP.HTML'));
   TemplateDict.Add('Telegram', LoadResourceFileIntoStringList('MARKUP.TELEGRAM'));
   TemplateDict.Add('WhatsApp', LoadResourceFileIntoStringList('MARKUP.WHATSAPP'));
 
-  for i := 0 to TemplateDict.Count-1 do
+  for i := 0 to TemplateDict.Count - 1 do
     TemplateCombo.Items.Add(TemplateDict.Keys[i]);
 
   TemplateCombo.Items.Add(strLoadTemplateFromFile);
   // load home directory into file/folder dialogs
-  OpenDialog.InitialDir:=GetUserDir;
-  SaveDialog.InitialDir:=OpenDialog.InitialDir;
+  OpenDialog.InitialDir := GetUserDir;
+  SaveDialog.InitialDir := OpenDialog.InitialDir;
 end;
 
 procedure TFrmMarkupExport.btnSaveToFileClick(Sender: TObject);
 begin
-  SaveDialog.DefaultExt:=CurrentFileExtension;
+  SaveDialog.DefaultExt := CurrentFileExtension;
   if SaveDialog.Execute then
     ResultEdit.Lines.SaveToFile(SaveDialog.FileName);
 
@@ -98,15 +100,16 @@ end;
 procedure TFrmMarkupExport.ClipboardButtonClick(Sender: TObject);
 begin
   try
-    Clipboard.AsText:=ResultEdit.Lines.Text;
+    Clipboard.AsText := ResultEdit.Lines.Text;
   finally
   end;
 end;
 
 procedure TFrmMarkupExport.FormDestroy(Sender: TObject);
-var i: Integer;
+var
+  i: Integer;
 begin
-  for i := 0 to TemplateDict.Count-1 do
+  for i := 0 to TemplateDict.Count - 1 do
     TemplateDict.Data[i].Destroy;
   TemplateDict.Destroy;
 end;
@@ -114,7 +117,7 @@ end;
 procedure TFrmMarkupExport.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-   if key = VK_Escape then self.Close;
+  if key = VK_Escape then self.Close;
 end;
 
 procedure TFrmMarkupExport.TemplateComboChange(Sender: TObject);
@@ -127,15 +130,16 @@ begin
 
 end;
 
-procedure TFrmMarkupExport.TemplateComboSelectionChange(Sender: TObject;
-  User: boolean);
+procedure TFrmMarkupExport.TemplateComboSelectionChange(Sender: TObject; User: Boolean);
 begin
   try
-    if (TemplateCombo.ItemIndex < TemplateCombo.Count-1) and (TemplateCombo.ItemIndex >= 0) then
-      TemplateEdit.Lines.Assign(TemplateDict.KeyData[TemplateCombo.Items[TemplateCombo.ItemIndex]])
-    else if TemplateCombo.ItemIndex = TemplateCombo.Count-1 then
+    if (TemplateCombo.ItemIndex < TemplateCombo.Count - 1) And
+      (TemplateCombo.ItemIndex >= 0) then
+      TemplateEdit.Lines.Assign(
+        TemplateDict.KeyData[TemplateCombo.Items[TemplateCombo.ItemIndex]])
+    else if TemplateCombo.ItemIndex = TemplateCombo.Count - 1 then
     begin
-      if (OpenDialog.Execute) and FileExists(OpenDialog.FileName) then
+      if (OpenDialog.Execute) And FileExists(OpenDialog.FileName) then
         TemplateEdit.Lines.LoadFromFile(OpenDialog.FileName);
     end;
     ParseTemplate;
@@ -144,4 +148,3 @@ begin
 end;
 
 end.
-

@@ -10,12 +10,13 @@ uses
   {$ENDIF}
   Classes, SysUtils;
 
-Function LoadResourceFileIntoStringList(ResourceName: String): TStringList;
+function LoadResourceFileIntoStringList(ResourceName: String): TStringList;
 
 implementation
 
-Function LoadResourceFileIntoStringList(ResourceName: String): TStringList;
-var ResourceStream: TResourceStream;
+function LoadResourceFileIntoStringList(ResourceName: String): TStringList;
+var
+  ResourceStream: TResourceStream;
 begin
   ResourceStream := TResourceStream.Create(HInstance, ResourceName, RT_RCDATA);
   Result := TStringList.Create;
@@ -24,4 +25,3 @@ begin
 end;
 
 end.
-

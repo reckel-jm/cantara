@@ -5,7 +5,8 @@ unit PresentationCanvas;
 interface
 
 uses
-  Classes, SysUtils, Slides, LCLType, LCLIntf, Graphics, graphtype, intfgraphics, lazcanvas, Math,
+  Classes, SysUtils, Slides, LCLType, LCLIntf, Graphics, graphtype,
+  intfgraphics, lazcanvas, Math,
   StrUtils, // for SplitString
   fpImage;
 
@@ -32,30 +33,32 @@ type
   end;
 
   TPresentationCanvasHandler = class
-    public
-      SlideSettings: TSlideSettings;
-      PresentationStyleSettings: TPresentationStyleSettings;
-      Width, Height: Integer;
-      Bitmap: TBitmap;
-      AdjustedBackgroundPicture: TPicture;
-      ResizedBackgroundBitmap: TBitmap;
-      constructor Create; overload;
-      constructor Create(aPresentationStyleSettings: TPresentationStyleSettings; aSlideSettings: TSlideSettings); overload;
-      destructor Destroy; override;
-      // Will be used to adjust the brightness of the background
-      procedure AdjustBrightness;
-      procedure LoadBackgroundBitmap;
-      procedure ResizeBackgroundBitmap;
-      function PaintSlide(Slide: TSlide): TBitmap;
-    private
-      BackgroundPicture: TPicture;
-      function CalculateTextHeight(Font: TFont; RectWidth: Integer; TextString: String): Integer;
+  public
+    SlideSettings: TSlideSettings;
+    PresentationStyleSettings: TPresentationStyleSettings;
+    Width, Height: Integer;
+    Bitmap: TBitmap;
+    AdjustedBackgroundPicture: TPicture;
+    ResizedBackgroundBitmap: TBitmap;
+    constructor Create; overload;
+    constructor Create(aPresentationStyleSettings: TPresentationStyleSettings;
+      aSlideSettings: TSlideSettings); overload;
+    destructor Destroy; override;
+    // Will be used to adjust the brightness of the background
+    procedure AdjustBrightness;
+    procedure LoadBackgroundBitmap;
+    procedure ResizeBackgroundBitmap;
+    function PaintSlide(Slide: TSlide): TBitmap;
+  private
+    BackgroundPicture: TPicture;
+    function CalculateTextHeight(Font: TFont; RectWidth: Integer;
+      TextString: String): Integer;
   end;
 
 const
-  PADDING:integer = 15;
-  MINSPOILERDISTANCE:Integer = 10;
-  MORELYRICSINDICATOR:String = '...';
+  PADDING: Integer = 15;
+  MINSPOILERDISTANCE: Integer = 10;
+  MORELYRICSINDICATOR: String = '...';
 
 implementation
 
@@ -64,19 +67,21 @@ var
   SrctfImg, TemptfImg: TLazIntfImage;
   ImgHandle, ImgMaskHandle: HBitmap;
   TargetColor: TFPColor;
-  Offset, px, py: integer;
+  Offset, px, py: Integer;
   CurColor: TFPColor;
 begin
   Offset := PresentationStyleSettings.Transparency;
-  If Offset = 0 then
+  if Offset = 0 then
   begin
     AdjustedBackgroundPicture.Assign(BackgroundPicture);
     Exit;
   end;
   SrctfImg := TLazIntfImage.Create(0, 0);
-  SrctfImg.LoadFromBitmap(BackgroundPicture.Bitmap.Handle, BackgroundPicture.Bitmap.MaskHandle);
+  SrctfImg.LoadFromBitmap(BackgroundPicture.Bitmap.Handle,
+    BackgroundPicture.Bitmap.MaskHandle);
   TemptfImg := TLazIntfImage.Create(0, 0);
-  TemptfImg.LoadFromBitmap(BackgroundPicture.Bitmap.Handle, BackgroundPicture.Bitmap.MaskHandle);
+  TemptfImg.LoadFromBitmap(BackgroundPicture.Bitmap.Handle,
+    BackgroundPicture.Bitmap.MaskHandle);
   TargetColor := TColorToFPColor(PresentationStyleSettings.BackgroundColor);
   for py := 0 to SrctfImg.Height - 1 do
   begin
@@ -86,15 +91,19 @@ begin
       begin
         //Offset:=Offset * $FF;
         CurColor := SrctfImg.Colors[px, py];
-        CurColor.red := EnsureRange(CurColor.red + Offset, 0,$FFFF);
-        CurColor.green := EnsureRange(CurColor.green + Offset,0,$FFFF);
-        CurColor.blue := EnsureRange(CurColor.blue + Offset,0,$FFFF);
-      end else
+        CurColor.red := EnsureRange(CurColor.red + Offset, 0, $FFFF);
+        CurColor.green := EnsureRange(CurColor.green + Offset, 0, $FFFF);
+        CurColor.blue := EnsureRange(CurColor.blue + Offset, 0, $FFFF);
+      end
+      else
       begin
         CurColor := SrctfImg.Colors[px, py];
-        CurColor.red := EnsureRange(Trunc(CurColor.red - (CurColor.red - TargetColor.Red)*Abs(Offset)/100), 0,$FFFF);
-        CurColor.green := EnsureRange(Trunc(CurColor.Green - (CurColor.Green - TargetColor.Green)*Abs(Offset)/100),0,$FFFF);
-        CurColor.blue := EnsureRange(Trunc(CurColor.blue - (CurColor.blue - TargetColor.blue)*Abs(Offset)/100),0,$FFFF);
+        CurColor.red := EnsureRange(Trunc(CurColor.red -
+          (CurColor.red - TargetColor.Red) * Abs(Offset) / 100), 0, $FFFF);
+        CurColor.green := EnsureRange(Trunc(CurColor.Green -
+          (CurColor.Green - TargetColor.Green) * Abs(Offset) / 100), 0, $FFFF);
+        CurColor.blue := EnsureRange(Trunc(CurColor.blue -
+          (CurColor.blue - TargetColor.blue) * Abs(Offset) / 100), 0, $FFFF);
       end;
       TemptfImg.Colors[px, py] := CurColor;
     end;
@@ -110,14 +119,15 @@ constructor TPresentationCanvasHandler.Create; overload;
 begin
   inherited;
   Bitmap := TBitmap.Create;
-  Bitmap.PixelFormat:= pf32Bit;
+  Bitmap.PixelFormat := pf32Bit;
   BackgroundPicture := TPicture.Create;
   ResizedBackgroundBitmap := TBitmap.Create;
-  ResizedBackgroundBitmap.PixelFormat:= pf32Bit;
+  ResizedBackgroundBitmap.PixelFormat := pf32Bit;
   AdjustedBackgroundPicture := TPicture.Create;
 end;
 
-constructor TPresentationCanvasHandler.Create(aPresentationStyleSettings: TPresentationStyleSettings; aSlideSettings: TSlideSettings); overload;
+constructor TPresentationCanvasHandler.Create(aPresentationStyleSettings:
+  TPresentationStyleSettings; aSlideSettings: TSlideSettings); overload;
 begin
   Create;
   PresentationStyleSettings := aPresentationStyleSettings;
@@ -144,7 +154,7 @@ begin
       AdjustBrightness;
       ResizeBackgroundBitmap;
     except
-      PresentationStyleSettings.ShowBackgroundImage:=False;
+      PresentationStyleSettings.ShowBackgroundImage := False;
     end;
   end;
 end;
@@ -155,27 +165,37 @@ var
   NewHeight, NewWidth: Integer;
 begin
   // Prevent a Division by Zero Exception
-  if (self.Height = 0) or (AdjustedBackgroundPicture.Height = 0) or (AdjustedBackgroundPicture.Width = 0) then Exit;
+  if (self.Height = 0) Or (AdjustedBackgroundPicture.Height = 0) Or
+    (AdjustedBackgroundPicture.Width = 0) then Exit;
   ResizedBackgroundBitmap.Clear;
-  if self.Width/self.Height >= AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height then
+  if self.Width / self.Height >= AdjustedBackgroundPicture.Width /
+    AdjustedBackgroundPicture.Height then
   begin
-    NewHeight:=Ceil(self.Width*AdjustedBackgroundPicture.Height/AdjustedBackgroundPicture.Width);
+    NewHeight := Ceil(self.Width * AdjustedBackgroundPicture.Height /
+      AdjustedBackgroundPicture.Width);
     if AdjustedBackgroundPicture.Height > self.Height then
-       DestRect.Top:=Max(-(Trunc((AdjustedBackgroundPicture.Height-self.Height)/2)),0)
-    else DestRect.Top := 0;
-    DestRect.Left:=0;
-    DestRect.Height := Max(newHeight, self.Height);
-    DestRect.Width := Ceil(DestRect.Height*AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height);
-  end else
-  begin
-    newWidth:=Ceil(self.Height*AdjustedBackgroundPicture.Width/AdjustedBackgroundPicture.Height);
-    if AdjustedBackgroundPicture.Width > self.Width then
-       DestRect.Left:=Max(-(Trunc((AdjustedBackgroundPicture.Width-self.Width)/2)),0)
+      DestRect.Top := Max(-(Trunc(
+        (AdjustedBackgroundPicture.Height - self.Height) / 2)), 0)
     else
-       DestRect.Left := 0;
-    DestRect.Top:=0;
-    DestRect.Width:=Max(newWidth, self.Width);
-    DestRect.Height:=Ceil(DestRect.Width*AdjustedBackgroundPicture.Height/AdjustedBackgroundPicture.Width);
+      DestRect.Top := 0;
+    DestRect.Left := 0;
+    DestRect.Height := Max(newHeight, self.Height);
+    DestRect.Width := Ceil(DestRect.Height * AdjustedBackgroundPicture.Width /
+      AdjustedBackgroundPicture.Height);
+  end
+  else
+  begin
+    newWidth := Ceil(self.Height * AdjustedBackgroundPicture.Width /
+      AdjustedBackgroundPicture.Height);
+    if AdjustedBackgroundPicture.Width > self.Width then
+      DestRect.Left := Max(-(Trunc(
+        (AdjustedBackgroundPicture.Width - self.Width) / 2)), 0)
+    else
+      DestRect.Left := 0;
+    DestRect.Top := 0;
+    DestRect.Width := Max(newWidth, self.Width);
+    DestRect.Height := Ceil(DestRect.Width * AdjustedBackgroundPicture.Height /
+      AdjustedBackgroundPicture.Width);
   end;
   ResizedBackgroundBitmap.SetSize(self.Width, self.Height);
   ResizedBackgroundBitmap.Canvas.StretchDraw(DestRect, AdjustedBackgroundPicture.Bitmap);
@@ -196,15 +216,16 @@ begin
   // Here we setup the different fonts for calculating the text height
   NormalTextFont := TFont.Create;
   NormalTextFont.Assign(PresentationStyleSettings.Font);
-  NormalTextFont.Color:=PresentationStyleSettings.TextColor;
-  DefaultSpoilerDistance := Round(NormalTextFont.GetTextHeight('gJ')*3.5);
+  NormalTextFont.Color := PresentationStyleSettings.TextColor;
+  DefaultSpoilerDistance := Round(NormalTextFont.GetTextHeight('gJ') * 3.5);
   SpoilerTextFont := TFont.Create;
   SpoilerTextFont.Assign(NormalTextFont);
-  SpoilerTextFont.Height:=NormalTextFont.Height div 2;
-  SpoilerRectWidth := Round((self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right)*2/3);
+  SpoilerTextFont.Height := NormalTextFont.Height Div 2;
+  SpoilerRectWidth := Round((self.Width - PresentationStyleSettings.Padding.Left -
+    PresentationStyleSettings.Padding.Right) * 2 / 3);
   MetaTextFont := TFont.Create;
   MetaTextFont.Assign(NormalTextFont);
-  MetaTextFont.Height:=NormalTextFont.Height div 3;
+  MetaTextFont.Height := NormalTextFont.Height Div 3;
   with BackgroundRect do
   begin
     Left := 0;
@@ -212,21 +233,31 @@ begin
     Width := self.Width;
     Height := self.Height;
   end;
-  MainTextHeight := self.CalculateTextHeight(NormalTextFont,
-                 self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right, Slide.PartContent.MainText);
-  MetaTextHeight := CalculateTextHeight(MetaTextFont, SpoilerRectWidth, Slide.PartContent.MetaText);
+  MainTextHeight := self.CalculateTextHeight(NormalTextFont, self.Width -
+    PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right,
+    Slide.PartContent.MainText);
+  MetaTextHeight := CalculateTextHeight(MetaTextFont, SpoilerRectWidth,
+    Slide.PartContent.MetaText);
   SpoilerText := Slide.PartContent.SpoilerText;
   if SpoilerText <> '' then
   begin
-    SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, SpoilerRectWidth, SpoilerText);
+    SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont,
+      SpoilerRectWidth, SpoilerText);
     // Check whether spoiler fits
-    SpoilerDistance := Min(DEFAULTSPOILERDISTANCE, Height-(PresentationStyleSettings.Padding.Top+PresentationStyleSettings.Padding.Bottom+MainTextHeight+SpoilerTextHeight+DEFAULTSPOILERDISTANCE-MINSPOILERDISTANCE-MetaTextHeight));
+    SpoilerDistance := Min(DEFAULTSPOILERDISTANCE, Height -
+      (PresentationStyleSettings.Padding.Top + PresentationStyleSettings.Padding.Bottom +
+      MainTextHeight + SpoilerTextHeight + DEFAULTSPOILERDISTANCE -
+      MINSPOILERDISTANCE - MetaTextHeight));
     if SpoilerDistance < DEFAULTSPOILERDISTANCE then
     begin
       SpoilerText := SplitString(SpoilerText, LineEnding)[0] + MoreLyricsIndicator;
       // Now we calculate the height again
-      SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont, self.Width-PresentationStyleSettings.Padding.Left-PresentationStyleSettings.Padding.Right, SpoilerText);
-      SpoilerDistance := (Height-(PresentationStyleSettings.Padding.Top+PresentationStyleSettings.Padding.Bottom+MainTextHeight+2*SpoilerTextHeight-MetaTextHeight)) div 2;
+      SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont,
+        self.Width - PresentationStyleSettings.Padding.Left -
+        PresentationStyleSettings.Padding.Right, SpoilerText);
+      SpoilerDistance := (Height - (PresentationStyleSettings.Padding.Top +
+        PresentationStyleSettings.Padding.Bottom + MainTextHeight +
+        2 * SpoilerTextHeight - MetaTextHeight)) Div 2;
       if SpoilerDistance < MINSPOILERDISTANCE then
       begin
         SpoilerText := '';
@@ -249,16 +280,17 @@ begin
     //Insert Background
     if PresentationStyleSettings.ShowBackgroundImage then
     begin
-      BitBlt(Bitmap.Canvas.Handle, 0, 0, self.Width, self.Height, ResizedBackgroundBitmap.Canvas.Handle, 0, 0, SRCCOPY);
+      BitBlt(Bitmap.Canvas.Handle, 0, 0, self.Width, self.Height,
+        ResizedBackgroundBitmap.Canvas.Handle, 0, 0, SRCCOPY);
     end;
     with TextStyle do
     begin
       case PresentationStyleSettings.HorizontalAlign of
-        Align_Left: Alignment:=taLeftJustify;
-        Align_Center: Alignment:= taCenter;
-        Align_Right: Alignment:=taRightJustify;
+        Align_Left: Alignment := taLeftJustify;
+        Align_Center: Alignment := taCenter;
+        Align_Right: Alignment := taRightJustify;
       end;
-      Layout:= tlTop;
+      Layout := tlTop;
       SingleLine := False;
       WordBreak := True;
       Opaque := False;
@@ -269,10 +301,15 @@ begin
       Left := PresentationStyleSettings.Padding.Left;
       case PresentationStyleSettings.VerticalAlign of
         tlTop: Top := PresentationStyleSettings.Padding.Top;
-        tlCenter: Top := PresentationStyleSettings.Padding.Top+(self.Height-PresentationStyleSettings.Padding.Top-PresentationStyleSettings.Padding.Bottom-MainTextHeight-SpoilerTextHeight-SpoilerDistance) div 2;
-        tlBottom: Top := self.Height - PresentationStyleSettings.Padding.Bottom - MainTextHeight-SpoilerTextHeight-SpoilerDistance;
+        tlCenter: Top := PresentationStyleSettings.Padding.Top +
+            (self.Height - PresentationStyleSettings.Padding.Top -
+            PresentationStyleSettings.Padding.Bottom - MainTextHeight -
+            SpoilerTextHeight - SpoilerDistance) Div 2;
+        tlBottom: Top := self.Height - PresentationStyleSettings.Padding.Bottom -
+            MainTextHeight - SpoilerTextHeight - SpoilerDistance;
       end;
-      Width := self.Width-PresentationStyleSettings.Padding.Right-PresentationStyleSettings.Padding.Left;
+      Width := self.Width - PresentationStyleSettings.Padding.Right -
+        PresentationStyleSettings.Padding.Left;
       Height := MainTextHeight;
     end;
     { Make the Title bold }
@@ -284,23 +321,25 @@ begin
     begin
       Font.Assign(SpoilerTextFont);
       ContentRect.Top += MainTextHeight + SpoilerDistance;
-      ContentRect.Height:=SpoilerTextHeight;
+      ContentRect.Height := SpoilerTextHeight;
       TextRect(ContentRect, ContentRect.Left, ContentRect.Top, SpoilerText);
     end;
     // We paint Meta information if desired
     if Slide.PartContent.MetaText <> '' then
     begin
-      ContentRect.Top := self.Height-PresentationStyleSettings.Padding.Bottom-MetaTextHeight;
-      ContentRect.Left:=PresentationStyleSettings.Padding.Left;
-      ContentRect.Height:=MetaTextHeight;
-      ContentRect.Width:=SpoilerRectWidth;
+      ContentRect.Top := self.Height - PresentationStyleSettings.Padding.Bottom -
+        MetaTextHeight;
+      ContentRect.Left := PresentationStyleSettings.Padding.Left;
+      ContentRect.Height := MetaTextHeight;
+      ContentRect.Width := SpoilerRectWidth;
       with TextStyle do
       begin
         Alignment := taLeftJustify;
         Layout := tlBottom;
       end;
       Font.Assign(MetaTextFont);
-      TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.MetaText);
+      TextRect(ContentRect, ContentRect.Left, ContentRect.Top,
+        Slide.PartContent.MetaText);
     end;
   end;
   //Bitmap.SaveToFile(GetTempDir() + 'foto.png');
@@ -310,15 +349,15 @@ begin
   Result := Bitmap;
 end;
 
-function TPresentationCanvasHandler.CalculateTextHeight(Font: TFont; RectWidth: Integer; TextString: String): Integer;
+function TPresentationCanvasHandler.CalculateTextHeight(Font: TFont;
+  RectWidth: Integer; TextString: String): Integer;
 var
   R: TRect;
 begin
   Bitmap.Canvas.Font.Assign(Font);
-  R  := Rect(0, 0, RectWidth, 0);
-  Result := DrawText
-    (Bitmap.Canvas.Handle, PChar(TextString), Length(TextString), R, dt_CalcRect Or dt_WordBreak);
+  R := Rect(0, 0, RectWidth, 0);
+  Result := DrawText(Bitmap.Canvas.Handle, PChar(TextString),
+    Length(TextString), R, dt_CalcRect Or dt_WordBreak);
 end;
 
 end.
-

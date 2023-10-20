@@ -9,7 +9,7 @@ uses
 
 type
 
-  TPartDict = specialize TFPGMap<string, string>;
+  TPartDict = specialize TFPGMap<String, String>;
 
   TMarkupExporter = class
   private
@@ -32,13 +32,14 @@ type
   end;
 
 const
-  PARTREGEX:String = '\\(\w{1,})\s*\{([^\}]*)\}';
-  COMMANDREGEX:String = '\\(\w{1,})';
+  PARTREGEX: String = '\\(\w{1,})\s*\{([^\}]*)\}';
+  COMMANDREGEX: String = '\\(\w{1,})';
 
 implementation
 
 constructor TMarkupExporter.Create(Template: String; ASongList: TSongList);
-var regex: TRegExpr;
+var
+  regex: TRegExpr;
 begin
   inherited Create;
   Output := TStringList.Create;
@@ -64,7 +65,8 @@ begin
   regex.Destroy;
   //self.Output.Text := StringReplace(self.Output.Text, '\newline', LineEnding, [rfReplaceAll]);
   self.Output.Text := Trim(Trim(self.Header) + PartDict['delimiter'] + Trim(self.Body));
-  if self.Footer <> '' then self.output.Text := self.Output.Text + PartDict['delimiter'] + Trim(self.Footer);
+  if self.Footer <> '' then self.output.Text :=
+      self.Output.Text + PartDict['delimiter'] + Trim(self.Footer);
 end;
 
 procedure TMarkupExporter.HandlePart(PartTitle: String; PartContent: String);
@@ -73,18 +75,21 @@ begin
   begin
     PartDict[PartTitle] := PartContent;
     case PartTitle of
-      'songloop' : HandleSongloopPart;
-      'header' : self.Header:=RunNormalCommands(PartContent);
-      'footer' : self.Footer:=RunNormalCommands(PartContent);
-      'fileextension': self.FileExtension:=PartContent;
-    else PartDict[PartTitle] := RunNormalCommands(PartContent);
+      'songloop': HandleSongloopPart;
+      'header': self.Header := RunNormalCommands(PartContent);
+      'footer': self.Footer := RunNormalCommands(PartContent);
+      'fileextension': self.FileExtension := PartContent;
+      else
+        PartDict[PartTitle] := RunNormalCommands(PartContent);
     end;
-  end else
+  end
+  else
     PartDict.Add(PartTitle, RunNormalCommands(PartContent));
 end;
 
 procedure TMarkupExporter.HandleSongloopPart;
-var Part, GeneratedContent: String;
+var
+  Part, GeneratedContent: String;
   i: Integer;
   regex: TRegExpr;
   Song: TSong;
@@ -103,30 +108,34 @@ begin
     end;
   end;
   Regex.Destroy;
-  for i := 0 to SongList.Count-1 do
+  for i := 0 to SongList.Count - 1 do
   begin
     Song := SongList.Items[i];
     GeneratedContent := Part;
-    for Command in CommandList do
+    for Command In CommandList do
     begin
-      GeneratedContent := StringReplace(GeneratedContent, '\' + Command, HandleSongLoopCommand(Command, Song), [rfReplaceAll]);
+      GeneratedContent := StringReplace(GeneratedContent, '\' + Command,
+        HandleSongLoopCommand(Command, Song), [rfReplaceAll]);
     end;
     body += Trim(GeneratedContent);
-    if i < SongList.Count-1 then body += PartDict['betweensongs'];
+    if i < SongList.Count - 1 then body += PartDict['betweensongs'];
   end;
   CommandList.Destroy;
 end;
 
 function TMarkupExporter.RunNormalCommands(Part: String): String;
-var regex: TRegExpr;
+var
+  regex: TRegExpr;
 begin
   regex := TRegExpr.Create(COMMANDREGEX);
   if regex.Exec(Part) then
   begin
-    Part := StringReplace(Part, '\' + regex.Match[1], RunNormalCommand(regex.Match[1]), [rfReplaceAll]);
+    Part := StringReplace(Part, '\' + regex.Match[1], RunNormalCommand(regex.Match[1]),
+      [rfReplaceAll]);
     while (regex.ExecNext) do
     begin
-      Part := StringReplace(Part, '\' + regex.Match[1], RunNormalCommand(regex.Match[1]), [rfReplaceAll]);
+      Part := StringReplace(Part, '\' + regex.Match[1],
+        RunNormalCommand(regex.Match[1]), [rfReplaceAll]);
     end;
   end;
   Regex.Destroy;
@@ -135,23 +144,25 @@ end;
 
 function TMarkupExporter.RunNormalCommand(Command: String): String;
 begin
-  if (command = 'newline') or (command = 'linebreak') then
-     Result := LineEnding
-  else Result := '';
+  if (command = 'newline') Or (command = 'linebreak') then
+    Result := LineEnding
+  else
+    Result := '';
 end;
 
 function TMarkupExporter.HandleSongLoopCommand(command: String; Song: TSong): String;
-var i: Integer;
+var
+  i: Integer;
   line: String;
   CopiedSongOutput: TStringList;
 begin
   if Song.MetaDict.IndexOf(lowercase(command)) >= 0 then
-     Result := Song.MetaDict[lowercase(command)]
+    Result := Song.MetaDict[lowercase(command)]
   else if command = 'lyrics' then
   begin
     CopiedSongOutput := TStringList.Create;
     CopiedSongOutput.Assign(Song.Output);
-    for i := 0 to CopiedSongOutput.Count-1 do
+    for i := 0 to CopiedSongOutput.Count - 1 do
     begin
       line := CopiedSongOutput.Strings[i];
       line := Partdict['linebeginning'] + line + Partdict['lineending'];
@@ -160,8 +171,8 @@ begin
     Result := CopiedSongOutput.Text;
     CopiedSongOutput.Destroy;
   end
-  else if (command = 'newline') or (command = 'linebreak') then
-     Result := LineEnding
+  else if (command = 'newline') Or (command = 'linebreak') then
+    Result := LineEnding
   else
     Result := '';
 end;
@@ -174,4 +185,3 @@ begin
 end;
 
 end.
-

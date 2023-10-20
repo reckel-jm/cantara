@@ -1,3 +1,8 @@
+{
+  The unit textfilehandler contains the enum datatype TFileHandlingStatus and
+  the class TTextFileHandler which is a safe wrapper around reading and
+  writing text files.
+}
 unit textfilehandler;
 
 {$mode ObjFPC}{$H+}
@@ -9,7 +14,7 @@ uses
 
 type
   TFileHandlingStatus = (StatusInactive, StatusSuccess,
-                         StatusErrorFileDoesNotExist, StatusErrorPermission);
+    StatusErrorFileDoesNotExist, StatusErrorPermission);
   {
     This Class handles the save loading and saving of text files.
   }
@@ -19,16 +24,16 @@ type
   TTextFileHandler = class(TObject)
   private
     fFileHandlingStatus: TFileHandlingStatus;
-    fErrorMessage: String;
-    function FileExtensionIsInFileName(FileName: String; FileExtension: String): Boolean;
+    fErrorMessage: string;
+    function FileExtensionIsInFileName(FileName: string; FileExtension: string): boolean;
   public
     property FileHandlingStatus: TFileHandlingStatus read fFileHandlingStatus;
     property ErrorMessage: string read fErrorMessage;
     { Saves a textfile to file and ensures it has a certain file ending if set
     File Extension is with the dot (.)}
-    procedure SaveTextFile(textfile: String; var filepath: String;
-      fileending: String);
-    function OpenTextFile(filepath: String): String;
+    procedure SaveTextFile(textfile: string; var filepath: string;
+      fileending: string);
+    function OpenTextFile(filepath: string): string;
     { Resets the file handler }
     procedure Reset;
     constructor Create; overload;
@@ -39,54 +44,58 @@ implementation
 
 { TTextFileHandler }
 
-function TTextFileHandler.FileExtensionIsInFileName(FileName: String;
-  FileExtension: String): Boolean;
+function TTextFileHandler.FileExtensionIsInFileName(FileName: string;
+  FileExtension: string): boolean;
 begin
   Result := ExtractFileExt(FileName) = FileExtension;
 end;
 
-procedure TTextFileHandler.SaveTextFile(textfile: String; var filepath: String;
-  fileending: String);
-var HandlerStringList: TStringList;
+procedure TTextFileHandler.SaveTextFile(textfile: string; var filepath: string;
+  fileending: string);
+var
+  HandlerStringList: TStringList;
 begin
   HandlerStringList := TStringList.Create;
   HandlerStringList.Text := textfile;
-  if (not (FileEnding = '')) and (not FileExtensionIsInFileName(filepath, fileending)) then
+  if (not (FileEnding = '')) and
+    (not FileExtensionIsInFileName(filepath, fileending)) then
   begin
     filepath := filepath + fileending;
   end;
   try
     HandlerStringList.SaveToFile(filepath);
-    Self.fFileHandlingStatus:=StatusSuccess;
+    Self.fFileHandlingStatus := StatusSuccess;
   except
     on E: EInOutError do
     begin
-      Self.fFileHandlingStatus:=StatusErrorPermission;
-      Self.fErrorMessage:=E.Message;
+      Self.fFileHandlingStatus := StatusErrorPermission;
+      Self.fErrorMessage := E.Message;
     end;
   end;
   HandlerStringList.Destroy;
 end;
 
-function TTextFileHandler.OpenTextFile(filepath: String): String;
-var HandlerStringList: TStringList;
+function TTextFileHandler.OpenTextFile(filepath: string): string;
+var
+  HandlerStringList: TStringList;
 begin
   if not FileExists(filepath) then
   begin
-    Self.fFileHandlingStatus:=StatusErrorFileDoesNotExist;
+    Self.fFileHandlingStatus := StatusErrorFileDoesNotExist;
     Exit('');
-  end else
+  end
+  else
   begin
-    HandlerStringList:=TStringList.Create;
+    HandlerStringList := TStringList.Create;
     try
       HandlerStringList.LoadFromFile(filepath);
       Result := HandlerStringList.Text;
-      Self.fFileHandlingStatus:=StatusSuccess;
+      Self.fFileHandlingStatus := StatusSuccess;
     except
       on E: EInOutError do
       begin
-        Self.fFileHandlingStatus:=StatusErrorPermission;
-        Self.fErrorMessage:=E.Message;
+        Self.fFileHandlingStatus := StatusErrorPermission;
+        Self.fErrorMessage := E.Message;
       end;
     end;
     HandlerStringList.Destroy;
@@ -95,8 +104,8 @@ end;
 
 procedure TTextFileHandler.Reset;
 begin
-  Self.fFileHandlingStatus:=StatusInactive;
-  Self.fErrorMessage:='';
+  Self.fFileHandlingStatus := StatusInactive;
+  Self.fErrorMessage := '';
 end;
 
 constructor TTextFileHandler.Create;
@@ -110,4 +119,3 @@ begin
 end;
 
 end.
-

@@ -49,27 +49,31 @@ type
   end;
 
 const
-  AmazingGraceFileName:string = 'Amazing Grace.song';
+  AmazingGraceFileName: String = 'Amazing Grace.song';
 
 var
   frmWelcome: TfrmWelcome;
 
-ResourceString
+resourcestring
   SongRepoSuccess = 'The selected directory can be successfully used as a song repository.';
-  SongRepoDirEmpty = 'However it seems that you have not added any songs yet. Would you like to add the song "Amazing Grace" from John Newton as an example to your song repository? Then click at the button below. Click "Next" to go to the next step.';
-  SongRepoNotEmpty = 'The song repository contains already {songcount} songs which you can use with Cantara.';
-  SongRepoNotEmptyAddAmazingGrace = 'However if you like, we can add the song "Amazing Grace" as an other example. For that, please press the button below. Else you can click "Next".';
+  SongRepoDirEmpty =
+    'However it seems that you have not added any songs yet. Would you like to add the song "Amazing Grace" from John Newton as an example to your song repository? Then click at the button below. Click "Next" to go to the next step.';
+  SongRepoNotEmpty =
+    'The song repository contains already {songcount} songs which you can use with Cantara.';
+  SongRepoNotEmptyAddAmazingGrace =
+    'However if you like, we can add the song "Amazing Grace" as an other example. For that, please press the button below. Else you can click "Next".';
   btnNextNext = 'Next';
   btnNextFinish = 'Finish';
-  StrNoSongRepoYet = 'Please select a song repository path before you leave the assistent. Cantara can not work without it.';
+  StrNoSongRepoYet =
+    'Please select a song repository path before you leave the assistent. Cantara can not work without it.';
 
 implementation
 
 uses SongSelection;
 
-{$R *.lfm}
+  {$R *.lfm}
 
-{ TfrmWelcome }
+  { TfrmWelcome }
 
 procedure TfrmWelcome.BGRAFlashProgressBar1Click(Sender: TObject);
 begin
@@ -77,18 +81,20 @@ begin
 end;
 
 procedure TfrmWelcome.btnAddExampleSongClick(Sender: TObject);
-var DummySongFile: TStringList;
+var
+  DummySongFile: TStringList;
   rs: TResourceStream;
 begin
   rs := TResourceStream.Create(hinstance, 'AMAZING GRACE', RT_RCDATA);
   DummySongFile := TStringList.Create;
   DummySongFile.LoadFromStream(rs);
-  DummySongFile.SaveToFile(frmSettings.edtRepoPath.Text + PathDelim + AmazingGraceFileName);
+  DummySongFile.SaveToFile(frmSettings.edtRepoPath.Text + PathDelim +
+    AmazingGraceFileName);
   FreeAndNil(rs);
   FreeAndNil(DummySongFile);
   btnAddExampleSong.Enabled := False;
   lblSongAdded.Visible := True;
-  ProgressBar.Position:=45;
+  ProgressBar.Position := 45;
   frmSongs.AskToReloadRepo;
 end;
 
@@ -96,30 +102,31 @@ procedure TfrmWelcome.btnBackClick(Sender: TObject);
 begin
   if Notebook.PageIndex > 0 then
   begin
-    Notebook.PageIndex:=Notebook.PageIndex-1;
-    btnNext.Enabled:=True;
-    btnNext.Caption:=btnNextNext;
+    Notebook.PageIndex := Notebook.PageIndex - 1;
+    btnNext.Enabled := True;
+    btnNext.Caption := btnNextNext;
   end;
   if Notebook.PageIndex = 0 then
-     btnBack.Enabled:=False;
+    btnBack.Enabled := False;
 end;
 
 procedure TfrmWelcome.btnNextClick(Sender: TObject);
 begin
-  if Notebook.PageIndex < Notebook.PageCount-1 then
+  if Notebook.PageIndex < Notebook.PageCount - 1 then
   begin
-     Notebook.PageIndex := Notebook.PageIndex+1;
-     btnBack.Enabled:=True;
-  end else if Notebook.PageIndex = NoteBook.PageCount-1 then
-     begin
-       frmWelcome.Close;
-       Exit;
-     end;
-  if Notebook.PageIndex = NoteBook.PageCount-1 then
-     begin
-       btnNext.Caption:= btnNextFinish;
-       ProgressBar.Position:=100;
-     end;
+    Notebook.PageIndex := Notebook.PageIndex + 1;
+    btnBack.Enabled := True;
+  end
+  else if Notebook.PageIndex = NoteBook.PageCount - 1 then
+  begin
+    frmWelcome.Close;
+    Exit;
+  end;
+  if Notebook.PageIndex = NoteBook.PageCount - 1 then
+  begin
+    btnNext.Caption := btnNextFinish;
+    ProgressBar.Position := 100;
+  end;
 end;
 
 procedure TfrmWelcome.btnOpenGithubRepoClick(Sender: TObject);
@@ -133,30 +140,33 @@ begin
 end;
 
 procedure TfrmWelcome.btnSelectSongRepoDirClick(Sender: TObject);
-var RepoContainsAmazingGrace: Boolean;
+var
+  RepoContainsAmazingGrace: Boolean;
   repofile: TRepoFile;
 begin
   if frmSettings.SelectDirectoryDialog.Execute = False then Exit;
   if DirectoryExists(frmSettings.SelectDirectoryDialog.FileName) then
   begin
-    frmSettings.edtRepoPath.Text :=frmSettings.SelectDirectoryDialog.FileName;
+    frmSettings.edtRepoPath.Text := frmSettings.SelectDirectoryDialog.FileName;
     frmSongs.AskToReloadRepo;
     lblSuccess.Caption := SongRepoSuccess;
-    btnAddExampleSong.Visible:=False;
-    lblSuccess.Visible:=True;
-    btnNext.Enabled:=True;
-    ProgressBar.Position:=35;
+    btnAddExampleSong.Visible := False;
+    lblSuccess.Visible := True;
+    btnNext.Enabled := True;
+    ProgressBar.Position := 35;
     if length(SongSelection.repo) = 0 then
     begin
-       lblSuccess.Caption:=lblSuccess.Caption + LineEnding + SongRepoDirEmpty;
-       btnAddExampleSong.Visible := True;
-    end else if length(SongSelection.repo) > 0 then
+      lblSuccess.Caption := lblSuccess.Caption + LineEnding + SongRepoDirEmpty;
+      btnAddExampleSong.Visible := True;
+    end
+    else if length(SongSelection.repo) > 0 then
     begin
       lblSuccess.Caption :=
-        lblSuccess.Caption + LineEnding +
-          StringReplace(SongRepoNotEmpty, '{songcount}', IntToStr(Length(SongSelection.repo)), [rfReplaceAll]);
+        lblSuccess.Caption + LineEnding + StringReplace(
+        SongRepoNotEmpty, '{songcount}', IntToStr(Length(SongSelection.repo)),
+        [rfReplaceAll]);
       RepoContainsAmazingGrace := False;
-      for repofile in SongSelection.repo do
+      for repofile In SongSelection.repo do
         if repofile.FileName = AmazingGraceFileName then
         begin
           RepoContainsAmazingGrace := True;
@@ -164,7 +174,8 @@ begin
         end;
       if RepoContainsAmazingGrace = False then
       begin
-        lblSuccess.Caption:=lblSuccess.Caption + LineEnding + SongRepoNotEmptyAddAmazingGrace;
+        lblSuccess.Caption := lblSuccess.Caption + LineEnding +
+          SongRepoNotEmptyAddAmazingGrace;
         btnAddExampleSong.Visible := True;
       end;
     end;
@@ -174,13 +185,13 @@ end;
 procedure TfrmWelcome.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   CanClose := DirectoryExists(frmSettings.edtRepoPath.Text);
-  if not CanClose then
-     ShowMessage(StrNoSongRepoYet);
+  if Not CanClose then
+    ShowMessage(StrNoSongRepoYet);
 end;
 
 procedure TfrmWelcome.FormShow(Sender: TObject);
 begin
-  Notebook.PageIndex:=0;
+  Notebook.PageIndex := 0;
 end;
 
 procedure TfrmWelcome.Page2BeforeShow(ASender: TObject; ANewPage: TPage;
@@ -191,8 +202,7 @@ end;
 
 procedure TfrmWelcome.Page2Resize(Sender: TObject);
 begin
-  btnOpenWebpage.Width := Page2.Width div 2;
+  btnOpenWebpage.Width := Page2.Width Div 2;
 end;
 
 end.
-

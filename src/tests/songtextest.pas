@@ -9,13 +9,14 @@ uses
 
 type
 
-  TSongTeXTest= class(TTestCase)
+  TSongTeXTest = class(TTestCase)
   protected
     procedure SetUp; override;
     procedure TearDown; override;
   published
     procedure TestHookUp;
   end;
+
 var
   songtexfile: TSongTeXFile;
 
@@ -58,4 +59,3 @@ initialization
 
   RegisterTest(TSongTeXTest);
 end.
-
