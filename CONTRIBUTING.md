@@ -6,7 +6,7 @@ Thank you that you want to contribute to Cantara. Every help is very appreciated
 
 Feel free to create an issue for general feedback, bug reports and feature requests.
 
-## Translate Cantara to an other language.
+## Translate Cantara to an other language
 
 Please fork the project form the current master branch, take the file (src/locals/cantara.pot) as template and use a program like Poedit to create a po file. This file is saved in the same folder (src/locals) and has the syntax ```cantara.LC.po``` where LC is the international **language code** of the language which you have translated to (e.g. de for German, zh for Chineses, etc.). After that, you can submit a pull request. *You do not nead to compile your po file to a mo file*.
 
