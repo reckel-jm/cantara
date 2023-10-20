@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, fpcunit, testutils, testregistry, Slides, Lyrics,
-  FileUtil;
+  FileUtil, TestConstants;
 
 type
 
@@ -20,9 +20,6 @@ type
     procedure TestTagRecognitionFromSongFormatFiles;
     procedure TearDown; override;
   end;
-
-const
-  TestDataDirectory:String = 'testdata';
 
 implementation
 

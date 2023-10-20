@@ -16,11 +16,11 @@ type
 
   { TTextFileHandler }
 
-  TTextFileHandler = class
+  TTextFileHandler = class(TObject)
   private
     fFileHandlingStatus: TFileHandlingStatus;
     fErrorMessage: String;
-    function FileExtensionIsInFileName(String: FileName; String: FileExtension): Boolean;
+    function FileExtensionIsInFileName(FileName: String; FileExtension: String): Boolean;
   public
     property FileHandlingStatus: TFileHandlingStatus read fFileHandlingStatus;
     property ErrorMessage: string read fErrorMessage;
@@ -28,17 +28,19 @@ type
     File Extension is with the dot (.)}
     procedure SaveTextFile(textfile: String; var filepath: String;
       fileending: String);
-    function LoadTextFile(filepath: String): String;
+    function OpenTextFile(filepath: String): String;
     { Resets the file handler }
     procedure Reset;
+    constructor Create; overload;
+    destructor Destroy; override;
   end;
 
 implementation
 
 { TTextFileHandler }
 
-function TTextFileHandler.FileExtensionIsInFileName(String: FileName;
-  String: FileExtension): Boolean;
+function TTextFileHandler.FileExtensionIsInFileName(FileName: String;
+  FileExtension: String): Boolean;
 begin
   Result := ExtractFileExt(FileName) = FileExtension;
 end;
@@ -66,7 +68,7 @@ begin
   HandlerStringList.Destroy;
 end;
 
-function TTextFileHandler.LoadTextFile(filepath: String): String;
+function TTextFileHandler.OpenTextFile(filepath: String): String;
 var HandlerStringList: TStringList;
 begin
   if not FileExists(filepath) then
@@ -95,6 +97,16 @@ procedure TTextFileHandler.Reset;
 begin
   Self.fFileHandlingStatus:=StatusInactive;
   Self.fErrorMessage:='';
+end;
+
+constructor TTextFileHandler.Create;
+begin
+  Self.Reset;
+end;
+
+destructor TTextFileHandler.Destroy;
+begin
+  inherited Destroy;
 end;
 
 end.
