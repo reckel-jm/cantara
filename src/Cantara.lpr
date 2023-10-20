@@ -32,7 +32,7 @@ uses
   {$R *.res}
 
 begin
-  Application.Scaled := True;
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TfrmSongs, frmSongs);
   Application.CreateForm(TfrmSettings, frmSettings);
