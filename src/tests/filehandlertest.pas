@@ -101,11 +101,14 @@ begin
 end;
 
 procedure TCantaraCLITest.TearDown;
+var CleanUpFiles: array of String;
+  CleanUpFile: String;
 begin
   inherited TearDown;
-  If FileExists(TestDataDirectory + PathDelim + 'testsongtest01.song') then
-     DeleteFile(TestDataDirectory + PathDelim + 'testsongtest02.song');
-  //AssertTrue('Not assigned', Assigned(Self.TextFileHandler));
+  CleanUpFiles := ['testsongtest01.song', 'testsongtest02.song'];
+  for CleanUpFile in CleanUpFiles do
+      if FileExists(TestDataDirectory + PathDelim + CleanUpFile) then
+         DeleteFile(TestDataDirectory + PathDelim + CleanUpFile);
 end;
 
 
