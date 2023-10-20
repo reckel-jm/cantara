@@ -37,9 +37,12 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="tests/testcase1.pas"/>
+        <Filename Value="tests/filehandlertest.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="TestCase1"/>
+      </Unit>
+      <Unit>
+        <Filename Value="generics/textfilehandler.pas"/>
+        <IsPartOfProject Value="True"/>
       </Unit>
     </Units>
   </ProjectOptions>
@@ -63,6 +66,7 @@
     <Linking>
       <Debugging>
         <GenerateDebugInfo Value="False"/>
+        <DebugInfoType Value="dsDwarf3"/>
       </Debugging>
     </Linking>
   </CompilerOptions>

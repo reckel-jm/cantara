@@ -1,7 +1,7 @@
 object frmSongs: TfrmSongs
   Left = 331
   Height = 700
-  Top = 187
+  Top = 107
   Width = 1198
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'

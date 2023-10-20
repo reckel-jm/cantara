@@ -45,7 +45,7 @@
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.5"/>
     </VersionInfo>
     <MacroValues Count="1">
-      <Macro3 Name="LCLWidgetType" Value="qt5"/>
+      <Macro1 Name="LCLWidgetType" Value="qt6"/>
     </MacroValues>
     <BuildModes Count="7">
       <Item1 Name="Release" Default="True"/>
@@ -233,7 +233,7 @@
       </Item5>
       <Item6 Name="Debug">
         <MacroValues Count="1">
-          <Macro3 Name="LCLWidgetType" Value="qt5"/>
+          <Macro1 Name="LCLWidgetType" Value="qt6"/>
         </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
