@@ -38,6 +38,8 @@ type
     procedure SaveTofile(FileName: String);
     procedure LoadFromFile(FileName: String);
     function HasNextSongfile: String;
+    { Returns the content of the file as a string }
+    function Text: String;
   private
     FileContent: TStringList;
     SongFiles: array of TRepoFile;
@@ -76,12 +78,12 @@ begin
   FileContent.Add('\endfile');
 end;
 
-procedure TSongTexFile.SaveToFile(FileName: String);
+procedure TSongTeXFile.SaveTofile(FileName: String);
 begin
   FileContent.SaveToFile(FileName);
 end;
 
-procedure TSongTexFile.LoadFromFile(FileName: String);
+procedure TSongTeXFile.LoadFromFile(FileName: String);
 begin
   FileContent.Clear;
   FileContent.LoadFromFile(FileName);
@@ -96,7 +98,7 @@ end;
  the Stringlist NextSongFile.
  In case of no further songfiles available, an empty string '' will be returned.
 }
-function TSongTexFile.HasNextSongfile: String;
+function TSongTeXFile.HasNextSongfile: String;
 var curSongname: string;
 begin
   while (ParsingIndex <= FileContent.Count-1) and (pos('\beginfile{',FileContent.Strings[ParsingIndex]) < 1) do
@@ -117,6 +119,11 @@ begin
     Exit(curSongName);
   end;
   Result := '';
+end;
+
+function TSongTeXFile.Text: String;
+begin
+  Result := Self.FileContent.Text;
 end;
 
 end.
