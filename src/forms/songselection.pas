@@ -955,6 +955,12 @@ begin
           frmPresent.Left := Screen.Monitors[1].Left;
           // Full screen has to be applied after positioning, else the form won't be moved under Linux
           frmPresent.SwitchFullscreen(True);
+          {$IF defined(WINDOWS) }
+          frmPresent.Top := Screen.Monitors[1].Top;
+          frmPresent.Left := Screen.Monitors[1].Left;
+          frmPresent.Width :=Screen.Monitors[1].Width;
+          frmPresent.Height :=Screen.Monitors[1].Height;
+          {$ENDIF }
         end;
       end;
       //BringToFront;
