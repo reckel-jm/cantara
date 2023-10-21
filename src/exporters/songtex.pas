@@ -27,7 +27,10 @@ uses
   Classes, SysUtils, Lyrics;
 
 type
-  { TSongTexFile -> a TeX like file which exports whole slides }
+  { TSongTexFile
+
+  A TeX like file which exports a list of songs with their order and content.
+  }
   TSongTeXFile = Class
   public
     NextSongFile: TStringList;
