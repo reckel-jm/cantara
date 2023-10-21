@@ -505,7 +505,7 @@ end;
 procedure TfrmSongs.itemLoadClick(Sender: TObject);
 begin
   try
-    if OpenDialog.Execute then lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
+    if ExecuteCantaraFileDialog(OpenDialog) then lbxSselected.Items.LoadFromFile(OpenDialog.FileName);
   except
     Application.MessageBox(PChar(StrErrorOpening), PChar(StrError),
       MB_OK + MB_ICONERROR);
@@ -516,7 +516,7 @@ procedure TfrmSongs.itemLoadSelectionClick(Sender: TObject);
 var
   OpenFilePath: String;
 begin
-  if OpenDialog.Execute then OpenFilePath := OpenDialog.FileName
+  if ExecuteCantaraFileDialog(OpenDialog) then OpenFilePath := OpenDialog.FileName
   else
     Exit;
   if FileExists(OpenFilePath) = False then
@@ -632,7 +632,7 @@ end;
 procedure TfrmSongs.itemSaveClick(Sender: TObject);
 begin
   try
-    if SaveDialog.Execute then lbxSselected.Items.SaveToFile(SaveDialog.FileName);
+    if ExecuteCantaraFileDialog(SaveDialog) then lbxSselected.Items.SaveToFile(SaveDialog.FileName);
   except
     Application.MessageBox(PChar(StrErrorSaving), PChar(StrError), MB_OK + MB_ICONERROR);
   end;
@@ -641,7 +641,7 @@ end;
 procedure TfrmSongs.itemSaveSelectionAsClick(Sender: TObject);
 var FileName: String;
 begin
-  if SaveDialog.Execute then
+  if ExecuteCantaraFileDialog(SaveDialog) then
   begin
     FileName := SaveDialog.FileName;
     if ExtractFileExt(FileName) = '' then FileName := FileName + '.songtex';
