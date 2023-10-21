@@ -66,7 +66,7 @@ end;
 destructor TSongTeXFile.Destroy;
 begin
   FileContent.Free;
-  FreeAndNil(NextSongFile);
+  NextSongFile.Destroy;
   inherited;
 end;
 
