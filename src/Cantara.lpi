@@ -350,7 +350,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="24">
+    <Units Count="25">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -496,6 +496,11 @@
         <Filename Value="generics/loadimagethread.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit23>
+      <Unit24>
+        <Filename Value="generics/cantarastandarddialogs.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CantaraStandardDialogs"/>
+      </Unit24>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

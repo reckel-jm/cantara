@@ -11,7 +11,7 @@ uses
   DefaultTranslator, Clipbrd,
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
   FormFulltextSearch, PPTX, PresentationCanvas,
-  formMarkupExport, imageexport, textfilehandler;
+  formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs;
 
 type
   TSongPosition = record
@@ -78,6 +78,7 @@ type
     Separator1: TMenuItem;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
+    TimerUpdateScreen: TTimer;
     procedure btnAddClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnDownClick(Sender: TObject);
@@ -90,6 +91,7 @@ type
     procedure btnUpClick(Sender: TObject);
     procedure BtnUpdateClick(Sender: TObject);
     procedure ButtonCloseSongtexFileClick(Sender: TObject);
+    procedure chkMultiWindowModeChange(Sender: TObject);
     procedure edtSearchChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -155,11 +157,16 @@ type
     procedure SlideTextListBoxKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure SongPopupMenuPopup(Sender: TObject);
+    procedure TimerUpdateScreenTimer(Sender: TObject);
     procedure UpdateSongPositionInLbxSSelected;
     procedure UpdateControls;
     procedure ReloadPresentationImage;
   private
-    { private declarations }
+    {
+      This boolean determines whether the chkMultiWindowMode checkbox has been
+      changed by the user so that the automatic detection will get inactive.
+    }
+    MultiScreenCheckBoxHasBeenManuallyChanged: Boolean;
     { The initial position of the panel for multiscreen
       when presentation gets started }
     PanelMultiScreenLeft: Integer;
@@ -171,6 +178,7 @@ type
     LoadedSongList: TSongList;
     { User agrees to use PPTXGenjs }
     UserAgreesPptxGenJs: Boolean;
+    PreviouslyMultiScreen: Boolean;
     { Filters the Listbox lbxSRepo after a search pattern. If s is empty, no filter will be applied.
     @param(s: the search pattern) }
     procedure FilterListBox(s: String);
@@ -184,6 +192,8 @@ type
     procedure LoadSongTeXFile(FilePath: String);
     { Loads the Slide Texts in a List View }
     procedure FillSlideListInPresentationConsole;
+    { Returns whether a second screen is usuable or not }
+    function MultiScreenIsUsable: Boolean;
   public
     { public declarations }
     procedure AskToReloadRepo;
@@ -573,6 +583,13 @@ begin
   end;
 end;
 
+function TfrmSongs.MultiScreenIsUsable: Boolean;
+begin
+  // Update the Screens
+  Screen.UpdateMonitors;
+  Result := Screen.MonitorCount > 1;
+end;
+
 procedure TfrmSongs.itemMarkupExportClick(Sender: TObject);
 begin
   if lbxSSelected.Count > 0 then
@@ -783,17 +800,8 @@ begin
 end;
 
 procedure TfrmSongs.FormCreate(Sender: TObject);
-var
-  OpenFilePath: String;
 begin
   ProgramMode := ModeSelection;
-  //self.LocaliseCaptions;
-
-  // Check Multiple Screen
-  if Screen.MonitorCount > 1 then
-    chkMultiWindowMode.Checked := True
-  else
-    chkMultiWindowMode.Checked := False;
 
   LoadedSongSelectionFilePath := '';
   // we hide the panel
@@ -807,6 +815,8 @@ begin
   OpenDialog.InitialDir := GetUserDir;
   SaveDialog.InitialDir := GetUserDir;
 
+  Self.MultiScreenCheckBoxHasBeenManuallyChanged := False;
+  Self.PreviouslyMultiScreen := False;
 end;
 
 procedure TfrmSongs.FormDestroy(Sender: TObject);
@@ -908,6 +918,23 @@ begin
     PresentationSlideCounter := 0;
     CreateSongListDataAndLoadItIntoSlideList(frmPresent.SlideList);
     if frmPresent.SlideList.Count <= 0 then Exit;
+    frmSongs.FormResize(frmSongs);
+    // Take the settings from the Settings Form
+    frmPresent.PresentationCanvas.PresentationStyleSettings :=
+      frmSettings.ExportPresentationStyleSettings;
+    frmPresent.PresentationCanvas.SlideSettings := frmSettings.ExportSlideSettings();
+    // Workaround für Windoof
+    frmPresent.WindowState := wsMaximized;
+    // Zeige die Präsentations-Form
+    frmPresent.Show;
+    frmPresent.PresentationCanvas.Width := frmPresent.Width;
+    frmPresent.PresentationCanvas.Height := frmPresent.Height;
+    frmPresent.PresentationCanvas.LoadBackgroundBitmap;
+    frmPresent.Invalidate;
+    frmPresent.ShowFirst;
+    // Deaktiviere Präsentationsbutton für Zeit der Präsentation
+    itemPresentation.Enabled := False;
+    btnStartPresentation.Enabled := False;
     // Passe Hauptfenster an, falls Multi-Fenster-Modus ausgewählt wurde.
     if chkMultiWindowMode.Checked then
     begin
@@ -916,13 +943,18 @@ begin
       frmSongs.FormResize(frmSongs);
       pnlMultiScreenResize(Self);
       // Falls min. zwei Bildschirme, verschiebe Präsentationsfenster auf zweite Form und starte Vollbild
-      if Screen.MonitorCount > 1 then
+      if Self.MultiScreenIsUsable then
       begin
-        try
+        Screen.UpdateMonitors; // Just to go sure
+        if Screen.MonitorCount > 1 then
+        begin
+          // Disable full screen
+          frmPresent.SwitchFullScreen(False);
+          // Move the form to the second
           frmPresent.Top := Screen.Monitors[1].Top;
           frmPresent.Left := Screen.Monitors[1].Left;
-        finally
-          //Falls nicht möglich, kein Problem.
+          // Full screen has to be applied after positioning, else the form won't be moved under Linux
+          frmPresent.SwitchFullscreen(True);
         end;
       end;
       //BringToFront;
@@ -935,28 +967,8 @@ begin
       frmPresent.Top := frmSongs.Top;
       frmPresent.Left := frmSongs.Left;
     end;
-    frmSongs.FormResize(frmSongs);
-    // Take the settings from the Settings Form
-    frmPresent.PresentationCanvas.PresentationStyleSettings :=
-      frmSettings.ExportPresentationStyleSettings;
-    frmPresent.PresentationCanvas.SlideSettings := frmSettings.ExportSlideSettings();
-    // Workaround für Windoof
-    frmPresent.WindowState := wsMaximized;
-    if (Screen.MonitorCount > 1) And (ProgramMode = ModeMultiscreenPresentation) then
-      frmPresent.SwitchFullscreen(True);
-    // Zeige die Präsentations-Form
-    frmPresent.Show;
-    frmPresent.PresentationCanvas.Width := frmPresent.Width;
-    frmPresent.PresentationCanvas.Height := frmPresent.Height;
-    frmPresent.PresentationCanvas.LoadBackgroundBitmap;
-    frmPresent.Invalidate;
-    frmPresent.ShowFirst;
-    // Deaktiviere Präsentationsbutton für Zeit der Präsentation
-    itemPresentation.Enabled := False;
-    btnStartPresentation.Enabled := False;
-    // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
   end
-  else
+  else // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
     Application.MessageBox(PChar(StrFehlerKeineLiederBeiPraesentation),
       PChar(StrError), MB_OK + MB_ICONWARNING);
   if ProgramMode = ModeMultiscreenPresentation then
@@ -1100,6 +1112,18 @@ begin
   itemOpenInEditor.Visible := (lbxSRepo.ItemIndex >= 0);
 end;
 
+procedure TfrmSongs.TimerUpdateScreenTimer(Sender: TObject);
+var MultiScreen: Boolean;
+begin
+  MultiScreen := Self.MultiScreenIsUsable;
+  if (self.PreviouslyMultiScreen <> MultiScreen) then // There has been a change in the amount of screens (e.g. a monitor has been plugged in/out in the mean time)
+  begin
+    Self.chkMultiWindowMode.Checked := MultiScreen;
+    MultiScreenCheckBoxHasBeenManuallyChanged := False
+  end;
+  self.PreviouslyMultiScreen:=MultiScreen;
+end;
+
 procedure TfrmSongs.UpdateSongPositionInLbxSSelected;
 var
   SongPosition: TSongPosition;
@@ -1134,6 +1158,11 @@ begin
   PanelSongTeXStatus.Visible := False;
   PanelSongTeXStatus.Height := 0;
   PanelSongTeXStatus.Caption := '';
+end;
+
+procedure TfrmSongs.chkMultiWindowModeChange(Sender: TObject);
+begin
+  Self.MultiScreenCheckBoxHasBeenManuallyChanged := True;
 end;
 
 procedure TfrmSongs.edtSearchChange(Sender: TObject);

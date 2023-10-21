@@ -46,6 +46,7 @@ type
     procedure GroupSettingsClick(Sender: TObject);
     procedure ItemExportClick(Sender: TObject);
     procedure ItemRemoveClick(Sender: TObject);
+    procedure TimerUpdateScreenTimer(Sender: TObject);
   private
     Scale: Double;
     ShowFirstTime: Boolean;
@@ -196,6 +197,11 @@ begin
   if ImageListView.Items.Count <= 0 then Exit;
   if ImageListView.ItemIndex < 0 then ImageListView.ItemIndex := 0;
   ImageListView.Items.Delete(ImageListView.ItemIndex);
+end;
+
+procedure TFormImageExport.TimerUpdateScreenTimer(Sender: TObject);
+begin
+
 end;
 
 procedure TFormImageExport.ReadjustScale;

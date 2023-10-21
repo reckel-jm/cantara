@@ -9,6 +9,7 @@ object FormImageExport: TFormImageExport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
+  LCLVersion = '3.0.0.2'
   WindowState = wsMaximized
   object GroupSettings: TGroupBox
     AnchorSideLeft.Control = Owner
@@ -22,8 +23,8 @@ object FormImageExport: TFormImageExport
     Width = 408
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Settings'
-    ClientHeight = 489
-    ClientWidth = 404
+    ClientHeight = 495
+    ClientWidth = 402
     TabOrder = 0
     OnClick = GroupSettingsClick
     object LabelFolder: TLabel
@@ -31,8 +32,8 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Control = EditFolder
       AnchorSideTop.Side = asrCenter
       Left = 0
-      Height = 22
-      Top = 7
+      Height = 21
+      Top = 4
       Width = 53
       Caption = 'Folder: '
       ParentColor = False
@@ -43,9 +44,9 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Control = GroupSettings
       AnchorSideRight.Control = ButtonChoose
       Left = 58
-      Height = 36
+      Height = 28
       Top = 0
-      Width = 267
+      Width = 265
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 5
       Enabled = False
@@ -59,15 +60,15 @@ object FormImageExport: TFormImageExport
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = EditFolder
       AnchorSideBottom.Side = asrBottom
-      Left = 325
-      Height = 36
+      Left = 323
+      Height = 28
       Top = 0
       Width = 79
       Anchors = [akTop, akRight, akBottom]
       AutoSize = True
       Caption = 'Choose...'
-      OnClick = ButtonChooseClick
       TabOrder = 1
+      OnClick = ButtonChooseClick
     end
     object EditWidth: TSpinEdit
       AnchorSideLeft.Control = LabelWidth
@@ -75,8 +76,8 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Control = EditFolder
       AnchorSideTop.Side = asrBottom
       Left = 60
-      Height = 36
-      Top = 51
+      Height = 29
+      Top = 43
       Width = 82
       BorderSpacing.Left = 10
       BorderSpacing.Top = 15
@@ -89,8 +90,8 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Control = EditWidth
       AnchorSideTop.Side = asrCenter
       Left = 0
-      Height = 22
-      Top = 58
+      Height = 21
+      Top = 47
       Width = 50
       Caption = 'Width: '
       ParentColor = False
@@ -102,8 +103,8 @@ object FormImageExport: TFormImageExport
       AnchorSideBottom.Control = EditWidth
       AnchorSideBottom.Side = asrBottom
       Left = 214
-      Height = 36
-      Top = 51
+      Height = 29
+      Top = 43
       Width = 80
       Anchors = [akTop, akLeft, akBottom]
       BorderSpacing.Left = 10
@@ -117,8 +118,8 @@ object FormImageExport: TFormImageExport
       AnchorSideTop.Control = EditWidth
       AnchorSideTop.Side = asrCenter
       Left = 152
-      Height = 22
-      Top = 58
+      Height = 21
+      Top = 47
       Width = 52
       BorderSpacing.Left = 10
       Caption = 'Height:'
@@ -129,10 +130,10 @@ object FormImageExport: TFormImageExport
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = EditWidth
       AnchorSideTop.Side = asrBottom
-      Left = 71
-      Height = 26
-      Top = 102
-      Width = 61
+      Left = 72
+      Height = 27
+      Top = 87
+      Width = 58
       BorderSpacing.Top = 15
       Caption = 'Sync'
       Checked = True
@@ -146,15 +147,15 @@ object FormImageExport: TFormImageExport
       AnchorSideBottom.Side = asrBottom
       Left = 0
       Height = 40
-      Top = 449
-      Width = 202
+      Top = 455
+      Width = 200
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Export All'
       Font.Style = [fsBold]
       ModalResult = 10
-      OnClick = ButtonExportAllClick
       ParentFont = False
       TabOrder = 5
+      OnClick = ButtonExportAllClick
     end
     object ButtonExportCurrent: TButton
       AnchorSideLeft.Side = asrBottom
@@ -162,16 +163,16 @@ object FormImageExport: TFormImageExport
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = GroupSettings
       AnchorSideBottom.Side = asrBottom
-      Left = 202
+      Left = 200
       Height = 40
-      Top = 449
+      Top = 455
       Width = 202
       Anchors = [akRight, akBottom]
       Caption = 'Export Current'
       ModalResult = 6
-      OnClick = ButtonExportCurrentClick
       ParentFont = False
       TabOrder = 6
+      OnClick = ButtonExportCurrentClick
     end
     object ButtonReloadPreview: TButton
       AnchorSideLeft.Control = EditHeight
@@ -181,14 +182,14 @@ object FormImageExport: TFormImageExport
       AnchorSideRight.Side = asrBottom
       Left = 214
       Height = 40
-      Top = 102
-      Width = 190
+      Top = 87
+      Width = 188
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 15
       Caption = 'Reload Preview...'
       ModalResult = 1
-      OnClick = ButtonReloadPreviewClick
       TabOrder = 7
+      OnClick = ButtonReloadPreviewClick
     end
     object ProgressBar: TProgressBar
       AnchorSideLeft.Control = GroupSettings
@@ -198,8 +199,8 @@ object FormImageExport: TFormImageExport
       AnchorSideRight.Side = asrBottom
       Left = 0
       Height = 20
-      Top = 157
-      Width = 404
+      Top = 142
+      Width = 402
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 15
       Enabled = False

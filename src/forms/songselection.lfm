@@ -407,6 +407,7 @@ object frmSongs: TfrmSongs
       Caption = 'Multi-Screen-Mode (suitable for multiple screens)'
       TabOrder = 2
       TabStop = False
+      OnChange = chkMultiWindowModeChange
     end
   end
   object PanelSongTeXStatus: TPanel
@@ -555,5 +556,11 @@ object frmSongs: TfrmSongs
       Caption = 'Open in Editor...'
       OnClick = itemOpenInEditorClick
     end
+  end
+  object TimerUpdateScreen: TTimer
+    Interval = 1500
+    OnTimer = TimerUpdateScreenTimer
+    Left = 196
+    Top = 345
   end
 end
