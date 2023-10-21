@@ -370,6 +370,7 @@ begin
   frmSongs.edtSearch.Text := '';
   LoadImageThread.Terminate;
   LoadImageThread.Destroy;
+  SettingsFile.Destroy;
 end;
 
 procedure TfrmSettings.loadSettings();

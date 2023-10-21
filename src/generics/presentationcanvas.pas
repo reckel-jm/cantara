@@ -60,7 +60,15 @@ const
   MINSPOILERDISTANCE: Integer = 10;
   MORELYRICSINDICATOR: String = '...';
 
+procedure DestroyPresentationStyleSettings(var APresentationStyleSetting: TPresentationStyleSettings);
+
 implementation
+
+procedure DestroyPresentationStyleSettings(
+  var APresentationStyleSetting: TPresentationStyleSettings);
+begin
+  FreeAndNil(APresentationStyleSetting.Font);
+end;
 
 procedure TPresentationCanvasHandler.AdjustBrightness;
 var
@@ -141,6 +149,7 @@ begin
   BackgroundPicture.Destroy;
   ResizedBackgroundBitmap.Destroy;
   AdjustedBackgroundPicture.Destroy;
+  DestroyPresentationStyleSettings(Self.PresentationStyleSettings);
   inherited;
 end;
 

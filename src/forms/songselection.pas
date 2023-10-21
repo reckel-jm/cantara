@@ -709,8 +709,20 @@ end;
 
 procedure TfrmSongs.lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
+  if ProgramMode <> ModeSelection then
+  begin
+    Key := VK_Unknown;
+    Exit;
+  end;
   if (Key = VK_Space) Or (Key = VK_Return) Or (key = VK_Right) then
     btnAddClick(lbxSRepo);
+  if (Key = VK_Tab) then
+  begin
+    lbxSSelected.SetFocus;
+    Key := VK_Unknown;
+    if lbxSSelected.Count > 0 then
+       lbxSSelected.ItemIndex := Max(lbxSSelected.ItemIndex, 0);
+  end;
 end;
 
 procedure TfrmSongs.lbxSRepoMouseDown(Sender: TObject; Button: TMouseButton;
@@ -778,8 +790,17 @@ end;
 procedure TfrmSongs.lbxSselectedKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if ProgramMode <> ModeSelection then exit;
-  if (Key = VK_DELETE) Or (Key = VK_Left) then btnRemoveClick(lbxSSelected);
+  if ProgramMode <> ModeSelection then
+  begin
+    Key := VK_Unknown;
+    Exit;
+  end;
+  if (Key = VK_DELETE) Or (Key = VK_Left) then btnRemoveClick(lbxSSelected)
+  else if (Key = VK_Tab) then
+  begin
+    lbxSRepo.SetFocus;
+    Key := VK_Unknown;
+  end;
 end;
 
 procedure TfrmSongs.lbxSselectedKeyPress(Sender: TObject; var Key: Char);
@@ -1205,7 +1226,6 @@ begin
     PanelMultiScreenLeft);
   settings.settingsFile.WriteBool('Exporter', 'pptxgenjs', self.UserAgreesPptxGenJs);
   settings.settingsFile.UpdateFile;
-  settings.settingsFile.FreeInstance;
 end;
 
 { Diese Funktion macht ein Bildschirmfoto der Präsentation und zeigt dieses an. }
