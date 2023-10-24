@@ -992,7 +992,10 @@ begin
           frmPresent.Left := Screen.Monitors[1].Left;
           frmPresent.Width :=Screen.Monitors[1].Width;
           frmPresent.Height :=Screen.Monitors[1].Height;
+          Application.ProcessMessages;
+          Self.ReloadPresentationImage;
           {$ENDIF }
+          PnlSplitter.Left := Self.Width div 3;
         end;
       end;
       //BringToFront;
