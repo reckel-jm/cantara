@@ -255,6 +255,7 @@ object frmSongs: TfrmSongs
     Width = 1
     Align = alNone
     Anchors = [akTop, akBottom]
+    OnCanOffset = PnlSplitterCanOffset
     OnMoved = PnlSplitterMoved
   end
   object grbControl: TPanel

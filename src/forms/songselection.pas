@@ -147,6 +147,8 @@ type
     procedure itemReloadSongListClick(Sender: TObject);
     procedure pnlMultiScreenClick(Sender: TObject);
     procedure pnlMultiScreenResize(Sender: TObject);
+    procedure PnlSplitterCanOffset(Sender: TObject; var NewOffset: Integer;
+      var Accept: Boolean);
     procedure PnlSplitterMoved(Sender: TObject);
     { Creates the song list data }
     procedure CreateSongListData;
@@ -312,11 +314,15 @@ begin
       imgLiveViewer.Picture.Bitmap.Height / imgLiveViewer.Picture.Bitmap.Width);
 end;
 
+procedure TfrmSongs.PnlSplitterCanOffset(Sender: TObject;
+  var NewOffset: Integer; var Accept: Boolean);
+begin
+
+end;
+
 procedure TfrmSongs.PnlSplitterMoved(Sender: TObject);
 begin
-  grbControl.Left := PnlSplitter.Left + PnlSplitter.Width - grbControl.Width -
-    (lbxSSelected.Width + lbxSRepo.Width) Div 2;
-  PanelMultiScreenLeft := frmSongs.Width - PnlSplitter.Left - 1;
+  //PanelMultiScreenLeft := frmSongs.Width - PnlSplitter.Left - 1;
 end;
 
 procedure TfrmSongs.FormResize(Sender: TObject);
@@ -1254,8 +1260,7 @@ begin
     end;
     lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(frmPresent.cur + 1) +
       ' / ' + IntToStr(frmPresent.SlideList.Count);
-    FormResize(self);
-    pnlMultiScreenResize(self);
+    self.pnlMultiScreenResize(self);
   end;
 end;
 
