@@ -51,6 +51,15 @@
     <developer_name>Jan Martin Reckel</developer_name>
 
     <releases>
+        <release version="2.5.1" date="2023-10-24">
+            <description>
+                <ul>
+                    <li>Improvement of Italian translation</li>
+                    <li>Improvement of presentation control window</li>
+                    <li>Fix opening/saving songtex file bug</li>
+                </ul>
+            </description>
+        </release>
         <release version="2.5.0" date="2023-08-21">
             <description>
                 <ul>
