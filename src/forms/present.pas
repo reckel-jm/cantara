@@ -124,8 +124,7 @@ begin
     Inc(cur);
     ShowItem(cur);
   end;
-  if SongSelection.ProgramMode = ModeMultiscreenPresentation then
-    frmSongs.ReloadPresentationImage;
+  frmSongs.ReloadPresentationImage;
 end;
 
 procedure TfrmPresent.GoPrevious;
@@ -135,8 +134,7 @@ begin
     Dec(cur);
     ShowItem(cur);
   end;
-  if SongSelection.ProgramMode = ModeMultiscreenPresentation then
-    frmSongs.ReloadPresentationImage;
+  frmSongs.ReloadPresentationImage;
 end;
 
 procedure TfrmPresent.FormResize(Sender: TObject);
@@ -202,7 +200,7 @@ begin
   if Owner <> frmSettings then
   begin
     // Stelle frmSongs wieder her
-    SongSelection.ProgramMode := SongSelection.ModeSelection;
+    frmSongs.PresentationHasBeenEnded;
     SongSelection.frmSongs.FormResize(self);
     SongSelection.frmSongs.KeyPreview := False;
 
@@ -214,7 +212,7 @@ begin
     // Deaktiviere Vollbildschirm (falls noch möglich)
 
     SwitchFullScreen(False);
-    SongSelection.frmSongs.UpdateControls;
+    frmSongs.UpdateControls;
   end;
   if (Assigned(SlideList)) And (self.Owner = frmSongs) then SlideList.Free;
 end;

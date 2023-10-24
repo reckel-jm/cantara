@@ -14,6 +14,9 @@ uses
   formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs;
 
 type
+  TProgramMode = (ModeSelection, ModeSingleScreenPresentation,
+  ModeMultiscreenPresentation);
+
   TSongPosition = record
     // The Current Song
     song: TSong;
@@ -158,10 +161,14 @@ type
       Shift: TShiftState);
     procedure SongPopupMenuPopup(Sender: TObject);
     procedure TimerUpdateScreenTimer(Sender: TObject);
+    { Updates the Song Position in lbxSSelected during a presentation }
     procedure UpdateSongPositionInLbxSSelected;
+    { Updates the Controls to the current program state (Presentation, Songselection }
     procedure UpdateControls;
     procedure ReloadPresentationImage;
+    procedure PresentationHasBeenEnded;
   private
+    ProgramMode: TProgramMode;
     {
       This boolean determines whether the chkMultiWindowMode checkbox has been
       changed by the user so that the automatic detection will get inactive.
@@ -200,17 +207,10 @@ type
     function FindSong(songname: String): TRepoFile;
   end;
 
-const
-  ModeSelection = 'S';
-  ModeSingleScreenPresentation = 'P';
-  ModeMultiscreenPresentation = 'M';
-
 var
   frmSongs: TfrmSongs;
   { The Repository array which contains songs as classes of TSongFile }
   repo: TRepoArray;
-  { @deprecated An enum should be used instead, but this has not been changed yet. }
-  ProgramMode: Char;
   startingPoint: TPoint;
 
 resourcestring
@@ -327,6 +327,9 @@ begin
     PnlSplitter.Width := 1;
     IntToStr(PnlSplitter.Left);
     pnlMultiScreen.Visible := False;
+    grbControl.Width := 45;
+    grbControl.Left := PnlSplitter.Left + PnlSplitter.Width - grbControl.Width -
+    (lbxSSelected.Width + lbxSRepo.Width) Div 2;
   end
   else
   begin
@@ -337,9 +340,9 @@ begin
     itemPresentation.Enabled := False;
     btnStartPresentation.Enabled := False;
     frmPresent.KeyPreview := True;
+    grbControl.Left := 0;
+    grbControl.Width := 0;
   end;
-  grbControl.Left := PnlSplitter.Left + PnlSplitter.Width - grbControl.Width -
-    (lbxSSelected.Width + lbxSRepo.Width) Div 2;
 end;
 
 function getRepoDir(): String;
@@ -971,9 +974,11 @@ begin
         begin
           // Disable full screen
           frmPresent.SwitchFullScreen(False);
+          Application.ProcessMessages;
           // Move the form to the second
           frmPresent.Top := Screen.Monitors[1].Top;
           frmPresent.Left := Screen.Monitors[1].Left;
+          Application.ProcessMessages;
           // Full screen has to be applied after positioning, else the form won't be moved under Linux
           frmPresent.SwitchFullscreen(True);
           {$IF defined(WINDOWS) }
@@ -985,7 +990,9 @@ begin
         end;
       end;
       //BringToFront;
-      frmSongs.KeyPreview := True;
+      self.KeyPreview := True;
+      self.UpdateSongPositionInLbxSSelected;
+      self.SlideTextListBox.SetFocus;
     end
     else
     begin
@@ -1017,16 +1024,20 @@ begin
     btnUp.Enabled := False;
     btnDown.Enabled := False;
     btnClear.Enabled := False;
-    //lbxSRepo.Enabled := False;
-  end
-  else
+    if (ProgramMode = TProgramMode.ModeMultiscreenPresentation) then
+    begin
+      lbxSRepo.Width := 0;
+      grbControl.Width := 0;
+    end
+  end else if ProgramMode = TProgramMode.ModeSelection then
   begin
     btnAdd.Enabled := True;
     btnRemove.Enabled := True;
     btnUp.Enabled := True;
     btnDown.Enabled := True;
     btnClear.Enabled := True;
-    //lbxSRepo.Enabled := True;
+    lbxSRepo.Visible := True;
+    grbControl.Visible := True;
   end;
 end;
 
@@ -1238,6 +1249,7 @@ begin
       imgLiveViewer.Picture.Assign(frmPresent.PresentationCanvas.Bitmap);
       if SlideTextListBox.Count > frmPresent.cur then
         SlideTextListBox.ItemIndex := frmPresent.cur;
+      self.UpdateSongPositionInLbxSSelected;
     finally
     end;
     lblFoilNumber.Caption := StrFolie + ' ' + IntToStr(frmPresent.cur + 1) +
@@ -1245,6 +1257,12 @@ begin
     FormResize(self);
     pnlMultiScreenResize(self);
   end;
+end;
+
+procedure TfrmSongs.PresentationHasBeenEnded;
+begin
+  Self.ProgramMode := SongSelection.ModeSelection;
+  Self.UpdateControls;
 end;
 
 procedure TfrmSongs.AskToReloadRepo;
