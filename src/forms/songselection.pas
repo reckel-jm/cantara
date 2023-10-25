@@ -742,27 +742,33 @@ begin
 end;
 
 procedure TfrmSongs.lbxSselectedClick(Sender: TObject);
-// Jump to the current Song – only in presentation mode
 var
-  selectedSongName: String;
-  i, pos: Integer;
+  i, pos, count: Integer;
 begin
   if lbxSSelected.ItemIndex < 0 then Exit;
+  // Jump to the current Song – only in presentation mode
   if ProgramMode <> ModeSelection then
   begin
     try
-      selectedSongName := lbxSSelected.Items.Strings[lbxSSelected.ItemIndex];
-      for i := 0 to frmPresent.SlideList.Count - 1 do
+      pos := lbxSSelected.ItemIndex;
+      count := 0;
+      if (pos = 0) and (frmPresent.SlideList.Count > 0) then
+        frmPresent.ShowFirst
+      else for i := 1 to frmPresent.SlideList.Count - 1 do
       begin
-        if frmPresent.SlideList.Items[i].Song.FileNameWithoutEnding =
-          selectedSongName then
+        if frmPresent.SlideList.Items[i].Song.FileNameWithoutEnding <>
+          frmPresent.SlideList.Items[i-1].Song.FileNameWithoutEnding then
         begin
-          frmPresent.showItem(i);
-          Break;
+          count := count + 1;
+          if count = pos then
+          begin
+            frmPresent.showItem(i);
+            Break;
+          end;
         end;
       end;
+      // Refresh Picture in Presentation View
       if ProgramMode = ModeMultiScreenPresentation then ReloadPresentationImage;
-      // Refresh Picture in Presentation View   }
     finally
       // Sometimes there is an error here
     end;
