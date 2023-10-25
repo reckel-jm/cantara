@@ -28,8 +28,8 @@ type
   end;
   { TfrmSongs }
 
-  { The main form of Cantara where the songs are choosen from. It is also responsible for managing
-  the song repository }
+  { The main form of Cantara where the songs are choosen from.
+  It is also responsible for managing the song repository }
   TfrmSongs = class(TForm)
     btnAdd: TButton;
     btnClear: TButton;
