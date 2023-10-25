@@ -8,29 +8,10 @@ uses
   Classes, SysUtils, Slides, LCLType, LCLIntf, Graphics, graphtype,
   intfgraphics, lazcanvas, Math,
   StrUtils, // for SplitString
-  fpImage;
+  fpImage, PresentationModels;
 
 type
-  THorizontalAlignEnum = (Align_Left, Align_Center, Align_Right);
 
-  TPadding = record
-    Left: Integer;
-    Right: Integer;
-    Top: Integer;
-    Bottom: Integer;
-  end;
-
-  TPresentationStyleSettings = record
-    BackgroundColor: TColor;
-    Font: TFont;
-    TextColor: TColor;
-    ShowBackgroundImage: Boolean;
-    BackgroundImageFilePath: String;
-    Transparency: Integer;
-    HorizontalAlign: THorizontalAlignEnum;
-    VerticalAlign: TTextLayout;
-    Padding: TPadding;
-  end;
 
   TPresentationCanvasHandler = class
   public

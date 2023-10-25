@@ -5,7 +5,7 @@ unit loadimagethread;
 interface
 
 uses
-  Classes, SysUtils, PresentationCanvas, Slides, Graphics, Forms;
+  Classes, SysUtils, PresentationCanvas, Slides, Graphics, Forms, PresentationModels;
 
 type
 

@@ -25,6 +25,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="LCLBase"/>
+      </Item>
+      <Item>
         <PackageName Value="LazUtils"/>
       </Item>
       <Item>
@@ -48,6 +51,19 @@
         <Filename Value="tests/testconstants.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="tests/contentselectionmodeltest.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="models/contentselectionmodel.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="models/presentationmodels.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PresentationModels"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -57,7 +73,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="tests;exporters;generics"/>
+      <OtherUnitFiles Value="tests;exporters;generics;models"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
@@ -73,6 +89,9 @@
         <DebugInfoType Value="dsDwarf3"/>
       </Debugging>
     </Linking>
+    <Other>
+      <CustomOptions Value="-dNOGRAPHIC"/>
+    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions>

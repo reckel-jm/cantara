@@ -4,7 +4,7 @@ program fpccantaraclitest;
 
 uses
   Classes, consoletestrunner, LyricsTests, MultiLanguage, FilehandlerTest,
-  testconstants;
+  testconstants, contentselectionmodeltest, contentselectionmodel;
 
 type
 

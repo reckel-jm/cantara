@@ -8,7 +8,8 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
   LCLINTF, LCLType, ExtCtrls, ActnList, Present, Lyrics, Slides,
-  ResourceHandling, PresentationCanvas, settingspadding, loadimagethread;
+  ResourceHandling, PresentationCanvas, settingspadding, loadimagethread,
+  PresentationModels;
 
 type
 

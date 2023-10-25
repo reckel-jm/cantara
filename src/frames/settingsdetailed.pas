@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Spin, ValEdit, StdCtrls,
-  PresentationCanvas;
+  PresentationModels;
 
 type
 

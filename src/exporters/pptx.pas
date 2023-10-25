@@ -35,7 +35,7 @@ interface
 
 uses
   Classes, SysUtils, Slides, LCLType, Lyrics, ResourceHandling, PresentationCanvas,
-  FileUtil, Graphics, Base64;
+  FileUtil, Graphics, Base64, PresentationModels;
 
 type
   TPPTXExporter = class
