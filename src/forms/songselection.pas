@@ -756,8 +756,8 @@ begin
         frmPresent.ShowFirst
       else for i := 1 to frmPresent.SlideList.Count - 1 do
       begin
-        if frmPresent.SlideList.Items[i].Song.FileNameWithoutEnding <>
-          frmPresent.SlideList.Items[i-1].Song.FileNameWithoutEnding then
+        if frmPresent.SlideList.Items[i].Song <>
+          frmPresent.SlideList.Items[i-1].Song then
         begin
           count := count + 1;
           if count = pos then
@@ -1117,8 +1117,8 @@ begin
   SongPosition.stanzapositionstart := 0;
   for i := 1 to frmPresent.cur do
   begin
-    if frmPresent.SlideList.Items[i].Song.CompleteFilePath <>
-      frmPresent.SlideList.Items[i - 1].Song.CompleteFilePath then
+    if frmPresent.SlideList.Items[i].Song <>
+      frmPresent.SlideList.Items[i - 1].Song then
     begin
       Inc(SongPosition.songposition);
       SongPosition.stanzapositionstart := i;
