@@ -28,7 +28,7 @@ uses
   formMarkupExport,
   markup,
   imageexport,
-  loadimagethread, CantaraStandardDialogs;
+  loadimagethread, CantaraStandardDialogs, SongSelectionController;
   {$R *.res}
 
 begin
@@ -38,6 +38,7 @@ begin
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TfrmSongs, frmSongs);
+  CreateAndInjectTSongSelectionController(frmSongs);
   Application.CreateForm(TfrmSettings, frmSettings);
   Application.CreateForm(TfrmInfo, frmInfo);
   Application.CreateForm(TfrmPresent, frmPresent);

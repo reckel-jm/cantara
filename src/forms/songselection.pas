@@ -11,7 +11,8 @@ uses
   DefaultTranslator, Clipbrd,
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
   FormFulltextSearch, PPTX, PresentationCanvas,
-  formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs;
+  formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
+  SongSelectionController, CantaraContentFile;
 
 type
   TProgramMode = (ModeSelection, ModeSingleScreenPresentation,
@@ -205,6 +206,7 @@ type
     function MultiScreenIsUsable: Boolean;
   public
     { public declarations }
+    Controller: TSongSelectionController;
     procedure AskToReloadRepo;
     function FindSong(songname: String): TRepoFile;
   end;
@@ -244,46 +246,12 @@ implementation
 
 procedure TfrmSongs.loadRepo(repoPath: String);
 var
-  SearchResult: TSearchRec;
-  i, c: Integer;
-  songName: String;
-  fileExtension: String;
-  song: TRepoFile;
+  ContentFile: TContentFile;
 begin
-  // Delete everything in repo if there is something.
-  for song In repo do
-    song.Free;
-  SetLength(repo, 0);
-  if FindFirst(repoPath + PathDelim + '*', faAnyFile, SearchResult) = 0 then
-  begin
-    lbxSRepo.Clear;
-    setlength(repo, 0);
-    repeat
-      // get the file extension
-      fileExtension := ExtractFileExt(SearchResult.Name);
-      if ((SearchResult.Name[1] <> '.') And ((fileExtension = '.song') Or
-        (fileExtension = '.txt') Or (fileExtension = '.ccli'))) then
-        { only allow compatible file formats }
-      begin
-        // Finde den letzten Punkt
-        songName := SearchResult.Name + '.';
-        i := -1;
-        for i := 1 to length(SearchResult.Name) do
-          if songName[i] = '.' then c := i;
-        // Entferne die Dateiendung
-        songName := copy(songName, 1, c - 1);
-        lbxSRepo.Items.Add(songName);
-        setlength(repo, length(repo) + 1);
-        // Füllen des Repo-Arrays zur späteren Fehlerkorrektur!
-        repo[(length(repo) - 1)] := TRepoFile.Create;
-        repo[(length(repo) - 1)].Name := songName;
-        repo[(length(repo) - 1)].FileName := SearchResult.Name;
-        repo[(length(repo) - 1)].FilePath := repoPath + PathDelim + SearchResult.Name;
-        repo[(length(repo) - 1)].FileExtension := fileExtension;
-      end;
-    until FindNext(SearchResult) <> 0;
-  end;
-  FindClose(SearchResult);
+  lbxSRepo.Clear;
+  Self.Controller.RepositoryModel.LoadRepository(RepoPath);
+  for ContentFile in Controller.RepositoryModel.RepositoryFiles do
+    lbxSRepo.AddItem(ContentFile.DisplayName, ContentFile);
 end;
 
 procedure TfrmSongs.itemAboutClick(Sender: TObject);
@@ -859,9 +827,7 @@ procedure TfrmSongs.FormDestroy(Sender: TObject);
 var
   i: Integer;
 begin
-  // Distroy all Song Data
-  for i := 0 to length(repo) - 1 do
-    repo[i].Free;
+  Self.Controller.destroy;
   LoadedSongList.Destroy;
 end;
 
@@ -1288,7 +1254,7 @@ procedure TfrmSongs.ExportSelectionAsTeXFile(var FilePath: String);
 var
   i: Integer;
   songtexfile: TSongTeXFile;
-  song: TRepoFile;
+  song: TContentFile;
   songtexfilename: String;
   TextFileHandler: TTextFileHandler;
   TextFile: String;

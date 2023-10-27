@@ -24,7 +24,7 @@ unit SongTeX;
 interface
 
 uses
-  Classes, SysUtils, Lyrics;
+  Classes, SysUtils, Lyrics, CantaraContentFile;
 
 type
   { TSongTexFile
@@ -37,7 +37,7 @@ type
     SongTeXIsSelection: Boolean;
     constructor Create;
     destructor Destroy;
-    procedure AddFile(SongFile: TRepoFile);
+    procedure AddFile(AContentFile: TContentFile);
     procedure SaveTofile(FileName: String);
     procedure LoadFromFile(FileName: String);
     function HasNextSongfile: String;
@@ -45,7 +45,7 @@ type
     function Text: String;
   private
     FileContent: TStringList;
-    SongFiles: array of TRepoFile;
+    SongFiles: TContentFileList;
     ParsingIndex: Integer;
   end;
 
@@ -61,24 +61,32 @@ begin
   SongTeXIsSelection := True;
   ParsingIndex := -1;
   NextSongFile := TStringList.Create;
+  Self.SongFiles:= TContentFileList.Create(False);
 end;
 
 destructor TSongTeXFile.Destroy;
 begin
-  FileContent.Free;
+  FileContent.Destroy;
   NextSongFile.Destroy;
+  SongFiles.Destroy;
   inherited;
 end;
 
-procedure TSongTeXFile.AddFile(SongFile: TRepoFile);
+procedure TSongTeXFile.AddFile(AContentFile: TContentFile);
 var SongFileContent: TStringList;
+  ContentFileNameWithExt: String;
 begin
-  SetLength(SongFiles, length(SongFiles)+1);
+  SongFiles.Add(AContentFile);
   SongFileContent := TStringList.Create;
-  SongFileContent.LoadFromFile(SongFile.FilePath);
-  FileContent.Add('\beginfile{' + SongFile.FileName + '}');
-  fileContent.AddStrings(SongFileContent);
-  FileContent.Add('\endfile');
+  try
+    SongFileContent.LoadFromFile(AContentFile.FilePath);
+    ContentFileNameWithExt := AContentFile.DisplayName + (AContentFile.FilePath);
+    FileContent.Add('\beginfile{' + ContentFileNameWithExt + '}');
+    fileContent.AddStrings(SongFileContent);
+    FileContent.Add('\endfile');
+  finally
+    SongFileContent.Destroy;
+  end;
 end;
 
 procedure TSongTeXFile.SaveTofile(FileName: String);

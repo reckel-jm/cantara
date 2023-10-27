@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, fpcunit, testregistry, testconstants,
-  contentselectionmodel;
+  contentselectionmodel, CantaraContentFile;
 
 type
 
@@ -14,24 +14,28 @@ type
 
   TContentRepositoryModalTest= class(TTestCase)
   private
-    RepositoryModel: TRepositoryModel;
+
   published
     procedure TestRepoImport;
     procedure TestRepoFile;
     procedure TestUnvalidFile;
+    procedure TestSelectFile;
+    procedure TestSongTexExport;
   end;
 
 implementation
 
 procedure TContentRepositoryModalTest.TestRepoImport;
 var ContentFile: TContentFile;
+  RepositoryModel: TRepositoryModel;
+  i: Integer;
 begin
   RepositoryModel := TRepositoryModel.Create;
   RepositoryModel.LoadRepository(TestConstants.TestDataDirectory);
   AssertTrue('Number of items in Song Repository not correct! There are ' +
-                     IntToStr(RepositoryModel.ItemCount), RepositoryModel.ItemCount = 5);
-  for ContentFile in RepositoryModel.RepositoryFiles do
-    WriteLn(ContentFile.DisplayName);
+                     IntToStr(RepositoryModel.ItemCount), RepositoryModel.ItemCount = TestConstants.NumberOfSongFiles);
+  for i := 0 to RepositoryModel.ItemCount-1 do
+    WriteLn(RepositoryModel.RepositoryFiles.Items[i].FilePath);
   RepositoryModel.Destroy;
 end;
 
@@ -46,7 +50,7 @@ begin
     GivenFilePath := TestConstants.TestDataDirectory + PathDelim +
     'ExampleCCLISong1.ccli';
     ARepoFile := TContentFile.Create(GivenFilePath);
-    AssertTrue('Display Namei is ' + ARepoFile.DisplayName,
+    AssertTrue('Display Name is ' + ARepoFile.DisplayName,
                         ARepoFile.DisplayName='ExampleCCLISong1');
     AssertTrue('File Path is ' + ARepoFile.FilePath,
                         ARepoFile.FilePath=GivenFilePath);
@@ -73,6 +77,32 @@ begin
   end;
 end;
 
+procedure TContentRepositoryModalTest.TestSelectFile;
+var ARepoFile: TContentFile;
+  RepositoryModel: TRepositoryModel;
+  ATestFile: TContentFile;
+  SelectionModel: TContentSelectionModel;
+begin
+  RepositoryModel := TRepositoryModel.Create;
+  RepositoryModel.LoadRepository(TestConstants.TestDataDirectory);
+  ATestFile := RepositoryModel.RepositoryFiles.Items[0];
+  SelectionModel := TContentSelectionModel.Create;
+  SelectionModel.DefaultPresentationStyleSettings.Transparency:=30;
+  SelectionModel.SelectFile(ATestFile);
+  WriteLn('Testfile created.');
+  AssertTrue('The Selected file has not the default transparancy',
+                  SelectionModel.SelectionList.Items[0].PresentationStyleSettings.Transparency=30);
+  SelectionModel.Destroy;
+  AssertTrue(ATestFile.Valid);
+  RepositoryModel.Destroy;
+end;
+
+procedure TContentRepositoryModalTest.TestSongTexExport;
+var RepositoryModel: TRepositoryModel;
+begin
+  RepositoryModel := TRepositoryModel.Create;
+  RepositoryModel.LoadRepository(TestConstants.TestDataDirectory);
+end;
 
 
 initialization

@@ -6,43 +6,18 @@ interface
 
 uses
   Classes, SysUtils, FGL, FileUtil,
-  PresentationModels;
+  PresentationModels, SongTeX, textfilehandler, CantaraContentFile;
 
 type
-  TContentType = (NotAssigned, Song, Bible, Slide);
 
-  { Represents a content file (song, etc.) which can be imported }
 
-  { TContentFile }
-
-  TContentFile = class(TObject)
-  private
-    fIsValid: Boolean;
-    fFileEnding: String;
-    fFilePath: String;
-    procedure CheckValidity;
-    procedure AssignContentType;
-    procedure SetFilePath(AFilePath: String);
-  public
-    DisplayName: String;
-    ContentType: TContentType;
-    property FilePath: String read fFilePath write SetFilePath;
-    property Valid: Boolean read fIsValid;
-    constructor Create(AFilePath: String); overload;
-    destructor Destroy; override;
-  end;
-
-  TContentFileList = specialize TFPGObjectList<TContentFile>;
-
-  { This model represents the selection of content for a presentation or for
+  { TRepositoryModel: This model represents the selection of content for a presentation or for
     an export. It covers the following elements:
      - importing a Song Repository
      - Selecting songs/content for a presentation
      - Switching the selected content order
      - Additional settings
   }
-
-  { TRepositoryModel }
 
   TRepositoryModel = class(TObject)
   private
@@ -62,9 +37,13 @@ type
     destructor Destroy; override;
   end;
 
-  TSelectedContentFile = class(TContentFile)
+  { TSelectedContentFile }
+
+  TSelectedContentFile = class(TObject)
   public
+    ContentFile: TContentFile;
     PresentationStyleSettings: PresentationModels.TPresentationStyleSettings;
+    constructor Create(AContentFile: TContentFile);
   end;
 
   TSelectionList = specialize TFPGObjectList<TSelectedContentFile>;
@@ -77,6 +56,7 @@ type
     DefaultPresentationStyleSettings: PresentationModels.TPresentationStyleSettings;
     SelectionList: TSelectionList;
     procedure SelectFile(AContentFile: TContentFile);
+    procedure ExportSelectionAsSongTeXFile(AFileName: String);
     constructor Create; overload;
     destructor Destroy; override;
   end;
@@ -84,48 +64,6 @@ type
 const ALLOWED_FILEENDINGS:String = '*.song;*.ccli;*.txt';
 
 implementation
-
-{ TContentFile }
-
-procedure TContentFile.CheckValidity;
-begin
-  if not FileExists(Self.fFilePath) then
-  begin
-    Self.fIsValid := False;
-    Exit;
-  end;
-  if Self.ContentType = TContentType.Song then Self.fIsValid := true else
-    Self.fIsValid := False;
-end;
-
-procedure TContentFile.AssignContentType;
-begin
-  if (Self.fFileEnding = '.song') or (Self.fFileEnding = '.ccli')
-  or (Self.fFileEnding = '.txt') then
-  begin
-    Self.ContentType:=TContentType.Song;
-  end;
-end;
-
-procedure TContentFile.SetFilePath(AFilePath: String);
-begin
-  Self.fFilePath:=AFilePath;
-  Self.fFileEnding:=ExtractFileExt(AFilePath);
-  Self.DisplayName:=ExtractFileName(Self.fFilePath);
-  Self.DisplayName:=StringReplace(Self.DisplayName, Self.fFileEnding, '', [rfReplaceAll]);
-end;
-
-constructor TContentFile.Create(AFilePath: String);
-begin
-  Self.FilePath := AFilePath;
-  Self.AssignContentType;
-  Self.CheckValidity;
-end;
-
-destructor TContentFile.Destroy;
-begin
-  inherited Destroy;
-end;
 
 { TRepositoryModel }
 
@@ -182,17 +120,50 @@ begin
   Self.fRepositoryFiles.Destroy;
 end;
 
+{ TSelectedContentFile }
+
+constructor TSelectedContentFile.Create(AContentFile: TContentFile);
+begin
+  Self.ContentFile := AContentFile;
+end;
+
 { TContentSelectionModel }
 
 procedure TContentSelectionModel.SelectFile(AContentFile: TContentFile);
 var ASelectedContentFile: TSelectedContentFile;
 begin
-  ASelectedContentFile := TSelectedContentFile(AContentFile);
+  ASelectedContentFile := TSelectedContentFile.Create(AContentFile);
+  ASelectedContentFile.PresentationStyleSettings := Self.DefaultPresentationStyleSettings;
+  Self.SelectionList.Add(ASelectedContentFile);
+end;
+
+procedure TContentSelectionModel.ExportSelectionAsSongTeXFile(AFileName: String);
+var
+  i: Integer;
+  songtexfile: TSongTeXFile;
+  song: TContentFile;
+  songtexfilename: String;
+  TextFileHandler: TTextFileHandler;
+  TextFile: String;
+begin
+  TextFileHandler := TTextFileHandler.Create;
+  songtexfile := TSongTeXFile.Create;
+  for i := 0 to Self.SelectionList.Count - 1 do
+  begin
+    song := Self.SelectionList.Items[i].ContentFile;
+    songtexfile.AddFile(song);
+  end;
+  songtexFileName := AFileName;
+  if ExtractFileExt(AFileName) <> '.songtex' then
+    songtexFileName := songtexFileName + '.songtex';
+  TextFile := songtexfile.Text;
+  TextFileHandler.SaveTextFile(TextFile, AFileName, '.songtex');
+  TextFileHandler.Destroy;
 end;
 
 constructor TContentSelectionModel.Create;
 begin
-  Self.SelectionList := TSelectionList.Create(False);
+  Self.SelectionList := TSelectionList.Create(True);
 end;
 
 destructor TContentSelectionModel.Destroy;

@@ -58,7 +58,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;controller"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -99,7 +99,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;controller"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -140,7 +140,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;controller"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -190,7 +190,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;controller"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -243,7 +243,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;controller"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -290,7 +290,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;controller"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -351,7 +351,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="25">
+    <Units Count="26">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -502,6 +502,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="CantaraStandardDialogs"/>
       </Unit24>
+      <Unit25>
+        <Filename Value="controller/songselectioncontroller.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SongSelectionController"/>
+      </Unit25>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -511,7 +516,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
+      <OtherUnitFiles Value="frames;exporters;tests;generics;forms;controller"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
