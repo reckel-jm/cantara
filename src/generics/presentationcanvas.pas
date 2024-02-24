@@ -174,7 +174,12 @@ begin
   end;
 
   ResizedBackgroundBitmap.SetSize(self.Width, self.Height);
-  ResizedBackgroundBitmap.Canvas.StretchDraw(DestRect, AdjustedBackgroundPicture.Bitmap);
+  ResizedBackgroundBitmap.PutImage(DestRect.Left, DestRect.Top,
+                                     AdjustedBackgroundPicture.Resample(
+                                       DestRect.Width, DestRect.Height
+                                     ),
+                                     dmDrawWithTransparency
+                                  );
 end;
 
 function TPresentationCanvasHandler.PaintSlide(Slide: TSlide): TBGRABitmap;
