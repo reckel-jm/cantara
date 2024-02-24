@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Slides, LCLType, LCLIntf, Graphics, graphtype,
   intfgraphics, lazcanvas, Math,
   StrUtils, // for SplitString
-  fpImage, PresentationModels;
+  fpImage, PresentationModels, bgrabitmap;
 
 type
 
