@@ -206,6 +206,8 @@ begin
   PresentationPreviewCanvas.Destroy;
   ExampleSong.Destroy;
   SlideList.Destroy;
+
+  SettingsFile.Destroy;
 end;
 
 procedure TfrmSettings.FormHide(Sender: TObject);
@@ -367,11 +369,11 @@ begin
     cbShowBackgroundImage.Checked := False;
     cbShowBackgroundImageChange(frmSettings);
   end;
+
   //if changedBackground then frmPresent.loadSettings;
   frmSongs.edtSearch.Text := '';
   LoadImageThread.Terminate;
   LoadImageThread.Destroy;
-  SettingsFile.Destroy;
 end;
 
 procedure TfrmSettings.loadSettings();
