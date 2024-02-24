@@ -6,9 +6,9 @@ interface
 
 uses
   Classes, SysUtils, Slides, LCLType, LCLIntf, Graphics, graphtype,
-  intfgraphics, lazcanvas, Math,
+  intfgraphics, Math, LazCanvas,
   StrUtils, // for SplitString
-  fpImage, PresentationModels, bgrabitmap;
+  fpImage, PresentationModels, BGRABitmap, BGRABitmapTypes;
 
 type
 
@@ -18,20 +18,20 @@ type
     SlideSettings: TSlideSettings;
     PresentationStyleSettings: TPresentationStyleSettings;
     Width, Height: Integer;
-    Bitmap: TBitmap;
-    AdjustedBackgroundPicture: TPicture;
-    ResizedBackgroundBitmap: TBitmap;
+    Bitmap: TBGRABitmap;
+    AdjustedBackgroundPicture: TBGRABitmap;
+    ResizedBackgroundBitmap: TBGRABitmap;
     constructor Create; overload;
     constructor Create(aPresentationStyleSettings: TPresentationStyleSettings;
       aSlideSettings: TSlideSettings); overload;
     destructor Destroy; override;
     // Will be used to adjust the brightness of the background
-    procedure AdjustBrightness;
+    procedure AdjustTransparency;
     procedure LoadBackgroundBitmap;
     procedure ResizeBackgroundBitmap;
-    function PaintSlide(Slide: TSlide): TBitmap;
+    function PaintSlide(Slide: TSlide): TBGRABitmap;
   private
-    BackgroundPicture: TPicture;
+    BackgroundPicture: TBGRABitmap;
     function CalculateTextHeight(Font: TFont; RectWidth: Integer;
       TextString: String): Integer;
   end;
@@ -51,68 +51,51 @@ begin
   FreeAndNil(APresentationStyleSetting.Font);
 end;
 
-procedure TPresentationCanvasHandler.AdjustBrightness;
+procedure TPresentationCanvasHandler.AdjustTransparency;
 var
-  SrctfImg, TemptfImg: TLazIntfImage;
-  ImgHandle, ImgMaskHandle: HBitmap;
-  TargetColor: TFPColor;
-  Offset, px, py: Integer;
-  CurColor: TFPColor;
+  x, y: Integer;
+  p: PBGRAPixel;
+  TransparentBackgroundImage: TBGRABitmap;
 begin
-  Offset := PresentationStyleSettings.Transparency;
-  if Offset = 0 then
+
+  if PresentationStyleSettings.Transparency = 0 then
   begin
     AdjustedBackgroundPicture.Assign(BackgroundPicture);
     Exit;
   end;
-  SrctfImg := TLazIntfImage.Create(0, 0);
-  SrctfImg.LoadFromBitmap(BackgroundPicture.Bitmap.Handle,
-    BackgroundPicture.Bitmap.MaskHandle);
-  TemptfImg := TLazIntfImage.Create(0, 0);
-  TemptfImg.LoadFromBitmap(BackgroundPicture.Bitmap.Handle,
-    BackgroundPicture.Bitmap.MaskHandle);
-  TargetColor := TColorToFPColor(PresentationStyleSettings.BackgroundColor);
-  for py := 0 to SrctfImg.Height - 1 do
+
+  AdjustedBackgroundPicture.SetSize(BackgroundPicture.Width, BackgroundPicture.Height);
+  AdjustedBackgroundPicture.FillRect(0,0,
+                                         AdjustedBackgroundPicture.Width-1,
+                                         AdjustedBackgroundPicture.Height-1,
+                                         ColorToBGRA(PresentationStyleSettings.BackgroundColor)
+                                     );
+
+  TransparentBackgroundImage := TBGRABitmap.Create;
+  TransparentBackgroundImage.Assign(BackgroundPicture);
+
+  for y := 0 to TransparentBackgroundImage.Height-1 do
   begin
-    for px := 0 to SrctfImg.Width - 1 do
+    p := TransparentBackgroundImage.Scanline[y];
+    for x := 0 to TransparentBackgroundImage.Width-1 do
     begin
-      if Offset > 0 then
-      begin
-        //Offset:=Offset * $FF;
-        CurColor := SrctfImg.Colors[px, py];
-        CurColor.red := EnsureRange(CurColor.red + Offset, 0, $FFFF);
-        CurColor.green := EnsureRange(CurColor.green + Offset, 0, $FFFF);
-        CurColor.blue := EnsureRange(CurColor.blue + Offset, 0, $FFFF);
-      end
-      else
-      begin
-        CurColor := SrctfImg.Colors[px, py];
-        CurColor.red := EnsureRange(Trunc(CurColor.red -
-          (CurColor.red - TargetColor.Red) * Abs(Offset) / 100), 0, $FFFF);
-        CurColor.green := EnsureRange(Trunc(CurColor.Green -
-          (CurColor.Green - TargetColor.Green) * Abs(Offset) / 100), 0, $FFFF);
-        CurColor.blue := EnsureRange(Trunc(CurColor.blue -
-          (CurColor.blue - TargetColor.blue) * Abs(Offset) / 100), 0, $FFFF);
-      end;
-      TemptfImg.Colors[px, py] := CurColor;
+      p^.alpha := 255-Round(Abs(PresentationStyleSettings.Transparency*2.55));
+      inc(p);
     end;
   end;
-  TemptfImg.CreateBitmaps(ImgHandle, ImgMaskHandle, False);
-  AdjustedBackgroundPicture.Bitmap.Handle := ImgHandle;
-  AdjustedBackgroundPicture.Bitmap.MaskHandle := ImgMaskHandle;
-  SrctfImg.Free;
-  TemptfImg.Free;
+
+  AdjustedBackgroundPicture.PutImage(0,0,TransparentBackgroundImage,dmDrawWithTransparency);
+
+  TransparentBackgroundImage.Destroy;
 end;
 
 constructor TPresentationCanvasHandler.Create; overload;
 begin
   inherited;
-  Bitmap := TBitmap.Create;
-  Bitmap.PixelFormat := pf32Bit;
-  BackgroundPicture := TPicture.Create;
-  ResizedBackgroundBitmap := TBitmap.Create;
-  ResizedBackgroundBitmap.PixelFormat := pf32Bit;
-  AdjustedBackgroundPicture := TPicture.Create;
+  Bitmap := TBGRABitmap.Create;
+  BackgroundPicture := TBGRABitmap.Create;
+  AdjustedBackgroundPicture := TBGRABitmap.Create;
+  ResizedBackgroundBitmap := TBGRABitmap.Create;
 end;
 
 constructor TPresentationCanvasHandler.Create(aPresentationStyleSettings:
@@ -139,9 +122,8 @@ begin
   if (PresentationStyleSettings.ShowBackgroundImage) then
   begin
     try
-      BackgroundPicture.Clear;
       BackgroundPicture.LoadFromFile(PresentationStyleSettings.BackgroundImageFilePath);
-      AdjustBrightness;
+      AdjustTransparency;
       ResizeBackgroundBitmap;
     except
       PresentationStyleSettings.ShowBackgroundImage := False;
@@ -157,7 +139,9 @@ begin
   // Prevent a Division by Zero Exception
   if (self.Height = 0) Or (AdjustedBackgroundPicture.Height = 0) Or
     (AdjustedBackgroundPicture.Width = 0) then Exit;
-  ResizedBackgroundBitmap.Clear;
+
+  ResizedBackgroundBitmap.Fill(clBlack);
+
   if self.Width / self.Height >= AdjustedBackgroundPicture.Width /
     AdjustedBackgroundPicture.Height then
   begin
@@ -173,6 +157,7 @@ begin
     DestRect.Width := Ceil(DestRect.Height * AdjustedBackgroundPicture.Width /
       AdjustedBackgroundPicture.Height);
   end
+
   else
   begin
     newWidth := Ceil(self.Height * AdjustedBackgroundPicture.Width /
@@ -187,11 +172,12 @@ begin
     DestRect.Height := Ceil(DestRect.Width * AdjustedBackgroundPicture.Height /
       AdjustedBackgroundPicture.Width);
   end;
+
   ResizedBackgroundBitmap.SetSize(self.Width, self.Height);
   ResizedBackgroundBitmap.Canvas.StretchDraw(DestRect, AdjustedBackgroundPicture.Bitmap);
 end;
 
-function TPresentationCanvasHandler.PaintSlide(Slide: TSlide): TBitmap;
+function TPresentationCanvasHandler.PaintSlide(Slide: TSlide): TBGRABitmap;
 var
   BackgroundRect, ContentRect: TRect;
   MainTextHeight, SpoilerTextHeight, MetaTextHeight: Integer;
@@ -201,7 +187,7 @@ var
   SpoilerText: String;
   DefaultSpoilerDistance: Integer;
 begin
-  Bitmap.Clear;
+  Bitmap.Fill(clBlack);
   Bitmap.SetSize(self.Width, self.Height);
   // Here we setup the different fonts for calculating the text height
   NormalTextFont := TFont.Create;
@@ -216,6 +202,7 @@ begin
   MetaTextFont := TFont.Create;
   MetaTextFont.Assign(NormalTextFont);
   MetaTextFont.Height := NormalTextFont.Height Div 3;
+
   with BackgroundRect do
   begin
     Left := 0;
@@ -223,11 +210,13 @@ begin
     Width := self.Width;
     Height := self.Height;
   end;
+
   MainTextHeight := self.CalculateTextHeight(NormalTextFont, self.Width -
     PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right,
     Slide.PartContent.MainText);
   MetaTextHeight := CalculateTextHeight(MetaTextFont, SpoilerRectWidth,
     Slide.PartContent.MetaText);
+
   SpoilerText := Slide.PartContent.SpoilerText;
   if SpoilerText <> '' then
   begin
@@ -256,11 +245,13 @@ begin
       end;
     end;
   end
+
   else
   begin
     SpoilerTextHeight := 0;
     SpoilerDistance := 0;
   end;
+
   with Bitmap.Canvas do
   begin
     Brush.Color := PresentationStyleSettings.BackgroundColor;
@@ -268,11 +259,13 @@ begin
     FillRect(Bitmap.Canvas.ClipRect);
     FillRect(BackgroundRect);
     //Insert Background
+
     if PresentationStyleSettings.ShowBackgroundImage then
     begin
       BitBlt(Bitmap.Canvas.Handle, 0, 0, self.Width, self.Height,
         ResizedBackgroundBitmap.Canvas.Handle, 0, 0, SRCCOPY);
     end;
+
     with TextStyle do
     begin
       case PresentationStyleSettings.HorizontalAlign of
@@ -285,6 +278,7 @@ begin
       WordBreak := True;
       Opaque := False;
     end;
+
     Font.Assign(NormalTextFont);
     with ContentRect do
     begin
@@ -302,10 +296,12 @@ begin
         PresentationStyleSettings.Padding.Left;
       Height := MainTextHeight;
     end;
+
     { Make the Title bold }
     if Slide.SlideType = TitleSlide then
       Font.Bold := True;
     TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.MainText);
+
     { Paint the spoiler if desired }
     if SpoilerText <> '' then
     begin
@@ -314,6 +310,7 @@ begin
       ContentRect.Height := SpoilerTextHeight;
       TextRect(ContentRect, ContentRect.Left, ContentRect.Top, SpoilerText);
     end;
+
     // We paint Meta information if desired
     if Slide.PartContent.MetaText <> '' then
     begin
@@ -331,8 +328,9 @@ begin
       TextRect(ContentRect, ContentRect.Left, ContentRect.Top,
         Slide.PartContent.MetaText);
     end;
+
   end;
-  //Bitmap.SaveToFile(GetTempDir() + 'foto.png');
+
   NormalTextFont.Destroy;
   SpoilerTextFont.Destroy;
   MetaTextFont.Destroy;

@@ -19,7 +19,7 @@ object frmPresent: TfrmPresent
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.0.0.3'
   WindowState = wsMaximized
   object imageShower: TImage
     AnchorSideLeft.Control = Owner

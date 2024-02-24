@@ -164,7 +164,7 @@ var
   SlideBitmap: TBitmap; // StringArray: TStringDynArray;
 begin
   cur := index;
-  SlideBitmap := PresentationCanvas.PaintSlide(SlideList.Items[cur]);
+  SlideBitmap := PresentationCanvas.PaintSlide(SlideList.Items[cur]).Bitmap;
   imageShower.Left := 0;
   imageShower.Top := 0;
   imageShower.Picture.Bitmap.Assign(SlideBitmap);

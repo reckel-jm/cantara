@@ -231,12 +231,13 @@ begin
   PresentationCanvas.Width := EditWidth.Value;
   PresentationCanvas.Height := EditHeight.Value;
   PresentationCanvas.LoadBackgroundBitmap;
-  PresentationCanvas.AdjustBrightness;
+  PresentationCanvas.AdjustTransparency;
   ImageList.Width := PresentationCanvas.Width;
   ImageList.Height := PresentationCanvas.Height;
   for i := 0 to SlideList.Count - 1 do
   begin
-    Bitmap := PresentationCanvas.PaintSlide(SlideLIst.Items[i]);
+    PresentationCanvas.PaintSlide(SlideLIst.Items[i]).InvalidateBitmap;
+    Bitmap := PresentationCanvas.PaintSlide(SlideLIst.Items[i]).Bitmap;
     ImageList.AddMasked(Bitmap, clNone);
     LI := ImageListView.Items.Add;
     LI.Caption := 'Image ' + FormatFloat('000', (i + 1));
