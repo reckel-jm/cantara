@@ -192,6 +192,7 @@ var
   SpoilerDistance: Integer;
   SpoilerText: String;
   DefaultSpoilerDistance: Integer;
+  TextStyle: TTextStyle;
 begin
   Bitmap.Fill(clBlack);
   Bitmap.SetSize(self.Width, self.Height);
@@ -259,83 +260,81 @@ begin
     SpoilerDistance := 0;
   end;
 
-  with Bitmap.Canvas do
+  //Insert Background
+  if PresentationStyleSettings.ShowBackgroundImage then
   begin
-    Brush.Color := PresentationStyleSettings.BackgroundColor;
-    Brush.Style := bsSolid;
-    FillRect(Bitmap.Canvas.ClipRect);
-    FillRect(BackgroundRect);
-    //Insert Background
+    Bitmap.PutImage(0,0,Self.ResizedBackgroundBitmap, dmSet);
+  end;
 
-    if PresentationStyleSettings.ShowBackgroundImage then
-    begin
-      BitBlt(Bitmap.Canvas.Handle, 0, 0, self.Width, self.Height,
-        ResizedBackgroundBitmap.Canvas.Handle, 0, 0, SRCCOPY);
+  with TextStyle do
+  begin
+    case PresentationStyleSettings.HorizontalAlign of
+      Align_Left: Alignment := taLeftJustify;
+      Align_Center: Alignment := taCenter;
+      Align_Right: Alignment := taRightJustify;
     end;
+    Layout := tlTop;
+    SingleLine := False;
+    WordBreak := True;
+    Opaque := False;
+  end;
 
+  Self.AssignBGRAFont(NormalTextFont);
+
+  with ContentRect do
+  begin
+    Left := PresentationStyleSettings.Padding.Left;
+    case PresentationStyleSettings.VerticalAlign of
+      tlTop: Top := PresentationStyleSettings.Padding.Top;
+      tlCenter: Top := PresentationStyleSettings.Padding.Top +
+          (self.Height - PresentationStyleSettings.Padding.Top -
+          PresentationStyleSettings.Padding.Bottom - MainTextHeight -
+          SpoilerTextHeight - SpoilerDistance) Div 2;
+      tlBottom: Top := self.Height - PresentationStyleSettings.Padding.Bottom -
+          MainTextHeight - SpoilerTextHeight - SpoilerDistance;
+    end;
+    Width := self.Width - PresentationStyleSettings.Padding.Right -
+      PresentationStyleSettings.Padding.Left;
+    Height := MainTextHeight;
+  end;
+
+  { Make the Title bold }
+  if Slide.SlideType = TitleSlide then
+    Bitmap.FontStyle := [fsBold];
+
+  { Painting the main text }
+  Bitmap.TextRect(ContentRect, Slide.PartContent.MainText, TextStyle.Alignment, tlCenter,
+                               ColorToBgra(PresentationStyleSettings.TextColor));
+
+  // Repeat Assignment because we changed it to bold before
+  Self.AssignBGRAFont(NormalTextFont);
+
+  { Paint the spoiler if desired }
+  if SpoilerText <> '' then
+  begin
+    Self.AssignBGRAFont(SpoilerTextFont);
+    ContentRect.Top += MainTextHeight + SpoilerDistance;
+    ContentRect.Height := SpoilerTextHeight;
+    Bitmap.TextRect(ContentRect, Slide.PartContent.SpoilerText, TextStyle.Alignment, tlCenter,
+                               ColorToBgra(PresentationStyleSettings.TextColor));
+  end;
+
+  // We paint Meta information if desired
+  if Slide.PartContent.MetaText <> '' then
+  begin
+    ContentRect.Top := self.Height - PresentationStyleSettings.Padding.Bottom -
+      MetaTextHeight;
+    ContentRect.Left := PresentationStyleSettings.Padding.Left;
+    ContentRect.Height := MetaTextHeight;
+    ContentRect.Width := SpoilerRectWidth;
     with TextStyle do
     begin
-      case PresentationStyleSettings.HorizontalAlign of
-        Align_Left: Alignment := taLeftJustify;
-        Align_Center: Alignment := taCenter;
-        Align_Right: Alignment := taRightJustify;
-      end;
-      Layout := tlTop;
-      SingleLine := False;
-      WordBreak := True;
-      Opaque := False;
+      Alignment := taLeftJustify;
+      Layout := tlBottom;
     end;
-
-    Font.Assign(NormalTextFont);
-    with ContentRect do
-    begin
-      Left := PresentationStyleSettings.Padding.Left;
-      case PresentationStyleSettings.VerticalAlign of
-        tlTop: Top := PresentationStyleSettings.Padding.Top;
-        tlCenter: Top := PresentationStyleSettings.Padding.Top +
-            (self.Height - PresentationStyleSettings.Padding.Top -
-            PresentationStyleSettings.Padding.Bottom - MainTextHeight -
-            SpoilerTextHeight - SpoilerDistance) Div 2;
-        tlBottom: Top := self.Height - PresentationStyleSettings.Padding.Bottom -
-            MainTextHeight - SpoilerTextHeight - SpoilerDistance;
-      end;
-      Width := self.Width - PresentationStyleSettings.Padding.Right -
-        PresentationStyleSettings.Padding.Left;
-      Height := MainTextHeight;
-    end;
-
-    { Make the Title bold }
-    if Slide.SlideType = TitleSlide then
-      Font.Bold := True;
-    TextRect(ContentRect, ContentRect.Left, ContentRect.Top, Slide.PartContent.MainText);
-
-    { Paint the spoiler if desired }
-    if SpoilerText <> '' then
-    begin
-      Font.Assign(SpoilerTextFont);
-      ContentRect.Top += MainTextHeight + SpoilerDistance;
-      ContentRect.Height := SpoilerTextHeight;
-      TextRect(ContentRect, ContentRect.Left, ContentRect.Top, SpoilerText);
-    end;
-
-    // We paint Meta information if desired
-    if Slide.PartContent.MetaText <> '' then
-    begin
-      ContentRect.Top := self.Height - PresentationStyleSettings.Padding.Bottom -
-        MetaTextHeight;
-      ContentRect.Left := PresentationStyleSettings.Padding.Left;
-      ContentRect.Height := MetaTextHeight;
-      ContentRect.Width := SpoilerRectWidth;
-      with TextStyle do
-      begin
-        Alignment := taLeftJustify;
-        Layout := tlBottom;
-      end;
-      Font.Assign(MetaTextFont);
-      TextRect(ContentRect, ContentRect.Left, ContentRect.Top,
-        Slide.PartContent.MetaText);
-    end;
-
+    Self.AssignBGRAFont(MetaTextFont);
+    Bitmap.TextRect(ContentRect, Slide.PartContent.MetaText, TextStyle.Alignment, tlTop,
+                               ColorToBgra(PresentationStyleSettings.TextColor));
   end;
 
   NormalTextFont.Destroy;
