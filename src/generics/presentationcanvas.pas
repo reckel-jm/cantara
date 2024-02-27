@@ -348,10 +348,6 @@ function TPresentationCanvasHandler.CalculateTextHeight(Font: TFont;
 var
   R: TRect;
 begin
-  {Bitmap.Canvas.Font.Assign(Font);
-  R := Rect(0, 0, RectWidth, 0);
-  Result := DrawText(Bitmap.Canvas.Handle, PChar(TextString),
-    Length(TextString), R, dt_CalcRect Or dt_WordBreak);  }
   Self.AssignBGRAFont(Font);
   Result := Bitmap.TextSize(TextString, RectWidth).Height;
 end;
