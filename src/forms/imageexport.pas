@@ -236,7 +236,7 @@ begin
   ImageList.Height := PresentationCanvas.Height;
   for i := 0 to SlideList.Count - 1 do
   begin
-    PresentationCanvas.PaintSlide(SlideLIst.Items[i]).InvalidateBitmap;
+    //PresentationCanvas.PaintSlide(SlideLIst.Items[i]).InvalidateBitmap;
     Bitmap := PresentationCanvas.PaintSlide(SlideLIst.Items[i]).Bitmap;
     ImageList.AddMasked(Bitmap, clNone);
     LI := ImageListView.Items.Add;

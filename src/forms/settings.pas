@@ -271,7 +271,7 @@ begin
   begin
     changedBackground := True;
     cbShowBackgroundImage.Checked := True;
-    //LoadPreviewImage not needed as this is done by cbShowBackground
+    LoadPreviewImage;
   end
   else if Not (FileExists(BgPictureDialog.FileName)) then
     cbShowBackgroundImage.Checked := False;
@@ -437,21 +437,15 @@ begin
 end;
 
 procedure TfrmSettings.sbImageBrightnessChange(Sender: TObject);
-var
-  i: 0..2;
 begin
   if sbImageBrightness.Position > 0 then
     lblImageExplainer.Caption :=
       strTransparency + ' ' + IntToStr(Abs(sbImageBrightness.Position)) + '%'
   else if sbImageBrightness.Position = 0 then
     lblImageExplainer.Caption := strPictureOriginalState;
-  for i := 0 to 2 do
-  begin
-    ChangedBackground := True;
-    LoadPreviewImage;
-    Application.ProcessMessages;
-    Sleep(5);
-  end;
+
+  ChangedBackground := True;
+  LoadPreviewImage;
 end;
 
 procedure TfrmSettings.sbImageBrightnessDragOver(Sender, Source: TObject;
@@ -522,6 +516,7 @@ begin
     settingsFile.WriteString('Config', 'MetaDataSyntax', str);
     settingsFile.WriteString('Config', 'BackgroundPicture-Path',
       BgPictureDialog.FileName);
+
     // MUST be before background picture
     settingsFile.WriteBool('Config', 'BackgroundPicture', cbShowBackgroundImage.Checked);
     settingsFile.WriteInteger('Config', 'ImageBrightness', sbImageBrightness.Position);

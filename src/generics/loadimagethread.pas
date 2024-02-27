@@ -82,6 +82,7 @@ end;
 procedure TLoadImageThread.Execute;
 var
   Skip: Boolean;
+  i: 0..2;
 begin
   if Blocked then Exit
   else
@@ -90,23 +91,29 @@ begin
   begin
     if Not halted And frmSettings.Visible then
     begin
+
       Skip := False;
       if Not Assigned(PresentationCanvas) then Skip := True;
       if Not Assigned(Screen) then Skip := True;
       if Screen.Width = 0 then Skip := True;
       if Screen.Height = 0 then Skip := True;
       if Not Assigned(TargetPicture) then Skip := True;
+
       if Not Skip then
       begin
-        PresentationCanvas.SlideSettings := self.SlideSettings;
-        PresentationCanvas.PresentationStyleSettings := self.PresentationStyleSettings;
-        PresentationCanvas.Width := self.Screen.Width;
-        PresentationCanvas.Height := self.Screen.Height;
-        if ChangeBackground then
-          PresentationCanvas.LoadBackgroundBitmap;
-        PresentationCanvas.ResizeBackgroundBitmap;
-        Synchronize(@LoadImage);
+        for i := 0 to 2 do
+        begin
+          PresentationCanvas.SlideSettings := self.SlideSettings;
+          PresentationCanvas.PresentationStyleSettings := self.PresentationStyleSettings;
+          PresentationCanvas.Width := self.Screen.Width;
+          PresentationCanvas.Height := self.Screen.Height;
+          if ChangeBackground then
+            PresentationCanvas.LoadBackgroundBitmap;
+          PresentationCanvas.ResizeBackgroundBitmap;
+          Synchronize(@LoadImage);
+        end;
       end;
+
       halted := True;
     end
     else

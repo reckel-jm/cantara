@@ -34,6 +34,7 @@ type
     BackgroundPicture: TBGRABitmap;
     function CalculateTextHeight(Font: TFont; RectWidth: Integer;
       TextString: String): Integer;
+    procedure AssignBGRAFont(Font: TFont);
   end;
 
 const
@@ -140,8 +141,6 @@ begin
   if (self.Height = 0) Or (AdjustedBackgroundPicture.Height = 0) Or
     (AdjustedBackgroundPicture.Width = 0) then Exit;
 
-  ResizedBackgroundBitmap.Fill(clBlack);
-
   if self.Width / self.Height >= AdjustedBackgroundPicture.Width /
     AdjustedBackgroundPicture.Height then
   begin
@@ -151,7 +150,7 @@ begin
       DestRect.Top := Max(-(Trunc(
         (AdjustedBackgroundPicture.Height - self.Height) / 2)), 0)
     else
-      DestRect.Top := 0;
+    DestRect.Top := 0;
     DestRect.Left := 0;
     DestRect.Height := Max(newHeight, self.Height);
     DestRect.Width := Ceil(DestRect.Height * AdjustedBackgroundPicture.Width /
@@ -166,17 +165,19 @@ begin
       DestRect.Left := Max(-(Trunc(
         (AdjustedBackgroundPicture.Width - self.Width) / 2)), 0)
     else
-      DestRect.Left := 0;
+    DestRect.Left := 0;
     DestRect.Top := 0;
     DestRect.Width := Max(newWidth, self.Width);
     DestRect.Height := Ceil(DestRect.Width * AdjustedBackgroundPicture.Height /
       AdjustedBackgroundPicture.Width);
   end;
 
+  ResizedBackgroundBitmap.Fill(clBlack);
   ResizedBackgroundBitmap.SetSize(self.Width, self.Height);
   ResizedBackgroundBitmap.PutImage(DestRect.Left, DestRect.Top,
                                      AdjustedBackgroundPicture.Resample(
-                                       DestRect.Width, DestRect.Height
+                                       DestRect.Width, DestRect.Height,
+                                       rmSimpleStretch
                                      ),
                                      dmDrawWithTransparency
                                   );
@@ -232,6 +233,7 @@ begin
       (PresentationStyleSettings.Padding.Top + PresentationStyleSettings.Padding.Bottom +
       MainTextHeight + SpoilerTextHeight + DEFAULTSPOILERDISTANCE -
       MINSPOILERDISTANCE - MetaTextHeight));
+
     if SpoilerDistance < DEFAULTSPOILERDISTANCE then
     begin
       SpoilerText := SplitString(SpoilerText, LineEnding)[0] + MoreLyricsIndicator;
@@ -347,10 +349,19 @@ function TPresentationCanvasHandler.CalculateTextHeight(Font: TFont;
 var
   R: TRect;
 begin
-  Bitmap.Canvas.Font.Assign(Font);
+  {Bitmap.Canvas.Font.Assign(Font);
   R := Rect(0, 0, RectWidth, 0);
   Result := DrawText(Bitmap.Canvas.Handle, PChar(TextString),
-    Length(TextString), R, dt_CalcRect Or dt_WordBreak);
+    Length(TextString), R, dt_CalcRect Or dt_WordBreak);  }
+  Self.AssignBGRAFont(Font);
+  Result := Bitmap.TextSize(TextString, RectWidth).Height;
+end;
+
+procedure TPresentationCanvasHandler.AssignBGRAFont(Font: TFont);
+begin
+  Bitmap.FontName := Font.Name;
+  Bitmap.FontStyle:= Font.Style;
+  Bitmap.FontHeight:=Font.Height;
 end;
 
 end.
