@@ -227,6 +227,7 @@ begin
   SpoilerText := Slide.PartContent.SpoilerText;
   if SpoilerText <> '' then
   begin
+    Self.AssignBGRAFont(SpoilerTextFont);
     SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont,
       SpoilerRectWidth, SpoilerText);
     // Check whether spoiler fits
@@ -315,7 +316,7 @@ begin
     Self.AssignBGRAFont(SpoilerTextFont);
     ContentRect.Top += MainTextHeight + SpoilerDistance;
     ContentRect.Height := SpoilerTextHeight;
-    Bitmap.TextRect(ContentRect, Slide.PartContent.SpoilerText, TextStyle.Alignment, tlCenter,
+    Bitmap.TextRect(ContentRect, SpoilerText, TextStyle.Alignment, tlCenter,
                                ColorToBgra(PresentationStyleSettings.TextColor));
   end;
 
