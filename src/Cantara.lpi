@@ -514,7 +514,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="frames;exporters;tests;generics;forms"/>
+      <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;bgrabitmap/bgrabitmap"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
