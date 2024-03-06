@@ -59,6 +59,9 @@ var
   TransparentBackgroundImage: TBGRABitmap;
 begin
 
+  if PresentationStyleSettings.ShowBackgroundImage = false
+    then Exit;
+
   if PresentationStyleSettings.Transparency = 0 then
   begin
     AdjustedBackgroundPicture.Assign(BackgroundPicture);
@@ -137,6 +140,9 @@ var
   DestRect: TRect;
   NewHeight, NewWidth: Integer;
 begin
+  if PresentationStyleSettings.ShowBackgroundImage = false
+     then Exit;
+
   // Prevent a Division by Zero Exception
   if (self.Height = 0) Or (AdjustedBackgroundPicture.Height = 0) Or
     (AdjustedBackgroundPicture.Width = 0) then Exit;
@@ -172,7 +178,7 @@ begin
       AdjustedBackgroundPicture.Width);
   end;
 
-  ResizedBackgroundBitmap.Fill(clBlack);
+  ResizedBackgroundBitmap.Fill(PresentationStyleSettings.BackgroundColor);
   ResizedBackgroundBitmap.SetSize(self.Width, self.Height);
   ResizedBackgroundBitmap.PutImage(DestRect.Left, DestRect.Top,
                                      AdjustedBackgroundPicture.Resample(
@@ -194,7 +200,7 @@ var
   DefaultSpoilerDistance: Integer;
   TextStyle: TTextStyle;
 begin
-  Bitmap.Fill(clBlack);
+  Bitmap.Fill(PresentationStyleSettings.BackgroundColor);
   Bitmap.SetSize(self.Width, self.Height);
   // Here we setup the different fonts for calculating the text height
   NormalTextFont := TFont.Create;
@@ -317,7 +323,8 @@ begin
     ContentRect.Top += MainTextHeight + SpoilerDistance;
     ContentRect.Height := SpoilerTextHeight;
     Bitmap.TextRect(ContentRect, SpoilerText, TextStyle.Alignment, tlCenter,
-                               ColorToBgra(PresentationStyleSettings.TextColor));
+                      ColorToBgra(PresentationStyleSettings.TextColor)
+                    );
   end;
 
   // We paint Meta information if desired
@@ -355,9 +362,9 @@ end;
 
 procedure TPresentationCanvasHandler.AssignBGRAFont(Font: TFont);
 begin
-  Bitmap.FontName := Font.Name;
-  Bitmap.FontStyle:= Font.Style;
-  Bitmap.FontHeight:=Font.Height;
+  Bitmap.FontName  := Font.Name;
+  Bitmap.FontStyle := Font.Style;
+  Bitmap.FontHeight:= Round(Font.Height/0.75);
 end;
 
 end.
