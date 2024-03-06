@@ -1,5 +1,5 @@
 name: cantara
-version: '2.5.0'
+version: '2.6.0'
 summary: A Song Presentation Software.
 description: |
   A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
@@ -58,6 +58,7 @@ parts:
 
     override-build: |
       cd src
+      lazbuild --ws="qt5" bgrabitmap/bgrabitmap/bgrabitmappack.lpk
       lazbuild -B --bm="ReleaseConfined" --ws="qt5" Cantara.lpi
       cp -r languages $SNAPCRAFT_PART_INSTALL/
       install Cantara.ico $SNAPCRAFT_PART_INSTALL/
