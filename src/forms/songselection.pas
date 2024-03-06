@@ -1001,7 +1001,6 @@ begin
           Application.ProcessMessages;
           Self.ReloadPresentationImage;
           {$ENDIF }
-          PnlSplitter.Left := Self.Width div 3;
         end;
       end;
       //BringToFront;
@@ -1013,8 +1012,8 @@ begin
     begin
       ProgramMode := ModeSingleScreenPresentation;
       // We make sure that the Presentation window will be shown at the same screen as the frmSongs.
-      frmPresent.Top := frmSongs.Top;
-      frmPresent.Left := frmSongs.Left;
+      frmPresent.Top := Screen.Monitors[0].Top+(Screen.Monitors[0].Height-frmPresent.Height) div 2;
+      frmPresent.Left := Screen.Monitors[0].Left+(Screen.Monitors[0].Width-frmPresent.Width) div 2;
     end;
   end
   else // Wurde kein Lied ausgewählt, zeige eine Fehlermeldung
@@ -1025,6 +1024,8 @@ begin
     Invalidate;
     ReloadPresentationImage;
     FillSlideListInPresentationConsole;
+    PnlSplitter.Left := Self.Width div 2;
+    Application.ProcessMessages;
   end;
   UpdateControls;
 end;
