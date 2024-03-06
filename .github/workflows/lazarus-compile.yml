@@ -19,7 +19,7 @@ jobs:
         with-cache: false
     - name: Build the Windows Application
       if: ${{ matrix.operating-system == 'windows-latest' }}
-      run: lazbuild -B src/Cantara.lpi
+      run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk; lazbuild -B src/Cantara.lpi
     - name: Install libqt5pas dependency under Ubuntu
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: sudo apt-get -y install libqt5pas-dev libqt5pas1
@@ -28,7 +28,7 @@ jobs:
       run: make
     - name: Build the MacOS Application
       if: ${{ matrix.operating-system == 'macos-latest' }}
-      run: lazbuild -B src/Cantara.lpi
+      run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk && lazbuild -B src/Cantara.lpi
     - name: Run all Tests on Ubuntu
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: lazbuild src/fpccantaraclitest.lpi && cd src && ./fpccantaraclitest -a --format=plain
