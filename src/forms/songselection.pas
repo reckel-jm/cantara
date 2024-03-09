@@ -9,7 +9,7 @@ uses
   Controls, Graphics, Dialogs, StrUtils, Math,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles,
   DefaultTranslator, Clipbrd,
-  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
+  lyrics, LCLTranslator, BCListBox, songeditor, SongTeX, welcome, Slides,
   FormFulltextSearch, PPTX, PresentationCanvas,
   formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
   presentationcontroller, Types,bgrabitmap, BGRABitmapTypes;
@@ -52,7 +52,6 @@ type
     lblPresentation: TLabel;
     lbxSRepo: TListBox;
     lbxSselected: TListBox;
-    SlideTextListBox: TListBox;
     MainMenu: TMainMenu;
     menuFile: TMenuItem;
     itemSeperator1: TMenuItem;
@@ -80,6 +79,7 @@ type
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
     Separator1: TMenuItem;
+    SlideTextListBox: TBCListBox;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     SplitterContentImage: TSplitter;
@@ -150,6 +150,7 @@ type
       Shift: TShiftState);
     procedure SlideTextListBoxMeasureItem(Control: TWinControl; Index: Integer;
       var AHeight: Integer);
+    procedure SlideTextListBoxResize(Sender: TObject);
     procedure SongPopupMenuPopup(Sender: TObject);
     procedure TimerUpdateScreenTimer(Sender: TObject);
     { Updates the Song Position in lbxSSelected during a presentation }
@@ -1074,17 +1075,29 @@ begin
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.FontName:=Screen.SystemFont.Name;
   ABitmap.FontQuality:=fqFineAntialiasing;
+  if frmPresent.SlideList.Items[Index].SlideType = TitleSlide then
+  begin
+     ABitmap.FontStyle+=[fsBold];
+     ABitmap.DrawLine(2,2,ARect.Width,2,clBlack,true);
+  end;
   ABitmap.SetSize(
-                  SlideTextListBox.Width,
+                  ARect.Width,
                   ABitmap.TextSize(SlideTextListBox.Items[Index],SlideTextListBox.Width).Height + 10
                   );
-  ABitmap.Rectangle(Rect(2,2,Abitmap.Width-2, ABitmap.Height-2), clBlack, dmSet);
+  if SlideTextListBox.ItemIndex=Index then
+    ABitmap.FillRect(3,3,ABitmap.Width-3, ABitmap.Height-3, clActiveCaption, dmSet);
+  ABitmap.DrawLine(0,0,0,ARect.Height,clBlack,True);
+  ABitmap.DrawLine(ARect.Width,0,ARect.Width,ARect.Height,clBlack,True);
   ABitmap.TextRect(Rect(5,5,ABitmap.Width-5, ABitmap.Height-5),
                     SlideTextListBox.Items[Index], taLeftJustify, tlTop,
                     ColorToRGB(clBtnText)
                     );
+  if (Index >= frmPresent.SlideList.Count-1) or
+     (frmPresent.SlideList.Items[Index].Song.FileNameWithoutEnding <>
+     frmPresent.SlideList.Items[Index].Song.FileNameWithoutEnding) then
+     ABitmap.DrawLine(0,ARect.Height,ARect.Width,ARect.Height,clBlack,true);
 
-  ABitmap.Draw(SlideTextListBox.Canvas, ARect, true);
+  ABitmap.Draw(SlideTextListBox.Canvas, ARect.Left, ARect.Top, true);
   ABitmap.Destroy;
 end;
 
@@ -1107,6 +1120,11 @@ begin
   AHeight:=ABitmap.TextSize(SlideTextListBox.Items[Index],SlideTextListBox.Width).Height;
   AHeight += 10;
   ABitmap.Destroy;
+end;
+
+procedure TfrmSongs.SlideTextListBoxResize(Sender: TObject);
+begin
+  SlideTextListBox.Invalidate;
 end;
 
 procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);

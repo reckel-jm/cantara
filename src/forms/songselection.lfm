@@ -34,8 +34,8 @@ object frmSongs: TfrmSongs
     Anchors = [akTop, akLeft, akRight, akBottom]
     DragMode = dmAutomatic
     ItemHeight = 0
+    ParentBidiMode = False
     ParentShowHint = False
-    ParentFont = False
     PopupMenu = SongPopupMenu
     ScrollWidth = 378
     TabOrder = 1
@@ -202,7 +202,18 @@ object frmSongs: TfrmSongs
       Caption = 'Slide Numbers'
       ParentColor = False
     end
-    object SlideTextListBox: TListBox
+    object SplitterContentImage: TSplitter
+      AnchorSideTop.Control = pnlMultiScreen
+      AnchorSideBottom.Control = pnlMultiScreen
+      AnchorSideBottom.Side = asrBottom
+      Left = 300
+      Height = 656
+      Top = 1
+      Width = 2
+      Align = alCustom
+      Anchors = [akTop, akBottom]
+    end
+    object SlideTextListBox: TBCListBox
       AnchorSideLeft.Control = pnlMultiScreen
       AnchorSideTop.Control = lblPresentation
       AnchorSideTop.Side = asrBottom
@@ -214,27 +225,24 @@ object frmSongs: TfrmSongs
       Top = 22
       Width = 299
       Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderStyle = bsNone
       Color = clAppWorkspace
+      DoubleBuffered = False
       ExtendedSelect = False
+      IntegralHeight = True
       ItemHeight = 0
       Options = []
+      ParentBidiMode = False
+      ParentDoubleBuffered = False
+      ParentShowHint = False
+      ParentFont = False
       Style = lbOwnerDrawVariable
-      TabOrder = 1
+      TabOrder = 2
       OnClick = SlideTextListBoxClick
       OnDrawItem = SlideTextListBoxDrawItem
       OnKeyDown = SlideTextListBoxKeyDown
       OnMeasureItem = SlideTextListBoxMeasureItem
-    end
-    object SplitterContentImage: TSplitter
-      AnchorSideTop.Control = pnlMultiScreen
-      AnchorSideBottom.Control = pnlMultiScreen
-      AnchorSideBottom.Side = asrBottom
-      Left = 300
-      Height = 656
-      Top = 1
-      Width = 2
-      Align = alCustom
-      Anchors = [akTop, akBottom]
+      OnResize = SlideTextListBoxResize
     end
   end
   object lbxSRepo: TListBox
