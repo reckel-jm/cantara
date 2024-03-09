@@ -114,7 +114,7 @@ object frmSongs: TfrmSongs
       Proportional = True
       Stretch = True
     end
-    object Control: TPanel
+    object ControlPanel: TPanel
       AnchorSideLeft.Control = SplitterContentImage
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = lblFoilNumber
@@ -126,17 +126,18 @@ object frmSongs: TfrmSongs
       Left = 302
       Height = 51
       Top = 293
-      Width = 674
+      Width = 427
       Align = alCustom
+      Anchors = [akTop, akLeft, akRight]
       BorderWidth = 1
       BorderStyle = bsSingle
       ClientHeight = 51
-      ClientWidth = 674
+      ClientWidth = 427
       TabOrder = 0
       object btnGoLeft: TButton
-        AnchorSideLeft.Control = Control
-        AnchorSideTop.Control = Control
-        AnchorSideBottom.Control = Control
+        AnchorSideLeft.Control = ControlPanel
+        AnchorSideTop.Control = ControlPanel
+        AnchorSideBottom.Control = ControlPanel
         AnchorSideBottom.Side = asrBottom
         Left = 2
         Height = 47
@@ -152,8 +153,8 @@ object frmSongs: TfrmSongs
       object btnGoRight: TButton
         AnchorSideLeft.Control = btnGoLeft
         AnchorSideLeft.Side = asrBottom
-        AnchorSideTop.Control = Control
-        AnchorSideBottom.Control = Control
+        AnchorSideTop.Control = ControlPanel
+        AnchorSideBottom.Control = ControlPanel
         AnchorSideBottom.Side = asrBottom
         Left = 77
         Height = 47
@@ -169,8 +170,8 @@ object frmSongs: TfrmSongs
       object btnQuitPresentation: TButton
         AnchorSideLeft.Control = btnGoRight
         AnchorSideLeft.Side = asrBottom
-        AnchorSideTop.Control = Control
-        AnchorSideBottom.Control = Control
+        AnchorSideTop.Control = ControlPanel
+        AnchorSideBottom.Control = ControlPanel
         AnchorSideBottom.Side = asrBottom
         Left = 152
         Height = 47
@@ -216,9 +217,13 @@ object frmSongs: TfrmSongs
       Color = clAppWorkspace
       ExtendedSelect = False
       ItemHeight = 0
+      Options = []
+      Style = lbOwnerDrawVariable
       TabOrder = 1
       OnClick = SlideTextListBoxClick
+      OnDrawItem = SlideTextListBoxDrawItem
       OnKeyDown = SlideTextListBoxKeyDown
+      OnMeasureItem = SlideTextListBoxMeasureItem
     end
     object SplitterContentImage: TSplitter
       AnchorSideTop.Control = pnlMultiScreen

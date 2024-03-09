@@ -12,7 +12,7 @@ uses
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
   FormFulltextSearch, PPTX, PresentationCanvas,
   formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
-  presentationcontroller;
+  presentationcontroller, Types,bgrabitmap, BGRABitmapTypes;
 
 type
   TProgramMode = (ModeSelection, ModeSingleScreenPresentation,
@@ -75,7 +75,7 @@ type
     itemMarkupExport: TMenuItem;
     itemExportPictures: TMenuItem;
     OpenDialog: TOpenDialog;
-    Control: TPanel;
+    ControlPanel: TPanel;
     PanelSongTeXStatus: TPanel;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
@@ -144,8 +144,12 @@ type
     procedure CreateSongListDataAndLoadItIntoSlideList(ASlideList: TSlideList);
     function GetCurrentSongPosition: TSongPosition;
     procedure SlideTextListBoxClick(Sender: TObject);
+    procedure SlideTextListBoxDrawItem(Control: TWinControl; Index: Integer;
+      ARect: TRect; State: TOwnerDrawState);
     procedure SlideTextListBoxKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure SlideTextListBoxMeasureItem(Control: TWinControl; Index: Integer;
+      var AHeight: Integer);
     procedure SongPopupMenuPopup(Sender: TObject);
     procedure TimerUpdateScreenTimer(Sender: TObject);
     { Updates the Song Position in lbxSSelected during a presentation }
@@ -526,10 +530,7 @@ begin
   SlideTextListBox.Clear;
   for Slide In frmPresent.SlideList do
   begin
-    // We make sure that no whitespaces (line breaks) are at the end
     AddedText := Trim(Slide.PartContent.MainText);
-    // We replace line breaks inside a part with ' // '
-    AddedText := StringReplace(AddedText, LineEnding, ' // ', [rfReplaceAll]);
     if Slide.SlideType = SlideTypeEnum.TitleSlide then
       AddedText := AddedText + ' (' + StrTitleSlide + ')';
     SlideTextListBox.Items.Add(AddedText);
@@ -1064,10 +1065,48 @@ begin
     end;
 end;
 
+procedure TfrmSongs.SlideTextListBoxDrawItem(Control: TWinControl;
+  Index: Integer; ARect: TRect; State: TOwnerDrawState);
+var
+  ABitmap:TBgraBitmap;
+begin
+  ABitmap := TBgraBitmap.Create;
+  ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
+  ABitmap.FontName:=Screen.SystemFont.Name;
+  ABitmap.FontQuality:=fqFineAntialiasing;
+  ABitmap.SetSize(
+                  SlideTextListBox.Width,
+                  ABitmap.TextSize(SlideTextListBox.Items[Index],SlideTextListBox.Width).Height + 10
+                  );
+  ABitmap.Rectangle(Rect(2,2,Abitmap.Width-2, ABitmap.Height-2), clBlack, dmSet);
+  ABitmap.TextRect(Rect(5,5,ABitmap.Width-5, ABitmap.Height-5),
+                    SlideTextListBox.Items[Index], taLeftJustify, tlTop,
+                    ColorToRGB(clBtnText)
+                    );
+
+  ABitmap.Draw(SlideTextListBox.Canvas, ARect, true);
+  ABitmap.Destroy;
+end;
+
 procedure TfrmSongs.SlideTextListBoxKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   Key := VK_Unknown; // We don't want to handle any keys by the List Box.
+end;
+
+procedure TfrmSongs.SlideTextListBoxMeasureItem(Control: TWinControl;
+  Index: Integer; var AHeight: Integer);
+var
+  ABitmap:TBgraBitmap;
+begin
+  ABitmap := TBgraBitmap.Create;
+  ABitmap.FontName:=Screen.SystemFont.Name;
+  ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
+  ABitmap.FontQuality:=fqFineClearTypeRGB;
+  ABitmap.SetSize(SlideTextListBox.Width, SlideTextListBox.Height);
+  AHeight:=ABitmap.TextSize(SlideTextListBox.Items[Index],SlideTextListBox.Width).Height;
+  AHeight += 10;
+  ABitmap.Destroy;
 end;
 
 procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);
