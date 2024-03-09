@@ -28,7 +28,7 @@ uses
   formMarkupExport,
   markup,
   imageexport,
-  loadimagethread, CantaraStandardDialogs;
+  loadimagethread, CantaraStandardDialogs, presentationcontroller;
   {$R *.res}
 
 begin

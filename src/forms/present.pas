@@ -10,7 +10,7 @@ uses
   IntfGraphics,
   fpImage, StrUtils, Slides,
   Math,
-  PresentationCanvas;
+  PresentationCanvas, bgrabitmap, presentationcontroller;
 
 type
 
@@ -33,6 +33,7 @@ type
     procedure SwitchFullScreen(WantFullScreen: Boolean);
   private
     { private declarations }
+    ConnectedController: IPresentationController;
     function getCurrentSong: lyrics.TSong;
   public
     { public declarations }
@@ -43,6 +44,7 @@ type
     cur: Integer; //The current Index of the String List which is shown
     FullScreen: Boolean;
     PresentationCanvas: TPresentationCanvasHandler;
+    SlideBitmap: TBGRABitmap;
     procedure GoPrevious;
     procedure GoNext;
     procedure Refresh;
@@ -101,7 +103,6 @@ begin
     Inc(cur);
     ShowItem(cur);
   end;
-  frmSongs.ReloadPresentationImage;
 end;
 
 procedure TfrmPresent.GoPrevious;
@@ -111,7 +112,6 @@ begin
     Dec(cur);
     ShowItem(cur);
   end;
-  frmSongs.ReloadPresentationImage;
 end;
 
 procedure TfrmPresent.FormResize(Sender: TObject);
@@ -137,15 +137,12 @@ begin
 end;
 
 procedure TfrmPresent.showItem(index: Integer);
-var
-  SlideBitmap: TBitmap; // StringArray: TStringDynArray;
 begin
   cur := index;
-  PresentationCanvas.PaintSlide(SlideList.Items[cur]).InvalidateBitmap;
-  SlideBitmap := PresentationCanvas.PaintSlide(SlideList.Items[cur]).Bitmap;
-  imageShower.Left := 0;
-  imageShower.Top := 0;
-  imageShower.Picture.Bitmap.Assign(SlideBitmap);
+  SlideBitmap := PresentationCanvas.PaintSlide(SlideList.Items[cur]);
+  SlideBitmap.InvalidateBitmap;
+  ImageShower.Picture.Bitmap.Assign(SlideBitmap.Bitmap);
+  ConnectedController.ReloadPresentationImage;
 end;
 
 procedure TfrmPresent.FormCreate(Sender: TObject);
@@ -155,6 +152,8 @@ begin
   self.WindowState := wsMaximized;
   PresentationCanvas := TPresentationCanvasHandler.Create;
   self.SlideList := TSlideLIst.Create(True);
+
+  Self.ConnectedController:=frmSongs;
 end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);

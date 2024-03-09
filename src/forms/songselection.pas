@@ -11,7 +11,8 @@ uses
   DefaultTranslator, Clipbrd,
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
   FormFulltextSearch, PPTX, PresentationCanvas,
-  formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs;
+  formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
+  presentationcontroller;
 
 type
   TProgramMode = (ModeSelection, ModeSingleScreenPresentation,
@@ -30,7 +31,7 @@ type
 
   { The main form of Cantara where the songs are choosen from.
   It is also responsible for managing the song repository }
-  TfrmSongs = class(TForm)
+  TfrmSongs = class(TForm, IPresentationController)
     btnAdd: TButton;
     btnClear: TButton;
     btnDown: TButton;
@@ -82,7 +83,6 @@ type
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     SplitterContentImage: TSplitter;
-    TimerUpdateScreen: TTimer;
     procedure btnAddClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnDownClick(Sender: TObject);
@@ -93,7 +93,6 @@ type
     procedure btnSettingsClick(Sender: TObject);
     procedure btnStartPresentationClick(Sender: TObject);
     procedure btnUpClick(Sender: TObject);
-    procedure BtnUpdateClick(Sender: TObject);
     procedure ButtonCloseSongtexFileClick(Sender: TObject);
     procedure chkMultiWindowModeChange(Sender: TObject);
     procedure edtSearchChange(Sender: TObject);
@@ -105,8 +104,6 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure ImageUpdaterStopTimer(Sender: TObject);
-    procedure ImageUpdaterTimer(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
     procedure itemExportPicturesClick(Sender: TObject);
     procedure itemExportPptxClick(Sender: TObject);
@@ -299,7 +296,7 @@ end;
 
 procedure TfrmSongs.PnlSplitterMoved(Sender: TObject);
 begin
-  //PanelMultiScreenLeft := frmSongs.Width - PnlSplitter.Left - 1;
+  // TODO: Add something here
 end;
 
 procedure TfrmSongs.FormResize(Sender: TObject);
@@ -378,17 +375,6 @@ begin
     end;
   finally
   end;
-end;
-
-procedure TfrmSongs.ImageUpdaterStopTimer(Sender: TObject);
-begin
-  ReloadPresentationImage;
-end;
-
-procedure TfrmSongs.ImageUpdaterTimer(Sender: TObject);
-begin
-  //Sleep(30);
-  ReloadPresentationImage;
 end;
 
 procedure TfrmSongs.FilterListBox(s: String);
@@ -720,8 +706,6 @@ begin
           end;
         end;
       end;
-      // Refresh Picture in Presentation View
-      if ProgramMode = ModeMultiScreenPresentation then ReloadPresentationImage;
     finally
       // Sometimes there is an error here
     end;
@@ -827,7 +811,6 @@ begin
   if ((ProgramMode = ModeMultiScreenPresentation) And (edtSearch.Focused = False)) then
   begin
     frmPresent.FormKeyDown(frmSongs, Key, Shift);
-    ReloadPresentationImage;
   end;
 end;
 
@@ -859,14 +842,11 @@ end;
 procedure TfrmSongs.btnGoLeftClick(Sender: TObject);
 begin
   frmPresent.GoPrevious;
-  //Sleep(500);
-  ReloadPresentationImage;
 end;
 
 procedure TfrmSongs.btnGoRightClick(Sender: TObject);
 begin
   frmPresent.GoNext;
-  ReloadPresentationImage;
 end;
 
 procedure TfrmSongs.btnQuitPresentationClick(Sender: TObject);
@@ -918,7 +898,7 @@ begin
     if chkMultiWindowMode.Checked then
     begin
       ProgramMode := ModeMultiscreenPresentation;
-      pnlSplitter.Left := Round(frmSongs.Width / 2);
+      pnlSplitter.Left := Round(frmSongs.Width * 0.3);
       frmSongs.FormResize(frmSongs);
       pnlMultiScreenResize(Self);
       // Falls min. zwei Bildschirme, verschiebe Präsentationsfenster auf zweite Form und starte Vollbild
@@ -942,7 +922,6 @@ begin
           frmPresent.Width :=Screen.Monitors[1].Width;
           frmPresent.Height :=Screen.Monitors[1].Height;
           Application.ProcessMessages;
-          Self.ReloadPresentationImage;
           {$ENDIF }
         end;
       end;
@@ -965,9 +944,8 @@ begin
   if ProgramMode = ModeMultiscreenPresentation then
   begin
     Invalidate;
-    ReloadPresentationImage;
     FillSlideListInPresentationConsole;
-    PnlSplitter.Left := Self.Width div 2;
+    PnlSplitter.Left := Round(Self.Width * 0.3);
     Application.ProcessMessages;
   end;
   UpdateControls;
@@ -1083,7 +1061,6 @@ begin
     if SlideTextListBox.ItemIndex < frmPresent.SlideList.Count then
     begin
       frmPresent.showItem(SlideTextListBox.ItemIndex);
-      ReloadPresentationImage;
     end;
 end;
 
@@ -1130,11 +1107,6 @@ begin
     lbxSselected.Items.Strings[lbxSSelected.ItemIndex] := tausch;
     lbxSselected.ItemIndex := lbxSselected.ItemIndex - 1;
   end;
-end;
-
-procedure TfrmSongs.BtnUpdateClick(Sender: TObject);
-begin
-  ReloadPresentationImage;
 end;
 
 procedure TfrmSongs.ButtonCloseSongtexFileClick(Sender: TObject);
@@ -1194,7 +1166,7 @@ begin
   if ProgramMode = ModeMultiScreenPresentation then
   begin
     try
-      imgLiveViewer.Picture.Assign(frmPresent.PresentationCanvas.Bitmap);
+      imgLiveViewer.Picture.Bitmap.Assign(frmPresent.imageShower.Picture.Bitmap);
       if SlideTextListBox.Count > frmPresent.cur then
         SlideTextListBox.ItemIndex := frmPresent.cur;
       self.UpdateSongPositionInLbxSSelected;

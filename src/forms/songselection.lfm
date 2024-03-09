@@ -566,10 +566,4 @@ object frmSongs: TfrmSongs
       OnClick = itemOpenInEditorClick
     end
   end
-  object TimerUpdateScreen: TTimer
-    Interval = 1500
-    OnTimer = TimerUpdateScreenTimer
-    Left = 196
-    Top = 345
-  end
 end
