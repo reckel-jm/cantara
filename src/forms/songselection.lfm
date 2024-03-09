@@ -5,8 +5,8 @@ object frmSongs: TfrmSongs
   Width = 1198
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
-  ClientHeight = 700
-  ClientWidth = 1198
+  ClientHeight = 207
+  ClientWidth = 320
   Menu = MainMenu
   OnActivate = FormActivate
   OnChangeBounds = FormResize
@@ -15,7 +15,6 @@ object frmSongs: TfrmSongs
   OnDestroy = FormDestroy
   OnDropFiles = FormDropFiles
   OnKeyDown = FormKeyDown
-  OnKeyPress = FormKeyPress
   OnResize = FormResize
   OnShow = FormShow
   OnWindowStateChange = FormResize
@@ -44,7 +43,6 @@ object frmSongs: TfrmSongs
     OnClick = lbxSselectedClick
     OnDragDrop = lbxSselectedDragDrop
     OnDragOver = lbxSselectedDragOver
-    OnKeyPress = lbxSselectedKeyPress
     OnKeyDown = lbxSselectedKeyDown
     OnMouseDown = lbxSselectedMouseDown
     OnResize = lbxSselectedResize
@@ -82,7 +80,6 @@ object frmSongs: TfrmSongs
     ClientHeight = 658
     ClientWidth = 399
     TabOrder = 3
-    OnClick = pnlMultiScreenClick
     OnResize = pnlMultiScreenResize
     object lblPresentation: TLabel
       AnchorSideLeft.Control = pnlMultiScreen
@@ -129,8 +126,8 @@ object frmSongs: TfrmSongs
       Align = alTop
       BorderWidth = 1
       BorderStyle = bsSingle
-      ClientHeight = 47
-      ClientWidth = 393
+      ClientHeight = 51
+      ClientWidth = 397
       TabOrder = 0
       object btnGoLeft: TButton
         AnchorSideLeft.Control = Control
@@ -215,9 +212,7 @@ object frmSongs: TfrmSongs
       ItemHeight = 0
       TabOrder = 1
       OnClick = SlideTextListBoxClick
-      OnKeyPress = SlideTextListBoxKeyPress
       OnKeyDown = SlideTextListBoxKeyDown
-      OnKeyUp = SlideTextListBoxKeyUp
     end
   end
   object lbxSRepo: TListBox
@@ -237,7 +232,6 @@ object frmSongs: TfrmSongs
     PopupMenu = SongPopupMenu
     Sorted = True
     TabOrder = 0
-    OnClick = lbxSRepoClick
     OnDblClick = btnAddClick
     OnKeyDown = lbxSRepoKeyDown
     OnMouseDown = lbxSRepoMouseDown
@@ -255,7 +249,6 @@ object frmSongs: TfrmSongs
     Width = 1
     Align = alNone
     Anchors = [akTop, akBottom]
-    OnCanOffset = PnlSplitterCanOffset
     OnMoved = PnlSplitterMoved
   end
   object grbControl: TPanel
@@ -275,7 +268,6 @@ object frmSongs: TfrmSongs
     ClientWidth = 45
     ParentFont = False
     TabOrder = 5
-    OnClick = grbControlClick
     object btnAdd: TButton
       AnchorSideLeft.Control = grbControl
       AnchorSideRight.Control = grbControl
@@ -375,7 +367,6 @@ object frmSongs: TfrmSongs
     ClientWidth = 1198
     ParentFont = False
     TabOrder = 6
-    OnClick = grbSettingsClick
     object btnStartPresentation: TButton
       Left = 1
       Height = 40

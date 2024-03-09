@@ -21,22 +21,16 @@ type
   TfrmPresent = class(TForm)
     imageShower: TImage;
     ManipulatedBitmap: TBitmap;
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-    procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
-      MousePos: TPoint; var Handled: Boolean);
-    procedure FormPaint(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure imageShowerClick(Sender: TObject);
     procedure showItem(index: Integer);
     procedure SwitchFullScreen;
     procedure SwitchFullScreen(WantFullScreen: Boolean);
-    procedure ShowMeta;
   private
     { private declarations }
     function getCurrentSong: lyrics.TSong;
@@ -100,23 +94,6 @@ begin
   else if key In EscapeKeys then self.Hide;
 end;
 
-procedure TfrmPresent.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-begin
-
-end;
-
-procedure TfrmPresent.FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
-  MousePos: TPoint; var Handled: Boolean);
-begin
-
-end;
-
-
-procedure TfrmPresent.FormPaint(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmPresent.GoNext;
 begin
   if (cur < self.SlideList.Count - 1) then
@@ -171,11 +148,6 @@ begin
   imageShower.Picture.Bitmap.Assign(SlideBitmap);
 end;
 
-procedure TfrmPresent.ShowMeta;
-begin
-
-end;
-
 procedure TfrmPresent.FormCreate(Sender: TObject);
 begin
   cur := 0;
@@ -183,11 +155,6 @@ begin
   self.WindowState := wsMaximized;
   PresentationCanvas := TPresentationCanvasHandler.Create;
   self.SlideList := TSlideLIst.Create(True);
-end;
-
-procedure TfrmPresent.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
-
 end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);

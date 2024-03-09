@@ -8,14 +8,10 @@ object frmPresent: TfrmPresent
   ClientHeight = 535
   ClientWidth = 1070
   Color = clBlack
-  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnHide = FormHide
   OnKeyDown = FormKeyDown
-  OnMouseMove = FormMouseMove
-  OnMouseWheelDown = FormMouseWheelDown
-  OnPaint = FormPaint
   OnResize = FormResize
   OnShow = FormShow
   Position = poScreenCenter

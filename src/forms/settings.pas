@@ -50,13 +50,11 @@ type
     labelSongDir: TLabel;
     SelectDirectoryDialog: TSelectDirectoryDialog;
     procedure btnBackgroundImageClick(Sender: TObject);
-    procedure btnCloseClick(Sender: TObject);
     procedure btnDetailsClick(Sender: TObject);
     procedure btnFontSizeManuallyClick(Sender: TObject);
     procedure btnSelectDirClick(Sender: TObject);
     procedure btnBackgroundColorClick(Sender: TObject);
     procedure btnTextColorClick(Sender: TObject);
-    procedure cbAutoWordWrapChange(Sender: TObject);
     procedure cbEmptyFrameChange(Sender: TObject);
     procedure cbMetaDataFirstSlideChange(Sender: TObject);
     procedure cbMetaDataLastSlideChange(Sender: TObject);
@@ -65,18 +63,14 @@ type
     procedure cbSpoilerChange(Sender: TObject);
     procedure comboHorizontalChange(Sender: TObject);
     procedure comboVerticalChange(Sender: TObject);
-    procedure edtRepoPathChange(Sender: TObject);
     procedure edtRepoPathEditingDone(Sender: TObject);
-    procedure edtRepoPathExit(Sender: TObject);
     procedure FormClose(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure FormHide(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure gbPresentationClick(Sender: TObject);
     procedure ImagePresentationPreviewClick(Sender: TObject);
-    procedure ImagePresentationPreviewDblClick(Sender: TObject);
     procedure loadSettings();
     procedure memoMetaDataChange(Sender: TObject);
     procedure memoMetaDataEditingDone(Sender: TObject);
@@ -210,10 +204,6 @@ begin
   SettingsFile.Destroy;
 end;
 
-procedure TfrmSettings.FormHide(Sender: TObject);
-begin
-end;
-
 procedure TfrmSettings.FormShow(Sender: TObject);
 begin
   LoadImageThread := TLoadImageThread.Create(True);
@@ -237,11 +227,6 @@ begin
   LoadPreviewImage;
 end;
 
-procedure TfrmSettings.ImagePresentationPreviewDblClick(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmSettings.btnSelectDirClick(Sender: TObject);
 begin
   if SelectDirectoryDialog.Execute then
@@ -252,11 +237,6 @@ procedure TfrmSettings.btnFontSizeManuallyClick(Sender: TObject);
 begin
   FontDialog.Execute;
   LoadPreviewImage;
-end;
-
-procedure TfrmSettings.btnCloseClick(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmSettings.btnDetailsClick(Sender: TObject);
@@ -287,11 +267,6 @@ procedure TfrmSettings.btnTextColorClick(Sender: TObject);
 begin
   textColorDialog.Execute;
   LoadPreviewImage;
-end;
-
-procedure TfrmSettings.cbAutoWordWrapChange(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmSettings.cbEmptyFrameChange(Sender: TObject);
@@ -344,21 +319,11 @@ begin
   LoadPreviewImage;
 end;
 
-procedure TfrmSettings.edtRepoPathChange(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmSettings.edtRepoPathEditingDone(Sender: TObject);
 begin
   if (edtRepoPath.Text <> '') And (edtRepoPath.Text[length(edtRepoPath.Text)] =
     PathDelim) then
     edtRepoPath.Text := copy(edtRepoPath.Text, 1, length(edtRepoPath.Text) - 1);
-end;
-
-procedure TfrmSettings.edtRepoPathExit(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmSettings.FormClose(Sender: TObject);

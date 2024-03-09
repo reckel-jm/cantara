@@ -11,9 +11,9 @@ object frmSettings: TfrmSettings
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  OnHide = FormHide
   OnShow = FormShow
   Position = poScreenCenter
+  LCLVersion = '3.2.0.0'
   object labelSongDir: TLabel
     AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = edtRepoPath
@@ -38,9 +38,7 @@ object frmSettings: TfrmSettings
     BorderSpacing.Left = 5
     ParentFont = False
     TabOrder = 0
-    OnChange = edtRepoPathChange
     OnEditingDone = edtRepoPathEditingDone
-    OnExit = edtRepoPathExit
   end
   object btnSelectDir: TButton
     AnchorSideTop.Control = edtRepoPath
@@ -96,8 +94,8 @@ object frmSettings: TfrmSettings
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
-    ClientHeight = 418
-    ClientWidth = 918
+    ClientHeight = 434
+    ClientWidth = 912
     TabOrder = 5
     OnClick = gbPresentationClick
     object btnBackgroundColor: TButton
@@ -351,7 +349,6 @@ object frmSettings: TfrmSettings
       BorderSpacing.Left = 5
       BorderSpacing.Right = 2
       OnClick = ImagePresentationPreviewClick
-      OnDblClick = ImagePresentationPreviewDblClick
       Proportional = True
       Stretch = True
     end
@@ -457,7 +454,6 @@ object frmSettings: TfrmSettings
     ModalResult = 1
     ParentFont = False
     TabOrder = 3
-    OnClick = btnCloseClick
   end
   object SelectDirectoryDialog: TSelectDirectoryDialog
     Title = 'Select song repository dictionary'

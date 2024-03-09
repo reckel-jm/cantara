@@ -102,19 +102,14 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure grbControlClick(Sender: TObject);
-    procedure grbSettingsClick(Sender: TObject);
     procedure ImageUpdaterStopTimer(Sender: TObject);
     procedure ImageUpdaterTimer(Sender: TObject);
     procedure itemEndClick(Sender: TObject);
     procedure itemExportPicturesClick(Sender: TObject);
     procedure itemExportPptxClick(Sender: TObject);
-    procedure itemExportTeXFileClick(Sender: TObject);
     procedure itemFulltextSearchClick(Sender: TObject);
-    procedure itemImportTeXFileClick(Sender: TObject);
     procedure itemLoadClick(Sender: TObject);
     procedure itemLoadSelectionClick(Sender: TObject);
     procedure itemMarkupExportClick(Sender: TObject);
@@ -124,7 +119,6 @@ type
     procedure itemSaveSelectionClick(Sender: TObject);
     procedure itemShowWelcomeAssistentClick(Sender: TObject);
     procedure itemSongEditorClick(Sender: TObject);
-    procedure lbxSRepoClick(Sender: TObject);
     procedure lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure lbxSRepoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -134,7 +128,6 @@ type
       State: TDragState; var Accept: Boolean);
     procedure lbxSselectedKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure lbxSselectedKeyPress(Sender: TObject; var Key: Char);
     procedure lbxSselectedMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure lbxSselectedResize(Sender: TObject);
@@ -145,10 +138,7 @@ type
     procedure loadRepo(repoPath: String);
     procedure itemAboutClick(Sender: TObject);
     procedure itemReloadSongListClick(Sender: TObject);
-    procedure pnlMultiScreenClick(Sender: TObject);
     procedure pnlMultiScreenResize(Sender: TObject);
-    procedure PnlSplitterCanOffset(Sender: TObject; var NewOffset: Integer;
-      var Accept: Boolean);
     procedure PnlSplitterMoved(Sender: TObject);
     { Creates the song list data }
     procedure CreateSongListData;
@@ -157,9 +147,6 @@ type
     function GetCurrentSongPosition: TSongPosition;
     procedure SlideTextListBoxClick(Sender: TObject);
     procedure SlideTextListBoxKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure SlideTextListBoxKeyPress(Sender: TObject; var Key: Char);
-    procedure SlideTextListBoxKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure SongPopupMenuPopup(Sender: TObject);
     procedure TimerUpdateScreenTimer(Sender: TObject);
@@ -297,11 +284,6 @@ begin
   loadRepo(frmSettings.edtRepoPath.Text);
 end;
 
-procedure TfrmSongs.pnlMultiScreenClick(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmSongs.pnlMultiScreenResize(Sender: TObject);
 begin
   imgLiveViewer.Width := pnlMultiScreen.Width;
@@ -312,12 +294,6 @@ begin
   else if (imgLiveViewer.Picture.Bitmap.Width > 0) then
     imgLiveViewer.Height := round(imgLiveViewer.Width *
       imgLiveViewer.Picture.Bitmap.Height / imgLiveViewer.Picture.Bitmap.Width);
-end;
-
-procedure TfrmSongs.PnlSplitterCanOffset(Sender: TObject;
-  var NewOffset: Integer; var Accept: Boolean);
-begin
-
 end;
 
 procedure TfrmSongs.PnlSplitterMoved(Sender: TObject);
@@ -401,16 +377,6 @@ begin
     end;
   finally
   end;
-end;
-
-procedure TfrmSongs.grbControlClick(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmSongs.grbSettingsClick(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmSongs.ImageUpdaterStopTimer(Sender: TObject);
@@ -503,10 +469,6 @@ begin
       PChar(StrError), MB_OK + MB_ICONWARNING);
 end;
 
-procedure TfrmSongs.itemExportTeXFileClick(Sender: TObject);
-begin
-end;
-
 procedure TfrmSongs.itemFulltextSearchClick(Sender: TObject);
 begin
   frmWrapperFulltextSearch.ShowModal(self);
@@ -514,11 +476,6 @@ begin
   Application.ProcessMessages;
   frmWrapperFulltextSearch.Invalidate;
   frmWrapperFulltextSearch.Repaint;
-end;
-
-procedure TfrmSongs.itemImportTeXFileClick(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmSongs.itemLoadClick(Sender: TObject);
@@ -711,11 +668,6 @@ begin
   frmSongEdit.loadRepo(repo);
 end;
 
-procedure TfrmSongs.lbxSRepoClick(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmSongs.lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if ProgramMode <> ModeSelection then
@@ -818,11 +770,6 @@ begin
   end;
 end;
 
-procedure TfrmSongs.lbxSselectedKeyPress(Sender: TObject; var Key: Char);
-begin
-
-end;
-
 procedure TfrmSongs.lbxSselectedMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
@@ -881,11 +828,6 @@ begin
     frmPresent.FormKeyDown(frmSongs, Key, Shift);
     ReloadPresentationImage;
   end;
-end;
-
-procedure TfrmSongs.FormKeyPress(Sender: TObject; var Key: Char);
-begin
-
 end;
 
 procedure TfrmSongs.btnAddClick(Sender: TObject);
@@ -1148,17 +1090,6 @@ procedure TfrmSongs.SlideTextListBoxKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   Key := VK_Unknown; // We don't want to handle any keys by the List Box.
-end;
-
-procedure TfrmSongs.SlideTextListBoxKeyPress(Sender: TObject; var Key: Char);
-begin
-
-end;
-
-procedure TfrmSongs.SlideTextListBoxKeyUp(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-
 end;
 
 procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);
