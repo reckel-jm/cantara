@@ -81,6 +81,7 @@ type
     Separator1: TMenuItem;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
+    SplitterContentImage: TSplitter;
     TimerUpdateScreen: TTimer;
     procedure btnAddClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);

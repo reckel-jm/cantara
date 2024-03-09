@@ -2,11 +2,11 @@ object frmSongs: TfrmSongs
   Left = 184
   Height = 700
   Top = 52
-  Width = 1198
+  Width = 1230
   AllowDropFiles = True
   Caption = 'Song Selection (Cantara)'
-  ClientHeight = 207
-  ClientWidth = 320
+  ClientHeight = 700
+  ClientWidth = 1230
   Menu = MainMenu
   OnActivate = FormActivate
   OnChangeBounds = FormResize
@@ -19,7 +19,6 @@ object frmSongs: TfrmSongs
   OnShow = FormShow
   OnWindowStateChange = FormResize
   Position = poScreenCenter
-  LCLVersion = '3.2.0.0'
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
@@ -27,10 +26,10 @@ object frmSongs: TfrmSongs
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = PnlSplitter
     AnchorSideBottom.Control = grbSettings
-    Left = 544
+    Left = 295
     Height = 622
     Top = 36
-    Width = 255
+    Width = 205
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     DragMode = dmAutomatic
@@ -53,10 +52,10 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = lbxSRepo
     AnchorSideRight.Side = asrBottom
     Left = 0
-    Height = 25
+    Height = 34
     Hint = 'Search...'
     Top = 0
-    Width = 499
+    Width = 250
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
     ParentShowHint = False
@@ -71,14 +70,14 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
-    Left = 799
+    Left = 500
     Height = 658
     Top = 0
-    Width = 399
+    Width = 730
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     ClientHeight = 658
-    ClientWidth = 399
+    ClientWidth = 730
     TabOrder = 3
     OnResize = pnlMultiScreenResize
     object lblPresentation: TLabel
@@ -87,9 +86,9 @@ object frmSongs: TfrmSongs
       AnchorSideRight.Control = pnlMultiScreen
       AnchorSideRight.Side = asrBottom
       Left = 1
-      Height = 17
+      Height = 21
       Top = 1
-      Width = 397
+      Width = 728
       Align = alTop
       Alignment = taCenter
       Caption = 'Presentation is running:'
@@ -98,36 +97,41 @@ object frmSongs: TfrmSongs
       ParentFont = False
     end
     object imgLiveViewer: TImage
-      AnchorSideLeft.Control = pnlMultiScreen
+      AnchorSideLeft.Control = SplitterContentImage
+      AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = lblPresentation
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = pnlMultiScreen
       AnchorSideRight.Side = asrBottom
-      Left = 1
-      Height = 196
-      Top = 38
-      Width = 397
+      Left = 302
+      Height = 230
+      Top = 42
+      Width = 427
       AntialiasingMode = amOn
-      Align = alTop
+      Align = alCustom
+      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 20
       Proportional = True
       Stretch = True
     end
     object Control: TPanel
-      AnchorSideLeft.Control = pnlMultiScreen
+      AnchorSideLeft.Control = SplitterContentImage
+      AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = lblFoilNumber
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = pnlMultiScreen
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = pnlMultiScreen
       AnchorSideBottom.Side = asrBottom
-      Left = 1
+      Left = 302
       Height = 51
-      Top = 251
-      Width = 397
-      Align = alTop
+      Top = 293
+      Width = 674
+      Align = alCustom
       BorderWidth = 1
       BorderStyle = bsSingle
       ClientHeight = 51
-      ClientWidth = 397
+      ClientWidth = 674
       TabOrder = 0
       object btnGoLeft: TButton
         AnchorSideLeft.Control = Control
@@ -135,7 +139,7 @@ object frmSongs: TfrmSongs
         AnchorSideBottom.Control = Control
         AnchorSideBottom.Side = asrBottom
         Left = 2
-        Height = 43
+        Height = 47
         Top = 2
         Width = 75
         Align = alCustom
@@ -152,7 +156,7 @@ object frmSongs: TfrmSongs
         AnchorSideBottom.Control = Control
         AnchorSideBottom.Side = asrBottom
         Left = 77
-        Height = 43
+        Height = 47
         Top = 2
         Width = 75
         Align = alCustom
@@ -169,7 +173,7 @@ object frmSongs: TfrmSongs
         AnchorSideBottom.Control = Control
         AnchorSideBottom.Side = asrBottom
         Left = 152
-        Height = 43
+        Height = 47
         Top = 2
         Width = 75
         Align = alCustom
@@ -181,31 +185,33 @@ object frmSongs: TfrmSongs
       end
     end
     object lblFoilNumber: TLabel
-      AnchorSideLeft.Control = pnlMultiScreen
+      AnchorSideLeft.Control = SplitterContentImage
+      AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = imgLiveViewer
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = pnlMultiScreen
       AnchorSideRight.Side = asrBottom
-      Left = 4
-      Height = 17
-      Top = 234
-      Width = 394
-      Align = alTop
+      Left = 305
+      Height = 21
+      Top = 272
+      Width = 424
+      Align = alCustom
+      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 3
       Caption = 'Slide Numbers'
       ParentColor = False
     end
     object SlideTextListBox: TListBox
       AnchorSideLeft.Control = pnlMultiScreen
-      AnchorSideTop.Control = Control
+      AnchorSideTop.Control = lblPresentation
       AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = pnlMultiScreen
-      AnchorSideRight.Side = asrBottom
+      AnchorSideRight.Control = SplitterContentImage
       AnchorSideBottom.Control = pnlMultiScreen
       AnchorSideBottom.Side = asrBottom
       Left = 1
-      Height = 355
-      Top = 302
-      Width = 397
+      Height = 635
+      Top = 22
+      Width = 299
       Anchors = [akTop, akLeft, akRight, akBottom]
       Color = clAppWorkspace
       ExtendedSelect = False
@@ -213,6 +219,17 @@ object frmSongs: TfrmSongs
       TabOrder = 1
       OnClick = SlideTextListBoxClick
       OnKeyDown = SlideTextListBoxKeyDown
+    end
+    object SplitterContentImage: TSplitter
+      AnchorSideTop.Control = pnlMultiScreen
+      AnchorSideBottom.Control = pnlMultiScreen
+      AnchorSideBottom.Side = asrBottom
+      Left = 300
+      Height = 656
+      Top = 1
+      Width = 2
+      Align = alCustom
+      Anchors = [akTop, akBottom]
     end
   end
   object lbxSRepo: TListBox
@@ -222,9 +239,9 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = grbControl
     AnchorSideBottom.Control = grbSettings
     Left = 0
-    Height = 633
-    Top = 25
-    Width = 499
+    Height = 624
+    Top = 34
+    Width = 250
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
@@ -243,7 +260,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = pnlMultiScreen
     AnchorSideBottom.Control = grbSettings
     AnchorSideBottom.Side = asrBottom
-    Left = 799
+    Left = 500
     Height = 700
     Top = 0
     Width = 1
@@ -258,7 +275,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = lbxSselected
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = grbSettings
-    Left = 499
+    Left = 250
     Height = 658
     Top = 0
     Width = 45
@@ -361,10 +378,10 @@ object frmSongs: TfrmSongs
     Left = 0
     Height = 42
     Top = 658
-    Width = 1198
+    Width = 1230
     Align = alBottom
     ClientHeight = 42
-    ClientWidth = 1198
+    ClientWidth = 1230
     ParentFont = False
     TabOrder = 6
     object btnStartPresentation: TButton
@@ -380,7 +397,7 @@ object frmSongs: TfrmSongs
       OnClick = btnStartPresentationClick
     end
     object btnSettings: TButton
-      Left = 1063
+      Left = 1095
       Height = 40
       Top = 1
       Width = 134
@@ -393,9 +410,9 @@ object frmSongs: TfrmSongs
     end
     object chkMultiWindowMode: TCheckBox
       Left = 192
-      Height = 21
+      Height = 25
       Top = 8
-      Width = 307
+      Width = 374
       Caption = 'Multi-Screen-Mode (suitable for multiple screens)'
       TabOrder = 2
       TabStop = False
@@ -410,15 +427,15 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = edtSearch
     AnchorSideBottom.Side = asrBottom
-    Left = 544
+    Left = 295
     Height = 36
     Top = 0
-    Width = 256
+    Width = 206
     Alignment = taLeftJustify
     Anchors = [akTop, akLeft, akRight]
     Caption = 'PanelSongTeXStatus'
     ClientHeight = 36
-    ClientWidth = 256
+    ClientWidth = 206
     Color = clInactiveCaption
     ParentBackground = False
     ParentColor = False
@@ -429,10 +446,10 @@ object frmSongs: TfrmSongs
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = PanelSongTeXStatus
       AnchorSideBottom.Side = asrBottom
-      Left = 174
+      Left = 125
       Height = 34
       Top = 1
-      Width = 81
+      Width = 80
       Anchors = [akTop, akRight, akBottom]
       AutoSize = True
       Caption = 'Close File'
