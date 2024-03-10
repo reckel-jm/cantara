@@ -58,7 +58,7 @@ If you would like to compile the latest not stable state in the master branch, y
 
 On Linux, you can change the used graphical framework via the `--ws=qt5` or `--ws=gtk2` option.
 
-**Warning: The state of the master brunch is not stable and not ready for productive use yet! If you want a stable version, please go to the [releases section](releases/).**
+**Warning: The state of the master branch is not stable and not ready for productive use yet! If you want a stable version, please go to the [releases section](releases/).**
 
 ## Song templates
 Please consult the [documentation](https://www.cantara.app/tutorial/where-to-get-the-songs/) for learning which song formats are supported and where to get songs from.
