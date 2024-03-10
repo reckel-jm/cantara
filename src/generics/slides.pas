@@ -126,7 +126,7 @@ var
   SecondLanguageText: String;
 begin
   { Create the SlideList which later will be returned }
-  CurrentSongSlideList := TSlideList.Create(True);
+  CurrentSongSlideList := TSlideList.Create(False);
   SongFile := TStringList.Create;
   { Split the slides if desired }
   if SlideSettings.MaxSlideLineLength > 0 then

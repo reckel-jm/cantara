@@ -25,7 +25,6 @@ type
     procedure btnOpenWebpageClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure lblInfoClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -84,11 +83,6 @@ end;
 procedure TfrmInfo.btnOpenWebpageClick(Sender: TObject);
 begin
   OpenURL(strWebpage);
-end;
-
-procedure TfrmInfo.lblInfoClick(Sender: TObject);
-begin
-
 end;
 
 end.

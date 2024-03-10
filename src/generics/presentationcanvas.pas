@@ -139,6 +139,7 @@ procedure TPresentationCanvasHandler.ResizeBackgroundBitmap;
 var
   DestRect: TRect;
   NewHeight, NewWidth: Integer;
+  ResampledAdjustedBackgroundPicture: TBGRABitmap;
 begin
   if PresentationStyleSettings.ShowBackgroundImage = false
      then Exit;
@@ -180,13 +181,15 @@ begin
 
   ResizedBackgroundBitmap.Fill(PresentationStyleSettings.BackgroundColor);
   ResizedBackgroundBitmap.SetSize(self.Width, self.Height);
-  ResizedBackgroundBitmap.PutImage(DestRect.Left, DestRect.Top,
-                                     AdjustedBackgroundPicture.Resample(
+  ResampledAdjustedBackgroundPicture := AdjustedBackgroundPicture.Resample(
                                        DestRect.Width, DestRect.Height,
                                        rmSimpleStretch
-                                     ),
+                                     );
+  ResizedBackgroundBitmap.PutImage(DestRect.Left, DestRect.Top,
+                                     ResampledAdjustedBackgroundPicture,
                                      dmDrawWithTransparency
                                   );
+  ResampledAdjustedBackgroundPicture.Free;
 end;
 
 function TPresentationCanvasHandler.PaintSlide(Slide: TSlide): TBGRABitmap;

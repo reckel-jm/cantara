@@ -534,17 +534,16 @@ procedure TfrmSettings.ReloadSlideAndPresentationCanvas;
 var
   PresentationSlideCounter: Integer;
   SlideSettings: TSlideSettings;
+  AmazingGraceSlideList: TSlideList;
 begin
   SlideListCur := 0; // to prevent exceptions if something cant be found anymore
   SlideSettings := self.ExportSlideSettings;
   SlideList.Clear;
   PresentationSlideCounter := 0;
-  SlideList.AddList(CreatePresentationDataFromSong(ExampleSong,
-    SlideSettings, PresentationSlideCounter));
-  {PresentationPreviewCanvas.Height:=Screen.Height;
-  PresentationPreviewCanvas.Width:=Screen.Width;
-  PresentationPreviewCanvas.PresentationStyleSettings := ExportPresentationStyleSettings;
-  PresentationPreviewCanvas.LoadBackgroundBitmap; }
+  AmazingGraceSlideList := CreatePresentationDataFromSong(ExampleSong,
+    SlideSettings, PresentationSlideCounter);
+  SlideList.AddList(AmazingGraceSlideList);
+  AmazingGraceSlideList.Destroy;
   LoadPreviewImage;
 end;
 

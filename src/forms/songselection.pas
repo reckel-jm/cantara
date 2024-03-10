@@ -79,7 +79,7 @@ type
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
     Separator1: TMenuItem;
-    SlideTextListBox: TBCListBox;
+    SlideTextListBox: TListBox;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     SplitterContentImage: TSplitter;
@@ -1022,6 +1022,7 @@ end;
 procedure TfrmSongs.CreateSongListDataAndLoadItIntoSlideList(ASlideList: TSlideList);
 var
   Song: TSong;
+  SongSlideList: TSlideList;
 begin
   CreateSongListData;
   ASlideList.Clear;
@@ -1029,8 +1030,10 @@ begin
   if LoadedSongList.Count <= 0 then Exit; // Prevent loading an empty Presentation
   for Song In LoadedSongList do
   begin
-    ASlideList.AddList(CreatePresentationDataFromSong(Song,
-      frmSettings.ExportSlideSettings(), PresentationSlideCounter));
+    SongSlideList := CreatePresentationDataFromSong(Song,
+      frmSettings.ExportSlideSettings(), PresentationSlideCounter);
+    ASlideList.AddList(SongSlideList);
+    SongSlideList.Destroy;
   end;
 end;
 
@@ -1070,30 +1073,33 @@ end;
 procedure TfrmSongs.SlideTextListBoxDrawItem(Control: TWinControl;
   Index: Integer; ARect: TRect; State: TOwnerDrawState);
 var
+  TextColor: TColor;
   ABitmap:TBgraBitmap;
 begin
   if Index > SlideTextListBox.Count then Exit;
 
-  ABitmap := TBgraBitmap.Create;
+  ABitmap := TBgraBitmap.Create(ARect.Width, ARect.Height);
+  ABitmap.Fill(clAppWorkspace);
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.FontName:=Screen.SystemFont.Name;
-  ABitmap.FontQuality:=fqFineAntialiasing;
+  ABitmap.FontQuality:=fqSystem;
   if frmPresent.SlideList.Items[Index].SlideType = TitleSlide then
   begin
      ABitmap.FontStyle+=[fsBold];
      ABitmap.DrawLine(2,2,ARect.Width,2,clBlack,true);
   end;
-  ABitmap.SetSize(
-                  ARect.Width,
-                  ABitmap.TextSize(SlideTextListBox.Items[Index],SlideTextListBox.Width).Height + 10
-                  );
   if SlideTextListBox.ItemIndex=Index then
-    ABitmap.FillRect(3,3,ABitmap.Width-3, ABitmap.Height-3, clActiveCaption, dmSet);
+  begin
+    ABitmap.FillRect(3,3,ABitmap.Width-3, ABitmap.Height-3, clHighlight, dmSet);
+    TextColor := clHighlightText;
+  end
+  else TextColor := clInactiveCaptionText;
+
   ABitmap.DrawLine(0,0,0,ARect.Height,clBlack,True);
   ABitmap.DrawLine(ARect.Width-2,0,ARect.Width-2,ARect.Height,clBlack,True);
   ABitmap.TextRect(Rect(5,5,ABitmap.Width-5, ABitmap.Height-5),
                     SlideTextListBox.Items[Index], taLeftJustify, tlTop,
-                    ColorToRGB(clBtnText)
+                    ColorToRGB(TextColor)
                     );
   if (Index >= frmPresent.SlideList.Count-1) or
      (frmPresent.SlideList.Items[Index].Song.FileNameWithoutEnding <>

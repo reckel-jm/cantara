@@ -213,7 +213,7 @@ object frmSongs: TfrmSongs
       Align = alCustom
       Anchors = [akTop, akBottom]
     end
-    object SlideTextListBox: TBCListBox
+    object SlideTextListBox: TListBox
       AnchorSideLeft.Control = pnlMultiScreen
       AnchorSideTop.Control = lblPresentation
       AnchorSideTop.Side = asrBottom
@@ -227,9 +227,12 @@ object frmSongs: TfrmSongs
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderStyle = bsNone
       Color = clAppWorkspace
+      DoubleBuffered = False
       ExtendedSelect = False
       ItemHeight = 0
       Options = []
+      ParentBidiMode = False
+      ParentDoubleBuffered = False
       ParentShowHint = False
       Style = lbOwnerDrawVariable
       TabOrder = 2

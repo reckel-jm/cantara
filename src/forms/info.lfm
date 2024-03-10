@@ -1,19 +1,18 @@
 object frmInfo: TfrmInfo
   Left = -3
-  Height = 316
+  Height = 331
   Top = -30
   Width = 497
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'About this Program'
-  ClientHeight = 316
+  ClientHeight = 331
   ClientWidth = 497
   KeyPreview = True
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poMainFormCenter
-  LCLVersion = '3.0.0.1'
   object lblAuthor: TLabel
     Left = 0
     Height = 21
@@ -68,7 +67,6 @@ object frmInfo: TfrmInfo
     ParentColor = False
     ParentFont = False
     WordWrap = True
-    OnClick = lblInfoClick
   end
   object btnOpenGitRepo: TButton
     AnchorSideTop.Control = lblInfo
@@ -81,15 +79,15 @@ object frmInfo: TfrmInfo
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 10
     Caption = 'Open Github Repository with Browser'
-    OnClick = btnOpenGitRepoClick
     ParentFont = False
     TabOrder = 0
+    OnClick = btnOpenGitRepoClick
   end
   object imgLogo: TImage
     AnchorSideRight.Side = asrBottom
     Left = 393
     Height = 105
-    Top = 7
+    Top = 10
     Width = 104
     Anchors = [akRight]
     Picture.Data = {
@@ -665,8 +663,8 @@ object frmInfo: TfrmInfo
     Width = 497
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Open Project''s Webpage with Browser'
-    OnClick = btnOpenWebpageClick
     ParentFont = False
     TabOrder = 1
+    OnClick = btnOpenWebpageClick
   end
 end

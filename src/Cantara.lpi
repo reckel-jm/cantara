@@ -40,7 +40,7 @@
       <MajorVersionNr Value="2"/>
       <MinorVersionNr Value="6"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="11"/>
+      <BuildNr Value="12"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.6.0"/>
@@ -268,7 +268,6 @@
             <Debugging>
               <DebugInfoType Value="dsDwarf3"/>
               <UseHeaptrc Value="True"/>
-              <StripSymbols Value="True"/>
             </Debugging>
             <Options>
               <Win32>
@@ -283,6 +282,9 @@
         </CompilerOptions>
       </Item6>
       <Item7 Name="ReleaseConfined">
+        <MacroValues Count="1">
+          <Macro5 Name="LCLWidgetType" Value="qt5"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -340,9 +342,11 @@
     <RequiredPackages Count="6">
       <Item1>
         <PackageName Value="bgracontrols"/>
+        <DefaultFilename Value="../../../.lazarus/onlinepackagemanager/packages/BGRAControls/bgracontrols.lpk"/>
       </Item1>
       <Item2>
         <PackageName Value="BGRABitmapPack"/>
+        <DefaultFilename Value="bgrabitmap/bgrabitmap/bgrabitmappack.lpk"/>
       </Item2>
       <Item3>
         <PackageName Value="SynEdit"/>
@@ -521,7 +525,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;bgrabitmap/bgrabitmap;interfaces"/>
+      <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
@@ -535,6 +539,7 @@
     <Linking>
       <Debugging>
         <GenerateDebugInfo Value="False"/>
+        <RunWithoutDebug Value="True"/>
         <DebugInfoType Value="dsDwarf3"/>
         <StripSymbols Value="True"/>
         <UseExternalDbgSyms Value="True"/>
