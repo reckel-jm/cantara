@@ -970,6 +970,7 @@ begin
     end
   end else if ProgramMode = TProgramMode.ModeSelection then
   begin
+    SlideTextListBox.Clear;
     btnAdd.Enabled := True;
     btnRemove.Enabled := True;
     btnUp.Enabled := True;
@@ -1071,6 +1072,8 @@ procedure TfrmSongs.SlideTextListBoxDrawItem(Control: TWinControl;
 var
   ABitmap:TBgraBitmap;
 begin
+  if Index > SlideTextListBox.Count then Exit;
+
   ABitmap := TBgraBitmap.Create;
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.FontName:=Screen.SystemFont.Name;
@@ -1087,15 +1090,15 @@ begin
   if SlideTextListBox.ItemIndex=Index then
     ABitmap.FillRect(3,3,ABitmap.Width-3, ABitmap.Height-3, clActiveCaption, dmSet);
   ABitmap.DrawLine(0,0,0,ARect.Height,clBlack,True);
-  ABitmap.DrawLine(ARect.Width,0,ARect.Width,ARect.Height,clBlack,True);
+  ABitmap.DrawLine(ARect.Width-2,0,ARect.Width-2,ARect.Height,clBlack,True);
   ABitmap.TextRect(Rect(5,5,ABitmap.Width-5, ABitmap.Height-5),
                     SlideTextListBox.Items[Index], taLeftJustify, tlTop,
                     ColorToRGB(clBtnText)
                     );
   if (Index >= frmPresent.SlideList.Count-1) or
      (frmPresent.SlideList.Items[Index].Song.FileNameWithoutEnding <>
-     frmPresent.SlideList.Items[Index].Song.FileNameWithoutEnding) then
-     ABitmap.DrawLine(0,ARect.Height,ARect.Width,ARect.Height,clBlack,true);
+     frmPresent.SlideList.Items[Index+1].Song.FileNameWithoutEnding) then
+     ABitmap.DrawLine(0,ARect.Height-2,ARect.Width,ARect.Height-2,clBlack,true);
 
   ABitmap.Draw(SlideTextListBox.Canvas, ARect.Left, ARect.Top, true);
   ABitmap.Destroy;
@@ -1112,10 +1115,11 @@ procedure TfrmSongs.SlideTextListBoxMeasureItem(Control: TWinControl;
 var
   ABitmap:TBgraBitmap;
 begin
+  if Index > SlideTextListBox.Count-1 then Exit;
+
   ABitmap := TBgraBitmap.Create;
   ABitmap.FontName:=Screen.SystemFont.Name;
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
-  ABitmap.FontQuality:=fqFineClearTypeRGB;
   ABitmap.SetSize(SlideTextListBox.Width, SlideTextListBox.Height);
   AHeight:=ABitmap.TextSize(SlideTextListBox.Items[Index],SlideTextListBox.Width).Height;
   AHeight += 10;

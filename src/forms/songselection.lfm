@@ -227,15 +227,10 @@ object frmSongs: TfrmSongs
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderStyle = bsNone
       Color = clAppWorkspace
-      DoubleBuffered = False
       ExtendedSelect = False
-      IntegralHeight = True
       ItemHeight = 0
       Options = []
-      ParentBidiMode = False
-      ParentDoubleBuffered = False
       ParentShowHint = False
-      ParentFont = False
       Style = lbOwnerDrawVariable
       TabOrder = 2
       OnClick = SlideTextListBoxClick
