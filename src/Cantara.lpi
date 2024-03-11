@@ -45,9 +45,6 @@
       <CharSet Value="04B0"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.6.0"/>
     </VersionInfo>
-    <MacroValues Count="1">
-      <Macro6 Name="LCLWidgetType" Value="qt6"/>
-    </MacroValues>
     <BuildModes Count="7">
       <Item1 Name="Release" Default="True"/>
       <Item2 Name="Linux WPO Pass1">
@@ -233,9 +230,6 @@
         </CompilerOptions>
       </Item5>
       <Item6 Name="Debug">
-        <MacroValues Count="1">
-          <Macro6 Name="LCLWidgetType" Value="qt6"/>
-        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -282,9 +276,6 @@
         </CompilerOptions>
       </Item6>
       <Item7 Name="ReleaseConfined">
-        <MacroValues Count="1">
-          <Macro5 Name="LCLWidgetType" Value="qt5"/>
-        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -339,27 +330,23 @@
         <Mode0 Name="default"/>
       </Modes>
     </RunParams>
-    <RequiredPackages Count="6">
+    <RequiredPackages Count="5">
       <Item1>
-        <PackageName Value="bgracontrols"/>
-        <DefaultFilename Value="../../../.lazarus/onlinepackagemanager/packages/BGRAControls/bgracontrols.lpk"/>
-      </Item1>
-      <Item2>
         <PackageName Value="BGRABitmapPack"/>
         <DefaultFilename Value="bgrabitmap/bgrabitmap/bgrabitmappack.lpk"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="SynEdit"/>
       </Item2>
       <Item3>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="LazControls"/>
       </Item3>
       <Item4>
-        <PackageName Value="LazControls"/>
+        <PackageName Value="RunTimeTypeInfoControls"/>
       </Item4>
       <Item5>
-        <PackageName Value="RunTimeTypeInfoControls"/>
-      </Item5>
-      <Item6>
         <PackageName Value="LCL"/>
-      </Item6>
+      </Item5>
     </RequiredPackages>
     <Units Count="26">
       <Unit0>

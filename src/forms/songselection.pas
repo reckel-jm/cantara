@@ -9,7 +9,7 @@ uses
   Controls, Graphics, Dialogs, StrUtils, Math,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles,
   DefaultTranslator, Clipbrd,
-  lyrics, LCLTranslator, BCListBox, songeditor, SongTeX, welcome, Slides,
+  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
   FormFulltextSearch, PPTX, PresentationCanvas,
   formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
   presentationcontroller, Types,bgrabitmap, BGRABitmapTypes;
@@ -1078,22 +1078,26 @@ var
 begin
   if Index > SlideTextListBox.Count then Exit;
 
-  ABitmap := TBgraBitmap.Create(ARect.Width, ARect.Height);
-  ABitmap.Fill(clAppWorkspace);
+  ABitmap := TBgraBitmap.Create(ARect.Width, ARect.Height, clAppWorkspace);
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.FontName:=Screen.SystemFont.Name;
   ABitmap.FontQuality:=fqSystem;
+  if odSelected in State then
+  begin
+    ABitmap.FillRect(3,3,ABitmap.Width-3, ABitmap.Height-3, clHighlight, dmSet);
+    TextColor := clHighlightText;
+  end
+  else
+  begin
+    TextColor := clInactiveCaptionText;
+    //ABitmap.FillRect(3,3,ABitmap.Width-3, ABitmap.Height-3, SlideTextListBox.Color, dmSet);
+  end;
+
   if frmPresent.SlideList.Items[Index].SlideType = TitleSlide then
   begin
      ABitmap.FontStyle+=[fsBold];
      ABitmap.DrawLine(2,2,ARect.Width,2,clBlack,true);
   end;
-  if SlideTextListBox.ItemIndex=Index then
-  begin
-    ABitmap.FillRect(3,3,ABitmap.Width-3, ABitmap.Height-3, clHighlight, dmSet);
-    TextColor := clHighlightText;
-  end
-  else TextColor := clInactiveCaptionText;
 
   ABitmap.DrawLine(0,0,0,ARect.Height,clBlack,True);
   ABitmap.DrawLine(ARect.Width-2,0,ARect.Width-2,ARect.Height,clBlack,True);
