@@ -408,7 +408,9 @@ procedure TfrmSongs.itemExportPicturesClick(Sender: TObject);
 begin
   if lbxSSelected.Count > 0 then
   begin
-    CreateSongListDataAndLoadItIntoSlideList(FormImageExport.SlideList);
+    if Self.ProgramMode = TProgramMode.ModeSelection then
+       CreateSongListDataAndLoadItIntoSlideList(FormImageExport.SlideList)
+    else FormImageExport.SlideList.Assign(frmPresent.SlideList);
     FormImageExport.PresentationCanvas.PresentationStyleSettings :=
       frmSettings.ExportPresentationStyleSettings;
     FormImageExport.PresentationCanvas.SlideSettings :=
@@ -439,7 +441,6 @@ begin
       MB_OKCANCEL + MB_ICONINFORMATION) <> 1) then Exit;
     self.UserAgreesPptxGenJs := True;
     PPTXExporter := TPPTXExporter.Create;
-    PPTXSlideList := TSlideList.Create(True);
     PPTXExporter.PresentationStyleSettings :=
       frmSettings.ExportPresentationStyleSettings;
     {$IF defined(CONTAINER)}
@@ -450,7 +451,19 @@ begin
     TempDir := GetTempDir(False); // get the users temp dir
     PPTXEXporter.Folder := TempDir;
     {$ENDIF}
-    CreateSongListDataAndLoadItIntoSlideList(PPTXSlideList);
+    if Self.ProgramMode = TProgramMode.ModeSelection then
+    begin
+       CreateSongListDataAndLoadItIntoSlideList(PPTXSlideList);
+       PPTXSlideList := TSlideList.Create(True);
+    end
+    else
+    begin
+      // In Presentation Mode, don't destroy the slides as they are owned by the
+      // presentation window
+      PPTXSlideList := TSlideList.Create(False);
+      PPTXSlideList.Assign(frmPresent.SlideList);
+    end;
+
     PPTXExporter.AddSlides(PPTXSlideList);
     OpenURL('file://' + PPTXExporter.SaveJavaScriptToFile);
     PPTXSlideList.Destroy;
@@ -549,7 +562,7 @@ procedure TfrmSongs.itemMarkupExportClick(Sender: TObject);
 begin
   if lbxSSelected.Count > 0 then
   begin
-    CreateSongListData;
+    if Self.ProgramMode = TProgramMode.ModeSelection then CreateSongListData;
     FrmMarkupExport.Show;
     FrmMarkupExport.SongList := LoadedSongList;
     FrmMarkupExport.ParseTemplate;
@@ -948,6 +961,8 @@ begin
     Invalidate;
     FillSlideListInPresentationConsole;
     PnlSplitter.Left := Round(Self.Width * 0.3);
+    if SlideTextListBox.Count > 0 then
+       SlideTextListBox.ItemIndex:=0;
     Application.ProcessMessages;
   end;
   UpdateControls;
@@ -1096,7 +1111,7 @@ begin
   if frmPresent.SlideList.Items[Index].SlideType = TitleSlide then
   begin
      ABitmap.FontStyle+=[fsBold];
-     ABitmap.DrawLine(2,2,ARect.Width,2,clBlack,true);
+     ABitmap.DrawLine(1,1,ARect.Width,1,clBlack,true);
   end;
 
   ABitmap.DrawLine(0,0,0,ARect.Height,clBlack,True);
@@ -1105,13 +1120,16 @@ begin
                     SlideTextListBox.Items[Index], taLeftJustify, tlTop,
                     ColorToRGB(TextColor)
                     );
-  if (Index >= frmPresent.SlideList.Count-1) or
-     (frmPresent.SlideList.Items[Index].Song.FileNameWithoutEnding <>
-     frmPresent.SlideList.Items[Index+1].Song.FileNameWithoutEnding) then
-     ABitmap.DrawLine(0,ARect.Height-2,ARect.Width,ARect.Height-2,clBlack,true);
-
-  ABitmap.Draw(SlideTextListBox.Canvas, ARect.Left, ARect.Top, true);
-  ABitmap.Destroy;
+  try
+    if (Index >= frmPresent.SlideList.Count-1) or
+       (frmPresent.SlideList[Index].Song.FileNameWithoutEnding <>
+       frmPresent.SlideList[Index+1].Song.FileNameWithoutEnding)
+    then
+      ABitmap.DrawLine(1,ARect.Height-1,ARect.Width-1,ARect.Height-1,clBlack,true);
+  finally
+    ABitmap.Draw(SlideTextListBox.Canvas, ARect.Left, ARect.Top, true);
+    ABitmap.Destroy;
+  end;
 end;
 
 procedure TfrmSongs.SlideTextListBoxKeyDown(Sender: TObject; var Key: Word;

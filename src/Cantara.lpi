@@ -260,8 +260,7 @@
           </CodeGeneration>
           <Linking>
             <Debugging>
-              <DebugInfoType Value="dsDwarf3"/>
-              <UseHeaptrc Value="True"/>
+              <DebugInfoType Value="dsDwarf2"/>
             </Debugging>
             <Options>
               <Win32>
