@@ -453,8 +453,8 @@ begin
     {$ENDIF}
     if Self.ProgramMode = TProgramMode.ModeSelection then
     begin
-       CreateSongListDataAndLoadItIntoSlideList(PPTXSlideList);
-       PPTXSlideList := TSlideList.Create(True);
+      PPTXSlideList := TSlideList.Create(True);
+      CreateSongListDataAndLoadItIntoSlideList(PPTXSlideList);
     end
     else
     begin

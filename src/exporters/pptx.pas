@@ -35,7 +35,7 @@ interface
 
 uses
   Classes, SysUtils, Slides, LCLType, Lyrics, ResourceHandling, PresentationCanvas,
-  FileUtil, Graphics, Base64, PresentationModels;
+  FileUtil, Graphics, Base64, PresentationModels, fpjson;
 
 type
   TPPTXExporter = class
@@ -84,7 +84,8 @@ implementation
 function PrepareText(Input: String): String;
 begin
   Input := Trim(Input);
-  Result := StringReplace(Input, LineEnding, '\n', [rfReplaceAll]);
+  Result := StringToJSONString(Input);
+  Result := StringReplace(Result, LineEnding, '\n', [rfReplaceAll]);
 end;
 
 constructor TPPTXExporter.Create;
