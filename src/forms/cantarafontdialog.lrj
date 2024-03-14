@@ -1,0 +1,8 @@
+{"version":1,"strings":[
+{"hash":149468423,"name":"tcfontdialog.caption","sourcebytes":[67,70,111,110,116,68,105,97,108,111,103],"value":"CFontDialog"},
+{"hash":317012,"name":"tcfontdialog.fontselectiongroupbox.caption","sourcebytes":[70,111,110,116],"value":"Font"},
+{"hash":61643203,"name":"tcfontdialog.fontpropertiesgroupbox.caption","sourcebytes":[70,111,110,116,32,80,114,111,112,101,114,116,105,101,115],"value":"Font Properties"},
+{"hash":106882778,"name":"tcfontdialog.labelfontsize.caption","sourcebytes":[70,111,110,116,32,83,105,122,101,58],"value":"Font Size:"},
+{"hash":149276526,"name":"tcfontdialog.formatationcheckgroup.caption","sourcebytes":[70,111,114,109,97,116,97,116,105,111,110],"value":"Formatation"},
+{"hash":51503486,"name":"tcfontdialog.previewlabel.caption","sourcebytes":[65,109,97,122,105,110,103,32,71,114,97,99,101,44,32,104,111,119,32,115,119,101,101,116,32,116,104,101,32,115,111,117,110,100,44,32,116,104,97,116,32,115,97,118,101,100,32,97,32,119,114,101,116,99,104,32,108,105,107,101,32,109,101,33,32,72,111,119,32,103,114,97,99,105,111,117,115,32,105,115,32,116,104,97,116,32,103,114,97,99,101,46],"value":"Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."}
+]}

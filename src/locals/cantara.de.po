@@ -214,6 +214,30 @@ msgstr "Die Lieder der Datei wurden erfolgreich in das Liedverzeichnis importier
 msgid "Title Slide"
 msgstr ""
 
+#: tcfontdialog.caption
+msgid "CFontDialog"
+msgstr ""
+
+#: tcfontdialog.fontpropertiesgroupbox.caption
+msgid "Font Properties"
+msgstr ""
+
+#: tcfontdialog.fontselectiongroupbox.caption
+msgid "Font"
+msgstr ""
+
+#: tcfontdialog.formatationcheckgroup.caption
+msgid "Formatation"
+msgstr ""
+
+#: tcfontdialog.labelfontsize.caption
+msgid "Font Size:"
+msgstr ""
+
+#: tcfontdialog.previewlabel.caption
+msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
 msgstr "Auswählen..."
@@ -534,10 +558,6 @@ msgstr "Zentriert"
 #: tfrmsettings.combovertical.text
 msgid "Middle"
 msgstr "Mittig"
-
-#: tfrmsettings.fontdialog.title
-msgid "Select font"
-msgstr "Wähle Schrift aus"
 
 #: tfrmsettings.gbpresentation.caption
 msgid "Presentation View"

@@ -214,6 +214,30 @@ msgstr "文件中的歌曲已導入到您的歌曲存儲庫中。"
 msgid "Title Slide"
 msgstr ""
 
+#: tcfontdialog.caption
+msgid "CFontDialog"
+msgstr ""
+
+#: tcfontdialog.fontpropertiesgroupbox.caption
+msgid "Font Properties"
+msgstr ""
+
+#: tcfontdialog.fontselectiongroupbox.caption
+msgid "Font"
+msgstr ""
+
+#: tcfontdialog.formatationcheckgroup.caption
+msgid "Formatation"
+msgstr ""
+
+#: tcfontdialog.labelfontsize.caption
+msgid "Font Size:"
+msgstr ""
+
+#: tcfontdialog.previewlabel.caption
+msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
 msgstr "選擇..."
@@ -534,10 +558,6 @@ msgstr "中心"
 #: tfrmsettings.combovertical.text
 msgid "Middle"
 msgstr "中間"
-
-#: tfrmsettings.fontdialog.title
-msgid "Select font"
-msgstr "選擇字體及字號"
 
 #: tfrmsettings.gbpresentation.caption
 msgid "Presentation View"

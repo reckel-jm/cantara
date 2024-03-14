@@ -217,6 +217,30 @@ msgstr "I brani del file sono stati importati nell'archivio dei brani."
 msgid "Title Slide"
 msgstr "Titolo diapositiva"
 
+#: tcfontdialog.caption
+msgid "CFontDialog"
+msgstr ""
+
+#: tcfontdialog.fontpropertiesgroupbox.caption
+msgid "Font Properties"
+msgstr ""
+
+#: tcfontdialog.fontselectiongroupbox.caption
+msgid "Font"
+msgstr ""
+
+#: tcfontdialog.formatationcheckgroup.caption
+msgid "Formatation"
+msgstr ""
+
+#: tcfontdialog.labelfontsize.caption
+msgid "Font Size:"
+msgstr ""
+
+#: tcfontdialog.previewlabel.caption
+msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
+msgstr ""
+
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
 msgstr "Scegliere..."
@@ -535,10 +559,6 @@ msgstr "Centro"
 #: tfrmsettings.combovertical.text
 msgid "Middle"
 msgstr "Centro"
-
-#: tfrmsettings.fontdialog.title
-msgid "Select font"
-msgstr "Seleziona carattere"
 
 #: tfrmsettings.gbpresentation.caption
 msgid "Presentation View"

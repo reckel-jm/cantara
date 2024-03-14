@@ -1099,13 +1099,12 @@ begin
   ABitmap.FontQuality:=fqSystem;
   if odSelected in State then
   begin
-    ABitmap.FillRect(3,3,ABitmap.Width-3, ABitmap.Height-3, clHighlight, dmSet);
+    ABitmap.FillRect(1,1,ABitmap.Width-1, ABitmap.Height-1, clHighlight, dmSet);
     TextColor := clHighlightText;
   end
   else
   begin
-    TextColor := clInactiveCaptionText;
-    //ABitmap.FillRect(3,3,ABitmap.Width-3, ABitmap.Height-3, SlideTextListBox.Color, dmSet);
+    TextColor := clBtnText;
   end;
 
   if frmPresent.SlideList.Items[Index].SlideType = TitleSlide then
@@ -1114,8 +1113,8 @@ begin
      ABitmap.DrawLine(1,1,ARect.Width,1,clBlack,true);
   end;
 
-  ABitmap.DrawLine(0,0,0,ARect.Height,clBlack,True);
-  ABitmap.DrawLine(ARect.Width-2,0,ARect.Width-2,ARect.Height,clBlack,True);
+  ABitmap.DrawLine(1,1,1,ARect.Height-1,clBlack,True);
+  ABitmap.DrawLine(ARect.Width-1,1,ARect.Width-1,ARect.Height-1,clBlack,True);
   ABitmap.TextRect(Rect(5,5,ABitmap.Width-5, ABitmap.Height-5),
                     SlideTextListBox.Items[Index], taLeftJustify, tlTop,
                     ColorToRGB(TextColor)

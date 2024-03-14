@@ -28,7 +28,8 @@ uses
   formMarkupExport,
   markup,
   imageexport,
-  loadimagethread, CantaraStandardDialogs, presentationcontroller;
+  loadimagethread, CantaraStandardDialogs, presentationcontroller,
+cantarafontdialog;
   {$R *.res}
 
 begin
@@ -47,5 +48,6 @@ begin
   Application.CreateForm(TFormPadding, FormPadding);
   Application.CreateForm(TFrmMarkupExport, FrmMarkupExport);
   Application.CreateForm(TFormImageExport, FormImageExport);
+  Application.CreateForm(TCFontDialog, CFontDialog);
   Application.Run;
 end.

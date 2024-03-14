@@ -27,6 +27,5 @@
 {"hash":216640249,"name":"tfrmsettings.selectdirectorydialog.title","sourcebytes":[83,101,108,101,99,116,32,115,111,110,103,32,114,101,112,111,115,105,116,111,114,121,32,100,105,99,116,105,111,110,97,114,121],"value":"Select song repository dictionary"},
 {"hash":229805586,"name":"tfrmsettings.bgcolordialog.title","sourcebytes":[83,101,108,101,99,116,32,98,97,99,107,103,114,111,117,110,100,32,99,111,108,111,114],"value":"Select background color"},
 {"hash":207113506,"name":"tfrmsettings.textcolordialog.title","sourcebytes":[83,101,108,101,99,116,32,116,101,120,116,32,99,111,108,111,114],"value":"Select text color"},
-{"hash":171907300,"name":"tfrmsettings.fontdialog.title","sourcebytes":[83,101,108,101,99,116,32,102,111,110,116],"value":"Select font"},
 {"hash":24148789,"name":"tfrmsettings.bgpicturedialog.title","sourcebytes":[79,112,101,110,32,105,109,97,103,101,32,102,105,108,101],"value":"Open image file"}
 ]}
