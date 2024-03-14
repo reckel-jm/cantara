@@ -281,6 +281,9 @@
         </CompilerOptions>
       </Item6>
       <Item7 Name="ReleaseConfined">
+        <MacroValues Count="1">
+          <Macro6 Name="LCLWidgetType" Value="qt6"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -302,6 +305,7 @@
           <Linking>
             <Debugging>
               <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
               <DebugInfoType Value="dsDwarf3"/>
               <StripSymbols Value="True"/>
               <UseExternalDbgSyms Value="True"/>
