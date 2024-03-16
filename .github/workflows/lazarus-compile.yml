@@ -21,9 +21,9 @@ jobs:
     - name: Build the Windows Application
       if: ${{ matrix.operating-system == 'windows-latest' }}
       run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk; lazbuild -B src/Cantara.lpi
-    - name: Install libqt5pas dependency under Ubuntu
+    - name: Install libqt6pas dependency under Ubuntu
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6-dev_6.2.7-1_amd64.deb; wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6_6.2.7-1_amd64.deb; sudo dpkg -i ./libqt6pas6_6.2.7-1_amd64.deb ./libqt6pas6-dev_6.2.7-1_amd64.deb
+      run: wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6-dev_6.2.7-1_amd64.deb; wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6_6.2.7-1_amd64.deb; sudo gdebi ./libqt6pas6_6.2.7-1_amd64.deb; sudo gdebi ./libqt6pas6-dev_6.2.7-1_amd64.deb
     - name: Build the Linux Application
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: make
