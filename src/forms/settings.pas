@@ -462,40 +462,42 @@ begin
     Application.MessageBox(PChar(strValidSongRepository), PChar(strErrorCaption))
   else
   begin
-    settingsFile.WriteString('Config', 'Repo-Path', edtRepoPath.Text);
-    settingsFile.WriteBool('Config', 'empty-Frame', cbEmptyFrame.Checked);
-    settingsFile.WriteString('Config', 'Text-Color',
-      ColorToString(textColorDialog.Color));
-    settingsFile.WriteString('Config', 'Background-Color',
-      ColorToString(bgColorDialog.Color));
-    settingsFile.WriteBool('Config', 'Spoiler', cbSpoiler.Checked);
-    settingsFile.WriteString('Config', 'Font-Name', CFontDialog.SelectedFont.Name);
-    settingsFile.WriteInteger('Config', 'Font-Size', CFontDialog.SelectedFont.Size);
-    settingsFile.WriteString('Config', 'Font-Style', StyleToStr(CFontDialog.SelectedFont.Style));
-    //settingsFile.WriteFloat('Config', 'Line-Distance', edtLineDistance.Value);
-    settingsFile.WriteBool('Config', 'TitleSlide', cbMetaTitleSlide.Checked);
-    settingsFile.WriteBool('Config', 'MetaDataFirstSlide', cbMetaDataFirstSlide.Checked);
-    settingsFile.WriteBool('Config', 'MetaDataLastSlide', cbMetaDataLastSlide.Checked);
-    str := StringReplace(memoMetaData.Lines.Text, LineEnding, '</br>', [rfReplaceAll]);
-    settingsFile.WriteString('Config', 'MetaDataSyntax', str);
-    settingsFile.WriteString('Config', 'BackgroundPicture-Path',
-      BgPictureDialog.FileName);
+    try
+      settingsFile.WriteString('Config', 'Repo-Path', edtRepoPath.Text);
+      settingsFile.WriteBool('Config', 'empty-Frame', cbEmptyFrame.Checked);
+      settingsFile.WriteString('Config', 'Text-Color',
+        ColorToString(textColorDialog.Color));
+      settingsFile.WriteString('Config', 'Background-Color',
+        ColorToString(bgColorDialog.Color));
+      settingsFile.WriteBool('Config', 'Spoiler', cbSpoiler.Checked);
+      settingsFile.WriteString('Config', 'Font-Name', CFontDialog.SelectedFont.Name);
+      settingsFile.WriteInteger('Config', 'Font-Size', CFontDialog.SelectedFont.Size);
+      settingsFile.WriteString('Config', 'Font-Style', StyleToStr(CFontDialog.SelectedFont.Style));
+      //settingsFile.WriteFloat('Config', 'Line-Distance', edtLineDistance.Value);
+      settingsFile.WriteBool('Config', 'TitleSlide', cbMetaTitleSlide.Checked);
+      settingsFile.WriteBool('Config', 'MetaDataFirstSlide', cbMetaDataFirstSlide.Checked);
+      settingsFile.WriteBool('Config', 'MetaDataLastSlide', cbMetaDataLastSlide.Checked);
+      str := StringReplace(memoMetaData.Lines.Text, LineEnding, '</br>', [rfReplaceAll]);
+      settingsFile.WriteString('Config', 'MetaDataSyntax', str);
+      settingsFile.WriteString('Config', 'BackgroundPicture-Path',
+        BgPictureDialog.FileName);
 
-    // MUST be before background picture
-    settingsFile.WriteBool('Config', 'BackgroundPicture', cbShowBackgroundImage.Checked);
-    settingsFile.WriteInteger('Config', 'ImageBrightness', sbImageBrightness.Position);
-    settingsFile.WriteInteger('Config', 'AutoWrap', seWrapLines.Value);
-    settingsFile.WriteInteger('Config', 'AlignHorizontal', comboHorizontal.ItemIndex);
-    settingsFile.WriteInteger('Config', 'AlignVertical', comboVertical.ItemIndex);
+      // MUST be before background picture
+      settingsFile.WriteBool('Config', 'BackgroundPicture', cbShowBackgroundImage.Checked);
+      settingsFile.WriteInteger('Config', 'ImageBrightness', sbImageBrightness.Position);
+      settingsFile.WriteInteger('Config', 'AutoWrap', seWrapLines.Value);
+      settingsFile.WriteInteger('Config', 'AlignHorizontal', comboHorizontal.ItemIndex);
+      settingsFile.WriteInteger('Config', 'AlignVertical', comboVertical.ItemIndex);
 
-    Padding := FormPadding.frmSettingsDetailed.ExportPadding;
-    settingsFile.WriteInteger('Config', 'Padding-Left', Padding.Left);
-    settingsFile.WriteInteger('Config', 'Padding-Top', Padding.Top);
-    settingsFile.WriteInteger('Config', 'Padding-Right', Padding.Right);
-    settingsFile.WriteInteger('Config', 'Padding-Bottom', Padding.Bottom);
-
-    settingsFile.UpdateFile;
-    CanClose := True;
+      Padding := FormPadding.frmSettingsDetailed.ExportPadding;
+      settingsFile.WriteInteger('Config', 'Padding-Left', Padding.Left);
+      settingsFile.WriteInteger('Config', 'Padding-Top', Padding.Top);
+      settingsFile.WriteInteger('Config', 'Padding-Right', Padding.Right);
+      settingsFile.WriteInteger('Config', 'Padding-Bottom', Padding.Bottom);
+    finally
+      settingsFile.UpdateFile;
+      CanClose := True;
+    end;
   end;
 end;
 

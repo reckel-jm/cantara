@@ -362,6 +362,7 @@ begin
   else
   begin
     frmWelcome.ShowModal;
+    settingsfile.UpdateFile;
   end;
   self.UserAgreesPptxGenJs := SettingsFile.ReadBool('Exporter', 'pptxgenjs', False);
   loadRepo(frmSettings.edtRepoPath.Text);
@@ -732,18 +733,26 @@ var
   DropPosition, StartPosition: Integer;
   DropPoint: TPoint;
 begin
-  if (Source Is TListBox) And ((Source As TListBox).Name = 'lbxSRepo') then
-    lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex])
-  else if (Source Is TListBox) And ((Source As TListBox).Name = 'lbxSselected') then
-  begin
-    DropPoint.X := X;
-    DropPoint.Y := Y;
-    with Source As TListBox do
+  If lbxSSelected.Count <= 0 then Exit;
+  If Source = nil then Exit;
+  If Sender = nil then Exit;
+  try
+    if lbxSRepo.ItemIndex < 0 then Exit;
+    if (Source Is TListBox) And ((Source As TListBox).Name = 'lbxSRepo') then
+      lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex])
+    else if (Source Is TListBox) And ((Source As TListBox).Name = 'lbxSselected') then
     begin
-      StartPosition := ItemAtPos(StartingPoint, True);
-      DropPosition := ItemAtPos(DropPoint, True);
-      Items.Move(StartPosition, DropPosition);
+      DropPoint.X := X;
+      DropPoint.Y := Y;
+      with Source As TListBox do
+      begin
+        StartPosition := ItemAtPos(StartingPoint, True);
+        DropPosition := ItemAtPos(DropPoint, True);
+        if (StartPosition = -1) or (DropPosition = -1) then Exit;
+        Items.Move(StartPosition, DropPosition);
+      end;
     end;
+  finally
   end;
 end;
 

@@ -275,6 +275,11 @@
             </Options>
           </Linking>
           <Other>
+            <Verbosity>
+              <ShoLineNum Value="True"/>
+              <ShowDebugInfo Value="True"/>
+              <ShowHintsForUnusedUnitsInMainSrc Value="True"/>
+            </Verbosity>
             <CustomOptions Value="-dQT_NATIVE_DIALOGS
 -dUseCThreads"/>
           </Other>
