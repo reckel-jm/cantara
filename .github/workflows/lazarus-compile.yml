@@ -16,7 +16,7 @@ jobs:
       with:
         submodules: true
     - name: Install Lazarus
-      uses: reckel-jm/setup-lazarus
+      uses: reckel-jm/setup-lazarus@2ce1ec9
       with:
         lazarus-version: ${{ matrix.lazarus-versions }}
         with-cache: false
