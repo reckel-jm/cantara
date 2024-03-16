@@ -359,9 +359,9 @@ begin
     settingsFile.ReadBool('Config', 'MetaDataLastSlide', False);
   str := settingsFile.ReadString('Config', 'MetaDataSyntax', strDefaultMetaTemplate);
   memoMetaData.Lines.Text := StringReplace(str, '</br>', LineEnding, [rfReplaceAll]);
-  CFontDialog.PreviewLabel.Font.Name := settingsFile.ReadString('Config', 'Font-Name', 'default');
-  CFontDialog.PreviewLabel.Font.Size := settingsFile.ReadInteger('Config', 'Font-Size', 42);
-  CFontDialog.PreviewLabel.Font.Style := StrToStyle(settingsFile.ReadString('Config',
+  CFontDialog.SelectedFont.Name := settingsFile.ReadString('Config', 'Font-Name', 'default');
+  CFontDialog.SelectedFont.Size := settingsFile.ReadInteger('Config', 'Font-Size', 42);
+  CFontDialog.SelectedFont.Style := StrToStyle(settingsFile.ReadString('Config',
     'Font-Style', 'FFFF'));
   BgPictureDialog.FileName := settingsFile.ReadString('Config',
     'BackgroundPicture-Path', '');
@@ -469,9 +469,9 @@ begin
     settingsFile.WriteString('Config', 'Background-Color',
       ColorToString(bgColorDialog.Color));
     settingsFile.WriteBool('Config', 'Spoiler', cbSpoiler.Checked);
-    settingsFile.WriteString('Config', 'Font-Name', CFontDialog.PreviewLabel.Font.Name);
-    settingsFile.WriteInteger('Config', 'Font-Size', CFontDialog.PreviewLabel.Font.Size);
-    settingsFile.WriteString('Config', 'Font-Style', StyleToStr(CFontDialog.PreviewLabel.Font.Style));
+    settingsFile.WriteString('Config', 'Font-Name', CFontDialog.SelectedFont.Name);
+    settingsFile.WriteInteger('Config', 'Font-Size', CFontDialog.SelectedFont.Size);
+    settingsFile.WriteString('Config', 'Font-Style', StyleToStr(CFontDialog.SelectedFont.Style));
     //settingsFile.WriteFloat('Config', 'Line-Distance', edtLineDistance.Value);
     settingsFile.WriteBool('Config', 'TitleSlide', cbMetaTitleSlide.Checked);
     settingsFile.WriteBool('Config', 'MetaDataFirstSlide', cbMetaDataFirstSlide.Checked);
@@ -560,7 +560,7 @@ var
   PresentationStyleSettings: TPresentationStyleSettings;
 begin
   PresentationStyleSettings.Font := TFont.Create;
-  PresentationStyleSettings.Font.Assign(CFontDialog.PreviewLabel.Font);
+  PresentationStyleSettings.Font.Assign(CFontDialog.SelectedFont);
   PresentationStyleSettings.BackgroundColor := bgColorDialog.Color;
   PresentationStyleSettings.ShowBackgroundImage := cbShowBackgroundImage.Checked;
   PresentationStyleSettings.TextColor := textColorDialog.Color;

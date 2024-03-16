@@ -310,7 +310,7 @@ begin
 
   { Make the Title bold }
   if Slide.SlideType = TitleSlide then
-    Bitmap.FontStyle := [fsBold];
+    Bitmap.FontStyle += [fsBold];
 
   { Painting the main text }
   Bitmap.TextRect(ContentRect, Slide.PartContent.MainText, TextStyle.Alignment, tlCenter,

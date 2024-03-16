@@ -21,14 +21,18 @@ type
     LabelFontSize: TLabel;
     FontSizeEdit: TSpinEdit;
     Splitter1: TSplitter;
+    SelectedFont: TFont;
     procedure FontSelectionListBoxClick(Sender: TObject);
     procedure FontSizeEditChange(Sender: TObject);
     procedure FormatationCheckGroupChangeBounds(Sender: TObject);
     procedure FormatationCheckGroupClick(Sender: TObject);
     procedure FormatationCheckGroupItemClick(Sender: TObject; Index: integer);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
+
     procedure UpdatePreview;
   public
 
@@ -46,12 +50,20 @@ implementation
 procedure TCFontDialog.FormCreate(Sender: TObject);
 begin
   FontSelectionListBox.Items.Assign(Screen.Fonts);
-  PreviewLabel.Font.Style:=[];
+  SelectedFont := TFont.Create;
+
+end;
+
+procedure TCFontDialog.FormDestroy(Sender: TObject);
+begin
+  SelectedFont.Destroy;
 end;
 
 procedure TCFontDialog.FormShow(Sender: TObject);
 var i: Integer;
 begin
+  PreviewLabel.Font.Assign(Self.SelectedFont);
+
   if PreviewLabel.Font.Name <> '' then
     for i := 0 to FontSelectionListBox.Count-1 do
     begin
@@ -60,9 +72,12 @@ begin
     end;
   FontSizeEdit.Value:=PreviewLabel.Font.Size;
   FontSizeEdit.Text:=IntToStr(FontSizeEdit.Value);
-  FormatationCheckGroup.Checked[0] := (fsBold in PreviewLabel.Font.Style);
-  FormatationCheckGroup.Checked[1] := (fsItalic in PreviewLabel.Font.Style);
 
+  {This seams to be a bug in Lazarus -> the style didn't get assigned before}
+  PreviewLabel.Font.Style:=Self.SelectedFont.Style;
+
+  FormatationCheckGroup.Checked[0] := Boolean(fsBold in PreviewLabel.Font.Style);
+  FormatationCheckGroup.Checked[1] := Boolean(fsItalic in PreviewLabel.Font.Style);
   UpdatePreview;
 end;
 
@@ -90,6 +105,13 @@ procedure TCFontDialog.FormatationCheckGroupItemClick(Sender: TObject;
   Index: integer);
 begin
   UpdatePreview;
+end;
+
+procedure TCFontDialog.FormClose(Sender: TObject; var CloseAction: TCloseAction
+  );
+begin
+  Self.SelectedFont.Assign(Self.PreviewLabel.Font);
+  Self.SelectedFont.Style:=Self.PreviewLabel.Font.Style;
 end;
 
 procedure TCFontDialog.UpdatePreview;

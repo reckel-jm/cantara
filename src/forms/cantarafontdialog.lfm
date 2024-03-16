@@ -6,9 +6,12 @@ object CFontDialog: TCFontDialog
   Caption = 'CFontDialog'
   ClientHeight = 420
   ClientWidth = 547
+  OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poOwnerFormCenter
+  WindowState = wsMaximized
   object FontSelectionGroupBox: TGroupBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
