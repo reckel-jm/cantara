@@ -37,10 +37,14 @@ parts:
     - wget
     - libgtk2.0-dev
     override-build: |
-      wget -nc "https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20$SNAP_ARCH""%20DEB/Lazarus%202.2.6/lazarus-project_2.2.6-0_$SNAP_ARCH"".deb"
-      wget -nc "https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20$SNAP_ARCH""%20DEB/Lazarus%202.2.6/fpc-laz_3.2.2-210709_$SNAP_ARCH"".deb"
-      wget -nc "https://downloads.sourceforge.net/project/lazarus/Lazarus%20Linux%20$SNAP_ARCH""%20DEB/Lazarus%202.2.6/fpc-src_3.2.2-210709_$SNAP_ARCH"".deb"
-      apt install "./lazarus-project_2.2.6-0_$SNAP_ARCH"".deb" "./fpc-laz_3.2.2-210709_$SNAP_ARCH"".deb" "./fpc-src_3.2.2-210709_$SNAP_ARCH"".deb"
+      if [ "$SNAP_ARCH" = "amd64" ]; then
+        wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.2/lazarus-project_3.2.0-0_amd64.deb"
+        wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.2/fpc-laz_3.2.2-210709_amd64.deb"
+        wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.2/fpc-src_3.2.2-210709_amd64.deb"
+        apt install "./lazarus-project_3.2.0-0_amd64.deb" "./fpc-laz_3.2.2-210709_amd64.deb" "./fpc-src_3.2.2-210709_amd64.deb"
+      else
+        # add things here
+      fi
     prime: [-*]
   cantara:
     after: [lazarus]
