@@ -11,12 +11,14 @@ jobs:
         operating-system: [windows-latest,ubuntu-latest,macos-latest]
         lazarus-versions: [stable]
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
       with:
         submodules: true
-    - uses: gcarreno/setup-lazarus@v3.2
+    - name: Install Lazarus
+      uses: reckel-jm/setup-lazarus@v3.2
       with:
-        lazarus-version: "stable"
+        lazarus-version: ${{ matrix.lazarus-versions }}
         with-cache: false
     - name: Build the Windows Application
       if: ${{ matrix.operating-system == 'windows-latest' }}
