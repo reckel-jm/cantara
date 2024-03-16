@@ -25,6 +25,7 @@ type
     procedure FontSizeEditChange(Sender: TObject);
     procedure FormatationCheckGroupChangeBounds(Sender: TObject);
     procedure FormatationCheckGroupClick(Sender: TObject);
+    procedure FormatationCheckGroupItemClick(Sender: TObject; Index: integer);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -45,6 +46,7 @@ implementation
 procedure TCFontDialog.FormCreate(Sender: TObject);
 begin
   FontSelectionListBox.Items.Assign(Screen.Fonts);
+  PreviewLabel.Font.Style:=[];
 end;
 
 procedure TCFontDialog.FormShow(Sender: TObject);
@@ -60,6 +62,8 @@ begin
   FontSizeEdit.Text:=IntToStr(FontSizeEdit.Value);
   FormatationCheckGroup.Checked[0] := (fsBold in PreviewLabel.Font.Style);
   FormatationCheckGroup.Checked[1] := (fsItalic in PreviewLabel.Font.Style);
+
+  UpdatePreview;
 end;
 
 procedure TCFontDialog.FontSelectionListBoxClick(Sender: TObject);
@@ -82,16 +86,23 @@ begin
   UpdatePreview;
 end;
 
+procedure TCFontDialog.FormatationCheckGroupItemClick(Sender: TObject;
+  Index: integer);
+begin
+  UpdatePreview;
+end;
+
 procedure TCFontDialog.UpdatePreview;
 begin
   if FontSelectionListBox.ItemIndex > -1 then
     PreviewLabel.Font.Name:=FontSelectionListBox.Items[FontSelectionListBox.ItemIndex];
   PreviewLabel.Font.Size:=FontSizeEdit.Value;
+
   PreviewLabel.Font.Style:=[];
-    if FormatationCheckGroup.Checked[0] then
-       PreviewLabel.Font.Style := PreviewLabel.Font.Style + [fsBold];
-    if FormatationCheckGroup.Checked[1] then
-       PreviewLabel.Font.Style := PreviewLabel.Font.Style + [fsItalic];
+  if FormatationCheckGroup.Checked[0] then
+     PreviewLabel.Font.Style := PreviewLabel.Font.Style + [fsBold];
+  if FormatationCheckGroup.Checked[1] then
+     PreviewLabel.Font.Style := PreviewLabel.Font.Style + [fsItalic];
 end;
 
 end.

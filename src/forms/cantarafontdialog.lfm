@@ -117,6 +117,7 @@ object CFontDialog: TCFontDialog
       )
       OnChangeBounds = FormatationCheckGroupChangeBounds
       OnClick = FormatationCheckGroupClick
+      OnItemClick = FormatationCheckGroupItemClick
       TabOrder = 1
       Data = {
         020000000202
@@ -137,6 +138,7 @@ object CFontDialog: TCFontDialog
       Anchors = [akTop, akLeft, akRight, akBottom]
       AutoSize = False
       Caption = 'Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace.'
+      ParentFont = False
       WordWrap = True
     end
   end

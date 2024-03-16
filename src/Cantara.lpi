@@ -291,7 +291,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;interfaces"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -516,6 +516,7 @@
         <Filename Value="forms/cantarafontdialog.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="CFontDialog"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit26>
     </Units>

@@ -15,7 +15,8 @@ type
   public
     constructor Create(CreateSuspended: Boolean);
     procedure LoadData(PresentationStyleSettings: TPresentationStyleSettings;
-      SlideSettings: TSlideSettings; PresentationCanvas: TPresentationCanvasHandler;
+      SlideSettings: TSlideSettings;
+      PresentationCanvas: TPresentationCanvasHandler;
       Screen: TScreen; ChangeBackground: Boolean; Slide: TSlide;
       TargetPicture: TPicture);
     procedure RunOnce;

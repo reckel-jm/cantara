@@ -39,6 +39,8 @@ begin
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TfrmSongs, frmSongs);
+
+  Application.CreateForm(TCFontDialog, CFontDialog);
   Application.CreateForm(TfrmSettings, frmSettings);
   Application.CreateForm(TfrmInfo, frmInfo);
   Application.CreateForm(TfrmPresent, frmPresent);
@@ -48,6 +50,5 @@ begin
   Application.CreateForm(TFormPadding, FormPadding);
   Application.CreateForm(TFrmMarkupExport, FrmMarkupExport);
   Application.CreateForm(TFormImageExport, FormImageExport);
-  Application.CreateForm(TCFontDialog, CFontDialog);
   Application.Run;
 end.

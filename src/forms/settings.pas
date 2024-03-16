@@ -144,7 +144,7 @@ end;
 function StyleToStr(Style: TFontStyles): String;
 begin
   SetLength(Result, 4);
-  {T = true, S = false 83 is ordinal value of S, if true then S + 1 (84) = T}
+  {T = true, F = false 83 is ordinal value of S, if true then S + 1 (84) = T}
   Result[1] := Char(Integer(fsBold In Style) + 83);
   Result[2] := Char(Integer(fsItalic In Style) + 83);
   Result[3] := Char(Integer(fsUnderline In Style) + 83);
@@ -360,9 +360,9 @@ begin
   str := settingsFile.ReadString('Config', 'MetaDataSyntax', strDefaultMetaTemplate);
   memoMetaData.Lines.Text := StringReplace(str, '</br>', LineEnding, [rfReplaceAll]);
   CFontDialog.PreviewLabel.Font.Name := settingsFile.ReadString('Config', 'Font-Name', 'default');
-  CFontDialog.PreviewLabel.Font.Style := StrToStyle(settingsFile.ReadString('Config',
-    'Font-Style', 'ssss'));
   CFontDialog.PreviewLabel.Font.Size := settingsFile.ReadInteger('Config', 'Font-Size', 42);
+  CFontDialog.PreviewLabel.Font.Style := StrToStyle(settingsFile.ReadString('Config',
+    'Font-Style', 'FFFF'));
   BgPictureDialog.FileName := settingsFile.ReadString('Config',
     'BackgroundPicture-Path', '');
   cbShowBackgroundImage.Checked :=
