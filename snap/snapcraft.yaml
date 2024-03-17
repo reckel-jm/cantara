@@ -37,13 +37,11 @@ parts:
     - wget
     - libgtk2.0-dev
     override-build: |
-      if [ "$SNAP_ARCH" = "amd64" ]; then
+      if [ "$SNAP_ARCH" = "amd64" ] then
         wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.2/lazarus-project_3.2.0-0_amd64.deb"
         wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.2/fpc-laz_3.2.2-210709_amd64.deb"
         wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.2/fpc-src_3.2.2-210709_amd64.deb"
         apt install "./lazarus-project_3.2.0-0_amd64.deb" "./fpc-laz_3.2.2-210709_amd64.deb" "./fpc-src_3.2.2-210709_amd64.deb"
-      else
-        # add things here
       fi
     prime: [-*]
   cantara:
