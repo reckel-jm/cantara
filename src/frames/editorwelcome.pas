@@ -15,12 +15,14 @@ type
   TfrmEditorWelcome = class(TFrame)
     btnOpenDocs: TButton;
     btnClose: TButton;
+    btnNewSong: TButton;
     lblDescription: TLabel;
     lblHint: TLabel;
     lblSupport: TLabel;
     lblWelcome: TLabel;
     procedure btnCloseClick(Sender: TObject);
     procedure btnOpenDocsClick(Sender: TObject);
+    procedure btnNewSongClick(Sender: TObject);
   private
 
   public
@@ -44,6 +46,11 @@ end;
 procedure TfrmEditorWelcome.btnCloseClick(Sender: TObject);
 begin
   frmSongEdit.Close;
+end;
+
+procedure TfrmEditorWelcome.btnNewSongClick(Sender: TObject);
+begin
+  frmSongEdit.menuItemNewClick(btnNewSong);
 end;
 
 end.

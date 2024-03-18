@@ -9,6 +9,7 @@ object FormImageExport: TFormImageExport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
+  LCLVersion = '3.2.0.0'
   WindowState = wsMaximized
   object GroupSettings: TGroupBox
     AnchorSideLeft.Control = Owner
@@ -22,10 +23,9 @@ object FormImageExport: TFormImageExport
     Width = 408
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Settings'
-    ClientHeight = 495
-    ClientWidth = 402
+    ClientHeight = 511
+    ClientWidth = 396
     TabOrder = 0
-    OnClick = GroupSettingsClick
     object LabelFolder: TLabel
       AnchorSideLeft.Control = GroupSettings
       AnchorSideTop.Control = EditFolder

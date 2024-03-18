@@ -40,9 +40,25 @@ object frmEditorWelcome: TfrmEditorWelcome
     Caption = 'Here you can change the songs which you would like to display.'#10#10'For detailed information about the syntax, please consider the documentation.'
     ParentColor = False
   end
-  object btnOpenDocs: TButton
+  object btnNewSong: TButton
     AnchorSideLeft.Control = lblDescription
     AnchorSideTop.Control = lblDescription
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = lblDescription
+    AnchorSideRight.Side = asrBottom
+    Left = 15
+    Height = 32
+    Top = 420
+    Width = 649
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Top = 30
+    Caption = 'Create a new song'
+    OnClick = btnNewSongClick
+    TabOrder = 0
+  end
+  object btnOpenDocs: TButton
+    AnchorSideLeft.Control = lblDescription
+    AnchorSideTop.Control = btnNewSong
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = lblDescription
     AnchorSideRight.Side = asrBottom
@@ -54,7 +70,7 @@ object frmEditorWelcome: TfrmEditorWelcome
     BorderSpacing.Top = 30
     Caption = 'Open Documentation in Webbrowser...'
     OnClick = btnOpenDocsClick
-    TabOrder = 0
+    TabOrder = 1
   end
   object lblHint: TLabel
     AnchorSideLeft.Control = btnOpenDocs
@@ -105,6 +121,6 @@ object frmEditorWelcome: TfrmEditorWelcome
     BorderSpacing.Top = 30
     Caption = 'Close the Editor'
     OnClick = btnCloseClick
-    TabOrder = 1
+    TabOrder = 2
   end
 end

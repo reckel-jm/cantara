@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Jan Martin Reckel <jm.reckel@t-online.de>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
@@ -87,6 +87,9 @@ msgid ""
 "{%bible%}Bible Reference: {bible}\n"
 "{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
+"{%author%}Autor: {author}\n"
+"{%bible%}Bibelstelle: {bible}\n"
+"{%ccli-songnumber%}CCLI Liednummer: {ccli-songnumber} | Lizensnummer: {ccli-licensenumber}"
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
@@ -95,7 +98,7 @@ msgstr "Fehler"
 
 #: settings.strnobackgroundimageselected
 msgid "You need to select a background image first."
-msgstr ""
+msgstr "Sie müssen zunächst ein Hintergrundbild auswählen."
 
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
@@ -204,7 +207,7 @@ msgstr "Cantara verwendet die Java-Script-Engine Ihres lokalen Standard-Webbrows
 
 #: songselection.strsongisempty
 msgid "The song {songname} is empty. It will not be added."
-msgstr ""
+msgstr "Das Lied {songname} ist leer. Es wird nicht hinzugefügt."
 
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
@@ -212,27 +215,27 @@ msgstr "Die Lieder der Datei wurden erfolgreich in das Liedverzeichnis importier
 
 #: songselection.strtitleslide
 msgid "Title Slide"
-msgstr ""
+msgstr "Titelfolie"
 
 #: tcfontdialog.caption
-msgid "CFontDialog"
-msgstr ""
+msgid "Font Selection"
+msgstr "Schriftarteneinstellungen"
 
 #: tcfontdialog.fontpropertiesgroupbox.caption
 msgid "Font Properties"
-msgstr ""
+msgstr "Schrift"
 
 #: tcfontdialog.fontselectiongroupbox.caption
 msgid "Font"
-msgstr ""
+msgstr "Schriftart"
 
 #: tcfontdialog.formatationcheckgroup.caption
 msgid "Formatation"
-msgstr ""
+msgstr "Formatierung"
 
 #: tcfontdialog.labelfontsize.caption
 msgid "Font Size:"
-msgstr ""
+msgstr "Schriftgröße: "
 
 #: tcfontdialog.previewlabel.caption
 msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
@@ -935,4 +938,3 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
-

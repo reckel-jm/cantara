@@ -213,7 +213,7 @@ msgid "Title Slide"
 msgstr ""
 
 #: tcfontdialog.caption
-msgid "CFontDialog"
+msgid "Font Selection"
 msgstr ""
 
 #: tcfontdialog.fontpropertiesgroupbox.caption

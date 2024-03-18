@@ -11,8 +11,8 @@ grade: stable
 architectures:
   - build-on: amd64
     build-for: amd64
-  - build-on: arm64
-    build-for: arm64
+  #- build-on: arm64
+  #  build-for: arm64
 
 plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   gtk-3-themes:
@@ -37,7 +37,8 @@ parts:
     - wget
     - libgtk2.0-dev
     override-build: |
-      if [ "$SNAP_ARCH" = "amd64" ] then
+      if [ "$SNAP_ARCH" = "amd64" ]
+      then
         wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.2/lazarus-project_3.2.0-0_amd64.deb"
         wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.2/fpc-laz_3.2.2-210709_amd64.deb"
         wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.2/fpc-src_3.2.2-210709_amd64.deb"

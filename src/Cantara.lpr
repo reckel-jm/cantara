@@ -29,7 +29,7 @@ uses
   markup,
   imageexport,
   loadimagethread, CantaraStandardDialogs, presentationcontroller,
-cantarafontdialog;
+cantarafontdialog, exporterinterfaces;
   {$R *.res}
 
 begin

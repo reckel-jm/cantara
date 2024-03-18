@@ -410,17 +410,19 @@ begin
   if lbxSSelected.Count > 0 then
   begin
     if Self.ProgramMode = TProgramMode.ModeSelection then
-       CreateSongListDataAndLoadItIntoSlideList(FormImageExport.SlideList)
-    else FormImageExport.SlideList.Assign(frmPresent.SlideList);
+    begin
+      CreateSongListDataAndLoadItIntoSlideList(FormImageExport.SlideList);
+    end
+    else
+    begin
+      FormImageExport.SlideList.Assign(frmPresent.SlideList);
+    end;
     FormImageExport.PresentationCanvas.PresentationStyleSettings :=
       frmSettings.ExportPresentationStyleSettings;
     FormImageExport.PresentationCanvas.SlideSettings :=
       frmSettings.ExportSlideSettings();
-    FormImageExport.ShowOnTop;
-    Application.ProcessMessages;
-    FormImageExport.Invalidate;
-    FormImageExport.Repaint;
-    FormImageExport.LoadImages;
+
+    FormImageExport.RunExporter(Self.Programmode > TProgramMode.ModeSelection);
   end
   else
     Application.MessageBox(PChar(StrFehlerKeineLiederBeiPraesentation),
@@ -818,7 +820,10 @@ begin
   // Distroy all Song Data
   for i := 0 to length(repo) - 1 do
     repo[i].Free;
-  LoadedSongList.Destroy;
+  try
+     LoadedSongList.Destroy;
+  finally
+  end;
 end;
 
 procedure TfrmSongs.FormDropFiles(Sender: TObject; const FileNames: array of String);
@@ -971,7 +976,11 @@ begin
     FillSlideListInPresentationConsole;
     PnlSplitter.Left := Round(Self.Width * 0.3);
     if SlideTextListBox.Count > 0 then
+    begin
        SlideTextListBox.ItemIndex:=0;
+       ReloadPresentationImage;
+       Application.ProcessMessages;
+    end;
     Application.ProcessMessages;
   end;
   UpdateControls;

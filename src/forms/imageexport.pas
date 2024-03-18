@@ -6,13 +6,15 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Spin, ComCtrls, Menus, Slides, PresentationCanvas;
+  Spin, ComCtrls, Menus, Slides, PresentationCanvas,
+
+  exporterinterfaces;
 
 type
 
   { TFormImageExport }
 
-  TFormImageExport = class(TForm)
+  TFormImageExport = class(TForm, ISongExporter)
     ButtonReloadPreview: TButton;
     ButtonExportAll: TButton;
     ButtonChoose: TButton;
@@ -43,18 +45,19 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure GroupSettingsClick(Sender: TObject);
     procedure ItemExportClick(Sender: TObject);
     procedure ItemRemoveClick(Sender: TObject);
-    procedure TimerUpdateScreenTimer(Sender: TObject);
   private
     Scale: Double;
     ShowFirstTime: Boolean;
+    FrmSongsPresentationIsRunning: Boolean;
     procedure ReadjustScale;
   public
     PresentationCanvas: TPresentationCanvasHandler;
     SlideList: TSlideList;
     procedure LoadImages;
+
+    procedure RunExporter(PresentationIsRunning: Boolean);
   end;
 
 var
@@ -152,8 +155,11 @@ end;
 
 procedure TFormImageExport.FormDestroy(Sender: TObject);
 begin
-  SlideList.Destroy;
-  PresentationCanvas.Destroy;
+  if not Self.FrmSongsPresentationIsRunning then
+  begin
+    SlideList.Destroy;
+    PresentationCanvas.Destroy;
+  end;
 end;
 
 procedure TFormImageExport.FormShow(Sender: TObject);
@@ -168,11 +174,6 @@ begin
       ReadjustScale;
     ShowFirstTime := False;
   end;
-end;
-
-procedure TFormImageExport.GroupSettingsClick(Sender: TObject);
-begin
-
 end;
 
 procedure TFormImageExport.ItemExportClick(Sender: TObject);
@@ -199,9 +200,15 @@ begin
   ImageListView.Items.Delete(ImageListView.ItemIndex);
 end;
 
-procedure TFormImageExport.TimerUpdateScreenTimer(Sender: TObject);
+procedure TFormImageExport.RunExporter(PresentationIsRunning: Boolean);
 begin
+  Self.ShowOnTop;
+  Application.ProcessMessages;
+  Self.Invalidate;
+  Self.Repaint;
+  Self.LoadImages;
 
+  Self.FrmSongsPresentationIsRunning:=PresentationIsRunning;
 end;
 
 procedure TFormImageExport.ReadjustScale;

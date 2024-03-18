@@ -1,5 +1,5 @@
 {"version":1,"strings":[
-{"hash":149468423,"name":"tcfontdialog.caption","sourcebytes":[67,70,111,110,116,68,105,97,108,111,103],"value":"CFontDialog"},
+{"hash":82637614,"name":"tcfontdialog.caption","sourcebytes":[70,111,110,116,32,83,101,108,101,99,116,105,111,110],"value":"Font Selection"},
 {"hash":317012,"name":"tcfontdialog.fontselectiongroupbox.caption","sourcebytes":[70,111,110,116],"value":"Font"},
 {"hash":61643203,"name":"tcfontdialog.fontpropertiesgroupbox.caption","sourcebytes":[70,111,110,116,32,80,114,111,112,101,114,116,105,101,115],"value":"Font Properties"},
 {"hash":106882778,"name":"tcfontdialog.labelfontsize.caption","sourcebytes":[70,111,110,116,32,83,105,122,101,58],"value":"Font Size:"},
