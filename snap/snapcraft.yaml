@@ -70,6 +70,8 @@ parts:
       cd ..
       install cantara.desktop $SNAPCRAFT_PART_INSTALL/
       install app.cantara.Cantara.png $SNAPCRAFT_PART_INSTALL/
+      mkdir -p /usr/lib/x86_64-linux-gnu
+      cp /usr/lib/x86_64-linux-gnu/libQt5Pas* $SNAPCRAFT_PART_INSTALL/usr/lib/x86_64-linux-gnu/
     stage:
     - lib
     - usr
