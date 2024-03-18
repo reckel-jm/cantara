@@ -35,12 +35,9 @@ type
     NoResult: TPage;
     SearchResults: TPage;
     procedure EditSearchTermChange(Sender: TObject);
-    procedure FrameClick(Sender: TObject);
     procedure ListBoxResultsDblClick(Sender: TObject);
     procedure ListBoxResultsDrawItem(Control: TWinControl; Index: Integer;
       ARect: TRect; State: TOwnerDrawState);
-    procedure NoResultBeforeShow(ASender: TObject; ANewPage: TPage;
-      ANewIndex: Integer);
   private
 
   public
@@ -142,11 +139,6 @@ begin
   if ListBoxResults.Count = 0 then Content.PageIndex := 2;
 end;
 
-procedure TFrmFulltextsearch.FrameClick(Sender: TObject);
-begin
-
-end;
-
 procedure TFrmFulltextsearch.ListBoxResultsDblClick(Sender: TObject);
 begin
   frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(
@@ -196,12 +188,6 @@ begin
       Round(FontBaseHeight * 1.33),
       StringParts[1]);
   end;
-end;
-
-procedure TFrmFulltextsearch.NoResultBeforeShow(ASender: TObject;
-  ANewPage: TPage; ANewIndex: Integer);
-begin
-
 end;
 
 end.

@@ -29,7 +29,6 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     ParentColor = False
     TabOrder = 0
     Visible = False
-    OnClick = ccliimporthintClick
     object labelCCLIImportHint: TLabel
       AnchorSideLeft.Control = ccliimporthint
       AnchorSideTop.Control = ccliimporthint
@@ -64,8 +63,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
       BorderSpacing.Top = 30
       BorderSpacing.Right = 30
       Caption = 'Convert CCLI File to Song Format'
-      OnClick = btnConvertCCLIFileToSongFormatClick
       TabOrder = 0
+      OnClick = btnConvertCCLIFileToSongFormatClick
     end
   end
   object lblSongNameContent: TLabel
@@ -97,8 +96,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Copy'
-    OnClick = btnCopyClick
     TabOrder = 1
+    OnClick = btnCopyClick
   end
   object btnArchivate: TButton
     AnchorSideTop.Control = lblSongName
@@ -112,8 +111,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Archive'
-    OnClick = btnArchivateClick
     TabOrder = 2
+    OnClick = btnArchivateClick
   end
   object btnClose: TButton
     AnchorSideLeft.Control = btnArchivate
@@ -130,8 +129,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Close'
-    OnClick = btnCloseClick
     TabOrder = 3
+    OnClick = btnCloseClick
   end
   object btnRename: TButton
     AnchorSideTop.Control = lblSongName
@@ -145,8 +144,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Rename'
-    OnClick = btnRenameClick
     TabOrder = 4
+    OnClick = btnRenameClick
   end
   object btnSave: TButton
     AnchorSideTop.Control = lblSongName
@@ -160,8 +159,8 @@ object frmDisplaySongContent: TfrmDisplaySongContent
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Save'
-    OnClick = btnSaveClick
     TabOrder = 5
+    OnClick = btnSaveClick
   end
   inline memoCode: TSynEdit
     AnchorSideLeft.Control = Owner

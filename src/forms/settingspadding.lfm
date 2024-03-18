@@ -6,7 +6,7 @@ object FormPadding: TFormPadding
   Caption = 'Additional Settings'
   ClientHeight = 240
   ClientWidth = 320
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.2.0.0'
   inline frmSettingsDetailed: TFrameSettingsDetailed
     Height = 240
     Width = 320

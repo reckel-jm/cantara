@@ -30,7 +30,6 @@ type
     lblSuccess: TLabel;
     Notebook: TNotebook;
     Page1: TPage;
-    procedure BGRAFlashProgressBar1Click(Sender: TObject);
     procedure btnAddExampleSongClick(Sender: TObject);
     procedure btnBackClick(Sender: TObject);
     procedure btnNextClick(Sender: TObject);
@@ -39,8 +38,6 @@ type
     procedure btnSelectSongRepoDirClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
-    procedure Page2BeforeShow(ASender: TObject; ANewPage: TPage;
-      ANewIndex: Integer);
     procedure Page2Resize(Sender: TObject);
   private
 
@@ -74,11 +71,6 @@ uses SongSelection;
   {$R *.lfm}
 
   { TfrmWelcome }
-
-procedure TfrmWelcome.BGRAFlashProgressBar1Click(Sender: TObject);
-begin
-
-end;
 
 procedure TfrmWelcome.btnAddExampleSongClick(Sender: TObject);
 var
@@ -192,12 +184,6 @@ end;
 procedure TfrmWelcome.FormShow(Sender: TObject);
 begin
   Notebook.PageIndex := 0;
-end;
-
-procedure TfrmWelcome.Page2BeforeShow(ASender: TObject; ANewPage: TPage;
-  ANewIndex: Integer);
-begin
-
 end;
 
 procedure TfrmWelcome.Page2Resize(Sender: TObject);

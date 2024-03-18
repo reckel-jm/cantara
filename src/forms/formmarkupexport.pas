@@ -30,8 +30,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure TemplateComboChange(Sender: TObject);
-    procedure TemplateComboClick(Sender: TObject);
     procedure TemplateComboSelectionChange(Sender: TObject; User: Boolean);
     procedure TemplateEditChange(Sender: TObject);
   private
@@ -118,16 +116,6 @@ procedure TFrmMarkupExport.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if key = VK_Escape then self.Close;
-end;
-
-procedure TFrmMarkupExport.TemplateComboChange(Sender: TObject);
-begin
-
-end;
-
-procedure TFrmMarkupExport.TemplateComboClick(Sender: TObject);
-begin
-
 end;
 
 procedure TFrmMarkupExport.TemplateComboSelectionChange(Sender: TObject; User: Boolean);

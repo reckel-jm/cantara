@@ -53,8 +53,8 @@ object frmEditorWelcome: TfrmEditorWelcome
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 30
     Caption = 'Create a new song'
-    OnClick = btnNewSongClick
     TabOrder = 0
+    OnClick = btnNewSongClick
   end
   object btnOpenDocs: TButton
     AnchorSideLeft.Control = lblDescription
@@ -69,8 +69,8 @@ object frmEditorWelcome: TfrmEditorWelcome
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 30
     Caption = 'Open Documentation in Webbrowser...'
-    OnClick = btnOpenDocsClick
     TabOrder = 1
+    OnClick = btnOpenDocsClick
   end
   object lblHint: TLabel
     AnchorSideLeft.Control = btnOpenDocs
@@ -120,7 +120,7 @@ object frmEditorWelcome: TfrmEditorWelcome
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 30
     Caption = 'Close the Editor'
-    OnClick = btnCloseClick
     TabOrder = 2
+    OnClick = btnCloseClick
   end
 end

@@ -13,6 +13,7 @@ object frmInfo: TfrmInfo
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poMainFormCenter
+  LCLVersion = '3.2.0.0'
   object lblAuthor: TLabel
     Left = 0
     Height = 21

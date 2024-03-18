@@ -33,7 +33,6 @@ type
     procedure btnCopyClick(Sender: TObject);
     procedure btnRenameClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
-    procedure ccliimporthintClick(Sender: TObject);
     constructor Create(AOwner: TComponent);
     procedure btnCloseClick(Sender: TObject);
     procedure btnConvertCCLIFileToSongFormatClick(Sender: TObject);
@@ -42,9 +41,6 @@ type
     procedure memoCodePaste(Sender: TObject; var AText: String;
       var AMode: TSynSelectionMode; ALogStartPos: TPoint;
       var AnAction: TSynCopyPasteAction);
-    procedure SynCompletion1CodeCompletion(var Value: String;
-      SourceValue: String; var SourceStart, SourceEnd: TPoint;
-      KeyChar: TUTF8Char; Shift: TShiftState);
     //  procedure lblSongNameContentDblClick(Sender: TObject);
   private
     procedure markAsChanged(FileHasChanged: Boolean);
@@ -102,11 +98,6 @@ end;
 procedure TfrmDisplaySongContent.btnSaveClick(Sender: TObject);
 begin
   frmSongEdit.menuItemSaveClick(btnSave);
-end;
-
-procedure TfrmDisplaySongContent.ccliimporthintClick(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmDisplaySongContent.btnConvertCCLIFileToSongFormatClick(Sender: TObject);
@@ -170,13 +161,6 @@ var
 begin
   GuessedCoding := GuessEncoding(AText);
   AText := ConvertEncodingToUTF8(AText, GuessedCoding, Encoded);
-end;
-
-procedure TfrmDisplaySongContent.SynCompletion1CodeCompletion(var Value: String;
-  SourceValue: String; var SourceStart, SourceEnd: TPoint; KeyChar: TUTF8Char;
-  Shift: TShiftState);
-begin
-
 end;
 
 procedure TfrmDisplaySongContent.loadFile(repofile: TRepoFile);

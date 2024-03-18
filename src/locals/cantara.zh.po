@@ -363,6 +363,10 @@ msgstr "名稱："
 msgid "Close the Editor"
 msgstr "退出編輯器"
 
+#: tfrmeditorwelcome.btnnewsong.caption
+msgid "Create a new song"
+msgstr ""
+
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
 msgstr "在瀏覽器中打開文檔…"

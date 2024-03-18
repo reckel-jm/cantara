@@ -362,6 +362,10 @@ msgstr "Naam: "
 msgid "Close the Editor"
 msgstr "Bewerker sluiten"
 
+#: tfrmeditorwelcome.btnnewsong.caption
+msgid "Create a new song"
+msgstr ""
+
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
 msgstr "Lees de documentatie in uw webbrowser…"

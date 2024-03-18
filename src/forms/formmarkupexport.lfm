@@ -10,6 +10,7 @@ object FrmMarkupExport: TFrmMarkupExport
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
+  LCLVersion = '3.2.0.0'
   object TemplateBox: TGroupBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -23,8 +24,8 @@ object FrmMarkupExport: TFrmMarkupExport
     Width = 411
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Template'
-    ClientHeight = 482
-    ClientWidth = 395
+    ClientHeight = 503
+    ClientWidth = 399
     TabOrder = 0
     object TemplateCombo: TListBox
       AnchorSideLeft.Control = TemplateBox
@@ -40,9 +41,8 @@ object FrmMarkupExport: TFrmMarkupExport
       Anchors = [akTop, akLeft, akRight]
       IntegralHeight = True
       ItemHeight = 0
-      OnClick = TemplateComboClick
-      OnSelectionChange = TemplateComboSelectionChange
       TabOrder = 0
+      OnSelectionChange = TemplateComboSelectionChange
     end
     inline TemplateEdit: TSynEdit
       AnchorSideLeft.Control = TemplateBox
@@ -563,8 +563,8 @@ object FrmMarkupExport: TFrmMarkupExport
     Width = 420
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Result'
-    ClientHeight = 482
-    ClientWidth = 404
+    ClientHeight = 503
+    ClientWidth = 408
     TabOrder = 1
     inline ResultEdit: TSynEdit
       AnchorSideLeft.Control = Result
@@ -1078,8 +1078,8 @@ object FrmMarkupExport: TFrmMarkupExport
       Width = 404
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Copy to Clipboard'
-      OnClick = ClipboardButtonClick
       TabOrder = 1
+      OnClick = ClipboardButtonClick
     end
     object btnSaveToFile: TButton
       AnchorSideLeft.Control = Result
@@ -1093,8 +1093,8 @@ object FrmMarkupExport: TFrmMarkupExport
       Width = 404
       Anchors = [akLeft, akRight, akBottom]
       Caption = 'Save to File...'
-      OnClick = btnSaveToFileClick
       TabOrder = 2
+      OnClick = btnSaveToFileClick
     end
   end
   object Splitter1: TSplitter

@@ -4,13 +4,11 @@ object frmSongEdit: TfrmSongEdit
   Top = -30
   Width = 1029
   Caption = 'Edit Files'
-  ClientHeight = 528
+  ClientHeight = 562
   ClientWidth = 1029
   Menu = EditorMenu
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
-  OnCreate = FormCreate
-  OnDblClick = FormDblClick
   OnShow = FormShow
   WindowState = wsMaximized
   object lsSongs: TListBox
@@ -20,14 +18,14 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 528
+    Height = 562
     Top = 0
     Width = 500
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
-    OnClick = lsSongsClick
     Sorted = True
     TabOrder = 0
+    OnClick = lsSongsClick
   end
   object splitter: TSplitter
     AnchorSideLeft.Control = lsSongs
@@ -37,7 +35,7 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 500
-    Height = 528
+    Height = 562
     Top = 0
     Width = 6
     Align = alCustom
@@ -54,7 +52,7 @@ object frmSongEdit: TfrmSongEdit
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 506
-    Height = 528
+    Height = 562
     Top = 0
     Width = 523
     Anchors = [akTop, akLeft, akRight, akBottom]

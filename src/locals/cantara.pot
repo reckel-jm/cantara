@@ -345,6 +345,10 @@ msgstr ""
 msgid "Close the Editor"
 msgstr ""
 
+#: tfrmeditorwelcome.btnnewsong.caption
+msgid "Create a new song"
+msgstr ""
+
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
 msgstr ""

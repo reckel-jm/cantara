@@ -6,7 +6,6 @@ object FrmFulltextsearch: TFrmFulltextsearch
   ClientHeight = 255
   ClientWidth = 424
   Color = clCaptionText
-  OnClick = FrameClick
   ParentBackground = False
   ParentColor = False
   TabOrder = 0
@@ -23,8 +22,8 @@ object FrmFulltextsearch: TFrmFulltextsearch
     Width = 424
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
-    OnChange = EditSearchTermChange
     TabOrder = 1
+    OnChange = EditSearchTermChange
   end
   object Content: TNotebook
     AnchorSideLeft.Control = Owner
@@ -38,7 +37,7 @@ object FrmFulltextsearch: TFrmFulltextsearch
     Height = 229
     Top = 26
     Width = 424
-    PageIndex = 1
+    PageIndex = 0
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 1
     Color = clNone
@@ -65,11 +64,11 @@ object FrmFulltextsearch: TFrmFulltextsearch
         Width = 424
         Align = alClient
         ItemHeight = 50
-        OnDblClick = ListBoxResultsDblClick
-        OnDrawItem = ListBoxResultsDrawItem
         Options = []
         Style = lbOwnerDrawFixed
         TabOrder = 0
+        OnDblClick = ListBoxResultsDblClick
+        OnDrawItem = ListBoxResultsDrawItem
       end
       object LabelEnterSearchTerm: TLabel
         AnchorSideLeft.Control = ListBoxResults
@@ -86,7 +85,6 @@ object FrmFulltextsearch: TFrmFulltextsearch
       end
     end
     object NoResult: TPage
-      OnBeforeShow = NoResultBeforeShow
       object LabelNoItemsFound: TLabel
         Left = 0
         Height = 214

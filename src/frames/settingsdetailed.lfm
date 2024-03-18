@@ -15,8 +15,8 @@ object FrameSettingsDetailed: TFrameSettingsDetailed
     Width = 381
     Align = alClient
     Caption = 'Padding'
-    ClientHeight = 291
-    ClientWidth = 377
+    ClientHeight = 313
+    ClientWidth = 369
     TabOrder = 0
     object LeftSpin: TSpinEdit
       AnchorSideLeft.Control = LabelLeft

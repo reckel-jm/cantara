@@ -37,8 +37,6 @@ type
     procedure btnOpenDocsClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure FormCreate(Sender: TObject);
-    procedure FormDblClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ItemCopyClick(Sender: TObject);
     procedure ItemCutClick(Sender: TObject);
@@ -461,16 +459,6 @@ them one by one. }
       Exit;
     end;
   end;
-end;
-
-procedure TfrmSongEdit.FormCreate(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmSongEdit.FormDblClick(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmSongEdit.loadRepoIntoSongListbox;

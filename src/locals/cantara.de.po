@@ -366,6 +366,10 @@ msgstr "Name: "
 msgid "Close the Editor"
 msgstr "Den Editor beenden"
 
+#: tfrmeditorwelcome.btnnewsong.caption
+msgid "Create a new song"
+msgstr ""
+
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
 msgstr "Öffne die Dokumentation im Webbrowser..."
@@ -938,3 +942,4 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
+

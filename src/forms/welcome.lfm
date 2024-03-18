@@ -10,7 +10,7 @@ object frmWelcome: TfrmWelcome
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   Position = poOwnerFormCenter
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.2.0.0'
   object Notebook: TNotebook
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -69,8 +69,8 @@ object frmWelcome: TfrmWelcome
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         Caption = 'Select Song Repository...'
-        OnClick = btnSelectSongRepoDirClick
         TabOrder = 0
+        OnClick = btnSelectSongRepoDirClick
       end
       object lblSuccess: TLabel
         AnchorSideLeft.Control = Page1
@@ -100,9 +100,9 @@ object frmWelcome: TfrmWelcome
         Width = 689
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Add "Amazing Grace" as an example'
-        OnClick = btnAddExampleSongClick
         TabOrder = 1
         Visible = False
+        OnClick = btnAddExampleSongClick
       end
       object lblSongAdded: TLabel
         AnchorSideLeft.Control = Page1
@@ -122,7 +122,6 @@ object frmWelcome: TfrmWelcome
       end
     end
     object Page2: TPage
-      OnBeforeShow = Page2BeforeShow
       OnResize = Page2Resize
       object lblSuccessHeadline: TLabel
         AnchorSideLeft.Control = Page2
@@ -167,8 +166,8 @@ object frmWelcome: TfrmWelcome
         Width = 368
         BorderSpacing.Top = 10
         Caption = 'Open Webpage with Documentation...'
-        OnClick = btnOpenWebpageClick
         TabOrder = 0
+        OnClick = btnOpenWebpageClick
       end
       object btnOpenGithubRepo: TButton
         AnchorSideLeft.Control = btnOpenWebpage
@@ -184,8 +183,8 @@ object frmWelcome: TfrmWelcome
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         Caption = 'Open Github Repository...'
-        OnClick = btnOpenGithubRepoClick
         TabOrder = 1
+        OnClick = btnOpenGithubRepoClick
       end
     end
   end
@@ -200,8 +199,8 @@ object frmWelcome: TfrmWelcome
     Top = 439
     Width = 689
     Anchors = [akLeft, akRight, akBottom]
-    ClientHeight = 42
-    ClientWidth = 683
+    ClientHeight = 38
+    ClientWidth = 677
     ParentBackground = False
     TabOrder = 1
     object btnBack: TButton
@@ -217,8 +216,8 @@ object frmWelcome: TfrmWelcome
       BorderSpacing.Right = 5
       Caption = 'Back...'
       Enabled = False
-      OnClick = btnBackClick
       TabOrder = 0
+      OnClick = btnBackClick
     end
     object btnNext: TButton
       AnchorSideTop.Control = ControlPanel
@@ -233,8 +232,8 @@ object frmWelcome: TfrmWelcome
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Continue...'
       Enabled = False
-      OnClick = btnNextClick
       TabOrder = 1
+      OnClick = btnNextClick
     end
     object ProgressBar: TProgressBar
       AnchorSideLeft.Control = ControlPanel
