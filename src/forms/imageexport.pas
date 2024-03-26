@@ -241,7 +241,7 @@ begin
   for i := 0 to SlideList.Count - 1 do
   begin
     //PresentationCanvas.PaintSlide(SlideLIst.Items[i]).InvalidateBitmap;
-    Bitmap := PresentationCanvas.PaintSlide(SlideLIst.Items[i]).Bitmap;
+    Bitmap := PresentationCanvas.PaintSlide(SlideList.Items[i]).Bitmap;
     ImageList.AddMasked(Bitmap, clNone);
     LI := ImageListView.Items.Add;
     LI.Caption := 'Image ' + FormatFloat('000', (i + 1));

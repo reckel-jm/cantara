@@ -1050,12 +1050,15 @@ var
   Song: TSong;
   SongSlideList: TSlideList;
 begin
-  CreateSongListData;
-  if not Assigned(ASlideList) then
-    ASlideList := TSlideList.Create(True);
-  ASlideList.Clear;
-  frmPresent.cur := 0;
-  if LoadedSongList.Count <= 0 then Exit; // Prevent loading an empty Presentation
+  if Self.ProgramMode = ModeSelection then
+  begin
+    CreateSongListData;
+    if not Assigned(ASlideList) then
+      ASlideList := TSlideList.Create(True);
+    ASlideList.Clear;
+    if LoadedSongList.Count <= 0 then Exit; // Prevent loading an empty Presentation
+  end;
+
   for Song In LoadedSongList do
   begin
     SongSlideList := CreatePresentationDataFromSong(Song,
@@ -1138,8 +1141,9 @@ begin
        frmPresent.SlideList[Index+1].Song.FileNameWithoutEnding)
     then
       ABitmap.DrawLine(1,ARect.Height-1,ARect.Width-1,ARect.Height-1,clBlack,true);
-  finally
+
     ABitmap.Draw(SlideTextListBox.Canvas, ARect.Left, ARect.Top, true);
+  finally
     ABitmap.Destroy;
   end;
 end;
