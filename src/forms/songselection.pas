@@ -409,14 +409,7 @@ procedure TfrmSongs.itemExportPicturesClick(Sender: TObject);
 begin
   if lbxSSelected.Count > 0 then
   begin
-    if Self.ProgramMode = TProgramMode.ModeSelection then
-    begin
-      CreateSongListDataAndLoadItIntoSlideList(FormImageExport.SlideList);
-    end
-    else
-    begin
-      FormImageExport.SlideList.Assign(frmPresent.SlideList);
-    end;
+    CreateSongListDataAndLoadItIntoSlideList(FormImageExport.SlideList);
     FormImageExport.PresentationCanvas.PresentationStyleSettings :=
       frmSettings.ExportPresentationStyleSettings;
     FormImageExport.PresentationCanvas.SlideSettings :=
@@ -1058,6 +1051,8 @@ var
   SongSlideList: TSlideList;
 begin
   CreateSongListData;
+  if not Assigned(ASlideList) then
+    ASlideList := TSlideList.Create(True);
   ASlideList.Clear;
   frmPresent.cur := 0;
   if LoadedSongList.Count <= 0 then Exit; // Prevent loading an empty Presentation

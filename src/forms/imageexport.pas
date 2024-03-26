@@ -155,11 +155,8 @@ end;
 
 procedure TFormImageExport.FormDestroy(Sender: TObject);
 begin
-  if not Self.FrmSongsPresentationIsRunning then
-  begin
-    SlideList.Destroy;
-    PresentationCanvas.Destroy;
-  end;
+  SlideList.Free;
+  PresentationCanvas.Free;
 end;
 
 procedure TFormImageExport.FormShow(Sender: TObject);
