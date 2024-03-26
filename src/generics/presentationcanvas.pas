@@ -367,6 +367,7 @@ procedure TPresentationCanvasHandler.AssignBGRAFont(Font: TFont);
 begin
   Bitmap.FontName  := Font.Name;
   Bitmap.FontStyle := Font.Style;
+  Bitmap.FontQuality:=TBGRAFontQuality.fqSystemClearType;
   Bitmap.FontHeight:= Round(Font.Height/0.75);
 end;
 
