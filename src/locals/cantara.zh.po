@@ -488,6 +488,18 @@ msgstr "模板"
 msgid "Presentation"
 msgstr "投影片"
 
+#: tfrmpresent.menuitemmovetoscreen.caption
+msgid "Move to other screen"
+msgstr ""
+
+#: tfrmpresent.menuitemquitpresentation.caption
+msgid "Quit Presentation"
+msgstr ""
+
+#: tfrmpresent.menuitemtogglefullscreen.caption
+msgid "Fullscreen"
+msgstr ""
+
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
 msgstr "選擇背景顏色"

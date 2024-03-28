@@ -7,7 +7,7 @@ interface
 uses
   Classes, LCLType, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Types, Themes, LCLTranslator, LCLIntf, ExtCtrls, Lyrics,
-  IntfGraphics,
+  IntfGraphics, Menus,
   fpImage, StrUtils, Slides,
   Math,
   PresentationCanvas, bgrabitmap, presentationcontroller;
@@ -21,6 +21,10 @@ type
   TfrmPresent = class(TForm)
     imageShower: TImage;
     ManipulatedBitmap: TBitmap;
+    MenuItemQuitPresentation: TMenuItem;
+    MenuItemMoveToScreen: TMenuItem;
+    MenuItemToggleFullScreen: TMenuItem;
+    PresentationMenu: TPopupMenu;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
@@ -28,6 +32,8 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure imageShowerClick(Sender: TObject);
+    procedure MenuItemQuitPresentationClick(Sender: TObject);
+    procedure MenuItemToggleFullScreenClick(Sender: TObject);
     procedure showItem(index: Integer);
     procedure SwitchFullScreen;
     procedure SwitchFullScreen(WantFullScreen: Boolean);
@@ -136,6 +142,16 @@ begin
   self.GoNext;
 end;
 
+procedure TfrmPresent.MenuItemQuitPresentationClick(Sender: TObject);
+begin
+  Self.Hide;
+end;
+
+procedure TfrmPresent.MenuItemToggleFullScreenClick(Sender: TObject);
+begin
+  Self.SwitchFullscreen;
+end;
+
 procedure TfrmPresent.showItem(index: Integer);
 begin
   cur := index;
@@ -221,6 +237,7 @@ begin
     Fullscreen := False;
   end;
   {$endif}
+  MenuItemToggleFullScreen.Checked:=Fullscreen;
 end;
 
 procedure TfrmPresent.SwitchFullScreen(WantFullScreen: Boolean);
@@ -260,6 +277,7 @@ begin
     Fullscreen := False;
   end;
   {$endif}
+  MenuItemToggleFullScreen.Checked:=Fullscreen;
 end;
 
 procedure TfrmPresent.Refresh;

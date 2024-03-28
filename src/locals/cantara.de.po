@@ -491,6 +491,18 @@ msgstr "Vorlage"
 msgid "Presentation"
 msgstr "Präsentation"
 
+#: tfrmpresent.menuitemmovetoscreen.caption
+msgid "Move to other screen"
+msgstr ""
+
+#: tfrmpresent.menuitemquitpresentation.caption
+msgid "Quit Presentation"
+msgstr ""
+
+#: tfrmpresent.menuitemtogglefullscreen.caption
+msgid "Fullscreen"
+msgstr ""
+
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
 msgstr "Hintergrundfarbe auswählen"

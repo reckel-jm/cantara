@@ -97,6 +97,9 @@ constructor TPresentationCanvasHandler.Create; overload;
 begin
   inherited;
   Bitmap := TBGRABitmap.Create;
+  Bitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
+  Bitmap.CanvasBGRA.TextStyle.SingleLine:=False;
+
   BackgroundPicture := TBGRABitmap.Create;
   AdjustedBackgroundPicture := TBGRABitmap.Create;
   ResizedBackgroundBitmap := TBGRABitmap.Create;
@@ -367,8 +370,7 @@ procedure TPresentationCanvasHandler.AssignBGRAFont(Font: TFont);
 begin
   Bitmap.FontName  := Font.Name;
   Bitmap.FontStyle := Font.Style;
-  Bitmap.FontQuality:=TBGRAFontQuality.fqSystemClearType;
-  Bitmap.FontHeight:= Round(Font.Height/0.75);
+  Bitmap.FontHeight:= Round(Font.Height/0.85);
 end;
 
 end.

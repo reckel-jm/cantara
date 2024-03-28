@@ -83,6 +83,7 @@ type
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     SplitterContentImage: TSplitter;
+    TimerUpdateScreen: TTimer;
     procedure btnAddClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnDownClick(Sender: TObject);
@@ -1106,10 +1107,17 @@ procedure TfrmSongs.SlideTextListBoxDrawItem(Control: TWinControl;
 var
   TextColor: TColor;
   ABitmap:TBgraBitmap;
+  {Determines whether the part is at the edge (the first or last part of a song }
+  Edge: Boolean;
 begin
+  Edge := False;
   if Index > SlideTextListBox.Count then Exit;
 
   ABitmap := TBgraBitmap.Create(ARect.Width, ARect.Height, clAppWorkspace);
+
+  ABitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
+  ABitmap.CanvasBGRA.TextStyle.SingleLine:=False;
+
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.FontName:=Screen.SystemFont.Name;
   ABitmap.FontQuality:=fqSystem;
@@ -1123,24 +1131,44 @@ begin
     TextColor := clBtnText;
   end;
 
+  if (Index = 0) or
+            (frmPresent.SlideList.Items[Index].Song <> frmPresent.SlideList.Items[Index-1].Song) then
+  begin
+    ABitmap.DrawLine(1,1,ARect.Width,1,clBlack,true);
+    Edge := True;
+  end;
+
   if frmPresent.SlideList.Items[Index].SlideType = TitleSlide then
   begin
      ABitmap.FontStyle+=[fsBold];
-     ABitmap.DrawLine(1,1,ARect.Width,1,clBlack,true);
   end;
-
-  ABitmap.DrawLine(1,1,1,ARect.Height-1,clBlack,True);
-  ABitmap.DrawLine(ARect.Width-1,1,ARect.Width-1,ARect.Height-1,clBlack,True);
   ABitmap.TextRect(Rect(5,5,ABitmap.Width-5, ABitmap.Height-5),
                     SlideTextListBox.Items[Index], taLeftJustify, tlTop,
                     ColorToRGB(TextColor)
                     );
   try
+    { This savely checks if we are on the last slide -> Edge }
     if (Index >= frmPresent.SlideList.Count-1) or
        (frmPresent.SlideList[Index].Song.FileNameWithoutEnding <>
        frmPresent.SlideList[Index+1].Song.FileNameWithoutEnding)
     then
+    begin
+      Edge := True;
       ABitmap.DrawLine(1,ARect.Height-1,ARect.Width-1,ARect.Height-1,clBlack,true);
+
+      ABitmap.DrawLine(1,0,1,ARect.Height-1,clBlack,True);
+      ABitmap.DrawLine(ARect.Width-1,0,ARect.Width-1,ARect.Height-1,clBlack,True);
+    end;
+
+    if not Edge then
+    begin
+      ABitmap.DrawLine(1,0,1,ARect.Height,clBlack,True);
+      ABitmap.DrawLine(ARect.Width-1,0,ARect.Width-1,ARect.Height,clBlack,True);
+    end else
+    begin
+      ABitmap.DrawLine(1,1,1,ARect.Height-1,clBlack,True);
+      ABitmap.DrawLine(ARect.Width-1,1,ARect.Width-1,ARect.Height-1,clBlack,True);
+    end;
 
     ABitmap.Draw(SlideTextListBox.Canvas, ARect.Left, ARect.Top, true);
   finally
@@ -1165,6 +1193,8 @@ begin
   ABitmap.FontName:=Screen.SystemFont.Name;
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.SetSize(SlideTextListBox.Width, SlideTextListBox.Height);
+  ABitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
+  ABitmap.CanvasBGRA.TextStyle.SingleLine:=False;
   AHeight:=ABitmap.TextSize(SlideTextListBox.Items[Index],SlideTextListBox.Width).Height;
   AHeight += 10;
   ABitmap.Destroy;

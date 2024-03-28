@@ -577,4 +577,9 @@ object frmSongs: TfrmSongs
       OnClick = itemOpenInEditorClick
     end
   end
+  object TimerUpdateScreen: TTimer
+    OnTimer = TimerUpdateScreenTimer
+    Left = 399
+    Top = 147
+  end
 end
