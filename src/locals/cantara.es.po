@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
@@ -87,6 +87,9 @@ msgid ""
 "{%bible%}Bible Reference: {bible}\n"
 "{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
+"{%author%}Autor: {author}\n"
+"{%bible%}Referencia Bíblica: {bible}\n"
+"{%ccli-songnumber%}Número de canción CCLI: {ccli-songnumber} | Número de licencia: {ccli-licensenumber}"
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
@@ -95,7 +98,7 @@ msgstr "Error"
 
 #: settings.strnobackgroundimageselected
 msgid "You need to select a background image first."
-msgstr ""
+msgstr "Primero debes seleccionar una imagen de fondo."
 
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
@@ -202,7 +205,7 @@ msgstr "Cantara está utilizando el motor Java Script de su navegador web local 
 
 #: songselection.strsongisempty
 msgid "The song {songname} is empty. It will not be added."
-msgstr ""
+msgstr "La canción {songname} está vacía. No se agregará."
 
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
@@ -210,31 +213,31 @@ msgstr "Las canciones del archivo se han importado a su repositorio de canciones
 
 #: songselection.strtitleslide
 msgid "Title Slide"
-msgstr ""
+msgstr "Título de la diapositiva"
 
 #: tcfontdialog.caption
 msgid "Font Selection"
-msgstr ""
+msgstr "Selección de fuente"
 
 #: tcfontdialog.fontpropertiesgroupbox.caption
 msgid "Font Properties"
-msgstr ""
+msgstr "Propiedades de la fuente"
 
 #: tcfontdialog.fontselectiongroupbox.caption
 msgid "Font"
-msgstr ""
+msgstr "Fuente"
 
 #: tcfontdialog.formatationcheckgroup.caption
 msgid "Formatation"
-msgstr ""
+msgstr "Formato"
 
 #: tcfontdialog.labelfontsize.caption
 msgid "Font Size:"
-msgstr ""
+msgstr "Tamaño de la fuente:"
 
 #: tcfontdialog.previewlabel.caption
 msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
-msgstr ""
+msgstr "Gracia asombrosa, ¡qué dulce el sonido, que salvó a un desdichado como yo! Cuán graciosa es esa gracia."
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
@@ -363,7 +366,7 @@ msgstr "Cerrar el Editor"
 
 #: tfrmeditorwelcome.btnnewsong.caption
 msgid "Create a new song"
-msgstr ""
+msgstr "Crear una nueva canción"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
@@ -488,15 +491,15 @@ msgstr "Presentación"
 
 #: tfrmpresent.menuitemmovetoscreen.caption
 msgid "Move to other screen"
-msgstr ""
+msgstr "Moverse a otra pantalla"
 
 #: tfrmpresent.menuitemquitpresentation.caption
 msgid "Quit Presentation"
-msgstr ""
+msgstr "Abandonar la presentación"
 
 #: tfrmpresent.menuitemtogglefullscreen.caption
 msgid "Fullscreen"
-msgstr ""
+msgstr "Pantalla completa"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
@@ -800,7 +803,7 @@ msgstr "Guardar selección de canciones como..."
 
 #: tfrmsongs.itemselectallsongs.caption
 msgid "Select all Songs"
-msgstr ""
+msgstr "Seleccionar todas las canciones"
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
@@ -951,4 +954,3 @@ msgstr "El directorio seleccionado puede utilizarse correctamente como repositor
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Por favor, seleccione una ruta de repositorio de canciones antes de salir del asistente. Cantara no puede funcionar sin ella."
-
