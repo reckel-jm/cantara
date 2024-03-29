@@ -368,7 +368,7 @@ msgstr "Den Editor beenden"
 
 #: tfrmeditorwelcome.btnnewsong.caption
 msgid "Create a new song"
-msgstr ""
+msgstr "Ein neues Lied anlegen"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
@@ -493,15 +493,15 @@ msgstr "Präsentation"
 
 #: tfrmpresent.menuitemmovetoscreen.caption
 msgid "Move to other screen"
-msgstr ""
+msgstr "Auf einen anderen Bildschirm verschieben"
 
 #: tfrmpresent.menuitemquitpresentation.caption
 msgid "Quit Presentation"
-msgstr ""
+msgstr "Die Präsentation beenden"
 
 #: tfrmpresent.menuitemtogglefullscreen.caption
 msgid "Fullscreen"
-msgstr ""
+msgstr "Vollbild"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
@@ -804,6 +804,10 @@ msgstr "Liedauswahl speichern..."
 msgid "Save Song Selection As..."
 msgstr "Liedauswahl speichern unter..."
 
+#: tfrmsongs.itemselectallsongs.caption
+msgid "Select all Songs"
+msgstr "Alle Lieder auswählen"
+
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."
@@ -954,4 +958,3 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
-

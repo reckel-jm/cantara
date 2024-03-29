@@ -488,6 +488,10 @@ object frmSongs: TfrmSongs
         Caption = 'Save Song Selection As...'
         OnClick = itemSaveSelectionAsClick
       end
+      object itemSelectAllSongs: TMenuItem
+        Caption = 'Select all Songs'
+        OnClick = itemSelectAllSongsClick
+      end
       object Separator1: TMenuItem
         Caption = '-'
       end

@@ -798,6 +798,10 @@ msgstr "Guardar selección de canción..."
 msgid "Save Song Selection As..."
 msgstr "Guardar selección de canciones como..."
 
+#: tfrmsongs.itemselectallsongs.caption
+msgid "Select all Songs"
+msgstr ""
+
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."

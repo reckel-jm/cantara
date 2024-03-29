@@ -801,6 +801,10 @@ msgstr "Salva selezione brano..."
 msgid "Save Song Selection As..."
 msgstr "Salva selezione brano come..."
 
+#: tfrmsongs.itemselectallsongs.caption
+msgid "Select all Songs"
+msgstr ""
+
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."

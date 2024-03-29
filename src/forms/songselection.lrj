@@ -21,6 +21,7 @@
 {"hash":155413326,"name":"tfrmsongs.itemloadselection.caption","sourcebytes":[76,111,97,100,32,83,111,110,103,32,83,101,108,101,99,116,105,111,110,46,46,46],"value":"Load Song Selection..."},
 {"hash":138676478,"name":"tfrmsongs.itemsaveselection.caption","sourcebytes":[83,97,118,101,32,83,111,110,103,32,83,101,108,101,99,116,105,111,110,46,46,46],"value":"Save Song Selection..."},
 {"hash":255321406,"name":"tfrmsongs.itemsaveselectionas.caption","sourcebytes":[83,97,118,101,32,83,111,110,103,32,83,101,108,101,99,116,105,111,110,32,65,115,46,46,46],"value":"Save Song Selection As..."},
+{"hash":100382947,"name":"tfrmsongs.itemselectallsongs.caption","sourcebytes":[83,101,108,101,99,116,32,97,108,108,32,83,111,110,103,115],"value":"Select all Songs"},
 {"hash":126291129,"name":"tfrmsongs.itemreloadsonglist.caption","sourcebytes":[82,101,108,111,97,100,32,83,111,110,103,32,82,101,112,111,115,105,116,111,114,121],"value":"Reload Song Repository"},
 {"hash":14023582,"name":"tfrmsongs.itempresentation.caption","sourcebytes":[82,117,110,32,80,114,101,115,101,110,116,97,116,105,111,110],"value":"Run Presentation"},
 {"hash":4863637,"name":"tfrmsongs.itemend.caption","sourcebytes":[67,108,111,115,101],"value":"Close"},

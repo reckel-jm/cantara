@@ -73,6 +73,7 @@ type
     itemExportPptx: TMenuItem;
     itemMarkupExport: TMenuItem;
     itemExportPictures: TMenuItem;
+    itemSelectAllSongs: TMenuItem;
     OpenDialog: TOpenDialog;
     ControlPanel: TPanel;
     PanelSongTeXStatus: TPanel;
@@ -116,6 +117,7 @@ type
     procedure itemSaveClick(Sender: TObject);
     procedure itemSaveSelectionAsClick(Sender: TObject);
     procedure itemSaveSelectionClick(Sender: TObject);
+    procedure itemSelectAllSongsClick(Sender: TObject);
     procedure itemShowWelcomeAssistentClick(Sender: TObject);
     procedure itemSongEditorClick(Sender: TObject);
     procedure lbxSRepoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -640,6 +642,13 @@ begin
   if LoadedSongSelectionFilePath = '' then itemSaveSelectionAsClick(itemSaveSelection)
   else
     SaveSelection(LoadedSongSelectionFilePath);
+end;
+
+procedure TfrmSongs.itemSelectAllSongsClick(Sender: TObject);
+var i: Integer;
+begin
+  for i := 0 to lbxSRepo.Count-1 do
+    lbxSSelected.Items.Add(lbxSRepo.Items.Strings[i]);
 end;
 
 procedure TfrmSongs.SaveSelection(var FilePath: String);
