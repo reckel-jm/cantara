@@ -368,6 +368,10 @@ end;
 
 procedure TPresentationCanvasHandler.AssignBGRAFont(Font: TFont);
 begin
+  // Issue #24
+  If (Font.Name='') or (LowerCase(Font.Name)='default') then
+    Font.Name := 'Arial';
+
   Bitmap.FontName  := Font.Name;
   Bitmap.FontStyle := Font.Style;
   Bitmap.FontHeight:= Round(Font.Height/0.85);
