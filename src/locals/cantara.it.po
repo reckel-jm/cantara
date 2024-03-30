@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Cantara\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
@@ -219,27 +219,27 @@ msgstr "Titolo diapositiva"
 
 #: tcfontdialog.caption
 msgid "Font Selection"
-msgstr ""
+msgstr "Selezione del font"
 
 #: tcfontdialog.fontpropertiesgroupbox.caption
 msgid "Font Properties"
-msgstr ""
+msgstr "Proprietà dei font"
 
 #: tcfontdialog.fontselectiongroupbox.caption
 msgid "Font"
-msgstr ""
+msgstr "Font"
 
 #: tcfontdialog.formatationcheckgroup.caption
 msgid "Formatation"
-msgstr ""
+msgstr "Formattazione"
 
 #: tcfontdialog.labelfontsize.caption
 msgid "Font Size:"
-msgstr ""
+msgstr "Dimensione del font:"
 
 #: tcfontdialog.previewlabel.caption
 msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
-msgstr ""
+msgstr "Stupenda Grazia, com'è dolce il suono, che ha salvato un disgraziato come me! Quanto è benevola quella grazia."
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
@@ -366,7 +366,7 @@ msgstr "Chiudi l'editor"
 
 #: tfrmeditorwelcome.btnnewsong.caption
 msgid "Create a new song"
-msgstr ""
+msgstr "Crea una nuova canzone"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
@@ -491,15 +491,15 @@ msgstr "Presentazione"
 
 #: tfrmpresent.menuitemmovetoscreen.caption
 msgid "Move to other screen"
-msgstr ""
+msgstr "Passa all'altra schermata"
 
 #: tfrmpresent.menuitemquitpresentation.caption
 msgid "Quit Presentation"
-msgstr ""
+msgstr "Esci dalla presentazione"
 
 #: tfrmpresent.menuitemtogglefullscreen.caption
 msgid "Fullscreen"
-msgstr ""
+msgstr "A schermo intero"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
@@ -803,7 +803,7 @@ msgstr "Salva selezione brano come..."
 
 #: tfrmsongs.itemselectallsongs.caption
 msgid "Select all Songs"
-msgstr ""
+msgstr "Seleziona tutte le canzoni"
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
