@@ -85,6 +85,7 @@ type
     SaveDialog: TSaveDialog;
     SplitterContentImage: TSplitter;
     TimerUpdateScreen: TTimer;
+
     procedure btnAddClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure btnDownClick(Sender: TObject);
@@ -163,7 +164,6 @@ type
     procedure ReloadPresentationImage;
     procedure PresentationHasBeenEnded;
   private
-    ProgramMode: TProgramMode;
     {
       This boolean determines whether the chkMultiWindowMode checkbox has been
       changed by the user so that the automatic detection will get inactive.
@@ -198,6 +198,13 @@ type
     function MultiScreenIsUsable: Boolean;
   public
     { public declarations }
+
+    {
+     The mode in which cantara is at the moment (Song selection, single screen
+     presentation or multi screen presentation
+    }
+    ProgramMode: TProgramMode;
+
     procedure AskToReloadRepo;
     function FindSong(songname: String): TRepoFile;
   end;
