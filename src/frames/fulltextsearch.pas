@@ -140,9 +140,24 @@ begin
 end;
 
 procedure TFrmFulltextsearch.ListBoxResultsDblClick(Sender: TObject);
+var
+  { The song which has been selected in the search }
+  selectedSongName: String;
 begin
-  frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(
-    PathSeparator)[0]);
+  selectedSongName := ListBoxResults.Items[ListBoxResults.ItemIndex].Split(
+      PathSeparator)[0];
+
+  if frmSongs.ProgramMode = TProgramMode.ModeSelection then
+    frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(
+      PathSeparator)[0])
+  else if frmSongs.ProgramMode = TProgramMode.ModeMultiscreenPresentation then
+  begin
+    if frmSongs.lbxSSelected.Items.IndexOf(selectedSongName) > -1 then
+    begin
+      frmSongs.lbxSselected.ItemIndex:=frmSongs.lbxSSelected.Items.IndexOf(selectedSongName);
+      frmSongs.lbxSselected.OnClick(self);
+    end;
+  end;
 end;
 
 procedure TFrmFulltextsearch.ListBoxResultsDrawItem(Control: TWinControl;
