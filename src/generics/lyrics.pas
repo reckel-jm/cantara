@@ -206,7 +206,8 @@ begin
     else
     { The Parts Vers/Strophe and Bridge normally do not get repeated. They are only used once at the printed position. However, after them, the repetitional parts should follow. }
     if (pos('Strophe ', inputFile.Strings[i]) = 1) Or
-      (pos('Vers ', inputFile.Strings[i]) = 1) Or (inputFile.Strings[i] = 'Vers') then
+      (pos('Vers ', inputFile.Strings[i]) = 1) Or (inputFile.Strings[i] = 'Vers') Or
+      (pos('Verse ', inputFile.Strings[i]) = 1) Or (inputFile.Strings[i] = 'Verse') then
     begin
       if RefrainState = True then
         IncludeRepetitionalParts;
@@ -224,17 +225,17 @@ begin
     end
     else
     { Handle the CCLI Copyright information }
-    if (pos('CCLI', inputFile.Strings[i]) = 1) then
+    if (pos('CCLI Song #', inputFile.Strings[i]) = 1) then
     begin
       if i < self.inputFile.Count - 1 then
       begin
-        self.MetaDict.Add('ccli-songnumber', self.inputFile.Strings[i].Split(' ')[1]);
-        self.MetaDict.Add('author', self.inputFile.Strings[i + 1]);
-      end
-      else
-      begin
-        self.MetaDict.Add('ccli-licensenumber', self.inputFile.Strings[i].Split(' ')[1]);
+        self.MetaDict.Add('ccli-songnumber', StringReplace(self.inputFile.Strings[i], 'CCLI Song #', '', [rfReplaceAll]));
+        self.MetaDict.Add('author', self.inputFile.Strings[i - 1]);
       end;
+    end
+    else if i = self.inputFile.Count-1 then
+    begin
+      self.MetaDict.Add('ccli-licensenumber', StringReplace(self.inputFile.Strings[i], 'CCLI License #', '', [rfReplaceAll]));
     end;
   end;
   { Add Closing Refrain if needed }
