@@ -1,0 +1,6 @@
+{"version":1,"strings":[
+{"hash":254193550,"name":"tfrmfulltextsearch.labalcreateindex.caption","sourcebytes":[67,114,101,97,116,101,32,73,110,100,101,120,46,46,46],"value":"Create Index..."},
+{"hash":227692237,"name":"tfrmfulltextsearch.labelentersearchterm.caption","sourcebytes":[69,110,116,101,114,32,115,101,97,114,99,104,32,116,101,114,109],"value":"Enter search term"},
+{"hash":39937710,"name":"tfrmfulltextsearch.labelnoitemsfound.caption","sourcebytes":[78,111,32,105,116,101,109,115,32,102,111,117,110,100,46,46,46,10,10,84,114,121,32,99,104,97,110,103,105,110,103,32,116,104,101,32,115,101,97,114,99,104,32,116,101,114,109,115,46],"value":"No items found...\n\nTry changing the search terms."},
+{"hash":218278222,"name":"tfrmfulltextsearch.labelenterkeyword.caption","sourcebytes":[69,110,116,101,114,32,97,32,115,101,97,114,99,104,32,116,101,114,109,46,46,46],"value":"Enter a search term..."}
+]}

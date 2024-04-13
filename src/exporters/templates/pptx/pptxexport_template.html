@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cantara PPTX export</title>
+    <script src="pptxgen.bundle.js"></script>
+
+    <script type="text/javascript">
+    let pres = new PptxGenJS();
+
+    pres.title = "{{TITLE}}";
+    pres.subject = "{{SUBJECT}}";
+    pres.author = "Cantara";
+    pres.layout = "LAYOUT_16x9";
+
+    pres.defineSlideMaster({
+      title: "EmptySlide",
+      {{BACKGROUND}}
+      objects: [
+        {{BACKGROUNDIMAGE}}
+        { placeholder: {
+          options: { name: "emptycontent", type: "body", x: 0, y: 0, w: "100%", h: "100%", align: "{{HALIGN}}", valign: "{{VALIGN}}", fontSize: "32", color: "{{TEXTCOLOR}}", margin: 15, autoFit: true },
+          text: "",
+        } },
+      ]
+    });
+
+   pres.defineSlideMaster({
+      title: "TitleSlide",
+      {{BACKGROUND}}
+        objects: [
+        {{BACKGROUNDIMAGE}}
+        { placeholder: {
+          options: { name: "title", type: "body", x: 0, y: 0, w: "100%", h: "100%", align: "{{HALIGN}}", valign: "{{VALIGN}}", fontSize: "32", color: "{{TEXTCOLOR}}", margin: 15, autoFit: true },
+          text: "",
+        } },
+      ]
+    });
+
+    pres.defineSlideMaster({
+      title: "DefaultSlide",
+      {{BACKGROUND}}
+      objects: [
+        {{BACKGROUNDIMAGE}}
+        { placeholder: {
+          options: { name: "defaultcontent", type: "body", x: 0, y: 0, w: "100%", h: "100%", align: "{{HALIGN}}", valign: "{{VALIGN}}", fontSize: "32", color: "{{TEXTCOLOR}}", margin: 15, autoFit: true },
+          text: "",
+        } },
+      ]
+    });
+
+    {{SLIDECONTENT}}
+
+    // 4. Save the Presentation
+    pres.writeFile({ fileName: "Presentation.pptx" });
+    </script>
+  </head>
+  <body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+  </body>
+</html>

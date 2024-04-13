@@ -2,9 +2,9 @@ object frmEditorWelcome: TfrmEditorWelcome
   Left = 0
   Height = 542
   Top = 0
-  Width = 679
+  Width = 663
   ClientHeight = 542
-  ClientWidth = 679
+  ClientWidth = 663
   TabOrder = 0
   DesignLeft = 408
   DesignTop = 34
@@ -12,9 +12,9 @@ object frmEditorWelcome: TfrmEditorWelcome
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Owner
-    Left = 254
+    Left = 256
     Height = 22
-    Top = 50
+    Top = 48
     Width = 171
     BorderSpacing.Top = 50
     Caption = 'Welcome to the Editor!'
@@ -40,9 +40,25 @@ object frmEditorWelcome: TfrmEditorWelcome
     Caption = 'Here you can change the songs which you would like to display.'#10#10'For detailed information about the syntax, please consider the documentation.'
     ParentColor = False
   end
-  object btnOpenDocs: TButton
+  object btnNewSong: TButton
     AnchorSideLeft.Control = lblDescription
     AnchorSideTop.Control = lblDescription
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = lblDescription
+    AnchorSideRight.Side = asrBottom
+    Left = 15
+    Height = 32
+    Top = 420
+    Width = 649
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Top = 30
+    Caption = 'Create a new song'
+    TabOrder = 0
+    OnClick = btnNewSongClick
+  end
+  object btnOpenDocs: TButton
+    AnchorSideLeft.Control = lblDescription
+    AnchorSideTop.Control = btnNewSong
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = lblDescription
     AnchorSideRight.Side = asrBottom
@@ -53,8 +69,8 @@ object frmEditorWelcome: TfrmEditorWelcome
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 30
     Caption = 'Open Documentation in Webbrowser...'
+    TabOrder = 1
     OnClick = btnOpenDocsClick
-    TabOrder = 0
   end
   object lblHint: TLabel
     AnchorSideLeft.Control = btnOpenDocs
@@ -90,5 +106,21 @@ object frmEditorWelcome: TfrmEditorWelcome
     ParentColor = False
     ParentFont = False
     WordWrap = True
+  end
+  object btnClose: TButton
+    AnchorSideLeft.Control = lblDescription
+    AnchorSideTop.Control = lblSupport
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = lblDescription
+    AnchorSideRight.Side = asrBottom
+    Left = 15
+    Height = 32
+    Top = 420
+    Width = 649
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Top = 30
+    Caption = 'Close the Editor'
+    TabOrder = 2
+    OnClick = btnCloseClick
   end
 end

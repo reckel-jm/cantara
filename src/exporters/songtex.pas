@@ -1,6 +1,6 @@
 { <description>
 
-  Copyright (C) <2022> <Jan Martin Reckelr> <jm.reckel@t-online.de>
+  Copyright (C) <2022> <Jan Martin Reckel> <jm.reckel@t-online.de>
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -27,16 +27,22 @@ uses
   Classes, SysUtils, Lyrics;
 
 type
-  { TSongTexFile -> a TeX like file which exports whole slides }
+  { TSongTexFile
+
+  A TeX like file which exports a list of songs with their order and content.
+  }
   TSongTeXFile = Class
   public
     NextSongFile: TStringList;
+    SongTeXIsSelection: Boolean;
     constructor Create;
     destructor Destroy;
     procedure AddFile(SongFile: TRepoFile);
     procedure SaveTofile(FileName: String);
     procedure LoadFromFile(FileName: String);
     function HasNextSongfile: String;
+    { Returns the content of the file as a string }
+    function Text: String;
   private
     FileContent: TStringList;
     SongFiles: array of TRepoFile;
@@ -52,6 +58,7 @@ begin
   FileContent.Add('% This file has been created automatically');
   FileContent.Add('% It can be opened with Cantara (https://cantara.app)');
   FileContent.Add('% Manually editing the content may damage the import');
+  SongTeXIsSelection := True;
   ParsingIndex := -1;
   NextSongFile := TStringList.Create;
 end;
@@ -59,7 +66,7 @@ end;
 destructor TSongTeXFile.Destroy;
 begin
   FileContent.Free;
-  FreeAndNil(NextSongFile);
+  NextSongFile.Destroy;
   inherited;
 end;
 
@@ -74,16 +81,19 @@ begin
   FileContent.Add('\endfile');
 end;
 
-procedure TSongTexFile.SaveToFile(FileName: String);
+procedure TSongTeXFile.SaveTofile(FileName: String);
 begin
   FileContent.SaveToFile(FileName);
 end;
 
-procedure TSongTexFile.LoadFromFile(FileName: String);
+procedure TSongTeXFile.LoadFromFile(FileName: String);
 begin
   FileContent.Clear;
   FileContent.LoadFromFile(FileName);
   ParsingIndex := 0;
+  SongTeXIsSelection := not (
+                     (Pos('\noselection', FileContent.Text) > 0)
+                     );
 end;
 
 {
@@ -91,7 +101,7 @@ end;
  the Stringlist NextSongFile.
  In case of no further songfiles available, an empty string '' will be returned.
 }
-function TSongTexFile.HasNextSongfile: String;
+function TSongTeXFile.HasNextSongfile: String;
 var curSongname: string;
 begin
   while (ParsingIndex <= FileContent.Count-1) and (pos('\beginfile{',FileContent.Strings[ParsingIndex]) < 1) do
@@ -112,6 +122,11 @@ begin
     Exit(curSongName);
   end;
   Result := '';
+end;
+
+function TSongTeXFile.Text: String;
+begin
+  Result := Self.FileContent.Text;
 end;
 
 end.

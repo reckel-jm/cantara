@@ -13,12 +13,21 @@
       <UseXPManifest Value="True"/>
       <XPManifest>
         <DpiAware Value="True"/>
+        <LongPathAware Value="True"/>
+        <AnsiUTF8 Value="True"/>
         <TextName Value="Cantara"/>
         <TextDesc Value="Song Presentation Software"/>
       </XPManifest>
       <Icon Value="0"/>
-      <Resources Count="1">
+      <Resources Count="8">
         <Resource_0 FileName="resources/Amazing Grace.song" Type="RCDATA" ResourceName="AMAZING GRACE"/>
+        <Resource_1 FileName="exporters/templates/pptx/pptxgen.bundle.js" Type="RCDATA" ResourceName="PPTXGEN.BUNDLE"/>
+        <Resource_2 FileName="exporters/templates/pptx/pptxexport_template.html" Type="RCDATA" ResourceName="PPTXEXPORT_TEMPLATE"/>
+        <Resource_3 FileName="exporters/templates/markup/html.txt" Type="RCDATA" ResourceName="MARKUP.HTML"/>
+        <Resource_4 FileName="exporters/templates/markup/Markdown.txt" Type="RCDATA" ResourceName="MARKUP.MARKDOWN"/>
+        <Resource_5 FileName="exporters/templates/markup/Telegram.txt" Type="RCDATA" ResourceName="MARKUP.TELEGRAM"/>
+        <Resource_6 FileName="exporters/templates/markup/WhatsApp.txt" Type="RCDATA" ResourceName="MARKUP.WHATSAPP"/>
+        <Resource_7 FileName="exporters/templates/markup/TitleOnly.txt" Type="RCDATA" ResourceName="MARKUP.TITLEONLY"/>
       </Resources>
     </General>
     <i18n>
@@ -29,19 +38,17 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
-      <MinorVersionNr Value="4"/>
-      <BuildNr Value="11"/>
+      <MinorVersionNr Value="6"/>
+      <RevisionNr Value="1"/>
+      <BuildNr Value="13"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
-      <Attributes pvaPreRelease="True"/>
-      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.4.0"/>
+      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.6.0"/>
     </VersionInfo>
-    <MacroValues Count="3">
-      <Macro1 Name="LCLWidgetType" Value="qt5"/>
-      <Macro2 Name="LCLWidgetType" Value="qt5"/>
-      <Macro3 Name="LCLWidgetType" Value="qt5"/>
+    <MacroValues Count="1">
+      <Macro6 Name="LCLWidgetType" Value="qt6"/>
     </MacroValues>
-    <BuildModes Count="6">
+    <BuildModes Count="7">
       <Item1 Name="Release" Default="True"/>
       <Item2 Name="Linux WPO Pass1">
         <CompilerOptions>
@@ -51,7 +58,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;interfaces"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -92,7 +99,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;interfaces"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -133,7 +140,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;interfaces"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -183,7 +190,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;interfaces"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -226,6 +233,9 @@
         </CompilerOptions>
       </Item5>
       <Item6 Name="Debug">
+        <MacroValues Count="1">
+          <Macro6 Name="LCLWidgetType" Value="qt6"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -233,7 +243,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -256,10 +266,7 @@
           </CodeGeneration>
           <Linking>
             <Debugging>
-              <DebugInfoType Value="dsDwarf3"/>
-              <UseValgrind Value="True"/>
-              <StripSymbols Value="True"/>
-              <UseExternalDbgSyms Value="True"/>
+              <DebugInfoType Value="dsDwarf2"/>
             </Debugging>
             <Options>
               <Win32>
@@ -267,8 +274,65 @@
               </Win32>
             </Options>
           </Linking>
+          <Other>
+            <Verbosity>
+              <ShoLineNum Value="True"/>
+              <ShowDebugInfo Value="True"/>
+              <ShowHintsForUnusedUnitsInMainSrc Value="True"/>
+            </Verbosity>
+            <CustomOptions Value="-dQT_NATIVE_DIALOGS
+-dUseCThreads"/>
+          </Other>
         </CompilerOptions>
       </Item6>
+      <Item7 Name="ReleaseConfined">
+        <MacroValues Count="1">
+          <Macro6 Name="LCLWidgetType" Value="qt6"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="cantara"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <RelocatableUnit Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
+              <DebugInfoType Value="dsDwarf3"/>
+              <StripSymbols Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-FcUTF8
+-dCONTAINER
+-dUseCThreads"/>
+          </Other>
+        </CompilerOptions>
+      </Item7>
+      <SharedMatrixOptions Count="2">
+        <Item1 ID="861867067291" Type="IDEMacro" MacroName="fpGUIPlatform" Value="wayland"/>
+        <Item2 ID="839485512827" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
+      </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -280,21 +344,31 @@
         <Mode0 Name="default"/>
       </Modes>
     </RunParams>
-    <RequiredPackages Count="2">
+    <RequiredPackages Count="5">
       <Item1>
-        <PackageName Value="RunTimeTypeInfoControls"/>
+        <PackageName Value="BGRABitmapPack"/>
+        <DefaultFilename Value="bgrabitmap/bgrabitmap/bgrabitmappack.lpk"/>
       </Item1>
       <Item2>
-        <PackageName Value="LCL"/>
+        <PackageName Value="SynEdit"/>
       </Item2>
+      <Item3>
+        <PackageName Value="LazControls"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="RunTimeTypeInfoControls"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="LCL"/>
+      </Item5>
     </RequiredPackages>
-    <Units Count="12">
+    <Units Count="28">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="songselection.pas"/>
+        <Filename Value="forms/songselection.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmSongs"/>
         <HasResources Value="True"/>
@@ -302,7 +376,7 @@
         <UnitName Value="SongSelection"/>
       </Unit1>
       <Unit2>
-        <Filename Value="present.pas"/>
+        <Filename Value="forms/present.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmPresent"/>
         <HasResources Value="True"/>
@@ -310,21 +384,21 @@
         <UnitName Value="Present"/>
       </Unit2>
       <Unit3>
-        <Filename Value="settings.pas"/>
+        <Filename Value="forms/settings.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmSettings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit3>
       <Unit4>
-        <Filename Value="info.pas"/>
+        <Filename Value="forms/info.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmInfo"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit4>
       <Unit5>
-        <Filename Value="lyrics.pas"/>
+        <Filename Value="generics/lyrics.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit5>
       <Unit6>
@@ -333,7 +407,7 @@
         <UnitName Value="CommandLineOptions"/>
       </Unit6>
       <Unit7>
-        <Filename Value="songeditor.pas"/>
+        <Filename Value="forms/songeditor.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmSongEdit"/>
         <HasResources Value="True"/>
@@ -358,12 +432,102 @@
         <IsPartOfProject Value="True"/>
       </Unit10>
       <Unit11>
-        <Filename Value="welcome.pas"/>
+        <Filename Value="forms/welcome.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmWelcome"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit11>
+      <Unit12>
+        <Filename Value="generics/slides.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="frames/fulltextsearch.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmFulltextsearch"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="forms/formfulltextsearch.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmWrapperFulltextSearch"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormFulltextSearch"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="exporters/pptx.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="generics/resourcehandling.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ResourceHandling"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="generics/presentationcanvas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PresentationCanvas"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="frames/settingsdetailed.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrameSettingsDetailed"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="forms/settingspadding.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormPadding"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="forms/formmarkupexport.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmMarkupExport"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormMarkupExport"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="exporters/markup.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="forms/imageexport.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormImageExport"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="generics/loadimagethread.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="generics/cantarastandarddialogs.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CantaraStandardDialogs"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="interfaces/presentationcontroller.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="forms/cantarafontdialog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CFontDialog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="interfaces/exporterinterfaces.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit27>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -373,7 +537,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="frames;exporters;tests"/>
+      <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
@@ -387,6 +551,7 @@
     <Linking>
       <Debugging>
         <GenerateDebugInfo Value="False"/>
+        <RunWithoutDebug Value="True"/>
         <DebugInfoType Value="dsDwarf3"/>
         <StripSymbols Value="True"/>
         <UseExternalDbgSyms Value="True"/>
@@ -398,5 +563,9 @@
         </Win32>
       </Options>
     </Linking>
+    <Other>
+      <CustomOptions Value="-FcUTF8
+-dUseCThreads"/>
+    </Other>
   </CompilerOptions>
 </CONFIG>

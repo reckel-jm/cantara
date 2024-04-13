@@ -17,6 +17,22 @@ msgstr ""
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
 msgstr ""
 
+#: formmarkupexport.strloadtemplatefromfile
+msgid "Load Template From File..."
+msgstr ""
+
+#: formmarkupexport.strtitleonly
+msgid "Title Only"
+msgstr ""
+
+#: fulltextsearch.strsongtitle
+msgid "Song Title"
+msgstr ""
+
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr ""
+
 #: info.strauthor
 msgid "Author"
 msgstr ""
@@ -42,8 +58,23 @@ msgstr ""
 msgid "https://www.cantara.app"
 msgstr ""
 
+#: pptx.strcantaraexport
+msgid "Cantara Song Presentation Export"
+msgstr ""
+
+#: pptx.strsongs
+msgid "Songs"
+msgstr ""
+
 #: settings.strbrightness
 msgid "Increase brightness by "
+msgstr ""
+
+#: settings.strdefaultmetatemplate
+msgid ""
+"{%author%}Author: {author}\n"
+"{%bible%}Bible Reference: {bible}\n"
+"{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
 
 #: settings.strerrorcaption
@@ -51,12 +82,16 @@ msgctxt "settings.strerrorcaption"
 msgid "Error"
 msgstr ""
 
+#: settings.strnobackgroundimageselected
+msgid "You need to select a background image first."
+msgstr ""
+
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
 msgstr ""
 
 #: settings.strtransparency
-msgid "Increase transparancy by "
+msgid "Increase transparency by "
 msgstr ""
 
 #: settings.strvalidsongrepository
@@ -87,12 +122,24 @@ msgstr ""
 msgid "Please add the name of the new song"
 msgstr ""
 
+#: songeditor.strsaveunsavedchangescaption
+msgid "Question"
+msgstr ""
+
+#: songeditor.strsaveunsavedchangescontent
+msgid "The file {filename} has unsaved changes. Would you like to save it now?"
+msgstr ""
+
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
 msgstr ""
 
 #: songeditor.strwelcome
 msgid "Welcome"
+msgstr ""
+
+#: songselection.stractivesongtexfile
+msgid "The following file is opened at the moment: "
 msgstr ""
 
 #: songselection.strbuttoneinstellungen
@@ -115,12 +162,10 @@ msgid "Error"
 msgstr ""
 
 #: songselection.strerroropening
-msgctxt "songselection.strerroropening"
 msgid "Error while opening. Propably you have not the required rights to access this file."
 msgstr ""
 
 #: songselection.strerrorsaving
-msgctxt "songselection.strerrorsaving"
 msgid "Error while saving. Propably you have not the required rights to access this file."
 msgstr ""
 
@@ -136,9 +181,128 @@ msgstr ""
 msgid "Slide"
 msgstr ""
 
+#: songselection.strhint
+msgid "Hint"
+msgstr ""
+
+#: songselection.strpptxgenjs
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr ""
+
+#: songselection.strsongisempty
+msgid "The song {songname} is empty. It will not be added."
+msgstr ""
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr ""
+
+#: songselection.strtitleslide
+msgid "Title Slide"
+msgstr ""
+
+#: tcfontdialog.caption
+msgid "Font Selection"
+msgstr ""
+
+#: tcfontdialog.fontpropertiesgroupbox.caption
+msgid "Font Properties"
+msgstr ""
+
+#: tcfontdialog.fontselectiongroupbox.caption
+msgid "Font"
+msgstr ""
+
+#: tcfontdialog.formatationcheckgroup.caption
+msgid "Formatation"
+msgstr ""
+
+#: tcfontdialog.labelfontsize.caption
+msgid "Font Size:"
+msgstr ""
+
+#: tcfontdialog.previewlabel.caption
+msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
+msgstr ""
+
+#: tformimageexport.buttonchoose.caption
+msgid "Choose..."
+msgstr ""
+
+#: tformimageexport.buttonexportall.caption
+msgid "Export All"
+msgstr ""
+
+#: tformimageexport.buttonexportcurrent.caption
+msgctxt "tformimageexport.buttonexportcurrent.caption"
+msgid "Export Current"
+msgstr ""
+
+#: tformimageexport.buttonreloadpreview.caption
+msgid "Reload Preview..."
+msgstr ""
+
+#: tformimageexport.caption
+msgid "Image Exporter"
+msgstr ""
+
+#: tformimageexport.checkboxsync.caption
+msgid "Sync"
+msgstr ""
+
+#: tformimageexport.groupsettings.caption
+msgctxt "tformimageexport.groupsettings.caption"
+msgid "Settings"
+msgstr ""
+
+#: tformimageexport.itemexport.caption
+msgctxt "tformimageexport.itemexport.caption"
+msgid "Export"
+msgstr ""
+
+#: tformimageexport.itemremove.caption
+msgid "Remove"
+msgstr ""
+
+#: tformimageexport.labelfolder.caption
+msgid "Folder: "
+msgstr ""
+
+#: tformimageexport.labelheight.caption
+msgid "Height:"
+msgstr ""
+
+#: tformimageexport.labelwidth.caption
+msgid "Width: "
+msgstr ""
+
+#: tformpadding.caption
+msgid "Additional Settings"
+msgstr ""
+
+#: tframesettingsdetailed.groupboxpadding.caption
+msgid "Padding"
+msgstr ""
+
+#: tframesettingsdetailed.labalbottom.caption
+msgid "Bottom: "
+msgstr ""
+
+#: tframesettingsdetailed.labelleft.caption
+msgid "Left:"
+msgstr ""
+
+#: tframesettingsdetailed.labelright.caption
+msgid "Right: "
+msgstr ""
+
+#: tframesettingsdetailed.labeltop.caption
+msgid "Top: "
+msgstr ""
+
 #: tfrmdisplaysongcontent.btnarchivate.caption
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr ""
 
 #: tfrmdisplaysongcontent.btnclose.caption
@@ -177,6 +341,14 @@ msgstr ""
 msgid "Name: "
 msgstr ""
 
+#: tfrmeditorwelcome.btnclose.caption
+msgid "Close the Editor"
+msgstr ""
+
+#: tfrmeditorwelcome.btnnewsong.caption
+msgid "Create a new song"
+msgstr ""
+
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
 msgstr ""
@@ -198,6 +370,26 @@ msgstr ""
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
+msgstr ""
+
+#: tfrmfulltextsearch.labalcreateindex.caption
+msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
+msgid "Create Index..."
+msgstr ""
+
+#: tfrmfulltextsearch.labelenterkeyword.caption
+msgid "Enter a search term..."
+msgstr ""
+
+#: tfrmfulltextsearch.labelentersearchterm.caption
+msgid "Enter search term"
+msgstr ""
+
+#: tfrmfulltextsearch.labelnoitemsfound.caption
+msgid ""
+"No items found...\n"
+"\n"
+"Try changing the search terms."
 msgstr ""
 
 #: tfrminfo.btnopengitrepo.caption
@@ -238,18 +430,45 @@ msgstr ""
 msgid "lblVersion"
 msgstr ""
 
+#: tfrmmarkupexport.btnsavetofile.caption
+msgid "Save to File..."
+msgstr ""
+
+#: tfrmmarkupexport.caption
+msgid "Export Songs as Markup"
+msgstr ""
+
+#: tfrmmarkupexport.clipboardbutton.caption
+msgctxt "tfrmmarkupexport.clipboardbutton.caption"
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: tfrmmarkupexport.opendialog.title
+msgid "Load Template File"
+msgstr ""
+
+#: tfrmmarkupexport.result.caption
+msgid "Result"
+msgstr ""
+
+#: tfrmmarkupexport.templatebox.caption
+msgid "Template"
+msgstr ""
+
 #: tfrmpresent.caption
 msgid "Presentation"
 msgstr ""
 
-#: tfrmpresent.lblmeta.caption
-msgid ""
-"<Meta>\n"
-"Second Line"
+#: tfrmpresent.menuitemmovetoscreen.caption
+msgid "Move to other screen"
 msgstr ""
 
-#: tfrmpresent.lblnext.caption
-msgid "<Lyrics>"
+#: tfrmpresent.menuitemquitpresentation.caption
+msgid "Quit Presentation"
+msgstr ""
+
+#: tfrmpresent.menuitemtogglefullscreen.caption
+msgid "Fullscreen"
 msgstr ""
 
 #: tfrmsettings.bgcolordialog.title
@@ -273,11 +492,16 @@ msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
 msgstr ""
 
+#: tfrmsettings.btndetails.caption
+msgid "Details..."
+msgstr ""
+
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
 msgstr ""
 
 #: tfrmsettings.btnselectdir.caption
+msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
 msgstr ""
 
@@ -286,15 +510,12 @@ msgid "Text Color..."
 msgstr ""
 
 #: tfrmsettings.caption
+msgctxt "tfrmsettings.caption"
 msgid "Settings"
 msgstr ""
 
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
-msgstr ""
-
-#: tfrmsettings.cblyricstoclipboard.caption
-msgid "Copy lyrics to clipboard"
 msgstr ""
 
 #: tfrmsettings.cbmetadatafirstslide.caption
@@ -305,6 +526,10 @@ msgstr ""
 msgid "at last slide"
 msgstr ""
 
+#: tfrmsettings.cbmetatitleslide.caption
+msgid "at special title slide"
+msgstr ""
+
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
 msgstr ""
@@ -313,8 +538,12 @@ msgstr ""
 msgid "Spoil next slides"
 msgstr ""
 
-#: tfrmsettings.fontdialog.title
-msgid "Select font"
+#: tfrmsettings.combohorizontal.text
+msgid "Center"
+msgstr ""
+
+#: tfrmsettings.combovertical.text
+msgid "Middle"
 msgstr ""
 
 #: tfrmsettings.gbpresentation.caption
@@ -325,8 +554,12 @@ msgstr ""
 msgid "Song Repo Path:"
 msgstr ""
 
+#: tfrmsettings.lblalignment.caption
+msgid "Alignment: "
+msgstr ""
+
 #: tfrmsettings.lblimagebrightness.caption
-msgid "Change Image Transparancy/Brightness:"
+msgid "Change Image Transparency:"
 msgstr ""
 
 #: tfrmsettings.lblimageexplainer.caption
@@ -346,7 +579,7 @@ msgid "Automatic wrap after how many lines (0 = off):"
 msgstr ""
 
 #: tfrmsettings.sbimagebrightness.hint
-msgid "A value smaller than 0% will make the image transparent and the background color shine through, a value > 0% will increase the brightness of the picture."
+msgid "The transparency of the background picture towards the background color"
 msgstr ""
 
 #: tfrmsettings.selectdirectorydialog.title
@@ -361,6 +594,40 @@ msgstr ""
 msgid "Edit Files"
 msgstr ""
 
+#: tfrmsongedit.itemcopy.caption
+msgctxt "tfrmsongedit.itemcopy.caption"
+msgid "Copy"
+msgstr ""
+
+#: tfrmsongedit.itemcut.caption
+msgid "Cut"
+msgstr ""
+
+#: tfrmsongedit.itemfadein.caption
+msgid "Zoom In"
+msgstr ""
+
+#: tfrmsongedit.itemfadeout.caption
+msgid "Zoom Out"
+msgstr ""
+
+#: tfrmsongedit.itempaste.caption
+msgid "Paste"
+msgstr ""
+
+#: tfrmsongedit.itemredo.caption
+msgid "Redo"
+msgstr ""
+
+#: tfrmsongedit.itemundo.caption
+msgid "Undo"
+msgstr ""
+
+#: tfrmsongedit.menuedit.caption
+msgctxt "tfrmsongedit.menuedit.caption"
+msgid "Edit"
+msgstr ""
+
 #: tfrmsongedit.menufile.caption
 msgctxt "tfrmsongedit.menufile.caption"
 msgid "File"
@@ -368,17 +635,16 @@ msgstr ""
 
 #: tfrmsongedit.menuitemarchivate.caption
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
-msgid "Archivate"
+msgid "Archive"
 msgstr ""
 
 #: tfrmsongedit.menuitemclose.caption
-msgctxt "tfrmsongedit.menuitemclose.caption"
 msgid "Close Editor"
 msgstr ""
 
 #: tfrmsongedit.menuitemcopy.caption
 msgctxt "tfrmsongedit.menuitemcopy.caption"
-msgid "Copy"
+msgid "Duplicate"
 msgstr ""
 
 #: tfrmsongedit.menuitemnew.caption
@@ -388,6 +654,10 @@ msgstr ""
 #: tfrmsongedit.menuitemsave.caption
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
+msgstr ""
+
+#: tfrmsongedit.view.caption
+msgid "View"
 msgstr ""
 
 #: tfrmsongs.btnadd.caption
@@ -436,6 +706,10 @@ msgstr ""
 msgid "🠕"
 msgstr ""
 
+#: tfrmsongs.buttonclosesongtexfile.caption
+msgid "Close File"
+msgstr ""
+
 #: tfrmsongs.caption
 msgid "Song Selection (Cantara)"
 msgstr ""
@@ -445,7 +719,7 @@ msgid "Multi-Screen-Mode (suitable for multiple screens)"
 msgstr ""
 
 #: tfrmsongs.edtsearch.hint
-msgid "Suchen..."
+msgid "Search..."
 msgstr ""
 
 #: tfrmsongs.itemabout.caption
@@ -457,26 +731,24 @@ msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
 msgstr ""
 
-#: tfrmsongs.itemexporttexfile.caption
-msgid "Export Selection with Content..."
+#: tfrmsongs.itemexportpictures.caption
+msgid "Images..."
 msgstr ""
 
-#: tfrmsongs.itemexporttexfile.hint
-msgid "Exports a SongTeX file which contains all selected song files with their content."
+#: tfrmsongs.itemexportpptx.caption
+msgid "Powerpoint Presentation (pptx)"
 msgstr ""
 
-#: tfrmsongs.itemimporttexfile.caption
-msgid "Import Selection with Content..."
+#: tfrmsongs.itemfulltextsearch.caption
+msgid "Full Text Search..."
 msgstr ""
 
-#: tfrmsongs.itemimporttexfile.hint
-msgid ""
-"Imports a SongTeX file which contains all selected song files with their content.\n"
-"If the file does not exist in the song repository yet, it will be automatically added to."
+#: tfrmsongs.itemloadselection.caption
+msgid "Load Song Selection..."
 msgstr ""
 
-#: tfrmsongs.itemload.caption
-msgid "Load Selection without Content..."
+#: tfrmsongs.itemmarkupexport.caption
+msgid "Markup Text..."
 msgstr ""
 
 #: tfrmsongs.itemopenineditor.caption
@@ -491,8 +763,16 @@ msgstr ""
 msgid "Reload Song Repository"
 msgstr ""
 
-#: tfrmsongs.itemsave.caption
-msgid "Save Selection without Content..."
+#: tfrmsongs.itemsaveselection.caption
+msgid "Save Song Selection..."
+msgstr ""
+
+#: tfrmsongs.itemsaveselectionas.caption
+msgid "Save Song Selection As..."
+msgstr ""
+
+#: tfrmsongs.itemselectallsongs.caption
+msgid "Select all Songs"
 msgstr ""
 
 #: tfrmsongs.itemsettings.caption
@@ -509,7 +789,7 @@ msgid "Song Lyrics..."
 msgstr ""
 
 #: tfrmsongs.lblfoilnumber.caption
-msgid "Foliennummern"
+msgid "Slide Numbers"
 msgstr ""
 
 #: tfrmsongs.lblpresentation.caption
@@ -517,7 +797,13 @@ msgid "Presentation is running:"
 msgstr ""
 
 #: tfrmsongs.menuedit.caption
+msgctxt "tfrmsongs.menuedit.caption"
 msgid "Edit"
+msgstr ""
+
+#: tfrmsongs.menuexport.caption
+msgctxt "tfrmsongs.menuexport.caption"
+msgid "Export"
 msgstr ""
 
 #: tfrmsongs.menufile.caption
@@ -533,16 +819,12 @@ msgstr ""
 msgid "Open Song List"
 msgstr ""
 
+#: tfrmsongs.panelsongtexstatus.caption
+msgid "PanelSongTeXStatus"
+msgstr ""
+
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
-msgstr ""
-
-#: tfrmsongs.savesongtexfiledialog.title
-msgid "Save SongTeX File"
-msgstr ""
-
-#: tfrmwelcome.bclabel1.caption
-msgid "Welcome to Cantara!"
 msgstr ""
 
 #: tfrmwelcome.btnaddexamplesong.caption
@@ -554,7 +836,7 @@ msgid "Back..."
 msgstr ""
 
 #: tfrmwelcome.btnnext.caption
-msgid "Next..."
+msgid "Continue..."
 msgstr ""
 
 #: tfrmwelcome.btnopengithubrepo.caption
@@ -573,10 +855,14 @@ msgstr ""
 msgid "Cantara Setup"
 msgstr ""
 
-#: tfrmwelcome.label1.caption
+#: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
+msgstr ""
+
+#: tfrmwelcome.labelwelcomeheadline.caption
+msgid "Welcome to Cantara!"
 msgstr ""
 
 #: tfrmwelcome.lbladditionalinformation.caption
@@ -596,6 +882,10 @@ msgstr ""
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
+msgstr ""
+
+#: tfrmwrapperfulltextsearch.caption
+msgid "Fulltext Search"
 msgstr ""
 
 #: welcome.btnnextfinish
@@ -619,7 +909,6 @@ msgid "However if you like, we can add the song \"Amazing Grace\" as an other ex
 msgstr ""
 
 #: welcome.songreposuccess
-msgctxt "welcome.songreposuccess"
 msgid "The selected directory can be successfully used as a song repository."
 msgstr ""
 

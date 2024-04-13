@@ -1,0 +1,53 @@
+object frmPresent: TfrmPresent
+  Cursor = crNone
+  Left = 290
+  Height = 535
+  Top = 210
+  Width = 1070
+  Caption = 'Presentation'
+  ClientHeight = 535
+  ClientWidth = 1070
+  Color = clBlack
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnHide = FormHide
+  OnKeyDown = FormKeyDown
+  OnResize = FormResize
+  OnShow = FormShow
+  PopupMenu = PresentationMenu
+  Position = poScreenCenter
+  LCLVersion = '3.2.0.0'
+  WindowState = wsMaximized
+  object imageShower: TImage
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 535
+    Top = 0
+    Width = 1070
+    AntialiasingMode = amOn
+    Align = alClient
+    OnClick = imageShowerClick
+    Proportional = True
+  end
+  object PresentationMenu: TPopupMenu
+    Left = 191
+    Top = 85
+    object MenuItemToggleFullScreen: TMenuItem
+      Caption = 'Fullscreen'
+      RadioItem = True
+      OnClick = MenuItemToggleFullScreenClick
+    end
+    object MenuItemMoveToScreen: TMenuItem
+      Caption = 'Move to other screen'
+    end
+    object MenuItemQuitPresentation: TMenuItem
+      Caption = 'Quit Presentation'
+      OnClick = MenuItemQuitPresentationClick
+    end
+  end
+end

@@ -1,0 +1,134 @@
+object FrameSettingsDetailed: TFrameSettingsDetailed
+  Left = 0
+  Height = 325
+  Top = 0
+  Width = 381
+  ClientHeight = 325
+  ClientWidth = 381
+  TabOrder = 0
+  DesignLeft = 423
+  DesignTop = 34
+  object GroupBoxPadding: TGroupBox
+    Left = 0
+    Height = 325
+    Top = 0
+    Width = 381
+    Align = alClient
+    Caption = 'Padding'
+    ClientHeight = 313
+    ClientWidth = 369
+    TabOrder = 0
+    object LeftSpin: TSpinEdit
+      AnchorSideLeft.Control = LabelLeft
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = LabelLeft
+      AnchorSideTop.Side = asrCenter
+      Left = 36
+      Height = 36
+      Top = 127
+      Width = 50
+      BorderSpacing.Left = 5
+      MaxValue = 500
+      TabOrder = 0
+    end
+    object LabelLeft: TLabel
+      AnchorSideTop.Control = GroupBoxPadding
+      AnchorSideTop.Side = asrCenter
+      Left = 0
+      Height = 22
+      Top = 134
+      Width = 31
+      Caption = 'Left:'
+      ParentColor = False
+    end
+    object LabelRight: TLabel
+      AnchorSideTop.Control = GroupBoxPadding
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Control = RightSpin
+      Left = 277
+      Height = 22
+      Top = 134
+      Width = 45
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 5
+      Caption = 'Right: '
+      ParentColor = False
+    end
+    object RightSpin: TSpinEdit
+      AnchorSideLeft.Control = LabelLeft
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = GroupBoxPadding
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Control = GroupBoxPadding
+      AnchorSideRight.Side = asrBottom
+      Left = 327
+      Height = 36
+      Top = 127
+      Width = 50
+      Anchors = [akTop, akRight]
+      BorderSpacing.Left = 5
+      MaxValue = 500
+      TabOrder = 1
+    end
+    object LabelTop: TLabel
+      AnchorSideLeft.Control = GroupBoxPadding
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = TopSpin
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Control = TopSpin
+      Left = 171
+      Height = 22
+      Top = 7
+      Width = 34
+      Anchors = [akTop]
+      BorderSpacing.Right = 5
+      Caption = 'Top: '
+      ParentColor = False
+    end
+    object TopSpin: TSpinEdit
+      AnchorSideLeft.Control = LabelTop
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = GroupBoxPadding
+      AnchorSideRight.Control = GroupBoxPadding
+      AnchorSideRight.Side = asrBottom
+      Left = 210
+      Height = 36
+      Top = 0
+      Width = 50
+      BorderSpacing.Left = 5
+      MaxValue = 500
+      TabOrder = 2
+    end
+    object BottomSpin: TSpinEdit
+      AnchorSideLeft.Control = LabalBottom
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = GroupBoxPadding
+      AnchorSideRight.Control = GroupBoxPadding
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = GroupBoxPadding
+      AnchorSideBottom.Side = asrBottom
+      Left = 224
+      Height = 36
+      Top = 255
+      Width = 50
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 5
+      MaxValue = 500
+      TabOrder = 3
+    end
+    object LabalBottom: TLabel
+      AnchorSideLeft.Control = GroupBoxPadding
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = BottomSpin
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Control = BottomSpin
+      Left = 158
+      Height = 22
+      Top = 262
+      Width = 61
+      BorderSpacing.Right = 5
+      Caption = 'Bottom: '
+      ParentColor = False
+    end
+  end
+end

@@ -7,11 +7,20 @@
     <metadata_license>FSFAP</metadata_license>
     <project_license>GPL-3.0-only</project_license>
     <name>Cantara</name>
-    <summary>A Song Presentation Software.</summary>
+    <summary>A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.</summary>
     <description>
-        <p>
-            A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
-        </p>
+        <p>Cantara Song is a song presentation software which can be used for presenting songs in churches, small groups or karaoke parties. It supports various input formats and can create beautiful presentation slides or export the presentation to various output formats (pictures, pptx, WhatsApp messages and a lot more) so that it can be used for a variety of purposes.</p>
+        <p>Cantara has the following advantages:</p>
+        <ul>
+        <li>Super-fast and lightweight: Cantara is less then 10 MB of size and uses the components available on the local operation system as far as possible. It contains no bloatware. It can be run on an old computer, a raspberry-pi and many more.</li>
+        <li>Very easy to use: Accepts the most common input format (CCLI songselect lyrics file) and creats the presentation slides for an event in only a few seconds. The usage is very intuitive and user-friendly.</li>
+        <li>Good integration with other presentation software: Cantara can export presentations to the PPTX format and therefore integrates easily with other presentation software like LibreOffice Impress or MS Powerpoint. It can be included in a complex workflow like a church service or even an online streaming event via OBS. In addition, you can export the lyrics to text formats and share them in messenger groups, as a HTML page etc.</li>
+        <li>Multi-Screen-Support: Multi Screen is supported out of the box.</li>
+        <li>Customizable Design and good outlook: The colors and fonts can be configured in the settings. In addition, you can set up a background picture and adjust it’s brightness/transparency. The presentations look beautiful and are easy to read.</li>
+        <li>Multi language support: Cantara can present and export song presentations in two different languges at the same time.</li>
+        <li>Free and Open Source: No license fees, no dependence on certain companies–Cantara is licensed under the GPL-3 and can be used everywhere and as you want.</li>
+        <li>Used all over the world and continuously developed: Although Cantara is still a quite young project, people from many countries are using it. It has been translated to several langauges. In the future, more functions are going to be implemented.</li>
+        </ul>
     </description>
 
     <launchable type="desktop-id">app.cantara.Cantara.desktop</launchable>
@@ -42,25 +51,59 @@
     <developer_name>Jan Martin Reckel</developer_name>
 
     <releases>
-        <release version="2.4.0 beta" data="2023-01-01">
-            <p>Enhancements</p>
-            <ul>
-                <li>Editor for creating, editing, archivating, cloning and converting song files</li>
-                <li>Song selections can be exported with the songlyrics within and also imported into Cantara. For that, a new file format (SongTeX) has been implemented. The imported songs will be automatically added to the repository if necessary.</li>
-                <li>A setup assistent will help with the basic configuration of Cantara when started for the first time.</li>
-            </ul>
-            <p>Bug Fixes:</p>
-            <ul>
-                <li>Loading a presentation with background image took a long time, this is solved now.</li>
-            </ul>
+        <release version="2.5.1" date="2023-10-24">
+            <description>
+                <ul>
+                    <li>Improvement of Italian translation</li>
+                    <li>Improvement of presentation control window</li>
+                    <li>Fix opening/saving songtex file bug</li>
+                </ul>
+            </description>
+        </release>
+        <release version="2.5.0" date="2023-08-21">
+            <description>
+                <ul>
+                    <li>Complete rewriting of large parts of the source code including the internal structures for generating and painting presentation slides</li>
+                    <li>Improvement of the presentation layout</li>
+                    <li>Improvement of the song editor</li>
+                    <li>Implementation of a preview of the presentation in the settings menu</li>
+                    <li>Implementation of slide export to pptx (using PptxgenJs)</li>
+                    <li>Implementation of slide export to pictures</li>
+                    <li>Implementation of song lyrics export to markup text files</li>
+                    <li>Implementation of a full text search for browsing song lyrics</li>
+                    <li>Implementation of a two language song presentation</li>
+                    <li>Improvements of the presentation window and control (more keys and remote controls are supported)</li>
+                    <li>Fix issue concerning the import of ccli files</li>
+                    <li>Cantara can now be directly opened with a ```.songtex```-file.</li>
+                </ul>
+            </description>
+        </release>
+        <release version="2.4.0" date="2023-01-06">
+            <description>
+                <p>Version 2.4 is finally there! Beside new features, it also brings a lot of bug fixes. See the list below for details.</p>
+                <p>Improvements/Enhancements</p>
+                <ul>
+                    <li>A new editor has been implemented which allows editing of the songs, converting CCLI songs into the song format, creating new songs, archiving them and cloning them (e.g. for different versions).</li>
+                    <li>A welcome assistant will guide new users after the first start of Cantara to setup and understand the program.</li>
+                    <li>Cantara can automatically break long slides into two pages if configured in the settings.</li>
+                    <li>The newly implemented SongTeX file format allows to export songs slides with the song lyrics and the order.</li>
+                </ul>
+                <p>Bug Fixes</p>
+                <ul>
+                    <li>Floating point errors when no background picture was selected</li>
+                    <li>Loading the slides took a long time if a background was selected</li>
+                </ul>
+            </description>
         </release>
         <release version="2.3.3" date="2022-11-29">
-            <p>
-                Bug Fixes:
-            </p>
-            <ul>
-                <li>Fixes broken changelog in appstream xml</li>
-            </ul>
+            <description>
+                <p>
+                    Bug Fixes:
+                </p>
+                <ul>
+                    <li>Fixes broken changelog in appstream xml</li>
+                </ul>
+            </description>
         </release>
         <release version="2.3.2" date="2022-11-10">
             <description>

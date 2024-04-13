@@ -1,0 +1,49 @@
+object frmWrapperFulltextSearch: TfrmWrapperFulltextSearch
+  Left = -3
+  Height = 283
+  Top = -30
+  Width = 535
+  BorderWidth = 5
+  Caption = 'Fulltext Search'
+  ClientHeight = 283
+  ClientWidth = 535
+  FormStyle = fsStayOnTop
+  KeyPreview = True
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  ShowInTaskBar = stNever
+  LCLVersion = '3.2.0.0'
+  inline Wrapper: TFrmFulltextsearch
+    Left = 5
+    Height = 273
+    Top = 5
+    Width = 525
+    Align = alClient
+    ClientHeight = 273
+    ClientWidth = 525
+    inherited EditSearchTerm: TEdit
+      AnchorSideLeft.Control = Wrapper
+      AnchorSideTop.Control = Wrapper
+      AnchorSideRight.Control = Wrapper
+      Height = 28
+      Width = 525
+    end
+    inherited Content: TNotebook
+      AnchorSideLeft.Control = Wrapper
+      AnchorSideRight.Control = Wrapper
+      AnchorSideBottom.Control = Wrapper
+      Height = 240
+      Top = 33
+      Width = 525
+      inherited LoadIndex: TPage
+        inherited LabalCreateIndex: TLabel
+          Left = 211
+          Height = 21
+          Top = 110
+          Width = 102
+        end
+      end
+    end
+  end
+end

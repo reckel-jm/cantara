@@ -21,7 +21,6 @@
 *.rst
 *.rsj
 *.lrt
-*.lrj
 
 # Lazarus local files (user-specific info)
 *.lps
@@ -42,6 +41,8 @@ doc/
 
 #Executable under linux
 cantara
+src/cantara
+src/fpccantaraclitest
 fpccantaratest
 
 # Zip-Files
@@ -52,3 +53,7 @@ fpccantaratest
 *.snap
 
 *.wpo
+
+src/locals/*.mo
+src/cantaracli
+cataracli

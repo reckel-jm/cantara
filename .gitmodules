@@ -1,0 +1,3 @@
+[submodule "src/bgrabitmap"]
+	path = src/bgrabitmap
+	url = https://github.com/bgrabitmap/bgrabitmap.git

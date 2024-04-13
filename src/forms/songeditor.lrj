@@ -1,0 +1,18 @@
+{"version":1,"strings":[
+{"hash":105404867,"name":"tfrmsongedit.caption","sourcebytes":[69,100,105,116,32,70,105,108,101,115],"value":"Edit Files"},
+{"hash":315429,"name":"tfrmsongedit.menufile.caption","sourcebytes":[70,105,108,101],"value":"File"},
+{"hash":21703,"name":"tfrmsongedit.menuitemnew.caption","sourcebytes":[78,101,119],"value":"New"},
+{"hash":366789,"name":"tfrmsongedit.menuitemsave.caption","sourcebytes":[83,97,118,101],"value":"Save"},
+{"hash":120574821,"name":"tfrmsongedit.menuitemcopy.caption","sourcebytes":[68,117,112,108,105,99,97,116,101],"value":"Duplicate"},
+{"hash":143257733,"name":"tfrmsongedit.menuitemarchivate.caption","sourcebytes":[65,114,99,104,105,118,101],"value":"Archive"},
+{"hash":1729554,"name":"tfrmsongedit.menuitemclose.caption","sourcebytes":[67,108,111,115,101,32,69,100,105,116,111,114],"value":"Close Editor"},
+{"hash":310020,"name":"tfrmsongedit.menuedit.caption","sourcebytes":[69,100,105,116],"value":"Edit"},
+{"hash":19140,"name":"tfrmsongedit.itemcut.caption","sourcebytes":[67,117,116],"value":"Cut"},
+{"hash":304761,"name":"tfrmsongedit.itemcopy.caption","sourcebytes":[67,111,112,121],"value":"Copy"},
+{"hash":5671589,"name":"tfrmsongedit.itempaste.caption","sourcebytes":[80,97,115,116,101],"value":"Paste"},
+{"hash":378031,"name":"tfrmsongedit.itemundo.caption","sourcebytes":[85,110,100,111],"value":"Undo"},
+{"hash":363439,"name":"tfrmsongedit.itemredo.caption","sourcebytes":[82,101,100,111],"value":"Redo"},
+{"hash":380871,"name":"tfrmsongedit.view.caption","sourcebytes":[86,105,101,119],"value":"View"},
+{"hash":23458974,"name":"tfrmsongedit.itemfadein.caption","sourcebytes":[90,111,111,109,32,73,110],"value":"Zoom In"},
+{"hash":106909908,"name":"tfrmsongedit.itemfadeout.caption","sourcebytes":[90,111,111,109,32,79,117,116],"value":"Zoom Out"}
+]}

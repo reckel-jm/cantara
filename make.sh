@@ -2,5 +2,8 @@
 # Runs Lazbuild to build the project for release purpose
 #
 
-lazbuild -B --bm="Release" --ws="qt5" src/Cantara.lpi
+cd src
+lazbuild -B --ws="qt6" bgrabitmap/bgrabitmap/bgrabitmappack.lpk
+lazbuild -B --bm="Release" --ws="qt6" Cantara.lpi
+cd ..
 mv src/cantara cantara

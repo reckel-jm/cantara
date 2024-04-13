@@ -1,0 +1,114 @@
+object FrmFulltextsearch: TFrmFulltextsearch
+  Left = 0
+  Height = 255
+  Top = 0
+  Width = 424
+  ClientHeight = 255
+  ClientWidth = 424
+  Color = clCaptionText
+  ParentBackground = False
+  ParentColor = False
+  TabOrder = 0
+  DesignLeft = 420
+  DesignTop = 34
+  object EditSearchTerm: TEdit
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 0
+    Height = 25
+    Top = 0
+    Width = 424
+    Alignment = taCenter
+    Anchors = [akTop, akLeft, akRight]
+    TabOrder = 1
+    OnChange = EditSearchTermChange
+  end
+  object Content: TNotebook
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = EditSearchTerm
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 229
+    Top = 26
+    Width = 424
+    PageIndex = 0
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Top = 1
+    Color = clNone
+    TabOrder = 0
+    object LoadIndex: TPage
+      object LabalCreateIndex: TLabel
+        AnchorSideLeft.Control = LoadIndex
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = LoadIndex
+        AnchorSideTop.Side = asrCenter
+        Left = 171
+        Height = 17
+        Top = 106
+        Width = 82
+        Caption = 'Create Index...'
+        ParentColor = False
+      end
+    end
+    object SearchResults: TPage
+      object ListBoxResults: TListBox
+        Left = 0
+        Height = 229
+        Top = 0
+        Width = 424
+        Align = alClient
+        ItemHeight = 50
+        Options = []
+        Style = lbOwnerDrawFixed
+        TabOrder = 0
+        OnDblClick = ListBoxResultsDblClick
+        OnDrawItem = ListBoxResultsDrawItem
+      end
+      object LabelEnterSearchTerm: TLabel
+        AnchorSideLeft.Control = ListBoxResults
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = ListBoxResults
+        AnchorSideTop.Side = asrCenter
+        Left = 161
+        Height = 17
+        Top = 106
+        Width = 103
+        Alignment = taCenter
+        Caption = 'Enter search term'
+        ParentColor = False
+      end
+    end
+    object NoResult: TPage
+      object LabelNoItemsFound: TLabel
+        Left = 0
+        Height = 214
+        Top = 0
+        Width = 424
+        Align = alClient
+        Alignment = taCenter
+        Caption = 'No items found...'#10#10'Try changing the search terms.'
+        Layout = tlCenter
+        ParentColor = False
+      end
+    end
+    object EnterKeyword: TPage
+      object LabelEnterKeyword: TLabel
+        Left = 0
+        Height = 214
+        Top = 0
+        Width = 424
+        Align = alClient
+        Alignment = taCenter
+        Caption = 'Enter a search term...'
+        Layout = tlCenter
+        ParentColor = False
+      end
+    end
+  end
+end

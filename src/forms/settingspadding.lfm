@@ -1,0 +1,51 @@
+object FormPadding: TFormPadding
+  Left = 200
+  Height = 240
+  Top = 100
+  Width = 320
+  Caption = 'Additional Settings'
+  ClientHeight = 240
+  ClientWidth = 320
+  LCLVersion = '3.2.0.0'
+  inline frmSettingsDetailed: TFrameSettingsDetailed
+    Height = 240
+    Width = 320
+    Align = alClient
+    ClientHeight = 240
+    ClientWidth = 320
+    inherited GroupBoxPadding: TGroupBox
+      Height = 240
+      Width = 320
+      ClientHeight = 228
+      ClientWidth = 308
+      inherited LeftSpin: TSpinEdit
+        Top = 85
+      end
+      inherited LabelLeft: TLabel
+        Top = 92
+      end
+      inherited LabelRight: TLabel
+        Left = 216
+        Top = 92
+      end
+      inherited RightSpin: TSpinEdit
+        Left = 266
+        Top = 85
+      end
+      inherited LabelTop: TLabel
+        Left = 141
+      end
+      inherited TopSpin: TSpinEdit
+        Left = 180
+      end
+      inherited BottomSpin: TSpinEdit
+        Left = 194
+        Top = 170
+      end
+      inherited LabalBottom: TLabel
+        Left = 128
+        Top = 177
+      end
+    end
+  end
+end

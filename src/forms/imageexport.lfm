@@ -1,0 +1,271 @@
+object FormImageExport: TFormImageExport
+  Left = 559
+  Height = 523
+  Top = 332
+  Width = 897
+  Caption = 'Image Exporter'
+  ClientHeight = 523
+  ClientWidth = 897
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  LCLVersion = '3.2.0.0'
+  WindowState = wsMaximized
+  object GroupSettings: TGroupBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Splitter
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 523
+    Top = 0
+    Width = 408
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'Settings'
+    ClientHeight = 511
+    ClientWidth = 396
+    TabOrder = 0
+    object LabelFolder: TLabel
+      AnchorSideLeft.Control = GroupSettings
+      AnchorSideTop.Control = EditFolder
+      AnchorSideTop.Side = asrCenter
+      Left = 0
+      Height = 21
+      Top = 4
+      Width = 53
+      Caption = 'Folder: '
+      ParentColor = False
+    end
+    object EditFolder: TEdit
+      AnchorSideLeft.Control = LabelFolder
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = GroupSettings
+      AnchorSideRight.Control = ButtonChoose
+      Left = 58
+      Height = 28
+      Top = 0
+      Width = 265
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 5
+      Enabled = False
+      TabOrder = 0
+    end
+    object ButtonChoose: TButton
+      AnchorSideLeft.Control = EditFolder
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = EditFolder
+      AnchorSideRight.Control = GroupSettings
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = EditFolder
+      AnchorSideBottom.Side = asrBottom
+      Left = 323
+      Height = 28
+      Top = 0
+      Width = 79
+      Anchors = [akTop, akRight, akBottom]
+      AutoSize = True
+      Caption = 'Choose...'
+      TabOrder = 1
+      OnClick = ButtonChooseClick
+    end
+    object EditWidth: TSpinEdit
+      AnchorSideLeft.Control = LabelWidth
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = EditFolder
+      AnchorSideTop.Side = asrBottom
+      Left = 60
+      Height = 29
+      Top = 43
+      Width = 82
+      BorderSpacing.Left = 10
+      BorderSpacing.Top = 15
+      OnChange = EditWidthChange
+      TabOrder = 2
+      Value = 800
+    end
+    object LabelWidth: TLabel
+      AnchorSideLeft.Control = GroupSettings
+      AnchorSideTop.Control = EditWidth
+      AnchorSideTop.Side = asrCenter
+      Left = 0
+      Height = 21
+      Top = 47
+      Width = 50
+      Caption = 'Width: '
+      ParentColor = False
+    end
+    object EditHeight: TSpinEdit
+      AnchorSideLeft.Control = LabelHeight
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = EditWidth
+      AnchorSideBottom.Control = EditWidth
+      AnchorSideBottom.Side = asrBottom
+      Left = 214
+      Height = 29
+      Top = 43
+      Width = 80
+      Anchors = [akTop, akLeft, akBottom]
+      BorderSpacing.Left = 10
+      OnChange = EditHeightChange
+      TabOrder = 3
+      Value = 600
+    end
+    object LabelHeight: TLabel
+      AnchorSideLeft.Control = EditWidth
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = EditWidth
+      AnchorSideTop.Side = asrCenter
+      Left = 152
+      Height = 21
+      Top = 47
+      Width = 52
+      BorderSpacing.Left = 10
+      Caption = 'Height:'
+      ParentColor = False
+    end
+    object CheckBoxSync: TCheckBox
+      AnchorSideLeft.Control = EditWidth
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = EditWidth
+      AnchorSideTop.Side = asrBottom
+      Left = 72
+      Height = 27
+      Top = 87
+      Width = 58
+      BorderSpacing.Top = 15
+      Caption = 'Sync'
+      Checked = True
+      State = cbChecked
+      TabOrder = 4
+    end
+    object ButtonExportAll: TButton
+      AnchorSideLeft.Control = GroupSettings
+      AnchorSideRight.Control = ButtonExportCurrent
+      AnchorSideBottom.Control = GroupSettings
+      AnchorSideBottom.Side = asrBottom
+      Left = 0
+      Height = 40
+      Top = 455
+      Width = 200
+      Anchors = [akLeft, akRight, akBottom]
+      Caption = 'Export All'
+      Font.Style = [fsBold]
+      ModalResult = 10
+      ParentFont = False
+      TabOrder = 5
+      OnClick = ButtonExportAllClick
+    end
+    object ButtonExportCurrent: TButton
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideRight.Control = GroupSettings
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = GroupSettings
+      AnchorSideBottom.Side = asrBottom
+      Left = 200
+      Height = 40
+      Top = 455
+      Width = 202
+      Anchors = [akRight, akBottom]
+      Caption = 'Export Current'
+      ModalResult = 6
+      ParentFont = False
+      TabOrder = 6
+      OnClick = ButtonExportCurrentClick
+    end
+    object ButtonReloadPreview: TButton
+      AnchorSideLeft.Control = EditHeight
+      AnchorSideTop.Control = EditHeight
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = GroupSettings
+      AnchorSideRight.Side = asrBottom
+      Left = 214
+      Height = 40
+      Top = 87
+      Width = 188
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 15
+      Caption = 'Reload Preview...'
+      ModalResult = 1
+      TabOrder = 7
+      OnClick = ButtonReloadPreviewClick
+    end
+    object ProgressBar: TProgressBar
+      AnchorSideLeft.Control = GroupSettings
+      AnchorSideTop.Control = ButtonReloadPreview
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = GroupSettings
+      AnchorSideRight.Side = asrBottom
+      Left = 0
+      Height = 20
+      Top = 142
+      Width = 402
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 15
+      Enabled = False
+      Smooth = True
+      TabOrder = 8
+      BarShowText = True
+    end
+  end
+  object ImageListView: TListView
+    AnchorSideLeft.Control = Splitter
+    AnchorSideLeft.Side = asrBottom
+    Left = 416
+    Height = 523
+    Top = 0
+    Width = 481
+    Align = alRight
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Columns = <>
+    GridLines = True
+    IconOptions.AutoArrange = True
+    LargeImages = ImageList
+    LargeImagesWidth = 600
+    PopupMenu = ImageListViewMenu
+    ShowColumnHeaders = False
+    SortType = stText
+    TabOrder = 1
+    ViewStyle = vsIcon
+  end
+  object Splitter: TSplitter
+    AnchorSideTop.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 408
+    Height = 523
+    Top = 0
+    Width = 8
+    Align = alNone
+    ResizeAnchor = akRight
+  end
+  object PictureDirectoryDialog: TSelectDirectoryDialog
+    Left = 8
+    Top = 408
+  end
+  object ImageList: TImageList
+    Height = 1000
+    Scaled = True
+    ShareImages = True
+    Width = 600
+    Left = 384
+    Top = 16
+  end
+  object ImageListViewMenu: TPopupMenu
+    Left = 176
+    Top = 248
+    object ItemExport: TMenuItem
+      Caption = 'Export'
+      OnClick = ItemExportClick
+    end
+    object ItemRemove: TMenuItem
+      Caption = 'Remove'
+      OnClick = ItemRemoveClick
+    end
+  end
+  object SaveDialog: TSaveDialog
+    Filter = 'png-File|*.png'
+    Left = 417
+    Top = 92
+  end
+end

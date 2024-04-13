@@ -1,0 +1,252 @@
+object frmWelcome: TfrmWelcome
+  Left = -3
+  Height = 489
+  Top = -30
+  Width = 689
+  BorderStyle = bsDialog
+  Caption = 'Cantara Setup'
+  ClientHeight = 489
+  ClientWidth = 689
+  OnCloseQuery = FormCloseQuery
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '3.2.0.0'
+  object Notebook: TNotebook
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = ControlPanel
+    Left = 0
+    Height = 439
+    Top = 0
+    Width = 689
+    PageIndex = 0
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabOrder = 0
+    object Page1: TPage
+      object LabelWelcomeHeadline: TLabel
+        AnchorSideLeft.Control = Page1
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = Page1
+        Left = 261
+        Height = 22
+        Top = 20
+        Width = 166
+        BorderSpacing.Top = 20
+        Caption = 'Welcome to Cantara!'
+        Font.Height = -16
+        Font.Name = 'Noto Sans'
+        Font.Style = [fsBold, fsUnderline]
+        ParentColor = False
+        ParentFont = False
+      end
+      object labelWelcome: TLabel
+        AnchorSideLeft.Control = Page1
+        AnchorSideTop.Control = LabelWelcomeHeadline
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Page1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 84
+        Top = 42
+        Width = 689
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Cantara is a free and open source song presentation software.'#10'All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven''t collected any songs yet, you can create a new folder first or choose an empty one.'
+        ParentColor = False
+        WordWrap = True
+      end
+      object btnSelectSongRepoDir: TButton
+        AnchorSideLeft.Control = Page1
+        AnchorSideTop.Control = labelWelcome
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Page1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 40
+        Top = 136
+        Width = 689
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 10
+        Caption = 'Select Song Repository...'
+        TabOrder = 0
+        OnClick = btnSelectSongRepoDirClick
+      end
+      object lblSuccess: TLabel
+        AnchorSideLeft.Control = Page1
+        AnchorSideTop.Control = btnSelectSongRepoDir
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Page1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 1
+        Top = 181
+        Width = 689
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        ParentColor = False
+        Visible = False
+        WordWrap = True
+      end
+      object btnAddExampleSong: TButton
+        AnchorSideLeft.Control = Page1
+        AnchorSideTop.Control = lblSuccess
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Page1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 25
+        Top = 182
+        Width = 689
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Add "Amazing Grace" as an example'
+        TabOrder = 1
+        Visible = False
+        OnClick = btnAddExampleSongClick
+      end
+      object lblSongAdded: TLabel
+        AnchorSideLeft.Control = Page1
+        AnchorSideTop.Control = btnAddExampleSong
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Page1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 21
+        Top = 207
+        Width = 689
+        Anchors = [akTop, akLeft, akRight]
+        Caption = '"Amazing Grace" has been added to your repository. You can now continue.'
+        ParentColor = False
+        Visible = False
+        WordWrap = True
+      end
+    end
+    object Page2: TPage
+      OnResize = Page2Resize
+      object lblSuccessHeadline: TLabel
+        AnchorSideLeft.Control = Page2
+        AnchorSideTop.Control = Page2
+        AnchorSideRight.Control = Page2
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 22
+        Top = 20
+        Width = 667
+        Alignment = taCenter
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 20
+        Caption = 'Congratulations! Cantara is now ready to use!'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object lblAdditionalInformation: TLabel
+        AnchorSideLeft.Control = lblSuccessHeadline
+        AnchorSideTop.Control = lblSuccessHeadline
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = lblSuccessHeadline
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 322
+        Top = 62
+        Width = 667
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 20
+        Caption = 'You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.'#10'Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.'#10'For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.'#10#10'Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.'#10#10'May God bless you and the use of this software!'
+        ParentColor = False
+        WordWrap = True
+      end
+      object btnOpenWebpage: TButton
+        AnchorSideLeft.Control = Page2
+        AnchorSideTop.Control = lblAdditionalInformation
+        AnchorSideTop.Side = asrBottom
+        Left = 0
+        Height = 40
+        Top = 394
+        Width = 368
+        BorderSpacing.Top = 10
+        Caption = 'Open Webpage with Documentation...'
+        TabOrder = 0
+        OnClick = btnOpenWebpageClick
+      end
+      object btnOpenGithubRepo: TButton
+        AnchorSideLeft.Control = btnOpenWebpage
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = lblAdditionalInformation
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Page2
+        AnchorSideRight.Side = asrBottom
+        Left = 368
+        Height = 40
+        Top = 394
+        Width = 299
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 10
+        Caption = 'Open Github Repository...'
+        TabOrder = 1
+        OnClick = btnOpenGithubRepoClick
+      end
+    end
+  end
+  object ControlPanel: TGroupBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 50
+    Top = 439
+    Width = 689
+    Anchors = [akLeft, akRight, akBottom]
+    ClientHeight = 38
+    ClientWidth = 677
+    ParentBackground = False
+    TabOrder = 1
+    object btnBack: TButton
+      AnchorSideTop.Control = ControlPanel
+      AnchorSideRight.Control = btnNext
+      AnchorSideBottom.Control = ControlPanel
+      AnchorSideBottom.Side = asrBottom
+      Left = 337
+      Height = 42
+      Top = 0
+      Width = 123
+      Anchors = [akTop, akRight, akBottom]
+      BorderSpacing.Right = 5
+      Caption = 'Back...'
+      Enabled = False
+      TabOrder = 0
+      OnClick = btnBackClick
+    end
+    object btnNext: TButton
+      AnchorSideTop.Control = ControlPanel
+      AnchorSideRight.Control = ControlPanel
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = ControlPanel
+      AnchorSideBottom.Side = asrBottom
+      Left = 465
+      Height = 42
+      Top = 0
+      Width = 218
+      Anchors = [akTop, akRight, akBottom]
+      Caption = 'Continue...'
+      Enabled = False
+      TabOrder = 1
+      OnClick = btnNextClick
+    end
+    object ProgressBar: TProgressBar
+      AnchorSideLeft.Control = ControlPanel
+      AnchorSideTop.Control = ControlPanel
+      AnchorSideRight.Control = btnBack
+      AnchorSideBottom.Control = ControlPanel
+      AnchorSideBottom.Side = asrBottom
+      Left = 0
+      Height = 42
+      Top = 0
+      Width = 337
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      TabOrder = 2
+    end
+  end
+end

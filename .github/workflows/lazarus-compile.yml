@@ -11,24 +11,30 @@ jobs:
         operating-system: [windows-latest,ubuntu-latest,macos-latest]
         lazarus-versions: [stable]
     steps:
-    - uses: actions/checkout@v2
-    - uses: gcarreno/setup-lazarus@v3.2
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
       with:
-        lazarus-version: "stable"
-        #include-packages: "lib"
+        submodules: true
+    - name: Install Lazarus
+      uses: reckel-jm/setup-lazarus@2ce1ec911be77d36525d79bfd492ad2c305235c5
+      with:
+        lazarus-version: ${{ matrix.lazarus-versions }}
         with-cache: false
     - name: Build the Windows Application
       if: ${{ matrix.operating-system == 'windows-latest' }}
-      run: lazbuild -B src/Cantara.lpi
-    - name: Install libqt5pas dependency under Ubuntu
+      run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk; lazbuild -B src/Cantara.lpi
+    - name: Install libqt6pas dependency under Ubuntu
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: sudo apt-get -y install libqt5pas-dev libqt5pas1
+      run: wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6-dev_6.2.7-1_amd64.deb; wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6_6.2.7-1_amd64.deb; sudo apt install ./libqt6pas6_6.2.7-1_amd64.deb; sudo apt install ./libqt6pas6-dev_6.2.7-1_amd64.deb
     - name: Build the Linux Application
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: make
     - name: Build the MacOS Application
       if: ${{ matrix.operating-system == 'macos-latest' }}
-      run: lazbuild -B src/Cantara.lpi
+      run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk && lazbuild -B src/Cantara.lpi
+    - name: Run all Tests on Ubuntu
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      run: lazbuild src/fpccantaraclitest.lpi && cd src && ./fpccantaraclitest -a --format=plain
     - name: Artifacts (Linux)
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       uses: actions/upload-artifact@v3
