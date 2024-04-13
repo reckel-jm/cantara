@@ -464,7 +464,7 @@ msgstr ""
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
-msgstr "儲存文檔"
+msgstr "儲存文檔..."
 
 #: tfrmmarkupexport.caption
 msgid "Export Songs as Markup"
