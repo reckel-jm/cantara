@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
@@ -22,7 +22,7 @@ msgstr "請鍵入新歌曲名:"
 
 #: editordisplaysongcontent.strerrorcclitosong
 msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
-msgstr "此文檔不可被轉換。請確認您已獲取寫入曲庫的權限。"
+msgstr "此文檔不可被轉換。請確認您已獲取寫入曲庫的權限！"
 
 #: editordisplaysongcontent.strfilecannotberenamed
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
@@ -71,7 +71,7 @@ msgstr "https://www.cantara.app/de"
 
 #: pptx.strcantaraexport
 msgid "Cantara Song Presentation Export"
-msgstr "Cantara 歌曲演示文稿導出"
+msgstr "Cantara 歌曲演示文稿匯出"
 
 #: pptx.strsongs
 msgid "Songs"
@@ -79,7 +79,7 @@ msgstr "歌曲"
 
 #: settings.strbrightness
 msgid "Increase brightness by "
-msgstr "增加亮度："
+msgstr "增加亮度"
 
 #: settings.strdefaultmetatemplate
 msgid ""
@@ -87,6 +87,9 @@ msgid ""
 "{%bible%}Bible Reference: {bible}\n"
 "{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
+"{%author%}作者： {author}\n"
+"{%bible%}聖經參考： {bible}\n"
+"{%ccli-songnumber%}CCLI歌曲編號：{ccli-songnumber} | 憑照碼： {ccli-licensenumber}"
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
@@ -95,7 +98,7 @@ msgstr "錯誤"
 
 #: settings.strnobackgroundimageselected
 msgid "You need to select a background image first."
-msgstr ""
+msgstr "您首先應該選擇一幅背景圖片。"
 
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
@@ -103,7 +106,7 @@ msgstr "以原圖像顯示"
 
 #: settings.strtransparency
 msgid "Increase transparency by "
-msgstr "增加透明度："
+msgstr "增加透明度"
 
 #: settings.strvalidsongrepository
 msgid "Please choose a valid folder for the song repository!"
@@ -143,7 +146,7 @@ msgstr "文件 {filename} 有未保存的更改。現在要保存嗎？"
 
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
-msgstr ""
+msgstr "https://www.cantara.app/tutorial/meta-data/"
 
 #: songeditor.strwelcome
 msgid "Welcome"
@@ -165,7 +168,7 @@ msgstr "展示..."
 
 #: songselection.strcannotopensong
 msgid "Error: The Song \"{songname}\" is not available. Skipping."
-msgstr "錯誤：歌曲 \"{songname}\" 不可用。正在跳過該歌曲。"
+msgstr "錯誤：歌曲 「{songname}」 不可用。正在跳過該歌曲。"
 
 #: songselection.strerror
 msgctxt "songselection.strerror"
@@ -212,31 +215,31 @@ msgstr "文件中的歌曲已導入到您的歌曲存儲庫中。"
 
 #: songselection.strtitleslide
 msgid "Title Slide"
-msgstr ""
+msgstr "標題投影片"
 
 #: tcfontdialog.caption
 msgid "Font Selection"
-msgstr ""
+msgstr "字體選擇"
 
 #: tcfontdialog.fontpropertiesgroupbox.caption
 msgid "Font Properties"
-msgstr ""
+msgstr "字體屬性"
 
 #: tcfontdialog.fontselectiongroupbox.caption
 msgid "Font"
-msgstr ""
+msgstr "字體"
 
 #: tcfontdialog.formatationcheckgroup.caption
 msgid "Formatation"
-msgstr ""
+msgstr "排列"
 
 #: tcfontdialog.labelfontsize.caption
 msgid "Font Size:"
-msgstr ""
+msgstr "字號："
 
 #: tcfontdialog.previewlabel.caption
 msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
-msgstr ""
+msgstr "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
@@ -244,7 +247,7 @@ msgstr "選擇..."
 
 #: tformimageexport.buttonexportall.caption
 msgid "Export All"
-msgstr "全部導出"
+msgstr "全部匯出"
 
 #: tformimageexport.buttonexportcurrent.caption
 msgctxt "tformimageexport.buttonexportcurrent.caption"
@@ -279,7 +282,7 @@ msgstr "消除"
 
 #: tformimageexport.labelfolder.caption
 msgid "Folder: "
-msgstr "文件夾："
+msgstr "資料夾："
 
 #: tformimageexport.labelheight.caption
 msgid "Height:"
@@ -365,7 +368,7 @@ msgstr "退出編輯器"
 
 #: tfrmeditorwelcome.btnnewsong.caption
 msgid "Create a new song"
-msgstr ""
+msgstr "創建一首新歌曲"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
@@ -461,7 +464,7 @@ msgstr ""
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
-msgstr "儲存 SongTeX 文檔"
+msgstr "儲存文檔"
 
 #: tfrmmarkupexport.caption
 msgid "Export Songs as Markup"
@@ -490,15 +493,15 @@ msgstr "投影片"
 
 #: tfrmpresent.menuitemmovetoscreen.caption
 msgid "Move to other screen"
-msgstr ""
+msgstr "移動至另一熒幕"
 
 #: tfrmpresent.menuitemquitpresentation.caption
 msgid "Quit Presentation"
-msgstr ""
+msgstr "退出投影"
 
 #: tfrmpresent.menuitemtogglefullscreen.caption
 msgid "Fullscreen"
-msgstr ""
+msgstr "全熒幕"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
@@ -532,7 +535,7 @@ msgstr "更改字體設定…"
 #: tfrmsettings.btnselectdir.caption
 msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: tfrmsettings.btntextcolor.caption
 msgid "Text Color..."
@@ -699,7 +702,7 @@ msgstr "🗑"
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
-msgstr ""
+msgstr "清空所有已選擇歌曲"
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
@@ -711,7 +714,7 @@ msgstr "←"
 
 #: tfrmsongs.btngoright.caption
 msgid "→"
-msgstr "←"
+msgstr "→"
 
 #: tfrmsongs.btnquitpresentation.caption
 msgid "×"
@@ -762,7 +765,7 @@ msgstr "關閉"
 
 #: tfrmsongs.itemexportpictures.caption
 msgid "Images..."
-msgstr "圖片"
+msgstr "圖片..."
 
 #: tfrmsongs.itemexportpptx.caption
 msgid "Powerpoint Presentation (pptx)"
@@ -802,7 +805,7 @@ msgstr "將歌曲選擇另存為..."
 
 #: tfrmsongs.itemselectallsongs.caption
 msgid "Select all Songs"
-msgstr ""
+msgstr "選擇所有歌曲"
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
@@ -870,7 +873,7 @@ msgstr "繼續..."
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr "開啟 GitHub 存儲庫"
+msgstr "開啟 GitHub 存儲庫..."
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
@@ -954,4 +957,3 @@ msgstr "選擇的目錄可以被應用為歌曲庫。"
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "請在離開助手前選擇歌曲庫目錄。沒有它，Cantara 就無法工作。"
-
