@@ -16,7 +16,6 @@ object frmPresent: TfrmPresent
   OnShow = FormShow
   PopupMenu = PresentationMenu
   Position = poScreenCenter
-  LCLVersion = '3.2.0.0'
   WindowState = wsMaximized
   object imageShower: TImage
     AnchorSideLeft.Control = Owner
@@ -44,6 +43,7 @@ object frmPresent: TfrmPresent
     end
     object MenuItemMoveToScreen: TMenuItem
       Caption = 'Move to other screen'
+      OnClick = MenuItemMoveToScreenClick
     end
     object MenuItemQuitPresentation: TMenuItem
       Caption = 'Quit Presentation'

@@ -32,6 +32,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure imageShowerClick(Sender: TObject);
+    procedure MenuItemMoveToScreenClick(Sender: TObject);
     procedure MenuItemQuitPresentationClick(Sender: TObject);
     procedure MenuItemToggleFullScreenClick(Sender: TObject);
     procedure showItem(index: Integer);
@@ -140,6 +141,54 @@ end;
 procedure TfrmPresent.imageShowerClick(Sender: TObject);
 begin
   self.GoNext;
+end;
+
+procedure TfrmPresent.MenuItemMoveToScreenClick(Sender: TObject);
+var
+  ActiveMonitor: TMonitor;
+  i, ActiveMonitorIndex, MoveToMonitorIndex: Integer;
+  FullScreenWasActive: Boolean;
+  BeforeWindowState: TWindowState;
+begin
+  Screen.UpdateMonitors;
+  if Screen.MonitorCount <= 1 then Exit;
+
+  BeforeWindowState := Self.WindowState;
+
+  ActiveMonitor := Screen.MonitorFromWindow(Self.Handle);
+
+  for i := 0 to Screen.MonitorCount -1 do
+  begin
+    if ActiveMonitor = Screen.Monitors[i] then
+    begin
+      ActiveMonitorIndex := i;
+      Break;
+    end;
+  end;
+
+  if ActiveMonitorIndex < Screen.MonitorCount-1 then
+    MoveToMonitorIndex := ActiveMonitorIndex + 1
+  else MoveToMonitorIndex := 0;
+
+  FullScreenWasActive := Self.FullScreen;
+
+  if Self.FullScreen then
+  begin
+    Self.SwitchFullScreen(False);
+    Application.ProcessMessages;
+  end;
+  Self.Left:=Screen.Monitors[MoveToMonitorIndex].Left;
+  Self.Top:=Screen.Monitors[MoveToMonitorIndex].Top;
+  Self.Refresh;
+  Self.Invalidate;
+  Application.ProcessMessages;
+
+  If FullScreenWasActive then
+  begin
+    Self.SwitchFullScreen(True);
+    Application.ProcessMessages;
+  end else
+    Self.WindowState := BeforeWindowState;
 end;
 
 procedure TfrmPresent.MenuItemQuitPresentationClick(Sender: TObject);
