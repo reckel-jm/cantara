@@ -188,9 +188,13 @@ var
   i: Integer;
   j: Integer;
   RefrainState: Boolean;
+  CCLIFileIsEnglish: Boolean;
 begin
+  CCLIFileIsEnglish := False;
+
   self.MetaDict.Add('title', inputFile.Strings[0]);
   RefrainState := False;
+
   for i := 1 to self.inputFile.Count - 1 do
   begin
     { The Parts Chorus and PreChorus are repeated after every other part (stanza+bridge). So, there position should be remembered. }
@@ -224,20 +228,40 @@ begin
       RefrainState := True;
     end
     else
-    { Handle the CCLI Copyright information }
+
+    { Handle the CCLI Copyright information for English files }
     if (pos('CCLI Song #', inputFile.Strings[i]) = 1) then
     begin
+      CCLIFileIsEnglish := True;
       if i < self.inputFile.Count - 1 then
       begin
         self.MetaDict.Add('ccli-songnumber', StringReplace(self.inputFile.Strings[i], 'CCLI Song #', '', [rfReplaceAll]));
         self.MetaDict.Add('author', self.inputFile.Strings[i - 1]);
       end;
     end
+    else
+
+    { If the file format is localized, e.g. German }
+    if (pos('CCLI', inputFile.Strings[i]) = 1) then
+    begin
+      CCLIFileIsEnglish := False;
+      if i < self.inputFile.Count - 1 then
+      begin
+        self.MetaDict.Add('ccli-songnumber', self.inputFile.Strings[i].Split(' ')[1]);
+        self.MetaDict.Add('author', self.inputFile.Strings[i + 1]);
+      end;
+    end
+
     else if i = self.inputFile.Count-1 then
     begin
-      self.MetaDict.Add('ccli-licensenumber', StringReplace(self.inputFile.Strings[i], 'CCLI License #', '', [rfReplaceAll]));
+      if CCLIFileIsEnglish then
+        self.MetaDict.Add('ccli-licensenumber', StringReplace(self.inputFile.Strings[i], 'CCLI License #', '', [rfReplaceAll]))
+      else
+        self.MetaDict.Add('ccli-licensenumber', self.inputFile.Strings[i].Split(' ')[1]);
     end;
+
   end;
+
   { Add Closing Refrain if needed }
   if RefrainState = True then
     IncludeRepetitionalParts;
