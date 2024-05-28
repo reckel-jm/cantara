@@ -46,7 +46,7 @@ begin
     GivenFilePath := TestConstants.TestDataDirectory + PathDelim +
     'ExampleCCLISong1.ccli';
     ARepoFile := TContentFile.Create(GivenFilePath);
-    AssertTrue('Display Namei is ' + ARepoFile.DisplayName,
+    AssertTrue('Display Name is ' + ARepoFile.DisplayName,
                         ARepoFile.DisplayName='ExampleCCLISong1');
     AssertTrue('File Path is ' + ARepoFile.FilePath,
                         ARepoFile.FilePath=GivenFilePath);
