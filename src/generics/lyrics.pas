@@ -230,7 +230,7 @@ begin
     else
 
     { Handle the CCLI Copyright information for English files }
-    if (pos('CCLI Song #', inputFile.Strings[i]) = 1) then
+    if (pos('CCLI Song #', inputFile.Strings[i]) = 1) and (i < self.inputFile.Count-1) then
     begin
       CCLIFileIsEnglish := True;
       if i < self.inputFile.Count - 1 then
@@ -242,7 +242,7 @@ begin
     else
 
     { If the file format is localized, e.g. German }
-    if (pos('CCLI', inputFile.Strings[i]) = 1) then
+    if (pos('CCLI', inputFile.Strings[i]) = 1) and (i < self.inputFile.Count-1) then
     begin
       CCLIFileIsEnglish := False;
       if i < self.inputFile.Count - 1 then
