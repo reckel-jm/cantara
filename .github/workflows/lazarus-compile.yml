@@ -10,6 +10,8 @@ jobs:
       matrix:
         operating-system: [windows-latest,ubuntu-latest,macos-latest]
         lazarus-versions: [stable]
+    env:
+      VERSION: 2.6.0
     steps:
     - name: Checkout Source Code
       uses: actions/checkout@v4
@@ -92,7 +94,7 @@ jobs:
           app.cantara.Cantara.desktop
           app.cantara.Cantara.png
           COPYING
-          
+
     - name: Artifacts (Apple)
       if: ${{ matrix.operating-system == 'macos-latest' }}
       uses: actions/upload-artifact@v3
