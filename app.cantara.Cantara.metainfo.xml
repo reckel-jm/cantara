@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2022 Jan Martin Reckel -->
+<!-- Copyright 2024 Jan Martin Reckel -->
 <component type="desktop-application">
     <id>app.cantara.Cantara</id>
     <translation type="gettext">cantara</translation>
@@ -51,6 +51,20 @@
     <developer_name>Jan Martin Reckel</developer_name>
 
     <releases>
+        <release version="2.6.0" date="2024-05-31">
+            <description>
+                <ul>
+                    <li>Migrate to bgrabitmap for better handling and displaying of the presentation slides. In the future, further text effects like shadows etc. can be easily implemented.</li>
+                    <li>Redesign the multi screen presentation controller: In addition to the songs, every slide with content is listed and can be selected directly.</li>
+                    <li>Context menu of presentation window: Fullscreen and ending of presentation is now also selectable with that menu.</li>
+                    <li>Minor improvements of the song editor and full text search.</li>
+                    <li>Add "Select all Songs" under File menu in song selection.</li>
+                    <li>Bugfix: Wrong display of presentation when no specific font has been selected #24</li>
+                    <li>Bugfix: Drag and Drop exception in song selection window</li>
+                    <li>Bugfix: Wrong escaping of special characters in pptx-export</li>
+                </ul>
+            </description>
+        </release>
         <release version="2.5.1" date="2023-10-24">
             <description>
                 <ul>
