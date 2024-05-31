@@ -47,6 +47,39 @@ jobs:
           app.cantara.Cantara.desktop
           app.cantara.Cantara.png
           COPYING
+        
+    - name: Install FPM
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      run: sudo apt-get install ruby ruby-dev rubygems build-essential && sudo gem install --no-document fpm
+
+    - name: Create DEB Package
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      run: |
+        mkdir -p pkg/usr/local/bin
+        cp cantara pkg/usr/local/bin
+        fpm -s dir -t deb -n cantara -v $(cat VERSION) -C pkg .
+        
+    - name: Create RPM Package
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      run: |
+        mkdir -p pkg/usr/local/bin
+        cp cantara pkg/usr/local/bin
+        fpm -s dir -t rpm -n cantara -v $(cat VERSION) -C pkg .
+
+    - name: Artifacts (Linux DEB)
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: Compiled Linux DEB
+        path: cantara*.deb
+
+    - name: Artifacts (Linux RPM)
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: Compiled Linux RPM
+        path: cantara*.rpm
+
     - name: Artifacts (Windows)
       if: ${{ matrix.operating-system == 'windows-latest' }}
       uses: actions/upload-artifact@v3
@@ -59,6 +92,7 @@ jobs:
           app.cantara.Cantara.desktop
           app.cantara.Cantara.png
           COPYING
+          
     - name: Artifacts (Apple)
       if: ${{ matrix.operating-system == 'macos-latest' }}
       uses: actions/upload-artifact@v3
