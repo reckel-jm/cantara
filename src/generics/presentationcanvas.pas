@@ -206,8 +206,8 @@ var
   DefaultSpoilerDistance: Integer;
   TextStyle: TTextStyle;
 begin
-  Bitmap.Fill(PresentationStyleSettings.BackgroundColor);
   Bitmap.SetSize(self.Width, self.Height);
+  Bitmap.Fill(PresentationStyleSettings.BackgroundColor);
   // Here we setup the different fonts for calculating the text height
   NormalTextFont := TFont.Create;
   NormalTextFont.Assign(PresentationStyleSettings.Font);
