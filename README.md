@@ -9,7 +9,7 @@ If you like the project, please consider to *star* it on Github!
 ## About the program
 Cantara is a simple open source song presentation software written in Free Pascal/Lazarus which allows people to spontanously present song lyrics for a bigger audience for the purpose of singing together. This is especially useful for church groups and meetings. 
 
-![](screenshots/cantara1.png)
+![](screenshots/cantara-multiscreen.png)
 
 More pictures are in the [screenshots/](screenshots/)-Folder.
 
