@@ -7,3 +7,12 @@ lazbuild -B --ws="qt6" bgrabitmap/bgrabitmap/bgrabitmappack.lpk
 lazbuild -B --bm="Release" --ws="qt6" Cantara.lpi
 cd ..
 mv src/cantara cantara
+
+# Convert po files to mo files
+for po_file in src/locals/cantara.*.po; do
+    lang_code=$(basename "$po_file" .po | cut -d'.' -f2)
+    mo_file="src/languages/$lang_code/cantara.mo"
+    echo "Compiling $po_file to $mo_file"
+    echo "msgfmt -o $mo_file $po_file"
+    msgfmt -o "$mo_file" "$po_file" 
+done    
