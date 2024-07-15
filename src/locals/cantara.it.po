@@ -453,6 +453,7 @@ msgstr ""
 "L'autore augura la benedizione di Dio per l'utilizzo del programma!"
 
 #: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
 msgstr "Cantara"
 
@@ -741,7 +742,10 @@ msgid "Close File"
 msgstr "Chiudi file"
 
 #: tfrmsongs.caption
-msgid "Song Selection (Cantara)"
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
 msgstr "Selezione Canzone (Cantara)"
 
 #: tfrmsongs.chkmultiwindowmode.caption

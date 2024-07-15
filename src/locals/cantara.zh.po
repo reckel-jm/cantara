@@ -455,6 +455,7 @@ msgstr ""
 "上帝保佑您使用這個程式！"
 
 #: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
 msgstr "Cantara"
 
@@ -743,7 +744,10 @@ msgid "Close File"
 msgstr "關閉文件"
 
 #: tfrmsongs.caption
-msgid "Song Selection (Cantara)"
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
 msgstr "歌曲選集 (Cantara)"
 
 #: tfrmsongs.chkmultiwindowmode.caption
@@ -957,3 +961,4 @@ msgstr "選擇的目錄可以被應用為歌曲庫。"
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "請在離開助手前選擇歌曲庫目錄。沒有它，Cantara 就無法工作。"
+

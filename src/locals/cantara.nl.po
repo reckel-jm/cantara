@@ -22,20 +22,12 @@ msgid "Please enter the new song name: "
 msgstr "Voer een nieuwe naam in: "
 
 #: editordisplaysongcontent.strerrorcclitosong
-msgid ""
-"The file can not be converted. Make sure that you have the permissions to "
-"write to the song repository!"
-msgstr ""
-"Het bestand kan niet worden geconverteerd. Zorg ervoor dat u over de juiste "
-"maprechten beschikt!"
+msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
+msgstr "Het bestand kan niet worden geconverteerd. Zorg ervoor dat u over de juiste maprechten beschikt!"
 
 #: editordisplaysongcontent.strfilecannotberenamed
-msgid ""
-"The File can not be renamed. Make sure that you have the permissions to "
-"write to the song repository!"
-msgstr ""
-"De naam kan niet worden gewijzigd. Zorg ervoor dat u over de juiste "
-"maprechten beschikt!"
+msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
+msgstr "De naam kan niet worden gewijzigd. Zorg ervoor dat u over de juiste maprechten beschikt!"
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
@@ -94,13 +86,11 @@ msgstr "Helderheid verhogen met "
 msgid ""
 "{%author%}Author: {author}\n"
 "{%bible%}Bible Reference: {bible}\n"
-"{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: "
-"{ccli-licensenumber}"
+"{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
 "{%author%}Auteur: {author}\n"
 "{%bible%}Bijbelreferentie: {bible}\n"
-"{%ccli-songnumber%}CCLI-volgnummer: {ccli-songnumber} | Licentienummer: "
-"{ccli-licensenumber}"
+"{%ccli-songnumber%}CCLI-volgnummer: {ccli-songnumber} | Licentienummer: {ccli-licensenumber}"
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
@@ -128,9 +118,7 @@ msgid "No valid file selected."
 msgstr "Er is geen geldig bestand gekozen."
 
 #: songeditor.strfilehaschanged
-msgid ""
-"The file {{filename}} has been changed after opening. Would you like to save "
-"it?"
+msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
 msgstr "‘{{filename}}’ is na het openen gewijzigd. Wilt u het bestand opslaan?"
 
 #: songeditor.strfilenameexists
@@ -138,12 +126,8 @@ msgid "The name exists already. Please choose an other one."
 msgstr "Deze naam is al in gebruik - kies een andere."
 
 #: songeditor.strinvalidfilename
-msgid ""
-"Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are "
-"allowed."
-msgstr ""
-"De naam is ongeldig. Locatiescheidingstekens (‘/’ op Linux en ‘\\’ op "
-"Windows) zijn niet toegestaan."
+msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
+msgstr "De naam is ongeldig. Locatiescheidingstekens (‘/’ op Linux en ‘\\’ op Windows) zijn niet toegestaan."
 
 #: songeditor.strnewfilecaption
 msgid "New Song"
@@ -159,8 +143,7 @@ msgstr "Vraag"
 
 #: songeditor.strsaveunsavedchangescontent
 msgid "The file {filename} has unsaved changes. Would you like to save it now?"
-msgstr ""
-"‘{filename}’ bevat niet-opgeslagen wijzigingen. Wilt u het bestand opslaan?"
+msgstr "‘{filename}’ bevat niet-opgeslagen wijzigingen. Wilt u het bestand opslaan?"
 
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
@@ -194,20 +177,12 @@ msgid "Error"
 msgstr "Foutmelding"
 
 #: songselection.strerroropening
-msgid ""
-"Error while opening. Propably you have not the required rights to access "
-"this file."
-msgstr ""
-"Foutmelding tijdens openen: mogelijk beschikt u niet over de juiste "
-"bestandsrechten."
+msgid "Error while opening. Propably you have not the required rights to access this file."
+msgstr "Foutmelding tijdens openen: mogelijk beschikt u niet over de juiste bestandsrechten."
 
 #: songselection.strerrorsaving
-msgid ""
-"Error while saving. Propably you have not the required rights to access this "
-"file."
-msgstr ""
-"Foutmelding tijdens opslaan: mogelijk beschikt u niet over de juiste "
-"bestandsrechten."
+msgid "Error while saving. Propably you have not the required rights to access this file."
+msgstr "Foutmelding tijdens opslaan: mogelijk beschikt u niet over de juiste bestandsrechten."
 
 #: songselection.strfehlerkeineliederbeipraesentation
 msgid "You have to add songs first."
@@ -226,25 +201,8 @@ msgid "Hint"
 msgstr "Tip"
 
 #: songselection.strpptxgenjs
-msgid ""
-"Cantara is using your local default web browser's Java Script engine and the "
-"open source Java Script library PptxGenJs (https://gitbrent.github.io/"
-"PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your "
-"web browser will open and ask you for a place to save the pptx file when the "
-"generation was done succesfully. During this process, no internet connection "
-"will be needed and no data is shared with anyone else despite your web "
-"browser. If you want to continue, press OK and this message won't show up "
-"again next time. If you don't want to continue, please press Cancel."
-msgstr ""
-"Cantara maakt gebruik van de JavaScript-aandrijving van uw lokale "
-"standaardwebbrowser en de opensource JavaScript-bibliotheek "
-"‘PptxGenJs’ (https://gitbrent.github.io/PptxGenJS/) om het pptx-bestand te "
-"genereren. Zodra u op oké klikt, zal de webbrowser worden geopend en u "
-"vragen om een plaats om het pptx-bestand op te slaan na het genereren ervan. "
-"Tijdens dit proces is geen internetverbinding benodigd en worden er - "
-"ondanks het gebruik van uw webbrowser - geen gegevens met anderen gedeeld. "
-"Als u wilt doorgaan, klik dan op oké om dit bericht volgende keer niet meer "
-"te tonen. Als u niet wilt doorgaan, klik dan op annuleren."
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr "Cantara maakt gebruik van de JavaScript-aandrijving van uw lokale standaardwebbrowser en de opensource JavaScript-bibliotheek ‘PptxGenJs’ (https://gitbrent.github.io/PptxGenJS/) om het pptx-bestand te genereren. Zodra u op oké klikt, zal de webbrowser worden geopend en u vragen om een plaats om het pptx-bestand op te slaan na het genereren ervan. Tijdens dit proces is geen internetverbinding benodigd en worden er - ondanks het gebruik van uw webbrowser - geen gegevens met anderen gedeeld. Als u wilt doorgaan, klik dan op oké om dit bericht volgende keer niet meer te tonen. Als u niet wilt doorgaan, klik dan op annuleren."
 
 #: songselection.strsongisempty
 msgid "The song {songname} is empty. It will not be added."
@@ -279,12 +237,8 @@ msgid "Font Size:"
 msgstr "Tekstgrootte:"
 
 #: tcfontdialog.previewlabel.caption
-msgid ""
-"Amazing Grace, how sweet the sound, that saved a wretch like me! How "
-"gracious is that grace."
-msgstr ""
-"Genade, zo oneindig groot, dat ik, die ’t niet verdien, het leven vond, want "
-"ik was dood, en blind, maar nu kan ‘k zien."
+msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
+msgstr "Genade, zo oneindig groot, dat ik, die ’t niet verdien, het leven vond, want ik was dood, en blind, maar nu kan ‘k zien."
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
@@ -394,20 +348,14 @@ msgid ""
 "Hint:\n"
 "\n"
 "The file which you are going to open is a CCLI file.\n"
-"It is recommended to convert the file to the song-format first and then edit "
-"the song file according to your wishes.\n"
-"If you would like to do so, please click the button below. The CCLI file "
-"will then be moved to the subdirectory 'archive' of your song repository and "
-"the generated song file will be opened for editing."
+"It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
+"If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
 msgstr ""
 "Tip:\n"
 "\n"
 "Het bestand dat u wilt openen is een ccli-bestand.\n"
-"Wij raden aan dit bestand te converteren en vervolgens naar eigen hand te "
-"zetten.\n"
-"Als u dit wilt doen, klik dan op onderstaande knop. Het ccli-bestand zal "
-"daarna worden verplaatst naar uw verzamelingsmap en het samengestelde "
-"nummerbestand zal worden geopend."
+"Wij raden aan dit bestand te converteren en vervolgens naar eigen hand te zetten.\n"
+"Als u dit wilt doen, klik dan op onderstaande knop. Het ccli-bestand zal daarna worden verplaatst naar uw verzamelingsmap en het samengestelde nummerbestand zal worden geopend."
 
 #: tfrmdisplaysongcontent.lblsongname.caption
 msgid "Name: "
@@ -436,25 +384,12 @@ msgstr ""
 "Meer informatie over de syntaxis vindt u in de documentatie."
 
 #: tfrmeditorwelcome.lblhint.caption
-msgid ""
-"Please note: The song lyrics files are simple text files and can be also "
-"edited with every text editor on your local system. Cantara offers only "
-"basic functionality yet."
-msgstr ""
-"Let op: songtekstbestanden zijn eenvoudige tekstbestanden die in elke "
-"tekstbewerker kunnen worden bewerkt. Cantara biedt momenteel slechts "
-"basisfuncties aan."
+msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
+msgstr "Let op: songtekstbestanden zijn eenvoudige tekstbestanden die in elke tekstbewerker kunnen worden bewerkt. Cantara biedt momenteel slechts basisfuncties aan."
 
 #: tfrmeditorwelcome.lblsupport.caption
-msgid ""
-"Cantara is free software which has been made with the hope that it might be "
-"useful and beneficial. Contribution via Github is more than welcome. Feel "
-"free to create issues, feature requests or pull request. All the Glory "
-"belongs to God! Soli Deo Gloria."
-msgstr ""
-"Cantara is vrije software die wordt gemaakt in de hoop bruikbaar en nuttig "
-"te zijn. Bijdragen op GitHub zijn van harte welkom. Meld problemen, deel "
-"ideeën of open ‘pull requests’. Alleen aan God de eer! Soli Deo Gloria."
+msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
+msgstr "Cantara is vrije software die wordt gemaakt in de hoop bruikbaar en nuttig te zijn. Bijdragen op GitHub zijn van harte welkom. Meld problemen, deel ideeën of open ‘pull requests’. Alleen aan God de eer! Soli Deo Gloria."
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
@@ -507,21 +442,19 @@ msgstr "lblCompDate"
 #: tfrminfo.lblinfo.caption
 msgid ""
 "This program has been published under the GPL3 licence. \n"
-"The source code is available at the Github repository, a documentation can "
-"be be found on the project's webpage.\n"
-"You are allowed to change and reuse this program under the specified terms "
-"and conditions of the GPL3 licence.\n"
+"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
 "\n"
 "The author wishes God's blessing for the use of the program!"
 msgstr ""
 "Dit programma is uitgebracht onder de voorwaarden van de GPL3-licentie. \n"
 "De broncode is beschikbaar op GitHub; de documentatie op de website.\n"
-"Het is toegestaan om dit programma te bewerken en her uit te geven onder de "
-"voorwaarden van de GPL3-licentie.\n"
+"Het is toegestaan om dit programma te bewerken en her uit te geven onder de voorwaarden van de GPL3-licentie.\n"
 "\n"
 "De maker wenst u Gods zegening bij gebruik van dit programma toe!"
 
 #: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
 msgstr "Cantara"
 
@@ -679,9 +612,7 @@ msgstr "Automatisch afbreken na x-aantal regels (0 = uit):"
 
 #: tfrmsettings.sbimagebrightness.hint
 msgid "The transparency of the background picture towards the background color"
-msgstr ""
-"De doorzichtigheid van de achtergrondafbeelding ten opzichte van de "
-"achtergrondkleur"
+msgstr "De doorzichtigheid van de achtergrondafbeelding ten opzichte van de achtergrondkleur"
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
@@ -812,7 +743,10 @@ msgid "Close File"
 msgstr "Bestand sluiten"
 
 #: tfrmsongs.caption
-msgid "Song Selection (Cantara)"
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
 msgstr "Nummerselectie (Cantara)"
 
 #: tfrmsongs.chkmultiwindowmode.caption
@@ -959,16 +893,10 @@ msgstr "Cantara-instelhulp"
 #: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
-"All songs should be located in a song repository directory. Please select "
-"now a directory on your file system which Cantara will use as its song "
-"repository. If you haven't collected any songs yet, you can create a new "
-"folder first or choose an empty one."
+"All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
 "Cantara is een gratis en opensource nummerpresentatieprogramma.\n"
-"Alle nummers dienen aanwezig te zijn in de gekozen map. Kies nu een map op "
-"uw systeem die gebruikt dient te worden als opslag. Als u nog geen "
-"muziekverzameling heeft, dan kunt u eerst een nieuwe map aanmaken of een "
-"lege map kiezen."
+"Alle nummers dienen aanwezig te zijn in de gekozen map. Kies nu een map op uw systeem die gebruikt dient te worden als opslag. Als u nog geen muziekverzameling heeft, dan kunt u eerst een nieuwe map aanmaken of een lege map kiezen."
 
 #: tfrmwelcome.labelwelcomeheadline.caption
 msgid "Welcome to Cantara!"
@@ -976,47 +904,24 @@ msgstr "Welkom bij Cantara!"
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
-"You might want to adjust the appearence of the presentation in the Settings "
-"Dialog. In addition, you can add, edit, clone and convert song files via the "
-"editor. Both can be found in the Edit menu in the main window.\n"
-"Cantara supports two song formats: The CCLI Songselect format and the song "
-"format. This makes it easy to download and import songs from the internet. "
-"Please be aware that depending on your location and the particular song, "
-"license regulations for the public demonstration of song lyrics might apply. "
-"The user alone is responsible for the legal use of this software.\n"
-"For more information about the program, please consult the online "
-"documentation at the webpage https://www.cantara.app.\n"
+"You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
+"For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
 "\n"
-"Cantara is free software and published under the GPL3 license. The source "
-"code is publicly available on Github. If you like the project, consider "
-"giving it a star at Github! Feedback, issue reports and pull requests are "
-"also more then welcome.\n"
+"Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
-"U kunt, indien gewenst, de vormgeving van de presentatie aanpassen in de "
-"instellingen. In de bewerker kunt u nummers toevoegen, bewerken, klonen en "
-"converteren.  Dit alles is beschikbaar in het menu ‘Bewerken’ in het "
-"hoofdvenster.\n"
-"Cantara ondersteunt twee formaten: CCLI Songselect- en reguliere "
-"nummerformaten. Hierdoor is het eenvoudig om nummers van het internet op te "
-"halen en importeren. Let op: er kunnen licentiebeperkingen van kracht zijn "
-"op nummers en locaties, waardoor openbaar vertonen van songteksten mogelijk "
-"niet rechtsgeldig is. Gebruikers zijn zélf verantwoordelijk voor het gebruik "
-"van deze software.\n"
-"Meer informatie over het programma is te vinden in de online- documentatie "
-"op https://www.cantara.app.\n"
+"U kunt, indien gewenst, de vormgeving van de presentatie aanpassen in de instellingen. In de bewerker kunt u nummers toevoegen, bewerken, klonen en converteren.  Dit alles is beschikbaar in het menu ‘Bewerken’ in het hoofdvenster.\n"
+"Cantara ondersteunt twee formaten: CCLI Songselect- en reguliere nummerformaten. Hierdoor is het eenvoudig om nummers van het internet op te halen en importeren. Let op: er kunnen licentiebeperkingen van kracht zijn op nummers en locaties, waardoor openbaar vertonen van songteksten mogelijk niet rechtsgeldig is. Gebruikers zijn zélf verantwoordelijk voor het gebruik van deze software.\n"
+"Meer informatie over het programma is te vinden in de online- documentatie op https://www.cantara.app.\n"
 "\n"
-"Cantara is vrije software, uitgebracht onder de voorwaarden van de GPL3-"
-"licentie. De broncode is openbaar te verkrijgen op GitHub. Als u de software "
-"graag gebruikt, overweeg dan een ster op GitHub te geven! Feedback, "
-"probleemmeldingen en pull requests zijn ook van harte welkom.\n"
+"Cantara is vrije software, uitgebracht onder de voorwaarden van de GPL3-licentie. De broncode is openbaar te verkrijgen op GitHub. Als u de software graag gebruikt, overweeg dan een ster op GitHub te geven! Feedback, probleemmeldingen en pull requests zijn ook van harte welkom.\n"
 "\n"
 "God zij u en het gebruik van deze software!"
 
 #: tfrmwelcome.lblsongadded.caption
-msgid ""
-"\"Amazing Grace\" has been added to your repository. You can now continue."
+msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
 msgstr "‘Amazing Grace’ is toegevoegd - u kunt nu doorgaan."
 
 #: tfrmwelcome.lblsuccessheadline.caption
@@ -1036,39 +941,22 @@ msgid "Next"
 msgstr "Volgende"
 
 #: welcome.songrepodirempty
-msgid ""
-"However it seems that you have not added any songs yet. Would you like to "
-"add the song \"Amazing Grace\" from John Newton as an example to your song "
-"repository? Then click at the button below. Click \"Next\" to go to the next "
-"step."
-msgstr ""
-"Het lijkt erop dat u nog geen nummers heeft toegevoegd. Wilt u ‘Amazing "
-"Grace’ van John Newton toevoegen als voorbeeldnummer? Klik dan op "
-"onderstaande knop en vervolgens op ‘Volgende’."
+msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
+msgstr "Het lijkt erop dat u nog geen nummers heeft toegevoegd. Wilt u ‘Amazing Grace’ van John Newton toevoegen als voorbeeldnummer? Klik dan op onderstaande knop en vervolgens op ‘Volgende’."
 
 #: welcome.songreponotempty
-msgid ""
-"The song repository contains already {songcount} songs which you can use "
-"with Cantara."
+msgid "The song repository contains already {songcount} songs which you can use with Cantara."
 msgstr "De map bevat {songcount} nummers die u in Cantara kunt gebruiken."
 
 #: welcome.songreponotemptyaddamazinggrace
-msgid ""
-"However if you like, we can add the song \"Amazing Grace\" as an other "
-"example. For that, please press the button below. Else you can click "
-"\"Next\"."
-msgstr ""
-"Maar als u wilt, kunt u ‘Amazing Grace’ als voorbeeldnummer toevoegen. Klik "
-"hiervoor op onderstaande knop. Wilt u dit niet? Klik dan op ‘Volgende’."
+msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
+msgstr "Maar als u wilt, kunt u ‘Amazing Grace’ als voorbeeldnummer toevoegen. Klik hiervoor op onderstaande knop. Wilt u dit niet? Klik dan op ‘Volgende’."
 
 #: welcome.songreposuccess
 msgid "The selected directory can be successfully used as a song repository."
 msgstr "De gekozen map kan in Cantara worden gebruikt."
 
 #: welcome.strnosongrepoyet
-msgid ""
-"Please select a song repository path before you leave the assistent. Cantara "
-"can not work without it."
-msgstr ""
-"Kies een map met nummers voordat u de instelhulp afsluit. Zonder deze map "
-"werkt Cantara niet."
+msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
+msgstr "Kies een map met nummers voordat u de instelhulp afsluit. Zonder deze map werkt Cantara niet."
+

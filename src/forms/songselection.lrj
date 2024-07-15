@@ -1,5 +1,5 @@
 {"version":1,"strings":[
-{"hash":81680217,"name":"tfrmsongs.caption","sourcebytes":[83,111,110,103,32,83,101,108,101,99,116,105,111,110,32,40,67,97,110,116,97,114,97,41],"value":"Song Selection (Cantara)"},
+{"hash":159754433,"name":"tfrmsongs.caption","sourcebytes":[67,97,110,116,97,114,97],"value":"Cantara"},
 {"hash":143264446,"name":"tfrmsongs.edtsearch.hint","sourcebytes":[83,101,97,114,99,104,46,46,46],"value":"Search..."},
 {"hash":211080346,"name":"tfrmsongs.lblpresentation.caption","sourcebytes":[80,114,101,115,101,110,116,97,116,105,111,110,32,105,115,32,114,117,110,110,105,110,103,58],"value":"Presentation is running:"},
 {"hash":60144,"name":"tfrmsongs.btngoleft.caption","sourcebytes":[226,134,144],"value":"\u2190"},

@@ -423,6 +423,7 @@ msgid ""
 msgstr ""
 
 #: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
 msgstr ""
 
@@ -711,7 +712,8 @@ msgid "Close File"
 msgstr ""
 
 #: tfrmsongs.caption
-msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
 msgstr ""
 
 #: tfrmsongs.chkmultiwindowmode.caption

@@ -455,6 +455,7 @@ msgstr ""
 "Der Autor wünscht für die Verwendung Gottes Segen!"
 
 #: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
 msgstr "Cantara"
 
@@ -744,7 +745,10 @@ msgid "Close File"
 msgstr "Datei schließen"
 
 #: tfrmsongs.caption
-msgid "Song Selection (Cantara)"
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
 msgstr "Liedauswahl (Cantara)"
 
 #: tfrmsongs.chkmultiwindowmode.caption
@@ -958,3 +962,4 @@ msgstr "Das ausgewählte Verzeichnis kann erfolgreich als Liederverzeichnis genu
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Bitte wählen Sie einen Pfad für das Liederverzeichnis aus, bevor Sie den Assistenten verlassen. Ohne diesen kann Cantara nicht arbeiten."
+

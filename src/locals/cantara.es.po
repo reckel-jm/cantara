@@ -453,6 +453,7 @@ msgstr ""
 "¡El autor desea la bendición de Dios para el uso del programa!"
 
 #: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
 msgstr "Cantara"
 
@@ -741,7 +742,10 @@ msgid "Close File"
 msgstr "Cerrar archivo"
 
 #: tfrmsongs.caption
-msgid "Song Selection (Cantara)"
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
 msgstr "Selección de canciones (Cantara)"
 
 #: tfrmsongs.chkmultiwindowmode.caption
@@ -954,3 +958,4 @@ msgstr "El directorio seleccionado puede utilizarse correctamente como repositor
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Por favor, seleccione una ruta de repositorio de canciones antes de salir del asistente. Cantara no puede funcionar sin ella."
+
