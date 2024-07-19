@@ -390,10 +390,10 @@ var
   songfileextension: String;
 begin
   songfileextension := ExtractFileExt(self.CompleteFilePath);
-  if songfileextension = '.song' then
-    self.importSongFormatFile
-  else if self.IsCCLIFile then // CCLI-Songselect file
-    self.importCCLISongFile;
+  if self.IsCCLIFile then // CCLI-Songselect file
+    self.importCCLISongFile
+  else // SongFormat-File
+    self.importSongFormatFile;
 end;
 
 { This function finds out which format the song has and calls the specific import function }
@@ -516,9 +516,12 @@ function TSong.IsCCLIFile: Boolean;
 var
   i: Integer;
 begin
+  // In the first two cases, the result is obvious because of the file ending
   if ExtractFileExt(self.CompleteFilePath) = '.song' then exit(False);
-  if ExtractFileExt(self.CompleteFilePath) = '.ccli' then exit(True)
-  else if ExtractFileExt(self.CompleteFilePath) = '.txt' then
+  if ExtractFileExt(self.CompleteFilePath) = '.ccli' then exit(True);
+
+  // If we have a txt-file, we have to determine the song file format by its content
+  if ExtractFileExt(self.CompleteFilePath) = '.txt' then
   begin
     for i := 0 to inputFile.Count - 1 do
       if (pos(CCLIWEBPAGE, inputfile.Strings[i]) > 0) Or
