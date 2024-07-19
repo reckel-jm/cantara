@@ -390,7 +390,7 @@ var
   songfileextension: String;
 begin
   songfileextension := ExtractFileExt(self.CompleteFilePath);
-  if songfileextension = '.song' then
+  if (songfileextension = '.song') Or (songfileextension = '.txt') then
     self.importSongFormatFile
   else if self.IsCCLIFile then // CCLI-Songselect file
     self.importCCLISongFile;
