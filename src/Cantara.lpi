@@ -45,17 +45,6 @@
       <CharSet Value="04B0"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.6.0"/>
     </VersionInfo>
-    <MacroValues Count="9">
-      <Macro6 Name="LCLWidgetType" Value="qt6"/>
-      <Macro7 Name="LCLWidgetType" Value="qt6"/>
-      <Macro8 Name="LCLWidgetType" Value="qt6"/>
-      <Macro9 Name="LCLWidgetType" Value="qt6"/>
-      <Macro10 Name="LCLWidgetType" Value="qt6"/>
-      <Macro11 Name="LCLWidgetType" Value="qt6"/>
-      <Macro12 Name="LCLWidgetType" Value="qt6"/>
-      <Macro13 Name="LCLWidgetType" Value="qt6"/>
-      <Macro14 Name="LCLWidgetType" Value="qt6"/>
-    </MacroValues>
     <BuildModes Count="7">
       <Item1 Name="Release" Default="True"/>
       <Item2 Name="Linux WPO Pass1">
@@ -241,9 +230,6 @@
         </CompilerOptions>
       </Item5>
       <Item6 Name="Debug">
-        <MacroValues Count="1">
-          <Macro6 Name="LCLWidgetType" Value="qt6"/>
-        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -251,7 +237,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces;metadarkstyle"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -284,7 +270,6 @@
           </Linking>
           <Other>
             <Verbosity>
-              <ShowLineNum Value="True"/>
               <ShowDebugInfo Value="True"/>
               <ShowHintsForUnusedUnitsInMainSrc Value="True"/>
             </Verbosity>
@@ -294,9 +279,6 @@
         </CompilerOptions>
       </Item6>
       <Item7 Name="ReleaseConfined">
-        <MacroValues Count="1">
-          <Macro6 Name="LCLWidgetType" Value="qt6"/>
-        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -352,23 +334,26 @@
         <Mode0 Name="default"/>
       </Modes>
     </RunParams>
-    <RequiredPackages Count="5">
+    <RequiredPackages Count="6">
       <Item1>
-        <PackageName Value="BGRABitmapPack"/>
-        <DefaultFilename Value="bgrabitmap/bgrabitmap/bgrabitmappack.lpk"/>
+        <PackageName Value="MetaDarkStyle"/>
       </Item1>
       <Item2>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="BGRABitmapPack"/>
+        <DefaultFilename Value="bgrabitmap/bgrabitmap/bgrabitmappack.lpk"/>
       </Item2>
       <Item3>
-        <PackageName Value="LazControls"/>
+        <PackageName Value="SynEdit"/>
       </Item3>
       <Item4>
-        <PackageName Value="RunTimeTypeInfoControls"/>
+        <PackageName Value="LazControls"/>
       </Item4>
       <Item5>
-        <PackageName Value="LCL"/>
+        <PackageName Value="RunTimeTypeInfoControls"/>
       </Item5>
+      <Item6>
+        <PackageName Value="LCL"/>
+      </Item6>
     </RequiredPackages>
     <Units Count="28">
       <Unit0>
@@ -545,7 +530,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces"/>
+      <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces;metadarkstyle"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>

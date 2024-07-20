@@ -12,7 +12,8 @@ uses
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
   FormFulltextSearch, PPTX, PresentationCanvas,
   formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
-  presentationcontroller, Types,bgrabitmap, BGRABitmapTypes;
+  presentationcontroller, Types,bgrabitmap, BGRABitmapTypes
+  ;
 
 type
   TProgramMode = (ModeSelection, ModeSingleScreenPresentation,

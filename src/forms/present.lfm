@@ -1,8 +1,8 @@
 object frmPresent: TfrmPresent
   Cursor = crNone
-  Left = 290
+  Left = 1949
   Height = 535
-  Top = 210
+  Top = 252
   Width = 1070
   Caption = 'Presentation'
   ClientHeight = 535
@@ -16,6 +16,7 @@ object frmPresent: TfrmPresent
   OnShow = FormShow
   PopupMenu = PresentationMenu
   Position = poScreenCenter
+  LCLVersion = '3.2.0.0'
   WindowState = wsMaximized
   object imageShower: TImage
     AnchorSideLeft.Control = Owner

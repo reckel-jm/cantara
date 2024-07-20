@@ -29,7 +29,13 @@ uses
   markup,
   imageexport,
   loadimagethread, CantaraStandardDialogs, presentationcontroller,
-cantarafontdialog, exporterinterfaces;
+  cantarafontdialog, exporterinterfaces,
+  {$IFDEF WINDOWS}
+  uDarkStyleParams,
+  uMetaDarkStyle,
+  uDarkStyleSchemes
+  {$ENDIF}
+  ;
   {$R *.res}
 
 begin
@@ -37,7 +43,13 @@ begin
   GlobalSkipIfNoLeaks := True; // supported as of debugger version 3.2.0
   {$endIf}
   Application.Scaled:=True;
+  {$IFDEF WINDOWS}
+  RequireDerivedFormResource:=True;
+  PreferredAppMode:=pamAllowDark;
+  uMetaDarkStyle.ApplyMetaDarkStyle(DefaultDark);
+  {$ENDIF}
   Application.Initialize;
+
   Application.CreateForm(TfrmSongs, frmSongs);
 
   Application.CreateForm(TCFontDialog, CFontDialog);

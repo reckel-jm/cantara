@@ -1,3 +1,6 @@
 [submodule "src/bgrabitmap"]
 	path = src/bgrabitmap
 	url = https://github.com/bgrabitmap/bgrabitmap.git
+[submodule "src/metadarkstyle"]
+	path = src/metadarkstyle
+	url = https://github.com/zamtmn/metadarkstyle

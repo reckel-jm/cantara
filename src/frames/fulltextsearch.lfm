@@ -5,7 +5,7 @@ object FrmFulltextsearch: TFrmFulltextsearch
   Width = 424
   ClientHeight = 255
   ClientWidth = 424
-  Color = clCaptionText
+  Color = clWindow
   ParentBackground = False
   ParentColor = False
   TabOrder = 0
@@ -40,9 +40,10 @@ object FrmFulltextsearch: TFrmFulltextsearch
     PageIndex = 0
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 1
-    Color = clNone
+    Color = clWindow
     TabOrder = 0
     object LoadIndex: TPage
+      Color = clWindow
       object LabalCreateIndex: TLabel
         AnchorSideLeft.Control = LoadIndex
         AnchorSideLeft.Side = asrCenter
@@ -53,7 +54,10 @@ object FrmFulltextsearch: TFrmFulltextsearch
         Top = 106
         Width = 82
         Caption = 'Create Index...'
+        Color = clWindow
+        Font.Color = clWindowText
         ParentColor = False
+        ParentFont = False
       end
     end
     object SearchResults: TPage
