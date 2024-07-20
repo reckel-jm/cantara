@@ -1,0 +1,2 @@
+Cantara is free open source software and has been released under the GPL3 license.
+You can find more information here: https://github.com/reckel-jm/cantara/blob/master/COPYING

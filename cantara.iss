@@ -18,7 +18,7 @@ CompressionThreads=2
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 OutputBaseFilename={#MyAppOutputName}{#MyAppVersion}{#MyInstallerSuffix}
-LicenseFile=install_windows_readme.rtf
+LicenseFile=innosetup_license_file.txt
 
 [Languages]
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"
