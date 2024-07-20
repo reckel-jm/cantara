@@ -43,7 +43,8 @@
       <BuildNr Value="22"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
-      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.6.0"/>
+      <Attributes pvaPreRelease="True"/>
+      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.6.1 Beta"/>
     </VersionInfo>
     <MacroValues Count="10">
       <Macro6 Name="LCLWidgetType" Value="qt6"/>
