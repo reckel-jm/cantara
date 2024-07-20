@@ -40,11 +40,23 @@
       <MajorVersionNr Value="2"/>
       <MinorVersionNr Value="6"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="21"/>
+      <BuildNr Value="22"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
       <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.6.0"/>
     </VersionInfo>
+    <MacroValues Count="10">
+      <Macro6 Name="LCLWidgetType" Value="qt6"/>
+      <Macro7 Name="LCLWidgetType" Value="qt6"/>
+      <Macro8 Name="LCLWidgetType" Value="qt6"/>
+      <Macro9 Name="LCLWidgetType" Value="qt6"/>
+      <Macro10 Name="LCLWidgetType" Value="qt6"/>
+      <Macro11 Name="LCLWidgetType" Value="qt6"/>
+      <Macro12 Name="LCLWidgetType" Value="qt6"/>
+      <Macro13 Name="LCLWidgetType" Value="qt6"/>
+      <Macro14 Name="LCLWidgetType" Value="qt6"/>
+      <Macro15 Name="LCLWidgetType" Value="qt6"/>
+    </MacroValues>
     <BuildModes Count="7">
       <Item1 Name="Release" Default="True"/>
       <Item2 Name="Linux WPO Pass1">
@@ -230,6 +242,9 @@
         </CompilerOptions>
       </Item5>
       <Item6 Name="Debug">
+        <MacroValues Count="1">
+          <Macro6 Name="LCLWidgetType" Value="qt6"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -279,6 +294,9 @@
         </CompilerOptions>
       </Item6>
       <Item7 Name="ReleaseConfined">
+        <MacroValues Count="1">
+          <Macro6 Name="LCLWidgetType" Value="qt6"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>

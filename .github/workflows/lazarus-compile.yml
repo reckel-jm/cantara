@@ -68,6 +68,12 @@ jobs:
         cp cantara pkg/usr/local/bin
         fpm -s dir -t rpm -n cantara -v $(cat VERSION) -C pkg .
 
+    - name: Create Windows Installer with InnoSetup
+      if: ${{ matrix.operating-system == 'windows-latest' }}
+      uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+      with:
+        path: cantara.iss
+
     - name: Artifacts (Linux DEB)
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       uses: actions/upload-artifact@v3
@@ -94,6 +100,13 @@ jobs:
           app.cantara.Cantara.desktop
           app.cantara.Cantara.png
           COPYING
+
+    - name: Artifacts (Windows Installer)
+      if: ${{ matrix.operating-system == 'windows-latest' }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: Windows Installer
+        path: Output/cantara*.exe
 
     - name: Artifacts (Apple)
       if: ${{ matrix.operating-system == 'macos-latest' }}
