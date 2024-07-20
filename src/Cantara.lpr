@@ -29,8 +29,9 @@ uses
   markup,
   imageexport,
   loadimagethread, CantaraStandardDialogs, presentationcontroller,
-  cantarafontdialog, exporterinterfaces,
+  cantarafontdialog, exporterinterfaces
   {$IFDEF WINDOWS}
+  ,
   uDarkStyleParams,
   uMetaDarkStyle,
   uDarkStyleSchemes
