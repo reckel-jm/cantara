@@ -862,6 +862,10 @@ msgstr "PanelSongTeXStatus"
 msgid "Save Song List"
 msgstr "Nummerlijst opslaan"
 
+#: tfrmsongs.songselectionbutton.caption
+msgid "SongSelectionButton"
+msgstr ""
+
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
 msgstr "‘Amazing Grace’ toevoegen als voorbeeldnummer"

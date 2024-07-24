@@ -863,6 +863,10 @@ msgstr ""
 msgid "Save Song List"
 msgstr "儲存歌曲列表"
 
+#: tfrmsongs.songselectionbutton.caption
+msgid "SongSelectionButton"
+msgstr ""
+
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
 msgstr "添加「奇異恩典」作為示例"

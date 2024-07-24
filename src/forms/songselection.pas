@@ -9,7 +9,7 @@ uses
   Controls, Graphics, Dialogs, StrUtils, Math,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles,
   DefaultTranslator, Clipbrd,
-  lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
+  lyrics, LCLTranslator, BCSVGButton, songeditor, SongTeX, welcome, Slides,
   FormFulltextSearch, PPTX, PresentationCanvas,
   formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
   presentationcontroller, Types,bgrabitmap, BGRABitmapTypes
@@ -33,6 +33,7 @@ type
   { The main form of Cantara where the songs are choosen from.
   It is also responsible for managing the song repository }
   TfrmSongs = class(TForm, IPresentationController)
+    SongSelectionButton: TBCSVGButton;
     btnAdd: TButton;
     btnClear: TButton;
     btnDown: TButton;
@@ -77,6 +78,7 @@ type
     itemSelectAllSongs: TMenuItem;
     OpenDialog: TOpenDialog;
     ControlPanel: TPanel;
+    SidebarPanel: TPanel;
     PanelSongTeXStatus: TPanel;
     pnlMultiScreen: TPanel;
     PnlSplitter: TSplitter;
