@@ -51,7 +51,7 @@ type
   TStringDict = specialize TFPGMap<String, String>;
   TStringIntegerDict = specialize TFPGMap<String, Integer>;
 
-  TRepoFile = class
+  TRepoFile = class(TObject)
   public
     Name: String;
     FileName: String;

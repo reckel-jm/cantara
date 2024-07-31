@@ -247,13 +247,27 @@ procedure TfrmSongs.loadRepo(repoPath: String);
 var
   SongPath: String;
   songName: String;
+  i: Integer;
+  SongInList: Boolean;
   song: TRepoFile;
   FindAllFilesSearchResult: TStringList;
   Pathlist: Array of String;
 begin
-  // Delete everything in repo if there is something.
+  { Delete everything in repo if there is something.
+    Here we need to be careful and check that the song has not been selected already.
+    If the song is selected already, we won't free the TRepoFile-Object to avoid nil pointer exceptions.
+  }
   for song In repo do
-    song.Free;
+  begin
+    SongInList := False;
+    for i := 0 to lbxSSelected.Count-1 do
+    begin
+      if TRepoFile(lbxSSelected.Items.Objects[i]).FilePath = song.FilePath then
+         SongInList := True;
+    end;
+    if not SongInList then song.Free;
+  end;
+
   SetLength(repo, 0);
   FindAllFilesSearchResult := FindAllFiles(repoPath, '*.txt;*.song;*.ccli', True);
 
@@ -269,7 +283,6 @@ begin
          Continue;
 
       songName := ExtractFileNameOnly(SongPath);
-      lbxSRepo.Items.Add(songName);
       setlength(repo, length(repo) + 1);
 
       { Fill the record array with the data }
@@ -278,6 +291,8 @@ begin
       repo[(length(repo) - 1)].FileName := ExtractFileName(SongPath);
       repo[(length(repo) - 1)].FilePath := SongPath;
       repo[(length(repo) - 1)].FileExtension := ExtractFileExt(SongPath);
+
+      lbxSRepo.Items.AddObject(songName, repo[(length(repo) - 1)]);
     end;
   end;
 
@@ -854,7 +869,9 @@ end;
 procedure TfrmSongs.btnAddClick(Sender: TObject);
 begin
   if (lbxSRepo.ItemIndex >= 0) And (ProgramMode = ModeSelection) then
-    lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex]);
+  begin
+    lbxSSelected.Items.AddObject(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex], lbxSRepo.Items.Objects[lbxSRepo.ItemIndex]);
+  end;
 end;
 
 procedure TfrmSongs.btnClearClick(Sender: TObject);
@@ -863,16 +880,11 @@ begin
 end;
 
 procedure TfrmSongs.btnDownClick(Sender: TObject);
-var
-  tausch: String;
 begin
   if lbxSSelected.ItemIndex < lbxSSelected.Count - 1 then
   begin
-    tausch := lbxSselected.Items.Strings[lbxSSelected.ItemIndex + 1];
-    lbxSselected.Items.Strings[lbxSSelected.ItemIndex + 1] :=
-      lbxSselected.Items.Strings[lbxSSelected.ItemIndex];
-    lbxSselected.Items.Strings[lbxSSelected.ItemIndex] := tausch;
-    lbxsSelected.ItemIndex := lbxSselected.ItemIndex + 1;
+    lbxSSelected.Items.Exchange(lbxSSelected.ItemIndex, lbxSSelected.ItemIndex + 1);
+    lbxSSelected.ItemIndex := lbxSSelected.ItemIndex + 1;
   end;
 end;
 
@@ -1024,7 +1036,7 @@ end;
 
 procedure TfrmSongs.CreateSongListData;
 var
-  i, j: Integer;
+  i: Integer;
   completefilename: String;
   songname: String;
   Song: lyrics.TSong;
@@ -1032,25 +1044,14 @@ var
 begin
   SongList := LoadedSongList;
   SongList.Clear;
-  // CreateSlideList
-  //SlideList := TSlideList.Create(True);
+
   for i := 0 to lbxSSelected.Count - 1 do
   begin
     Song := lyrics.TSong.Create;
     //Get Song Name
-    songname := lbxSSelected.Items.Strings[i];
-    //suche Dateinamen in repo-Array
-    j := 0;
-    try
-      while repo[j].Name <> songname do
-        Inc(j);
-    except
-      // show error if the song file can not be found or opened
-      Application.MessageBox(PChar(StringReplace(StrCanNotOpenSong,
-        '{songname}', songname, [rfReplaceAll])), PChar(StrError), MB_OK + MB_ICONERROR);
-    end;
+    songname := TRepoFile(lbxSSelected.Items.Objects[i]).Name;
     // Lade Songfile abhängig von der Erweiterung!
-    completefilename := frmSettings.edtRepoPath.Text + PathDelim + repo[j].FileName;
+    completefilename := TRepoFile(lbxSSelected.Items.Objects[i]).FilePath;
     Song.importSongfile(completefilename);
     if Song.IsEmpty then
       Application.MessageBox(PChar(StringReplace(StrSongIsEmpty,
@@ -1245,16 +1246,11 @@ begin
 end;
 
 procedure TfrmSongs.btnUpClick(Sender: TObject);
-var
-  tausch: String;
 begin
   if lbxSSelected.ItemIndex > 0 then
   begin
-    tausch := lbxSselected.Items.Strings[lbxSSelected.ItemIndex - 1];
-    lbxSselected.Items.Strings[lbxSSelected.ItemIndex - 1] :=
-      lbxSselected.Items.Strings[lbxSSelected.ItemIndex];
-    lbxSselected.Items.Strings[lbxSSelected.ItemIndex] := tausch;
-    lbxSselected.ItemIndex := lbxSselected.ItemIndex - 1;
+    lbxSselected.Items.Exchange(lbxSSelected.ItemIndex, lbxSSelected.ItemIndex - 1);
+    lbxSSelected.ItemIndex := lbxSSelected.ItemIndex - 1;
   end;
 end;
 

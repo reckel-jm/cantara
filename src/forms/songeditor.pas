@@ -467,7 +467,7 @@ var
 begin
   lsSongs.Items.Clear;
   for i := 0 to length(self.repo) - 1 do
-    lsSongs.Items.AddObject(self.repo[i].FileName, self.repo[i]);
+    lsSongs.Items.AddObject(ExtractRelativePath(frmSettings.edtRepoPath.Text, self.repo[i].FilePath), self.repo[i]);
 end;
 
 procedure TfrmSongEdit.LoadSelectedSongContent;

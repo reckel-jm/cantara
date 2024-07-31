@@ -168,7 +168,7 @@ var
   songimport: TSong; // needed for checking the type
 begin
   self.openFile := repofile;
-  self.openFilePath := frmSettings.edtRepoPath.Text + PathDelim + repoFile.FileName;
+  self.openFilePath := repoFile.FilePath;
   memoCode.Lines.LoadFromFile(self.openFilePath);
   lblSongNameContent.Caption := openFile.Name;
   self.hasChanged := False; // dont run markAsChanged as it may cause exceptions
