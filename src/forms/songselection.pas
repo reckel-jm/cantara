@@ -245,46 +245,43 @@ implementation
 
 procedure TfrmSongs.loadRepo(repoPath: String);
 var
-  SearchResult: TSearchRec;
-  i, c: Integer;
+  SongPath: String;
   songName: String;
-  fileExtension: String;
   song: TRepoFile;
+  FindAllFilesSearchResult: TStringList;
+  Pathlist: Array of String;
 begin
   // Delete everything in repo if there is something.
   for song In repo do
     song.Free;
   SetLength(repo, 0);
-  if FindFirst(repoPath + PathDelim + '*', faAnyFile, SearchResult) = 0 then
+  FindAllFilesSearchResult := FindAllFiles(repoPath, '*.txt;*.song;*.ccli', True);
+
+  if FindAllFilesSearchResult.Count > 0 then
   begin
     lbxSRepo.Clear;
     setlength(repo, 0);
-    repeat
-      // get the file extension
-      fileExtension := ExtractFileExt(SearchResult.Name);
-      if ((SearchResult.Name[1] <> '.') And ((fileExtension = '.song') Or
-        (fileExtension = '.txt') Or (fileExtension = '.ccli'))) then
-        { only allow compatible file formats }
-      begin
-        // Finde den letzten Punkt
-        songName := SearchResult.Name + '.';
-        i := -1;
-        for i := 1 to length(SearchResult.Name) do
-          if songName[i] = '.' then c := i;
-        // Entferne die Dateiendung
-        songName := copy(songName, 1, c - 1);
-        lbxSRepo.Items.Add(songName);
-        setlength(repo, length(repo) + 1);
-        // Füllen des Repo-Arrays zur späteren Fehlerkorrektur!
-        repo[(length(repo) - 1)] := TRepoFile.Create;
-        repo[(length(repo) - 1)].Name := songName;
-        repo[(length(repo) - 1)].FileName := SearchResult.Name;
-        repo[(length(repo) - 1)].FilePath := repoPath + PathDelim + SearchResult.Name;
-        repo[(length(repo) - 1)].FileExtension := fileExtension;
-      end;
-    until FindNext(SearchResult) <> 0;
+    for SongPath in FindAllFilesSearchResult do
+    begin
+      { Check whether song is in archive -> then ignore it and don't import it }
+      Pathlist := SongPath.Split(PathDelim);
+      if (Length(Pathlist) > 2) and ((Pathlist[Length(Pathlist)-2]) = 'archive') then
+         Continue;
+
+      songName := ExtractFileNameOnly(SongPath);
+      lbxSRepo.Items.Add(songName);
+      setlength(repo, length(repo) + 1);
+
+      { Fill the record array with the data }
+      repo[(length(repo) - 1)] := TRepoFile.Create;
+      repo[(length(repo) - 1)].Name := songName;
+      repo[(length(repo) - 1)].FileName := ExtractFileName(SongPath);
+      repo[(length(repo) - 1)].FilePath := SongPath;
+      repo[(length(repo) - 1)].FileExtension := ExtractFileExt(SongPath);
+    end;
   end;
-  FindClose(SearchResult);
+
+  FindAllFilesSearchResult.Free;
 end;
 
 procedure TfrmSongs.itemAboutClick(Sender: TObject);
