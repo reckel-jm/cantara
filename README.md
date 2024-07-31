@@ -1,10 +1,12 @@
 <div align="center">
+
 ![](icons/128.png)
 
 # Cantara
 
 <span style="font-size:1.5em;">A program for quick, easy but beautiful hymn presenting in churches.</span>
 </div>
+
 ![](https://www.cantara.app/images/cantara.gif)
 
 Cantara is a simple open source song presentation software written in Free Pascal/Lazarus which allows people to spontanously present song lyrics for a bigger audience for the purpose of singing together. This is especially useful for church groups and meetings. 
