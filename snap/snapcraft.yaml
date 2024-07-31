@@ -62,6 +62,7 @@ parts:
       apt -y install "./libqt5pas1_2.15-1_amd64.deb" "./libqt5pas-dev_2.15-1_amd64.deb"
       cd src
       lazbuild --ws="qt5" bgrabitmap/bgrabitmap/bgrabitmappack.lpk
+      lazbuild --ws="qt5" metadarkstyle/metadarkstyle.lpk
       lazbuild -B --bm="ReleaseConfined" --ws="qt5" Cantara.lpi
       cp -r languages $SNAPCRAFT_PART_INSTALL/
       install Cantara.ico $SNAPCRAFT_PART_INSTALL/
