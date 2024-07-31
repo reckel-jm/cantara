@@ -1,19 +1,18 @@
 object frmInfo: TfrmInfo
   Left = -3
-  Height = 331
+  Height = 356
   Top = -30
   Width = 497
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'About this Program'
-  ClientHeight = 331
+  ClientHeight = 356
   ClientWidth = 497
   KeyPreview = True
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poMainFormCenter
-  LCLVersion = '3.2.0.0'
   object lblAuthor: TLabel
     Left = 0
     Height = 21
@@ -70,15 +69,14 @@ object frmInfo: TfrmInfo
     WordWrap = True
   end
   object btnOpenGitRepo: TButton
-    AnchorSideTop.Control = lblInfo
+    AnchorSideTop.Control = btnOpenLicense
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Side = asrBottom
     Left = 0
     Height = 25
-    Top = 281
+    Top = 306
     Width = 497
     Anchors = [akTop, akRight]
-    BorderSpacing.Top = 10
     Caption = 'Open Github Repository with Browser'
     ParentFont = False
     TabOrder = 0
@@ -88,7 +86,7 @@ object frmInfo: TfrmInfo
     AnchorSideRight.Side = asrBottom
     Left = 393
     Height = 105
-    Top = 10
+    Top = 15
     Width = 104
     Anchors = [akRight]
     Picture.Data = {
@@ -660,12 +658,30 @@ object frmInfo: TfrmInfo
     AnchorSideRight.Side = asrBottom
     Left = 0
     Height = 25
-    Top = 306
+    Top = 331
     Width = 497
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Open Project''s Webpage with Browser'
+    Font.Height = -15
+    Font.Name = 'Noto Sans'
+    Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
     OnClick = btnOpenWebpageClick
+  end
+  object btnOpenLicense: TButton
+    AnchorSideTop.Control = lblInfo
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Side = asrBottom
+    Left = 0
+    Height = 25
+    Top = 281
+    Width = 497
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 10
+    Caption = 'Show used libraries and licenses'
+    ParentFont = False
+    TabOrder = 2
+    OnClick = btnOpenLicenseClick
   end
 end

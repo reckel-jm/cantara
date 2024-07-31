@@ -1,0 +1,37 @@
+object ThirdPartyLibrariesForm: TThirdPartyLibrariesForm
+  Left = 438
+  Height = 399
+  Top = 33
+  Width = 805
+  Caption = 'Third Party Libraries'
+  ClientHeight = 399
+  ClientWidth = 805
+  OnCreate = FormCreate
+  object IpHtmlPanel: TIpHtmlPanel
+    Left = 0
+    Height = 399
+    Top = 0
+    Width = 805
+    Align = alClient
+    ALinkColor = clActiveCaption
+    BgColor = clBackground
+    FixedTypeface = 'Courier'
+    DefaultTypeFace = 'default'
+    DefaultFontSize = 12
+    FlagErrors = False
+    LinkColor = clActiveCaption
+    LinksUnderlined = True
+    PrintSettings.MarginLeft = 0.5
+    PrintSettings.MarginTop = 0.5
+    PrintSettings.MarginRight = 0.5
+    PrintSettings.MarginBottom = 0.5
+    PrintSettings.Preview.Left = 480
+    PrintSettings.Preview.Top = 270
+    PrintSettings.Preview.Width = 1440
+    PrintSettings.Preview.Height = 810
+    TabOrder = 0
+    TextColor = clWindowText
+    VLinkColor = clActiveCaption
+    WantTabs = False
+  end
+end

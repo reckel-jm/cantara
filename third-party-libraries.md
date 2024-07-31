@@ -14,6 +14,7 @@ Cantara has been built with the [Lazarus IDE](https://www.lazarus-ide.org/) and 
 
 Cantara uses the [LCL](https://wiki.freepascal.org/LCL) released under a modified LGPL. See [licening in the FPC wiki](https://wiki.lazarus.freepascal.org/licensing) for detailed license information.
 Beside the standard libraries of Lazarus, the following packages have been used:
+
 * [bgrabitmap](https://github.com/bgrabitmap/bgrabitmap): released under a [modified LGPL](https://github.com/bgrabitmap/bgrabitmap/blob/master/COPYING.modifiedLGPL.txt)
 * [MetaDarkStyle](https://github.com/zamtmn/metadarkstyle): released under LGPL 2.1 or later
 

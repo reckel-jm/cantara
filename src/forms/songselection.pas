@@ -5,7 +5,7 @@ unit SongSelection;
 interface
 
 uses
-  LCLType, LCLIntf, Classes, SysUtils, FileUtil, RTTICtrls, Forms,
+  LCLType, LCLIntf, Classes, SysUtils, FileUtil, LazFileUtils, RTTICtrls, Forms,
   Controls, Graphics, Dialogs, StrUtils, Math,
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles,
   DefaultTranslator, Clipbrd,

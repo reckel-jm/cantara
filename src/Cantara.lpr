@@ -1,3 +1,8 @@
+{
+  This is the main unit for the program Cantara. It imports all units used for
+  implementing forms and starts the program.
+  Many things are handled automatically by the Lazarus IDE, but some epecific changes have been made.
+}
 program Cantara;
 
 {$mode objfpc}{$H+}
@@ -29,8 +34,15 @@ uses
   markup,
   imageexport,
   loadimagethread, CantaraStandardDialogs, presentationcontroller,
-  cantarafontdialog, exporterinterfaces
+  cantarafontdialog, exporterinterfaces, thirdpartylibraries
   {$IFDEF WINDOWS}
+  {
+   On Windows, WinForms normally does not adjust to darkmode. We will use the Lazarus package MetaDarkStyle which sets the colors
+   to dark style variants according to the system settings.
+   However, that also means that we have to be careful when manually setting colors – don't hard code them if it is part of a
+   component etc.
+   Linux and Mac OS X doen't already support dark mode out of the box, so the extra package is not needed.
+  }
   ,
   uDarkStyleParams,
   uMetaDarkStyle,
@@ -45,6 +57,7 @@ begin
   {$endIf}
   Application.Scaled:=True;
   {$IFDEF WINDOWS}
+  { Only under Windows, we will set the darkmode according to the system settings. }
   RequireDerivedFormResource:=True;
   PreferredAppMode:=pamAllowDark;
   uMetaDarkStyle.ApplyMetaDarkStyle(DefaultDark);
@@ -63,5 +76,6 @@ begin
   Application.CreateForm(TFormPadding, FormPadding);
   Application.CreateForm(TFrmMarkupExport, FrmMarkupExport);
   Application.CreateForm(TFormImageExport, FormImageExport);
+  Application.CreateForm(TThirdPartyLibrariesForm, ThirdPartyLibrariesForm);
   Application.Run;
 end.

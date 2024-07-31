@@ -14,6 +14,7 @@ type
 
   TfrmInfo = class(TForm)
     btnOpenGitRepo: TButton;
+    btnOpenLicense: TButton;
     btnOpenWebpage: TButton;
     imgLogo: TImage;
     lblInfo: TLabel;
@@ -22,6 +23,7 @@ type
     lblCompDate: TLabel;
     lblAuthor: TLabel;
     procedure btnOpenGitRepoClick(Sender: TObject);
+    procedure btnOpenLicenseClick(Sender: TObject);
     procedure btnOpenWebpageClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -51,6 +53,9 @@ implementation
 
 {$R *.lfm}
 
+uses
+  thirdpartylibraries;
+
 { TfrmInfo }
 
 procedure TfrmInfo.FormCreate(Sender: TObject);
@@ -78,6 +83,11 @@ end;
 procedure TfrmInfo.btnOpenGitRepoClick(Sender: TObject);
 begin
   OpenUrl(GITHUBREPO);
+end;
+
+procedure TfrmInfo.btnOpenLicenseClick(Sender: TObject);
+begin
+  ThirdPartyLibrariesForm.Show;
 end;
 
 procedure TfrmInfo.btnOpenWebpageClick(Sender: TObject);

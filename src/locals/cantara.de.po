@@ -423,6 +423,10 @@ msgstr ""
 msgid "Open Github Repository with Browser"
 msgstr "Öffne das Github-Repository im Webbrowser"
 
+#: tfrminfo.btnopenlicense.caption
+msgid "Show used libraries and licenses"
+msgstr ""
+
 #: tfrminfo.btnopenwebpage.caption
 msgid "Open Project's Webpage with Browser"
 msgstr "Öffne die Projektwebseite im Browser"

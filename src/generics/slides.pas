@@ -1,4 +1,6 @@
-{ Unit for handling the logic of the slides in Cantara
+{ Unit for handling the logic and structure of the slides in Cantara.
+  The structure of the slide defines what a slide might represent, and which content is located in it.
+  It does not handle the actual drawing.
 
   Copyright (C) 2023 Jan Martin Reckel
 
@@ -28,16 +30,37 @@ uses
 
 type
 
-  SlideTypeEnum = (TitleSlide, SlideWithSpoiler, SlideWithoutSpoiler, EmptySlide);
+  { A Slide does have to have a slide type. Depending on the type, the content which is available and the drawing/export
+  should is handled differently. }
+  SlideTypeEnum = (
+                { SlideType which represents a slide which shows a song title at the beginning of a song. }
+                TitleSlide,
+                { SlideType which represents a slide which shows song content with a spoiler (next part) }
+                SlideWithSpoiler,
+                { SlideType which represents a slide which shows song content without a spoiler (next part) }
+                SlideWithoutSpoiler,
+                { SlideType which represents a slide which is empty and used as a placeholder }
+                EmptySlide
+                );
 
-  { This record has all the settings required for a presentation slide }
+  {
+    This record contains settings required for the correct generation of slides and its contents out of a song.
+    It will be most likely loaded from the user settings.
+  }
   TSlideSettings = record
+    { Defines whether spoiler text is used. }
     SpoilerText: Boolean;
+    { Defines whether there should be a title slide generated }
     TitleSlide: Boolean;
+    { Show meta information in the buttom left corner of the first slide with song content }
     FirstSlideMeta: Boolean;
+    { Show meta information in the buttom left corner of the last slide with song content }
     LastSlideMeta: Boolean;
+    { Syntax used for generating meta information }
     MetaSyntax: String;
-    EmptyFrame: Boolean;
+    { Add an empty slide between songs }
+    EmptySlideBetweenSongs: Boolean;
+    { The maximal number of lines which are allowed at one line }
     MaxSlideLineLength: Integer;
   end;
 
@@ -204,7 +227,7 @@ begin
   end;
 
   { Add an empty frame if selected in the settings }
-  if SlideSettings.EmptyFrame then
+  if SlideSettings.EmptySlideBetweenSongs then
   begin
     // We create a slide but with no content
     Slide := TSlide.Create;

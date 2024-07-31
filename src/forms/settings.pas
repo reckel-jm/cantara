@@ -521,7 +521,7 @@ function TfrmSettings.ExportSlideSettings: TSlideSettings;
 var
   SlideSettings: TSlideSettings;
 begin
-  SlideSettings.EmptyFrame := cbEmptyFrame.Checked;
+  SlideSettings.EmptySlideBetweenSongs := cbEmptyFrame.Checked;
   SlideSettings.FirstSlideMeta := cbMetaDataFirstSlide.Checked;
   SlideSettings.LastSlideMeta := cbMetaDataLastSlide.Checked;
   SlideSettings.MaxSlideLineLength := seWrapLines.Value;
