@@ -1,7 +1,7 @@
 <div align="center"
-![](https://github.com/reckel-jm/cantara/blob/master/icons/128.png?raw=true)
+![](https://raw.githubusercontent.com/reckel-jm/cantara/master/icons/128.png)
 
-# Cantara
+<h1>Cantara</h1>
 
 <span style="font-size:1.5em;">A program for quick, easy but beautiful hymn presenting in churches.</span>
 
