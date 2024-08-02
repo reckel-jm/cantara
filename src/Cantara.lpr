@@ -22,19 +22,11 @@ uses
   welcome,
   songeditor,
   { you can add units after this }
-  slides,
-  fulltextsearch,
-  FormFulltextSearch,
-  pptx,
-  resourcehandling,
-  PresentationCanvas,
-  settingsdetailed,
-  settingspadding,
-  formMarkupExport,
-  markup,
-  imageexport,
-  loadimagethread, CantaraStandardDialogs, presentationcontroller,
-  cantarafontdialog, exporterinterfaces, thirdpartylibraries
+  slides, fulltextsearch, FormFulltextSearch, pptx, resourcehandling,
+  PresentationCanvas, settingsdetailed, settingspadding, formMarkupExport,
+  markup, imageexport, loadimagethread, CantaraStandardDialogs,
+  presentationcontroller, cantarafontdialog, exporterinterfaces,
+  thirdpartylibraries, flatpakhandling, settingshandler
   {$IFDEF WINDOWS}
   {
    On Windows, WinForms normally does not adjust to darkmode. We will use the Lazarus package MetaDarkStyle which sets the colors

@@ -12,7 +12,7 @@ uses
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
   FormFulltextSearch, PPTX, PresentationCanvas,
   formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
-  presentationcontroller, Types,bgrabitmap, BGRABitmapTypes
+  presentationcontroller, Types,bgrabitmap, BGRABitmapTypes, FlatpakHandling
   ;
 
 type
@@ -404,6 +404,11 @@ begin
     end;
   finally
   end;
+
+  {$if defined(Container)}
+    if (lbxSRepo.Count > 0) and (FlatpakHandling.CheckPortalUsed(frmSettings))
+       then ShowMessage(flatpakhandling.MessageCantaraNeedsPortalUse);
+  {$endif}
 end;
 
 procedure TfrmSongs.FilterListBox(s: String);

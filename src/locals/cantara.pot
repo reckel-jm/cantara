@@ -17,6 +17,10 @@ msgstr ""
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
 msgstr ""
 
+#: flatpakhandling.messagecantaraneedsportaluse
+msgid "You are using Cantara with Flathub. Cantara does now not require any default permissions and therefore is not able to access any files or folders unless you have selected them in a file chooser dialog. Please reselect the song repository once again – and also the background image if in use – so that they can be opened by Cantara."
+msgstr ""
+
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
 msgstr ""

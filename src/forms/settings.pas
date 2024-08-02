@@ -9,13 +9,13 @@ uses
   Buttons, ComCtrls, Spin, INIfiles, LCLTranslator, DefaultTranslator, ExtDlgs,
   LCLINTF, LCLType, ExtCtrls, ActnList, Present, Lyrics, Slides,
   ResourceHandling, PresentationCanvas, settingspadding, loadimagethread,
-  PresentationModels, CantaraFontDialog;
+  PresentationModels, CantaraFontDialog, settingshandler;
 
 type
 
   { TfrmSettings }
 
-  TfrmSettings = class(TForm)
+  TfrmSettings = class(TForm, ISettingsHandler)
     BgPictureFileDialog: TOpenDialog;
     btnBackgroundColor: TButton;
     btnClose: TButton;
@@ -98,6 +98,9 @@ type
     {Exports the slide settings as TSlideSettings record }
     function ExportSlideSettings: TSlideSettings;
     function ExportPresentationStyleSettings: TPresentationStyleSettings;
+    function GetRepositoryPath: String;
+    function GetSettingsFile: TINIFile;
+    procedure SetPortalsUsedFlag;
   end;
 
   { This function returns the path of the folder with the default pictures.
@@ -590,6 +593,21 @@ begin
     THorizontalAlignEnum(comboHorizontal.ItemIndex);
   PresentationStyleSettings.Padding := FormPadding.frmSettingsDetailed.ExportPadding;
   Result := PresentationStyleSettings;
+end;
+
+function TfrmSettings.GetRepositoryPath: String;
+begin
+  Result := edtRepoPath.Text;
+end;
+
+function TfrmSettings.GetSettingsFile: TINIFile;
+begin
+  Result := SettingsFile;
+end;
+
+procedure TfrmSettings.SetPortalsUsedFlag;
+begin
+  SettingsFile.WriteBool('Flathub', 'Portals used', true);
 end;
 
 end.

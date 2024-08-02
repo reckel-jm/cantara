@@ -28,6 +28,10 @@ msgstr "此文檔不可被轉換。請確認您已獲取寫入曲庫的權限！
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
 msgstr "此文檔不可被重命名。請確認您已獲取寫入曲庫的權限！"
 
+#: flatpakhandling.messagecantaraneedsportaluse
+msgid "You are using Cantara with Flathub. Cantara does now not require any default permissions and therefore is not able to access any files or folders unless you have selected them in a file chooser dialog. Please reselect the song repository once again – and also the background image if in use – so that they can be opened by Cantara."
+msgstr ""
+
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
 msgstr "從文件加載模板..."
