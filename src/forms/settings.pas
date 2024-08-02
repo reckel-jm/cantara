@@ -16,6 +16,7 @@ type
   { TfrmSettings }
 
   TfrmSettings = class(TForm)
+    BgPictureFileDialog: TOpenDialog;
     btnBackgroundColor: TButton;
     btnClose: TButton;
     btnFontSizeManually: TButton;
@@ -245,14 +246,30 @@ begin
 end;
 
 procedure TfrmSettings.btnBackgroundImageClick(Sender: TObject);
+var
+  UsedOpenDialog: TOpenDialog;
 begin
-  if (BgPictureDialog.Execute) And (FileExists(BgPictureDialog.FileName)) then
+  {
+   On containerized environments like flatpak, the file chooser dialog is used
+   as portal to grant permissions. The Lazarus TPictureDialog is not supported by Qt
+   and would therefore not find any file under Flatpak. That is why we have to
+   use a normal TOpenFileDialog under Flatpak.
+  }
+  {$IF defined(CONTAINER)}
+  UsedOpenDialog := BgPictureFileDialog as TOpenDialog;
+  {$ELSE}
+  UsedOpenDialog := BgPictureDialog;
+  {$ENDIF}
+  if (UsedOpenDialog.Execute) And (FileExists(UsedOpenDialog.FileName)) then
   begin
+    {$IF defined(CONTAINER)}
+    BgPictureDialog.FileName := UsedOpenDialog.FileName;
+    {$ENDIF}
     changedBackground := True;
     cbShowBackgroundImage.Checked := True;
     LoadPreviewImage;
   end
-  else if Not (FileExists(BgPictureDialog.FileName)) then
+  else if Not (FileExists(UsedOpenDialog.FileName)) then
     cbShowBackgroundImage.Checked := False;
 end;
 
