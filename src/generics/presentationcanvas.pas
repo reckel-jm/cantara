@@ -316,7 +316,7 @@ begin
     Bitmap.FontStyle += [fsBold];
 
   { Painting the main text }
-  Bitmap.TextRect(ContentRect, Slide.PartContent.MainText, TextStyle.Alignment, tlCenter,
+  Bitmap.TextRect(ContentRect, ContentRect.left, ContentRect.Top, Slide.PartContent.MainText, TextStyle,
                                ColorToBgra(PresentationStyleSettings.TextColor));
 
   // Repeat Assignment because we changed it to bold before
