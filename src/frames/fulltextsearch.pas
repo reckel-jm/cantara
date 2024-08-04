@@ -15,6 +15,7 @@ type
     Song: TSong;
     ContentIndex: String;
     TagIndex: String;
+    RepoFileEntry: TRepoFile;
     destructor Destroy; override;
   end;
 
@@ -75,6 +76,7 @@ begin
   for RepoEntry In Songselection.Repo do
   begin
     IndexEntry := TIndexEntry.Create;
+    IndexEntry.RepoFileEntry:=RepoEntry;
     TempSong := TSong.Create;
     TempSong.importSongfile(RepoEntry.FilePath);
     IndexEntry.Song := TempSong;
@@ -114,8 +116,8 @@ begin
     Content.PageIndex := 3;
     Exit;
   end;
-  Content.PageIndex := 1;
   ListboxResults.Clear;
+  Content.PageIndex := 1;
   for i := 0 to IndexList.Count - 1 do
   begin
     ContentString := IndexList.Items[i].ContentIndex;
@@ -133,7 +135,7 @@ begin
           Length(ContentString) - PosInContentIndex, 70) - 1]
       else if PosInFileName > 0 then
         AddedContent += StrSongTitle;
-      ListBoxResults.Items.Add(AddedContent);
+      ListBoxResults.AddItem(AddedContent, IndexList[i].RepoFileEntry);
     end;
   end;
   if ListBoxResults.Count = 0 then Content.PageIndex := 2;
@@ -142,19 +144,17 @@ end;
 procedure TFrmFulltextsearch.ListBoxResultsDblClick(Sender: TObject);
 var
   { The song which has been selected in the search }
-  selectedSongName: String;
+  SelectedSongName: String;
 begin
-  selectedSongName := ListBoxResults.Items[ListBoxResults.ItemIndex].Split(
-      PathSeparator)[0];
+  SelectedSongName := TRepoFile(ListBoxResults.Items.Objects[ListBoxResults.ItemIndex]).Name;
 
   if frmSongs.ProgramMode = TProgramMode.ModeSelection then
-    frmSongs.lbxSselected.Items.Add(ListBoxResults.Items[ListBoxResults.ItemIndex].Split(
-      PathSeparator)[0])
+    frmSongs.lbxSselected.AddItem(SelectedSongName, ListBoxResults.Items.Objects[ListBoxResults.ItemIndex])
   else if frmSongs.ProgramMode = TProgramMode.ModeMultiscreenPresentation then
   begin
-    if frmSongs.lbxSSelected.Items.IndexOf(selectedSongName) > -1 then
+    if frmSongs.lbxSSelected.Items.IndexOf(SelectedSongName) > -1 then
     begin
-      frmSongs.lbxSselected.ItemIndex:=frmSongs.lbxSSelected.Items.IndexOf(selectedSongName);
+      frmSongs.lbxSselected.ItemIndex:=frmSongs.lbxSSelected.Items.IndexOf(SelectedSongName);
       frmSongs.lbxSselected.OnClick(self);
     end;
   end;
