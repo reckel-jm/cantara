@@ -406,8 +406,12 @@ begin
   end;
 
   {$if defined(Container)}
-    if (lbxSRepo.Count > 0) and (FlatpakHandling.CheckPortalUsed(frmSettings))
-       then ShowMessage(flatpakhandling.MessageCantaraNeedsPortalUse);
+    if (lbxSRepo.Count = 0) and (not FlatpakHandling.CheckPortalUsed(frmSettings)) then
+    begin
+      ShowMessage(flatpakhandling.MessageCantaraNeedsPortalUse);
+      frmSettings.btnSelectDirClick(frmSongs);
+      Self.AskToReloadRepo;
+    end;
   {$endif}
 end;
 

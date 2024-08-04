@@ -233,7 +233,12 @@ end;
 procedure TfrmSettings.btnSelectDirClick(Sender: TObject);
 begin
   if SelectDirectoryDialog.Execute then
+  begin
     edtRepoPath.Text := SelectDirectoryDialog.FileName;
+    {$IF defined(CONTAINER)}
+    Self.SetPortalsUsedFlag;
+    {$ENDIF}
+  end;
 end;
 
 procedure TfrmSettings.btnFontSizeManuallyClick(Sender: TObject);
@@ -608,6 +613,7 @@ end;
 procedure TfrmSettings.SetPortalsUsedFlag;
 begin
   SettingsFile.WriteBool('Flathub', 'Portals used', true);
+  SettingsFile.UpdateFile;
 end;
 
 end.

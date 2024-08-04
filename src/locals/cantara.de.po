@@ -29,7 +29,9 @@ msgid "The File can not be renamed. Make sure that you have the permissions to w
 msgstr "Die Datei kann nicht umbenannt werden. Bitte stellen Sie sicher, dass Sie die notwendigen Berechtigungen haben, um auf das Liederverzeichnis zugreifen zu können!"
 
 #: flatpakhandling.messagecantaraneedsportaluse
-msgid "You are using Cantara with Flathub. Cantara does now not require any default permissions and therefore is not able to access any files or folders unless you have selected them in a file chooser dialog. Please reselect the song repository once again – and also the background image if in use – so that they can be opened by Cantara."
+msgid ""
+"You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
+"Thank you for your understanding!"
 msgstr ""
 
 #: formmarkupexport.strloadtemplatefromfile

@@ -13,7 +13,11 @@ uses
 function CheckPortalUsed(ASettingsHandler: ISettingsHandler): Boolean;
 
 ResourceString
-  MessageCantaraNeedsPortalUse = 'You are using Cantara with Flathub. Cantara does now not require any default permissions and therefore is not able to access any files or folders unless you have selected them in a file chooser dialog. Please reselect the song repository once again – and also the background image if in use – so that they can be opened by Cantara.';
+  MessageCantaraNeedsPortalUse = 'You are using Cantara as a Flatpak. ' +
+    'Due to an update of the permissions, Cantara can''t access your home directory anymore which helps to make your ' +
+    'system securer. However, that also means that you have to select the song repository path once again, so that Cantara ' +
+    'will be granted access to that directory. You also need to select the background image once again if you had one in use.'
+    + LineEnding + 'Thank you for your understanding!';
 
 implementation
 

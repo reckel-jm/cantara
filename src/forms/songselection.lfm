@@ -5,8 +5,8 @@ object frmSongs: TfrmSongs
   Width = 1230
   AllowDropFiles = True
   Caption = 'Cantara'
-  ClientHeight = 700
-  ClientWidth = 1230
+  ClientHeight = 207
+  ClientWidth = 320
   Menu = MainMenu
   OnActivate = FormActivate
   OnChangeBounds = FormResize
@@ -19,6 +19,7 @@ object frmSongs: TfrmSongs
   OnShow = FormShow
   OnWindowStateChange = FormResize
   Position = poScreenCenter
+  LCLVersion = '3.4.0.0'
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
