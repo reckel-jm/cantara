@@ -1133,18 +1133,21 @@ var
   ABitmap:TBgraBitmap;
   {Determines whether the part is at the edge (the first or last part of a song }
   Edge: Boolean;
+  WrappedText: String;
 begin
   Edge := False;
   if Index > SlideTextListBox.Count then Exit;
 
   ABitmap := TBgraBitmap.Create(ARect.Width, ARect.Height, clAppWorkspace);
 
-  ABitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
   ABitmap.CanvasBGRA.TextStyle.SingleLine:=False;
+  ABitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
+  ABitmap.CanvasBGRA.TextStyle.Opaque:=False;
 
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.FontName:=Screen.SystemFont.Name;
   ABitmap.FontQuality:=fqSystem;
+  WrappedText := PresentationCanvas.GetWordWrappedString(SlideTextListBox.Items[Index], ABitmap.FontName, ABitmap.FontHeight, ABitmap.FontStyle, SlideTextListBox.Width);
   if odSelected in State then
   begin
     ABitmap.FillRect(1,1,ABitmap.Width-1, ABitmap.Height-1, clHighlight, dmSet);
@@ -1167,7 +1170,7 @@ begin
      ABitmap.FontStyle+=[fsBold];
   end;
   ABitmap.TextRect(Rect(5,5,ABitmap.Width-5, ABitmap.Height-5),
-                    SlideTextListBox.Items[Index], taLeftJustify, tlTop,
+                    WrappedText, taLeftJustify, tlTop,
                     ColorToRGB(TextColor)
                     );
   try
@@ -1210,16 +1213,18 @@ procedure TfrmSongs.SlideTextListBoxMeasureItem(Control: TWinControl;
   Index: Integer; var AHeight: Integer);
 var
   ABitmap:TBgraBitmap;
+  WrappedText: String;
 begin
   if Index > SlideTextListBox.Count-1 then Exit;
 
   ABitmap := TBgraBitmap.Create;
   ABitmap.FontName:=Screen.SystemFont.Name;
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
-  ABitmap.SetSize(SlideTextListBox.Width, SlideTextListBox.Height);
-  ABitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
   ABitmap.CanvasBGRA.TextStyle.SingleLine:=False;
-  AHeight:=ABitmap.TextSize(SlideTextListBox.Items[Index],SlideTextListBox.Width).Height;
+  ABitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
+  ABitmap.SetSize(SlideTextListBox.Width, Self.Height);
+  WrappedText := PresentationCanvas.GetWordWrappedString(SlideTextListBox.Items[Index], ABitmap.FontName, ABitmap.FontHeight, ABitmap.FontStyle, SlideTextListBox.Width);
+  AHeight:=ABitmap.TextSize(WrappedText,SlideTextListBox.Width).Height;
   AHeight += 10;
   ABitmap.Destroy;
 end;

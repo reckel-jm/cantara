@@ -5,10 +5,10 @@ unit PresentationCanvas;
 interface
 
 uses
-  Classes, SysUtils, Slides, LCLType, LCLIntf, Graphics, graphtype,
+  Classes, SysUtils, Slides, LCLType, LCLIntf, graphtype,
   intfgraphics, Math, LazCanvas,
   StrUtils, // for SplitString
-  fpImage, PresentationModels, BGRABitmap, BGRABitmapTypes;
+  fpImage, PresentationModels, BGRABitmap, BGRABitmapTypes, BGRAGraphics, Graphics;
 
 type
 
@@ -37,6 +37,14 @@ type
     procedure AssignBGRAFont(Font: TFont);
   end;
 
+  { Returns a wordwrapped string of a given string. }
+  function GetWordWrappedString(
+    Text: String;
+    FontName: String;
+    FontHeight: Integer;
+    FontStyle: BGRAGRAPHICS.TFontStyles;
+    MaxWidth: Integer): String;
+
 const
   PADDING: Integer = 15;
   MINSPOILERDISTANCE: Integer = 10;
@@ -45,6 +53,59 @@ const
 procedure DestroyPresentationStyleSettings(var APresentationStyleSetting: TPresentationStyleSettings);
 
 implementation
+
+function GetWordWrappedString(Text: String; FontName: String;
+  FontHeight: Integer; FontStyle: BGRAGRAPHICS.TFontStyles; MaxWidth: Integer): String;
+var
+  BGRABitmap: TBGRABitmap;
+  LetterIndex: Integer;
+  CurrentWord: String;
+  CurrentLine: String;
+  CurrentLetter: String;
+begin
+  BGRABitmap := TBGRABitmap.Create;
+  BGRABitmap.SetSize(MaxWidth, 1000);
+  BGRABitmap.FontName:=FontName;
+  BGRABitmap.FontHeight:=FontHeight;
+  BGRABitmap.FontStyle:=FontStyle;
+
+  CurrentWord := '';
+  CurrentLine := '';
+  Result := '';
+
+  for LetterIndex := 1 to Length(Text) do
+  begin
+    CurrentLetter := Text[LetterIndex];
+
+    if (CurrentLetter = ' ') or (CurrentLetter = LineEnding) or (LetterIndex = Length(Text)) then
+    begin
+      // Test whether the text and the current word would still fit
+      if BGRABitmap.TextSize(CurrentLine + ' ' + CurrentWord).Width <= MaxWidth then
+      begin
+        // Add the word
+        CurrentLine := CurrentLine + CurrentWord + CurrentLetter;
+        CurrentWord := '';
+        if CurrentLetter <> ' ' then
+        begin
+          Result := Result + CurrentLine;
+          CurrentLine := '';
+        end;
+      end
+      // Text does not fit on the line anymore -> perform a line break
+      else
+      begin
+        Result := Result + CurrentLine + LineEnding + CurrentWord + ' ';
+        CurrentWord := '';
+        CurrentLine := '';
+      end;
+    end
+    else
+    begin
+      CurrentWord := CurrentWord + CurrentLetter;
+    end;
+  end;
+  BGRABitmap.Destroy;
+end;
 
 procedure DestroyPresentationStyleSettings(
   var APresentationStyleSetting: TPresentationStyleSettings);
@@ -376,5 +437,7 @@ begin
   Bitmap.FontStyle := Font.Style;
   Bitmap.FontHeight:= Round(Font.Height/0.85);
 end;
+
+
 
 end.
