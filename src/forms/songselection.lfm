@@ -19,7 +19,6 @@ object frmSongs: TfrmSongs
   OnShow = FormShow
   OnWindowStateChange = FormResize
   Position = poScreenCenter
-  LCLVersion = '3.4.0.0'
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
@@ -241,7 +240,6 @@ object frmSongs: TfrmSongs
       OnDrawItem = SlideTextListBoxDrawItem
       OnKeyDown = SlideTextListBoxKeyDown
       OnMeasureItem = SlideTextListBoxMeasureItem
-      OnResize = SlideTextListBoxResize
     end
   end
   object lbxSRepo: TListBox
@@ -278,7 +276,6 @@ object frmSongs: TfrmSongs
     Width = 1
     Align = alNone
     Anchors = [akTop, akBottom]
-    OnMoved = PnlSplitterMoved
   end
   object grbControl: TPanel
     AnchorSideLeft.Control = lbxSRepo

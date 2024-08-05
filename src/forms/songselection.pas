@@ -142,7 +142,6 @@ type
     procedure itemAboutClick(Sender: TObject);
     procedure itemReloadSongListClick(Sender: TObject);
     procedure pnlMultiScreenResize(Sender: TObject);
-    procedure PnlSplitterMoved(Sender: TObject);
     { Creates the song list data }
     procedure CreateSongListData;
     { Opens the selected songs and creates the presentation data from the selected songs. }
@@ -155,7 +154,6 @@ type
       Shift: TShiftState);
     procedure SlideTextListBoxMeasureItem(Control: TWinControl; Index: Integer;
       var AHeight: Integer);
-    procedure SlideTextListBoxResize(Sender: TObject);
     procedure SongPopupMenuPopup(Sender: TObject);
     procedure TimerUpdateScreenTimer(Sender: TObject);
     { Updates the Song Position in lbxSSelected during a presentation }
@@ -320,11 +318,6 @@ begin
   else if (imgLiveViewer.Picture.Bitmap.Width > 0) then
     imgLiveViewer.Height := round(imgLiveViewer.Width *
       imgLiveViewer.Picture.Bitmap.Height / imgLiveViewer.Picture.Bitmap.Width);
-end;
-
-procedure TfrmSongs.PnlSplitterMoved(Sender: TObject);
-begin
-  // TODO: Add something here
 end;
 
 procedure TfrmSongs.FormResize(Sender: TObject);
@@ -1133,7 +1126,7 @@ var
   ABitmap:TBgraBitmap;
   {Determines whether the part is at the edge (the first or last part of a song }
   Edge: Boolean;
-  WrappedText: String;
+  DisplayedText: String;
 begin
   Edge := False;
   if Index > SlideTextListBox.Count then Exit;
@@ -1147,7 +1140,7 @@ begin
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.FontName:=Screen.SystemFont.Name;
   ABitmap.FontQuality:=fqSystem;
-  WrappedText := PresentationCanvas.GetWordWrappedString(SlideTextListBox.Items[Index], ABitmap.FontName, ABitmap.FontHeight, ABitmap.FontStyle, SlideTextListBox.Width);
+  DisplayedText := SlideTextListBox.Items[Index];
   if odSelected in State then
   begin
     ABitmap.FillRect(1,1,ABitmap.Width-1, ABitmap.Height-1, clHighlight, dmSet);
@@ -1170,7 +1163,7 @@ begin
      ABitmap.FontStyle+=[fsBold];
   end;
   ABitmap.TextRect(Rect(5,5,ABitmap.Width-5, ABitmap.Height-5),
-                    WrappedText, taLeftJustify, tlTop,
+                    DisplayedText, taLeftJustify, tlTop,
                     ColorToRGB(TextColor)
                     );
   try
@@ -1223,15 +1216,10 @@ begin
   ABitmap.CanvasBGRA.TextStyle.SingleLine:=False;
   ABitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
   ABitmap.SetSize(SlideTextListBox.Width, Self.Height);
-  WrappedText := PresentationCanvas.GetWordWrappedString(SlideTextListBox.Items[Index], ABitmap.FontName, ABitmap.FontHeight, ABitmap.FontStyle, SlideTextListBox.Width);
+  WrappedText := SlideTextListBox.Items[Index];
   AHeight:=ABitmap.TextSize(WrappedText,SlideTextListBox.Width).Height;
   AHeight += 10;
   ABitmap.Destroy;
-end;
-
-procedure TfrmSongs.SlideTextListBoxResize(Sender: TObject);
-begin
-  SlideTextListBox.Invalidate;
 end;
 
 procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);
