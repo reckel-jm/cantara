@@ -264,6 +264,7 @@ var
   SpoilerRectWidth: Integer;
   SpoilerDistance: Integer;
   SpoilerText: String;
+  DisplayedMainText: String;
   DefaultSpoilerDistance: Integer;
   TextStyle: TTextStyle;
 begin
@@ -291,9 +292,13 @@ begin
     Height := self.Height;
   end;
 
+  DisplayedMainText := GetWordWrappedString(Slide.PartContent.MainText, NormalTextFont.Name, NormalTextFont.Height, NormalTextFont.Style,
+    self.Width -
+    PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right);
+
   MainTextHeight := self.CalculateTextHeight(NormalTextFont, self.Width -
     PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right,
-    Slide.PartContent.MainText);
+    DisplayedMainText);
   MetaTextHeight := CalculateTextHeight(MetaTextFont, SpoilerRectWidth,
     Slide.PartContent.MetaText);
 
@@ -377,7 +382,7 @@ begin
     Bitmap.FontStyle += [fsBold];
 
   { Painting the main text }
-  Bitmap.TextRect(ContentRect, ContentRect.left, ContentRect.Top, Slide.PartContent.MainText, TextStyle,
+  Bitmap.TextRect(ContentRect, ContentRect.left, ContentRect.Top, DisplayedMainText, TextStyle,
                                ColorToBgra(PresentationStyleSettings.TextColor));
 
   // Repeat Assignment because we changed it to bold before
