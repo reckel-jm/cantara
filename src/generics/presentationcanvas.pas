@@ -85,7 +85,7 @@ begin
         // Add the word
         CurrentLine := CurrentLine + CurrentWord + CurrentLetter;
         CurrentWord := '';
-        if CurrentLetter = LineEnding then
+        if CurrentLetter <> ' ' then
         begin
           Result := Result + CurrentLine;
           CurrentLine := '';
