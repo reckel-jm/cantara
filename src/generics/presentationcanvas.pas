@@ -85,7 +85,7 @@ begin
         // Add the word
         CurrentLine := CurrentLine + CurrentWord + CurrentLetter;
         CurrentWord := '';
-        if CurrentLetter <> ' ' then
+        if CurrentLetter = LineEnding then
         begin
           Result := Result + CurrentLine;
           CurrentLine := '';
@@ -94,7 +94,7 @@ begin
       // Text does not fit on the line anymore -> perform a line break
       else
       begin
-        Result := Result + CurrentLine + LineEnding + CurrentWord + ' ';
+        Result := Result + CurrentLine + LineEnding + CurrentWord + CurrentLetter;
         CurrentWord := '';
         CurrentLine := '';
       end;
