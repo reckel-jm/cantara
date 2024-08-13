@@ -80,7 +80,7 @@ begin
     if (CurrentLetter = ' ') or (CurrentLetter = LineEnding) or (LetterIndex = Length(Text)) then
     begin
       // Test whether the text and the current word would still fit
-      if BGRABitmap.TextSize(CurrentLine + ' ' + CurrentWord).Width <= MaxWidth then
+      if BGRABitmap.TextSize(CurrentLine + ' ' + CurrentWord, MaxWidth).Width < MaxWidth then
       begin
         // Add the word
         CurrentLine := CurrentLine + CurrentWord + CurrentLetter;
@@ -391,6 +391,10 @@ begin
   {$if defined(DEBUGCANVAS)}
   { When the DEBUGCANVAS flag is set, we show some additional information for the debugging of the painting }
   Bitmap.Rectangle(ContentRect, clRed);
+  Bitmap.Rectangle(ContentRect.Left, ContentRect.Top,
+                                     ContentRect.Left+Bitmap.TextSize(DisplayedMainText, ContentRect.Width).Width,
+                                     ContentRect.Top+Bitmap.TextSize(DisplayedMainText, ContentRect.Width).Height,
+                                     clYellow);
   {$endif}
   Bitmap.TextRect(ContentRect, ContentRect.left, ContentRect.Top, DisplayedMainText, TextStyle,
                                ColorToBgra(PresentationStyleSettings.TextColor));
