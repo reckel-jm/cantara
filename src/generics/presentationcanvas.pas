@@ -292,9 +292,14 @@ begin
     Height := self.Height;
   end;
 
-  DisplayedMainText := GetWordWrappedString(Slide.PartContent.MainText, NormalTextFont.Name, NormalTextFont.Height, NormalTextFont.Style,
+  DisplayedMainText := GetWordWrappedString(
+    Slide.PartContent.MainText,
+    NormalTextFont.Name,
+    NormalTextFont.Height,
+    NormalTextFont.Style,
     self.Width -
-    PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right);
+    PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right
+  );
 
   MainTextHeight := self.CalculateTextHeight(NormalTextFont, self.Width -
     PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right,
@@ -382,6 +387,11 @@ begin
     Bitmap.FontStyle += [fsBold];
 
   { Painting the main text }
+
+  {$if defined(DEBUGCANVAS)}
+  { When the DEBUGCANVAS flag is set, we show some additional information for the debugging of the painting }
+  Bitmap.Rectangle(ContentRect, clRed);
+  {$endif}
   Bitmap.TextRect(ContentRect, ContentRect.left, ContentRect.Top, DisplayedMainText, TextStyle,
                                ColorToBgra(PresentationStyleSettings.TextColor));
 
@@ -416,6 +426,11 @@ begin
     Bitmap.TextRect(ContentRect, Slide.PartContent.MetaText, TextStyle.Alignment, tlTop,
                                ColorToBgra(PresentationStyleSettings.TextColor));
   end;
+
+  {$if defined(DEBUGCANVAS)}
+  { When the DEBUGCANVAS flag is set, we show some additional information for the debugging of the painting }
+  Bitmap.Rectangle(ContentRect, clRed);
+  {$endif}
 
   NormalTextFont.Destroy;
   SpoilerTextFont.Destroy;

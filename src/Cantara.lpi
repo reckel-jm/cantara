@@ -59,7 +59,7 @@
       <Macro14 Name="LCLWidgetType" Value="qt6"/>
       <Macro15 Name="LCLWidgetType" Value="qt6"/>
     </MacroValues>
-    <BuildModes Count="7">
+    <BuildModes Count="8">
       <Item1 Name="Release" Default="True"/>
       <Item2 Name="Linux WPO Pass1">
         <CompilerOptions>
@@ -291,7 +291,8 @@
               <ShowHintsForUnusedUnitsInMainSrc Value="True"/>
             </Verbosity>
             <CustomOptions Value="-dQT_NATIVE_DIALOGS
--dUseCThreads"/>
+-dUseCThreads
+-dDEBUG"/>
           </Other>
         </CompilerOptions>
       </Item6>
@@ -339,6 +340,57 @@
           </Other>
         </CompilerOptions>
       </Item7>
+      <Item8 Name="DebugPresentationCanvas">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="cantara"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="frames;exporters;tests;generics;forms;models;interfaces;metadarkstyle;controller"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <IncludeAssertionCode Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <RelocatableUnit Value="True"/>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="0"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf2"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <Verbosity>
+              <ShowDebugInfo Value="True"/>
+              <ShowHintsForUnusedUnitsInMainSrc Value="True"/>
+            </Verbosity>
+            <CustomOptions Value="-dQT_NATIVE_DIALOGS
+-dUseCThreads
+-dDEBUG
+-dDEBUGCANVAS"/>
+          </Other>
+        </CompilerOptions>
+      </Item8>
       <SharedMatrixOptions Count="2">
         <Item1 ID="861867067291" Type="IDEMacro" MacroName="fpGUIPlatform" Value="wayland"/>
         <Item2 ID="839485512827" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
