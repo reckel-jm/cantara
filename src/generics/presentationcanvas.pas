@@ -80,7 +80,7 @@ begin
     if (CurrentLetter = ' ') or (CurrentLetter = LineEnding) or (LetterIndex = Length(Text)) then
     begin
       // Test whether the text and the current word would still fit
-      if BGRABitmap.TextSize(CurrentLine + CurrentWord + CurrentLetter, MaxWidth).Width < MaxWidth then
+      if BGRABitmap.TextSize(Trim(CurrentLine + CurrentWord + CurrentLetter), MaxWidth).Width < MaxWidth then
       begin
         // Add the word
         CurrentLine := CurrentLine + CurrentWord + CurrentLetter;
