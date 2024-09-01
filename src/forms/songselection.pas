@@ -1140,7 +1140,13 @@ begin
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.FontName:=Screen.SystemFont.Name;
   ABitmap.FontQuality:=fqSystem;
-  DisplayedText := SlideTextListBox.Items[Index];
+  DisplayedText := PresentationCanvas.GetWordWrappedString(
+                SlideTextListBox.Items[Index],
+                ABitmap.FontName,
+                ABitmap.FontHeight,
+                ABitmap.FontStyle,
+                ABitmap.Width
+                );
   if odSelected in State then
   begin
     ABitmap.FillRect(1,1,ABitmap.Width-1, ABitmap.Height-1, clHighlight, dmSet);
@@ -1216,7 +1222,13 @@ begin
   ABitmap.CanvasBGRA.TextStyle.SingleLine:=False;
   ABitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
   ABitmap.SetSize(SlideTextListBox.Width, Self.Height);
-  WrappedText := SlideTextListBox.Items[Index];
+  WrappedText := PresentationCanvas.GetWordWrappedString(
+                SlideTextListBox.Items[Index],
+                ABitmap.FontName,
+                ABitmap.FontHeight,
+                ABitmap.FontStyle,
+                ABitmap.Width
+                );
   AHeight:=ABitmap.TextSize(WrappedText,SlideTextListBox.Width).Height;
   AHeight += 10;
   ABitmap.Destroy;

@@ -292,14 +292,15 @@ begin
     Height := self.Height;
   end;
 
-  DisplayedMainText := GetWordWrappedString(
+  {DisplayedMainText := GetWordWrappedString(
     Slide.PartContent.MainText,
     NormalTextFont.Name,
     NormalTextFont.Height,
     NormalTextFont.Style,
     self.Width -
     PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right
-  );
+  );     }
+  DisplayedMainText := Slide.PartContent.MainText;
 
   MainTextHeight := self.CalculateTextHeight(NormalTextFont, self.Width -
     PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right,
@@ -361,6 +362,7 @@ begin
     SingleLine := False;
     WordBreak := True;
     Opaque := False;
+    EndEllipsis := False;
   end;
 
   Self.AssignBGRAFont(NormalTextFont);
