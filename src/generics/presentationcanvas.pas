@@ -68,6 +68,8 @@ begin
   BGRABitmap.FontName:=FontName;
   BGRABitmap.FontHeight:=FontHeight;
   BGRABitmap.FontStyle:=FontStyle;
+  BGRABitmap.FontAntialias:=False;
+  BGRABitmap.FontQuality:=fqFineAntialiasing;
 
   CurrentWord := '';
   CurrentLine := '';

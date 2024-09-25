@@ -1136,10 +1136,11 @@ begin
   ABitmap.CanvasBGRA.TextStyle.SingleLine:=False;
   ABitmap.CanvasBGRA.TextStyle.Wordbreak:=True;
   ABitmap.CanvasBGRA.TextStyle.Opaque:=False;
+  ABitmap.FontAntialias:=False;
 
   ABitmap.FontHeight:=Round(Screen.SystemFont.Height/0.75);
   ABitmap.FontName:=Screen.SystemFont.Name;
-  ABitmap.FontQuality:=fqSystem;
+  ABitmap.FontQuality:=fqFineAntialiasing;
   DisplayedText := PresentationCanvas.GetWordWrappedString(
                 SlideTextListBox.Items[Index],
                 ABitmap.FontName,
