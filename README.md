@@ -18,6 +18,9 @@
 
 </div>
 
+> [!NOTE]
+> Cantara is currently in the process of being entirelly rewritten in Rust and Dioxus. Check out the [new Cantara 3 repository](https://github.com/CantaraProject/Cantara) for the current state of the rewrite. This repository (Cantara 2) will still be maintained for a certain amount of time, however no new features are going to be implemented here.
+
 ![](screenshots/cantara.gif)
 
 Cantara is a simple open source song presentation software written in Free Pascal/Lazarus which allows people to spontanously present song lyrics for a bigger audience for the purpose of singing together. This is especially useful for church groups and meetings. 
