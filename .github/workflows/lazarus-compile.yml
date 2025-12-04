@@ -39,7 +39,7 @@ jobs:
       run: lazbuild src/fpccantaraclitest.lpi && cd src && ./fpccantaraclitest -a --format=plain
     - name: Artifacts (Linux)
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Compiled Linux Binary
         path: |
@@ -76,21 +76,21 @@ jobs:
 
     - name: Artifacts (Linux DEB)
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Compiled Linux DEB
         path: cantara*.deb
 
     - name: Artifacts (Linux RPM)
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Compiled Linux RPM
         path: cantara*.rpm
 
     - name: Artifacts (Windows)
       if: ${{ matrix.operating-system == 'windows-latest' }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Compiled Windows Binary
         path: |
@@ -103,14 +103,14 @@ jobs:
 
     - name: Artifacts (Windows Installer)
       if: ${{ matrix.operating-system == 'windows-latest' }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Windows Installer
         path: Output/cantara*.exe
 
     - name: Artifacts (Apple)
       if: ${{ matrix.operating-system == 'macos-latest' }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Compiled Mac OS Binary
         path: |
