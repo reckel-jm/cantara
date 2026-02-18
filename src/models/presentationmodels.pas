@@ -32,6 +32,7 @@ TPresentationStyleSettings = record
   HorizontalAlign: THorizontalAlignEnum;
   Padding: TPadding;
   BlackScreenOnEmptySlide: Boolean;
+  FadeTransition: Boolean;
 end;
 
 implementation

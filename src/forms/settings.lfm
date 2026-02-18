@@ -1,11 +1,11 @@
 object frmSettings: TfrmSettings
   Left = -3
-  Height = 614
+  Height = 639
   Top = -30
   Width = 939
   BorderIcons = [biSystemMenu]
   Caption = 'Settings'
-  ClientHeight = 614
+  ClientHeight = 639
   ClientWidth = 939
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
@@ -95,20 +95,33 @@ object frmSettings: TfrmSettings
     TabOrder = 4
     OnChange = cbSpoilerChange
   end
-  object gbPresentation: TGroupBox
+  object cbFadeTransition: TCheckBox
+    AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = cbSpoiler
+    AnchorSideTop.Side = asrBottom
+    Left = 8
+    Height = 25
+    Top = 117
+    Width = 250
+    Caption = 'Fade transition between slides'
+    ParentFont = False
+    TabOrder = 5
+    OnChange = cbFadeTransitionChange
+  end
+  object gbPresentation: TGroupBox
+    AnchorSideTop.Control = cbFadeTransition
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = btnClose
     Left = 8
     Height = 444
-    Top = 117
+    Top = 142
     Width = 924
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
     ClientHeight = 413
     ClientWidth = 920
-    TabOrder = 5
+    TabOrder = 6
     OnClick = gbPresentationClick
     object btnBackgroundColor: TButton
       AnchorSideLeft.Side = asrBottom
@@ -459,7 +472,7 @@ object frmSettings: TfrmSettings
     AnchorSideBottom.Side = asrBottom
     Left = 769
     Height = 46
-    Top = 566
+    Top = 591
     Width = 163
     Anchors = [akRight, akBottom]
     Caption = 'Close'
