@@ -25,6 +25,8 @@ type
     btnDetails: TButton;
     cbBlackScreenOnEmpty: TCheckBox;
     cbFadeTransition: TCheckBox;
+    lblFadeMs: TLabel;
+    seFadeDuration: TSpinEdit;
     cbMetaDataFirstSlide: TCheckBox;
     cbMetaTitleSlide: TCheckBox;
     cbShowBackgroundImage: TCheckBox;
@@ -309,6 +311,7 @@ end;
 
 procedure TfrmSettings.cbFadeTransitionChange(Sender: TObject);
 begin
+  seFadeDuration.Enabled := cbFadeTransition.Checked;
   LoadPreviewImage;
 end;
 
@@ -388,6 +391,8 @@ begin
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
   cbBlackScreenOnEmpty.Checked := settingsFile.ReadBool('Config', 'BlackScreenOnEmpty', False);
   cbFadeTransition.Checked := settingsFile.ReadBool('Config', 'FadeTransition', False);
+  seFadeDuration.Value := settingsFile.ReadInteger('Config', 'FadeDurationMs', 300);
+  seFadeDuration.Enabled := cbFadeTransition.Checked;
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
     'Text-Color', 'clWhite'));
   bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
@@ -508,6 +513,7 @@ begin
       settingsFile.WriteBool('Config', 'empty-Frame', cbEmptyFrame.Checked);
       settingsFile.WriteBool('Config', 'BlackScreenOnEmpty', cbBlackScreenOnEmpty.Checked);
       settingsFile.WriteBool('Config', 'FadeTransition', cbFadeTransition.Checked);
+      settingsFile.WriteInteger('Config', 'FadeDurationMs', seFadeDuration.Value);
       settingsFile.WriteString('Config', 'Text-Color',
         ColorToString(textColorDialog.Color));
       settingsFile.WriteString('Config', 'Background-Color',
@@ -617,6 +623,7 @@ begin
   PresentationStyleSettings.Padding := FormPadding.frmSettingsDetailed.ExportPadding;
   PresentationStyleSettings.BlackScreenOnEmptySlide := cbBlackScreenOnEmpty.Checked;
   PresentationStyleSettings.FadeTransition := cbFadeTransition.Checked;
+  PresentationStyleSettings.FadeDurationMs := seFadeDuration.Value;
   Result := PresentationStyleSettings;
 end;
 

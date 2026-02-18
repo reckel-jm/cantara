@@ -33,6 +33,7 @@ TPresentationStyleSettings = record
   Padding: TPadding;
   BlackScreenOnEmptySlide: Boolean;
   FadeTransition: Boolean;
+  FadeDurationMs: Integer;
 end;
 
 implementation

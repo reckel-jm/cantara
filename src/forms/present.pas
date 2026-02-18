@@ -69,8 +69,8 @@ of the constant arrays defined below. }
 operator In (const AWord: Word; const AArray: array of Word): Boolean; inline;
 
 const
-  FADE_STEPS       = 10;  { number of blend frames }
-  FADE_INTERVAL_MS = 25;  { ms per frame → 250 ms total transition }
+  FADE_STEPS          = 10;  { fixed number of blend frames per transition }
+  FADE_DEFAULT_INTERVAL_MS = 30;  { fallback interval when duration is not yet configured }
 
   { Here we define the list of keys which can be used to move to the next slide (GoRightKeys), go to the previous slide (GoLeftKeys,
   toggle fullscreen (ToggleFullscreenKeys) or quit the presentation (EscapeKeys). }
@@ -241,6 +241,8 @@ begin
     FadeNextBitmap.SetSize(Self.Width, Self.Height);
     FadeBlendBitmap.SetSize(Self.Width, Self.Height);
     FadeNextBitmap.Assign(SlideBitmap);
+    FadeTimer.Interval := Max(1,
+      PresentationCanvas.PresentationStyleSettings.FadeDurationMs div FADE_STEPS);
     FadeTimer.Enabled := True;
   end
   else
@@ -273,7 +275,7 @@ begin
   FadeStep := 0;
   FadeTimer := TTimer.Create(Self);
   FadeTimer.Enabled  := False;
-  FadeTimer.Interval := FADE_INTERVAL_MS;
+  FadeTimer.Interval := FADE_DEFAULT_INTERVAL_MS;
   FadeTimer.OnTimer  := @OnFadeTimer;
 end;
 

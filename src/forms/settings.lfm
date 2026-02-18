@@ -1,11 +1,11 @@
 object frmSettings: TfrmSettings
   Left = -3
-  Height = 639
+  Height = 648
   Top = -30
   Width = 939
   BorderIcons = [biSystemMenu]
   Caption = 'Settings'
-  ClientHeight = 639
+  ClientHeight = 648
   ClientWidth = 939
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
@@ -100,28 +100,57 @@ object frmSettings: TfrmSettings
     AnchorSideTop.Control = cbSpoiler
     AnchorSideTop.Side = asrBottom
     Left = 8
-    Height = 25
+    Height = 34
     Top = 117
-    Width = 250
+    Width = 230
     Caption = 'Fade transition between slides'
     ParentFont = False
     TabOrder = 5
     OnChange = cbFadeTransitionChange
   end
+  object seFadeDuration: TSpinEdit
+    AnchorSideLeft.Control = cbFadeTransition
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = cbSpoiler
+    AnchorSideTop.Side = asrBottom
+    Left = 246
+    Height = 34
+    Top = 117
+    Width = 70
+    BorderSpacing.Left = 8
+    Enabled = False
+    MaxValue = 3000
+    MinValue = 100
+    TabOrder = 6
+    Value = 300
+  end
+  object lblFadeMs: TLabel
+    AnchorSideLeft.Control = seFadeDuration
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = seFadeDuration
+    AnchorSideTop.Side = asrCenter
+    Left = 324
+    Height = 21
+    Top = 124
+    Width = 20
+    BorderSpacing.Left = 5
+    Caption = 'ms'
+    ParentFont = False
+  end
   object gbPresentation: TGroupBox
-    AnchorSideTop.Control = cbFadeTransition
+    AnchorSideTop.Control = seFadeDuration
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = btnClose
     Left = 8
     Height = 444
-    Top = 142
+    Top = 151
     Width = 924
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     Caption = 'Presentation View'
     ClientHeight = 413
     ClientWidth = 920
-    TabOrder = 6
+    TabOrder = 7
     OnClick = gbPresentationClick
     object btnBackgroundColor: TButton
       AnchorSideLeft.Side = asrBottom
@@ -472,7 +501,7 @@ object frmSettings: TfrmSettings
     AnchorSideBottom.Side = asrBottom
     Left = 769
     Height = 46
-    Top = 591
+    Top = 600
     Width = 163
     Anchors = [akRight, akBottom]
     Caption = 'Close'
