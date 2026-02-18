@@ -23,6 +23,10 @@ type
     btnTextColor: TButton;
     btnBackgroundImage: TButton;
     btnDetails: TButton;
+    cbBlackScreenOnEmpty: TCheckBox;
+    cbFadeTransition: TCheckBox;
+    lblFadeMs: TLabel;
+    seFadeDuration: TSpinEdit;
     cbMetaDataFirstSlide: TCheckBox;
     cbMetaTitleSlide: TCheckBox;
     cbShowBackgroundImage: TCheckBox;
@@ -50,6 +54,8 @@ type
     labelSongDir: TLabel;
     SelectDirectoryDialog: TSelectDirectoryDialog;
     procedure btnBackgroundImageClick(Sender: TObject);
+    procedure cbBlackScreenOnEmptyChange(Sender: TObject);
+    procedure cbFadeTransitionChange(Sender: TObject);
     procedure btnDetailsClick(Sender: TObject);
     procedure btnFontSizeManuallyClick(Sender: TObject);
     procedure btnSelectDirClick(Sender: TObject);
@@ -298,6 +304,17 @@ begin
   ReloadSlideAndPresentationCanvas;
 end;
 
+procedure TfrmSettings.cbBlackScreenOnEmptyChange(Sender: TObject);
+begin
+  LoadPreviewImage;
+end;
+
+procedure TfrmSettings.cbFadeTransitionChange(Sender: TObject);
+begin
+  seFadeDuration.Enabled := cbFadeTransition.Checked;
+  LoadPreviewImage;
+end;
+
 procedure TfrmSettings.cbMetaDataFirstSlideChange(Sender: TObject);
 begin
   ReloadSlideAndPresentationCanvas;
@@ -372,6 +389,10 @@ var
 begin
   edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
+  cbBlackScreenOnEmpty.Checked := settingsFile.ReadBool('Config', 'BlackScreenOnEmpty', False);
+  cbFadeTransition.Checked := settingsFile.ReadBool('Config', 'FadeTransition', False);
+  seFadeDuration.Value := settingsFile.ReadInteger('Config', 'FadeDurationMs', 300);
+  seFadeDuration.Enabled := cbFadeTransition.Checked;
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
     'Text-Color', 'clWhite'));
   bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
@@ -490,6 +511,9 @@ begin
     try
       settingsFile.WriteString('Config', 'Repo-Path', edtRepoPath.Text);
       settingsFile.WriteBool('Config', 'empty-Frame', cbEmptyFrame.Checked);
+      settingsFile.WriteBool('Config', 'BlackScreenOnEmpty', cbBlackScreenOnEmpty.Checked);
+      settingsFile.WriteBool('Config', 'FadeTransition', cbFadeTransition.Checked);
+      settingsFile.WriteInteger('Config', 'FadeDurationMs', seFadeDuration.Value);
       settingsFile.WriteString('Config', 'Text-Color',
         ColorToString(textColorDialog.Color));
       settingsFile.WriteString('Config', 'Background-Color',
@@ -597,6 +621,9 @@ begin
   PresentationStyleSettings.HorizontalAlign :=
     THorizontalAlignEnum(comboHorizontal.ItemIndex);
   PresentationStyleSettings.Padding := FormPadding.frmSettingsDetailed.ExportPadding;
+  PresentationStyleSettings.BlackScreenOnEmptySlide := cbBlackScreenOnEmpty.Checked;
+  PresentationStyleSettings.FadeTransition := cbFadeTransition.Checked;
+  PresentationStyleSettings.FadeDurationMs := seFadeDuration.Value;
   Result := PresentationStyleSettings;
 end;
 

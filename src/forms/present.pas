@@ -10,7 +10,7 @@ uses
   IntfGraphics, Menus,
   fpImage, StrUtils, Slides,
   Math,
-  PresentationCanvas, bgrabitmap, presentationcontroller;
+  PresentationCanvas, bgrabitmap, BGRABitmapTypes, presentationcontroller;
 
 type
 
@@ -41,6 +41,12 @@ type
   private
     { private declarations }
     ConnectedController: IPresentationController;
+    FadePreviousBitmap: TBGRABitmap;
+    FadeNextBitmap: TBGRABitmap;
+    FadeBlendBitmap: TBGRABitmap;
+    FadeStep: Integer;
+    FadeTimer: TTimer;
+    procedure OnFadeTimer(Sender: TObject);
     function getCurrentSong: lyrics.TSong;
   public
     { public declarations }
@@ -63,6 +69,9 @@ of the constant arrays defined below. }
 operator In (const AWord: Word; const AArray: array of Word): Boolean; inline;
 
 const
+  FADE_STEPS          = 10;  { fixed number of blend frames per transition }
+  FADE_DEFAULT_INTERVAL_MS = 30;  { fallback interval when duration is not yet configured }
+
   { Here we define the list of keys which can be used to move to the next slide (GoRightKeys), go to the previous slide (GoLeftKeys,
   toggle fullscreen (ToggleFullscreenKeys) or quit the presentation (EscapeKeys). }
   GoRightKeys: array[0..6] of Word =
@@ -123,6 +132,11 @@ end;
 
 procedure TfrmPresent.FormResize(Sender: TObject);
 begin
+  if FadeTimer.Enabled then
+  begin
+    FadeTimer.Enabled := False;
+    FadeStep := 0;
+  end;
   PresentationCanvas.Width := self.Width;
   PresentationCanvas.Height := self.Height;
   PresentationCanvas.ResizeBackgroundBitmap;
@@ -202,12 +216,47 @@ begin
 end;
 
 procedure TfrmPresent.showItem(index: Integer);
+var
+  CanFade: Boolean;
 begin
+  // If a fade is already running, snap to its target and use that as the new baseline
+  if FadeTimer.Enabled then
+  begin
+    FadeTimer.Enabled := False;
+    FadeStep := 0;
+    FadePreviousBitmap.SetSize(FadeNextBitmap.Width, FadeNextBitmap.Height);
+    FadePreviousBitmap.Assign(FadeNextBitmap);
+  end;
+
   cur := index;
-  SlideBitmap := PresentationCanvas.PaintSlide(SlideList.Items[cur]);
-  SlideBitmap.InvalidateBitmap;
-  ImageShower.Picture.Bitmap.Assign(SlideBitmap.Bitmap);
-  ConnectedController.ReloadPresentationImage;
+
+  CanFade := PresentationCanvas.PresentationStyleSettings.FadeTransition
+             and (FadePreviousBitmap.Width  = Self.Width)
+             and (FadePreviousBitmap.Height = Self.Height)
+             and (Self.Width > 0) and (Self.Height > 0);
+
+  if CanFade then
+  begin
+    SlideBitmap := PresentationCanvas.PaintSlide(SlideList.Items[cur]);
+    FadeNextBitmap.SetSize(Self.Width, Self.Height);
+    FadeBlendBitmap.SetSize(Self.Width, Self.Height);
+    FadeNextBitmap.Assign(SlideBitmap);
+    FadeTimer.Interval := Max(1,
+      PresentationCanvas.PresentationStyleSettings.FadeDurationMs div FADE_STEPS);
+    FadeTimer.Enabled := True;
+  end
+  else
+  begin
+    SlideBitmap := PresentationCanvas.PaintSlide(SlideList.Items[cur]);
+    SlideBitmap.InvalidateBitmap;
+    ImageShower.Picture.Bitmap.Assign(SlideBitmap.Bitmap);
+    if (Self.Width > 0) and (Self.Height > 0) then
+    begin
+      FadePreviousBitmap.SetSize(Self.Width, Self.Height);
+      FadePreviousBitmap.Assign(SlideBitmap);
+    end;
+    ConnectedController.ReloadPresentationImage;
+  end;
 end;
 
 procedure TfrmPresent.FormCreate(Sender: TObject);
@@ -218,17 +267,35 @@ begin
   PresentationCanvas := TPresentationCanvasHandler.Create;
   self.SlideList := TSlideLIst.Create(True);
 
-  Self.ConnectedController:=frmSongs;
+  Self.ConnectedController := frmSongs;
+
+  FadePreviousBitmap := TBGRABitmap.Create;
+  FadeNextBitmap     := TBGRABitmap.Create;
+  FadeBlendBitmap    := TBGRABitmap.Create;
+  FadeStep := 0;
+  FadeTimer := TTimer.Create(Self);
+  FadeTimer.Enabled  := False;
+  FadeTimer.Interval := FADE_DEFAULT_INTERVAL_MS;
+  FadeTimer.OnTimer  := @OnFadeTimer;
 end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);
 begin
+  if FadeTimer.Enabled then FadeTimer.Enabled := False;
   SlideList.Destroy;
   PresentationCanvas.Destroy;
+  FadePreviousBitmap.Free;
+  FadeNextBitmap.Free;
+  FadeBlendBitmap.Free;
 end;
 
 procedure TfrmPresent.FormHide(Sender: TObject);
 begin
+  if FadeTimer.Enabled then
+  begin
+    FadeTimer.Enabled := False;
+    FadeStep := 0;
+  end;
   if Owner <> frmSettings then
   begin
     // Stelle frmSongs wieder her
@@ -343,6 +410,43 @@ end;
 function TfrmPresent.getCurrentSong: lyrics.TSong;
 begin
   Result := SlideList.Items[cur].Song;
+end;
+
+procedure TfrmPresent.OnFadeTimer(Sender: TObject);
+var
+  prevP, nextP, blendP: PBGRAPixel;
+  x, y, t, invT: Integer;
+begin
+  Inc(FadeStep);
+  t    := (FadeStep * 256) div FADE_STEPS;
+  invT := 256 - t;
+
+  for y := 0 to FadeBlendBitmap.Height - 1 do
+  begin
+    prevP  := FadePreviousBitmap.ScanLine[y];
+    nextP  := FadeNextBitmap.ScanLine[y];
+    blendP := FadeBlendBitmap.ScanLine[y];
+    for x := 0 to FadeBlendBitmap.Width - 1 do
+    begin
+      blendP^.red   := (prevP^.red   * invT + nextP^.red   * t) shr 8;
+      blendP^.green := (prevP^.green * invT + nextP^.green * t) shr 8;
+      blendP^.blue  := (prevP^.blue  * invT + nextP^.blue  * t) shr 8;
+      blendP^.alpha := 255;
+      Inc(prevP); Inc(nextP); Inc(blendP);
+    end;
+  end;
+
+  FadeBlendBitmap.InvalidateBitmap;
+  ImageShower.Picture.Bitmap.Assign(FadeBlendBitmap.Bitmap);
+
+  if FadeStep >= FADE_STEPS then
+  begin
+    FadeTimer.Enabled := False;
+    FadeStep := 0;
+    FadePreviousBitmap.SetSize(FadeNextBitmap.Width, FadeNextBitmap.Height);
+    FadePreviousBitmap.Assign(FadeNextBitmap);
+    ConnectedController.ReloadPresentationImage;
+  end;
 end;
 
 end.
