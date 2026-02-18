@@ -1,11 +1,11 @@
 object frmSettings: TfrmSettings
   Left = -3
-  Height = 589
+  Height = 614
   Top = -30
   Width = 939
   BorderIcons = [biSystemMenu]
   Caption = 'Settings'
-  ClientHeight = 589
+  ClientHeight = 614
   ClientWidth = 939
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
@@ -67,13 +67,26 @@ object frmSettings: TfrmSettings
     TabOrder = 2
     OnChange = cbEmptyFrameChange
   end
-  object cbSpoiler: TCheckBox
+  object cbBlackScreenOnEmpty: TCheckBox
     AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = cbEmptyFrame
     AnchorSideTop.Side = asrBottom
     Left = 8
     Height = 25
     Top = 67
+    Width = 300
+    Caption = 'Show black screen when slide is empty'
+    ParentFont = False
+    TabOrder = 3
+    OnChange = cbBlackScreenOnEmptyChange
+  end
+  object cbSpoiler: TCheckBox
+    AnchorSideLeft.Control = gbPresentation
+    AnchorSideTop.Control = cbBlackScreenOnEmpty
+    AnchorSideTop.Side = asrBottom
+    Left = 8
+    Height = 25
+    Top = 92
     Width = 141
     Caption = 'Spoil next slides'
     Checked = True
@@ -88,7 +101,7 @@ object frmSettings: TfrmSettings
     AnchorSideBottom.Control = btnClose
     Left = 8
     Height = 444
-    Top = 92
+    Top = 117
     Width = 924
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
@@ -446,7 +459,7 @@ object frmSettings: TfrmSettings
     AnchorSideBottom.Side = asrBottom
     Left = 769
     Height = 46
-    Top = 541
+    Top = 566
     Width = 163
     Anchors = [akRight, akBottom]
     Caption = 'Close'

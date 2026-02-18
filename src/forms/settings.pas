@@ -23,6 +23,7 @@ type
     btnTextColor: TButton;
     btnBackgroundImage: TButton;
     btnDetails: TButton;
+    cbBlackScreenOnEmpty: TCheckBox;
     cbMetaDataFirstSlide: TCheckBox;
     cbMetaTitleSlide: TCheckBox;
     cbShowBackgroundImage: TCheckBox;
@@ -50,6 +51,7 @@ type
     labelSongDir: TLabel;
     SelectDirectoryDialog: TSelectDirectoryDialog;
     procedure btnBackgroundImageClick(Sender: TObject);
+    procedure cbBlackScreenOnEmptyChange(Sender: TObject);
     procedure btnDetailsClick(Sender: TObject);
     procedure btnFontSizeManuallyClick(Sender: TObject);
     procedure btnSelectDirClick(Sender: TObject);
@@ -298,6 +300,11 @@ begin
   ReloadSlideAndPresentationCanvas;
 end;
 
+procedure TfrmSettings.cbBlackScreenOnEmptyChange(Sender: TObject);
+begin
+  LoadPreviewImage;
+end;
+
 procedure TfrmSettings.cbMetaDataFirstSlideChange(Sender: TObject);
 begin
   ReloadSlideAndPresentationCanvas;
@@ -372,6 +379,7 @@ var
 begin
   edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
+  cbBlackScreenOnEmpty.Checked := settingsFile.ReadBool('Config', 'BlackScreenOnEmpty', False);
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
     'Text-Color', 'clWhite'));
   bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
@@ -490,6 +498,7 @@ begin
     try
       settingsFile.WriteString('Config', 'Repo-Path', edtRepoPath.Text);
       settingsFile.WriteBool('Config', 'empty-Frame', cbEmptyFrame.Checked);
+      settingsFile.WriteBool('Config', 'BlackScreenOnEmpty', cbBlackScreenOnEmpty.Checked);
       settingsFile.WriteString('Config', 'Text-Color',
         ColorToString(textColorDialog.Color));
       settingsFile.WriteString('Config', 'Background-Color',
@@ -597,6 +606,7 @@ begin
   PresentationStyleSettings.HorizontalAlign :=
     THorizontalAlignEnum(comboHorizontal.ItemIndex);
   PresentationStyleSettings.Padding := FormPadding.frmSettingsDetailed.ExportPadding;
+  PresentationStyleSettings.BlackScreenOnEmptySlide := cbBlackScreenOnEmpty.Checked;
   Result := PresentationStyleSettings;
 end;
 

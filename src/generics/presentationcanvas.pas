@@ -271,6 +271,15 @@ var
   TextStyle: TTextStyle;
 begin
   Bitmap.SetSize(self.Width, self.Height);
+
+  // When the slide is empty and black screen mode is enabled, return a pure black bitmap
+  if (Slide.SlideType = EmptySlide) and PresentationStyleSettings.BlackScreenOnEmptySlide then
+  begin
+    Bitmap.Fill(clBlack);
+    Result := Bitmap;
+    Exit;
+  end;
+
   Bitmap.Fill(PresentationStyleSettings.BackgroundColor);
   // Here we setup the different fonts for calculating the text height
   NormalTextFont := TFont.Create;
