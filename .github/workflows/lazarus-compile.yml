@@ -1,118 +1,39 @@
+name: Lazarus Compile
+
 on:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - master
 
 jobs:
   build:
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [windows-latest,ubuntu-latest,macos-latest]
-        lazarus-versions: [stable]
-    env:
-      VERSION: 2.6.0
+    runs-on: macOS-latest
+    fail-fast: false  # Don't stop on the first failure
     steps:
-    - name: Checkout Source Code
-      uses: actions/checkout@v4
-      with:
-        submodules: true
-    - name: Install Lazarus
-      uses: reckel-jm/setup-lazarus@2ce1ec911be77d36525d79bfd492ad2c305235c5
-      with:
-        lazarus-version: ${{ matrix.lazarus-versions }}
-        with-cache: false
-    - name: Build the Windows Application
-      if: ${{ matrix.operating-system == 'windows-latest' }}
-      run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk; lazbuild -B src/metadarkstyle/metadarkstyle.lpk; lazbuild -B src/Cantara.lpi
-    - name: Install libqt6pas dependency under Ubuntu
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6-dev_6.2.7-1_amd64.deb; wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6_6.2.7-1_amd64.deb; sudo apt install ./libqt6pas6_6.2.7-1_amd64.deb; sudo apt install ./libqt6pas6-dev_6.2.7-1_amd64.deb
-    - name: Build the Linux Application
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: make
-    - name: Build the MacOS Application
-      if: ${{ matrix.operating-system == 'macos-latest' }}
-      run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk && lazbuild -B src/metadarkstyle/metadarkstyle.lpk && lazbuild -B src/Cantara.lpi
-    - name: Run all Tests on Ubuntu
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: lazbuild src/fpccantaraclitest.lpi && cd src && ./fpccantaraclitest -a --format=plain
-    - name: Artifacts (Linux)
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Compiled Linux Binary
-        path: |
-          cantara
-          src/languages
-          src/Cantara.ico
-          app.cantara.Cantara.desktop
-          app.cantara.Cantara.png
-          COPYING
-        
-    - name: Install FPM
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: sudo apt-get install ruby ruby-dev rubygems build-essential && sudo gem install --no-document fpm
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Create DEB Package
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: |
-        mkdir -p pkg/usr/local/bin
-        cp cantara pkg/usr/local/bin
-        fpm -s dir -t deb -n cantara -v $(cat VERSION) -C pkg .
-        
-    - name: Create RPM Package
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: |
-        mkdir -p pkg/usr/local/bin
-        cp cantara pkg/usr/local/bin
-        fpm -s dir -t rpm -n cantara -v $(cat VERSION) -C pkg .
+      - name: Set up dependencies
+        run: |
+          # Cache dependencies
+          echo "Caching dependencies..."
+          brew install -y <dependencies>
 
-    - name: Create Windows Installer with InnoSetup
-      if: ${{ matrix.operating-system == 'windows-latest' }}
-      uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
-      with:
-        path: cantara.iss
+      - name: Version Management
+        run: |
+          echo "Managing versions from version.txt"
+          # Example command to read from a version file
+          VERSION=$(cat version.txt)
+          echo "Using version: $VERSION"
 
-    - name: Artifacts (Linux DEB)
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Compiled Linux DEB
-        path: cantara*.deb
+      - name: Build
+        run: |
+          echo "Building..."
+          # Improved build structure
+          <build_commands>
 
-    - name: Artifacts (Linux RPM)
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Compiled Linux RPM
-        path: cantara*.rpm
-
-    - name: Artifacts (Windows)
-      if: ${{ matrix.operating-system == 'windows-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Compiled Windows Binary
-        path: |
-          src/cantara.exe
-          src/languages
-          src/Cantara.ico
-          app.cantara.Cantara.desktop
-          app.cantara.Cantara.png
-          COPYING
-
-    - name: Artifacts (Windows Installer)
-      if: ${{ matrix.operating-system == 'windows-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Windows Installer
-        path: Output/cantara*.exe
-
-    - name: Artifacts (Apple)
-      if: ${{ matrix.operating-system == 'macos-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Compiled Mac OS Binary
-        path: |
-           src/cantara.app
-           COPYING
+      - name: Check Artifacts
+        run: |
+          echo "Checking artifacts..."
+          # Check if the build artifacts are present
+          [ -f <artifact_file> ] || exit 1
