@@ -349,7 +349,7 @@ end;
 
 procedure TSong.importSongFormatFile;
 var
-  i: Integer;
+  i, colonPos: Integer;
   curLineText, key, Value: String;
   contentStarted: Boolean;
 begin
@@ -362,18 +362,16 @@ begin
     curLineText := self.inputFile.Strings[i];
     if pos('#', curLineText) = 1 then
     begin
-      if pos(':', curLineText) > 1 then
-        key := curLineText.Split(':')[0];
-      Delete(key, 1, 1); // Delete the # at the beginning
-      Value := curLineText.Split(':')[1];
-      { Remove Whitespaces
-        If none of the parts are empty, add the key-value-pair to the MetaData dictionary }
-      if (key <> '') And (Value <> '') then
+      { Split only on the first colon so that values containing colons
+        (e.g. "#bible: John 3:16") are preserved in full. }
+      colonPos := pos(':', curLineText);
+      if colonPos > 1 then
       begin
-        key := trim(key);
-        Value := trim(Value);
+        key   := Trim(Copy(curLineText, 2, colonPos - 2));
+        Value := Trim(Copy(curLineText, colonPos + 1, MaxInt));
+        if (key <> '') and (Value <> '') then
+          self.MetaDict.AddOrSetData(LowerCase(key), Value);
       end;
-      self.MetaDict.AddOrSetData(lowerCase(key), Value);
     end
     else
     if (Trim(curLineText) = '') And (contentStarted = True) then output.Add(curLineText)
