@@ -26,7 +26,7 @@ unit slides;
 interface
 
 uses
-  Classes, SysUtils, Lyrics, fgl, Dialogs;
+  Classes, SysUtils, Lyrics, fgl, Dialogs, PresentationModels;
 
 type
 
@@ -80,6 +80,9 @@ type
     PartContent: TPartContent;
     SlideType: SlideTypeEnum;
     ID: Integer;
+    { When True, CustomStyle overrides the global presentation style for this slide. }
+    HasCustomStyle: Boolean;
+    CustomStyle: TPresentationStyleSettings;
     constructor Create; overload;
     destructor Destroy; override;
 
@@ -107,11 +110,14 @@ constructor TSlide.Create;
 begin
   inherited;
   self.PartContent := TPartContent.Create;
+  self.HasCustomStyle := False;
 end;
 
 destructor TSlide.Destroy;
 begin
   FreeAndNil(self.PartContent);
+  if HasCustomStyle then
+    DestroyPresentationStyleSettings(CustomStyle);
   inherited;
 end;
 

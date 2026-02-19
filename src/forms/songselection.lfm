@@ -578,6 +578,10 @@ object frmSongs: TfrmSongs
       Caption = 'Open in Editor...'
       OnClick = itemOpenInEditorClick
     end
+    object itemEditSongStyle: TMenuItem
+      Caption = 'Edit song style...'
+      OnClick = itemEditSongStyleClick
+    end
   end
   object TimerUpdateScreen: TTimer
     OnTimer = TimerUpdateScreenTimer
