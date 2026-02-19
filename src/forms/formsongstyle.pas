@@ -190,7 +190,7 @@ begin
 
   cbShowBgImage.Checked := AStyle.ShowBackgroundImage;
   edtBgImagePath.Text := AStyle.BackgroundImageFilePath;
-  spTransparency.Value := AStyle.Transparency;
+  spTransparency.Value := Abs(AStyle.Transparency);
 
   case AStyle.HorizontalAlign of
     Align_Left:   cboHAlign.ItemIndex := 0;
@@ -213,7 +213,7 @@ begin
   Result.BackgroundColor := pnlBgColor.Color;
   Result.ShowBackgroundImage := cbShowBgImage.Checked;
   Result.BackgroundImageFilePath := edtBgImagePath.Text;
-  Result.Transparency := spTransparency.Value;
+  Result.Transparency := -spTransparency.Value;
   case cboHAlign.ItemIndex of
     0: Result.HorizontalAlign := Align_Left;
     1: Result.HorizontalAlign := Align_Center;
