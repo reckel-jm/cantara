@@ -415,7 +415,7 @@ begin
   Fingerprint := StyleFingerprint(AStyle);
   Idx := FCustomStyleKeys.IndexOf(Fingerprint);
   if Idx >= 0 then
-    Result := 'Custom' + IntToStr(Integer(FCustomStyleKeys.Objects[Idx]))
+    Result := 'Custom' + IntToStr(PtrInt(FCustomStyleKeys.Objects[Idx]))
   else
   begin
     Inc(FCustomMasterCount);
