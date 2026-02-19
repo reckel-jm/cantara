@@ -10,9 +10,10 @@ uses
   StdCtrls, ExtCtrls, Buttons, Menus, Present, settings, info, INIFiles,
   DefaultTranslator, Clipbrd,
   lyrics, LCLTranslator, songeditor, SongTeX, welcome, Slides,
-  FormFulltextSearch, PPTX, PresentationCanvas,
+  FormFulltextSearch, PPTX, PresentationCanvas, PresentationModels,
   formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
-  presentationcontroller, Types,bgrabitmap, BGRABitmapTypes, FlatpakHandling
+  presentationcontroller, Types, bgrabitmap, BGRABitmapTypes, FlatpakHandling,
+  FormSongStyle
   ;
 
 type
@@ -82,6 +83,7 @@ type
     PnlSplitter: TSplitter;
     Separator1: TMenuItem;
     SlideTextListBox: TListBox;
+    itemEditSongStyle: TMenuItem;
     SongPopupMenu: TPopupMenu;
     SaveDialog: TSaveDialog;
     SplitterContentImage: TSplitter;
@@ -154,6 +156,7 @@ type
       Shift: TShiftState);
     procedure SlideTextListBoxMeasureItem(Control: TWinControl; Index: Integer;
       var AHeight: Integer);
+    procedure itemEditSongStyleClick(Sender: TObject);
     procedure SongPopupMenuPopup(Sender: TObject);
     procedure TimerUpdateScreenTimer(Sender: TObject);
     { Updates the Song Position in lbxSSelected during a presentation }
@@ -168,6 +171,8 @@ type
       changed by the user so that the automatic detection will get inactive.
     }
     MultiScreenCheckBoxHasBeenManuallyChanged: Boolean;
+    { Per-song custom style overrides (key=FilePath, Objects=TCustomSongStyleEntry) }
+    FCustomSongStyles: TStringList;
     { The initial position of the panel for multiscreen
       when presentation gets started }
     PanelMultiScreenLeft: Integer;
@@ -183,6 +188,13 @@ type
     { Filters the Listbox lbxSRepo after a search pattern. If s is empty, no filter will be applied.
     @param(s: the search pattern) }
     procedure FilterListBox(s: String);
+    { Per-song style helpers }
+    function  GetCustomStyleForSong(const FilePath: String;
+      out AStyle: TPresentationStyleSettings): Boolean;
+    procedure SetCustomStyleForSong(const FilePath: String;
+      const AStyle: TPresentationStyleSettings);
+    procedure RemoveCustomStyleForSong(const FilePath: String);
+    function  FindFileInRepoRecursive(const RepoPath, Filename: String): String;
     procedure BringToFront;
     procedure ExportSelectionAsTeXFile(var FilePath: String);
     function ImportSongTeXFileAsSelection(FilePath: String): Boolean;
@@ -238,6 +250,18 @@ resourcestring
 implementation
 
 {$R *.lfm}
+
+type
+  TCustomSongStyleEntry = class
+    PresentationStyleSettings: TPresentationStyleSettings;
+    destructor Destroy; override;
+  end;
+
+destructor TCustomSongStyleEntry.Destroy;
+begin
+  DestroyPresentationStyleSettings(PresentationStyleSettings);
+  inherited;
+end;
 
 { TfrmSongs }
 
@@ -829,6 +853,7 @@ begin
   PanelSongTeXStatus.Caption := '';
 
   Self.LoadedSongList := TSongList.Create;
+  FCustomSongStyles := TStringList.Create;
 
   // load home directory into file/folder dialogs
   OpenDialog.InitialDir := GetUserDir;
@@ -849,6 +874,9 @@ begin
      LoadedSongList.Destroy;
   finally
   end;
+  for i := 0 to FCustomSongStyles.Count - 1 do
+    FCustomSongStyles.Objects[i].Free;
+  FCustomSongStyles.Free;
 end;
 
 procedure TfrmSongs.FormDropFiles(Sender: TObject; const FileNames: array of String);
@@ -1067,6 +1095,11 @@ procedure TfrmSongs.CreateSongListDataAndLoadItIntoSlideList(ASlideList: TSlideL
 var
   Song: TSong;
   SongSlideList: TSlideList;
+  HasOverride: Boolean;
+  OverrideStyle, ManualStyle: TPresentationStyleSettings;
+  BgFilename, BgFilePath: String;
+  NewFont: TFont;
+  k, SlidesAddedBefore: Integer;
 begin
   if Self.ProgramMode = ModeSelection then
   begin
@@ -1081,7 +1114,49 @@ begin
   begin
     SongSlideList := CreatePresentationDataFromSong(Song,
       frmSettings.ExportSlideSettings(), PresentationSlideCounter);
+    SlidesAddedBefore := ASlideList.Count;
     ASlideList.AddList(SongSlideList);
+
+    // Determine per-song style override
+    HasOverride := False;
+
+    // Auto: background-image metadata tag
+    if Song.MetaDict.IndexOf('background-image') >= 0 then
+    begin
+      BgFilename := Trim(Song.MetaDict['background-image']);
+      BgFilePath := FindFileInRepoRecursive(frmSettings.edtRepoPath.Text, BgFilename);
+      if BgFilePath <> '' then
+      begin
+        OverrideStyle := frmSettings.ExportPresentationStyleSettings;
+        OverrideStyle.ShowBackgroundImage := True;
+        OverrideStyle.BackgroundImageFilePath := BgFilePath;
+        HasOverride := True;
+      end;
+    end;
+
+    // Manual override wins over auto
+    if GetCustomStyleForSong(Song.CompleteFilePath, ManualStyle) then
+    begin
+      if HasOverride then DestroyPresentationStyleSettings(OverrideStyle);
+      OverrideStyle := ManualStyle;
+      HasOverride := True;
+    end;
+
+    // Stamp all slides of this song with the override
+    if HasOverride then
+    begin
+      for k := SlidesAddedBefore to ASlideList.Count - 1 do
+      begin
+        ASlideList.Items[k].HasCustomStyle := True;
+        ASlideList.Items[k].CustomStyle := OverrideStyle;
+        // Each slide needs its own TFont instance (avoid double-free on destroy)
+        NewFont := TFont.Create;
+        NewFont.Assign(OverrideStyle.Font);
+        ASlideList.Items[k].CustomStyle.Font := NewFont;
+      end;
+      DestroyPresentationStyleSettings(OverrideStyle);
+    end;
+
     SongSlideList.Destroy;
   end;
 end;
@@ -1235,9 +1310,122 @@ begin
   ABitmap.Destroy;
 end;
 
+function TfrmSongs.FindFileInRepoRecursive(const RepoPath, Filename: String): String;
+var
+  Found: TStringList;
+begin
+  Result := '';
+  Found := FindAllFiles(RepoPath, Filename, True);
+  try
+    if Found.Count > 0 then
+      Result := Found[0];
+  finally
+    Found.Free;
+  end;
+end;
+
+function TfrmSongs.GetCustomStyleForSong(const FilePath: String;
+  out AStyle: TPresentationStyleSettings): Boolean;
+var
+  Idx: Integer;
+  Entry: TCustomSongStyleEntry;
+begin
+  Idx := FCustomSongStyles.IndexOf(FilePath);
+  if Idx < 0 then
+  begin
+    Result := False;
+    Exit;
+  end;
+  Entry := TCustomSongStyleEntry(FCustomSongStyles.Objects[Idx]);
+  // Return a deep copy so caller owns the Font
+  AStyle := Entry.PresentationStyleSettings;
+  AStyle.Font := TFont.Create;
+  AStyle.Font.Assign(Entry.PresentationStyleSettings.Font);
+  Result := True;
+end;
+
+procedure TfrmSongs.SetCustomStyleForSong(const FilePath: String;
+  const AStyle: TPresentationStyleSettings);
+var
+  Idx: Integer;
+  Entry: TCustomSongStyleEntry;
+begin
+  Idx := FCustomSongStyles.IndexOf(FilePath);
+  if Idx >= 0 then
+  begin
+    // Replace existing entry
+    FCustomSongStyles.Objects[Idx].Free;
+    Entry := TCustomSongStyleEntry.Create;
+    Entry.PresentationStyleSettings := AStyle;
+    Entry.PresentationStyleSettings.Font := TFont.Create;
+    Entry.PresentationStyleSettings.Font.Assign(AStyle.Font);
+    FCustomSongStyles.Objects[Idx] := Entry;
+  end
+  else
+  begin
+    Entry := TCustomSongStyleEntry.Create;
+    Entry.PresentationStyleSettings := AStyle;
+    Entry.PresentationStyleSettings.Font := TFont.Create;
+    Entry.PresentationStyleSettings.Font.Assign(AStyle.Font);
+    FCustomSongStyles.AddObject(FilePath, Entry);
+  end;
+end;
+
+procedure TfrmSongs.RemoveCustomStyleForSong(const FilePath: String);
+var
+  Idx: Integer;
+begin
+  Idx := FCustomSongStyles.IndexOf(FilePath);
+  if Idx >= 0 then
+  begin
+    FCustomSongStyles.Objects[Idx].Free;
+    FCustomSongStyles.Delete(Idx);
+  end;
+end;
+
+procedure TfrmSongs.itemEditSongStyleClick(Sender: TObject);
+var
+  RepoFile: TRepoFile;
+  ExistingStyle, GlobalStyle, NewStyle: TPresentationStyleSettings;
+  HasExisting: Boolean;
+begin
+  if lbxSSelected.ItemIndex < 0 then Exit;
+  RepoFile := TRepoFile(lbxSSelected.Items.Objects[lbxSSelected.ItemIndex]);
+  if RepoFile = nil then Exit;
+
+  HasExisting := GetCustomStyleForSong(RepoFile.FilePath, ExistingStyle);
+  GlobalStyle := frmSettings.ExportPresentationStyleSettings;
+  try
+    if HasExisting then
+    begin
+      frmSongStyle.LoadFromStyle(ExistingStyle, True);
+      DestroyPresentationStyleSettings(ExistingStyle);
+    end
+    else
+      frmSongStyle.LoadFromStyle(GlobalStyle, False);
+  finally
+    DestroyPresentationStyleSettings(GlobalStyle);
+  end;
+
+  if frmSongStyle.ShowModal = mrOK then
+  begin
+    if frmSongStyle.ResetToDefault then
+      RemoveCustomStyleForSong(RepoFile.FilePath)
+    else
+    begin
+      NewStyle := frmSongStyle.ExportStyle;
+      SetCustomStyleForSong(RepoFile.FilePath, NewStyle);
+      DestroyPresentationStyleSettings(NewStyle);
+    end;
+  end;
+end;
+
 procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);
 begin
   itemOpenInEditor.Visible := (lbxSRepo.ItemIndex >= 0);
+  itemEditSongStyle.Visible :=
+    (SongPopupMenu.PopupComponent = lbxSSelected) and
+    (lbxSSelected.ItemIndex >= 0);
 end;
 
 procedure TfrmSongs.TimerUpdateScreenTimer(Sender: TObject);

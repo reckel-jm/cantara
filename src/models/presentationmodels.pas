@@ -36,7 +36,19 @@ TPresentationStyleSettings = record
   FadeDurationMs: Integer;
 end;
 
+{ Frees heap objects owned by a TPresentationStyleSettings (specifically the TFont). }
+procedure DestroyPresentationStyleSettings(
+  var APresentationStyleSetting: TPresentationStyleSettings);
+
 implementation
+
+procedure DestroyPresentationStyleSettings(
+  var APresentationStyleSetting: TPresentationStyleSettings);
+begin
+  {$IFNDEF NOGRAPHIC}
+  FreeAndNil(APresentationStyleSetting.Font);
+  {$ENDIF}
+end;
 
 end.
 

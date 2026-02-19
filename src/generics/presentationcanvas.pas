@@ -32,9 +32,13 @@ type
     function PaintSlide(Slide: TSlide): TBGRABitmap;
   private
     BackgroundPicture: TBGRABitmap;
+    { 1-slot cache for custom per-slide background images }
+    FCustomBgPath:    String;
+    FCustomBgResized: TBGRABitmap;
     function CalculateTextHeight(Font: TFont; RectWidth: Integer;
       TextString: String): Integer;
     procedure AssignBGRAFont(Font: TFont);
+    procedure LoadAndResizeCustomBg(const AStyle: TPresentationStyleSettings);
   end;
 
   { Returns a wordwrapped string of a given string. }
@@ -49,8 +53,6 @@ const
   PADDING: Integer = 15;
   MINSPOILERDISTANCE: Integer = 10;
   MORELYRICSINDICATOR: String = '...';
-
-procedure DestroyPresentationStyleSettings(var APresentationStyleSetting: TPresentationStyleSettings);
 
 implementation
 
@@ -109,12 +111,6 @@ begin
   BGRABitmap.Destroy;
 end;
 
-procedure DestroyPresentationStyleSettings(
-  var APresentationStyleSetting: TPresentationStyleSettings);
-begin
-  FreeAndNil(APresentationStyleSetting.Font);
-end;
-
 procedure TPresentationCanvasHandler.AdjustTransparency;
 var
   x, y: Integer;
@@ -166,6 +162,9 @@ begin
   BackgroundPicture := TBGRABitmap.Create;
   AdjustedBackgroundPicture := TBGRABitmap.Create;
   ResizedBackgroundBitmap := TBGRABitmap.Create;
+
+  FCustomBgPath := '';
+  FCustomBgResized := TBGRABitmap.Create;
 end;
 
 constructor TPresentationCanvasHandler.Create(aPresentationStyleSettings:
@@ -183,7 +182,8 @@ begin
   BackgroundPicture.Destroy;
   ResizedBackgroundBitmap.Destroy;
   AdjustedBackgroundPicture.Destroy;
-  DestroyPresentationStyleSettings(Self.PresentationStyleSettings);
+  FCustomBgResized.Destroy;
+  PresentationModels.DestroyPresentationStyleSettings(Self.PresentationStyleSettings);
   inherited;
 end;
 
@@ -258,6 +258,90 @@ begin
   ResampledAdjustedBackgroundPicture.Free;
 end;
 
+procedure TPresentationCanvasHandler.LoadAndResizeCustomBg(
+  const AStyle: TPresentationStyleSettings);
+var
+  CustomBgPicture, CustomAdjusted, ResampledBitmap: TBGRABitmap;
+  x, y: Integer;
+  p: PBGRAPixel;
+  DestRect: TRect;
+  NewHeight, NewWidth: Integer;
+begin
+  FCustomBgPath := '';  // reset so failed loads don't reuse stale path
+  FCustomBgResized.SetSize(0, 0);
+  try
+    CustomBgPicture := TBGRABitmap.Create;
+    CustomAdjusted   := TBGRABitmap.Create;
+    try
+      CustomBgPicture.LoadFromFile(AStyle.BackgroundImageFilePath);
+
+      // Adjust transparency
+      if AStyle.Transparency = 0 then
+        CustomAdjusted.Assign(CustomBgPicture)
+      else
+      begin
+        CustomAdjusted.SetSize(CustomBgPicture.Width, CustomBgPicture.Height);
+        CustomAdjusted.FillRect(0, 0, CustomAdjusted.Width-1, CustomAdjusted.Height-1,
+          ColorToBGRA(AStyle.BackgroundColor));
+        for y := 0 to CustomBgPicture.Height-1 do
+        begin
+          p := CustomBgPicture.ScanLine[y];
+          for x := 0 to CustomBgPicture.Width-1 do
+          begin
+            p^.alpha := 255 - Round(Abs(AStyle.Transparency * 2.55));
+            Inc(p);
+          end;
+        end;
+        CustomAdjusted.PutImage(0, 0, CustomBgPicture, dmDrawWithTransparency);
+      end;
+
+      // Resize to fit presentation canvas
+      if (Self.Width > 0) and (Self.Height > 0) and
+         (CustomAdjusted.Width > 0) and (CustomAdjusted.Height > 0) then
+      begin
+        if Self.Width / Self.Height >= CustomAdjusted.Width / CustomAdjusted.Height then
+        begin
+          NewHeight := Ceil(Self.Width * CustomAdjusted.Height / CustomAdjusted.Width);
+          if CustomAdjusted.Height > Self.Height then
+            DestRect.Top := Max(-(Trunc((CustomAdjusted.Height - Self.Height) / 2)), 0)
+          else
+            DestRect.Top := 0;
+          DestRect.Left := 0;
+          DestRect.Height := Max(NewHeight, Self.Height);
+          DestRect.Width := Ceil(DestRect.Height * CustomAdjusted.Width / CustomAdjusted.Height);
+        end
+        else
+        begin
+          NewWidth := Ceil(Self.Height * CustomAdjusted.Width / CustomAdjusted.Height);
+          if CustomAdjusted.Width > Self.Width then
+            DestRect.Left := Max(-(Trunc((CustomAdjusted.Width - Self.Width) / 2)), 0)
+          else
+            DestRect.Left := 0;
+          DestRect.Top := 0;
+          DestRect.Width := Max(NewWidth, Self.Width);
+          DestRect.Height := Ceil(DestRect.Width * CustomAdjusted.Height / CustomAdjusted.Width);
+        end;
+
+        FCustomBgResized.Fill(AStyle.BackgroundColor);
+        FCustomBgResized.SetSize(Self.Width, Self.Height);
+        ResampledBitmap := CustomAdjusted.Resample(DestRect.Width, DestRect.Height,
+                                                    rmSimpleStretch);
+        FCustomBgResized.PutImage(DestRect.Left, DestRect.Top, ResampledBitmap,
+                                  dmDrawWithTransparency);
+        ResampledBitmap.Free;
+
+        FCustomBgPath := AStyle.BackgroundImageFilePath;
+      end;
+    finally
+      CustomBgPicture.Free;
+      CustomAdjusted.Free;
+    end;
+  except
+    // Invalid image / file not found – FCustomBgPath stays '' → no image shown
+    FCustomBgResized.SetSize(0, 0);
+  end;
+end;
+
 function TPresentationCanvasHandler.PaintSlide(Slide: TSlide): TBGRABitmap;
 var
   BackgroundRect, ContentRect: TRect;
@@ -269,28 +353,34 @@ var
   DisplayedMainText: String;
   DefaultSpoilerDistance: Integer;
   TextStyle: TTextStyle;
+  EffectiveStyle: TPresentationStyleSettings;
 begin
+  if Slide.HasCustomStyle then
+    EffectiveStyle := Slide.CustomStyle
+  else
+    EffectiveStyle := PresentationStyleSettings;
+
   Bitmap.SetSize(self.Width, self.Height);
 
   // When the slide is empty and black screen mode is enabled, return a pure black bitmap
-  if (Slide.SlideType = EmptySlide) and PresentationStyleSettings.BlackScreenOnEmptySlide then
+  if (Slide.SlideType = EmptySlide) and EffectiveStyle.BlackScreenOnEmptySlide then
   begin
     Bitmap.Fill(clBlack);
     Result := Bitmap;
     Exit;
   end;
 
-  Bitmap.Fill(PresentationStyleSettings.BackgroundColor);
+  Bitmap.Fill(EffectiveStyle.BackgroundColor);
   // Here we setup the different fonts for calculating the text height
   NormalTextFont := TFont.Create;
-  NormalTextFont.Assign(PresentationStyleSettings.Font);
-  NormalTextFont.Color := PresentationStyleSettings.TextColor;
+  NormalTextFont.Assign(EffectiveStyle.Font);
+  NormalTextFont.Color := EffectiveStyle.TextColor;
   DefaultSpoilerDistance := Round(NormalTextFont.GetTextHeight('gJ') * 3.5);
   SpoilerTextFont := TFont.Create;
   SpoilerTextFont.Assign(NormalTextFont);
   SpoilerTextFont.Height := NormalTextFont.Height Div 2;
-  SpoilerRectWidth := Round((self.Width - PresentationStyleSettings.Padding.Left -
-    PresentationStyleSettings.Padding.Right) * 2 / 3);
+  SpoilerRectWidth := Round((self.Width - EffectiveStyle.Padding.Left -
+    EffectiveStyle.Padding.Right) * 2 / 3);
   MetaTextFont := TFont.Create;
   MetaTextFont.Assign(NormalTextFont);
   MetaTextFont.Height := NormalTextFont.Height Div 3;
@@ -309,12 +399,12 @@ begin
     NormalTextFont.Height,
     NormalTextFont.Style,
     self.Width -
-    PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right
+    EffectiveStyle.Padding.Left - EffectiveStyle.Padding.Right
   );     }
   DisplayedMainText := Slide.PartContent.MainText;
 
   MainTextHeight := self.CalculateTextHeight(NormalTextFont, self.Width -
-    PresentationStyleSettings.Padding.Left - PresentationStyleSettings.Padding.Right,
+    EffectiveStyle.Padding.Left - EffectiveStyle.Padding.Right,
     DisplayedMainText);
   MetaTextHeight := CalculateTextHeight(MetaTextFont, SpoilerRectWidth,
     Slide.PartContent.MetaText);
@@ -327,7 +417,7 @@ begin
       SpoilerRectWidth, SpoilerText);
     // Check whether spoiler fits
     SpoilerDistance := Min(DEFAULTSPOILERDISTANCE, Height -
-      (PresentationStyleSettings.Padding.Top + PresentationStyleSettings.Padding.Bottom +
+      (EffectiveStyle.Padding.Top + EffectiveStyle.Padding.Bottom +
       MainTextHeight + SpoilerTextHeight + DEFAULTSPOILERDISTANCE -
       MINSPOILERDISTANCE - MetaTextHeight));
 
@@ -336,10 +426,10 @@ begin
       SpoilerText := SplitString(SpoilerText, LineEnding)[0] + MoreLyricsIndicator;
       // Now we calculate the height again
       SpoilerTextHeight := self.CalculateTextHeight(SpoilerTextFont,
-        self.Width - PresentationStyleSettings.Padding.Left -
-        PresentationStyleSettings.Padding.Right, SpoilerText);
-      SpoilerDistance := (Height - (PresentationStyleSettings.Padding.Top +
-        PresentationStyleSettings.Padding.Bottom + MainTextHeight +
+        self.Width - EffectiveStyle.Padding.Left -
+        EffectiveStyle.Padding.Right, SpoilerText);
+      SpoilerDistance := (Height - (EffectiveStyle.Padding.Top +
+        EffectiveStyle.Padding.Bottom + MainTextHeight +
         2 * SpoilerTextHeight - MetaTextHeight)) Div 2;
       if SpoilerDistance < MINSPOILERDISTANCE then
       begin
@@ -357,14 +447,24 @@ begin
   end;
 
   //Insert Background
-  if PresentationStyleSettings.ShowBackgroundImage then
+  if EffectiveStyle.ShowBackgroundImage then
   begin
-    Bitmap.PutImage(0,0,Self.ResizedBackgroundBitmap, dmSet);
+    if (not Slide.HasCustomStyle) or
+       (Slide.CustomStyle.BackgroundImageFilePath =
+        PresentationStyleSettings.BackgroundImageFilePath) then
+      Bitmap.PutImage(0, 0, Self.ResizedBackgroundBitmap, dmSet)
+    else
+    begin
+      if FCustomBgPath <> EffectiveStyle.BackgroundImageFilePath then
+        LoadAndResizeCustomBg(EffectiveStyle);
+      if FCustomBgResized.Width > 0 then
+        Bitmap.PutImage(0, 0, FCustomBgResized, dmSet);
+    end;
   end;
 
   with TextStyle do
   begin
-    case PresentationStyleSettings.HorizontalAlign of
+    case EffectiveStyle.HorizontalAlign of
       Align_Left: Alignment := taLeftJustify;
       Align_Center: Alignment := taCenter;
       Align_Right: Alignment := taRightJustify;
@@ -380,18 +480,18 @@ begin
 
   with ContentRect do
   begin
-    Left := PresentationStyleSettings.Padding.Left;
-    case PresentationStyleSettings.VerticalAlign of
-      tlTop: Top := PresentationStyleSettings.Padding.Top;
-      tlCenter: Top := PresentationStyleSettings.Padding.Top +
-          (self.Height - PresentationStyleSettings.Padding.Top -
-          PresentationStyleSettings.Padding.Bottom - MainTextHeight -
+    Left := EffectiveStyle.Padding.Left;
+    case EffectiveStyle.VerticalAlign of
+      tlTop: Top := EffectiveStyle.Padding.Top;
+      tlCenter: Top := EffectiveStyle.Padding.Top +
+          (self.Height - EffectiveStyle.Padding.Top -
+          EffectiveStyle.Padding.Bottom - MainTextHeight -
           SpoilerTextHeight - SpoilerDistance) Div 2;
-      tlBottom: Top := self.Height - PresentationStyleSettings.Padding.Bottom -
+      tlBottom: Top := self.Height - EffectiveStyle.Padding.Bottom -
           MainTextHeight - SpoilerTextHeight - SpoilerDistance;
     end;
-    Width := self.Width - PresentationStyleSettings.Padding.Right -
-      PresentationStyleSettings.Padding.Left;
+    Width := self.Width - EffectiveStyle.Padding.Right -
+      EffectiveStyle.Padding.Left;
     Height := MainTextHeight;
   end;
 
@@ -410,7 +510,7 @@ begin
                                      clYellow);
   {$endif}
   Bitmap.TextRect(ContentRect, ContentRect.left, ContentRect.Top, DisplayedMainText, TextStyle,
-                               ColorToBgra(PresentationStyleSettings.TextColor));
+                               ColorToBgra(EffectiveStyle.TextColor));
 
   // Repeat Assignment because we changed it to bold before
   Self.AssignBGRAFont(NormalTextFont);
@@ -422,16 +522,16 @@ begin
     ContentRect.Top += MainTextHeight + SpoilerDistance;
     ContentRect.Height := SpoilerTextHeight;
     Bitmap.TextRect(ContentRect, SpoilerText, TextStyle.Alignment, tlCenter,
-                      ColorToBgra(PresentationStyleSettings.TextColor)
+                      ColorToBgra(EffectiveStyle.TextColor)
                     );
   end;
 
   // We paint Meta information if desired
   if Slide.PartContent.MetaText <> '' then
   begin
-    ContentRect.Top := self.Height - PresentationStyleSettings.Padding.Bottom -
+    ContentRect.Top := self.Height - EffectiveStyle.Padding.Bottom -
       MetaTextHeight;
-    ContentRect.Left := PresentationStyleSettings.Padding.Left;
+    ContentRect.Left := EffectiveStyle.Padding.Left;
     ContentRect.Height := MetaTextHeight;
     ContentRect.Width := SpoilerRectWidth;
     with TextStyle do
@@ -441,7 +541,7 @@ begin
     end;
     Self.AssignBGRAFont(MetaTextFont);
     Bitmap.TextRect(ContentRect, Slide.PartContent.MetaText, TextStyle.Alignment, tlTop,
-                               ColorToBgra(PresentationStyleSettings.TextColor));
+                               ColorToBgra(EffectiveStyle.TextColor));
   end;
 
   {$if defined(DEBUGCANVAS)}

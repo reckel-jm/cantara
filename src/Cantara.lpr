@@ -26,7 +26,8 @@ uses
   PresentationCanvas, settingsdetailed, settingspadding, formMarkupExport,
   markup, imageexport, loadimagethread, CantaraStandardDialogs,
   presentationcontroller, cantarafontdialog, exporterinterfaces,
-  thirdpartylibraries, flatpakhandling, settingshandler
+  thirdpartylibraries, flatpakhandling, settingshandler,
+  FormSongStyle
   {$IFDEF WINDOWS}
   {
    On Windows, WinForms normally does not adjust to darkmode. We will use the Lazarus package MetaDarkStyle which sets the colors
@@ -69,5 +70,6 @@ begin
   Application.CreateForm(TFrmMarkupExport, FrmMarkupExport);
   Application.CreateForm(TFormImageExport, FormImageExport);
   Application.CreateForm(TThirdPartyLibrariesForm, ThirdPartyLibrariesForm);
+  Application.CreateForm(TfrmSongStyle, frmSongStyle);
   Application.Run;
 end.

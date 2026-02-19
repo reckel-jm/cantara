@@ -49,11 +49,20 @@ type
   private
     pptxgenjs, template, exportedJs, content: TStringList;
     lastSongName: String;
+    FCustomMasterDefs: TStringList;
+    FCustomStyleKeys: TStringList;
+    FCustomMasterCount: Integer;
     function GenerateBackgroundColorSettings: String;
     procedure AddSlide(Slide: TSlide);
     function ColorToHexString(AColor: TColor): String;
     function GenerateBackgroundImageSettings: String;
     function ImageToBase64: String;
+    function StyleFingerprint(const AStyle: TPresentationStyleSettings): String;
+    function ImageToBase64ForStyle(const AStyle: TPresentationStyleSettings): String;
+    function GenerateMasterDef(const MasterTitle, PlaceholderName: String;
+      const AStyle: TPresentationStyleSettings; const ABgImage: String): String;
+    function GetOrCreateCustomMasterBaseName(
+      const AStyle: TPresentationStyleSettings): String;
   end;
 
 const
@@ -96,25 +105,34 @@ begin
   template := LoadResourceFileIntoStringList('PPTXEXPORT_TEMPLATE');
   content := TStringList.Create;
   exportedJs := TStringList.Create;
+  FCustomMasterDefs := TStringList.Create;
+  FCustomStyleKeys := TStringList.Create;
+  FCustomMasterCount := 0;
 end;
 
 procedure TPPTXExporter.AddSlide(Slide: TSlide);
+var
+  MasterPrefix: String;
 begin
   if Slide.Song.FileNameWithoutEnding <> lastSongName then
   begin
     content.Add(Format(CodeAddSection, [PrepareText(Slide.Song.FileNameWithoutEnding)]));
     lastSongName := Slide.Song.FileNameWithoutEnding;
   end;
+  if Slide.HasCustomStyle then
+    MasterPrefix := GetOrCreateCustomMasterBaseName(Slide.CustomStyle) + '_'
+  else
+    MasterPrefix := '';
   if Slide.SlideType = SlideWithoutSpoiler then // this is a slide without spoiler
   begin
-    content.Add(Format(CodeAddSlide, ['DefaultSlide']));
+    content.Add(Format(CodeAddSlide, [MasterPrefix + 'DefaultSlide']));
     content.Add(Format(CodeAddUnspoileredText,
       [PrepareText(Slide.PartContent.MainText)]));
   end
   else
   if Slide.SlideType = SlideWithSpoiler then
   begin
-    content.Add(Format(CodeAddSlide, ['DefaultSlide']));
+    content.Add(Format(CodeAddSlide, [MasterPrefix + 'DefaultSlide']));
     content.Add(Format(CodeAddSpoileredText,
       [PrepareText(Slide.PartContent.MainText),
       PrepareText(Slide.PartContent.SpoilerText)]));
@@ -122,12 +140,12 @@ begin
   else
   if Slide.SlideType = EmptySlide then
   begin
-    content.Add(Format(CodeAddSlide, ['EmptySlide']));
+    content.Add(Format(CodeAddSlide, [MasterPrefix + 'EmptySlide']));
   end
   else
   if Slide.SlideType = TitleSlide then
   begin
-    content.Add(Format(CodeAddSlide, ['TitleSlide']));
+    content.Add(Format(CodeAddSlide, [MasterPrefix + 'TitleSlide']));
     if Trim(Slide.PartContent.SpoilerText) = '' then
       content.Add(Format(CodeAddTitleText, [PrepareText(Slide.PartContent.MainText)]))
     else
@@ -146,10 +164,18 @@ function TPPTXExporter.SaveJavaScriptToFile: String;
 var
   ExportedFilePath: String;
   halign, valign: String;
+  allContent: TStringList;
 begin
   pptxgenjs.SaveToFile(Folder + PathDelim + 'pptxgen.bundle.js');
-  exportedJs.Text := StringReplace(template.Text, '{{SLIDECONTENT}}',
-    content.Text, [rfReplaceAll]);
+  allContent := TStringList.Create;
+  try
+    allContent.AddStrings(FCustomMasterDefs);
+    allContent.AddStrings(content);
+    exportedJs.Text := StringReplace(template.Text, '{{SLIDECONTENT}}',
+      allContent.Text, [rfReplaceAll]);
+  finally
+    allContent.Free;
+  end;
   exportedJs.Text := StringReplace(exportedJs.Text, '{{BACKGROUND}}',
     GenerateBackgroundColorSettings, [rfReplaceAll]);
   exportedJs.Text := StringReplace(exportedJs.Text, '{{TEXTCOLOR}}',
@@ -193,6 +219,8 @@ destructor TPPTXExporter.Destroy;
 begin
   FreeAndNil(pptxgenjs);
   FreeAndNil(template);
+  FreeAndNil(FCustomMasterDefs);
+  FreeAndNil(FCustomStyleKeys);
   exportedJs.Destroy;
   content.Destroy;
   inherited;
@@ -267,6 +295,144 @@ begin
     Outputstream.Free;
     jpg.Free;
     OurPicture.Free;
+  end;
+end;
+
+function TPPTXExporter.StyleFingerprint(const AStyle: TPresentationStyleSettings): String;
+begin
+  Result := ColorToHexString(AStyle.BackgroundColor) + '|' +
+             ColorToHexString(AStyle.TextColor) + '|' +
+             BoolToStr(AStyle.ShowBackgroundImage, True) + '|' +
+             AStyle.BackgroundImageFilePath + '|' +
+             IntToStr(AStyle.Transparency) + '|' +
+             IntToStr(Ord(AStyle.HorizontalAlign)) + '|' +
+             IntToStr(Ord(AStyle.VerticalAlign)) + '|' +
+             AStyle.Font.Name + '|' +
+             IntToStr(Abs(AStyle.Font.Size));
+end;
+
+function TPPTXExporter.ImageToBase64ForStyle(const AStyle: TPresentationStyleSettings): String;
+var
+  imgstream, Outputstream: TStream;
+  Encoder: TBase64EncodingStream;
+  jpg: TJPEGImage;
+  OurPicture: TPicture;
+  PresentationCanvas: TPresentationCanvasHandler;
+begin
+  Result := '';
+  if not FileExists(AStyle.BackgroundImageFilePath) then Exit;
+  OurPicture := TPicture.Create;
+  PresentationCanvas := TPresentationCanvasHandler.Create;
+  try
+    OurPicture.LoadFromFile(AStyle.BackgroundImageFilePath);
+    PresentationCanvas.PresentationStyleSettings := AStyle;
+    PresentationCanvas.Width := OurPicture.Width;
+    PresentationCanvas.Height := Round(PresentationCanvas.Width / 16 * 9);
+    PresentationCanvas.LoadBackgroundBitmap;
+    OurPicture.Bitmap.Assign(PresentationCanvas.ResizedBackgroundBitmap);
+    imgstream := TMemoryStream.Create();
+    Outputstream := TStringStream.Create('');
+    jpg := TJPEGImage.Create;
+    Encoder := TBase64EncodingStream.Create(Outputstream);
+    try
+      jpg.Assign(OurPicture.Bitmap);
+      jpg.CompressionQuality := 75;
+      jpg.SaveToStream(imgstream);
+      imgstream.Position := 0;
+      Encoder.CopyFrom(imgstream, imgstream.Size);
+      Encoder.Flush;
+      Result := 'data:image/jpg;base64,' + (Outputstream As TStringStream).DataString;
+    finally
+      imgstream.Free;
+      Encoder.Free;
+      Outputstream.Free;
+      jpg.Free;
+    end;
+  finally
+    OurPicture.Free;
+    PresentationCanvas.Free;
+  end;
+end;
+
+function TPPTXExporter.GenerateMasterDef(const MasterTitle, PlaceholderName: String;
+  const AStyle: TPresentationStyleSettings; const ABgImage: String): String;
+var
+  bgColor, textColor, halign, valign, fontSize, fontFace: String;
+begin
+  bgColor := 'background: { color: "' + ColorToHexString(AStyle.BackgroundColor) + '" },';
+  textColor := ColorToHexString(AStyle.TextColor);
+  case AStyle.HorizontalAlign of
+    Align_Left:   halign := 'left';
+    Align_Center: halign := 'center';
+    Align_Right:  halign := 'right';
+  else
+    halign := 'center';
+  end;
+  case AStyle.VerticalAlign of
+    tlTop:    valign := 'top';
+    tlCenter: valign := 'middle';
+    tlBottom: valign := 'bottom';
+  else
+    valign := 'middle';
+  end;
+  if Assigned(AStyle.Font) then
+  begin
+    fontFace := AStyle.Font.Name;
+    if Abs(AStyle.Font.Size) > 0 then
+      fontSize := IntToStr(Abs(AStyle.Font.Size))
+    else
+      fontSize := '32';
+  end
+  else
+  begin
+    fontFace := 'Calibri';
+    fontSize := '32';
+  end;
+  Result :=
+    'pres.defineSlideMaster({' + LineEnding +
+    '  title: "' + MasterTitle + '",' + LineEnding +
+    '  ' + bgColor + LineEnding +
+    '  objects: [' + LineEnding +
+    '    ' + ABgImage + LineEnding +
+    '    { placeholder: {' + LineEnding +
+    '      options: { name: "' + PlaceholderName + '", type: "body", ' +
+    'x: 0, y: 0, w: "100%", h: "100%", align: "' + halign + '", ' +
+    'valign: "' + valign + '", fontSize: "' + fontSize + '", ' +
+    'fontFace: "' + fontFace + '", color: "' + textColor + '", ' +
+    'margin: 15, autoFit: true },' + LineEnding +
+    '      text: "",' + LineEnding +
+    '    } },' + LineEnding +
+    '  ]' + LineEnding +
+    '});';
+end;
+
+function TPPTXExporter.GetOrCreateCustomMasterBaseName(
+  const AStyle: TPresentationStyleSettings): String;
+var
+  Fingerprint, bgImage: String;
+  Idx: Integer;
+begin
+  Fingerprint := StyleFingerprint(AStyle);
+  Idx := FCustomStyleKeys.IndexOf(Fingerprint);
+  if Idx >= 0 then
+    Result := 'Custom' + IntToStr(PtrInt(FCustomStyleKeys.Objects[Idx]))
+  else
+  begin
+    Inc(FCustomMasterCount);
+    FCustomStyleKeys.AddObject(Fingerprint, TObject(PtrInt(FCustomMasterCount)));
+    Result := 'Custom' + IntToStr(FCustomMasterCount);
+    // Compute background image base64 once for all three masters
+    if AStyle.ShowBackgroundImage and FileExists(AStyle.BackgroundImageFilePath) then
+      bgImage := Format('{ image: { x:0, y:0, w:%s, h:%s, data:"%s" } }, ',
+        ['"100%"', '"100%"', ImageToBase64ForStyle(AStyle)])
+    else
+      bgImage := '';
+    FCustomMasterDefs.Add(GenerateMasterDef(
+      Result + '_DefaultSlide', 'defaultcontent', AStyle, bgImage));
+    FCustomMasterDefs.Add(GenerateMasterDef(
+      Result + '_TitleSlide', 'title', AStyle, bgImage));
+    FCustomMasterDefs.Add(GenerateMasterDef(
+      Result + '_EmptySlide', 'emptycontent', AStyle, bgImage));
   end;
 end;
 
