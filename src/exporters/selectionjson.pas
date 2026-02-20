@@ -439,6 +439,8 @@ var
   InputStream:  TStringStream;
   Decoder:      TBase64DecodingStream;
   OutputStream: TMemoryStream;
+  Buf: array[0..4095] of Byte;
+  BytesRead: Integer;
 begin
   Result := '';
   if B64 = '' then Exit;
@@ -446,7 +448,14 @@ begin
   Decoder      := TBase64DecodingStream.Create(InputStream, bdmMIME);
   OutputStream := TMemoryStream.Create;
   try
-    OutputStream.CopyFrom(Decoder, 0);
+    // TBase64DecodingStream is a filter stream without a defined Size, so
+    // CopyFrom(Decoder, 0) would raise "Invalid Stream Operation".
+    // Read in chunks until EOF instead.
+    repeat
+      BytesRead := Decoder.Read(Buf, SizeOf(Buf));
+      if BytesRead > 0 then
+        OutputStream.Write(Buf, BytesRead);
+    until BytesRead = 0;
     if OutputStream.Size > 0 then
     begin
       SetLength(Result, OutputStream.Size);
