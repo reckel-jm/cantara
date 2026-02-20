@@ -1681,6 +1681,7 @@ var
   ExistingContent, NewContentSL: TStringList;
   Style: TPresentationStyleSettings;
   FS: TFileStream;
+  SongRepoFile: TRepoFile;
 begin
   Result := True; // JSON selections are always a selection, never an archive
   RepoPath := frmSettings.edtRepoPath.Text;
@@ -1741,10 +1742,14 @@ begin
         ItemReloadSongListClick(nil);
       end;
 
-      // Add the (possibly renamed) song name to the selection
+      // Add the (possibly renamed) song name to the selection.
+      // FindSong returns the TRepoFile from the repo array (populated by
+      // loadRepo/ItemReloadSongListClick). AddObject is essential — bare
+      // Items.Add leaves a nil object pointer that crashes CreateSongListData.
       SongNameBase := Copy(FinalFileName, 1,
         Length(FinalFileName) - Length(ExtractFileExt(FinalFileName)));
-      lbxSSelected.Items.Add(SongNameBase);
+      SongRepoFile := FindSong(SongNameBase);
+      lbxSSelected.Items.AddObject(SongNameBase, SongRepoFile);
 
       { --- Custom style: restore if present --- }
       if JSONFile.Songs[i].Style.HasCustomStyle then
