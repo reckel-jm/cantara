@@ -155,9 +155,10 @@ begin
   Style := ExportStyle;
   try
     FPreviewCanvas.PresentationStyleSettings := Style;
-    // Render at the preview width with proper 16:9 height
-    FPreviewCanvas.Width  := imgPreview.Width;
-    FPreviewCanvas.Height := Round(imgPreview.Width / 16 * 9);
+    // Render at full screen resolution (same as the presentation), then let
+    // imgPreview scale it down proportionally; this keeps font sizes correct.
+    FPreviewCanvas.Width  := Screen.Width;
+    FPreviewCanvas.Height := Screen.Height;
     if Style.ShowBackgroundImage and FileExists(Style.BackgroundImageFilePath) then
     begin
       if Style.BackgroundImageFilePath <> FLastPreviewBgPath then
