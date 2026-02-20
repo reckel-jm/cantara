@@ -1163,9 +1163,11 @@ begin
       begin
         ASlideList.Items[k].HasCustomStyle := True;
         ASlideList.Items[k].CustomStyle := OverrideStyle;
-        // Each slide needs its own TFont instance (avoid double-free on destroy)
+        // Each slide needs its own TFont instance (avoid double-free on destroy).
+        // Guard against nil Font: fall back to system defaults if unset.
         NewFont := TFont.Create;
-        NewFont.Assign(OverrideStyle.Font);
+        if Assigned(OverrideStyle.Font) then
+          NewFont.Assign(OverrideStyle.Font);
         ASlideList.Items[k].CustomStyle.Font := NewFont;
       end;
       DestroyPresentationStyleSettings(OverrideStyle);
@@ -1354,7 +1356,8 @@ begin
   // Return a deep copy so caller owns the Font
   AStyle := Entry.PresentationStyleSettings;
   AStyle.Font := TFont.Create;
-  AStyle.Font.Assign(Entry.PresentationStyleSettings.Font);
+  if Assigned(Entry.PresentationStyleSettings.Font) then
+    AStyle.Font.Assign(Entry.PresentationStyleSettings.Font);
   Result := True;
 end;
 
@@ -1372,7 +1375,8 @@ begin
     Entry := TCustomSongStyleEntry.Create;
     Entry.PresentationStyleSettings := AStyle;
     Entry.PresentationStyleSettings.Font := TFont.Create;
-    Entry.PresentationStyleSettings.Font.Assign(AStyle.Font);
+    if Assigned(AStyle.Font) then
+      Entry.PresentationStyleSettings.Font.Assign(AStyle.Font);
     FCustomSongStyles.Objects[Idx] := Entry;
   end
   else
@@ -1380,7 +1384,8 @@ begin
     Entry := TCustomSongStyleEntry.Create;
     Entry.PresentationStyleSettings := AStyle;
     Entry.PresentationStyleSettings.Font := TFont.Create;
-    Entry.PresentationStyleSettings.Font.Assign(AStyle.Font);
+    if Assigned(AStyle.Font) then
+      Entry.PresentationStyleSettings.Font.Assign(AStyle.Font);
     FCustomSongStyles.AddObject(FilePath, Entry);
   end;
 end;
@@ -1596,6 +1601,7 @@ var
   RepoFileStrings: TStringList;
   songname, songextension: String;
   DateTimeStr: String;
+  SongRepoFile: TRepoFile;
 begin
   RepoPath := frmSettings.edtRepoPath.Text;
   SongTeXFile := TSongTeXFile.Create;
@@ -1611,10 +1617,14 @@ begin
       RepoFileStrings.LoadFromFile(RepoPath + PathDelim + NextFileName);
       if RepoFileStrings.Equals(SongTeXFile.NextSongFile) then
       begin
-        // Add the entry from local repo
+        // File exists and is identical — use the existing repo entry
         if SongTexFile.SongTeXIsSelection then
-          lbxSSelected.Items.Add(Copy(NextFileName, 1,
-            Length(NextFileName) - Length(ExtractFileExt(NextFileName))));
+        begin
+          SongName := Copy(NextFileName, 1,
+            Length(NextFileName) - Length(ExtractFileExt(NextFileName)));
+          SongRepoFile := FindSong(SongName);
+          lbxSSelected.Items.AddObject(SongName, SongRepoFile);
+        end;
       end
       else // The song is available but not equal
       begin
@@ -1626,9 +1636,13 @@ begin
         SongName := SongName + ' [' + DateTimeStr + ']';
         SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim +
           SongName + SongExtension);
-        if SongTexFile.SongTeXIsSelection then
-          lbxSSelected.Items.Add(SongName);
+        // Reload repo before adding to selection so FindSong can locate the new file
         ItemReloadSongListClick(nil);
+        if SongTexFile.SongTeXIsSelection then
+        begin
+          SongRepoFile := FindSong(SongName);
+          lbxSSelected.Items.AddObject(SongName, SongRepoFile);
+        end;
       end;
       FreeAndNil(RepoFileStrings);
     end
@@ -1637,9 +1651,13 @@ begin
       SongTeXFile.NextSongFile.SaveToFile(RepoPath + PathDelim + NextFileName);
       SongName := Copy(NextFileName, 1, Length(NextFileName) - Length(
         ExtractFileExt(NextFileName)));
-      if SongTexFile.SongTeXIsSelection then
-        lbxSSelected.Items.Add(SongName);
+      // Reload repo before adding to selection so FindSong can locate the new file
       ItemReloadSongListClick(nil);
+      if SongTexFile.SongTeXIsSelection then
+      begin
+        SongRepoFile := FindSong(SongName);
+        lbxSSelected.Items.AddObject(SongName, SongRepoFile);
+      end;
     end;
     NextFileName := SongTexFile.HasNextSongfile;
   end;

@@ -267,10 +267,12 @@ begin
     DestroyPresentationStyleSettings(FBaseStyle);
   FBaseStyle := AStyle;
   FBaseStyle.Font := TFont.Create;
-  FBaseStyle.Font.Assign(AStyle.Font);
+  if Assigned(AStyle.Font) then
+    FBaseStyle.Font.Assign(AStyle.Font);
   FBaseStyleLoaded := True;
 
-  FCurrentFont.Assign(AStyle.Font);
+  if Assigned(AStyle.Font) then
+    FCurrentFont.Assign(AStyle.Font);
   UpdateFontPreview;
 
   pnlTextColor.Color := AStyle.TextColor;
