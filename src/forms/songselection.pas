@@ -680,10 +680,12 @@ begin
     FileName := SaveDialog.FileName;
     if ExtractFileExt(FileName) = '' then
     begin
-      if SaveDialog.FilterIndex = 2 then
-        FileName := FileName + '.json'
+      if SaveDialog.FilterIndex = 1 then
+        FileName := FileName + '.selection.json'
+      else if SaveDialog.FilterIndex = 2 then
+        FileName := FileName + '.songtex'
       else
-        FileName := FileName + '.songtex';
+        FileName := FileName + '.csswc'
     end;
     SaveSelection(FileName);
     LoadedSongSelectionFilePath := FileName;
