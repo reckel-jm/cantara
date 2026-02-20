@@ -207,6 +207,10 @@ var
   NewHeight, NewWidth: Integer;
   ResampledAdjustedBackgroundPicture: TBGRABitmap;
 begin
+  // Always invalidate the per-song custom-bg cache: the canvas size may have
+  // changed (FormResize), so any previously cached scaled bitmap is stale.
+  FCustomBgPath := '';
+
   if PresentationStyleSettings.ShowBackgroundImage = false
      then Exit;
 
