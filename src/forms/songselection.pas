@@ -13,7 +13,7 @@ uses
   FormFulltextSearch, PPTX, PresentationCanvas, PresentationModels,
   formMarkupExport, imageexport, textfilehandler, CantaraStandardDialogs,
   presentationcontroller, Types, bgrabitmap, BGRABitmapTypes, FlatpakHandling,
-  FormSongStyle
+  FormSongStyle, SelectionJSON
   ;
 
 type
@@ -198,6 +198,8 @@ type
     procedure BringToFront;
     procedure ExportSelectionAsTeXFile(var FilePath: String);
     function ImportSongTeXFileAsSelection(FilePath: String): Boolean;
+    procedure ExportSelectionAsJsonFile(const FilePath: String);
+    function  ImportSelectionFromJsonFile(const FilePath: String): Boolean;
     { Saves the Selection at the place FilePath
       @param(FilePath: The full File Path where to save the song selection)
     }
@@ -562,6 +564,8 @@ begin
   lbxSSelected.Clear;
   if ExtractFileExt(FilePath) = '.songtex' then
     SongTexFileIsSelection := ImportSongTeXFileAsSelection(FilePath)
+  else if ExtractFileExt(FilePath) = '.json' then
+    ImportSelectionFromJsonFile(FilePath)
   else if ExtractFileExt(FilePath) = '.csswc' then
   begin
     { This is really depreciated and should not be used anymore... }
@@ -674,7 +678,13 @@ begin
   if ExecuteCantaraFileDialog(SaveDialog) then
   begin
     FileName := SaveDialog.FileName;
-    if ExtractFileExt(FileName) = '' then FileName := FileName + '.songtex';
+    if ExtractFileExt(FileName) = '' then
+    begin
+      if SaveDialog.FilterIndex = 2 then
+        FileName := FileName + '.json'
+      else
+        FileName := FileName + '.songtex';
+    end;
     SaveSelection(FileName);
     LoadedSongSelectionFilePath := FileName;
     PanelSongTeXStatus.Visible := True;
@@ -703,6 +713,8 @@ begin
   TextFileHandler := TTextFileHandler.Create;
   if ExtractFileExt(FilePath) = '.songtex' then
     ExportSelectionAsTeXFile(FilePath)
+  else if ExtractFileExt(FilePath) = '.json' then
+    ExportSelectionAsJsonFile(FilePath)
   else if ExtractFileExt(FilePath) = '.csswc' then
   begin
     { This is really depreciated and should not be used anymore... }
@@ -1631,6 +1643,142 @@ begin
   end;
   Result := SongTexFile.SongTeXIsSelection;
   SongTexFile.Destroy;
+end;
+
+procedure TfrmSongs.ExportSelectionAsJsonFile(const FilePath: String);
+var
+  JSONFile: TSelectionJSONFile;
+  i: Integer;
+  SongFile: TRepoFile;
+  HasStyle: Boolean;
+  Style: TPresentationStyleSettings;
+begin
+  JSONFile := TSelectionJSONFile.Create;
+  try
+    for i := 0 to lbxSSelected.Count - 1 do
+    begin
+      SongFile := FindSong(lbxSSelected.Items.Strings[i]);
+      if SongFile = nil then Continue;
+      HasStyle := GetCustomStyleForSong(SongFile.FilePath, Style);
+      try
+        JSONFile.AddSong(SongFile.FilePath, SongFile.FileName, HasStyle, Style);
+      finally
+        if HasStyle then DestroyPresentationStyleSettings(Style);
+      end;
+    end;
+    JSONFile.SaveToFile(FilePath);
+  finally
+    JSONFile.Free;
+  end;
+end;
+
+function TfrmSongs.ImportSelectionFromJsonFile(const FilePath: String): Boolean;
+var
+  JSONFile: TSelectionJSONFile;
+  i: Integer;
+  RepoPath, FinalFileName, FullPath, BgPath: String;
+  SongExt, SongNameBase, DateTimeStr: String;
+  ExistingContent, NewContentSL: TStringList;
+  Style: TPresentationStyleSettings;
+  FS: TFileStream;
+begin
+  Result := True; // JSON selections are always a selection, never an archive
+  RepoPath := frmSettings.edtRepoPath.Text;
+
+  JSONFile := TSelectionJSONFile.Create;
+  try
+    JSONFile.LoadFromFile(FilePath);
+
+    for i := 0 to High(JSONFile.Songs) do
+    begin
+      FinalFileName := JSONFile.Songs[i].FileName;
+      FullPath := RepoPath + PathDelim + FinalFileName;
+
+      { --- Song file: check repo and save if needed --- }
+      if FileExists(FullPath) then
+      begin
+        ExistingContent := TStringList.Create;
+        NewContentSL    := TStringList.Create;
+        try
+          ExistingContent.LoadFromFile(FullPath);
+          NewContentSL.Text := JSONFile.Songs[i].FileContent;
+          if not ExistingContent.Equals(NewContentSL) then
+          begin
+            // Different content — save under a [YYYY-MM-DD] suffix
+            SongExt      := ExtractFileExt(FinalFileName);
+            SongNameBase := Copy(FinalFileName, 1,
+              Length(FinalFileName) - Length(SongExt));
+            DateTimeToString(DateTimeStr, 'yyyy-mm-dd', Now);
+            FinalFileName := SongNameBase + ' [' + DateTimeStr + ']' + SongExt;
+            FullPath := RepoPath + PathDelim + FinalFileName;
+            FS := TFileStream.Create(FullPath, fmCreate);
+            try
+              if Length(JSONFile.Songs[i].FileContent) > 0 then
+                FS.Write(JSONFile.Songs[i].FileContent[1],
+                  Length(JSONFile.Songs[i].FileContent));
+            finally
+              FS.Free;
+            end;
+            ItemReloadSongListClick(nil);
+          end;
+          // else: file exists and is identical — use it as-is
+        finally
+          FreeAndNil(ExistingContent);
+          FreeAndNil(NewContentSL);
+        end;
+      end
+      else
+      begin
+        // File does not exist — save it
+        FS := TFileStream.Create(FullPath, fmCreate);
+        try
+          if Length(JSONFile.Songs[i].FileContent) > 0 then
+            FS.Write(JSONFile.Songs[i].FileContent[1],
+              Length(JSONFile.Songs[i].FileContent));
+        finally
+          FS.Free;
+        end;
+        ItemReloadSongListClick(nil);
+      end;
+
+      // Add the (possibly renamed) song name to the selection
+      SongNameBase := Copy(FinalFileName, 1,
+        Length(FinalFileName) - Length(ExtractFileExt(FinalFileName)));
+      lbxSSelected.Items.Add(SongNameBase);
+
+      { --- Custom style: restore if present --- }
+      if JSONFile.Songs[i].Style.HasCustomStyle then
+      begin
+        // Save background image to repo dir if data is present
+        BgPath := '';
+        if JSONFile.Songs[i].BackgroundImageData <> '' then
+        begin
+          BgPath := RepoPath + PathDelim +
+            JSONFile.Songs[i].Style.BackgroundImageFilename;
+          if not FileExists(BgPath) then
+          begin
+            FS := TFileStream.Create(BgPath, fmCreate);
+            try
+              FS.Write(JSONFile.Songs[i].BackgroundImageData[1],
+                Length(JSONFile.Songs[i].BackgroundImageData));
+            finally
+              FS.Free;
+            end;
+          end;
+        end;
+
+        Style := JSONFile.SongStyleToPresSettings(i);
+        try
+          Style.BackgroundImageFilePath := BgPath;
+          SetCustomStyleForSong(FullPath, Style);
+        finally
+          DestroyPresentationStyleSettings(Style);
+        end;
+      end;
+    end;
+  finally
+    JSONFile.Free;
+  end;
 end;
 
 end.

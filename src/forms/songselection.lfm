@@ -560,13 +560,13 @@ object frmSongs: TfrmSongs
   end
   object OpenDialog: TOpenDialog
     Title = 'Open Song List'
-    Filter = 'Cantara SongTeX file (File with content)|*.songtex|Simple Song Selection|*.csswc'
+    Filter = 'Cantara SongTeX file (File with content)|*.songtex|JSON Song Selection|*.json|Simple Song Selection|*.csswc'
     Left = 198
     Top = 424
   end
   object SaveDialog: TSaveDialog
     Title = 'Save Song List'
-    Filter = 'Cantara SongTeX file (File with content)|*.songtex|Simple Song Selection|*.csswc'
+    Filter = 'Cantara SongTeX file (File with content)|*.songtex|JSON Song Selection|*.json|Simple Song Selection|*.csswc'
     Left = 232
     Top = 424
   end
