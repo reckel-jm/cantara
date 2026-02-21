@@ -264,125 +264,105 @@ end;
 
 function SplitSlides(Input: TStringList; MaxSlides: Integer): String;
 var
-  n1, n2, i, j, t, place: Integer;
-  changed: Boolean;
-  output: TStringList;
-  LastNormalStanza: Integer;
-  SecondLanguageStringList: TStringList;
-  LastDelim: String;
-begin
-  output := TStringList.Create;
-  output.Assign(input);
-  if output.Count = 0 then // If we have an empty document
+  OutputList: TStringList;
+  Lang1Lines, Lang2Lines: TStringList;
+  i: Integer;
+  IsSecondLang: Boolean;
+  Line: String;
+
+  procedure FlushVerse;
+  var sIdx, lIdx, vSlides: Integer;
   begin
-    Result := '';
-    Exit;
-  end;
-  if MaxSlides <= 0 then exit;
-  // Just as a protective measure, actually not needed anymore.
-  if MaxSlides = 1 then
-    // it means to have one line per slide, so we take a shortpath
-  begin
-    SecondLanguageStringList := TStringList.Create;
-    i := 0;
-    LastDelim := '';
-    LastNormalStanza := 0;
-    while i < output.Count - 1 do
+    if (Lang1Lines.Count = 0) and (Lang2Lines.Count = 0) then Exit;
+
+    // Determining number of slides only from first language
+    vSlides := (Lang1Lines.Count + MaxSlides - 1) div MaxSlides;
+    if vSlides = 0 then vSlides := 1; // at least one slide
+
+    for sIdx := 0 to vSlides - 1 do
     begin
-      if (output.Strings[i] = '') Or (output.Strings[i] = '---') then
+      // Add primary language
+      if sIdx < vSlides - 1 then
       begin
-        LastDelim := output.Strings[i];
-        if (output.Strings[i] = '') And (i < output.Count - 1) then
-          LastNormalStanza := i + 1
-        else
-        if output.Strings[i] = '---' then
-        begin
-          if i < output.Count - 1 then
-          begin
-            output.Delete(i);
-            j := i;
-            SecondLanguageStringList.Clear;
-            while (j < output.Count) And (output.Strings[j] <> '') do
-            begin
-              SecondLanguageStringList.Add(output.Strings[j]);
-              output.Delete(j);
-            end;
-            i := LastNormalStanza;
-            for t := 0 to SecondLanguageStringlist.Count - 1 do
-            begin
-              if i < output.Count - 1 then output.Insert(i + 1, '---')
-              else
-                output.Add('---');
-              if i < output.Count - 2 then
-                output.Insert(i + 2, SecondLanguageStringlist.Strings[t])
-              else
-                output.Add(SecondLanguageStringlist.Strings[t]);
-              if i < output.Count - 3 then output.Insert(i + 3, '')
-              else
-                output.Add('');
-              i := i + 5;
-            end;
-            while (i < output.Count) And (output.Strings[i] <> '') do i += 1;
-            if i < output.Count - 1 then LastNormalStanza := i + 1;
-          end;
-        end;
+        // For normal slide: Exactly MaxSlide as numbers
+        for lIdx := sIdx * MaxSlides to (sIdx + 1) * MaxSlides - 1 do
+          if lIdx < Lang1Lines.Count then
+            OutputList.Add(Lang1Lines[lIdx]);
       end
       else
-      if (output.Strings[i] <> '') And (output.Strings[i] <> '---') then
       begin
-        output.Insert(i + 1, '');
-        i := i + 1;
+        // Last slide: All remaining lines
+        for lIdx := sIdx * MaxSlides to Lang1Lines.Count - 1 do
+          OutputList.Add(Lang1Lines[lIdx]);
       end;
-      i := i + 1;
-    end;
-    SecondLanguageStringList.Destroy;
-  end
-  else
-  begin
-    repeat
+
+      // Add delim
+      if Lang2Lines.Count > 0 then
       begin
-        changed := False;
-        n1 := 0;
-        n2 := 0;
-        output.Add('');
-        for i := 0 to output.Count - 1 do
+        OutputList.Add('---');
+        if sIdx < vSlides - 1 then
         begin
-          if (output.Strings[i] = '') Or (output.Strings[i] = '---') then
-          begin
-            n2 := i;
-            if (n2 - n1) > MaxSlides then
-            begin
-              if MaxSlides Mod 2 = 0 then
-                place := (n1 + (n2 - n1) Div 2)
-              else
-                place := (n1 + (n2 - n1) Div 2) + 1;
-              output.Insert(place, '');
-              if (output.Strings[i + 1] = '---') then
-              begin
-                if output.Count > n2 + 1 + place - n1 then
-                begin
-                  //output.Strings[place] := '---';
-                  for t := 0 to place - n1 do
-                  begin
-                    output.Move(n2 + 1 + t, place + t);
-                  end;
-                  output.Strings[n2 + 1] := '';
-                  output.insert(n2 + 1 + place - n1 + 1, '---');
-                end;
-              end;
-              changed := True;
-            end;
-            n1 := n2 + 1;
-          end;
+          for lIdx := sIdx * MaxSlides to (sIdx + 1) * MaxSlides - 1 do
+            if lIdx < Lang2Lines.Count then
+              OutputList.Add(Lang2Lines[lIdx]);
+        end
+        else
+        begin
+          // Last slide takes all
+          for lIdx := sIdx * MaxSlides to Lang2Lines.Count - 1 do
+            OutputList.Add(Lang2Lines[lIdx]);
         end;
-      end
-    until changed = False;
+      end;
+
+      // Empty Slide as Delimiter
+      OutputList.Add('');
+    end;
+
+    Lang1Lines.Clear;
+    Lang2Lines.Clear;
   end;
-  while (output.Strings[output.Count - 1] = '') do output.Delete(output.Count - 1);
-  output.Text := StringReplace(output.Text, LineEnding + LineEnding +
-    LineEnding, LineEnding + LineEnding, [rfReplaceAll]);
-  Result := output.Text;
-  Output.Destroy;
+
+begin
+  if (MaxSlides <= 0) or (Input.Count = 0) then
+  begin
+    Result := Input.Text;
+    Exit;
+  end;
+
+  OutputList := TStringList.Create;
+  Lang1Lines := TStringList.Create;
+  Lang2Lines := TStringList.Create;
+  try
+    IsSecondLang := False;
+    for i := 0 to Input.Count - 1 do
+    begin
+      Line := TrimRight(Input[i]); // Keep indents on the left
+
+      if Line = '' then
+      begin
+        FlushVerse;
+        IsSecondLang := False;
+      end
+      else if Line = '---' then
+        IsSecondLang := True
+      else
+      begin
+        if IsSecondLang then Lang2Lines.Add(Line)
+        else Lang1Lines.Add(Line);
+      end;
+    end;
+    FlushVerse;
+
+    // Final Cleaning
+    while (OutputList.Count > 0) and (OutputList[OutputList.Count - 1] = '') do
+      OutputList.Delete(OutputList.Count - 1);
+
+    Result := OutputList.Text;
+  finally
+    Lang1Lines.Free;
+    Lang2Lines.Free;
+    OutputList.Free;
+  end;
 end;
 
 end.
