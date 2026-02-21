@@ -247,41 +247,17 @@ object frmSongStyle: TfrmSongStyle
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'Arial'
-    MinFontSize = 0
-    MaxFontSize = 0
-    Left = 8
-    Top = 570
+    Font.Style = []
+    left = 8
+    top = 570
   end
   object dlgColor: TColorDialog
-    Color = clBlack
-    CustomColors.Strings = (
-      'ColorA=000000'
-      'ColorB=000080'
-      'ColorC=008000'
-      'ColorD=008080'
-      'ColorE=800000'
-      'ColorF=800080'
-      'ColorG=808000'
-      'ColorH=808080'
-      'ColorI=C0C0C0'
-      'ColorJ=0000FF'
-      'ColorK=00FF00'
-      'ColorL=00FFFF'
-      'ColorM=FF0000'
-      'ColorN=FF00FF'
-      'ColorO=FFFF00'
-      'ColorP=FFFFFF'
-      'ColorQ=C0DCC0'
-      'ColorR=F0CAA6'
-      'ColorS=F0FBFF'
-      'ColorT=A4A0A0'
-    )
-    Left = 60
-    Top = 570
+    left = 60
+    top = 570
   end
   object dlgOpenPicture: TOpenPictureDialog
     Filter = 'Image files (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp|All files (*.*)|*.*'
-    Left = 112
-    Top = 570
+    left = 112
+    top = 570
   end
 end

@@ -685,7 +685,7 @@ begin
       else if SaveDialog.FilterIndex = 2 then
         FileName := FileName + '.songtex'
       else
-        FileName := FileName + '.csswc'
+        FileName := FileName + '.csswc';
     end;
     SaveSelection(FileName);
     LoadedSongSelectionFilePath := FileName;
