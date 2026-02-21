@@ -1,0 +1,1067 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cantara\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-02-21\n"
+"Last-Translator: \n"
+"Language-Team: Bahasa Indonesia\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: editordisplaysongcontent.streditsongnamecaption
+msgid "Edit Song Name"
+msgstr "Edit Nama Lagu"
+
+#: editordisplaysongcontent.streditsongnamecontent
+msgid "Please enter the new song name: "
+msgstr "Masukkan nama lagu baru: "
+
+#: editordisplaysongcontent.strerrorcclitosong
+msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
+msgstr "File tidak dapat dikonversi. Pastikan Anda memiliki izin untuk menulis ke repositori lagu!"
+
+#: editordisplaysongcontent.strfilecannotberenamed
+msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
+msgstr "File tidak dapat diganti namanya. Pastikan Anda memiliki izin untuk menulis ke repositori lagu!"
+
+#: flatpakhandling.messagecantaraneedsportaluse
+msgid ""
+"You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
+"Thank you for your understanding!"
+msgstr ""
+"Anda menggunakan Cantara sebagai Flatpak. Karena pembaruan izin, Cantara tidak lagi dapat mengakses direktori home Anda — hal ini membantu membuat sistem lebih aman. Namun, ini juga berarti Anda harus memilih ulang jalur repositori lagu agar Cantara mendapatkan akses ke direktori tersebut. Jika Anda menggunakan gambar latar belakang sebelumnya, Anda juga perlu memilihnya kembali.\n"
+"Terima kasih atas pengertian Anda!"
+
+#: formmarkupexport.strloadtemplatefromfile
+msgid "Load Template From File..."
+msgstr "Muat Template dari File…"
+
+#: formmarkupexport.strtitleonly
+msgid "Title Only"
+msgstr "Hanya Judul"
+
+#: fulltextsearch.strsongtitle
+msgid "Song Title"
+msgstr "Judul Lagu"
+
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr "Pilih folder tempat Anda ingin menyimpan gambar."
+
+#: info.strauthor
+msgid "Author"
+msgstr "Penulis"
+
+#: info.strbuttongitrepo
+msgid "Open webpage..."
+msgstr "Buka halaman web…"
+
+#: info.strformcaption
+msgctxt "info.strformcaption"
+msgid "About this Program"
+msgstr "Tentang Program Ini"
+
+#: info.strprogramcompiled
+msgid "Program compiled"
+msgstr "Program dikompilasi pada"
+
+#: info.strversion
+msgid "Version"
+msgstr "Versi"
+
+#: info.strwebpage
+msgid "https://www.cantara.app"
+msgstr "https://www.cantara.app"
+
+#: pptx.strcantaraexport
+msgid "Cantara Song Presentation Export"
+msgstr "Ekspor Presentasi Lagu Cantara"
+
+#: pptx.strsongs
+msgid "Songs"
+msgstr "Lagu"
+
+#: settings.strbrightness
+msgid "Increase brightness by "
+msgstr "Tingkatkan kecerahan sebesar "
+
+#: settings.strdefaultmetatemplate
+msgid ""
+"{%author%}Author: {author}\n"
+"{%bible%}Bible Reference: {bible}\n"
+"{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
+msgstr ""
+"{%author%}Penulis: {author}\n"
+"{%bible%}Referensi Alkitab: {bible}\n"
+"{%ccli-songnumber%}Nomor lagu CCLI: {ccli-songnumber} | Nomor Lisensi: {ccli-licensenumber}"
+
+#: settings.strerrorcaption
+msgctxt "settings.strerrorcaption"
+msgid "Error"
+msgstr "Kesalahan"
+
+#: settings.strnobackgroundimageselected
+msgid "You need to select a background image first."
+msgstr "Anda perlu memilih gambar latar belakang terlebih dahulu."
+
+#: settings.strpictureoriginalstate
+msgid "Picture is shown as it is"
+msgstr "Gambar ditampilkan apa adanya"
+
+#: settings.strtransparency
+msgid "Increase transparency by "
+msgstr "Tingkatkan transparansi sebesar "
+
+#: settings.strvalidsongrepository
+msgid "Please choose a valid folder for the song repository!"
+msgstr "Pilih folder yang valid untuk repositori lagu!"
+
+#: songeditor.strcannotarchivate
+msgid "No valid file selected."
+msgstr "Tidak ada file valid yang dipilih."
+
+#: songeditor.strfilehaschanged
+msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
+msgstr "File {{filename}} telah diubah setelah dibuka. Apakah Anda ingin menyimpannya?"
+
+#: songeditor.strfilenameexists
+msgid "The name exists already. Please choose an other one."
+msgstr "Nama sudah ada. Silakan pilih nama lain."
+
+#: songeditor.strinvalidfilename
+msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
+msgstr "Nama tidak valid. Tidak boleh menggunakan pemisah jalur (\"/\" pada Linux dan \"\\\" pada Windows)."
+
+#: songeditor.strnewfilecaption
+msgid "New Song"
+msgstr "Lagu Baru"
+
+#: songeditor.strnewfilecontent
+msgid "Please add the name of the new song"
+msgstr "Masukkan nama lagu baru"
+
+#: songeditor.strsaveunsavedchangescaption
+msgid "Question"
+msgstr "Pertanyaan"
+
+#: songeditor.strsaveunsavedchangescontent
+msgid "The file {filename} has unsaved changes. Would you like to save it now?"
+msgstr "File {filename} memiliki perubahan yang belum disimpan. Apakah Anda ingin menyimpannya sekarang?"
+
+#: songeditor.strsyntaxdocurl
+msgid "https://www.cantara.app/tutorial/meta-data/"
+msgstr "https://www.cantara.app/tutorial/meta-data/"
+
+#: songeditor.strwelcome
+msgid "Welcome"
+msgstr "Selamat datang"
+
+#: songselection.stractivesongtexfile
+msgid "The following file is opened at the moment: "
+msgstr "File berikut sedang dibuka saat ini: "
+
+#: songselection.strbuttoneinstellungen
+msgctxt "songselection.strbuttoneinstellungen"
+msgid "Settings..."
+msgstr "Pengaturan…"
+
+#: songselection.strbuttonpraesentation
+msgctxt "songselection.strbuttonpraesentation"
+msgid "Presentation..."
+msgstr "Presentasi…"
+
+#: songselection.strcannotopensong
+msgid "Error: The Song \"{songname}\" is not available. Skipping."
+msgstr "Kesalahan: Lagu \"{songname}\" tidak tersedia. Dilewati."
+
+#: songselection.strerror
+msgctxt "songselection.strerror"
+msgid "Error"
+msgstr "Kesalahan"
+
+#: songselection.strerroropening
+msgid "Error while opening. Propably you have not the required rights to access this file."
+msgstr "Kesalahan saat membuka. Kemungkinan Anda tidak memiliki hak akses ke file ini."
+
+#: songselection.strerrorsaving
+msgid "Error while saving. Propably you have not the required rights to access this file."
+msgstr "Kesalahan saat menyimpan. Kemungkinan Anda tidak memiliki hak akses ke file ini."
+
+#: songselection.strfehlerkeineliederbeipraesentation
+msgid "You have to add songs first."
+msgstr "Anda harus menambahkan lagu terlebih dahulu."
+
+#: songselection.strfiledoesnotexist
+msgid "The File you would like to open does not exists."
+msgstr "File yang ingin Anda buka tidak ada."
+
+#: songselection.strfolie
+msgid "Slide"
+msgstr "Slide"
+
+#: songselection.strhint
+msgid "Hint"
+msgstr "Petunjuk"
+
+#: songselection.strpptxgenjs
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr "Cantara menggunakan mesin JavaScript dari browser web default lokal Anda dan pustaka JavaScript open source PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) untuk menghasilkan file pptx. Oleh karena itu, setelah menekan OK, browser web Anda akan terbuka dan meminta tempat untuk menyimpan file pptx setelah pembuatan selesai dengan sukses. Selama proses ini, tidak diperlukan koneksi internet dan tidak ada data yang dibagikan kepada pihak lain selain browser Anda. Jika ingin melanjutkan, tekan OK (pesan ini tidak akan muncul lagi di lain waktu). Jika tidak ingin melanjutkan, tekan Batal."
+
+#: songselection.strsongisempty
+msgid "The song {songname} is empty. It will not be added."
+msgstr "Lagu {songname} kosong. Tidak akan ditambahkan."
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr "Lagu-lagu dari file telah diimpor ke repositori lagu Anda."
+
+#: songselection.strtitleslide
+msgid "Title Slide"
+msgstr "Slide Judul"
+
+#: tcfontdialog.caption
+msgid "Font Selection"
+msgstr "Pemilihan Font"
+
+#: tcfontdialog.fontpropertiesgroupbox.caption
+msgid "Font Properties"
+msgstr "Properti Font"
+
+#: tcfontdialog.fontselectiongroupbox.caption
+msgid "Font"
+msgstr "Font"
+
+#: tcfontdialog.formatationcheckgroup.caption
+msgid "Formatation"
+msgstr "Pemformatan"
+
+#: tcfontdialog.labelfontsize.caption
+msgid "Font Size:"
+msgstr "Ukuran Font:"
+
+#: tcfontdialog.previewlabel.caption
+msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
+msgstr "Anugerah Luar Biasa, betapa manis suaranya, menyelamatkan orang berdosa sepertiku! Betapa besar anugerah itu."
+
+#: tformimageexport.buttonchoose.caption
+msgid "Choose..."
+msgstr "Pilih…"
+
+#: tformimageexport.buttonexportall.caption
+msgid "Export All"
+msgstr "Ekspor Semua"
+
+#: tformimageexport.buttonexportcurrent.caption
+msgctxt "tformimageexport.buttonexportcurrent.caption"
+msgid "Export Current"
+msgstr "Ekspor yang Saat Ini"
+
+#: tformimageexport.buttonreloadpreview.caption
+msgid "Reload Preview..."
+msgstr "Muat Ulang Pratinjau…"
+
+#: tformimageexport.caption
+msgid "Image Exporter"
+msgstr "Pengekspor Gambar"
+
+#: tformimageexport.checkboxsync.caption
+msgid "Sync"
+msgstr "Sinkronkan"
+
+#: tformimageexport.groupsettings.caption
+msgctxt "tformimageexport.groupsettings.caption"
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: tformimageexport.itemexport.caption
+msgctxt "tformimageexport.itemexport.caption"
+msgid "Export"
+msgstr "Ekspor"
+
+#: tformimageexport.itemremove.caption
+msgid "Remove"
+msgstr "Hapus"
+
+#: tformimageexport.labelfolder.caption
+msgid "Folder: "
+msgstr "Folder: "
+
+#: tformimageexport.labelheight.caption
+msgid "Height:"
+msgstr "Tinggi:"
+
+#: tformimageexport.labelwidth.caption
+msgid "Width: "
+msgstr "Lebar: "
+
+#: tformpadding.caption
+msgid "Additional Settings"
+msgstr "Pengaturan Tambahan"
+
+#: tframesettingsdetailed.groupboxpadding.caption
+msgid "Padding"
+msgstr "Padding"
+
+#: tframesettingsdetailed.labalbottom.caption
+msgid "Bottom: "
+msgstr "Bawah: "
+
+#: tframesettingsdetailed.labelleft.caption
+msgid "Left:"
+msgstr "Kiri:"
+
+#: tframesettingsdetailed.labelright.caption
+msgid "Right: "
+msgstr "Kanan: "
+
+#: tframesettingsdetailed.labeltop.caption
+msgid "Top: "
+msgstr "Atas: "
+
+#: tfrmdisplaysongcontent.btnarchivate.caption
+msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
+msgid "Archive"
+msgstr "Arsipkan"
+
+#: tfrmdisplaysongcontent.btnclose.caption
+msgctxt "tfrmdisplaysongcontent.btnclose.caption"
+msgid "Close"
+msgstr "Tutup"
+
+#: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
+msgid "Convert CCLI File to Song Format"
+msgstr "Konversi File CCLI ke Format Lagu"
+
+#: tfrmdisplaysongcontent.btncopy.caption
+msgctxt "tfrmdisplaysongcontent.btncopy.caption"
+msgid "Copy"
+msgstr "Salin"
+
+#: tfrmdisplaysongcontent.btnrename.caption
+msgid "Rename"
+msgstr "Ganti Nama"
+
+#: tfrmdisplaysongcontent.btnsave.caption
+msgctxt "tfrmdisplaysongcontent.btnsave.caption"
+msgid "Save"
+msgstr "Simpan"
+
+#: tfrmdisplaysongcontent.labelccliimporthint.caption
+msgid ""
+"Hint:\n"
+"\n"
+"The file which you are going to open is a CCLI file.\n"
+"It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
+"If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
+msgstr ""
+"Petunjuk:\n"
+"\n"
+"File yang akan Anda buka adalah file CCLI.\n"
+"Disarankan untuk mengonversi file ke format lagu terlebih dahulu, kemudian mengedit file lagu sesuai keinginan Anda.\n"
+"Jika ingin melakukannya, klik tombol di bawah ini. File CCLI akan dipindahkan ke subdirektori 'archive' di repositori lagu Anda, dan file lagu yang dihasilkan akan dibuka untuk diedit."
+
+#: tfrmdisplaysongcontent.lblsongname.caption
+msgid "Name: "
+msgstr "Nama: "
+
+#: tfrmeditorwelcome.btnclose.caption
+msgid "Close the Editor"
+msgstr "Tutup Editor"
+
+#: tfrmeditorwelcome.btnnewsong.caption
+msgid "Create a new song"
+msgstr "Buat lagu baru"
+
+#: tfrmeditorwelcome.btnopendocs.caption
+msgid "Open Documentation in Webbrowser..."
+msgstr "Buka Dokumentasi di Peramban Web…"
+
+#: tfrmeditorwelcome.lbldescription.caption
+msgid ""
+"Here you can change the songs which you would like to display.\n"
+"\n"
+"For detailed information about the syntax, please consider the documentation."
+msgstr ""
+"Di sini Anda dapat mengubah lagu yang ingin ditampilkan.\n"
+"\n"
+"Untuk informasi rinci tentang sintaks, silakan lihat dokumentasi."
+
+#: tfrmeditorwelcome.lblhint.caption
+msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
+msgstr "Perhatian: File lirik lagu adalah file teks sederhana dan juga dapat diedit dengan editor teks apa pun di sistem lokal Anda. Cantara saat ini hanya menawarkan fungsi dasar."
+
+#: tfrmeditorwelcome.lblsupport.caption
+msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
+msgstr "Cantara adalah perangkat lunak gratis yang dibuat dengan harapan dapat berguna dan memberkati. Kontribusi melalui GitHub sangat dihargai. Jangan ragu untuk membuat issue, permintaan fitur, atau pull request. Segala kemuliaan bagi Tuhan! Soli Deo Gloria."
+
+#: tfrmeditorwelcome.lblwelcome.caption
+msgid "Welcome to the Editor!"
+msgstr "Selamat datang di Editor!"
+
+#: tfrmfulltextsearch.labalcreateindex.caption
+msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
+msgid "Create Index..."
+msgstr "Buat Indeks…"
+
+#: tfrmfulltextsearch.labelenterkeyword.caption
+msgid "Enter a search term..."
+msgstr "Masukkan kata kunci pencarian…"
+
+#: tfrmfulltextsearch.labelentersearchterm.caption
+msgid "Enter search term"
+msgstr "Masukkan kata kunci pencarian"
+
+#: tfrmfulltextsearch.labelnoitemsfound.caption
+msgid ""
+"No items found...\n"
+"\n"
+"Try changing the search terms."
+msgstr ""
+"Tidak ada hasil yang ditemukan…\n"
+"\n"
+"Coba ubah kata kunci pencarian."
+
+#: tfrminfo.btnopengitrepo.caption
+msgid "Open Github Repository with Browser"
+msgstr "Buka Repositori GitHub di Peramban"
+
+#: tfrminfo.btnopenlicense.caption
+msgid "Show used libraries and licenses"
+msgstr "Tampilkan pustaka dan lisensi yang digunakan"
+
+#: tfrminfo.btnopenwebpage.caption
+msgid "Open Project's Webpage with Browser"
+msgstr "Buka halaman web proyek di Peramban"
+
+#: tfrminfo.caption
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
+msgstr "Tentang Program Ini"
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr "Penulis: Jan Martin Reckel"
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr "Tanggal Kompilasi"
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"This program has been published under the GPL3 licence. \n"
+"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
+"\n"
+"The author wishes God's blessing for the use of the program!"
+msgstr ""
+"Program ini diterbitkan di bawah lisensi GPL3.\n"
+"Kode sumber tersedia di repositori GitHub, dan dokumentasi dapat ditemukan di halaman web proyek.\n"
+"Anda diizinkan untuk mengubah dan menggunakan kembali program ini sesuai syarat dan ketentuan lisensi GPL3.\n"
+"\n"
+"Penulis mendoakan berkat Tuhan atas penggunaan program ini!"
+
+#: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
+msgid "Cantara"
+msgstr "Cantara"
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr "Versi"
+
+#: tfrmmarkupexport.btnsavetofile.caption
+msgid "Save to File..."
+msgstr "Simpan ke File…"
+
+#: tfrmmarkupexport.caption
+msgid "Export Songs as Markup"
+msgstr "Ekspor Lagu sebagai Markup"
+
+#: tfrmmarkupexport.clipboardbutton.caption
+msgctxt "tfrmmarkupexport.clipboardbutton.caption"
+msgid "Copy to Clipboard"
+msgstr "Salin ke Papan Klip"
+
+#: tfrmmarkupexport.opendialog.title
+msgid "Load Template File"
+msgstr "Muat File Template"
+
+#: tfrmmarkupexport.result.caption
+msgid "Result"
+msgstr "Hasil"
+
+#: tfrmmarkupexport.templatebox.caption
+msgid "Template"
+msgstr "Template"
+
+#: tfrmpresent.caption
+msgid "Presentation"
+msgstr "Presentasi"
+
+#: tfrmpresent.menuitemmovetoscreen.caption
+msgid "Move to other screen"
+msgstr "Pindah ke layar lain"
+
+#: tfrmpresent.menuitemquitpresentation.caption
+msgid "Quit Presentation"
+msgstr "Keluar dari Presentasi"
+
+#: tfrmpresent.menuitemtogglefullscreen.caption
+msgid "Fullscreen"
+msgstr "Layar Penuh"
+
+#: tfrmsettings.bgcolordialog.title
+msgid "Select background color"
+msgstr "Pilih warna latar belakang"
+
+#: tfrmsettings.bgpicturedialog.title
+msgctxt "tfrmsettings.bgpicturedialog.title"
+msgid "Open image file"
+msgstr "Buka file gambar"
+
+#: tfrmsettings.bgpicturefiledialog.title
+#, fuzzy
+msgctxt "tfrmsettings.bgpicturefiledialog.title"
+msgid "Open image file"
+msgstr "Buka file gambar"
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Background Color..."
+msgstr "Warna Latar Belakang…"
+
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr "Gambar Latar Belakang…"
+
+#: tfrmsettings.btnclose.caption
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Close"
+msgstr "Tutup"
+
+#: tfrmsettings.btndetails.caption
+msgid "Details..."
+msgstr "Detail…"
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Change Font Settings..."
+msgstr "Ubah Pengaturan Font…"
+
+#: tfrmsettings.btnselectdir.caption
+msgctxt "tfrmsettings.btnselectdir.caption"
+msgid "..."
+msgstr "…"
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Text Color..."
+msgstr "Warna Teks…"
+
+#: tfrmsettings.caption
+msgctxt "tfrmsettings.caption"
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: tfrmsettings.cbblackscreenonempty.caption
+msgid "Show black screen when slide is empty"
+msgstr "Tampilkan layar hitam saat slide kosong"
+
+#: tfrmsettings.cbemptyframe.caption
+msgid "Empty slide between songs"
+msgstr "Slide kosong di antara lagu"
+
+#: tfrmsettings.cbfadetransition.caption
+msgid "Fade transition between slides"
+msgstr "Transisi pudar antar slide"
+
+#: tfrmsettings.cbmetadatafirstslide.caption
+msgid "at first slide"
+msgstr "pada slide pertama"
+
+#: tfrmsettings.cbmetadatalastslide.caption
+msgid "at last slide"
+msgstr "pada slide terakhir"
+
+#: tfrmsettings.cbmetatitleslide.caption
+msgid "at special title slide"
+msgstr "pada slide judul khusus"
+
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr "Tampilkan Gambar Latar Belakang:"
+
+#: tfrmsettings.cbspoiler.caption
+msgid "Spoil next slides"
+msgstr "Tampilkan slide berikutnya lebih awal"
+
+#: tfrmsettings.combohorizontal.text
+msgid "Center"
+msgstr "Tengah"
+
+#: tfrmsettings.combovertical.text
+msgid "Middle"
+msgstr "Tengah vertikal"
+
+#: tfrmsettings.gbpresentation.caption
+msgid "Presentation View"
+msgstr "Tampilan Presentasi"
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Song Repo Path:"
+msgstr "Lokasi Repositori Lagu:"
+
+#: tfrmsettings.lblalignment.caption
+msgid "Alignment: "
+msgstr "Perataan: "
+
+#: tfrmsettings.lblfadems.caption
+msgid "ms"
+msgstr "ms"
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparency:"
+msgstr "Ubah Transparansi Gambar:"
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
+msgstr "lblImageExplainer"
+
+#: tfrmsettings.lblmeta.caption
+msgid "Show Meta Data:"
+msgstr "Tampilkan Metadata:"
+
+#: tfrmsettings.lblmetacontent.caption
+msgid "Meta Data Content:"
+msgstr "Isi Metadata:"
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
+msgstr "Otomatis pindah baris setelah berapa baris (0 = mati):"
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "The transparency of the background picture towards the background color"
+msgstr "Tingkat transparansi gambar latar terhadap warna latar"
+
+#: tfrmsettings.selectdirectorydialog.title
+msgid "Select song repository dictionary"
+msgstr "Pilih direktori repositori lagu"
+
+#: tfrmsettings.textcolordialog.title
+msgid "Select text color"
+msgstr "Pilih warna teks"
+
+#: tfrmsongedit.caption
+msgid "Edit Files"
+msgstr "Edit File"
+
+#: tfrmsongedit.itemcopy.caption
+msgctxt "tfrmsongedit.itemcopy.caption"
+msgid "Copy"
+msgstr "Salin"
+
+#: tfrmsongedit.itemcut.caption
+msgid "Cut"
+msgstr "Potong"
+
+#: tfrmsongedit.itemfadein.caption
+msgid "Zoom In"
+msgstr "Perbesar"
+
+#: tfrmsongedit.itemfadeout.caption
+msgid "Zoom Out"
+msgstr "Perkecil"
+
+#: tfrmsongedit.itempaste.caption
+msgid "Paste"
+msgstr "Tempel"
+
+#: tfrmsongedit.itemredo.caption
+msgid "Redo"
+msgstr "Ulangi"
+
+#: tfrmsongedit.itemundo.caption
+msgid "Undo"
+msgstr "Batalkan"
+
+#: tfrmsongedit.menuedit.caption
+msgctxt "tfrmsongedit.menuedit.caption"
+msgid "Edit"
+msgstr "Edit"
+
+#: tfrmsongedit.menufile.caption
+msgctxt "tfrmsongedit.menufile.caption"
+msgid "File"
+msgstr "File"
+
+#: tfrmsongedit.menuitemarchivate.caption
+msgctxt "tfrmsongedit.menuitemarchivate.caption"
+msgid "Archive"
+msgstr "Arsipkan"
+
+#: tfrmsongedit.menuitemclose.caption
+msgid "Close Editor"
+msgstr "Tutup Editor"
+
+#: tfrmsongedit.menuitemcopy.caption
+msgctxt "tfrmsongedit.menuitemcopy.caption"
+msgid "Duplicate"
+msgstr "Duplikat"
+
+#: tfrmsongedit.menuitemnew.caption
+msgid "New"
+msgstr "Baru"
+
+#: tfrmsongedit.menuitemsave.caption
+msgctxt "tfrmsongedit.menuitemsave.caption"
+msgid "Save"
+msgstr "Simpan"
+
+#: tfrmsongedit.view.caption
+msgid "View"
+msgstr "Tampilan"
+
+#: tfrmsongs.btnadd.caption
+msgid "+"
+msgstr "+"
+
+#: tfrmsongs.btnclear.caption
+msgid "🗑"
+msgstr "🗑"
+
+#: tfrmsongs.btnclear.hint
+msgid "Leere alle ausgewählten Lieder"
+msgstr "Kosongkan semua lagu yang dipilih"
+
+#: tfrmsongs.btndown.caption
+msgid "🠗"
+msgstr "🠗"
+
+#: tfrmsongs.btngoleft.caption
+msgid "←"
+msgstr "←"
+
+#: tfrmsongs.btngoright.caption
+msgid "→"
+msgstr "→"
+
+#: tfrmsongs.btnquitpresentation.caption
+msgid "×"
+msgstr "×"
+
+#: tfrmsongs.btnremove.caption
+msgid "-"
+msgstr "-"
+
+#: tfrmsongs.btnsettings.caption
+msgctxt "tfrmsongs.btnsettings.caption"
+msgid "Settings..."
+msgstr "Pengaturan…"
+
+#: tfrmsongs.btnstartpresentation.caption
+msgctxt "tfrmsongs.btnstartpresentation.caption"
+msgid "Presentation..."
+msgstr "Presentasi…"
+
+#: tfrmsongs.btnup.caption
+msgid "🠕"
+msgstr "🠕"
+
+#: tfrmsongs.buttonclosesongtexfile.caption
+msgid "Close File"
+msgstr "Tutup File"
+
+#: tfrmsongs.caption
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
+msgstr "Cantara"
+
+#: tfrmsongs.chkmultiwindowmode.caption
+msgid "Multi-Screen-Mode (suitable for multiple screens)"
+msgstr "Mode Multi-Layar (cocok untuk beberapa layar)"
+
+#: tfrmsongs.edtsearch.hint
+msgid "Search..."
+msgstr "Cari…"
+
+#: tfrmsongs.itemabout.caption
+msgid "Information about the Program"
+msgstr "Informasi tentang Program"
+
+#: tfrmsongs.itemeditsongstyle.caption
+msgid "Edit song style..."
+msgstr "Edit gaya lagu…"
+
+#: tfrmsongs.itemend.caption
+msgctxt "tfrmsongs.itemend.caption"
+msgid "Close"
+msgstr "Tutup"
+
+#: tfrmsongs.itemexportpictures.caption
+msgid "Images..."
+msgstr "Gambar…"
+
+#: tfrmsongs.itemexportpptx.caption
+msgid "Powerpoint Presentation (pptx)"
+msgstr "Presentasi PowerPoint (pptx)"
+
+#: tfrmsongs.itemfulltextsearch.caption
+msgid "Full Text Search..."
+msgstr "Pencarian Teks Penuh…"
+
+#: tfrmsongs.itemloadselection.caption
+msgid "Load Song Selection..."
+msgstr "Muat Pilihan Lagu…"
+
+#: tfrmsongs.itemmarkupexport.caption
+msgid "Markup Text..."
+msgstr "Ekspor Teks Markup…"
+
+#: tfrmsongs.itemopenineditor.caption
+msgid "Open in Editor..."
+msgstr "Buka di Editor…"
+
+#: tfrmsongs.itempresentation.caption
+msgid "Run Presentation"
+msgstr "Jalankan Presentasi"
+
+#: tfrmsongs.itemreloadsonglist.caption
+msgid "Reload Song Repository"
+msgstr "Muat Ulang Repositori Lagu"
+
+#: tfrmsongs.itemsaveselection.caption
+msgid "Save Song Selection..."
+msgstr "Simpan Pilihan Lagu…"
+
+#: tfrmsongs.itemsaveselectionas.caption
+msgid "Save Song Selection As..."
+msgstr "Simpan Pilihan Lagu Sebagai…"
+
+#: tfrmsongs.itemselectallsongs.caption
+msgid "Select all Songs"
+msgstr "Pilih Semua Lagu"
+
+#: tfrmsongs.itemsettings.caption
+msgctxt "tfrmsongs.itemsettings.caption"
+msgid "Settings..."
+msgstr "Pengaturan…"
+
+#: tfrmsongs.itemshowwelcomeassistent.caption
+msgid "Show Welcome Assistent..."
+msgstr "Tampilkan Asisten Selamat Datang…"
+
+#: tfrmsongs.itemsongeditor.caption
+msgid "Song Lyrics..."
+msgstr "Lirik Lagu…"
+
+#: tfrmsongs.lblfoilnumber.caption
+msgid "Slide Numbers"
+msgstr "Nomor Slide"
+
+#: tfrmsongs.lblpresentation.caption
+msgid "Presentation is running:"
+msgstr "Presentasi sedang berjalan:"
+
+#: tfrmsongs.menuedit.caption
+msgctxt "tfrmsongs.menuedit.caption"
+msgid "Edit"
+msgstr "Edit"
+
+#: tfrmsongs.menuexport.caption
+msgctxt "tfrmsongs.menuexport.caption"
+msgid "Export"
+msgstr "Ekspor"
+
+#: tfrmsongs.menufile.caption
+msgctxt "tfrmsongs.menufile.caption"
+msgid "File"
+msgstr "File"
+
+#: tfrmsongs.menuhelp.caption
+msgid "Help"
+msgstr "Bantuan"
+
+#: tfrmsongs.opendialog.title
+msgid "Open Song List"
+msgstr "Buka Daftar Lagu"
+
+#: tfrmsongs.panelsongtexstatus.caption
+msgid "PanelSongTeXStatus"
+msgstr "Panel Status SongTeX"
+
+#: tfrmsongs.savedialog.title
+msgid "Save Song List"
+msgstr "Simpan Daftar Lagu"
+
+#: tfrmsongstyle.btnbrowsebgimage.caption
+msgid "Browse..."
+msgstr "Telusuri…"
+
+#: tfrmsongstyle.btncancel.caption
+msgid "Cancel"
+msgstr "Batal"
+
+#: tfrmsongstyle.btnfont.caption
+msgid "Select font..."
+msgstr "Pilih font…"
+
+#: tfrmsongstyle.btnok.caption
+msgid "OK"
+msgstr "OK"
+
+#: tfrmsongstyle.btnreset.caption
+msgid "Reset to global default"
+msgstr "Kembalikan ke default global"
+
+#: tfrmsongstyle.caption
+msgid "Song Style Override"
+msgstr "Ganti Gaya Lagu"
+
+#: tfrmsongstyle.cbshowbgimage.caption
+msgid "Show background image"
+msgstr "Tampilkan gambar latar belakang"
+
+#: tfrmsongstyle.cbusecustomstyle.caption
+msgid "Use custom style for this song"
+msgstr "Gunakan gaya khusus untuk lagu ini"
+
+#: tfrmsongstyle.gbalign.caption
+msgid "Horizontal Alignment"
+msgstr "Perataan Horizontal"
+
+#: tfrmsongstyle.gbbackground.caption
+msgid "Background"
+msgstr "Latar Belakang"
+
+#: tfrmsongstyle.gbfont.caption
+msgid "Font && Text Colour"
+msgstr "Font & Warna Teks"
+
+#: tfrmsongstyle.gbpreview.caption
+msgid "Preview"
+msgstr "Pratinjau"
+
+#: tfrmsongstyle.lblalignlabel.caption
+msgid "Alignment:"
+msgstr "Perataan:"
+
+#: tfrmsongstyle.lblbgcolorlabel.caption
+msgid "Background colour:"
+msgstr "Warna latar belakang:"
+
+#: tfrmsongstyle.lblbgimagelabel.caption
+msgid "Path:"
+msgstr "Jalur:"
+
+#: tfrmsongstyle.lblfontpreview.caption
+msgid "Arial, 24 pt"
+msgstr "Arial, 24 pt"
+
+#: tfrmsongstyle.lbltextcolorlabel.caption
+msgid "Text colour:"
+msgstr "Warna teks:"
+
+#: tfrmsongstyle.lbltransparency.caption
+msgid "Transparency (%):"
+msgstr "Transparansi (%):"
+
+#: tfrmwelcome.btnaddexamplesong.caption
+msgid "Add \"Amazing Grace\" as an example"
+msgstr "Tambahkan \"Amazing Grace\" sebagai contoh"
+
+#: tfrmwelcome.btnback.caption
+msgid "Back..."
+msgstr "Kembali…"
+
+#: tfrmwelcome.btnnext.caption
+msgid "Continue..."
+msgstr "Lanjutkan…"
+
+#: tfrmwelcome.btnopengithubrepo.caption
+msgid "Open Github Repository..."
+msgstr "Buka Repositori GitHub…"
+
+#: tfrmwelcome.btnopenwebpage.caption
+msgid "Open Webpage with Documentation..."
+msgstr "Buka halaman web dengan dokumentasi…"
+
+#: tfrmwelcome.btnselectsongrepodir.caption
+msgid "Select Song Repository..."
+msgstr "Pilih Repositori Lagu…"
+
+#: tfrmwelcome.caption
+msgid "Cantara Setup"
+msgstr "Pengaturan Cantara"
+
+#: tfrmwelcome.labelwelcome.caption
+msgid ""
+"Cantara is a free and open source song presentation software.\n"
+"All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
+msgstr ""
+"Cantara adalah perangkat lunak presentasi lagu gratis dan open source.\n"
+"Semua lagu harus berada di dalam satu direktori repositori lagu. Silakan pilih sekarang direktori di sistem file Anda yang akan digunakan Cantara sebagai repositori lagu. Jika Anda belum mengumpulkan lagu apa pun, Anda bisa membuat folder baru terlebih dahulu atau memilih folder kosong."
+
+#: tfrmwelcome.labelwelcomeheadline.caption
+msgid "Welcome to Cantara!"
+msgstr "Selamat datang di Cantara!"
+
+#: tfrmwelcome.lbladditionalinformation.caption
+msgid ""
+"You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
+"For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
+"\n"
+"Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
+"\n"
+"May God bless you and the use of this software!"
+msgstr ""
+"Anda mungkin ingin menyesuaikan tampilan presentasi di dialog Pengaturan. Selain itu, Anda dapat menambah, mengedit, mengklon, dan mengonversi file lagu melalui editor. Keduanya dapat ditemukan di menu Edit pada jendela utama.\n"
+"Cantara mendukung dua format lagu: format CCLI Songselect dan format lagu sendiri. Ini memudahkan pengunduhan dan impor lagu dari internet. Perhatikan bahwa tergantung pada lokasi Anda dan lagu tertentu, aturan lisensi untuk penayangan publik lirik lagu mungkin berlaku. Pengguna bertanggung jawab penuh atas penggunaan legal perangkat lunak ini.\n"
+"Untuk informasi lebih lanjut tentang program, silakan lihat dokumentasi online di halaman https://www.cantara.app.\n"
+"\n"
+"Cantara adalah perangkat lunak bebas yang diterbitkan di bawah lisensi GPL3. Kode sumber tersedia secara publik di GitHub. Jika Anda menyukai proyek ini, pertimbangkan untuk memberikan bintang di GitHub! Masukan, laporan masalah, dan pull request juga sangat diterima.\n"
+"\n"
+"Semoga Tuhan memberkati Anda dan penggunaan perangkat lunak ini!"
+
+#: tfrmwelcome.lblsongadded.caption
+msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
+msgstr "\"Amazing Grace\" telah ditambahkan ke repositori Anda. Anda sekarang dapat melanjutkan."
+
+#: tfrmwelcome.lblsuccessheadline.caption
+msgid "Congratulations! Cantara is now ready to use!"
+msgstr "Selamat! Cantara sekarang siap digunakan!"
+
+#: tfrmwrapperfulltextsearch.caption
+msgid "Fulltext Search"
+msgstr "Pencarian Teks Penuh"
+
+#: welcome.btnnextfinish
+msgid "Finish"
+msgstr "Selesai"
+
+#: welcome.btnnextnext
+msgid "Next"
+msgstr "Berikutnya"
+
+#: welcome.songrepodirempty
+msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
+msgstr "Sepertinya Anda belum menambahkan lagu apa pun. Apakah Anda ingin menambahkan lagu \"Amazing Grace\" dari John Newton sebagai contoh ke repositori lagu Anda? Klik tombol di bawah ini, lalu klik \"Berikutnya\" untuk melanjutkan ke langkah berikutnya."
+
+#: welcome.songreponotempty
+msgid "The song repository contains already {songcount} songs which you can use with Cantara."
+msgstr "Repositori lagu sudah berisi {songcount} lagu yang dapat Anda gunakan dengan Cantara."
+
+#: welcome.songreponotemptyaddamazinggrace
+msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
+msgstr "Namun jika Anda mau, kami dapat menambahkan lagu \"Amazing Grace\" sebagai contoh lain. Untuk itu, tekan tombol di bawah ini. Jika tidak, Anda bisa klik \"Berikutnya\"."
+
+#: welcome.songreposuccess
+msgid "The selected directory can be successfully used as a song repository."
+msgstr "Direktori yang dipilih dapat digunakan dengan sukses sebagai repositori lagu."
+
+#: welcome.strnosongrepoyet
+msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
+msgstr "Silakan pilih jalur repositori lagu sebelum meninggalkan asisten. Cantara tidak dapat bekerja tanpanya."

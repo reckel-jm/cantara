@@ -1,0 +1,1067 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cantara\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-02-21\n"
+"Last-Translator: \n"
+"Language-Team: Hebrew\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: editordisplaysongcontent.streditsongnamecaption
+msgid "Edit Song Name"
+msgstr "עריכת שם השיר"
+
+#: editordisplaysongcontent.streditsongnamecontent
+msgid "Please enter the new song name: "
+msgstr "נא להזין את שם השיר החדש: "
+
+#: editordisplaysongcontent.strerrorcclitosong
+msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
+msgstr "לא ניתן להמיר את הקובץ. ודא שיש לך הרשאות כתיבה לתיקיית מאגר השירים!"
+
+#: editordisplaysongcontent.strfilecannotberenamed
+msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
+msgstr "לא ניתן לשנות את שם הקובץ. ודא שיש לך הרשאות כתיבה לתיקיית מאגר השירים!"
+
+#: flatpakhandling.messagecantaraneedsportaluse
+msgid ""
+"You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
+"Thank you for your understanding!"
+msgstr ""
+"את/ה משתמש/ת ב-Cantara כ-Flatpak. בעקבות עדכון ההרשאות, Cantara כבר לא יכול לגשת לתיקיית הבית שלך – דבר שמגביר את אבטחת המערכת. עם זאת, המשמעות היא שתצטרך/י לבחור מחדש את נתיב מאגר השירים כדי ש-Cantara יקבל גישה לתיקייה זו. אם השתמשת/ה בתמונת רקע, תצטרך/י לבחור אותה שוב.\n"
+"תודה על ההבנה!"
+
+#: formmarkupexport.strloadtemplatefromfile
+msgid "Load Template From File..."
+msgstr "טען תבנית מקובץ…"
+
+#: formmarkupexport.strtitleonly
+msgid "Title Only"
+msgstr "רק כותרת"
+
+#: fulltextsearch.strsongtitle
+msgid "Song Title"
+msgstr "שם השיר"
+
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr "בחר/י תיקייה לשמירת התמונות."
+
+#: info.strauthor
+msgid "Author"
+msgstr "מחבר"
+
+#: info.strbuttongitrepo
+msgid "Open webpage..."
+msgstr "פתח דף אינטרנט…"
+
+#: info.strformcaption
+msgctxt "info.strformcaption"
+msgid "About this Program"
+msgstr "אודות התוכנה"
+
+#: info.strprogramcompiled
+msgid "Program compiled"
+msgstr "תאריך הידור התוכנה"
+
+#: info.strversion
+msgid "Version"
+msgstr "גרסה"
+
+#: info.strwebpage
+msgid "https://www.cantara.app"
+msgstr "https://www.cantara.app"
+
+#: pptx.strcantaraexport
+msgid "Cantara Song Presentation Export"
+msgstr "ייצוא מצגת שירים של Cantara"
+
+#: pptx.strsongs
+msgid "Songs"
+msgstr "שירים"
+
+#: settings.strbrightness
+msgid "Increase brightness by "
+msgstr "הגבר בהירות ב־"
+
+#: settings.strdefaultmetatemplate
+msgid ""
+"{%author%}Author: {author}\n"
+"{%bible%}Bible Reference: {bible}\n"
+"{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
+msgstr ""
+"{%author%}מחבר: {author}\n"
+"{%bible%}הפניה לתנ\"ך: {bible}\n"
+"{%ccli-songnumber%}מספר שיר CCLI: {ccli-songnumber} | מספר רישיון: {ccli-licensenumber}"
+
+#: settings.strerrorcaption
+msgctxt "settings.strerrorcaption"
+msgid "Error"
+msgstr "שגיאה"
+
+#: settings.strnobackgroundimageselected
+msgid "You need to select a background image first."
+msgstr "יש לבחור תמונת רקע תחילה."
+
+#: settings.strpictureoriginalstate
+msgid "Picture is shown as it is"
+msgstr "התמונה מוצגת כפי שהיא"
+
+#: settings.strtransparency
+msgid "Increase transparency by "
+msgstr "הגבר שקיפות ב־"
+
+#: settings.strvalidsongrepository
+msgid "Please choose a valid folder for the song repository!"
+msgstr "בחר/י תיקייה תקפה למאגר השירים!"
+
+#: songeditor.strcannotarchivate
+msgid "No valid file selected."
+msgstr "לא נבחר קובץ תקף."
+
+#: songeditor.strfilehaschanged
+msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
+msgstr "הקובץ {{filename}} השתנה לאחר הפתיחה. האם ברצונך לשמור אותו?"
+
+#: songeditor.strfilenameexists
+msgid "The name exists already. Please choose an other one."
+msgstr "השם כבר קיים. בחר/י שם אחר."
+
+#: songeditor.strinvalidfilename
+msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
+msgstr "שם לא חוקי. אסור להשתמש בתווי הפרדה של נתיב (\"/\" בלינוקס ו-\"\\\" בווינדוס)."
+
+#: songeditor.strnewfilecaption
+msgid "New Song"
+msgstr "שיר חדש"
+
+#: songeditor.strnewfilecontent
+msgid "Please add the name of the new song"
+msgstr "הוסף/י את שם השיר החדש"
+
+#: songeditor.strsaveunsavedchangescaption
+msgid "Question"
+msgstr "שאלה"
+
+#: songeditor.strsaveunsavedchangescontent
+msgid "The file {filename} has unsaved changes. Would you like to save it now?"
+msgstr "לקובץ {filename} יש שינויים שלא נשמרו. האם ברצונך לשמור אותו כעת?"
+
+#: songeditor.strsyntaxdocurl
+msgid "https://www.cantara.app/tutorial/meta-data/"
+msgstr "https://www.cantara.app/tutorial/meta-data/"
+
+#: songeditor.strwelcome
+msgid "Welcome"
+msgstr "ברוכים הבאים"
+
+#: songselection.stractivesongtexfile
+msgid "The following file is opened at the moment: "
+msgstr "הקובץ הפתוח כרגע: "
+
+#: songselection.strbuttoneinstellungen
+msgctxt "songselection.strbuttoneinstellungen"
+msgid "Settings..."
+msgstr "הגדרות…"
+
+#: songselection.strbuttonpraesentation
+msgctxt "songselection.strbuttonpraesentation"
+msgid "Presentation..."
+msgstr "מצגת…"
+
+#: songselection.strcannotopensong
+msgid "Error: The Song \"{songname}\" is not available. Skipping."
+msgstr "שגיאה: השיר „{songname}” אינו זמין. מדלג."
+
+#: songselection.strerror
+msgctxt "songselection.strerror"
+msgid "Error"
+msgstr "שגיאה"
+
+#: songselection.strerroropening
+msgid "Error while opening. Propably you have not the required rights to access this file."
+msgstr "שגיאה בפתיחה. כנראה שאין לך את ההרשאות הנדרשות לגשת לקובץ זה."
+
+#: songselection.strerrorsaving
+msgid "Error while saving. Propably you have not the required rights to access this file."
+msgstr "שגיאה בשמירה. כנראה שאין לך את ההרשאות הנדרשות לכתוב לקובץ זה."
+
+#: songselection.strfehlerkeineliederbeipraesentation
+msgid "You have to add songs first."
+msgstr "יש להוסיף שירים קודם."
+
+#: songselection.strfiledoesnotexist
+msgid "The File you would like to open does not exists."
+msgstr "הקובץ שברצונך לפתוח אינו קיים."
+
+#: songselection.strfolie
+msgid "Slide"
+msgstr "שקופית"
+
+#: songselection.strhint
+msgid "Hint"
+msgstr "רמז"
+
+#: songselection.strpptxgenjs
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr "Cantara משתמש במנוע JavaScript של הדפדפן המוגדר כברירת מחדל במחשב שלך ובספריית JavaScript בקוד פתוח PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) כדי ליצור קובץ pptx. לכן, לאחר לחיצה על אישור, הדפדפן שלך ייפתח ויבקש ממך מקום לשמירת הקובץ לאחר שהיצירה הסתיימה בהצלחה. במהלך התהליך הזה אין צורך בחיבור אינטרנט ואין שיתוף נתונים עם אף אחד מלבד הדפדפן שלך. אם ברצונך להמשיך – לחץ/י אישור (ההודעה לא תופיע שוב בפעמים הבאות). אם אינך רוצה להמשיך – לחץ/י ביטול."
+
+#: songselection.strsongisempty
+msgid "The song {songname} is empty. It will not be added."
+msgstr "השיר {songname} ריק. הוא לא יתווסף."
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr "השירים מהקובץ יובאו למאגר השירים שלך."
+
+#: songselection.strtitleslide
+msgid "Title Slide"
+msgstr "שקופית כותרת"
+
+#: tcfontdialog.caption
+msgid "Font Selection"
+msgstr "בחירת גופן"
+
+#: tcfontdialog.fontpropertiesgroupbox.caption
+msgid "Font Properties"
+msgstr "מאפייני הגופן"
+
+#: tcfontdialog.fontselectiongroupbox.caption
+msgid "Font"
+msgstr "גופן"
+
+#: tcfontdialog.formatationcheckgroup.caption
+msgid "Formatation"
+msgstr "עיצוב"
+
+#: tcfontdialog.labelfontsize.caption
+msgid "Font Size:"
+msgstr "גודל גופן:"
+
+#: tcfontdialog.previewlabel.caption
+msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
+msgstr "חסד מדהים, כמה מתוק הצליל, שהציל אומלל כמוני! כמה רב החסד הזה."
+
+#: tformimageexport.buttonchoose.caption
+msgid "Choose..."
+msgstr "בחר…"
+
+#: tformimageexport.buttonexportall.caption
+msgid "Export All"
+msgstr "ייצא הכול"
+
+#: tformimageexport.buttonexportcurrent.caption
+msgctxt "tformimageexport.buttonexportcurrent.caption"
+msgid "Export Current"
+msgstr "ייצא הנוכחי"
+
+#: tformimageexport.buttonreloadpreview.caption
+msgid "Reload Preview..."
+msgstr "טען מחדש תצוגה מקדימה…"
+
+#: tformimageexport.caption
+msgid "Image Exporter"
+msgstr "מייצא תמונות"
+
+#: tformimageexport.checkboxsync.caption
+msgid "Sync"
+msgstr "סנכרן"
+
+#: tformimageexport.groupsettings.caption
+msgctxt "tformimageexport.groupsettings.caption"
+msgid "Settings"
+msgstr "הגדרות"
+
+#: tformimageexport.itemexport.caption
+msgctxt "tformimageexport.itemexport.caption"
+msgid "Export"
+msgstr "ייצוא"
+
+#: tformimageexport.itemremove.caption
+msgid "Remove"
+msgstr "הסר"
+
+#: tformimageexport.labelfolder.caption
+msgid "Folder: "
+msgstr "תיקייה: "
+
+#: tformimageexport.labelheight.caption
+msgid "Height:"
+msgstr "גובה:"
+
+#: tformimageexport.labelwidth.caption
+msgid "Width: "
+msgstr "רוחב: "
+
+#: tformpadding.caption
+msgid "Additional Settings"
+msgstr "הגדרות נוספות"
+
+#: tframesettingsdetailed.groupboxpadding.caption
+msgid "Padding"
+msgstr "מרווח פנימי"
+
+#: tframesettingsdetailed.labalbottom.caption
+msgid "Bottom: "
+msgstr "תחתון: "
+
+#: tframesettingsdetailed.labelleft.caption
+msgid "Left:"
+msgstr "שמאל:"
+
+#: tframesettingsdetailed.labelright.caption
+msgid "Right: "
+msgstr "ימין: "
+
+#: tframesettingsdetailed.labeltop.caption
+msgid "Top: "
+msgstr "עליון: "
+
+#: tfrmdisplaysongcontent.btnarchivate.caption
+msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
+msgid "Archive"
+msgstr "ארכוב"
+
+#: tfrmdisplaysongcontent.btnclose.caption
+msgctxt "tfrmdisplaysongcontent.btnclose.caption"
+msgid "Close"
+msgstr "סגור"
+
+#: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
+msgid "Convert CCLI File to Song Format"
+msgstr "המר קובץ CCLI לפורמט שיר"
+
+#: tfrmdisplaysongcontent.btncopy.caption
+msgctxt "tfrmdisplaysongcontent.btncopy.caption"
+msgid "Copy"
+msgstr "העתק"
+
+#: tfrmdisplaysongcontent.btnrename.caption
+msgid "Rename"
+msgstr "שנה שם"
+
+#: tfrmdisplaysongcontent.btnsave.caption
+msgctxt "tfrmdisplaysongcontent.btnsave.caption"
+msgid "Save"
+msgstr "שמור"
+
+#: tfrmdisplaysongcontent.labelccliimporthint.caption
+msgid ""
+"Hint:\n"
+"\n"
+"The file which you are going to open is a CCLI file.\n"
+"It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
+"If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
+msgstr ""
+"רמז:\n"
+"\n"
+"הקובץ שתפתח/י הוא קובץ CCLI.\n"
+"מומלץ להמיר אותו תחילה לפורמט שיר, ולאחר מכן לערוך את קובץ השיר לפי רצונך.\n"
+"אם ברצונך לעשות זאת, לחץ/י על הכפתור למטה. קובץ ה-CCLI יועבר לתת-תיקייה 'archive' במאגר השירים שלך, וקובץ השיר שנוצר ייפתח לעריכה."
+
+#: tfrmdisplaysongcontent.lblsongname.caption
+msgid "Name: "
+msgstr "שם: "
+
+#: tfrmeditorwelcome.btnclose.caption
+msgid "Close the Editor"
+msgstr "סגור את העורך"
+
+#: tfrmeditorwelcome.btnnewsong.caption
+msgid "Create a new song"
+msgstr "צור שיר חדש"
+
+#: tfrmeditorwelcome.btnopendocs.caption
+msgid "Open Documentation in Webbrowser..."
+msgstr "פתח תיעוד בדפדפן…"
+
+#: tfrmeditorwelcome.lbldescription.caption
+msgid ""
+"Here you can change the songs which you would like to display.\n"
+"\n"
+"For detailed information about the syntax, please consider the documentation."
+msgstr ""
+"כאן תוכל/י לשנות את השירים שברצונך להציג.\n"
+"\n"
+"למידע מפורט על התחביר, עיין/י בתיעוד."
+
+#: tfrmeditorwelcome.lblhint.caption
+msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
+msgstr "שימו לב: קבצי מילות השירים הם קבצי טקסט פשוטים וניתן לערוך אותם בכל עורך טקסט במערכת המקומית שלכם. Cantara מציעה בשלב זה רק פונקציונליות בסיסית."
+
+#: tfrmeditorwelcome.lblsupport.caption
+msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
+msgstr "Cantara היא תוכנה חופשית שנוצרה בתקווה שתהיה שימושית ומבורכת. תרומה דרך GitHub מתקבלת בברכה רבה. אל תהסס/י לפתוח issues, לבקש תכונות או לשלוח pull requests. כל הכבוד שייך לאלוהים! Soli Deo Gloria."
+
+#: tfrmeditorwelcome.lblwelcome.caption
+msgid "Welcome to the Editor!"
+msgstr "ברוכים הבאים לעורך!"
+
+#: tfrmfulltextsearch.labalcreateindex.caption
+msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
+msgid "Create Index..."
+msgstr "יצירת אינדקס…"
+
+#: tfrmfulltextsearch.labelenterkeyword.caption
+msgid "Enter a search term..."
+msgstr "הזן/י מונח חיפוש…"
+
+#: tfrmfulltextsearch.labelentersearchterm.caption
+msgid "Enter search term"
+msgstr "הזן/י מונח חיפוש"
+
+#: tfrmfulltextsearch.labelnoitemsfound.caption
+msgid ""
+"No items found...\n"
+"\n"
+"Try changing the search terms."
+msgstr ""
+"לא נמצאו פריטים…\n"
+"\n"
+"נסה/י לשנות את מונחי החיפוש."
+
+#: tfrminfo.btnopengitrepo.caption
+msgid "Open Github Repository with Browser"
+msgstr "פתח מאגר GitHub בדפדפן"
+
+#: tfrminfo.btnopenlicense.caption
+msgid "Show used libraries and licenses"
+msgstr "הצג ספריות ורישיונות בשימוש"
+
+#: tfrminfo.btnopenwebpage.caption
+msgid "Open Project's Webpage with Browser"
+msgstr "פתח את אתר הפרויקט בדפדפן"
+
+#: tfrminfo.caption
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
+msgstr "אודות התוכנה"
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr "מחבר: Jan Martin Reckel"
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr "תאריך הידור"
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"This program has been published under the GPL3 licence. \n"
+"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
+"\n"
+"The author wishes God's blessing for the use of the program!"
+msgstr ""
+"תוכנה זו פורסמה ברישיון GPL3.\n"
+"קוד המקור זמין במאגר GitHub והתיעוד נמצא באתר הפרויקט.\n"
+"מותר לשנות ולעשות שימוש חוזר בתוכנה זו לפי התנאים המפורטים ברישיון GPL3.\n"
+"\n"
+"המחבר מאחל ברכת אלוהים על השימוש בתוכנה!"
+
+#: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
+msgid "Cantara"
+msgstr "Cantara"
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr "גרסה"
+
+#: tfrmmarkupexport.btnsavetofile.caption
+msgid "Save to File..."
+msgstr "שמור לקובץ…"
+
+#: tfrmmarkupexport.caption
+msgid "Export Songs as Markup"
+msgstr "ייצוא שירים כסימון"
+
+#: tfrmmarkupexport.clipboardbutton.caption
+msgctxt "tfrmmarkupexport.clipboardbutton.caption"
+msgid "Copy to Clipboard"
+msgstr "העתק ללוח"
+
+#: tfrmmarkupexport.opendialog.title
+msgid "Load Template File"
+msgstr "טען קובץ תבנית"
+
+#: tfrmmarkupexport.result.caption
+msgid "Result"
+msgstr "תוצאה"
+
+#: tfrmmarkupexport.templatebox.caption
+msgid "Template"
+msgstr "תבנית"
+
+#: tfrmpresent.caption
+msgid "Presentation"
+msgstr "מצגת"
+
+#: tfrmpresent.menuitemmovetoscreen.caption
+msgid "Move to other screen"
+msgstr "העבר למסך אחר"
+
+#: tfrmpresent.menuitemquitpresentation.caption
+msgid "Quit Presentation"
+msgstr "צא מהמצגת"
+
+#: tfrmpresent.menuitemtogglefullscreen.caption
+msgid "Fullscreen"
+msgstr "מסך מלא"
+
+#: tfrmsettings.bgcolordialog.title
+msgid "Select background color"
+msgstr "בחר צבע רקע"
+
+#: tfrmsettings.bgpicturedialog.title
+msgctxt "tfrmsettings.bgpicturedialog.title"
+msgid "Open image file"
+msgstr "פתח קובץ תמונה"
+
+#: tfrmsettings.bgpicturefiledialog.title
+#, fuzzy
+msgctxt "tfrmsettings.bgpicturefiledialog.title"
+msgid "Open image file"
+msgstr "פתח קובץ תמונה"
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Background Color..."
+msgstr "צבע רקע…"
+
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr "תמונת רקע…"
+
+#: tfrmsettings.btnclose.caption
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Close"
+msgstr "סגור"
+
+#: tfrmsettings.btndetails.caption
+msgid "Details..."
+msgstr "פרטים…"
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Change Font Settings..."
+msgstr "שנה הגדרות גופן…"
+
+#: tfrmsettings.btnselectdir.caption
+msgctxt "tfrmsettings.btnselectdir.caption"
+msgid "..."
+msgstr "…"
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Text Color..."
+msgstr "צבע טקסט…"
+
+#: tfrmsettings.caption
+msgctxt "tfrmsettings.caption"
+msgid "Settings"
+msgstr "הגדרות"
+
+#: tfrmsettings.cbblackscreenonempty.caption
+msgid "Show black screen when slide is empty"
+msgstr "הצג מסך שחור כאשר השקופית ריקה"
+
+#: tfrmsettings.cbemptyframe.caption
+msgid "Empty slide between songs"
+msgstr "שקופית ריקה בין שירים"
+
+#: tfrmsettings.cbfadetransition.caption
+msgid "Fade transition between slides"
+msgstr "מעבר התפוגגות בין שקופיות"
+
+#: tfrmsettings.cbmetadatafirstslide.caption
+msgid "at first slide"
+msgstr "בשקופית הראשונה"
+
+#: tfrmsettings.cbmetadatalastslide.caption
+msgid "at last slide"
+msgstr "בשקופית האחרונה"
+
+#: tfrmsettings.cbmetatitleslide.caption
+msgid "at special title slide"
+msgstr "בשקופית כותרת מיוחדת"
+
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr "הצג תמונת רקע:"
+
+#: tfrmsettings.cbspoiler.caption
+msgid "Spoil next slides"
+msgstr "הצג מראש את השקופיות הבאות"
+
+#: tfrmsettings.combohorizontal.text
+msgid "Center"
+msgstr "מרכז"
+
+#: tfrmsettings.combovertical.text
+msgid "Middle"
+msgstr "אמצע אנכי"
+
+#: tfrmsettings.gbpresentation.caption
+msgid "Presentation View"
+msgstr "תצוגת מצגת"
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Song Repo Path:"
+msgstr "נתיב מאגר השירים:"
+
+#: tfrmsettings.lblalignment.caption
+msgid "Alignment: "
+msgstr "יישור: "
+
+#: tfrmsettings.lblfadems.caption
+msgid "ms"
+msgstr "מילישניות"
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparency:"
+msgstr "שנה שקיפות תמונה:"
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
+msgstr "lblImageExplainer"
+
+#: tfrmsettings.lblmeta.caption
+msgid "Show Meta Data:"
+msgstr "הצג מטא-נתונים:"
+
+#: tfrmsettings.lblmetacontent.caption
+msgid "Meta Data Content:"
+msgstr "תוכן מטא-נתונים:"
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
+msgstr "מעבר שורה אוטומטי לאחר כמה שורות (0 = כבוי):"
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "The transparency of the background picture towards the background color"
+msgstr "שקיפות תמונת הרקע ביחס לצבע הרקע"
+
+#: tfrmsettings.selectdirectorydialog.title
+msgid "Select song repository dictionary"
+msgstr "בחר תיקיית מאגר שירים"
+
+#: tfrmsettings.textcolordialog.title
+msgid "Select text color"
+msgstr "בחר צבע טקסט"
+
+#: tfrmsongedit.caption
+msgid "Edit Files"
+msgstr "עריכת קבצים"
+
+#: tfrmsongedit.itemcopy.caption
+msgctxt "tfrmsongedit.itemcopy.caption"
+msgid "Copy"
+msgstr "העתק"
+
+#: tfrmsongedit.itemcut.caption
+msgid "Cut"
+msgstr "גזור"
+
+#: tfrmsongedit.itemfadein.caption
+msgid "Zoom In"
+msgstr "התקרב"
+
+#: tfrmsongedit.itemfadeout.caption
+msgid "Zoom Out"
+msgstr "התרחק"
+
+#: tfrmsongedit.itempaste.caption
+msgid "Paste"
+msgstr "הדבק"
+
+#: tfrmsongedit.itemredo.caption
+msgid "Redo"
+msgstr "בצע שוב"
+
+#: tfrmsongedit.itemundo.caption
+msgid "Undo"
+msgstr "בטל"
+
+#: tfrmsongedit.menuedit.caption
+msgctxt "tfrmsongedit.menuedit.caption"
+msgid "Edit"
+msgstr "ערוך"
+
+#: tfrmsongedit.menufile.caption
+msgctxt "tfrmsongedit.menufile.caption"
+msgid "File"
+msgstr "קובץ"
+
+#: tfrmsongedit.menuitemarchivate.caption
+msgctxt "tfrmsongedit.menuitemarchivate.caption"
+msgid "Archive"
+msgstr "ארכוב"
+
+#: tfrmsongedit.menuitemclose.caption
+msgid "Close Editor"
+msgstr "סגור עורך"
+
+#: tfrmsongedit.menuitemcopy.caption
+msgctxt "tfrmsongedit.menuitemcopy.caption"
+msgid "Duplicate"
+msgstr "שכפל"
+
+#: tfrmsongedit.menuitemnew.caption
+msgid "New"
+msgstr "חדש"
+
+#: tfrmsongedit.menuitemsave.caption
+msgctxt "tfrmsongedit.menuitemsave.caption"
+msgid "Save"
+msgstr "שמור"
+
+#: tfrmsongedit.view.caption
+msgid "View"
+msgstr "תצוגה"
+
+#: tfrmsongs.btnadd.caption
+msgid "+"
+msgstr "+"
+
+#: tfrmsongs.btnclear.caption
+msgid "🗑"
+msgstr "🗑"
+
+#: tfrmsongs.btnclear.hint
+msgid "Leere alle ausgewählten Lieder"
+msgstr "נקה את כל השירים שנבחרו"
+
+#: tfrmsongs.btndown.caption
+msgid "🠗"
+msgstr "🠗"
+
+#: tfrmsongs.btngoleft.caption
+msgid "←"
+msgstr "←"
+
+#: tfrmsongs.btngoright.caption
+msgid "→"
+msgstr "→"
+
+#: tfrmsongs.btnquitpresentation.caption
+msgid "×"
+msgstr "×"
+
+#: tfrmsongs.btnremove.caption
+msgid "-"
+msgstr "-"
+
+#: tfrmsongs.btnsettings.caption
+msgctxt "tfrmsongs.btnsettings.caption"
+msgid "Settings..."
+msgstr "הגדרות…"
+
+#: tfrmsongs.btnstartpresentation.caption
+msgctxt "tfrmsongs.btnstartpresentation.caption"
+msgid "Presentation..."
+msgstr "מצגת…"
+
+#: tfrmsongs.btnup.caption
+msgid "🠕"
+msgstr "🠕"
+
+#: tfrmsongs.buttonclosesongtexfile.caption
+msgid "Close File"
+msgstr "סגור קובץ"
+
+#: tfrmsongs.caption
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
+msgstr "Cantara"
+
+#: tfrmsongs.chkmultiwindowmode.caption
+msgid "Multi-Screen-Mode (suitable for multiple screens)"
+msgstr "מצב ריבוי מסכים (מתאים למספר מסכים)"
+
+#: tfrmsongs.edtsearch.hint
+msgid "Search..."
+msgstr "חפש…"
+
+#: tfrmsongs.itemabout.caption
+msgid "Information about the Program"
+msgstr "מידע על התוכנה"
+
+#: tfrmsongs.itemeditsongstyle.caption
+msgid "Edit song style..."
+msgstr "ערוך סגנון שיר…"
+
+#: tfrmsongs.itemend.caption
+msgctxt "tfrmsongs.itemend.caption"
+msgid "Close"
+msgstr "סגור"
+
+#: tfrmsongs.itemexportpictures.caption
+msgid "Images..."
+msgstr "תמונות…"
+
+#: tfrmsongs.itemexportpptx.caption
+msgid "Powerpoint Presentation (pptx)"
+msgstr "מצגת PowerPoint (pptx)"
+
+#: tfrmsongs.itemfulltextsearch.caption
+msgid "Full Text Search..."
+msgstr "חיפוש טקסט מלא…"
+
+#: tfrmsongs.itemloadselection.caption
+msgid "Load Song Selection..."
+msgstr "טען בחירת שירים…"
+
+#: tfrmsongs.itemmarkupexport.caption
+msgid "Markup Text..."
+msgstr "ייצוא טקסט מסומן…"
+
+#: tfrmsongs.itemopenineditor.caption
+msgid "Open in Editor..."
+msgstr "פתח בעורך…"
+
+#: tfrmsongs.itempresentation.caption
+msgid "Run Presentation"
+msgstr "הפעל מצגת"
+
+#: tfrmsongs.itemreloadsonglist.caption
+msgid "Reload Song Repository"
+msgstr "טען מחדש מאגר שירים"
+
+#: tfrmsongs.itemsaveselection.caption
+msgid "Save Song Selection..."
+msgstr "שמור בחירת שירים…"
+
+#: tfrmsongs.itemsaveselectionas.caption
+msgid "Save Song Selection As..."
+msgstr "שמור בחירת שירים בשם…"
+
+#: tfrmsongs.itemselectallsongs.caption
+msgid "Select all Songs"
+msgstr "בחר את כל השירים"
+
+#: tfrmsongs.itemsettings.caption
+msgctxt "tfrmsongs.itemsettings.caption"
+msgid "Settings..."
+msgstr "הגדרות…"
+
+#: tfrmsongs.itemshowwelcomeassistent.caption
+msgid "Show Welcome Assistent..."
+msgstr "הצג עוזר קבלת פנים…"
+
+#: tfrmsongs.itemsongeditor.caption
+msgid "Song Lyrics..."
+msgstr "מילות שירים…"
+
+#: tfrmsongs.lblfoilnumber.caption
+msgid "Slide Numbers"
+msgstr "מספרי שקופיות"
+
+#: tfrmsongs.lblpresentation.caption
+msgid "Presentation is running:"
+msgstr "המצגת פועלת:"
+
+#: tfrmsongs.menuedit.caption
+msgctxt "tfrmsongs.menuedit.caption"
+msgid "Edit"
+msgstr "עריכה"
+
+#: tfrmsongs.menuexport.caption
+msgctxt "tfrmsongs.menuexport.caption"
+msgid "Export"
+msgstr "ייצוא"
+
+#: tfrmsongs.menufile.caption
+msgctxt "tfrmsongs.menufile.caption"
+msgid "File"
+msgstr "קובץ"
+
+#: tfrmsongs.menuhelp.caption
+msgid "Help"
+msgstr "עזרה"
+
+#: tfrmsongs.opendialog.title
+msgid "Open Song List"
+msgstr "פתח רשימת שירים"
+
+#: tfrmsongs.panelsongtexstatus.caption
+msgid "PanelSongTeXStatus"
+msgstr "פאנל מצב SongTeX"
+
+#: tfrmsongs.savedialog.title
+msgid "Save Song List"
+msgstr "שמור רשימת שירים"
+
+#: tfrmsongstyle.btnbrowsebgimage.caption
+msgid "Browse..."
+msgstr "עיון…"
+
+#: tfrmsongstyle.btncancel.caption
+msgid "Cancel"
+msgstr "ביטול"
+
+#: tfrmsongstyle.btnfont.caption
+msgid "Select font..."
+msgstr "בחר גופן…"
+
+#: tfrmsongstyle.btnok.caption
+msgid "OK"
+msgstr "אישור"
+
+#: tfrmsongstyle.btnreset.caption
+msgid "Reset to global default"
+msgstr "אפס לברירת מחדל גלובלית"
+
+#: tfrmsongstyle.caption
+msgid "Song Style Override"
+msgstr "עקיפת סגנון שיר"
+
+#: tfrmsongstyle.cbshowbgimage.caption
+msgid "Show background image"
+msgstr "הצג תמונת רקע"
+
+#: tfrmsongstyle.cbusecustomstyle.caption
+msgid "Use custom style for this song"
+msgstr "השתמש בסגנון מותאם אישית לשיר זה"
+
+#: tfrmsongstyle.gbalign.caption
+msgid "Horizontal Alignment"
+msgstr "יישור אופקי"
+
+#: tfrmsongstyle.gbbackground.caption
+msgid "Background"
+msgstr "רקע"
+
+#: tfrmsongstyle.gbfont.caption
+msgid "Font && Text Colour"
+msgstr "גופן וצבע טקסט"
+
+#: tfrmsongstyle.gbpreview.caption
+msgid "Preview"
+msgstr "תצוגה מקדימה"
+
+#: tfrmsongstyle.lblalignlabel.caption
+msgid "Alignment:"
+msgstr "יישור:"
+
+#: tfrmsongstyle.lblbgcolorlabel.caption
+msgid "Background colour:"
+msgstr "צבע רקע:"
+
+#: tfrmsongstyle.lblbgimagelabel.caption
+msgid "Path:"
+msgstr "נתיב:"
+
+#: tfrmsongstyle.lblfontpreview.caption
+msgid "Arial, 24 pt"
+msgstr "Arial, 24 נקודות"
+
+#: tfrmsongstyle.lbltextcolorlabel.caption
+msgid "Text colour:"
+msgstr "צבע טקסט:"
+
+#: tfrmsongstyle.lbltransparency.caption
+msgid "Transparency (%):"
+msgstr "שקיפות (%):"
+
+#: tfrmwelcome.btnaddexamplesong.caption
+msgid "Add \"Amazing Grace\" as an example"
+msgstr "הוסף \"Amazing Grace\" כדוגמה"
+
+#: tfrmwelcome.btnback.caption
+msgid "Back..."
+msgstr "חזור…"
+
+#: tfrmwelcome.btnnext.caption
+msgid "Continue..."
+msgstr "המשך…"
+
+#: tfrmwelcome.btnopengithubrepo.caption
+msgid "Open Github Repository..."
+msgstr "פתח מאגר GitHub…"
+
+#: tfrmwelcome.btnopenwebpage.caption
+msgid "Open Webpage with Documentation..."
+msgstr "פתח דף אינטרנט עם תיעוד…"
+
+#: tfrmwelcome.btnselectsongrepodir.caption
+msgid "Select Song Repository..."
+msgstr "בחר מאגר שירים…"
+
+#: tfrmwelcome.caption
+msgid "Cantara Setup"
+msgstr "הגדרת Cantara"
+
+#: tfrmwelcome.labelwelcome.caption
+msgid ""
+"Cantara is a free and open source song presentation software.\n"
+"All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
+msgstr ""
+"Cantara היא תוכנה חופשית וקוד פתוח להצגת שירים.\n"
+"כל השירים צריכים להיות ממוקמים בתיקיית מאגר שירים אחת. בחר/י כעת תיקייה במערכת הקבצים שלך שתשמש את Cantara כמאגר השירים. אם עדיין לא אספת שירים, תוכל/י ליצור תיקייה חדשה או לבחור תיקייה ריקה."
+
+#: tfrmwelcome.labelwelcomeheadline.caption
+msgid "Welcome to Cantara!"
+msgstr "ברוכים הבאים ל-Cantara!"
+
+#: tfrmwelcome.lbladditionalinformation.caption
+msgid ""
+"You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
+"For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
+"\n"
+"Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
+"\n"
+"May God bless you and the use of this software!"
+msgstr ""
+"באפשרותך להתאים את מראה ההצגה בחלון ההגדרות. בנוסף, ניתן להוסיף, לערוך, לשכפל ולהמיר קבצי שירים דרך העורך. שניהם נמצאים בתפריט עריכה בחלון הראשי.\n"
+"Cantara תומכת בשני פורמטים של שירים: פורמט CCLI Songselect ופורמט השיר המקורי. זה מקל מאוד על הורדה וייבוא שירים מהאינטרנט. שים/י לב שבהתאם למיקומך ולשיר הספציפי, ייתכנו תקנות רישוי להצגה פומבית של מילות השירים. המשתמש/ת אחראי/ת באופן בלעדי על השימוש החוקי בתוכנה זו.\n"
+"למידע נוסף על התוכנה, עיין/י בתיעוד המקוון בכתובת https://www.cantara.app.\n"
+"\n"
+"Cantara היא תוכנה חופשית שפורסמה ברישיון GPL3. קוד המקור זמין לציבור ב-GitHub. אם הפרויקט מוצא חן בעיניך, שקול/י לתת לו כוכב ב-GitHub! משוב, דיווחי תקלות ובקשות שיפור (pull requests) מתקבלים בברכה רבה.\n"
+"\n"
+"מי ייתן וה' יברך אותך ואת השימוש בתוכנה זו!"
+
+#: tfrmwelcome.lblsongadded.caption
+msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
+msgstr "„Amazing Grace” נוסף למאגר שלך. כעת תוכל/י להמשיך."
+
+#: tfrmwelcome.lblsuccessheadline.caption
+msgid "Congratulations! Cantara is now ready to use!"
+msgstr "מזל טוב! Cantara מוכן לשימוש!"
+
+#: tfrmwrapperfulltextsearch.caption
+msgid "Fulltext Search"
+msgstr "חיפוש טקסט מלא"
+
+#: welcome.btnnextfinish
+msgid "Finish"
+msgstr "סיום"
+
+#: welcome.btnnextnext
+msgid "Next"
+msgstr "הבא"
+
+#: welcome.songrepodirempty
+msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
+msgstr "נראה שלא הוספת עדיין שירים כלשהם. האם תרצה/י להוסיף את השיר „Amazing Grace” של ג'ון ניוטון כדוגמה למאגר השירים שלך? לחץ/י על הכפתור למטה ולאחר מכן על „הבא” כדי לעבור לשלב הבא."
+
+#: welcome.songreponotempty
+msgid "The song repository contains already {songcount} songs which you can use with Cantara."
+msgstr "מאגר השירים כבר מכיל {songcount} שירים שתוכל/י להשתמש בהם עם Cantara."
+
+#: welcome.songreponotemptyaddamazinggrace
+msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
+msgstr "עם זאת, אם תרצה/י, נוכל להוסיף את „Amazing Grace” כדוגמה נוספת. לשם כך, לחץ/י על הכפתור למטה. אחרת תוכל/י ללחוץ על „הבא”."
+
+#: welcome.songreposuccess
+msgid "The selected directory can be successfully used as a song repository."
+msgstr "התיקייה שנבחרה יכולה לשמש בהצלחה כמאגר שירים."
+
+#: welcome.strnosongrepoyet
+msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
+msgstr "נא לבחור נתיב למאגר השירים לפני היציאה מהעוזר. Cantara לא יכול לפעול בלעדיו."
