@@ -286,8 +286,9 @@ begin
     SongInList := False;
     for i := 0 to lbxSSelected.Count-1 do
     begin
-      if TRepoFile(lbxSSelected.Items.Objects[i]).FilePath = song.FilePath then
-         SongInList := True;
+      if (lbxSSelected.Items.Objects[i] <> nil) and
+         (TRepoFile(lbxSSelected.Items.Objects[i]).FilePath = song.FilePath) then
+        SongInList := True;
     end;
     if not SongInList then song.Free;
   end;
@@ -444,11 +445,11 @@ begin
   begin
     for i := 0 to anz - 1 do
       if AnsiContainsText(repo[i].Name, s) = True then
-        lbxSRepo.Items.add(repo[i].Name);
+        lbxSRepo.Items.AddObject(repo[i].Name, repo[i]);
   end
   else
     for i := 0 to anz - 1 do
-      lbxSRepo.Items.add(repo[i].Name);
+      lbxSRepo.Items.AddObject(repo[i].Name, repo[i]);
 end;
 
 procedure TfrmSongs.itemEndClick(Sender: TObject);
@@ -706,7 +707,7 @@ procedure TfrmSongs.itemSelectAllSongsClick(Sender: TObject);
 var i: Integer;
 begin
   for i := 0 to lbxSRepo.Count-1 do
-    lbxSSelected.Items.Add(lbxSRepo.Items.Strings[i]);
+    lbxSSelected.Items.AddObject(lbxSRepo.Items.Strings[i], lbxSRepo.Items.Objects[i]);
 end;
 
 procedure TfrmSongs.SaveSelection(var FilePath: String);
@@ -804,7 +805,7 @@ begin
   try
     if lbxSRepo.ItemIndex < 0 then Exit;
     if (Source Is TListBox) And ((Source As TListBox).Name = 'lbxSRepo') then
-      lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex])
+      lbxSSelected.Items.AddObject(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex], lbxSRepo.Items.Objects[lbxSRepo.ItemIndex])
     else if (Source Is TListBox) And ((Source As TListBox).Name = 'lbxSselected') then
     begin
       DropPoint.X := X;
@@ -1091,6 +1092,7 @@ begin
 
   for i := 0 to lbxSSelected.Count - 1 do
   begin
+    if lbxSSelected.Items.Objects[i] = nil then Continue;
     Song := lyrics.TSong.Create;
     //Get Song Name
     songname := TRepoFile(lbxSSelected.Items.Objects[i]).Name;
