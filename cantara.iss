@@ -1,6 +1,6 @@
 #define MyAppName "Cantara"
 #define MyAppOutputName "cantara"
-#define MyAppVersion "2.6.1"
+#define MyAppVersion "2.7.0"
 #define MyAppPublisher "Jan Martin Reckel"
 #define MyAppURL "https://cantara.app"
 #define MyAppExeName "cantara.exe"
@@ -29,11 +29,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"
 
 [Files]
 Source: "{#ReleaseDir}cantara.exe"; DestDir: "{app}"; DestName: "{#MyAppExeName}"; Flags: ignoreversion;
-Source: "{#ReleaseDir}languages\de\*.mo"; DestDir: "{app}\languages\de"; Flags: ignoreversion;
-Source: "{#ReleaseDir}languages\zh\*.mo"; DestDir: "{app}\languages\zh"; Flags: ignoreversion;
-Source: "{#ReleaseDir}languages\it\*.mo"; DestDir: "{app}\languages\it"; Flags: ignoreversion;
-Source: "{#ReleaseDir}languages\es\*.mo"; DestDir: "{app}\languages\es"; Flags: ignoreversion;
-Source: "{#ReleaseDir}languages\nl\*.mo"; DestDir: "{app}\languages\nl"; Flags: ignoreversion;
+; This line handles all .mo files and creates the subfolders automatically
+Source: "{#ReleaseDir}languages\*.mo"; DestDir: "{app}\languages"; Flags: ignoreversion recursesubdirs
 Source: "{#ReleaseDir}Cantara.ico"; DestDir: "{app}"; DestName: "Cantara.ico"; Flags: ignoreversion;
 
 [Icons]
