@@ -33,6 +33,8 @@ msgid ""
 "You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
 "Thank you for your understanding!"
 msgstr ""
+"您正在以 Flatpak 方式使用 Cantara。由於權限更新，Cantara 無法再存取您的主目錄（此舉有助提高系統安全性）。但這也意味著您需要重新選擇曲庫目錄，以便 Cantara 獲得該目錄的存取權限。若您之前使用了背景圖片，也需要重新選擇。\n"
+"感謝您的理解！"
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
@@ -431,7 +433,7 @@ msgstr "使用瀏覽器開啟 GitHub 存儲庫"
 
 #: tfrminfo.btnopenlicense.caption
 msgid "Show used libraries and licenses"
-msgstr ""
+msgstr "顯示所用函式庫及許可證"
 
 #: tfrminfo.btnopenwebpage.caption
 msgid "Open Project's Webpage with Browser"
@@ -448,7 +450,7 @@ msgstr "作者：Jan Martin Reckel"
 
 #: tfrminfo.lblcompdate.caption
 msgid "lblCompDate"
-msgstr ""
+msgstr "lblCompDate"
 
 #: tfrminfo.lblinfo.caption
 msgid ""
@@ -471,7 +473,7 @@ msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
-msgstr ""
+msgstr "lblVersion"
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
@@ -614,7 +616,7 @@ msgstr "更改圖像透明度/："
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
-msgstr ""
+msgstr "lblImageExplainer"
 
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
@@ -779,6 +781,10 @@ msgstr "搜索..."
 msgid "Information about the Program"
 msgstr "關於本程式"
 
+#: tfrmsongs.itemeditsongstyle.caption
+msgid "Edit song style..."
+msgstr "編輯歌曲樣式..."
+
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
@@ -874,7 +880,7 @@ msgstr "打開歌曲列表"
 
 #: tfrmsongs.panelsongtexstatus.caption
 msgid "PanelSongTeXStatus"
-msgstr ""
+msgstr "PanelSongTeXStatus"
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"

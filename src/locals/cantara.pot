@@ -531,8 +531,16 @@ msgctxt "tfrmsettings.caption"
 msgid "Settings"
 msgstr ""
 
+#: tfrmsettings.cbblackscreenonempty.caption
+msgid "Show black screen when slide is empty"
+msgstr ""
+
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
+msgstr ""
+
+#: tfrmsettings.cbfadetransition.caption
+msgid "Fade transition between slides"
 msgstr ""
 
 #: tfrmsettings.cbmetadatafirstslide.caption
@@ -573,6 +581,10 @@ msgstr ""
 
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
+msgstr ""
+
+#: tfrmsettings.lblfadems.caption
+msgid "ms"
 msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
@@ -744,6 +756,10 @@ msgstr ""
 msgid "Information about the Program"
 msgstr ""
 
+#: tfrmsongs.itemeditsongstyle.caption
+msgid "Edit song style..."
+msgstr ""
+
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
@@ -843,6 +859,78 @@ msgstr ""
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
+msgstr ""
+
+#: tfrmsongstyle.btnbrowsebgimage.caption
+msgid "Browse..."
+msgstr ""
+
+#: tfrmsongstyle.btncancel.caption
+msgid "Cancel"
+msgstr ""
+
+#: tfrmsongstyle.btnfont.caption
+msgid "Select font..."
+msgstr ""
+
+#: tfrmsongstyle.btnok.caption
+msgid "OK"
+msgstr ""
+
+#: tfrmsongstyle.btnreset.caption
+msgid "Reset to global default"
+msgstr ""
+
+#: tfrmsongstyle.caption
+msgid "Song Style Override"
+msgstr ""
+
+#: tfrmsongstyle.cbshowbgimage.caption
+msgid "Show background image"
+msgstr ""
+
+#: tfrmsongstyle.cbusecustomstyle.caption
+msgid "Use custom style for this song"
+msgstr ""
+
+#: tfrmsongstyle.gbalign.caption
+msgid "Horizontal Alignment"
+msgstr ""
+
+#: tfrmsongstyle.gbbackground.caption
+msgid "Background"
+msgstr ""
+
+#: tfrmsongstyle.gbfont.caption
+msgid "Font && Text Colour"
+msgstr ""
+
+#: tfrmsongstyle.gbpreview.caption
+msgid "Preview"
+msgstr ""
+
+#: tfrmsongstyle.lblalignlabel.caption
+msgid "Alignment:"
+msgstr ""
+
+#: tfrmsongstyle.lblbgcolorlabel.caption
+msgid "Background colour:"
+msgstr ""
+
+#: tfrmsongstyle.lblbgimagelabel.caption
+msgid "Path:"
+msgstr ""
+
+#: tfrmsongstyle.lblfontpreview.caption
+msgid "Arial, 24 pt"
+msgstr ""
+
+#: tfrmsongstyle.lbltextcolorlabel.caption
+msgid "Text colour:"
+msgstr ""
+
+#: tfrmsongstyle.lbltransparency.caption
+msgid "Transparency (%):"
 msgstr ""
 
 #: tfrmwelcome.btnaddexamplesong.caption

@@ -33,6 +33,8 @@ msgid ""
 "You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
 "Thank you for your understanding!"
 msgstr ""
+"Sie nutzen Cantara als Flatpak. Aufgrund einer Aktualisierung der Berechtigungen kann Cantara nicht mehr auf Ihr Home-Verzeichnis zugreifen, was zur Sicherheit Ihres Systems beiträgt. Das bedeutet jedoch auch, dass Sie den Pfad zum Liederverzeichnis erneut auswählen müssen, damit Cantara wieder Zugriff auf diesen Ordner erhält. Falls Sie ein Hintergrundbild verwendet haben, müssen Sie auch dieses neu auswählen.\n"
+"Vielen Dank für Ihr Verständnis!"
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
@@ -245,7 +247,7 @@ msgstr "Schriftgröße: "
 
 #: tcfontdialog.previewlabel.caption
 msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
-msgstr ""
+msgstr "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
@@ -431,7 +433,7 @@ msgstr "Öffne das Github-Repository im Webbrowser"
 
 #: tfrminfo.btnopenlicense.caption
 msgid "Show used libraries and licenses"
-msgstr ""
+msgstr "Verwendete Bibliotheken und Lizenzen anzeigen"
 
 #: tfrminfo.btnopenwebpage.caption
 msgid "Open Project's Webpage with Browser"
@@ -448,7 +450,7 @@ msgstr "Autor: Jan Martin Reckel"
 
 #: tfrminfo.lblcompdate.caption
 msgid "lblCompDate"
-msgstr ""
+msgstr "Kompilierdatum"
 
 #: tfrminfo.lblinfo.caption
 msgid ""
@@ -471,7 +473,7 @@ msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
-msgstr ""
+msgstr "Version"
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
@@ -564,9 +566,17 @@ msgctxt "tfrmsettings.caption"
 msgid "Settings"
 msgstr "Einstellungen"
 
+#: tfrmsettings.cbblackscreenonempty.caption
+msgid "Show black screen when slide is empty"
+msgstr "Einen schwarzen Bildschirm bei leerer Folie zeigen"
+
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
 msgstr "Leerfolie zwischen den Liedern einfügen"
+
+#: tfrmsettings.cbfadetransition.caption
+msgid "Fade transition between slides"
+msgstr "Übergangszeit zwischen den Folien"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
@@ -608,13 +618,17 @@ msgstr "Pfad des Liederverzeichnisses:"
 msgid "Alignment: "
 msgstr "Ausrichtung: "
 
+#: tfrmsettings.lblfadems.caption
+msgid "ms"
+msgstr ""
+
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency:"
 msgstr "Transparenz des Bilds ändern:"
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
-msgstr ""
+msgstr "Bild-Erklärung"
 
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
@@ -721,7 +735,7 @@ msgstr "🗑"
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
-msgstr ""
+msgstr "Alle ausgewählten Lieder entfernen"
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
@@ -779,6 +793,10 @@ msgstr "Suchen..."
 #: tfrmsongs.itemabout.caption
 msgid "Information about the Program"
 msgstr "Informationen über dieses Programm"
+
+#: tfrmsongs.itemeditsongstyle.caption
+msgid "Edit song style..."
+msgstr "Darstellung des Liedes bearbeiten..."
 
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
@@ -875,11 +893,83 @@ msgstr "Öffne Liederliste"
 
 #: tfrmsongs.panelsongtexstatus.caption
 msgid "PanelSongTeXStatus"
-msgstr ""
+msgstr "Status"
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
 msgstr "Speichere Liederliste"
+
+#: tfrmsongstyle.btnbrowsebgimage.caption
+msgid "Browse..."
+msgstr "Durchsuchen..."
+
+#: tfrmsongstyle.btncancel.caption
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: tfrmsongstyle.btnfont.caption
+msgid "Select font..."
+msgstr "Schriftart auswählen..."
+
+#: tfrmsongstyle.btnok.caption
+msgid "OK"
+msgstr "OK"
+
+#: tfrmsongstyle.btnreset.caption
+msgid "Reset to global default"
+msgstr "Auf Standardeinstellungen zurücksetzen"
+
+#: tfrmsongstyle.caption
+msgid "Song Style Override"
+msgstr "Lied-Stil individuell anpassen"
+
+#: tfrmsongstyle.cbshowbgimage.caption
+msgid "Show background image"
+msgstr "Hintergrundbild anzeigen"
+
+#: tfrmsongstyle.cbusecustomstyle.caption
+msgid "Use custom style for this song"
+msgstr "Benutzerdefinierten Stil für dieses Lied verwenden"
+
+#: tfrmsongstyle.gbalign.caption
+msgid "Horizontal Alignment"
+msgstr "Horizontale Ausrichtung"
+
+#: tfrmsongstyle.gbbackground.caption
+msgid "Background"
+msgstr "Hintergrund"
+
+#: tfrmsongstyle.gbfont.caption
+msgid "Font && Text Colour"
+msgstr "Schriftart && Textfarbe"
+
+#: tfrmsongstyle.gbpreview.caption
+msgid "Preview"
+msgstr "Vorschau"
+
+#: tfrmsongstyle.lblalignlabel.caption
+msgid "Alignment:"
+msgstr "Ausrichtung:"
+
+#: tfrmsongstyle.lblbgcolorlabel.caption
+msgid "Background colour:"
+msgstr "Hintergrundfarbe:"
+
+#: tfrmsongstyle.lblbgimagelabel.caption
+msgid "Path:"
+msgstr "Pfad:"
+
+#: tfrmsongstyle.lblfontpreview.caption
+msgid "Arial, 24 pt"
+msgstr "Arial, 24 pt"
+
+#: tfrmsongstyle.lbltextcolorlabel.caption
+msgid "Text colour:"
+msgstr "Textfarbe:"
+
+#: tfrmsongstyle.lbltransparency.caption
+msgid "Transparency (%):"
+msgstr "Transparenz (%):"
 
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
@@ -960,8 +1050,10 @@ msgid "Next"
 msgstr "Weiter"
 
 #: welcome.songrepodirempty
+#, fuzzy
+#| msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at"
 msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
-msgstr "Allerdings scheint es, als ob Sie noch keine Lieder hinzugefügt haben. Wollen Sie das Lied „Amazing Grace“ von John Newton als Beispiel zu Ihrem Liederverzeichnis hinzufügen? Dann klicken Sie auf die untere Schaltfläche. Klicken Sie auf „Weiter“, um zum nächsten Schritt zu gelangen."
+msgstr "Es scheint jedoch, dass Sie noch keine Lieder hinzugefügt haben. Möchten Sie das Lied „Amazing Grace“ von John Newton als Beispiel zu Ihrem Liederverzeichnis hinzufügen? Dann klicken Sie auf"
 
 #: welcome.songreponotempty
 msgid "The song repository contains already {songcount} songs which you can use with Cantara."
