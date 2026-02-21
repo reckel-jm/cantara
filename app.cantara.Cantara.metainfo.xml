@@ -52,6 +52,37 @@
     <developer_name>Jan Martin Reckel</developer_name>
 
     <releases>
+        <release version="2.7.0" date="2026-02-21">
+            <description>
+                <p>New Features</p>
+                <ul>
+                    <li>Per-song style overrides: each song can now have its own background image, background colour, text colour, font, transparency and horizontal alignment, independent of the global settings.</li>
+                    <li>Per-song PPTX masters: when exporting to PowerPoint, each song can use its own custom master slide.</li>
+                    <li>Fade transition between slides with configurable duration (default: 150 ms).</li>
+                    <li>New setting: show a pure black screen when an empty slide is displayed.</li>
+                    <li>JSON song selection export/import: song selections can be saved as .json files that bundle song content, per-song styles and background images into one portable file.</li>
+                    <li>Dark mode support on Windows.</li>
+                    <li>Windows installer (Inno Setup).</li>
+                    <li>Third-party libraries dialog listing all dependencies and their licences.</li>
+                </ul>
+                <p>Improvements</p>
+                <ul>
+                    <li>Improved Flatpak permissions handling with XDG portal support.</li>
+                    <li>Improved text rendering with a custom word-wrap function.</li>
+                    <li>Updated and extended translations.</li>
+                </ul>
+                <p>Bug Fixes</p>
+                <ul>
+                    <li>Fixed a crash when starting a presentation after songs were added via "Select All", drag-and-drop, or the search filter.</li>
+                    <li>Fixed the song editor not opening the correct song from the context menu.</li>
+                    <li>Fixed background colour and transparency changes not being reflected in the style preview and in the presentation.</li>
+                    <li>Fixed metadata parsing truncating field values containing a colon.</li>
+                    <li>Fixed a layout overlap in the song style dialog.</li>
+                    <li>Fixed an exception when closing the application.</li>
+                    <li>Fixed .txt files not being recognised as valid song files.</li>
+                </ul>
+            </description>
+        </release>
         <release version="2.6.0" date="2024-05-31">
             <description>
                 <ul>

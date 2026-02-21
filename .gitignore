@@ -57,3 +57,6 @@ fpccantaratest
 src/locals/*.mo
 src/cantaracli
 cataracli
+
+# Add AI engines notes
+.claude

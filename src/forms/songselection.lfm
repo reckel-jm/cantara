@@ -8,6 +8,8 @@ object frmSongs: TfrmSongs
   ClientHeight = 700
   ClientWidth = 1068
   Menu = MainMenu
+  Position = poScreenCenter
+  LCLVersion = '4.4.0.0'
   OnActivate = FormActivate
   OnChangeBounds = FormResize
   OnClose = FormClose
@@ -18,7 +20,6 @@ object frmSongs: TfrmSongs
   OnResize = FormResize
   OnShow = FormShow
   OnWindowStateChange = FormResize
-  Position = poScreenCenter
   object lbxSselected: TListBox
     AnchorSideLeft.Control = grbControl
     AnchorSideLeft.Side = asrBottom
@@ -39,6 +40,7 @@ object frmSongs: TfrmSongs
     PopupMenu = SongPopupMenu
     ScrollWidth = 378
     TabOrder = 1
+    TopIndex = -1
     OnClick = lbxSselectedClick
     OnDragDrop = lbxSselectedDragDrop
     OnDragOver = lbxSselectedDragOver
@@ -52,7 +54,7 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = lbxSRepo
     AnchorSideRight.Side = asrBottom
     Left = 0
-    Height = 34
+    Height = 28
     Hint = 'Search...'
     Top = 0
     Width = 464
@@ -131,8 +133,8 @@ object frmSongs: TfrmSongs
       Anchors = [akTop, akLeft, akRight]
       BorderWidth = 1
       BorderStyle = bsSingle
-      ClientHeight = 51
-      ClientWidth = 214
+      ClientHeight = 49
+      ClientWidth = 212
       TabOrder = 0
       object btnGoLeft: TButton
         AnchorSideLeft.Control = ControlPanel
@@ -140,7 +142,7 @@ object frmSongs: TfrmSongs
         AnchorSideBottom.Control = ControlPanel
         AnchorSideBottom.Side = asrBottom
         Left = 2
-        Height = 47
+        Height = 45
         Top = 2
         Width = 75
         Align = alCustom
@@ -157,7 +159,7 @@ object frmSongs: TfrmSongs
         AnchorSideBottom.Control = ControlPanel
         AnchorSideBottom.Side = asrBottom
         Left = 77
-        Height = 47
+        Height = 45
         Top = 2
         Width = 75
         Align = alCustom
@@ -174,7 +176,7 @@ object frmSongs: TfrmSongs
         AnchorSideBottom.Control = ControlPanel
         AnchorSideBottom.Side = asrBottom
         Left = 152
-        Height = 47
+        Height = 45
         Top = 2
         Width = 75
         Align = alCustom
@@ -236,6 +238,7 @@ object frmSongs: TfrmSongs
       ParentShowHint = False
       Style = lbOwnerDrawVariable
       TabOrder = 2
+      TopIndex = -1
       OnClick = SlideTextListBoxClick
       OnDrawItem = SlideTextListBoxDrawItem
       OnKeyDown = SlideTextListBoxKeyDown
@@ -249,8 +252,8 @@ object frmSongs: TfrmSongs
     AnchorSideRight.Control = grbControl
     AnchorSideBottom.Control = grbSettings
     Left = 0
-    Height = 624
-    Top = 34
+    Height = 630
+    Top = 28
     Width = 464
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -259,6 +262,7 @@ object frmSongs: TfrmSongs
     PopupMenu = SongPopupMenu
     Sorted = True
     TabOrder = 0
+    TopIndex = -1
     OnDblClick = btnAddClick
     OnKeyDown = lbxSRepoKeyDown
     OnMouseDown = lbxSRepoMouseDown
@@ -419,9 +423,9 @@ object frmSongs: TfrmSongs
     end
     object chkMultiWindowMode: TCheckBox
       Left = 192
-      Height = 25
+      Height = 26
       Top = 8
-      Width = 374
+      Width = 370
       Caption = 'Multi-Screen-Mode (suitable for multiple screens)'
       TabOrder = 2
       TabStop = False
@@ -560,13 +564,13 @@ object frmSongs: TfrmSongs
   end
   object OpenDialog: TOpenDialog
     Title = 'Open Song List'
-    Filter = 'Cantara SongTeX file (File with content)|*.songtex|JSON Song Selection|*.json|Simple Song Selection|*.csswc'
+    Filter = 'All supported files|*.selection.json;*.songtex;*.csswc|Cantara SongTeX file (File with content)|*.songtex|JSON Song Selection|*.selection.json|Simple Song Selection|*.csswc'
     Left = 198
     Top = 424
   end
   object SaveDialog: TSaveDialog
     Title = 'Save Song List'
-    Filter = 'Cantara SongTeX file (File with content)|*.songtex|JSON Song Selection|*.json|Simple Song Selection|*.csswc'
+    Filter = 'JSON Song Selection (File with content and style information)|*.selection.json|Cantara SongTeX file (File with content)|*.songtex|Simple Song Selection|*.csswc'
     Left = 232
     Top = 424
   end
