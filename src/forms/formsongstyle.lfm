@@ -3,12 +3,12 @@ object frmSongStyle: TfrmSongStyle
   Height = 608
   Top = 200
   Width = 420
-  BorderStyle = bsSizeable
   Caption = 'Song Style Override'
   ClientHeight = 608
   ClientWidth = 420
   Constraints.MinHeight = 608
   Constraints.MinWidth = 420
+  LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   object cbUseCustomStyle: TCheckBox
@@ -16,7 +16,7 @@ object frmSongStyle: TfrmSongStyle
     Height = 26
     Top = 8
     Width = 400
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Use custom style for this song'
     ParentFont = False
     TabOrder = 0
@@ -27,10 +27,10 @@ object frmSongStyle: TfrmSongStyle
     Height = 80
     Top = 42
     Width = 400
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Font && Text Colour'
-    ClientHeight = 58
-    ClientWidth = 396
+    ClientHeight = 52
+    ClientWidth = 394
     TabOrder = 1
     object btnFont: TButton
       Left = 8
@@ -45,27 +45,29 @@ object frmSongStyle: TfrmSongStyle
       Left = 126
       Height = 21
       Top = 20
-      Width = 160
+      Width = 77
       Caption = 'Arial, 24 pt'
       ParentFont = False
     end
     object lblTextColorLabel: TLabel
-      Left = 296
+      Left = 277
       Height = 21
       Top = 20
-      Width = 65
+      Width = 82
       Anchors = [akTop, akRight]
       Caption = 'Text colour:'
       ParentFont = False
     end
     object pnlTextColor: TPanel
-      Left = 362
+      Left = 360
       Height = 24
       Top = 16
       Width = 24
       Anchors = [akTop, akRight]
       BevelOuter = bvLowered
       Color = clWhite
+      ParentBackground = False
+      ParentColor = False
       TabOrder = 1
       OnClick = pnlTextColorClick
     end
@@ -75,27 +77,29 @@ object frmSongStyle: TfrmSongStyle
     Height = 175
     Top = 130
     Width = 400
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Background'
-    ClientHeight = 153
-    ClientWidth = 396
+    ClientHeight = 147
+    ClientWidth = 394
     TabOrder = 2
     object lblBgColorLabel: TLabel
       Left = 8
       Height = 21
       Top = 20
-      Width = 97
+      Width = 138
       Caption = 'Background colour:'
       ParentFont = False
     end
     object pnlBgColor: TPanel
-      Left = 362
+      Left = 360
       Height = 24
       Top = 16
       Width = 24
       Anchors = [akTop, akRight]
       BevelOuter = bvLowered
       Color = clBlack
+      ParentBackground = False
+      ParentColor = False
       TabOrder = 0
       OnClick = pnlBgColorClick
     end
@@ -103,8 +107,8 @@ object frmSongStyle: TfrmSongStyle
       Left = 8
       Height = 26
       Top = 50
-      Width = 380
-      Anchors = [akLeft, akTop, akRight]
+      Width = 378
+      Anchors = [akTop, akLeft, akRight]
       Caption = 'Show background image'
       ParentFont = False
       TabOrder = 1
@@ -114,7 +118,7 @@ object frmSongStyle: TfrmSongStyle
       Left = 8
       Height = 21
       Top = 84
-      Width = 34
+      Width = 37
       Caption = 'Path:'
       ParentFont = False
     end
@@ -122,13 +126,13 @@ object frmSongStyle: TfrmSongStyle
       Left = 48
       Height = 28
       Top = 80
-      Width = 256
-      Anchors = [akLeft, akTop, akRight]
+      Width = 254
+      Anchors = [akTop, akLeft, akRight]
       TabOrder = 2
       OnChange = edtBgImagePathChange
     end
     object btnBrowseBgImage: TButton
-      Left = 312
+      Left = 310
       Height = 28
       Top = 80
       Width = 76
@@ -141,19 +145,17 @@ object frmSongStyle: TfrmSongStyle
       Left = 8
       Height = 21
       Top = 118
-      Width = 95
+      Width = 124
       Caption = 'Transparency (%):'
       ParentFont = False
     end
     object spTransparency: TSpinEdit
       Left = 110
-      Height = 28
+      Height = 29
       Top = 114
       Width = 70
       MaxValue = 100
-      MinValue = 0
       TabOrder = 4
-      Value = 0
       OnChange = spTransparencyChange
     end
   end
@@ -162,25 +164,25 @@ object frmSongStyle: TfrmSongStyle
     Height = 60
     Top = 313
     Width = 400
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Horizontal Alignment'
-    ClientHeight = 38
-    ClientWidth = 396
+    ClientHeight = 32
+    ClientWidth = 394
     TabOrder = 3
     object lblAlignLabel: TLabel
       Left = 8
       Height = 21
       Top = 10
-      Width = 66
+      Width = 77
       Caption = 'Alignment:'
       ParentFont = False
     end
     object cboHAlign: TComboBox
       Left = 80
-      Height = 28
+      Height = 29
       Top = 6
       Width = 120
-      ItemIndex = -1
+      ItemHeight = 28
       Style = csDropDownList
       TabOrder = 0
       OnChange = cboHAlignChange
@@ -191,17 +193,17 @@ object frmSongStyle: TfrmSongStyle
     Height = 155
     Top = 381
     Width = 400
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Preview'
-    ClientHeight = 133
-    ClientWidth = 396
+    ClientHeight = 127
+    ClientWidth = 394
     TabOrder = 4
     object imgPreview: TImage
       Left = 6
-      Height = 125
+      Height = 119
       Top = 4
-      Width = 384
-      Anchors = [akLeft, akTop, akRight, akBottom]
+      Width = 382
+      Anchors = [akTop, akLeft, akRight, akBottom]
       Proportional = True
       Stretch = True
     end
@@ -242,21 +244,44 @@ object frmSongStyle: TfrmSongStyle
     TabOrder = 7
   end
   object dlgFont: TFontDialog
-    Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'Arial'
-    Font.Style = []
-    left = 8
-    top = 570
+    MinFontSize = 0
+    MaxFontSize = 0
+    Left = 8
+    Top = 570
   end
   object dlgColor: TColorDialog
-    left = 60
-    top = 570
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    Left = 60
+    Top = 570
   end
   object dlgOpenPicture: TOpenPictureDialog
     Filter = 'Image files (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp|All files (*.*)|*.*'
-    left = 112
-    top = 570
+    Left = 112
+    Top = 570
   end
 end
