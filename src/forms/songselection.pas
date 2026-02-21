@@ -638,20 +638,18 @@ begin
   begin
     repoFile := TRepoFile(CallingListbox.Items.Objects[CallingListbox.ItemIndex]);
     if repoFile = nil then Exit;
-    frmSongEdit.Show;
     frmSongEdit.loadRepo(repo);
-    Application.ProcessMessages;
     for i := 0 to frmSongEdit.lsSongs.Count - 1 do
     begin
-      if frmSongEdit.lsSongs.Items[i] = repoFile.FileName then
+      if TRepoFile(frmSongEdit.lsSongs.Items.Objects[i]) = repoFile then
       begin
         frmSongEdit.lsSongs.ItemIndex := i;
-        Application.ProcessMessages;
-        frmSongEdit.Repaint;
-        frmSongEdit.lsSongsClick(frmSongs);
         Break;
       end;
     end;
+    frmSongEdit.Show;
+    Application.ProcessMessages;
+    frmSongEdit.lsSongsClick(frmSongs);
   end;
 end;
 
