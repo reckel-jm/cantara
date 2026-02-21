@@ -93,7 +93,14 @@ type
 { Create Presentation Data from a TSong with appropriate settings }
 function CreatePresentationDataFromSong(Song: TSong; SlideSettings: TSlideSettings;
   var SlideCounter: Integer): TSlideList;
-{ Splits the song source slides }
+{
+  Splits a song's source text into multiple slides based on a maximum line count.
+  Features:
+  - Synchronized Bilingual Splitting: Keeps primary text and translation paired.
+  - Balanced Distribution: Instead of 4+1 lines, it prefers a 3+2 split for better aesthetics.
+  - Primary-Driven: The number of slides is dictated by the first language to avoid
+    empty "translation-only" slides.
+}
 function SplitSlides(Input: TStringList; MaxSlides: Integer): String;
 
 implementation
@@ -271,58 +278,73 @@ var
   Line: String;
 
   procedure FlushVerse;
-  var sIdx, lIdx, vSlides: Integer;
+  var
+    sIdx, lIdx, vSlides: Integer;
+    LinesThisSlide1, LinesThisSlide2: Integer;
+    Offset1, Offset2: Integer;
   begin
+    // Skip if there is no content to process
     if (Lang1Lines.Count = 0) and (Lang2Lines.Count = 0) then Exit;
 
-    // Determining number of slides only from first language
+    { 1. CALCULATE SLIDE COUNT
+      The number of slides (vSlides) is determined solely by the primary language (Lang1).
+      Formula ensures that even if MaxSlides is not reached, at least 1 slide is created. }
     vSlides := (Lang1Lines.Count + MaxSlides - 1) div MaxSlides;
-    if vSlides = 0 then vSlides := 1; // at least one slide
+    if vSlides = 0 then vSlides := 1;
 
+    Offset1 := 0;
+    Offset2 := 0;
+
+    { 2. DISTRIBUTE LINES ACROSS SLIDES }
     for sIdx := 0 to vSlides - 1 do
     begin
-      // Add primary language
-      if sIdx < vSlides - 1 then
-      begin
-        // For normal slide: Exactly MaxSlide as numbers
-        for lIdx := sIdx * MaxSlides to (sIdx + 1) * MaxSlides - 1 do
-          if lIdx < Lang1Lines.Count then
-            OutputList.Add(Lang1Lines[lIdx]);
-      end
-      else
-      begin
-        // Last slide: All remaining lines
-        for lIdx := sIdx * MaxSlides to Lang1Lines.Count - 1 do
-          OutputList.Add(Lang1Lines[lIdx]);
-      end;
+      { --- BALANCING LOGIC ---
+        To avoid a single line on the last slide, we distribute lines evenly.
+        Example: 5 lines with MaxSlides=4 results in 3 lines on slide 1 and 2 lines on slide 2. }
 
-      // Add delim
-      if Lang2Lines.Count > 0 then
+      // Calculate lines for Primary Language on this specific slide
+      LinesThisSlide1 := (Lang1Lines.Count div vSlides);
+      if sIdx < (Lang1Lines.Count mod vSlides) then Inc(LinesThisSlide1);
+
+      // Calculate lines for Translation on this specific slide (distributed over same vSlides)
+      LinesThisSlide2 := (Lang2Lines.Count div vSlides);
+      if sIdx < (Lang2Lines.Count mod vSlides) then Inc(LinesThisSlide2);
+
+      // Add Primary Language lines to the output
+      for lIdx := 0 to LinesThisSlide1 - 1 do
       begin
-        OutputList.Add('---');
-        if sIdx < vSlides - 1 then
+        if Offset1 < Lang1Lines.Count then
         begin
-          for lIdx := sIdx * MaxSlides to (sIdx + 1) * MaxSlides - 1 do
-            if lIdx < Lang2Lines.Count then
-              OutputList.Add(Lang2Lines[lIdx]);
-        end
-        else
-        begin
-          // Last slide takes all
-          for lIdx := sIdx * MaxSlides to Lang2Lines.Count - 1 do
-            OutputList.Add(Lang2Lines[lIdx]);
+          OutputList.Add(Lang1Lines[Offset1]);
+          Inc(Offset1);
         end;
       end;
 
-      // Empty Slide as Delimiter
+      // Add Separator and Translation lines if content exists for this slide
+      if (Lang2Lines.Count > 0) and (LinesThisSlide2 > 0) then
+      begin
+        OutputList.Add('---');
+        for lIdx := 0 to LinesThisSlide2 - 1 do
+        begin
+          if Offset2 < Lang2Lines.Count then
+          begin
+            OutputList.Add(Lang2Lines[Offset2]);
+            Inc(Offset2);
+          end;
+        end;
+      end;
+
+      // Add an empty line to mark the end of a slide (internal structure)
       OutputList.Add('');
     end;
 
+    // Clear temporary buffers for the next verse block
     Lang1Lines.Clear;
     Lang2Lines.Clear;
   end;
 
 begin
+  { PRE-FLIGHT CHECKS }
   if (MaxSlides <= 0) or (Input.Count = 0) then
   begin
     Result := Input.Text;
@@ -334,31 +356,43 @@ begin
   Lang2Lines := TStringList.Create;
   try
     IsSecondLang := False;
+
+    { MAIN PARSING LOOP
+      Identifies verse blocks and language separators (---) }
     for i := 0 to Input.Count - 1 do
     begin
-      Line := TrimRight(Input[i]); // Keep indents on the left
+      Line := TrimRight(Input[i]);
 
       if Line = '' then
       begin
+        // Empty line indicates the end of a verse/stanza
         FlushVerse;
         IsSecondLang := False;
       end
       else if Line = '---' then
-        IsSecondLang := True
+      begin
+        // Separator indicates that subsequent lines belong to the translation
+        IsSecondLang := True;
+      end
       else
       begin
+        // Sort line into the appropriate language buffer
         if IsSecondLang then Lang2Lines.Add(Line)
         else Lang1Lines.Add(Line);
       end;
     end;
+
+    // Process the final block (in case the file doesn't end with an empty line)
     FlushVerse;
 
-    // Final Cleaning
+    { CLEANUP
+      Remove any trailing empty lines from the generated output }
     while (OutputList.Count > 0) and (OutputList[OutputList.Count - 1] = '') do
       OutputList.Delete(OutputList.Count - 1);
 
     Result := OutputList.Text;
   finally
+    // Ensure all temporary lists are freed to prevent memory leaks
     Lang1Lines.Free;
     Lang2Lines.Free;
     OutputList.Free;

@@ -636,28 +636,19 @@ begin
     Exit;
   if (CallingListbox.ItemIndex >= 0) then
   begin
+    repoFile := TRepoFile(CallingListbox.Items.Objects[CallingListbox.ItemIndex]);
+    if repoFile = nil then Exit;
     frmSongEdit.Show;
     frmSongEdit.loadRepo(repo);
     Application.ProcessMessages;
-    for i := 0 to length(repo) - 1 do
-    begin
-      if repo[i].Name = CallingListbox.Items[CallingListbox.ItemIndex] then
-      begin
-        repoFile := repo[i];
-        Break;
-      end;
-    end;
     for i := 0 to frmSongEdit.lsSongs.Count - 1 do
     begin
       if frmSongEdit.lsSongs.Items[i] = repoFile.FileName then
       begin
-        try
-          frmSongEdit.lsSongs.ItemIndex := i;
-          Application.ProcessMessages;
-          frmSongEdit.Repaint;
-          frmSongEdit.lsSongsClick(frmSongs);
-        finally
-        end;
+        frmSongEdit.lsSongs.ItemIndex := i;
+        Application.ProcessMessages;
+        frmSongEdit.Repaint;
+        frmSongEdit.lsSongsClick(frmSongs);
         Break;
       end;
     end;
@@ -1443,7 +1434,9 @@ end;
 
 procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);
 begin
-  itemOpenInEditor.Visible := (lbxSRepo.ItemIndex >= 0);
+  itemOpenInEditor.Visible :=
+    ((SongPopupMenu.PopupComponent = lbxSRepo) and (lbxSRepo.ItemIndex >= 0)) or
+    ((SongPopupMenu.PopupComponent = lbxSSelected) and (lbxSSelected.ItemIndex >= 0));
   itemEditSongStyle.Visible :=
     (SongPopupMenu.PopupComponent = lbxSSelected) and
     (lbxSSelected.ItemIndex >= 0);
