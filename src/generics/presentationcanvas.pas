@@ -33,8 +33,10 @@ type
   private
     BackgroundPicture: TBGRABitmap;
     { 1-slot cache for custom per-slide background images }
-    FCustomBgPath:    String;
-    FCustomBgResized: TBGRABitmap;
+    FCustomBgPath:         String;
+    FCustomBgColor:        TColor;
+    FCustomBgTransparency: Integer;
+    FCustomBgResized:      TBGRABitmap;
     function CalculateTextHeight(Font: TFont; RectWidth: Integer;
       TextString: String): Integer;
     procedure AssignBGRAFont(Font: TFont);
@@ -249,8 +251,8 @@ begin
       AdjustedBackgroundPicture.Width);
   end;
 
-  ResizedBackgroundBitmap.Fill(PresentationStyleSettings.BackgroundColor);
   ResizedBackgroundBitmap.SetSize(self.Width, self.Height);
+  ResizedBackgroundBitmap.Fill(PresentationStyleSettings.BackgroundColor);
   ResampledAdjustedBackgroundPicture := AdjustedBackgroundPicture.Resample(
                                        DestRect.Width, DestRect.Height,
                                        rmSimpleStretch
@@ -326,8 +328,8 @@ begin
           DestRect.Height := Ceil(DestRect.Width * CustomAdjusted.Height / CustomAdjusted.Width);
         end;
 
-        FCustomBgResized.Fill(AStyle.BackgroundColor);
         FCustomBgResized.SetSize(Self.Width, Self.Height);
+        FCustomBgResized.Fill(AStyle.BackgroundColor);
         ResampledBitmap := CustomAdjusted.Resample(DestRect.Width, DestRect.Height,
                                                     rmSimpleStretch);
         FCustomBgResized.PutImage(DestRect.Left, DestRect.Top, ResampledBitmap,
@@ -335,6 +337,8 @@ begin
         ResampledBitmap.Free;
 
         FCustomBgPath := AStyle.BackgroundImageFilePath;
+        FCustomBgColor := AStyle.BackgroundColor;
+        FCustomBgTransparency := AStyle.Transparency;
       end;
     finally
       CustomBgPicture.Free;
@@ -458,12 +462,16 @@ begin
   if EffectiveStyle.ShowBackgroundImage then
   begin
     if (not Slide.HasCustomStyle) or
-       (Slide.CustomStyle.BackgroundImageFilePath =
-        PresentationStyleSettings.BackgroundImageFilePath) then
+       ((Slide.CustomStyle.BackgroundImageFilePath =
+         PresentationStyleSettings.BackgroundImageFilePath) and
+        (Slide.CustomStyle.BackgroundColor = PresentationStyleSettings.BackgroundColor) and
+        (Slide.CustomStyle.Transparency = PresentationStyleSettings.Transparency)) then
       Bitmap.PutImage(0, 0, Self.ResizedBackgroundBitmap, dmSet)
     else
     begin
-      if FCustomBgPath <> EffectiveStyle.BackgroundImageFilePath then
+      if (FCustomBgPath <> EffectiveStyle.BackgroundImageFilePath) or
+         (FCustomBgColor <> EffectiveStyle.BackgroundColor) or
+         (FCustomBgTransparency <> EffectiveStyle.Transparency) then
         LoadAndResizeCustomBg(EffectiveStyle);
       if FCustomBgResized.Width > 0 then
         Bitmap.PutImage(0, 0, FCustomBgResized, dmSet);

@@ -65,6 +65,8 @@ type
     FExampleSong: TSong;
     FPreviewSlideList: TSlideList;
     FLastPreviewBgPath: String;
+    FLastPreviewTransparency: Integer;
+    FLastPreviewBgColor: TColor;
     procedure UpdateFontPreview;
     procedure UpdateControlsEnabled;
     procedure RefreshPreview;
@@ -167,14 +169,22 @@ begin
     FPreviewCanvas.Height := Screen.Height;
     if Style.ShowBackgroundImage and FileExists(Style.BackgroundImageFilePath) then
     begin
-      if Style.BackgroundImageFilePath <> FLastPreviewBgPath then
+      if (Style.BackgroundImageFilePath <> FLastPreviewBgPath) or
+         (Style.Transparency <> FLastPreviewTransparency) or
+         (Style.BackgroundColor <> FLastPreviewBgColor) then
       begin
         FPreviewCanvas.LoadBackgroundBitmap;
         FLastPreviewBgPath := Style.BackgroundImageFilePath;
+        FLastPreviewTransparency := Style.Transparency;
+        FLastPreviewBgColor := Style.BackgroundColor;
       end;
     end
     else
+    begin
       FLastPreviewBgPath := '';
+      FLastPreviewTransparency := 0;
+      FLastPreviewBgColor := 0;
+    end;
     FPreviewCanvas.ResizeBackgroundBitmap;
     imgPreview.Picture.Assign(FPreviewCanvas.PaintSlide(FPreviewSlideList[0]));
   finally
@@ -311,7 +321,7 @@ begin
   Result.BackgroundColor := pnlBgColor.Color;
   Result.ShowBackgroundImage := cbShowBgImage.Checked;
   Result.BackgroundImageFilePath := edtBgImagePath.Text;
-  Result.Transparency := -spTransparency.Value;
+  Result.Transparency := spTransparency.Value;
   case cboHAlign.ItemIndex of
     0: Result.HorizontalAlign := Align_Left;
     1: Result.HorizontalAlign := Align_Center;
