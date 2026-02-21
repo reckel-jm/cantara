@@ -85,6 +85,34 @@ jobs:
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: zip -r cantara-${{ env.REL_VER }}-macos-x64.zip src/cantara.app COPYING
 
+
+    # --- Artefact Upload ---
+    - name: Upload Linux Artifacts
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: cantara-${{ env.REL_VER }}-linux
+        path: |
+          cantara-${{ env.REL_VER }}-linux-x64.zip
+          cantara*.deb
+          cantara*.rpm
+
+    - name: Upload Windows Artifacts
+      if: ${{ matrix.operating-system == 'windows-latest' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: cantara-${{ env.REL_VER }}-windows
+        path: |
+          cantara-${{ env.REL_VER }}-windows-x64.zip
+          Output/*.exe
+
+    - name: Upload MacOS Artifacts
+      if: ${{ matrix.operating-system == 'macos-latest' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: cantara-${{ env.REL_VER }}-macos
+        path: cantara-${{ env.REL_VER }}-macos-x64.zip
+        
     # --- RELEASE UPLOAD ---
 
     - name: Upload to GitHub Release
