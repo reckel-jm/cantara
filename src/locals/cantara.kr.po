@@ -1,80 +1,93 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8"
+msgstr ""
+"Project-Id-Version: Cantara\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-02-21\n"
+"Last-Translator: \n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
-msgstr ""
+msgstr "곡명 편집"
 
 #: editordisplaysongcontent.streditsongnamecontent
 msgid "Please enter the new song name: "
-msgstr ""
+msgstr "새로운 곡명을 입력하세요: "
 
 #: editordisplaysongcontent.strerrorcclitosong
 msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
-msgstr ""
+msgstr "파일을 변환할 수 없습니다. 곡 저장소에 쓰기 권한이 있는지 확인하세요!"
 
 #: editordisplaysongcontent.strfilecannotberenamed
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
-msgstr ""
+msgstr "파일 이름을 변경할 수 없습니다. 곡 저장소에 쓰기 권한이 있는지 확인하세요!"
 
 #: flatpakhandling.messagecantaraneedsportaluse
 msgid ""
 "You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
 "Thank you for your understanding!"
 msgstr ""
+"Cantara를 Flatpak으로 사용 중입니다. 권한 업데이트로 인해 Cantara가 더 이상 홈 디렉터리에 접근할 수 없게 되었으며, 이는 시스템 보안을 강화합니다. 하지만 이로 인해 곡 저장소 경로를 다시 선택해야 Cantara가 해당 디렉터리에 접근할 수 있습니다. 이전에 사용하던 배경 이미지가 있다면 그것도 다시 선택해야 합니다.\n"
+"이해해 주셔서 감사합니다!"
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
-msgstr ""
+msgstr "파일에서 템플릿 불러오기…"
 
 #: formmarkupexport.strtitleonly
 msgid "Title Only"
-msgstr ""
+msgstr "제목만"
 
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
-msgstr ""
+msgstr "곡 제목"
 
 #: imageexport.strfoldernotvalid
 msgid "Please select a folder in which you want to save the pictures."
-msgstr ""
+msgstr "사진을 저장할 폴더를 선택하세요."
 
 #: info.strauthor
 msgid "Author"
-msgstr ""
+msgstr "제작자"
 
 #: info.strbuttongitrepo
 msgid "Open webpage..."
-msgstr ""
+msgstr "웹페이지 열기…"
 
 #: info.strformcaption
 msgctxt "info.strformcaption"
 msgid "About this Program"
-msgstr ""
+msgstr "이 프로그램 정보"
 
 #: info.strprogramcompiled
 msgid "Program compiled"
-msgstr ""
+msgstr "프로그램 컴파일 날짜"
 
 #: info.strversion
 msgid "Version"
-msgstr ""
+msgstr "버전"
 
 #: info.strwebpage
 msgid "https://www.cantara.app"
-msgstr ""
+msgstr "https://www.cantara.app"
 
 #: pptx.strcantaraexport
 msgid "Cantara Song Presentation Export"
-msgstr ""
+msgstr "Cantara 곡 프레젠테이션 내보내기"
 
 #: pptx.strsongs
 msgid "Songs"
-msgstr ""
+msgstr "곡"
 
 #: settings.strbrightness
 msgid "Increase brightness by "
-msgstr ""
+msgstr "밝기 증가: "
 
 #: settings.strdefaultmetatemplate
 msgid ""
@@ -82,257 +95,260 @@ msgid ""
 "{%bible%}Bible Reference: {bible}\n"
 "{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
+"{%author%}작곡가: {author}\n"
+"{%bible%}성경 구절: {bible}\n"
+"{%ccli-songnumber%}CCLI 곡 번호: {ccli-songnumber} | 라이선스 번호: {ccli-licensenumber}"
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
 msgid "Error"
-msgstr ""
+msgstr "오류"
 
 #: settings.strnobackgroundimageselected
 msgid "You need to select a background image first."
-msgstr ""
+msgstr "먼저 배경 이미지를 선택해야 합니다."
 
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
-msgstr ""
+msgstr "원본 이미지 그대로 표시"
 
 #: settings.strtransparency
 msgid "Increase transparency by "
-msgstr ""
+msgstr "투명도 증가: "
 
 #: settings.strvalidsongrepository
 msgid "Please choose a valid folder for the song repository!"
-msgstr ""
+msgstr "곡 저장소로 사용할 올바른 폴더를 선택하세요!"
 
 #: songeditor.strcannotarchivate
 msgid "No valid file selected."
-msgstr ""
+msgstr "유효한 파일이 선택되지 않았습니다."
 
 #: songeditor.strfilehaschanged
 msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
-msgstr ""
+msgstr "{{filename}} 파일이 열린 후 변경되었습니다. 저장하시겠습니까?"
 
 #: songeditor.strfilenameexists
 msgid "The name exists already. Please choose an other one."
-msgstr ""
+msgstr "이미 존재하는 이름입니다. 다른 이름을 선택하세요."
 
 #: songeditor.strinvalidfilename
 msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
-msgstr ""
+msgstr "잘못된 이름입니다. 경로 구분 기호 (Linux의 \"/\", Windows의 \"\\\")는 사용할 수 없습니다."
 
 #: songeditor.strnewfilecaption
 msgid "New Song"
-msgstr ""
+msgstr "새 곡"
 
 #: songeditor.strnewfilecontent
 msgid "Please add the name of the new song"
-msgstr ""
+msgstr "새 곡의 이름을 입력하세요"
 
 #: songeditor.strsaveunsavedchangescaption
 msgid "Question"
-msgstr ""
+msgstr "질문"
 
 #: songeditor.strsaveunsavedchangescontent
 msgid "The file {filename} has unsaved changes. Would you like to save it now?"
-msgstr ""
+msgstr "{filename} 파일에 저장되지 않은 변경 사항이 있습니다. 지금 저장하시겠습니까?"
 
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
-msgstr ""
+msgstr "https://www.cantara.app/tutorial/meta-data/"
 
 #: songeditor.strwelcome
 msgid "Welcome"
-msgstr ""
+msgstr "환영합니다"
 
 #: songselection.stractivesongtexfile
 msgid "The following file is opened at the moment: "
-msgstr ""
+msgstr "현재 열려 있는 파일: "
 
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
-msgstr ""
+msgstr "설정…"
 
 #: songselection.strbuttonpraesentation
 msgctxt "songselection.strbuttonpraesentation"
 msgid "Presentation..."
-msgstr ""
+msgstr "프레젠테이션…"
 
 #: songselection.strcannotopensong
 msgid "Error: The Song \"{songname}\" is not available. Skipping."
-msgstr ""
+msgstr "오류: “{songname}” 곡을 사용할 수 없습니다. 건너뜁니다."
 
 #: songselection.strerror
 msgctxt "songselection.strerror"
 msgid "Error"
-msgstr ""
+msgstr "오류"
 
 #: songselection.strerroropening
 msgid "Error while opening. Propably you have not the required rights to access this file."
-msgstr ""
+msgstr "파일을 여는 중 오류가 발생했습니다. 이 파일에 접근할 권한이 없는 것 같습니다."
 
 #: songselection.strerrorsaving
 msgid "Error while saving. Propably you have not the required rights to access this file."
-msgstr ""
+msgstr "파일을 저장하는 중 오류가 발생했습니다. 이 파일에 쓰기 권한이 없는 것 같습니다."
 
 #: songselection.strfehlerkeineliederbeipraesentation
 msgid "You have to add songs first."
-msgstr ""
+msgstr "먼저 곡을 추가해야 합니다."
 
 #: songselection.strfiledoesnotexist
 msgid "The File you would like to open does not exists."
-msgstr ""
+msgstr "열려고 하는 파일이 존재하지 않습니다."
 
 #: songselection.strfolie
 msgid "Slide"
-msgstr ""
+msgstr "슬라이드"
 
 #: songselection.strhint
 msgid "Hint"
-msgstr ""
+msgstr "힌트"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
-msgstr ""
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr "Cantara는 pptx 파일을 생성하기 위해 로컬 기본 웹 브라우저의 JavaScript 엔진과 오픈소스 JavaScript 라이브러리 PptxGenJS[](https://gitbrent.github.io/PptxGenJS/)를 사용합니다. 따라서 “확인”을 누르면 브라우저가 열리고 생성이 완료되면 pptx 파일을 저장할 위치를 묻습니다. 이 과정에서 인터넷 연결이 필요 없으며, 브라우저를 통한 데이터 공유도 없습니다. 계속하려면 “확인”을 누르세요(다음부터 이 메시지는 나타나지 않습니다). 취소하려면 “취소”를 누르세요."
 
 #: songselection.strsongisempty
 msgid "The song {songname} is empty. It will not be added."
-msgstr ""
+msgstr "{songname} 곡이 비어 있습니다. 추가되지 않습니다."
 
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
-msgstr ""
+msgstr "파일에서 가져온 곡들이 곡 저장소에 가져오기 완료되었습니다."
 
 #: songselection.strtitleslide
 msgid "Title Slide"
-msgstr ""
+msgstr "제목 슬라이드"
 
 #: tcfontdialog.caption
 msgid "Font Selection"
-msgstr ""
+msgstr "글꼴 선택"
 
 #: tcfontdialog.fontpropertiesgroupbox.caption
 msgid "Font Properties"
-msgstr ""
+msgstr "글꼴 속성"
 
 #: tcfontdialog.fontselectiongroupbox.caption
 msgid "Font"
-msgstr ""
+msgstr "글꼴"
 
 #: tcfontdialog.formatationcheckgroup.caption
 msgid "Formatation"
-msgstr ""
+msgstr "서식"
 
 #: tcfontdialog.labelfontsize.caption
 msgid "Font Size:"
-msgstr ""
+msgstr "글꼴 크기:"
 
 #: tcfontdialog.previewlabel.caption
 msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
-msgstr ""
+msgstr "놀라운 은혜, 얼마나 달콤한 소리인가, 나 같은 비천한 자를 구원하셨네! 이 은혜가 얼마나 크신가."
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
-msgstr ""
+msgstr "선택…"
 
 #: tformimageexport.buttonexportall.caption
 msgid "Export All"
-msgstr ""
+msgstr "모두 내보내기"
 
 #: tformimageexport.buttonexportcurrent.caption
 msgctxt "tformimageexport.buttonexportcurrent.caption"
 msgid "Export Current"
-msgstr ""
+msgstr "현재 항목 내보내기"
 
 #: tformimageexport.buttonreloadpreview.caption
 msgid "Reload Preview..."
-msgstr ""
+msgstr "미리보기 새로고침…"
 
 #: tformimageexport.caption
 msgid "Image Exporter"
-msgstr ""
+msgstr "이미지 내보내기"
 
 #: tformimageexport.checkboxsync.caption
 msgid "Sync"
-msgstr ""
+msgstr "동기화"
 
 #: tformimageexport.groupsettings.caption
 msgctxt "tformimageexport.groupsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "설정"
 
 #: tformimageexport.itemexport.caption
 msgctxt "tformimageexport.itemexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "내보내기"
 
 #: tformimageexport.itemremove.caption
 msgid "Remove"
-msgstr ""
+msgstr "제거"
 
 #: tformimageexport.labelfolder.caption
 msgid "Folder: "
-msgstr ""
+msgstr "폴더: "
 
 #: tformimageexport.labelheight.caption
 msgid "Height:"
-msgstr ""
+msgstr "높이:"
 
 #: tformimageexport.labelwidth.caption
 msgid "Width: "
-msgstr ""
+msgstr "너비: "
 
 #: tformpadding.caption
 msgid "Additional Settings"
-msgstr ""
+msgstr "추가 설정"
 
 #: tframesettingsdetailed.groupboxpadding.caption
 msgid "Padding"
-msgstr ""
+msgstr "여백"
 
 #: tframesettingsdetailed.labalbottom.caption
 msgid "Bottom: "
-msgstr ""
+msgstr "하단: "
 
 #: tframesettingsdetailed.labelleft.caption
 msgid "Left:"
-msgstr ""
+msgstr "좌측:"
 
 #: tframesettingsdetailed.labelright.caption
 msgid "Right: "
-msgstr ""
+msgstr "우측: "
 
 #: tframesettingsdetailed.labeltop.caption
 msgid "Top: "
-msgstr ""
+msgstr "상단: "
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
 msgid "Archive"
-msgstr ""
+msgstr "보관"
 
 #: tfrmdisplaysongcontent.btnclose.caption
 msgctxt "tfrmdisplaysongcontent.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
 msgid "Convert CCLI File to Song Format"
-msgstr ""
+msgstr "CCLI 파일을 곡 형식으로 변환"
 
 #: tfrmdisplaysongcontent.btncopy.caption
 msgctxt "tfrmdisplaysongcontent.btncopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "복사"
 
 #: tfrmdisplaysongcontent.btnrename.caption
 msgid "Rename"
-msgstr ""
+msgstr "이름 바꾸기"
 
 #: tfrmdisplaysongcontent.btnsave.caption
 msgctxt "tfrmdisplaysongcontent.btnsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "저장"
 
 #: tfrmdisplaysongcontent.labelccliimporthint.caption
 msgid ""
@@ -342,22 +358,27 @@ msgid ""
 "It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
 "If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
 msgstr ""
+"힌트:\n"
+"\n"
+"지금 열려는 파일은 CCLI 파일입니다.\n"
+"먼저 이 파일을 곡 형식으로 변환한 후 원하는 대로 편집하는 것을 권장합니다.\n"
+"변환을 원하시면 아래 버튼을 클릭하세요. CCLI 파일은 곡 저장소의 ‘archive’ 하위 폴더로 이동되고, 생성된 곡 파일이 편집을 위해 열립니다."
 
 #: tfrmdisplaysongcontent.lblsongname.caption
 msgid "Name: "
-msgstr ""
+msgstr "이름: "
 
 #: tfrmeditorwelcome.btnclose.caption
 msgid "Close the Editor"
-msgstr ""
+msgstr "편집기 닫기"
 
 #: tfrmeditorwelcome.btnnewsong.caption
 msgid "Create a new song"
-msgstr ""
+msgstr "새 곡 만들기"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
-msgstr ""
+msgstr "웹브라우저에서 문서 열기…"
 
 #: tfrmeditorwelcome.lbldescription.caption
 msgid ""
@@ -365,31 +386,34 @@ msgid ""
 "\n"
 "For detailed information about the syntax, please consider the documentation."
 msgstr ""
+"여기에서 표시할 곡들을 수정할 수 있습니다.\n"
+"\n"
+"구문에 대한 자세한 정보는 문서를 참고하세요."
 
 #: tfrmeditorwelcome.lblhint.caption
 msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
-msgstr ""
+msgstr "참고: 곡 가사 파일은 단순 텍스트 파일이므로 로컬 시스템의 모든 텍스트 편집기로도 편집할 수 있습니다. Cantara는 현재 기본 기능만 제공합니다."
 
 #: tfrmeditorwelcome.lblsupport.caption
 msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
-msgstr ""
+msgstr "Cantara는 유용하고 도움이 되기를 바라는 마음으로 만들어진 무료 소프트웨어입니다. GitHub를 통한 기여는 언제나 환영합니다. 문제 제기, 기능 요청, 풀 리퀘스트를 자유롭게 만들어 주세요. 모든 영광은 하나님께! Soli Deo Gloria."
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
-msgstr ""
+msgstr "편집기에 오신 것을 환영합니다!"
 
 #: tfrmfulltextsearch.labalcreateindex.caption
 msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
 msgid "Create Index..."
-msgstr ""
+msgstr "인덱스 생성…"
 
 #: tfrmfulltextsearch.labelenterkeyword.caption
 msgid "Enter a search term..."
-msgstr ""
+msgstr "검색어를 입력하세요…"
 
 #: tfrmfulltextsearch.labelentersearchterm.caption
 msgid "Enter search term"
-msgstr ""
+msgstr "검색어 입력"
 
 #: tfrmfulltextsearch.labelnoitemsfound.caption
 msgid ""
@@ -397,31 +421,34 @@ msgid ""
 "\n"
 "Try changing the search terms."
 msgstr ""
+"항목을 찾을 수 없습니다…\n"
+"\n"
+"검색어를 변경해 보세요."
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
-msgstr ""
+msgstr "브라우저에서 GitHub 저장소 열기"
 
 #: tfrminfo.btnopenlicense.caption
 msgid "Show used libraries and licenses"
-msgstr ""
+msgstr "사용된 라이브러리 및 라이선스 보기"
 
 #: tfrminfo.btnopenwebpage.caption
 msgid "Open Project's Webpage with Browser"
-msgstr ""
+msgstr "프로젝트 웹페이지 브라우저로 열기"
 
 #: tfrminfo.caption
 msgctxt "tfrminfo.caption"
 msgid "About this Program"
-msgstr ""
+msgstr "이 프로그램 정보"
 
 #: tfrminfo.lblauthor.caption
 msgid "Autor: Jan Martin Reckel"
-msgstr ""
+msgstr "제작자: Jan Martin Reckel"
 
 #: tfrminfo.lblcompdate.caption
 msgid "lblCompDate"
-msgstr ""
+msgstr "컴파일 날짜"
 
 #: tfrminfo.lblinfo.caption
 msgid ""
@@ -431,545 +458,555 @@ msgid ""
 "\n"
 "The author wishes God's blessing for the use of the program!"
 msgstr ""
+"이 프로그램은 GPL3 라이선스 하에 배포되었습니다.\n"
+"소스 코드는 GitHub 저장소에서 확인할 수 있으며, 문서는 프로젝트 웹페이지에서 볼 수 있습니다.\n"
+"GPL3 라이선스의 조건에 따라 이 프로그램을 수정하고 재사용할 수 있습니다.\n"
+"\n"
+"제작자는 이 프로그램 사용에 하나님의 축복이 있기를 기도합니다!"
 
 #: tfrminfo.lblname.caption
 msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
-msgstr ""
+msgstr "버전"
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
-msgstr ""
+msgstr "파일로 저장…"
 
 #: tfrmmarkupexport.caption
 msgid "Export Songs as Markup"
-msgstr ""
+msgstr "곡을 마크업 형식으로 내보내기"
 
 #: tfrmmarkupexport.clipboardbutton.caption
 msgctxt "tfrmmarkupexport.clipboardbutton.caption"
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "클립보드에 복사"
 
 #: tfrmmarkupexport.opendialog.title
 msgid "Load Template File"
-msgstr ""
+msgstr "템플릿 파일 불러오기"
 
 #: tfrmmarkupexport.result.caption
 msgid "Result"
-msgstr ""
+msgstr "결과"
 
 #: tfrmmarkupexport.templatebox.caption
 msgid "Template"
-msgstr ""
+msgstr "템플릿"
 
 #: tfrmpresent.caption
 msgid "Presentation"
-msgstr ""
+msgstr "프레젠테이션"
 
 #: tfrmpresent.menuitemmovetoscreen.caption
 msgid "Move to other screen"
-msgstr ""
+msgstr "다른 화면으로 이동"
 
 #: tfrmpresent.menuitemquitpresentation.caption
 msgid "Quit Presentation"
-msgstr ""
+msgstr "프레젠테이션 종료"
 
 #: tfrmpresent.menuitemtogglefullscreen.caption
 msgid "Fullscreen"
-msgstr ""
+msgstr "전체 화면"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
-msgstr ""
+msgstr "배경색 선택"
 
 #: tfrmsettings.bgpicturedialog.title
 msgctxt "tfrmsettings.bgpicturedialog.title"
 msgid "Open image file"
-msgstr ""
+msgstr "이미지 파일 열기"
 
 #: tfrmsettings.bgpicturefiledialog.title
+#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
-msgstr ""
+msgstr "이미지 파일 열기"
 
 #: tfrmsettings.btnbackgroundcolor.caption
 msgid "Background Color..."
-msgstr ""
+msgstr "배경색…"
 
 #: tfrmsettings.btnbackgroundimage.caption
 msgid "Background Image..."
-msgstr ""
+msgstr "배경 이미지…"
 
 #: tfrmsettings.btnclose.caption
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: tfrmsettings.btndetails.caption
 msgid "Details..."
-msgstr ""
+msgstr "세부 정보…"
 
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
-msgstr ""
+msgstr "글꼴 설정 변경…"
 
 #: tfrmsettings.btnselectdir.caption
 msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
-msgstr ""
+msgstr "…"
 
 #: tfrmsettings.btntextcolor.caption
 msgid "Text Color..."
-msgstr ""
+msgstr "텍스트 색상…"
 
 #: tfrmsettings.caption
 msgctxt "tfrmsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "설정"
 
 #: tfrmsettings.cbblackscreenonempty.caption
 msgid "Show black screen when slide is empty"
-msgstr ""
+msgstr "슬라이드가 비었을 때 검은 화면 표시"
 
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
-msgstr ""
+msgstr "곡 사이에 빈 슬라이드"
 
 #: tfrmsettings.cbfadetransition.caption
 msgid "Fade transition between slides"
-msgstr ""
+msgstr "슬라이드 간 페이드 전환"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
-msgstr ""
+msgstr "첫 슬라이드에"
 
 #: tfrmsettings.cbmetadatalastslide.caption
 msgid "at last slide"
-msgstr ""
+msgstr "마지막 슬라이드에"
 
 #: tfrmsettings.cbmetatitleslide.caption
 msgid "at special title slide"
-msgstr ""
+msgstr "특별 제목 슬라이드에"
 
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
-msgstr ""
+msgstr "배경 이미지 표시:"
 
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
-msgstr ""
+msgstr "다음 슬라이드 미리 보기"
 
 #: tfrmsettings.combohorizontal.text
 msgid "Center"
-msgstr ""
+msgstr "가운데"
 
 #: tfrmsettings.combovertical.text
 msgid "Middle"
-msgstr ""
+msgstr "수직 가운데"
 
 #: tfrmsettings.gbpresentation.caption
 msgid "Presentation View"
-msgstr ""
+msgstr "프레젠테이션 보기"
 
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
-msgstr ""
+msgstr "곡 저장소 경로:"
 
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
-msgstr ""
+msgstr "정렬: "
 
 #: tfrmsettings.lblfadems.caption
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency:"
-msgstr ""
+msgstr "이미지 투명도 변경:"
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
-msgstr ""
+msgstr "lblImageExplainer"
 
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
-msgstr ""
+msgstr "메타데이터 표시:"
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
-msgstr ""
+msgstr "메타데이터 내용:"
 
 #: tfrmsettings.lblwrapafter.caption
 msgid "Automatic wrap after how many lines (0 = off):"
-msgstr ""
+msgstr "몇 줄 후 자동 줄 바꿈 (0 = 꺼짐):"
 
 #: tfrmsettings.sbimagebrightness.hint
 msgid "The transparency of the background picture towards the background color"
-msgstr ""
+msgstr "배경색 대비 배경 그림의 투명도"
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
-msgstr ""
+msgstr "곡 저장소 폴더 선택"
 
 #: tfrmsettings.textcolordialog.title
 msgid "Select text color"
-msgstr ""
+msgstr "텍스트 색상 선택"
 
 #: tfrmsongedit.caption
 msgid "Edit Files"
-msgstr ""
+msgstr "파일 편집"
 
 #: tfrmsongedit.itemcopy.caption
 msgctxt "tfrmsongedit.itemcopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "복사"
 
 #: tfrmsongedit.itemcut.caption
 msgid "Cut"
-msgstr ""
+msgstr "잘라내기"
 
 #: tfrmsongedit.itemfadein.caption
 msgid "Zoom In"
-msgstr ""
+msgstr "확대"
 
 #: tfrmsongedit.itemfadeout.caption
 msgid "Zoom Out"
-msgstr ""
+msgstr "축소"
 
 #: tfrmsongedit.itempaste.caption
 msgid "Paste"
-msgstr ""
+msgstr "붙여넣기"
 
 #: tfrmsongedit.itemredo.caption
 msgid "Redo"
-msgstr ""
+msgstr "다시 실행"
 
 #: tfrmsongedit.itemundo.caption
 msgid "Undo"
-msgstr ""
+msgstr "실행 취소"
 
 #: tfrmsongedit.menuedit.caption
 msgctxt "tfrmsongedit.menuedit.caption"
 msgid "Edit"
-msgstr ""
+msgstr "편집"
 
 #: tfrmsongedit.menufile.caption
 msgctxt "tfrmsongedit.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "파일"
 
 #: tfrmsongedit.menuitemarchivate.caption
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
 msgid "Archive"
-msgstr ""
+msgstr "보관"
 
 #: tfrmsongedit.menuitemclose.caption
 msgid "Close Editor"
-msgstr ""
+msgstr "편집기 닫기"
 
 #: tfrmsongedit.menuitemcopy.caption
 msgctxt "tfrmsongedit.menuitemcopy.caption"
 msgid "Duplicate"
-msgstr ""
+msgstr "복제"
 
 #: tfrmsongedit.menuitemnew.caption
 msgid "New"
-msgstr ""
+msgstr "새로 만들기"
 
 #: tfrmsongedit.menuitemsave.caption
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "저장"
 
 #: tfrmsongedit.view.caption
 msgid "View"
-msgstr ""
+msgstr "보기"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: tfrmsongs.btnclear.caption
 msgid "🗑"
-msgstr ""
+msgstr "🗑"
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
-msgstr ""
+msgstr "선택한 모든 곡 지우기"
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
-msgstr ""
+msgstr "🠗"
 
 #: tfrmsongs.btngoleft.caption
 msgid "←"
-msgstr ""
+msgstr "←"
 
 #: tfrmsongs.btngoright.caption
 msgid "→"
-msgstr ""
+msgstr "→"
 
 #: tfrmsongs.btnquitpresentation.caption
 msgid "×"
-msgstr ""
+msgstr "×"
 
 #: tfrmsongs.btnremove.caption
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tfrmsongs.btnsettings.caption
 msgctxt "tfrmsongs.btnsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "설정…"
 
 #: tfrmsongs.btnstartpresentation.caption
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
-msgstr ""
+msgstr "프레젠테이션…"
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr ""
+msgstr "🠕"
 
 #: tfrmsongs.buttonclosesongtexfile.caption
 msgid "Close File"
-msgstr ""
+msgstr "파일 닫기"
 
 #: tfrmsongs.caption
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Multi-Screen-Mode (suitable for multiple screens)"
-msgstr ""
+msgstr "다중 화면 모드 (다중 모니터에 적합)"
 
 #: tfrmsongs.edtsearch.hint
 msgid "Search..."
-msgstr ""
+msgstr "검색…"
 
 #: tfrmsongs.itemabout.caption
 msgid "Information about the Program"
-msgstr ""
+msgstr "프로그램 정보"
 
 #: tfrmsongs.itemeditsongstyle.caption
 msgid "Edit song style..."
-msgstr ""
+msgstr "곡 스타일 편집…"
 
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: tfrmsongs.itemexportpictures.caption
 msgid "Images..."
-msgstr ""
+msgstr "이미지…"
 
 #: tfrmsongs.itemexportpptx.caption
 msgid "Powerpoint Presentation (pptx)"
-msgstr ""
+msgstr "PowerPoint 프레젠테이션 (pptx)"
 
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
-msgstr ""
+msgstr "전문 검색…"
 
 #: tfrmsongs.itemloadselection.caption
 msgid "Load Song Selection..."
-msgstr ""
+msgstr "곡 선택 불러오기…"
 
 #: tfrmsongs.itemmarkupexport.caption
 msgid "Markup Text..."
-msgstr ""
+msgstr "마크업 텍스트…"
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
-msgstr ""
+msgstr "편집기에서 열기…"
 
 #: tfrmsongs.itempresentation.caption
 msgid "Run Presentation"
-msgstr ""
+msgstr "프레젠테이션 시작"
 
 #: tfrmsongs.itemreloadsonglist.caption
 msgid "Reload Song Repository"
-msgstr ""
+msgstr "곡 저장소 새로 고침"
 
 #: tfrmsongs.itemsaveselection.caption
 msgid "Save Song Selection..."
-msgstr ""
+msgstr "곡 선택 저장…"
 
 #: tfrmsongs.itemsaveselectionas.caption
 msgid "Save Song Selection As..."
-msgstr ""
+msgstr "곡 선택을 다른 이름으로 저장…"
 
 #: tfrmsongs.itemselectallsongs.caption
 msgid "Select all Songs"
-msgstr ""
+msgstr "모든 곡 선택"
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "설정…"
 
 #: tfrmsongs.itemshowwelcomeassistent.caption
 msgid "Show Welcome Assistent..."
-msgstr ""
+msgstr "환영 도우미 표시…"
 
 #: tfrmsongs.itemsongeditor.caption
 msgid "Song Lyrics..."
-msgstr ""
+msgstr "가사…"
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Slide Numbers"
-msgstr ""
+msgstr "슬라이드 번호"
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Presentation is running:"
-msgstr ""
+msgstr "프레젠테이션 실행 중:"
 
 #: tfrmsongs.menuedit.caption
 msgctxt "tfrmsongs.menuedit.caption"
 msgid "Edit"
-msgstr ""
+msgstr "편집"
 
 #: tfrmsongs.menuexport.caption
 msgctxt "tfrmsongs.menuexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "내보내기"
 
 #: tfrmsongs.menufile.caption
 msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "파일"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
-msgstr ""
+msgstr "도움말"
 
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"
-msgstr ""
+msgstr "곡 목록 열기"
 
 #: tfrmsongs.panelsongtexstatus.caption
 msgid "PanelSongTeXStatus"
-msgstr ""
+msgstr "SongTeX 상태 패널"
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
-msgstr ""
+msgstr "곡 목록 저장"
 
 #: tfrmsongstyle.btnbrowsebgimage.caption
 msgid "Browse..."
-msgstr ""
+msgstr "찾아보기…"
 
 #: tfrmsongstyle.btncancel.caption
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: tfrmsongstyle.btnfont.caption
 msgid "Select font..."
-msgstr ""
+msgstr "글꼴 선택…"
 
 #: tfrmsongstyle.btnok.caption
 msgid "OK"
-msgstr ""
+msgstr "확인"
 
 #: tfrmsongstyle.btnreset.caption
 msgid "Reset to global default"
-msgstr ""
+msgstr "전역 기본값으로 재설정"
 
 #: tfrmsongstyle.caption
 msgid "Song Style Override"
-msgstr ""
+msgstr "곡 스타일 재정의"
 
 #: tfrmsongstyle.cbshowbgimage.caption
 msgid "Show background image"
-msgstr ""
+msgstr "배경 이미지 표시"
 
 #: tfrmsongstyle.cbusecustomstyle.caption
 msgid "Use custom style for this song"
-msgstr ""
+msgstr "이 곡에 사용자 지정 스타일 사용"
 
 #: tfrmsongstyle.gbalign.caption
 msgid "Horizontal Alignment"
-msgstr ""
+msgstr "수평 정렬"
 
 #: tfrmsongstyle.gbbackground.caption
 msgid "Background"
-msgstr ""
+msgstr "배경"
 
 #: tfrmsongstyle.gbfont.caption
 msgid "Font && Text Colour"
-msgstr ""
+msgstr "글꼴 및 텍스트 색상"
 
 #: tfrmsongstyle.gbpreview.caption
 msgid "Preview"
-msgstr ""
+msgstr "미리보기"
 
 #: tfrmsongstyle.lblalignlabel.caption
 msgid "Alignment:"
-msgstr ""
+msgstr "정렬:"
 
 #: tfrmsongstyle.lblbgcolorlabel.caption
 msgid "Background colour:"
-msgstr ""
+msgstr "배경 색상:"
 
 #: tfrmsongstyle.lblbgimagelabel.caption
 msgid "Path:"
-msgstr ""
+msgstr "경로:"
 
 #: tfrmsongstyle.lblfontpreview.caption
 msgid "Arial, 24 pt"
-msgstr ""
+msgstr "Arial, 24 pt"
 
 #: tfrmsongstyle.lbltextcolorlabel.caption
 msgid "Text colour:"
-msgstr ""
+msgstr "텍스트 색상:"
 
 #: tfrmsongstyle.lbltransparency.caption
 msgid "Transparency (%):"
-msgstr ""
+msgstr "투명도 (%):"
 
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr ""
+msgstr "“Amazing Grace” 예제로 추가"
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr ""
+msgstr "뒤로…"
 
 #: tfrmwelcome.btnnext.caption
 msgid "Continue..."
-msgstr ""
+msgstr "계속…"
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr ""
+msgstr "GitHub 저장소 열기…"
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr ""
+msgstr "문서가 있는 웹페이지 열기…"
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr ""
+msgstr "곡 저장소 선택…"
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr ""
+msgstr "Cantara 설정"
 
 #: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
+"Cantara는 무료 오픈소스 곡 프레젠테이션 소프트웨어입니다.\n"
+"모든 곡은 하나의 곡 저장소 폴더에 있어야 합니다. 지금 Cantara가 곡 저장소로 사용할 파일 시스템 내 폴더를 선택하세요. 아직 곡이 없다면 새 폴더를 만들거나 빈 폴더를 선택할 수 있습니다."
 
 #: tfrmwelcome.labelwelcomeheadline.caption
 msgid "Welcome to Cantara!"
-msgstr ""
+msgstr "Cantara에 오신 것을 환영합니다!"
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
@@ -981,44 +1018,50 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
+"설정 대화상자에서 프레젠테이션 모양을 조정할 수 있습니다. 또한 편집기를 통해 곡 파일을 추가·편집·복제·변환할 수 있으며, 둘 다 메인 창의 ‘편집’ 메뉴에 있습니다.\n"
+"Cantara는 CCLI Songselect 형식과 자체 곡 형식, 두 가지 형식을 지원합니다. 인터넷에서 곡을 다운로드하고 가져오는 것이 훨씬 쉬워집니다. 위치와 곡에 따라 가사 공개 상영에 대한 라이선스 규정이 적용될 수 있으니 유의하세요. 이 소프트웨어의 합법적 사용 책임은 전적으로 사용자에게 있습니다.\n"
+"프로그램에 대한 자세한 정보는 https://www.cantara.app 웹페이지의 온라인 문서를 참고하세요.\n"
+"\n"
+"Cantara는 GPL3 라이선스로 배포되는 자유 소프트웨어입니다. 소스 코드는 GitHub에서 공개되어 있습니다. 프로젝트가 마음에 들면 GitHub에서 스타를 눌러주세요! 피드백, 버그 보고, 풀 리퀘스트도 매우 환영합니다.\n"
+"\n"
+"하나님께서 여러분과 이 소프트웨어 사용을 축복하시길 빕니다!"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr ""
+msgstr "“Amazing Grace”가 저장소에 추가되었습니다. 이제 계속 진행할 수 있습니다."
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr ""
+msgstr "축하합니다! Cantara 사용 준비가 완료되었습니다!"
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"
-msgstr ""
+msgstr "전문 검색"
 
 #: welcome.btnnextfinish
 msgid "Finish"
-msgstr ""
+msgstr "완료"
 
 #: welcome.btnnextnext
 msgid "Next"
-msgstr ""
+msgstr "다음"
 
 #: welcome.songrepodirempty
 msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
-msgstr ""
+msgstr "아직 곡을 추가하지 않은 것 같습니다. John Newton의 “Amazing Grace”를 예시로 곡 저장소에 추가하시겠습니까? 아래 버튼을 클릭한 후 “다음”을 눌러 다음 단계로 진행하세요."
 
 #: welcome.songreponotempty
 msgid "The song repository contains already {songcount} songs which you can use with Cantara."
-msgstr ""
+msgstr "곡 저장소에 이미 {songcount}곡이 있어 Cantara에서 사용할 수 있습니다."
 
 #: welcome.songreponotemptyaddamazinggrace
 msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
-msgstr ""
+msgstr "원하시면 “Amazing Grace”를 추가 예시로 넣을 수도 있습니다. 그러려면 아래 버튼을 누르세요. 아니면 “다음”을 클릭하세요."
 
 #: welcome.songreposuccess
 msgid "The selected directory can be successfully used as a song repository."
-msgstr ""
+msgstr "선택한 폴더를 곡 저장소로 성공적으로 사용할 수 있습니다."
 
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
-msgstr ""
-
+msgstr "도우미를 종료하기 전에 곡 저장소 경로를 선택하세요. 이 경로 없이는 Cantara가 작동하지 않습니다."

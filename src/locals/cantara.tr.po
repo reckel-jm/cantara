@@ -1,80 +1,93 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8"
+msgstr ""
+"Project-Id-Version: Cantara\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-02-21\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
-msgstr ""
+msgstr "Şarkı Adını Düzenle"
 
 #: editordisplaysongcontent.streditsongnamecontent
 msgid "Please enter the new song name: "
-msgstr ""
+msgstr "Lütfen yeni şarkı adını girin: "
 
 #: editordisplaysongcontent.strerrorcclitosong
 msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
-msgstr ""
+msgstr "Dosya dönüştürülemiyor. Şarkı deposuna yazma izniniz olduğundan emin olun!"
 
 #: editordisplaysongcontent.strfilecannotberenamed
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
-msgstr ""
+msgstr "Dosya yeniden adlandırılamıyor. Şarkı deposuna yazma izniniz olduğundan emin olun!"
 
 #: flatpakhandling.messagecantaraneedsportaluse
 msgid ""
 "You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
 "Thank you for your understanding!"
 msgstr ""
+"Cantara’yı Flatpak olarak kullanıyorsunuz. İzin güncellemesi nedeniyle Cantara artık ev dizininize erişemiyor; bu, sisteminizi daha güvenli hale getiriyor. Ancak bu aynı zamanda şarkı deposu yolunu tekrar seçmeniz gerektiği anlamına geliyor ki Cantara o dizine erişim izni alabilsin. Eğer bir arka plan resmi kullanıyorsanız, onu da tekrar seçmeniz gerekecek.\n"
+"Anlayışınız için teşekkür ederiz!"
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
-msgstr ""
+msgstr "Şablonu Dosyadan Yükle…"
 
 #: formmarkupexport.strtitleonly
 msgid "Title Only"
-msgstr ""
+msgstr "Sadece Başlık"
 
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
-msgstr ""
+msgstr "Şarkı Başlığı"
 
 #: imageexport.strfoldernotvalid
 msgid "Please select a folder in which you want to save the pictures."
-msgstr ""
+msgstr "Lütfen resimleri kaydetmek istediğiniz bir klasör seçin."
 
 #: info.strauthor
 msgid "Author"
-msgstr ""
+msgstr "Yazar"
 
 #: info.strbuttongitrepo
 msgid "Open webpage..."
-msgstr ""
+msgstr "Web sayfasını aç…"
 
 #: info.strformcaption
 msgctxt "info.strformcaption"
 msgid "About this Program"
-msgstr ""
+msgstr "Bu Program Hakkında"
 
 #: info.strprogramcompiled
 msgid "Program compiled"
-msgstr ""
+msgstr "Program derlenme tarihi"
 
 #: info.strversion
 msgid "Version"
-msgstr ""
+msgstr "Sürüm"
 
 #: info.strwebpage
 msgid "https://www.cantara.app"
-msgstr ""
+msgstr "https://www.cantara.app"
 
 #: pptx.strcantaraexport
 msgid "Cantara Song Presentation Export"
-msgstr ""
+msgstr "Cantara Şarkı Sunumu Dışa Aktarımı"
 
 #: pptx.strsongs
 msgid "Songs"
-msgstr ""
+msgstr "Şarkılar"
 
 #: settings.strbrightness
 msgid "Increase brightness by "
-msgstr ""
+msgstr "Parlaklığı artır: "
 
 #: settings.strdefaultmetatemplate
 msgid ""
@@ -82,257 +95,260 @@ msgid ""
 "{%bible%}Bible Reference: {bible}\n"
 "{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
+"{%author%}Yazar: {author}\n"
+"{%bible%}Kutsal Kitap Referansı: {bible}\n"
+"{%ccli-songnumber%}CCLI şarkı numarası: {ccli-songnumber} | Lisans Numarası: {ccli-licensenumber}"
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #: settings.strnobackgroundimageselected
 msgid "You need to select a background image first."
-msgstr ""
+msgstr "Önce bir arka plan resmi seçmelisiniz."
 
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
-msgstr ""
+msgstr "Resim olduğu gibi gösteriliyor"
 
 #: settings.strtransparency
 msgid "Increase transparency by "
-msgstr ""
+msgstr "Saydamlığı artır: "
 
 #: settings.strvalidsongrepository
 msgid "Please choose a valid folder for the song repository!"
-msgstr ""
+msgstr "Lütfen şarkı deposu için geçerli bir klasör seçin!"
 
 #: songeditor.strcannotarchivate
 msgid "No valid file selected."
-msgstr ""
+msgstr "Geçerli bir dosya seçilmedi."
 
 #: songeditor.strfilehaschanged
 msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
-msgstr ""
+msgstr "Açıldıktan sonra {{filename}} dosyası değiştirildi. Kaydetmek ister misiniz?"
 
 #: songeditor.strfilenameexists
 msgid "The name exists already. Please choose an other one."
-msgstr ""
+msgstr "Bu isim zaten mevcut. Lütfen başka bir isim seçin."
 
 #: songeditor.strinvalidfilename
 msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
-msgstr ""
+msgstr "Geçersiz isim. Yol ayırıcıları kullanılamaz (Linux’ta “/”, Windows’ta “\\”)."
 
 #: songeditor.strnewfilecaption
 msgid "New Song"
-msgstr ""
+msgstr "Yeni Şarkı"
 
 #: songeditor.strnewfilecontent
 msgid "Please add the name of the new song"
-msgstr ""
+msgstr "Lütfen yeni şarkının adını ekleyin"
 
 #: songeditor.strsaveunsavedchangescaption
 msgid "Question"
-msgstr ""
+msgstr "Soru"
 
 #: songeditor.strsaveunsavedchangescontent
 msgid "The file {filename} has unsaved changes. Would you like to save it now?"
-msgstr ""
+msgstr "{filename} dosyasında kaydedilmemiş değişiklikler var. Şimdi kaydetmek ister misiniz?"
 
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
-msgstr ""
+msgstr "https://www.cantara.app/tutorial/meta-data/"
 
 #: songeditor.strwelcome
 msgid "Welcome"
-msgstr ""
+msgstr "Hoş geldiniz"
 
 #: songselection.stractivesongtexfile
 msgid "The following file is opened at the moment: "
-msgstr ""
+msgstr "Şu anda açık olan dosya: "
 
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
-msgstr ""
+msgstr "Ayarlar…"
 
 #: songselection.strbuttonpraesentation
 msgctxt "songselection.strbuttonpraesentation"
 msgid "Presentation..."
-msgstr ""
+msgstr "Sunum…"
 
 #: songselection.strcannotopensong
 msgid "Error: The Song \"{songname}\" is not available. Skipping."
-msgstr ""
+msgstr "Hata: “{songname}” şarkısı mevcut değil. Atlanıyor."
 
 #: songselection.strerror
 msgctxt "songselection.strerror"
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #: songselection.strerroropening
 msgid "Error while opening. Propably you have not the required rights to access this file."
-msgstr ""
+msgstr "Açılırken hata oluştu. Muhtemelen bu dosyaya erişim hakkınız yok."
 
 #: songselection.strerrorsaving
 msgid "Error while saving. Propably you have not the required rights to access this file."
-msgstr ""
+msgstr "Kaydedilirken hata oluştu. Muhtemelen bu dosyaya yazma hakkınız yok."
 
 #: songselection.strfehlerkeineliederbeipraesentation
 msgid "You have to add songs first."
-msgstr ""
+msgstr "Önce şarkı eklemelisiniz."
 
 #: songselection.strfiledoesnotexist
 msgid "The File you would like to open does not exists."
-msgstr ""
+msgstr "Açmak istediğiniz dosya mevcut değil."
 
 #: songselection.strfolie
 msgid "Slide"
-msgstr ""
+msgstr "Slayt"
 
 #: songselection.strhint
 msgid "Hint"
-msgstr ""
+msgstr "İpucu"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
-msgstr ""
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr "Cantara, pptx dosyasını oluşturmak için yerel varsayılan web tarayıcınızın JavaScript motorunu ve açık kaynaklı PptxGenJS kütüphanesini[](https://gitbrent.github.io/PptxGenJS/) kullanıyor. Bu nedenle “Tamam”a bastıktan sonra tarayıcınız açılacak ve oluşturma başarılı olduğunda pptx dosyasını kaydetmek için bir yer soracak. Bu süreçte internet bağlantısına ihtiyaç duyulmaz ve tarayıcınız dışında kimseyle veri paylaşılmaz. Devam etmek isterseniz “Tamam”a basın; bu mesaj bir daha görünmeyecek. Devam etmek istemiyorsanız “İptal”e basın."
 
 #: songselection.strsongisempty
 msgid "The song {songname} is empty. It will not be added."
-msgstr ""
+msgstr "{songname} şarkısı boş. Eklenmeyecek."
 
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
-msgstr ""
+msgstr "Dosyadaki şarkılar şarkı deponuza aktarıldı."
 
 #: songselection.strtitleslide
 msgid "Title Slide"
-msgstr ""
+msgstr "Başlık Slaytı"
 
 #: tcfontdialog.caption
 msgid "Font Selection"
-msgstr ""
+msgstr "Yazı Tipi Seçimi"
 
 #: tcfontdialog.fontpropertiesgroupbox.caption
 msgid "Font Properties"
-msgstr ""
+msgstr "Yazı Tipi Özellikleri"
 
 #: tcfontdialog.fontselectiongroupbox.caption
 msgid "Font"
-msgstr ""
+msgstr "Yazı Tipi"
 
 #: tcfontdialog.formatationcheckgroup.caption
 msgid "Formatation"
-msgstr ""
+msgstr "Biçimlendirme"
 
 #: tcfontdialog.labelfontsize.caption
 msgid "Font Size:"
-msgstr ""
+msgstr "Yazı Boyutu:"
 
 #: tcfontdialog.previewlabel.caption
 msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
-msgstr ""
+msgstr "Harika Lütuf, ne kadar tatlı bir ses, benim gibi bir zavallıyı kurtardı! Bu lütuf ne kadar büyük."
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
-msgstr ""
+msgstr "Seç…"
 
 #: tformimageexport.buttonexportall.caption
 msgid "Export All"
-msgstr ""
+msgstr "Tümünü Dışa Aktar"
 
 #: tformimageexport.buttonexportcurrent.caption
 msgctxt "tformimageexport.buttonexportcurrent.caption"
 msgid "Export Current"
-msgstr ""
+msgstr "Geçerliyi Dışa Aktar"
 
 #: tformimageexport.buttonreloadpreview.caption
 msgid "Reload Preview..."
-msgstr ""
+msgstr "Önizlemeyi Yenile…"
 
 #: tformimageexport.caption
 msgid "Image Exporter"
-msgstr ""
+msgstr "Resim Dışa Aktarıcı"
 
 #: tformimageexport.checkboxsync.caption
 msgid "Sync"
-msgstr ""
+msgstr "Senkronize Et"
 
 #: tformimageexport.groupsettings.caption
 msgctxt "tformimageexport.groupsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "Ayarlar"
 
 #: tformimageexport.itemexport.caption
 msgctxt "tformimageexport.itemexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "Dışa Aktar"
 
 #: tformimageexport.itemremove.caption
 msgid "Remove"
-msgstr ""
+msgstr "Kaldır"
 
 #: tformimageexport.labelfolder.caption
 msgid "Folder: "
-msgstr ""
+msgstr "Klasör: "
 
 #: tformimageexport.labelheight.caption
 msgid "Height:"
-msgstr ""
+msgstr "Yükseklik:"
 
 #: tformimageexport.labelwidth.caption
 msgid "Width: "
-msgstr ""
+msgstr "Genişlik: "
 
 #: tformpadding.caption
 msgid "Additional Settings"
-msgstr ""
+msgstr "Ek Ayarlar"
 
 #: tframesettingsdetailed.groupboxpadding.caption
 msgid "Padding"
-msgstr ""
+msgstr "İç Boşluk"
 
 #: tframesettingsdetailed.labalbottom.caption
 msgid "Bottom: "
-msgstr ""
+msgstr "Alt: "
 
 #: tframesettingsdetailed.labelleft.caption
 msgid "Left:"
-msgstr ""
+msgstr "Sol:"
 
 #: tframesettingsdetailed.labelright.caption
 msgid "Right: "
-msgstr ""
+msgstr "Sağ: "
 
 #: tframesettingsdetailed.labeltop.caption
 msgid "Top: "
-msgstr ""
+msgstr "Üst: "
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
 msgid "Archive"
-msgstr ""
+msgstr "Arşivle"
 
 #: tfrmdisplaysongcontent.btnclose.caption
 msgctxt "tfrmdisplaysongcontent.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
 msgid "Convert CCLI File to Song Format"
-msgstr ""
+msgstr "CCLI Dosyasını Şarkı Formatına Dönüştür"
 
 #: tfrmdisplaysongcontent.btncopy.caption
 msgctxt "tfrmdisplaysongcontent.btncopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "Kopyala"
 
 #: tfrmdisplaysongcontent.btnrename.caption
 msgid "Rename"
-msgstr ""
+msgstr "Yeniden Adlandır"
 
 #: tfrmdisplaysongcontent.btnsave.caption
 msgctxt "tfrmdisplaysongcontent.btnsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 #: tfrmdisplaysongcontent.labelccliimporthint.caption
 msgid ""
@@ -342,22 +358,27 @@ msgid ""
 "It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
 "If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
 msgstr ""
+"İpucu:\n"
+"\n"
+"Açmak üzere olduğunuz dosya bir CCLI dosyasıdır.\n"
+"Önce dosyayı şarkı formatına dönüştürmeniz, ardından şarkı dosyasını isteğinize göre düzenlemeniz önerilir.\n"
+"Bunu yapmak isterseniz aşağıdaki düğmeye tıklayın. CCLI dosyası şarkı deponuzun ‘archive’ alt klasörüne taşınacak ve oluşturulan şarkı dosyası düzenleme için açılacak."
 
 #: tfrmdisplaysongcontent.lblsongname.caption
 msgid "Name: "
-msgstr ""
+msgstr "Ad: "
 
 #: tfrmeditorwelcome.btnclose.caption
 msgid "Close the Editor"
-msgstr ""
+msgstr "Düzenleyiciyi Kapat"
 
 #: tfrmeditorwelcome.btnnewsong.caption
 msgid "Create a new song"
-msgstr ""
+msgstr "Yeni bir şarkı oluştur"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
-msgstr ""
+msgstr "Belgeleri Web Tarayıcısında Aç…"
 
 #: tfrmeditorwelcome.lbldescription.caption
 msgid ""
@@ -365,31 +386,34 @@ msgid ""
 "\n"
 "For detailed information about the syntax, please consider the documentation."
 msgstr ""
+"Burada göstermek istediğiniz şarkıları değiştirebilirsiniz.\n"
+"\n"
+"Söz dizimi hakkında ayrıntılı bilgi için lütfen belgelere bakın."
 
 #: tfrmeditorwelcome.lblhint.caption
 msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
-msgstr ""
+msgstr "Lütfen unutmayın: Şarkı sözü dosyaları basit metin dosyalarıdır ve yerel sisteminizdeki herhangi bir metin düzenleyiciyle de düzenlenebilir. Cantara şu anda yalnızca temel işlevler sunuyor."
 
 #: tfrmeditorwelcome.lblsupport.caption
 msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
-msgstr ""
+msgstr "Cantara, faydalı ve yararlı olması umuduyla geliştirilen ücretsiz bir yazılımdır. GitHub üzerinden katkı çok hoş karşılanır. Sorun bildirme, özellik talebi veya pull request oluşturmaktan çekinmeyin. Bütün ihtişam Tanrı’ya aittir! Soli Deo Gloria."
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
-msgstr ""
+msgstr "Düzenleyiciye Hoş Geldiniz!"
 
 #: tfrmfulltextsearch.labalcreateindex.caption
 msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
 msgid "Create Index..."
-msgstr ""
+msgstr "İndeks Oluştur…"
 
 #: tfrmfulltextsearch.labelenterkeyword.caption
 msgid "Enter a search term..."
-msgstr ""
+msgstr "Arama terimi girin…"
 
 #: tfrmfulltextsearch.labelentersearchterm.caption
 msgid "Enter search term"
-msgstr ""
+msgstr "Arama terimi girin"
 
 #: tfrmfulltextsearch.labelnoitemsfound.caption
 msgid ""
@@ -397,31 +421,34 @@ msgid ""
 "\n"
 "Try changing the search terms."
 msgstr ""
+"Hiçbir öğe bulunamadı…\n"
+"\n"
+"Arama terimlerini değiştirmeyi deneyin."
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
-msgstr ""
+msgstr "GitHub Deposunu Tarayıcıda Aç"
 
 #: tfrminfo.btnopenlicense.caption
 msgid "Show used libraries and licenses"
-msgstr ""
+msgstr "Kullanılan kütüphaneleri ve lisansları göster"
 
 #: tfrminfo.btnopenwebpage.caption
 msgid "Open Project's Webpage with Browser"
-msgstr ""
+msgstr "Proje Web Sayfasını Tarayıcıda Aç"
 
 #: tfrminfo.caption
 msgctxt "tfrminfo.caption"
 msgid "About this Program"
-msgstr ""
+msgstr "Bu Program Hakkında"
 
 #: tfrminfo.lblauthor.caption
 msgid "Autor: Jan Martin Reckel"
-msgstr ""
+msgstr "Yazar: Jan Martin Reckel"
 
 #: tfrminfo.lblcompdate.caption
 msgid "lblCompDate"
-msgstr ""
+msgstr "Derleme Tarihi"
 
 #: tfrminfo.lblinfo.caption
 msgid ""
@@ -431,545 +458,555 @@ msgid ""
 "\n"
 "The author wishes God's blessing for the use of the program!"
 msgstr ""
+"Bu program GPL3 lisansı altında yayınlanmıştır.\n"
+"Kaynak kodu GitHub deposunda mevcuttur, belgeler proje web sayfasında bulunabilir.\n"
+"GPL3 lisansının belirtilen şartları ve koşulları altında bu programı değiştirebilir ve yeniden kullanabilirsiniz.\n"
+"\n"
+"Yazar, programın kullanımı için Tanrı’nın bereketini diler!"
 
 #: tfrminfo.lblname.caption
 msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
-msgstr ""
+msgstr "Sürüm"
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
-msgstr ""
+msgstr "Dosyaya Kaydet…"
 
 #: tfrmmarkupexport.caption
 msgid "Export Songs as Markup"
-msgstr ""
+msgstr "Şarkıları İşaretleme Olarak Dışa Aktar"
 
 #: tfrmmarkupexport.clipboardbutton.caption
 msgctxt "tfrmmarkupexport.clipboardbutton.caption"
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Panoya Kopyala"
 
 #: tfrmmarkupexport.opendialog.title
 msgid "Load Template File"
-msgstr ""
+msgstr "Şablon Dosyasını Yükle"
 
 #: tfrmmarkupexport.result.caption
 msgid "Result"
-msgstr ""
+msgstr "Sonuç"
 
 #: tfrmmarkupexport.templatebox.caption
 msgid "Template"
-msgstr ""
+msgstr "Şablon"
 
 #: tfrmpresent.caption
 msgid "Presentation"
-msgstr ""
+msgstr "Sunum"
 
 #: tfrmpresent.menuitemmovetoscreen.caption
 msgid "Move to other screen"
-msgstr ""
+msgstr "Başka ekrana taşı"
 
 #: tfrmpresent.menuitemquitpresentation.caption
 msgid "Quit Presentation"
-msgstr ""
+msgstr "Sunumu Sonlandır"
 
 #: tfrmpresent.menuitemtogglefullscreen.caption
 msgid "Fullscreen"
-msgstr ""
+msgstr "Tam Ekran"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
-msgstr ""
+msgstr "Arka plan rengini seç"
 
 #: tfrmsettings.bgpicturedialog.title
 msgctxt "tfrmsettings.bgpicturedialog.title"
 msgid "Open image file"
-msgstr ""
+msgstr "Resim dosyasını aç"
 
 #: tfrmsettings.bgpicturefiledialog.title
+#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
-msgstr ""
+msgstr "Resim dosyasını aç"
 
 #: tfrmsettings.btnbackgroundcolor.caption
 msgid "Background Color..."
-msgstr ""
+msgstr "Arka Plan Rengi…"
 
 #: tfrmsettings.btnbackgroundimage.caption
 msgid "Background Image..."
-msgstr ""
+msgstr "Arka Plan Resmi…"
 
 #: tfrmsettings.btnclose.caption
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: tfrmsettings.btndetails.caption
 msgid "Details..."
-msgstr ""
+msgstr "Ayrıntılar…"
 
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
-msgstr ""
+msgstr "Yazı Tipi Ayarlarını Değiştir…"
 
 #: tfrmsettings.btnselectdir.caption
 msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
-msgstr ""
+msgstr "…"
 
 #: tfrmsettings.btntextcolor.caption
 msgid "Text Color..."
-msgstr ""
+msgstr "Metin Rengi…"
 
 #: tfrmsettings.caption
 msgctxt "tfrmsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "Ayarlar"
 
 #: tfrmsettings.cbblackscreenonempty.caption
 msgid "Show black screen when slide is empty"
-msgstr ""
+msgstr "Slayt boşken siyah ekran göster"
 
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
-msgstr ""
+msgstr "Şarkılar arasında boş slayt"
 
 #: tfrmsettings.cbfadetransition.caption
 msgid "Fade transition between slides"
-msgstr ""
+msgstr "Slaytlar arasında soluklaşma geçişi"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
-msgstr ""
+msgstr "ilk slaytta"
 
 #: tfrmsettings.cbmetadatalastslide.caption
 msgid "at last slide"
-msgstr ""
+msgstr "son slaytta"
 
 #: tfrmsettings.cbmetatitleslide.caption
 msgid "at special title slide"
-msgstr ""
+msgstr "özel başlık slaytında"
 
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
-msgstr ""
+msgstr "Arka Plan Resmini Göster:"
 
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
-msgstr ""
+msgstr "Sonraki slaytları önceden göster"
 
 #: tfrmsettings.combohorizontal.text
 msgid "Center"
-msgstr ""
+msgstr "Ortala"
 
 #: tfrmsettings.combovertical.text
 msgid "Middle"
-msgstr ""
+msgstr "Ortada"
 
 #: tfrmsettings.gbpresentation.caption
 msgid "Presentation View"
-msgstr ""
+msgstr "Sunum Görünümü"
 
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
-msgstr ""
+msgstr "Şarkı Deposu Yolu:"
 
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
-msgstr ""
+msgstr "Hizalama: "
 
 #: tfrmsettings.lblfadems.caption
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency:"
-msgstr ""
+msgstr "Resim Saydamlığını Değiştir:"
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
-msgstr ""
+msgstr "lblImageExplainer"
 
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
-msgstr ""
+msgstr "Meta Verileri Göster:"
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
-msgstr ""
+msgstr "Meta Veri İçeriği:"
 
 #: tfrmsettings.lblwrapafter.caption
 msgid "Automatic wrap after how many lines (0 = off):"
-msgstr ""
+msgstr "Kaç satırdan sonra otomatik kaydırma (0 = kapalı):"
 
 #: tfrmsettings.sbimagebrightness.hint
 msgid "The transparency of the background picture towards the background color"
-msgstr ""
+msgstr "Arka plan resminin arka plan rengine göre saydamlığı"
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
-msgstr ""
+msgstr "Şarkı deposu klasörünü seç"
 
 #: tfrmsettings.textcolordialog.title
 msgid "Select text color"
-msgstr ""
+msgstr "Metin rengini seç"
 
 #: tfrmsongedit.caption
 msgid "Edit Files"
-msgstr ""
+msgstr "Dosyaları Düzenle"
 
 #: tfrmsongedit.itemcopy.caption
 msgctxt "tfrmsongedit.itemcopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "Kopyala"
 
 #: tfrmsongedit.itemcut.caption
 msgid "Cut"
-msgstr ""
+msgstr "Kes"
 
 #: tfrmsongedit.itemfadein.caption
 msgid "Zoom In"
-msgstr ""
+msgstr "Yakınlaştır"
 
 #: tfrmsongedit.itemfadeout.caption
 msgid "Zoom Out"
-msgstr ""
+msgstr "Uzaklaştır"
 
 #: tfrmsongedit.itempaste.caption
 msgid "Paste"
-msgstr ""
+msgstr "Yapıştır"
 
 #: tfrmsongedit.itemredo.caption
 msgid "Redo"
-msgstr ""
+msgstr "Yinele"
 
 #: tfrmsongedit.itemundo.caption
 msgid "Undo"
-msgstr ""
+msgstr "Geri Al"
 
 #: tfrmsongedit.menuedit.caption
 msgctxt "tfrmsongedit.menuedit.caption"
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
 
 #: tfrmsongedit.menufile.caption
 msgctxt "tfrmsongedit.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "Dosya"
 
 #: tfrmsongedit.menuitemarchivate.caption
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
 msgid "Archive"
-msgstr ""
+msgstr "Arşivle"
 
 #: tfrmsongedit.menuitemclose.caption
 msgid "Close Editor"
-msgstr ""
+msgstr "Düzenleyiciyi Kapat"
 
 #: tfrmsongedit.menuitemcopy.caption
 msgctxt "tfrmsongedit.menuitemcopy.caption"
 msgid "Duplicate"
-msgstr ""
+msgstr "Çoğalt"
 
 #: tfrmsongedit.menuitemnew.caption
 msgid "New"
-msgstr ""
+msgstr "Yeni"
 
 #: tfrmsongedit.menuitemsave.caption
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 #: tfrmsongedit.view.caption
 msgid "View"
-msgstr ""
+msgstr "Görünüm"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: tfrmsongs.btnclear.caption
 msgid "🗑"
-msgstr ""
+msgstr "🗑"
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
-msgstr ""
+msgstr "Seçili tüm şarkıları temizle"
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
-msgstr ""
+msgstr "🠗"
 
 #: tfrmsongs.btngoleft.caption
 msgid "←"
-msgstr ""
+msgstr "←"
 
 #: tfrmsongs.btngoright.caption
 msgid "→"
-msgstr ""
+msgstr "→"
 
 #: tfrmsongs.btnquitpresentation.caption
 msgid "×"
-msgstr ""
+msgstr "×"
 
 #: tfrmsongs.btnremove.caption
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tfrmsongs.btnsettings.caption
 msgctxt "tfrmsongs.btnsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "Ayarlar…"
 
 #: tfrmsongs.btnstartpresentation.caption
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
-msgstr ""
+msgstr "Sunum…"
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr ""
+msgstr "🠕"
 
 #: tfrmsongs.buttonclosesongtexfile.caption
 msgid "Close File"
-msgstr ""
+msgstr "Dosyayı Kapat"
 
 #: tfrmsongs.caption
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Multi-Screen-Mode (suitable for multiple screens)"
-msgstr ""
+msgstr "Çoklu Ekran Modu (birden fazla ekran için uygun)"
 
 #: tfrmsongs.edtsearch.hint
 msgid "Search..."
-msgstr ""
+msgstr "Ara…"
 
 #: tfrmsongs.itemabout.caption
 msgid "Information about the Program"
-msgstr ""
+msgstr "Program Hakkında Bilgi"
 
 #: tfrmsongs.itemeditsongstyle.caption
 msgid "Edit song style..."
-msgstr ""
+msgstr "Şarkı stilini düzenle…"
 
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: tfrmsongs.itemexportpictures.caption
 msgid "Images..."
-msgstr ""
+msgstr "Resimler…"
 
 #: tfrmsongs.itemexportpptx.caption
 msgid "Powerpoint Presentation (pptx)"
-msgstr ""
+msgstr "PowerPoint Sunumu (pptx)"
 
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
-msgstr ""
+msgstr "Tam Metin Arama…"
 
 #: tfrmsongs.itemloadselection.caption
 msgid "Load Song Selection..."
-msgstr ""
+msgstr "Şarkı Seçimini Yükle…"
 
 #: tfrmsongs.itemmarkupexport.caption
 msgid "Markup Text..."
-msgstr ""
+msgstr "İşaretleme Metni…"
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
-msgstr ""
+msgstr "Düzenleyicide Aç…"
 
 #: tfrmsongs.itempresentation.caption
 msgid "Run Presentation"
-msgstr ""
+msgstr "Sunumu Başlat"
 
 #: tfrmsongs.itemreloadsonglist.caption
 msgid "Reload Song Repository"
-msgstr ""
+msgstr "Şarkı Deposunu Yeniden Yükle"
 
 #: tfrmsongs.itemsaveselection.caption
 msgid "Save Song Selection..."
-msgstr ""
+msgstr "Şarkı Seçimini Kaydet…"
 
 #: tfrmsongs.itemsaveselectionas.caption
 msgid "Save Song Selection As..."
-msgstr ""
+msgstr "Şarkı Seçimini Farklı Kaydet…"
 
 #: tfrmsongs.itemselectallsongs.caption
 msgid "Select all Songs"
-msgstr ""
+msgstr "Tüm Şarkıları Seç"
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "Ayarlar…"
 
 #: tfrmsongs.itemshowwelcomeassistent.caption
 msgid "Show Welcome Assistent..."
-msgstr ""
+msgstr "Karşılama Yardımcısını Göster…"
 
 #: tfrmsongs.itemsongeditor.caption
 msgid "Song Lyrics..."
-msgstr ""
+msgstr "Şarkı Sözleri…"
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Slide Numbers"
-msgstr ""
+msgstr "Slayt Numaraları"
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Presentation is running:"
-msgstr ""
+msgstr "Sunum çalışıyor:"
 
 #: tfrmsongs.menuedit.caption
 msgctxt "tfrmsongs.menuedit.caption"
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
 
 #: tfrmsongs.menuexport.caption
 msgctxt "tfrmsongs.menuexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "Dışa Aktar"
 
 #: tfrmsongs.menufile.caption
 msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "Dosya"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
-msgstr ""
+msgstr "Yardım"
 
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"
-msgstr ""
+msgstr "Şarkı Listesini Aç"
 
 #: tfrmsongs.panelsongtexstatus.caption
 msgid "PanelSongTeXStatus"
-msgstr ""
+msgstr "ŞarkıTeX Durum Paneli"
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
-msgstr ""
+msgstr "Şarkı Listesini Kaydet"
 
 #: tfrmsongstyle.btnbrowsebgimage.caption
 msgid "Browse..."
-msgstr ""
+msgstr "Gözat…"
 
 #: tfrmsongstyle.btncancel.caption
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: tfrmsongstyle.btnfont.caption
 msgid "Select font..."
-msgstr ""
+msgstr "Yazı tipi seç…"
 
 #: tfrmsongstyle.btnok.caption
 msgid "OK"
-msgstr ""
+msgstr "Tamam"
 
 #: tfrmsongstyle.btnreset.caption
 msgid "Reset to global default"
-msgstr ""
+msgstr "Genel varsayılana sıfırla"
 
 #: tfrmsongstyle.caption
 msgid "Song Style Override"
-msgstr ""
+msgstr "Şarkı Stili Geçersiz Kılma"
 
 #: tfrmsongstyle.cbshowbgimage.caption
 msgid "Show background image"
-msgstr ""
+msgstr "Arka plan resmini göster"
 
 #: tfrmsongstyle.cbusecustomstyle.caption
 msgid "Use custom style for this song"
-msgstr ""
+msgstr "Bu şarkı için özel stil kullan"
 
 #: tfrmsongstyle.gbalign.caption
 msgid "Horizontal Alignment"
-msgstr ""
+msgstr "Yatay Hizalama"
 
 #: tfrmsongstyle.gbbackground.caption
 msgid "Background"
-msgstr ""
+msgstr "Arka Plan"
 
 #: tfrmsongstyle.gbfont.caption
 msgid "Font && Text Colour"
-msgstr ""
+msgstr "Yazı Tipi ve Metin Rengi"
 
 #: tfrmsongstyle.gbpreview.caption
 msgid "Preview"
-msgstr ""
+msgstr "Önizleme"
 
 #: tfrmsongstyle.lblalignlabel.caption
 msgid "Alignment:"
-msgstr ""
+msgstr "Hizalama:"
 
 #: tfrmsongstyle.lblbgcolorlabel.caption
 msgid "Background colour:"
-msgstr ""
+msgstr "Arka plan rengi:"
 
 #: tfrmsongstyle.lblbgimagelabel.caption
 msgid "Path:"
-msgstr ""
+msgstr "Yol:"
 
 #: tfrmsongstyle.lblfontpreview.caption
 msgid "Arial, 24 pt"
-msgstr ""
+msgstr "Arial, 24 pt"
 
 #: tfrmsongstyle.lbltextcolorlabel.caption
 msgid "Text colour:"
-msgstr ""
+msgstr "Metin rengi:"
 
 #: tfrmsongstyle.lbltransparency.caption
 msgid "Transparency (%):"
-msgstr ""
+msgstr "Saydamlık (%):"
 
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr ""
+msgstr "“Amazing Grace”i örnek olarak ekle"
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr ""
+msgstr "Geri…"
 
 #: tfrmwelcome.btnnext.caption
 msgid "Continue..."
-msgstr ""
+msgstr "Devam et…"
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr ""
+msgstr "GitHub Deposunu Aç…"
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr ""
+msgstr "Belgelerle Web Sayfasını Aç…"
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr ""
+msgstr "Şarkı Deposunu Seç…"
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr ""
+msgstr "Cantara Kurulumu"
 
 #: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
+"Cantara, ücretsiz ve açık kaynaklı bir şarkı sunum yazılımıdır.\n"
+"Tüm şarkılar bir şarkı deposu klasöründe bulunmalıdır. Lütfen şimdi Cantara’nın şarkı deposu olarak kullanacağı dosya sisteminizdeki bir klasörü seçin. Henüz şarkı toplamadınızsa, önce yeni bir klasör oluşturabilir veya boş bir klasör seçebilirsiniz."
 
 #: tfrmwelcome.labelwelcomeheadline.caption
 msgid "Welcome to Cantara!"
-msgstr ""
+msgstr "Cantara’ya Hoş Geldiniz!"
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
@@ -981,44 +1018,50 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
+"Sunumun görünümünü Ayarlar penceresinde ayarlamak isteyebilirsiniz. Ayrıca düzenleyici aracılığıyla şarkı dosyalarını ekleyebilir, düzenleyebilir, kopyalayabilir ve dönüştürebilirsiniz. Her ikisi de ana penceredeki Düzenle menüsünde bulunur.\n"
+"Cantara iki şarkı formatını destekler: CCLI Songselect formatı ve şarkı formatı. Bu, internetten şarkı indirmeyi ve içe aktarmayı kolaylaştırır. Konumunuza ve belirli şarkıya bağlı olarak, şarkı sözlerinin halka açık gösterimi için lisans kuralları geçerli olabilir. Bu yazılımın yasal kullanımından yalnızca kullanıcı sorumludur.\n"
+"Program hakkında daha fazla bilgi için https://www.cantara.app web sayfasındaki çevrimiçi belgelere bakın.\n"
+"\n"
+"Cantara ücretsiz yazılımdır ve GPL3 lisansı altında yayınlanmıştır. Kaynak kodu GitHub’da herkese açıktır. Projeyi beğendiyseniz GitHub’da bir yıldız vermeyi düşünün! Geri bildirim, hata raporları ve pull request’ler de çok hoş karşılanır.\n"
+"\n"
+"Tanrı sizi ve bu yazılımın kullanımını bereketlesin!"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr ""
+msgstr "“Amazing Grace” deponuza eklendi. Artık devam edebilirsiniz."
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr ""
+msgstr "Tebrikler! Cantara artık kullanıma hazır!"
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"
-msgstr ""
+msgstr "Tam Metin Arama"
 
 #: welcome.btnnextfinish
 msgid "Finish"
-msgstr ""
+msgstr "Bitir"
 
 #: welcome.btnnextnext
 msgid "Next"
-msgstr ""
+msgstr "İleri"
 
 #: welcome.songrepodirempty
 msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
-msgstr ""
+msgstr "Ancak henüz herhangi bir şarkı eklemediğiniz anlaşılıyor. John Newton’ın “Amazing Grace” şarkısını örnek olarak şarkı deponuza eklemek ister misiniz? Aşağıdaki düğmeye tıklayın. Sonraki adıma geçmek için “İleri”ye tıklayın."
 
 #: welcome.songreponotempty
 msgid "The song repository contains already {songcount} songs which you can use with Cantara."
-msgstr ""
+msgstr "Şarkı deposunda zaten Cantara ile kullanabileceğiniz {songcount} şarkı var."
 
 #: welcome.songreponotemptyaddamazinggrace
 msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
-msgstr ""
+msgstr "Ancak isterseniz “Amazing Grace” şarkısını başka bir örnek olarak ekleyebiliriz. Bunun için aşağıdaki düğmeye basın. Aksi takdirde “İleri”ye tıklayabilirsiniz."
 
 #: welcome.songreposuccess
 msgid "The selected directory can be successfully used as a song repository."
-msgstr ""
+msgstr "Seçilen klasör başarıyla şarkı deposu olarak kullanılabilir."
 
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
-msgstr ""
-
+msgstr "Yardımcıyı kapatmadan önce lütfen şarkı deposu yolunu seçin. Onsuz Cantara çalışamaz."
