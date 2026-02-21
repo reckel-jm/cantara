@@ -46,8 +46,6 @@ procedure DestroyPresentationStyleSettings(
   var APresentationStyleSetting: TPresentationStyleSettings);
 begin
   {$IFNDEF NOGRAPHIC}
-  if Assigned(APresentationStyleSetting.Font) then
-     FreeAndNil(APresentationStyleSetting.Font);
   {$ENDIF}
 end;
 
