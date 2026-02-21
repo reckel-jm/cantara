@@ -35,7 +35,7 @@ interface
 
 uses
   Classes, SysUtils, Slides, LCLType, Lyrics, ResourceHandling, PresentationCanvas,
-  FileUtil, Graphics, Base64, PresentationModels, fpjson;
+  FileUtil, Graphics, Base64, PresentationModels, fpjson, Forms;
 
 type
   TPPTXExporter = class
@@ -358,6 +358,7 @@ function TPPTXExporter.GenerateMasterDef(const MasterTitle, PlaceholderName: Str
   const AStyle: TPresentationStyleSettings; const ABgImage: String): String;
 var
   bgColor, textColor, halign, valign, fontSize, fontFace: String;
+  fontSizePt: Integer;
 begin
   bgColor := 'background: { color: "' + ColorToHexString(AStyle.BackgroundColor) + '" },';
   textColor := ColorToHexString(AStyle.TextColor);
@@ -378,8 +379,15 @@ begin
   if Assigned(AStyle.Font) then
   begin
     fontFace := AStyle.Font.Name;
-    if Abs(AStyle.Font.Size) > 0 then
-      fontSize := IntToStr(Abs(AStyle.Font.Size))
+    // Scale the pixel font height to PPTX points proportionally to the slide
+    // height (5.625" × 72 pt/in = 405 pt). AssignBGRAFont uses Font.Height/0.85,
+    // so we account for that factor here. Falls back to '32' when data is absent.
+    if (AStyle.Font.Height <> 0) and (Screen.Height > 0) then
+    begin
+      fontSizePt := Round(Abs(AStyle.Font.Height) * 405.0 / (Screen.Height * 0.85));
+      if fontSizePt < 10 then fontSizePt := 10;
+      fontSize := IntToStr(fontSizePt);
+    end
     else
       fontSize := '32';
   end

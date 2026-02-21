@@ -611,6 +611,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit30>
+      <Unit31>
+        <Filename Value="exporters/selectionjson.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SelectionJSON"/>
+      </Unit31>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

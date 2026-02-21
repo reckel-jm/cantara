@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtDlgs, StdCtrls, ExtCtrls,
-  Spin, Buttons, PresentationModels;
+  Spin, Buttons, PresentationModels,
+  Slides, PresentationCanvas, ResourceHandling, Lyrics;
 
 type
 
@@ -28,6 +29,8 @@ type
     gbBackground: TGroupBox;
     gbFont: TGroupBox;
     gbAlign: TGroupBox;
+    gbPreview: TGroupBox;
+    imgPreview: TImage;
     lblAlignLabel: TLabel;
     lblBgColorLabel: TLabel;
     lblBgImageLabel: TLabel;
@@ -43,10 +46,13 @@ type
     procedure btnResetClick(Sender: TObject);
     procedure cbShowBgImageChange(Sender: TObject);
     procedure cbUseCustomStyleChange(Sender: TObject);
+    procedure cboHAlignChange(Sender: TObject);
+    procedure edtBgImagePathChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure pnlBgColorClick(Sender: TObject);
     procedure pnlTextColorClick(Sender: TObject);
+    procedure spTransparencyChange(Sender: TObject);
   private
     FCurrentFont: TFont;
     FResetToDefault: Boolean;
@@ -54,8 +60,13 @@ type
       and overrides only the fields the dialog exposes. }
     FBaseStyle: TPresentationStyleSettings;
     FBaseStyleLoaded: Boolean;
+    FPreviewCanvas: TPresentationCanvasHandler;
+    FExampleSong: TSong;
+    FPreviewSlideList: TSlideList;
+    FLastPreviewBgPath: String;
     procedure UpdateFontPreview;
     procedure UpdateControlsEnabled;
+    procedure RefreshPreview;
   public
     procedure LoadFromStyle(const AStyle: TPresentationStyleSettings;
       AHasCustom: Boolean);
@@ -73,14 +84,31 @@ implementation
 { TfrmSongStyle }
 
 procedure TfrmSongStyle.FormCreate(Sender: TObject);
+var
+  DummySongFile: TStringList;
+  DefaultSlideSettings: TSlideSettings;
+  SlideCounter: Integer;
 begin
   FCurrentFont := TFont.Create;
   FResetToDefault := False;
   FBaseStyleLoaded := False;
+  FLastPreviewBgPath := '';
   cboHAlign.Items.Add('Left');
   cboHAlign.Items.Add('Center');
   cboHAlign.Items.Add('Right');
   cboHAlign.ItemIndex := 1;
+
+  // Set up the preview canvas and an example song (same resource used by Settings)
+  FPreviewCanvas := TPresentationCanvasHandler.Create;
+  DummySongFile := LoadResourceFileIntoStringList('AMAZING GRACE');
+  FExampleSong := TSong.Create;
+  FExampleSong.MetaDict.Add('title', 'Amazing Grace');
+  FExampleSong.importSongFromStringList(DummySongFile);
+  DummySongFile.Destroy;
+  FillChar(DefaultSlideSettings, SizeOf(DefaultSlideSettings), 0);
+  SlideCounter := 0;
+  FPreviewSlideList := CreatePresentationDataFromSong(
+    FExampleSong, DefaultSlideSettings, SlideCounter);
 end;
 
 procedure TfrmSongStyle.FormDestroy(Sender: TObject);
@@ -88,6 +116,9 @@ begin
   FCurrentFont.Free;
   if FBaseStyleLoaded then
     DestroyPresentationStyleSettings(FBaseStyle);
+  FPreviewSlideList.Free;
+  FExampleSong.Free;
+  FPreviewCanvas.Free;
 end;
 
 procedure TfrmSongStyle.UpdateFontPreview;
@@ -115,9 +146,40 @@ begin
   cboHAlign.Enabled := UseCustom;
 end;
 
+procedure TfrmSongStyle.RefreshPreview;
+var
+  Style: TPresentationStyleSettings;
+begin
+  if (not FBaseStyleLoaded) or (FPreviewSlideList.Count = 0) then Exit;
+  if imgPreview.Width <= 0 then Exit;
+  Style := ExportStyle;
+  try
+    FPreviewCanvas.PresentationStyleSettings := Style;
+    // Render at full screen resolution (same as the presentation), then let
+    // imgPreview scale it down proportionally; this keeps font sizes correct.
+    FPreviewCanvas.Width  := Screen.Width;
+    FPreviewCanvas.Height := Screen.Height;
+    if Style.ShowBackgroundImage and FileExists(Style.BackgroundImageFilePath) then
+    begin
+      if Style.BackgroundImageFilePath <> FLastPreviewBgPath then
+      begin
+        FPreviewCanvas.LoadBackgroundBitmap;
+        FLastPreviewBgPath := Style.BackgroundImageFilePath;
+      end;
+    end
+    else
+      FLastPreviewBgPath := '';
+    FPreviewCanvas.ResizeBackgroundBitmap;
+    imgPreview.Picture.Assign(FPreviewCanvas.PaintSlide(FPreviewSlideList[0]));
+  finally
+    DestroyPresentationStyleSettings(Style);
+  end;
+end;
+
 procedure TfrmSongStyle.cbUseCustomStyleChange(Sender: TObject);
 begin
   UpdateControlsEnabled;
+  RefreshPreview;
 end;
 
 procedure TfrmSongStyle.btnFontClick(Sender: TObject);
@@ -127,6 +189,7 @@ begin
   begin
     FCurrentFont.Assign(dlgFont.Font);
     UpdateFontPreview;
+    RefreshPreview;
   end;
 end;
 
@@ -134,14 +197,20 @@ procedure TfrmSongStyle.pnlTextColorClick(Sender: TObject);
 begin
   dlgColor.Color := pnlTextColor.Color;
   if dlgColor.Execute then
+  begin
     pnlTextColor.Color := dlgColor.Color;
+    RefreshPreview;
+  end;
 end;
 
 procedure TfrmSongStyle.pnlBgColorClick(Sender: TObject);
 begin
   dlgColor.Color := pnlBgColor.Color;
   if dlgColor.Execute then
+  begin
     pnlBgColor.Color := dlgColor.Color;
+    RefreshPreview;
+  end;
 end;
 
 procedure TfrmSongStyle.cbShowBgImageChange(Sender: TObject);
@@ -149,12 +218,31 @@ begin
   edtBgImagePath.Enabled := cbUseCustomStyle.Checked and cbShowBgImage.Checked;
   btnBrowseBgImage.Enabled := cbUseCustomStyle.Checked and cbShowBgImage.Checked;
   spTransparency.Enabled := cbUseCustomStyle.Checked and cbShowBgImage.Checked;
+  RefreshPreview;
 end;
 
 procedure TfrmSongStyle.btnBrowseBgImageClick(Sender: TObject);
 begin
   if dlgOpenPicture.Execute then
+  begin
     edtBgImagePath.Text := dlgOpenPicture.FileName;
+    RefreshPreview;
+  end;
+end;
+
+procedure TfrmSongStyle.cboHAlignChange(Sender: TObject);
+begin
+  RefreshPreview;
+end;
+
+procedure TfrmSongStyle.edtBgImagePathChange(Sender: TObject);
+begin
+  RefreshPreview;
+end;
+
+procedure TfrmSongStyle.spTransparencyChange(Sender: TObject);
+begin
+  RefreshPreview;
 end;
 
 procedure TfrmSongStyle.btnOKClick(Sender: TObject);
@@ -199,6 +287,8 @@ begin
   end;
 
   UpdateControlsEnabled;
+  FLastPreviewBgPath := ''; // force background reload for the incoming style
+  RefreshPreview;
 end;
 
 function TfrmSongStyle.ExportStyle: TPresentationStyleSettings;

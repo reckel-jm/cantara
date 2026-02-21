@@ -1,13 +1,13 @@
 object frmSongStyle: TfrmSongStyle
   Left = 300
-  Height = 470
+  Height = 608
   Top = 200
   Width = 420
   BorderStyle = bsSizeable
   Caption = 'Song Style Override'
-  ClientHeight = 470
+  ClientHeight = 608
   ClientWidth = 420
-  Constraints.MinHeight = 470
+  Constraints.MinHeight = 608
   Constraints.MinWidth = 420
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -125,6 +125,7 @@ object frmSongStyle: TfrmSongStyle
       Width = 256
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 2
+      OnChange = edtBgImagePathChange
     end
     object btnBrowseBgImage: TButton
       Left = 312
@@ -153,6 +154,7 @@ object frmSongStyle: TfrmSongStyle
       MinValue = 0
       TabOrder = 4
       Value = 0
+      OnChange = spTransparencyChange
     end
   end
   object gbAlign: TGroupBox
@@ -181,42 +183,63 @@ object frmSongStyle: TfrmSongStyle
       ItemIndex = -1
       Style = csDropDownList
       TabOrder = 0
+      OnChange = cboHAlignChange
+    end
+  end
+  object gbPreview: TGroupBox
+    Left = 8
+    Height = 155
+    Top = 381
+    Width = 400
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Caption = 'Preview'
+    ClientHeight = 133
+    ClientWidth = 396
+    TabOrder = 4
+    object imgPreview: TImage
+      Left = 6
+      Height = 125
+      Top = 4
+      Width = 384
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      Proportional = True
+      Stretch = True
     end
   end
   object btnReset: TButton
     Left = 8
     Height = 32
-    Top = 384
+    Top = 544
     Width = 160
     Anchors = [akLeft, akBottom]
     Caption = 'Reset to global default'
-    TabOrder = 4
+    TabOrder = 5
     OnClick = btnResetClick
   end
   object btnOK: TBitBtn
     Left = 230
     Height = 32
-    Top = 384
+    Top = 544
     Width = 80
     Anchors = [akRight, akBottom]
     Caption = 'OK'
     Default = True
     Kind = bkOK
     ModalResult = 1
-    TabOrder = 5
+    TabOrder = 6
     OnClick = btnOKClick
   end
   object btnCancel: TBitBtn
     Left = 320
     Height = 32
-    Top = 384
+    Top = 544
     Width = 88
     Anchors = [akRight, akBottom]
     Cancel = True
     Caption = 'Cancel'
     Kind = bkCancel
     ModalResult = 2
-    TabOrder = 6
+    TabOrder = 7
   end
   object dlgFont: TFontDialog
     Font.Charset = DEFAULT_CHARSET
@@ -225,15 +248,15 @@ object frmSongStyle: TfrmSongStyle
     Font.Name = 'Arial'
     Font.Style = []
     left = 8
-    top = 430
+    top = 570
   end
   object dlgColor: TColorDialog
     left = 60
-    top = 430
+    top = 570
   end
   object dlgOpenPicture: TOpenPictureDialog
     Filter = 'Image files (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp|All files (*.*)|*.*'
     left = 112
-    top = 430
+    top = 570
   end
 end
