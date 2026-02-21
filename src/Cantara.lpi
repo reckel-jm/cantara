@@ -39,14 +39,23 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
-      <MinorVersionNr Value="6"/>
-      <RevisionNr Value="1"/>
-      <BuildNr Value="25"/>
+      <MinorVersionNr Value="7"/>
       <Language Value="0809"/>
       <CharSet Value="04B0"/>
-      <Attributes pvaPreRelease="True"/>
-      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.6.1 Beta"/>
+      <StringTable Comments="Open Source Song Presenter Software" CompanyName="Jan Martin Reckel" LegalCopyright="Jan Martin Reckel" ProductName="Cantara" ProductVersion="2.7.0"/>
     </VersionInfo>
+    <MacroValues Count="10">
+      <Macro1 Name="LCLWidgetType" Value="qt6"/>
+      <Macro2 Name="LCLWidgetType" Value="qt6"/>
+      <Macro3 Name="LCLWidgetType" Value="qt6"/>
+      <Macro4 Name="LCLWidgetType" Value="qt6"/>
+      <Macro5 Name="LCLWidgetType" Value="qt6"/>
+      <Macro6 Name="LCLWidgetType" Value="qt6"/>
+      <Macro7 Name="LCLWidgetType" Value="qt6"/>
+      <Macro8 Name="LCLWidgetType" Value="qt6"/>
+      <Macro9 Name="LCLWidgetType" Value="qt6"/>
+      <Macro10 Name="LCLWidgetType" Value="qt6"/>
+    </MacroValues>
     <BuildModes Count="8">
       <Item1 Name="Release" Default="True"/>
       <Item2 Name="Linux WPO Pass1">
@@ -594,11 +603,6 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormSongStyle"/>
       </Unit30>
-      <Unit31>
-        <Filename Value="exporters/selectionjson.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="SelectionJSON"/>
-      </Unit31>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
