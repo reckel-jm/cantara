@@ -24,7 +24,7 @@ type
     cboHAlign: TComboBox;
     dlgColor: TColorDialog;
     dlgFont: TFontDialog;
-    dlgOpenPicture: TOpenPictureDialog;
+    dlgOpenPicture: TOpenDialog;
     edtBgImagePath: TEdit;
     gbBackground: TGroupBox;
     gbFont: TGroupBox;

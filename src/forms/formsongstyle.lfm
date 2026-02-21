@@ -380,7 +380,7 @@ object frmSongStyle: TfrmSongStyle
     Left = 60
     Top = 570
   end
-  object dlgOpenPicture: TOpenPictureDialog
+  object dlgOpenPicture: TOpenDialog
     Filter = 'Image files (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp|All files (*.*)|*.*'
     Left = 112
     Top = 570
