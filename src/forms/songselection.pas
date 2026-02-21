@@ -286,8 +286,9 @@ begin
     SongInList := False;
     for i := 0 to lbxSSelected.Count-1 do
     begin
-      if TRepoFile(lbxSSelected.Items.Objects[i]).FilePath = song.FilePath then
-         SongInList := True;
+      if (lbxSSelected.Items.Objects[i] <> nil) and
+         (TRepoFile(lbxSSelected.Items.Objects[i]).FilePath = song.FilePath) then
+        SongInList := True;
     end;
     if not SongInList then song.Free;
   end;
@@ -444,11 +445,11 @@ begin
   begin
     for i := 0 to anz - 1 do
       if AnsiContainsText(repo[i].Name, s) = True then
-        lbxSRepo.Items.add(repo[i].Name);
+        lbxSRepo.Items.AddObject(repo[i].Name, repo[i]);
   end
   else
     for i := 0 to anz - 1 do
-      lbxSRepo.Items.add(repo[i].Name);
+      lbxSRepo.Items.AddObject(repo[i].Name, repo[i]);
 end;
 
 procedure TfrmSongs.itemEndClick(Sender: TObject);
@@ -635,31 +636,20 @@ begin
     Exit;
   if (CallingListbox.ItemIndex >= 0) then
   begin
-    frmSongEdit.Show;
+    repoFile := TRepoFile(CallingListbox.Items.Objects[CallingListbox.ItemIndex]);
+    if repoFile = nil then Exit;
     frmSongEdit.loadRepo(repo);
-    Application.ProcessMessages;
-    for i := 0 to length(repo) - 1 do
-    begin
-      if repo[i].Name = CallingListbox.Items[CallingListbox.ItemIndex] then
-      begin
-        repoFile := repo[i];
-        Break;
-      end;
-    end;
     for i := 0 to frmSongEdit.lsSongs.Count - 1 do
     begin
-      if frmSongEdit.lsSongs.Items[i] = repoFile.FileName then
+      if TRepoFile(frmSongEdit.lsSongs.Items.Objects[i]) = repoFile then
       begin
-        try
-          frmSongEdit.lsSongs.ItemIndex := i;
-          Application.ProcessMessages;
-          frmSongEdit.Repaint;
-          frmSongEdit.lsSongsClick(frmSongs);
-        finally
-        end;
+        frmSongEdit.lsSongs.ItemIndex := i;
         Break;
       end;
     end;
+    frmSongEdit.Show;
+    Application.ProcessMessages;
+    frmSongEdit.lsSongsClick(frmSongs);
   end;
 end;
 
@@ -706,7 +696,7 @@ procedure TfrmSongs.itemSelectAllSongsClick(Sender: TObject);
 var i: Integer;
 begin
   for i := 0 to lbxSRepo.Count-1 do
-    lbxSSelected.Items.Add(lbxSRepo.Items.Strings[i]);
+    lbxSSelected.Items.AddObject(lbxSRepo.Items.Strings[i], lbxSRepo.Items.Objects[i]);
 end;
 
 procedure TfrmSongs.SaveSelection(var FilePath: String);
@@ -804,7 +794,7 @@ begin
   try
     if lbxSRepo.ItemIndex < 0 then Exit;
     if (Source Is TListBox) And ((Source As TListBox).Name = 'lbxSRepo') then
-      lbxSSelected.Items.Add(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex])
+      lbxSSelected.Items.AddObject(lbxSRepo.Items.Strings[lbxSRepo.ItemIndex], lbxSRepo.Items.Objects[lbxSRepo.ItemIndex])
     else if (Source Is TListBox) And ((Source As TListBox).Name = 'lbxSselected') then
     begin
       DropPoint.X := X;
@@ -1091,6 +1081,7 @@ begin
 
   for i := 0 to lbxSSelected.Count - 1 do
   begin
+    if lbxSSelected.Items.Objects[i] = nil then Continue;
     Song := lyrics.TSong.Create;
     //Get Song Name
     songname := TRepoFile(lbxSSelected.Items.Objects[i]).Name;
@@ -1441,7 +1432,9 @@ end;
 
 procedure TfrmSongs.SongPopupMenuPopup(Sender: TObject);
 begin
-  itemOpenInEditor.Visible := (lbxSRepo.ItemIndex >= 0);
+  itemOpenInEditor.Visible :=
+    ((SongPopupMenu.PopupComponent = lbxSRepo) and (lbxSRepo.ItemIndex >= 0)) or
+    ((SongPopupMenu.PopupComponent = lbxSSelected) and (lbxSSelected.ItemIndex >= 0));
   itemEditSongStyle.Visible :=
     (SongPopupMenu.PopupComponent = lbxSSelected) and
     (lbxSSelected.ItemIndex >= 0);
