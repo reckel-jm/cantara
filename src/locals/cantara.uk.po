@@ -1,0 +1,1067 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cantara\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-02-21\n"
+"Last-Translator: \n"
+"Language-Team: Ukrainian\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: editordisplaysongcontent.streditsongnamecaption
+msgid "Edit Song Name"
+msgstr "Редагувати назву пісні"
+
+#: editordisplaysongcontent.streditsongnamecontent
+msgid "Please enter the new song name: "
+msgstr "Будь ласка, введіть нову назву пісні: "
+
+#: editordisplaysongcontent.strerrorcclitosong
+msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
+msgstr "Файл не може бути конвертовано. Переконайтеся, що у вас є права на запис у репозиторій пісень!"
+
+#: editordisplaysongcontent.strfilecannotberenamed
+msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
+msgstr "Файл не може бути перейменовано. Переконайтеся, що у вас є права на запис у репозиторій пісень!"
+
+#: flatpakhandling.messagecantaraneedsportaluse
+msgid ""
+"You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
+"Thank you for your understanding!"
+msgstr ""
+"Ви використовуєте Cantara як Flatpak. Через оновлення прав доступу Cantara більше не має доступу до вашої домашньої теки — це підвищує безпеку системи. Але це також означає, що вам потрібно ще раз вибрати шлях до репозиторію пісень, щоб Cantara отримала доступ до цієї теки. Якщо ви використовували фонове зображення, його також доведеться вибрати повторно.\n"
+"Дякуємо за розуміння!"
+
+#: formmarkupexport.strloadtemplatefromfile
+msgid "Load Template From File..."
+msgstr "Завантажити шаблон із файлу…"
+
+#: formmarkupexport.strtitleonly
+msgid "Title Only"
+msgstr "Лише заголовок"
+
+#: fulltextsearch.strsongtitle
+msgid "Song Title"
+msgstr "Назва пісні"
+
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr "Будь ласка, виберіть теку, куди зберегти зображення."
+
+#: info.strauthor
+msgid "Author"
+msgstr "Автор"
+
+#: info.strbuttongitrepo
+msgid "Open webpage..."
+msgstr "Відкрити веб-сторінку…"
+
+#: info.strformcaption
+msgctxt "info.strformcaption"
+msgid "About this Program"
+msgstr "Про програму"
+
+#: info.strprogramcompiled
+msgid "Program compiled"
+msgstr "Дата компіляції"
+
+#: info.strversion
+msgid "Version"
+msgstr "Версія"
+
+#: info.strwebpage
+msgid "https://www.cantara.app"
+msgstr "https://www.cantara.app"
+
+#: pptx.strcantaraexport
+msgid "Cantara Song Presentation Export"
+msgstr "Експорт презентації пісень Cantara"
+
+#: pptx.strsongs
+msgid "Songs"
+msgstr "Пісні"
+
+#: settings.strbrightness
+msgid "Increase brightness by "
+msgstr "Збільшити яскравість на "
+
+#: settings.strdefaultmetatemplate
+msgid ""
+"{%author%}Author: {author}\n"
+"{%bible%}Bible Reference: {bible}\n"
+"{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
+msgstr ""
+"{%author%}Автор: {author}\n"
+"{%bible%}Посилання на Біблію: {bible}\n"
+"{%ccli-songnumber%}Номер пісні CCLI: {ccli-songnumber} | Номер ліцензії: {ccli-licensenumber}"
+
+#: settings.strerrorcaption
+msgctxt "settings.strerrorcaption"
+msgid "Error"
+msgstr "Помилка"
+
+#: settings.strnobackgroundimageselected
+msgid "You need to select a background image first."
+msgstr "Спочатку потрібно вибрати фонове зображення."
+
+#: settings.strpictureoriginalstate
+msgid "Picture is shown as it is"
+msgstr "Зображення показується без змін"
+
+#: settings.strtransparency
+msgid "Increase transparency by "
+msgstr "Збільшити прозорість на "
+
+#: settings.strvalidsongrepository
+msgid "Please choose a valid folder for the song repository!"
+msgstr "Будь ласка, виберіть дійсну теку для репозиторію пісень!"
+
+#: songeditor.strcannotarchivate
+msgid "No valid file selected."
+msgstr "Не вибрано дійсний файл."
+
+#: songeditor.strfilehaschanged
+msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
+msgstr "Файл {{filename}} змінено після відкриття. Зберегти його?"
+
+#: songeditor.strfilenameexists
+msgid "The name exists already. Please choose an other one."
+msgstr "Така назва вже існує. Оберіть іншу."
+
+#: songeditor.strinvalidfilename
+msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
+msgstr "Недійсна назва. Не можна використовувати роздільники шляху («/» у Linux та «\\» у Windows)."
+
+#: songeditor.strnewfilecaption
+msgid "New Song"
+msgstr "Нова пісня"
+
+#: songeditor.strnewfilecontent
+msgid "Please add the name of the new song"
+msgstr "Будь ласка, введіть назву нової пісні"
+
+#: songeditor.strsaveunsavedchangescaption
+msgid "Question"
+msgstr "Запитання"
+
+#: songeditor.strsaveunsavedchangescontent
+msgid "The file {filename} has unsaved changes. Would you like to save it now?"
+msgstr "У файлі {filename} є незбережені зміни. Зберегти зараз?"
+
+#: songeditor.strsyntaxdocurl
+msgid "https://www.cantara.app/tutorial/meta-data/"
+msgstr "https://www.cantara.app/tutorial/meta-data/"
+
+#: songeditor.strwelcome
+msgid "Welcome"
+msgstr "Ласкаво просимо"
+
+#: songselection.stractivesongtexfile
+msgid "The following file is opened at the moment: "
+msgstr "Наразі відкрито файл: "
+
+#: songselection.strbuttoneinstellungen
+msgctxt "songselection.strbuttoneinstellungen"
+msgid "Settings..."
+msgstr "Налаштування…"
+
+#: songselection.strbuttonpraesentation
+msgctxt "songselection.strbuttonpraesentation"
+msgid "Presentation..."
+msgstr "Презентація…"
+
+#: songselection.strcannotopensong
+msgid "Error: The Song \"{songname}\" is not available. Skipping."
+msgstr "Помилка: пісня «{songname}» недоступна. Пропускаємо."
+
+#: songselection.strerror
+msgctxt "songselection.strerror"
+msgid "Error"
+msgstr "Помилка"
+
+#: songselection.strerroropening
+msgid "Error while opening. Propably you have not the required rights to access this file."
+msgstr "Помилка під час відкриття. Ймовірно, у вас немає прав доступу до цього файлу."
+
+#: songselection.strerrorsaving
+msgid "Error while saving. Propably you have not the required rights to access this file."
+msgstr "Помилка під час збереження. Ймовірно, у вас немає прав доступу до цього файлу."
+
+#: songselection.strfehlerkeineliederbeipraesentation
+msgid "You have to add songs first."
+msgstr "Спочатку додайте пісні."
+
+#: songselection.strfiledoesnotexist
+msgid "The File you would like to open does not exists."
+msgstr "Файл, який ви хочете відкрити, не існує."
+
+#: songselection.strfolie
+msgid "Slide"
+msgstr "Слайд"
+
+#: songselection.strhint
+msgid "Hint"
+msgstr "Підказка"
+
+#: songselection.strpptxgenjs
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr "Cantara використовує JavaScript-двигун вашого браузера за замовчуванням та відкриту бібліотеку PptxGenJS[](https://gitbrent.github.io/PptxGenJS/), щоб створити файл pptx. Після натискання OK браузер відкриється та запропонує місце для збереження файлу після успішного створення. Під час процесу не потрібне підключення до Інтернету і жодні дані не передаються третім особам (окрім вашого браузера). Якщо хочете продовжити — натисніть OK (повідомлення більше не з’являтиметься). Якщо ні — натисніть Скасувати."
+
+#: songselection.strsongisempty
+msgid "The song {songname} is empty. It will not be added."
+msgstr "Пісня {songname} порожня. Її не буде додано."
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr "Пісні з файлу імпортовано до вашого репозиторію пісень."
+
+#: songselection.strtitleslide
+msgid "Title Slide"
+msgstr "Титульний слайд"
+
+#: tcfontdialog.caption
+msgid "Font Selection"
+msgstr "Вибір шрифту"
+
+#: tcfontdialog.fontpropertiesgroupbox.caption
+msgid "Font Properties"
+msgstr "Властивості шрифту"
+
+#: tcfontdialog.fontselectiongroupbox.caption
+msgid "Font"
+msgstr "Шрифт"
+
+#: tcfontdialog.formatationcheckgroup.caption
+msgid "Formatation"
+msgstr "Форматування"
+
+#: tcfontdialog.labelfontsize.caption
+msgid "Font Size:"
+msgstr "Розмір шрифту:"
+
+#: tcfontdialog.previewlabel.caption
+msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
+msgstr "Дивовижна благодать, який солодкий звук, що врятувала такого нещасного, як я! Яка милостива ця благодать."
+
+#: tformimageexport.buttonchoose.caption
+msgid "Choose..."
+msgstr "Вибрати…"
+
+#: tformimageexport.buttonexportall.caption
+msgid "Export All"
+msgstr "Експортувати все"
+
+#: tformimageexport.buttonexportcurrent.caption
+msgctxt "tformimageexport.buttonexportcurrent.caption"
+msgid "Export Current"
+msgstr "Експортувати поточний"
+
+#: tformimageexport.buttonreloadpreview.caption
+msgid "Reload Preview..."
+msgstr "Оновити попередній перегляд…"
+
+#: tformimageexport.caption
+msgid "Image Exporter"
+msgstr "Експорт зображень"
+
+#: tformimageexport.checkboxsync.caption
+msgid "Sync"
+msgstr "Синхронізувати"
+
+#: tformimageexport.groupsettings.caption
+msgctxt "tformimageexport.groupsettings.caption"
+msgid "Settings"
+msgstr "Налаштування"
+
+#: tformimageexport.itemexport.caption
+msgctxt "tformimageexport.itemexport.caption"
+msgid "Export"
+msgstr "Експорт"
+
+#: tformimageexport.itemremove.caption
+msgid "Remove"
+msgstr "Видалити"
+
+#: tformimageexport.labelfolder.caption
+msgid "Folder: "
+msgstr "Тека: "
+
+#: tformimageexport.labelheight.caption
+msgid "Height:"
+msgstr "Висота:"
+
+#: tformimageexport.labelwidth.caption
+msgid "Width: "
+msgstr "Ширина: "
+
+#: tformpadding.caption
+msgid "Additional Settings"
+msgstr "Додаткові налаштування"
+
+#: tframesettingsdetailed.groupboxpadding.caption
+msgid "Padding"
+msgstr "Відступи"
+
+#: tframesettingsdetailed.labalbottom.caption
+msgid "Bottom: "
+msgstr "Знизу: "
+
+#: tframesettingsdetailed.labelleft.caption
+msgid "Left:"
+msgstr "Зліва:"
+
+#: tframesettingsdetailed.labelright.caption
+msgid "Right: "
+msgstr "Справа: "
+
+#: tframesettingsdetailed.labeltop.caption
+msgid "Top: "
+msgstr "Зверху: "
+
+#: tfrmdisplaysongcontent.btnarchivate.caption
+msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
+msgid "Archive"
+msgstr "Архівувати"
+
+#: tfrmdisplaysongcontent.btnclose.caption
+msgctxt "tfrmdisplaysongcontent.btnclose.caption"
+msgid "Close"
+msgstr "Закрити"
+
+#: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
+msgid "Convert CCLI File to Song Format"
+msgstr "Конвертувати файл CCLI у формат пісні"
+
+#: tfrmdisplaysongcontent.btncopy.caption
+msgctxt "tfrmdisplaysongcontent.btncopy.caption"
+msgid "Copy"
+msgstr "Копіювати"
+
+#: tfrmdisplaysongcontent.btnrename.caption
+msgid "Rename"
+msgstr "Перейменувати"
+
+#: tfrmdisplaysongcontent.btnsave.caption
+msgctxt "tfrmdisplaysongcontent.btnsave.caption"
+msgid "Save"
+msgstr "Зберегти"
+
+#: tfrmdisplaysongcontent.labelccliimporthint.caption
+msgid ""
+"Hint:\n"
+"\n"
+"The file which you are going to open is a CCLI file.\n"
+"It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
+"If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
+msgstr ""
+"Підказка:\n"
+"\n"
+"Файл, який ви відкриваєте — це файл CCLI.\n"
+"Рекомендується спочатку конвертувати його у формат пісні, а потім редагувати.\n"
+"Якщо бажаєте це зробити, натисніть кнопку нижче. Файл CCLI буде переміщено до підтеки «archive» вашого репозиторію пісень, а створений файл пісні відкриється для редагування."
+
+#: tfrmdisplaysongcontent.lblsongname.caption
+msgid "Name: "
+msgstr "Назва: "
+
+#: tfrmeditorwelcome.btnclose.caption
+msgid "Close the Editor"
+msgstr "Закрити редактор"
+
+#: tfrmeditorwelcome.btnnewsong.caption
+msgid "Create a new song"
+msgstr "Створити нову пісню"
+
+#: tfrmeditorwelcome.btnopendocs.caption
+msgid "Open Documentation in Webbrowser..."
+msgstr "Відкрити документацію у браузері…"
+
+#: tfrmeditorwelcome.lbldescription.caption
+msgid ""
+"Here you can change the songs which you would like to display.\n"
+"\n"
+"For detailed information about the syntax, please consider the documentation."
+msgstr ""
+"Тут ви можете змінювати пісні, які хочете показувати.\n"
+"\n"
+"Детальну інформацію про синтаксис див. у документації."
+
+#: tfrmeditorwelcome.lblhint.caption
+msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
+msgstr "Зверніть увагу: файли текстів пісень — це звичайні текстові файли, їх можна редагувати будь-яким текстовим редактором на вашому комп’ютері. Cantara наразі пропонує лише базові функції."
+
+#: tfrmeditorwelcome.lblsupport.caption
+msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
+msgstr "Cantara — це вільне програмне забезпечення, створене з надією, що воно буде корисним. Внесок через GitHub дуже вітається. Смільливо створюйте issues, запити на функції чи pull request. Уся слава належить Богові! Soli Deo Gloria."
+
+#: tfrmeditorwelcome.lblwelcome.caption
+msgid "Welcome to the Editor!"
+msgstr "Ласкаво просимо до редактора!"
+
+#: tfrmfulltextsearch.labalcreateindex.caption
+msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
+msgid "Create Index..."
+msgstr "Створити індекс…"
+
+#: tfrmfulltextsearch.labelenterkeyword.caption
+msgid "Enter a search term..."
+msgstr "Введіть пошуковий запит…"
+
+#: tfrmfulltextsearch.labelentersearchterm.caption
+msgid "Enter search term"
+msgstr "Введіть пошуковий термін"
+
+#: tfrmfulltextsearch.labelnoitemsfound.caption
+msgid ""
+"No items found...\n"
+"\n"
+"Try changing the search terms."
+msgstr ""
+"Нічого не знайдено…\n"
+"\n"
+"Спробуйте змінити пошуковий запит."
+
+#: tfrminfo.btnopengitrepo.caption
+msgid "Open Github Repository with Browser"
+msgstr "Відкрити репозиторій GitHub у браузері"
+
+#: tfrminfo.btnopenlicense.caption
+msgid "Show used libraries and licenses"
+msgstr "Показати використані бібліотеки та ліцензії"
+
+#: tfrminfo.btnopenwebpage.caption
+msgid "Open Project's Webpage with Browser"
+msgstr "Відкрити веб-сайт проєкту в браузері"
+
+#: tfrminfo.caption
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
+msgstr "Про програму"
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr "Автор: Jan Martin Reckel"
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr "Дата компіляції"
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"This program has been published under the GPL3 licence. \n"
+"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
+"\n"
+"The author wishes God's blessing for the use of the program!"
+msgstr ""
+"Ця програма опублікована під ліцензією GPL3.\n"
+"Вихідний код доступний у репозиторії GitHub, документація — на сайті проєкту.\n"
+"Ви можете змінювати та повторно використовувати програму відповідно до умов ліцензії GPL3.\n"
+"\n"
+"Автор бажає вам Божого благословення при використанні програми!"
+
+#: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
+msgid "Cantara"
+msgstr "Cantara"
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr "Версія"
+
+#: tfrmmarkupexport.btnsavetofile.caption
+msgid "Save to File..."
+msgstr "Зберегти у файл…"
+
+#: tfrmmarkupexport.caption
+msgid "Export Songs as Markup"
+msgstr "Експорт пісень у форматі розмітки"
+
+#: tfrmmarkupexport.clipboardbutton.caption
+msgctxt "tfrmmarkupexport.clipboardbutton.caption"
+msgid "Copy to Clipboard"
+msgstr "Копіювати в буфер обміну"
+
+#: tfrmmarkupexport.opendialog.title
+msgid "Load Template File"
+msgstr "Завантажити файл шаблону"
+
+#: tfrmmarkupexport.result.caption
+msgid "Result"
+msgstr "Результат"
+
+#: tfrmmarkupexport.templatebox.caption
+msgid "Template"
+msgstr "Шаблон"
+
+#: tfrmpresent.caption
+msgid "Presentation"
+msgstr "Презентація"
+
+#: tfrmpresent.menuitemmovetoscreen.caption
+msgid "Move to other screen"
+msgstr "Перемістити на інший екран"
+
+#: tfrmpresent.menuitemquitpresentation.caption
+msgid "Quit Presentation"
+msgstr "Завершити презентацію"
+
+#: tfrmpresent.menuitemtogglefullscreen.caption
+msgid "Fullscreen"
+msgstr "На весь екран"
+
+#: tfrmsettings.bgcolordialog.title
+msgid "Select background color"
+msgstr "Вибрати колір фону"
+
+#: tfrmsettings.bgpicturedialog.title
+msgctxt "tfrmsettings.bgpicturedialog.title"
+msgid "Open image file"
+msgstr "Відкрити файл зображення"
+
+#: tfrmsettings.bgpicturefiledialog.title
+#, fuzzy
+msgctxt "tfrmsettings.bgpicturefiledialog.title"
+msgid "Open image file"
+msgstr "Відкрити файл зображення"
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Background Color..."
+msgstr "Колір фону…"
+
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr "Фонове зображення…"
+
+#: tfrmsettings.btnclose.caption
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Close"
+msgstr "Закрити"
+
+#: tfrmsettings.btndetails.caption
+msgid "Details..."
+msgstr "Деталі…"
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Change Font Settings..."
+msgstr "Змінити налаштування шрифту…"
+
+#: tfrmsettings.btnselectdir.caption
+msgctxt "tfrmsettings.btnselectdir.caption"
+msgid "..."
+msgstr "…"
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Text Color..."
+msgstr "Колір тексту…"
+
+#: tfrmsettings.caption
+msgctxt "tfrmsettings.caption"
+msgid "Settings"
+msgstr "Налаштування"
+
+#: tfrmsettings.cbblackscreenonempty.caption
+msgid "Show black screen when slide is empty"
+msgstr "Показувати чорний екран, коли слайд порожній"
+
+#: tfrmsettings.cbemptyframe.caption
+msgid "Empty slide between songs"
+msgstr "Порожній слайд між піснями"
+
+#: tfrmsettings.cbfadetransition.caption
+msgid "Fade transition between slides"
+msgstr "Плавний перехід між слайдами"
+
+#: tfrmsettings.cbmetadatafirstslide.caption
+msgid "at first slide"
+msgstr "на першому слайді"
+
+#: tfrmsettings.cbmetadatalastslide.caption
+msgid "at last slide"
+msgstr "на останньому слайді"
+
+#: tfrmsettings.cbmetatitleslide.caption
+msgid "at special title slide"
+msgstr "на спеціальному титульному слайді"
+
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr "Показувати фонове зображення:"
+
+#: tfrmsettings.cbspoiler.caption
+msgid "Spoil next slides"
+msgstr "Показувати наступні слайди заздалегідь"
+
+#: tfrmsettings.combohorizontal.text
+msgid "Center"
+msgstr "По центру"
+
+#: tfrmsettings.combovertical.text
+msgid "Middle"
+msgstr "По середині"
+
+#: tfrmsettings.gbpresentation.caption
+msgid "Presentation View"
+msgstr "Режим презентації"
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Song Repo Path:"
+msgstr "Шлях до репозиторію пісень:"
+
+#: tfrmsettings.lblalignment.caption
+msgid "Alignment: "
+msgstr "Вирівнювання: "
+
+#: tfrmsettings.lblfadems.caption
+msgid "ms"
+msgstr "мс"
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparency:"
+msgstr "Змінити прозорість зображення:"
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
+msgstr "lblImageExplainer"
+
+#: tfrmsettings.lblmeta.caption
+msgid "Show Meta Data:"
+msgstr "Показувати метадані:"
+
+#: tfrmsettings.lblmetacontent.caption
+msgid "Meta Data Content:"
+msgstr "Вміст метаданих:"
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
+msgstr "Автоматичний перенос після скількох рядків (0 = вимкнено):"
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "The transparency of the background picture towards the background color"
+msgstr "Прозорість фонового зображення відносно кольору фону"
+
+#: tfrmsettings.selectdirectorydialog.title
+msgid "Select song repository dictionary"
+msgstr "Виберіть теку репозиторію пісень"
+
+#: tfrmsettings.textcolordialog.title
+msgid "Select text color"
+msgstr "Вибрати колір тексту"
+
+#: tfrmsongedit.caption
+msgid "Edit Files"
+msgstr "Редагувати файли"
+
+#: tfrmsongedit.itemcopy.caption
+msgctxt "tfrmsongedit.itemcopy.caption"
+msgid "Copy"
+msgstr "Копіювати"
+
+#: tfrmsongedit.itemcut.caption
+msgid "Cut"
+msgstr "Вирізати"
+
+#: tfrmsongedit.itemfadein.caption
+msgid "Zoom In"
+msgstr "Збільшити"
+
+#: tfrmsongedit.itemfadeout.caption
+msgid "Zoom Out"
+msgstr "Зменшити"
+
+#: tfrmsongedit.itempaste.caption
+msgid "Paste"
+msgstr "Вставити"
+
+#: tfrmsongedit.itemredo.caption
+msgid "Redo"
+msgstr "Повторити"
+
+#: tfrmsongedit.itemundo.caption
+msgid "Undo"
+msgstr "Скасувати"
+
+#: tfrmsongedit.menuedit.caption
+msgctxt "tfrmsongedit.menuedit.caption"
+msgid "Edit"
+msgstr "Редагувати"
+
+#: tfrmsongedit.menufile.caption
+msgctxt "tfrmsongedit.menufile.caption"
+msgid "File"
+msgstr "Файл"
+
+#: tfrmsongedit.menuitemarchivate.caption
+msgctxt "tfrmsongedit.menuitemarchivate.caption"
+msgid "Archive"
+msgstr "Архівувати"
+
+#: tfrmsongedit.menuitemclose.caption
+msgid "Close Editor"
+msgstr "Закрити редактор"
+
+#: tfrmsongedit.menuitemcopy.caption
+msgctxt "tfrmsongedit.menuitemcopy.caption"
+msgid "Duplicate"
+msgstr "Дублювати"
+
+#: tfrmsongedit.menuitemnew.caption
+msgid "New"
+msgstr "Новий"
+
+#: tfrmsongedit.menuitemsave.caption
+msgctxt "tfrmsongedit.menuitemsave.caption"
+msgid "Save"
+msgstr "Зберегти"
+
+#: tfrmsongedit.view.caption
+msgid "View"
+msgstr "Перегляд"
+
+#: tfrmsongs.btnadd.caption
+msgid "+"
+msgstr "+"
+
+#: tfrmsongs.btnclear.caption
+msgid "🗑"
+msgstr "🗑"
+
+#: tfrmsongs.btnclear.hint
+msgid "Leere alle ausgewählten Lieder"
+msgstr "Очистити всі вибрані пісні"
+
+#: tfrmsongs.btndown.caption
+msgid "🠗"
+msgstr "🠗"
+
+#: tfrmsongs.btngoleft.caption
+msgid "←"
+msgstr "←"
+
+#: tfrmsongs.btngoright.caption
+msgid "→"
+msgstr "→"
+
+#: tfrmsongs.btnquitpresentation.caption
+msgid "×"
+msgstr "×"
+
+#: tfrmsongs.btnremove.caption
+msgid "-"
+msgstr "-"
+
+#: tfrmsongs.btnsettings.caption
+msgctxt "tfrmsongs.btnsettings.caption"
+msgid "Settings..."
+msgstr "Налаштування…"
+
+#: tfrmsongs.btnstartpresentation.caption
+msgctxt "tfrmsongs.btnstartpresentation.caption"
+msgid "Presentation..."
+msgstr "Презентація…"
+
+#: tfrmsongs.btnup.caption
+msgid "🠕"
+msgstr "🠕"
+
+#: tfrmsongs.buttonclosesongtexfile.caption
+msgid "Close File"
+msgstr "Закрити файл"
+
+#: tfrmsongs.caption
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
+msgstr "Cantara"
+
+#: tfrmsongs.chkmultiwindowmode.caption
+msgid "Multi-Screen-Mode (suitable for multiple screens)"
+msgstr "Режим кількох екранів (для кількох моніторів)"
+
+#: tfrmsongs.edtsearch.hint
+msgid "Search..."
+msgstr "Пошук…"
+
+#: tfrmsongs.itemabout.caption
+msgid "Information about the Program"
+msgstr "Інформація про програму"
+
+#: tfrmsongs.itemeditsongstyle.caption
+msgid "Edit song style..."
+msgstr "Редагувати стиль пісні…"
+
+#: tfrmsongs.itemend.caption
+msgctxt "tfrmsongs.itemend.caption"
+msgid "Close"
+msgstr "Закрити"
+
+#: tfrmsongs.itemexportpictures.caption
+msgid "Images..."
+msgstr "Зображення…"
+
+#: tfrmsongs.itemexportpptx.caption
+msgid "Powerpoint Presentation (pptx)"
+msgstr "Презентація PowerPoint (pptx)"
+
+#: tfrmsongs.itemfulltextsearch.caption
+msgid "Full Text Search..."
+msgstr "Повнотекстовий пошук…"
+
+#: tfrmsongs.itemloadselection.caption
+msgid "Load Song Selection..."
+msgstr "Завантажити вибір пісень…"
+
+#: tfrmsongs.itemmarkupexport.caption
+msgid "Markup Text..."
+msgstr "Експорт розмітки…"
+
+#: tfrmsongs.itemopenineditor.caption
+msgid "Open in Editor..."
+msgstr "Відкрити в редакторі…"
+
+#: tfrmsongs.itempresentation.caption
+msgid "Run Presentation"
+msgstr "Запустити презентацію"
+
+#: tfrmsongs.itemreloadsonglist.caption
+msgid "Reload Song Repository"
+msgstr "Оновити репозиторій пісень"
+
+#: tfrmsongs.itemsaveselection.caption
+msgid "Save Song Selection..."
+msgstr "Зберегти вибір пісень…"
+
+#: tfrmsongs.itemsaveselectionas.caption
+msgid "Save Song Selection As..."
+msgstr "Зберегти вибір пісень як…"
+
+#: tfrmsongs.itemselectallsongs.caption
+msgid "Select all Songs"
+msgstr "Вибрати всі пісні"
+
+#: tfrmsongs.itemsettings.caption
+msgctxt "tfrmsongs.itemsettings.caption"
+msgid "Settings..."
+msgstr "Налаштування…"
+
+#: tfrmsongs.itemshowwelcomeassistent.caption
+msgid "Show Welcome Assistent..."
+msgstr "Показати помічник вітання…"
+
+#: tfrmsongs.itemsongeditor.caption
+msgid "Song Lyrics..."
+msgstr "Текст пісень…"
+
+#: tfrmsongs.lblfoilnumber.caption
+msgid "Slide Numbers"
+msgstr "Номери слайдів"
+
+#: tfrmsongs.lblpresentation.caption
+msgid "Presentation is running:"
+msgstr "Презентація запущена:"
+
+#: tfrmsongs.menuedit.caption
+msgctxt "tfrmsongs.menuedit.caption"
+msgid "Edit"
+msgstr "Редагувати"
+
+#: tfrmsongs.menuexport.caption
+msgctxt "tfrmsongs.menuexport.caption"
+msgid "Export"
+msgstr "Експорт"
+
+#: tfrmsongs.menufile.caption
+msgctxt "tfrmsongs.menufile.caption"
+msgid "File"
+msgstr "Файл"
+
+#: tfrmsongs.menuhelp.caption
+msgid "Help"
+msgstr "Довідка"
+
+#: tfrmsongs.opendialog.title
+msgid "Open Song List"
+msgstr "Відкрити список пісень"
+
+#: tfrmsongs.panelsongtexstatus.caption
+msgid "PanelSongTeXStatus"
+msgstr "Статус SongTeX"
+
+#: tfrmsongs.savedialog.title
+msgid "Save Song List"
+msgstr "Зберегти список пісень"
+
+#: tfrmsongstyle.btnbrowsebgimage.caption
+msgid "Browse..."
+msgstr "Огляд…"
+
+#: tfrmsongstyle.btncancel.caption
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: tfrmsongstyle.btnfont.caption
+msgid "Select font..."
+msgstr "Вибрати шрифт…"
+
+#: tfrmsongstyle.btnok.caption
+msgid "OK"
+msgstr "OK"
+
+#: tfrmsongstyle.btnreset.caption
+msgid "Reset to global default"
+msgstr "Скинути до глобальних налаштувань"
+
+#: tfrmsongstyle.caption
+msgid "Song Style Override"
+msgstr "Перевизначення стилю пісні"
+
+#: tfrmsongstyle.cbshowbgimage.caption
+msgid "Show background image"
+msgstr "Показувати фонове зображення"
+
+#: tfrmsongstyle.cbusecustomstyle.caption
+msgid "Use custom style for this song"
+msgstr "Використовувати власний стиль для цієї пісні"
+
+#: tfrmsongstyle.gbalign.caption
+msgid "Horizontal Alignment"
+msgstr "Горизонтальне вирівнювання"
+
+#: tfrmsongstyle.gbbackground.caption
+msgid "Background"
+msgstr "Фон"
+
+#: tfrmsongstyle.gbfont.caption
+msgid "Font && Text Colour"
+msgstr "Шрифт і колір тексту"
+
+#: tfrmsongstyle.gbpreview.caption
+msgid "Preview"
+msgstr "Попередній перегляд"
+
+#: tfrmsongstyle.lblalignlabel.caption
+msgid "Alignment:"
+msgstr "Вирівнювання:"
+
+#: tfrmsongstyle.lblbgcolorlabel.caption
+msgid "Background colour:"
+msgstr "Колір фону:"
+
+#: tfrmsongstyle.lblbgimagelabel.caption
+msgid "Path:"
+msgstr "Шлях:"
+
+#: tfrmsongstyle.lblfontpreview.caption
+msgid "Arial, 24 pt"
+msgstr "Arial, 24 pt"
+
+#: tfrmsongstyle.lbltextcolorlabel.caption
+msgid "Text colour:"
+msgstr "Колір тексту:"
+
+#: tfrmsongstyle.lbltransparency.caption
+msgid "Transparency (%):"
+msgstr "Прозорість (%):"
+
+#: tfrmwelcome.btnaddexamplesong.caption
+msgid "Add \"Amazing Grace\" as an example"
+msgstr "Додати «Amazing Grace» як приклад"
+
+#: tfrmwelcome.btnback.caption
+msgid "Back..."
+msgstr "Назад…"
+
+#: tfrmwelcome.btnnext.caption
+msgid "Continue..."
+msgstr "Продовжити…"
+
+#: tfrmwelcome.btnopengithubrepo.caption
+msgid "Open Github Repository..."
+msgstr "Відкрити репозиторій GitHub…"
+
+#: tfrmwelcome.btnopenwebpage.caption
+msgid "Open Webpage with Documentation..."
+msgstr "Відкрити сторінку з документацією…"
+
+#: tfrmwelcome.btnselectsongrepodir.caption
+msgid "Select Song Repository..."
+msgstr "Вибрати репозиторій пісень…"
+
+#: tfrmwelcome.caption
+msgid "Cantara Setup"
+msgstr "Налаштування Cantara"
+
+#: tfrmwelcome.labelwelcome.caption
+msgid ""
+"Cantara is a free and open source song presentation software.\n"
+"All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
+msgstr ""
+"Cantara — це безкоштовна програма з відкритим кодом для показу пісень.\n"
+"Усі пісні мають знаходитися в одній теці-репозиторії. Будь ласка, виберіть зараз теку на вашому комп’ютері, яку Cantara використовуватиме як репозиторій пісень. Якщо у вас ще немає пісень, можете спочатку створити нову теку або вибрати порожню."
+
+#: tfrmwelcome.labelwelcomeheadline.caption
+msgid "Welcome to Cantara!"
+msgstr "Ласкаво просимо до Cantara!"
+
+#: tfrmwelcome.lbladditionalinformation.caption
+msgid ""
+"You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
+"For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
+"\n"
+"Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
+"\n"
+"May God bless you and the use of this software!"
+msgstr ""
+"Ви можете налаштувати зовнішній вигляд презентації у вікні Налаштування. Також ви можете додавати, редагувати, клонувати та конвертувати файли пісень через редактор. Обидва пункти знаходяться в меню «Редагувати» головного вікна.\n"
+"Cantara підтримує два формати пісень: формат CCLI Songselect та власний формат пісні. Це значно спрощує завантаження та імпорт пісень з інтернету. Зверніть увагу: залежно від вашого місця розташування та конкретної пісні можуть діяти ліцензійні обмеження щодо публічного показу текстів пісень. Користувач несе повну відповідальність за законне використання програми.\n"
+"Докладніше про програму читайте в онлайн-документації на сайті https://www.cantara.app.\n"
+"\n"
+"Cantara — це вільне програмне забезпечення, що розповсюджується за ліцензією GPL3. Вихідний код доступний публічно на GitHub. Якщо вам подобається проєкт — поставте зірочку на GitHub! Ми також дуже раді відгукам, повідомленням про помилки та pull request.\n"
+"\n"
+"Нехай Бог благословить вас та використання цієї програми!"
+
+#: tfrmwelcome.lblsongadded.caption
+msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
+msgstr "«Amazing Grace» додано до вашого репозиторію. Тепер можна продовжити."
+
+#: tfrmwelcome.lblsuccessheadline.caption
+msgid "Congratulations! Cantara is now ready to use!"
+msgstr "Вітаємо! Cantara готова до використання!"
+
+#: tfrmwrapperfulltextsearch.caption
+msgid "Fulltext Search"
+msgstr "Повнотекстовий пошук"
+
+#: welcome.btnnextfinish
+msgid "Finish"
+msgstr "Завершити"
+
+#: welcome.btnnextnext
+msgid "Next"
+msgstr "Далі"
+
+#: welcome.songrepodirempty
+msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
+msgstr "Здається, ви ще не додали жодної пісні. Бажаєте додати пісню «Amazing Grace» Джона Ньютона як приклад до вашого репозиторію? Натисніть кнопку нижче, а потім «Далі», щоб перейти до наступного кроку."
+
+#: welcome.songreponotempty
+msgid "The song repository contains already {songcount} songs which you can use with Cantara."
+msgstr "У вашому репозиторії вже є {songcount} пісень, які можна використовувати з Cantara."
+
+#: welcome.songreponotemptyaddamazinggrace
+msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
+msgstr "Але якщо бажаєте, ми можемо додати «Amazing Grace» як ще один приклад. Натисніть кнопку нижче. Або просто натисніть «Далі»."
+
+#: welcome.songreposuccess
+msgid "The selected directory can be successfully used as a song repository."
+msgstr "Вибрану теку успішно можна використовувати як репозиторій пісень."
+
+#: welcome.strnosongrepoyet
+msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
+msgstr "Будь ласка, виберіть шлях до репозиторію пісень перед виходом з помічника. Без нього Cantara не працюватиме."

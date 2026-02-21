@@ -1,0 +1,1067 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cantara\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-02-21\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: editordisplaysongcontent.streditsongnamecaption
+msgid "Edit Song Name"
+msgstr "Chỉnh sửa tên bài hát"
+
+#: editordisplaysongcontent.streditsongnamecontent
+msgid "Please enter the new song name: "
+msgstr "Vui lòng nhập tên bài hát mới: "
+
+#: editordisplaysongcontent.strerrorcclitosong
+msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
+msgstr "Không thể chuyển đổi tệp. Hãy chắc chắn rằng bạn có quyền ghi vào kho bài hát!"
+
+#: editordisplaysongcontent.strfilecannotberenamed
+msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
+msgstr "Không thể đổi tên tệp. Hãy chắc chắn rằng bạn có quyền ghi vào kho bài hát!"
+
+#: flatpakhandling.messagecantaraneedsportaluse
+msgid ""
+"You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
+"Thank you for your understanding!"
+msgstr ""
+"Bạn đang sử dụng Cantara dưới dạng Flatpak. Do cập nhật quyền truy cập, Cantara không còn truy cập được thư mục chính của bạn nữa – điều này giúp hệ thống an toàn hơn. Tuy nhiên, điều đó cũng có nghĩa là bạn cần chọn lại đường dẫn kho bài hát để Cantara được cấp quyền truy cập vào thư mục đó. Nếu bạn đang dùng hình nền, bạn cũng cần chọn lại hình nền.\n"
+"Cảm ơn bạn đã thông cảm!"
+
+#: formmarkupexport.strloadtemplatefromfile
+msgid "Load Template From File..."
+msgstr "Tải mẫu từ tệp…"
+
+#: formmarkupexport.strtitleonly
+msgid "Title Only"
+msgstr "Chỉ tiêu đề"
+
+#: fulltextsearch.strsongtitle
+msgid "Song Title"
+msgstr "Tiêu đề bài hát"
+
+#: imageexport.strfoldernotvalid
+msgid "Please select a folder in which you want to save the pictures."
+msgstr "Vui lòng chọn thư mục để lưu hình ảnh."
+
+#: info.strauthor
+msgid "Author"
+msgstr "Tác giả"
+
+#: info.strbuttongitrepo
+msgid "Open webpage..."
+msgstr "Mở trang web…"
+
+#: info.strformcaption
+msgctxt "info.strformcaption"
+msgid "About this Program"
+msgstr "Về chương trình này"
+
+#: info.strprogramcompiled
+msgid "Program compiled"
+msgstr "Ngày biên dịch chương trình"
+
+#: info.strversion
+msgid "Version"
+msgstr "Phiên bản"
+
+#: info.strwebpage
+msgid "https://www.cantara.app"
+msgstr "https://www.cantara.app"
+
+#: pptx.strcantaraexport
+msgid "Cantara Song Presentation Export"
+msgstr "Xuất trình chiếu bài hát Cantara"
+
+#: pptx.strsongs
+msgid "Songs"
+msgstr "Bài hát"
+
+#: settings.strbrightness
+msgid "Increase brightness by "
+msgstr "Tăng độ sáng thêm "
+
+#: settings.strdefaultmetatemplate
+msgid ""
+"{%author%}Author: {author}\n"
+"{%bible%}Bible Reference: {bible}\n"
+"{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
+msgstr ""
+"{%author%}Tác giả: {author}\n"
+"{%bible%}Tham chiếu Kinh Thánh: {bible}\n"
+"{%ccli-songnumber%}Số bài hát CCLI: {ccli-songnumber} | Số giấy phép: {ccli-licensenumber}"
+
+#: settings.strerrorcaption
+msgctxt "settings.strerrorcaption"
+msgid "Error"
+msgstr "Lỗi"
+
+#: settings.strnobackgroundimageselected
+msgid "You need to select a background image first."
+msgstr "Bạn cần chọn hình nền trước."
+
+#: settings.strpictureoriginalstate
+msgid "Picture is shown as it is"
+msgstr "Hình ảnh được hiển thị nguyên bản"
+
+#: settings.strtransparency
+msgid "Increase transparency by "
+msgstr "Tăng độ trong suốt thêm "
+
+#: settings.strvalidsongrepository
+msgid "Please choose a valid folder for the song repository!"
+msgstr "Vui lòng chọn một thư mục hợp lệ cho kho bài hát!"
+
+#: songeditor.strcannotarchivate
+msgid "No valid file selected."
+msgstr "Không có tệp hợp lệ nào được chọn."
+
+#: songeditor.strfilehaschanged
+msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
+msgstr "Tệp {{filename}} đã bị thay đổi sau khi mở. Bạn có muốn lưu không?"
+
+#: songeditor.strfilenameexists
+msgid "The name exists already. Please choose an other one."
+msgstr "Tên này đã tồn tại. Vui lòng chọn tên khác."
+
+#: songeditor.strinvalidfilename
+msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
+msgstr "Tên không hợp lệ. Không được sử dụng ký tự phân cách đường dẫn (\"/\" trên Linux và \"\\\" trên Windows)."
+
+#: songeditor.strnewfilecaption
+msgid "New Song"
+msgstr "Bài hát mới"
+
+#: songeditor.strnewfilecontent
+msgid "Please add the name of the new song"
+msgstr "Vui lòng nhập tên bài hát mới"
+
+#: songeditor.strsaveunsavedchangescaption
+msgid "Question"
+msgstr "Câu hỏi"
+
+#: songeditor.strsaveunsavedchangescontent
+msgid "The file {filename} has unsaved changes. Would you like to save it now?"
+msgstr "Tệp {filename} có thay đổi chưa lưu. Bạn có muốn lưu ngay bây giờ không?"
+
+#: songeditor.strsyntaxdocurl
+msgid "https://www.cantara.app/tutorial/meta-data/"
+msgstr "https://www.cantara.app/tutorial/meta-data/"
+
+#: songeditor.strwelcome
+msgid "Welcome"
+msgstr "Chào mừng"
+
+#: songselection.stractivesongtexfile
+msgid "The following file is opened at the moment: "
+msgstr "Tệp đang mở hiện tại: "
+
+#: songselection.strbuttoneinstellungen
+msgctxt "songselection.strbuttoneinstellungen"
+msgid "Settings..."
+msgstr "Cài đặt…"
+
+#: songselection.strbuttonpraesentation
+msgctxt "songselection.strbuttonpraesentation"
+msgid "Presentation..."
+msgstr "Trình chiếu…"
+
+#: songselection.strcannotopensong
+msgid "Error: The Song \"{songname}\" is not available. Skipping."
+msgstr "Lỗi: Bài hát “{songname}” không khả dụng. Bỏ qua."
+
+#: songselection.strerror
+msgctxt "songselection.strerror"
+msgid "Error"
+msgstr "Lỗi"
+
+#: songselection.strerroropening
+msgid "Error while opening. Propably you have not the required rights to access this file."
+msgstr "Lỗi khi mở tệp. Có thể bạn không có quyền truy cập tệp này."
+
+#: songselection.strerrorsaving
+msgid "Error while saving. Propably you have not the required rights to access this file."
+msgstr "Lỗi khi lưu. Có thể bạn không có quyền ghi vào tệp này."
+
+#: songselection.strfehlerkeineliederbeipraesentation
+msgid "You have to add songs first."
+msgstr "Bạn cần thêm bài hát trước."
+
+#: songselection.strfiledoesnotexist
+msgid "The File you would like to open does not exists."
+msgstr "Tệp bạn muốn mở không tồn tại."
+
+#: songselection.strfolie
+msgid "Slide"
+msgstr "Slide"
+
+#: songselection.strhint
+msgid "Hint"
+msgstr "Gợi ý"
+
+#: songselection.strpptxgenjs
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr "Cantara sử dụng engine JavaScript của trình duyệt mặc định trên máy bạn và thư viện mã nguồn mở PptxGenJS[](https://gitbrent.github.io/PptxGenJS/) để tạo tệp pptx. Sau khi nhấn OK, trình duyệt sẽ mở ra và hỏi bạn nơi lưu tệp pptx sau khi tạo thành công. Quá trình này không cần kết nối internet và không chia sẻ dữ liệu với bất kỳ ai ngoài trình duyệt của bạn. Nếu muốn tiếp tục, nhấn OK (thông báo này sẽ không hiện lại lần sau). Nếu không muốn tiếp tục, nhấn Hủy."
+
+#: songselection.strsongisempty
+msgid "The song {songname} is empty. It will not be added."
+msgstr "Bài hát {songname} đang trống. Sẽ không được thêm."
+
+#: songselection.strsongtexfilesongsimported
+msgid "The songs from the file have been imported to your song repository."
+msgstr "Các bài hát từ tệp đã được nhập vào kho bài hát của bạn."
+
+#: songselection.strtitleslide
+msgid "Title Slide"
+msgstr "Slide tiêu đề"
+
+#: tcfontdialog.caption
+msgid "Font Selection"
+msgstr "Chọn phông chữ"
+
+#: tcfontdialog.fontpropertiesgroupbox.caption
+msgid "Font Properties"
+msgstr "Thuộc tính phông chữ"
+
+#: tcfontdialog.fontselectiongroupbox.caption
+msgid "Font"
+msgstr "Phông chữ"
+
+#: tcfontdialog.formatationcheckgroup.caption
+msgid "Formatation"
+msgstr "Định dạng"
+
+#: tcfontdialog.labelfontsize.caption
+msgid "Font Size:"
+msgstr "Cỡ chữ:"
+
+#: tcfontdialog.previewlabel.caption
+msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
+msgstr "Ân điển diệu kỳ, âm thanh ngọt ngào biết bao, đã cứu một kẻ khốn cùng như tôi! Ân điển ấy thật lớn lao biết bao."
+
+#: tformimageexport.buttonchoose.caption
+msgid "Choose..."
+msgstr "Chọn…"
+
+#: tformimageexport.buttonexportall.caption
+msgid "Export All"
+msgstr "Xuất tất cả"
+
+#: tformimageexport.buttonexportcurrent.caption
+msgctxt "tformimageexport.buttonexportcurrent.caption"
+msgid "Export Current"
+msgstr "Xuất hiện tại"
+
+#: tformimageexport.buttonreloadpreview.caption
+msgid "Reload Preview..."
+msgstr "Tải lại xem trước…"
+
+#: tformimageexport.caption
+msgid "Image Exporter"
+msgstr "Công cụ xuất hình ảnh"
+
+#: tformimageexport.checkboxsync.caption
+msgid "Sync"
+msgstr "Đồng bộ"
+
+#: tformimageexport.groupsettings.caption
+msgctxt "tformimageexport.groupsettings.caption"
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: tformimageexport.itemexport.caption
+msgctxt "tformimageexport.itemexport.caption"
+msgid "Export"
+msgstr "Xuất"
+
+#: tformimageexport.itemremove.caption
+msgid "Remove"
+msgstr "Xóa"
+
+#: tformimageexport.labelfolder.caption
+msgid "Folder: "
+msgstr "Thư mục: "
+
+#: tformimageexport.labelheight.caption
+msgid "Height:"
+msgstr "Chiều cao:"
+
+#: tformimageexport.labelwidth.caption
+msgid "Width: "
+msgstr "Chiều rộng: "
+
+#: tformpadding.caption
+msgid "Additional Settings"
+msgstr "Cài đặt bổ sung"
+
+#: tframesettingsdetailed.groupboxpadding.caption
+msgid "Padding"
+msgstr "Đệm lề"
+
+#: tframesettingsdetailed.labalbottom.caption
+msgid "Bottom: "
+msgstr "Dưới: "
+
+#: tframesettingsdetailed.labelleft.caption
+msgid "Left:"
+msgstr "Trái:"
+
+#: tframesettingsdetailed.labelright.caption
+msgid "Right: "
+msgstr "Phải: "
+
+#: tframesettingsdetailed.labeltop.caption
+msgid "Top: "
+msgstr "Trên: "
+
+#: tfrmdisplaysongcontent.btnarchivate.caption
+msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
+msgid "Archive"
+msgstr "Lưu trữ"
+
+#: tfrmdisplaysongcontent.btnclose.caption
+msgctxt "tfrmdisplaysongcontent.btnclose.caption"
+msgid "Close"
+msgstr "Đóng"
+
+#: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
+msgid "Convert CCLI File to Song Format"
+msgstr "Chuyển đổi tệp CCLI sang định dạng bài hát"
+
+#: tfrmdisplaysongcontent.btncopy.caption
+msgctxt "tfrmdisplaysongcontent.btncopy.caption"
+msgid "Copy"
+msgstr "Sao chép"
+
+#: tfrmdisplaysongcontent.btnrename.caption
+msgid "Rename"
+msgstr "Đổi tên"
+
+#: tfrmdisplaysongcontent.btnsave.caption
+msgctxt "tfrmdisplaysongcontent.btnsave.caption"
+msgid "Save"
+msgstr "Lưu"
+
+#: tfrmdisplaysongcontent.labelccliimporthint.caption
+msgid ""
+"Hint:\n"
+"\n"
+"The file which you are going to open is a CCLI file.\n"
+"It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
+"If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
+msgstr ""
+"Gợi ý:\n"
+"\n"
+"Tệp bạn sắp mở là tệp CCLI.\n"
+"Khuyến nghị chuyển đổi tệp sang định dạng bài hát trước, sau đó chỉnh sửa theo ý muốn.\n"
+"Nếu muốn thực hiện, hãy nhấn nút bên dưới. Tệp CCLI sẽ được di chuyển vào thư mục con 'archive' của kho bài hát, và tệp bài hát vừa tạo sẽ được mở để chỉnh sửa."
+
+#: tfrmdisplaysongcontent.lblsongname.caption
+msgid "Name: "
+msgstr "Tên: "
+
+#: tfrmeditorwelcome.btnclose.caption
+msgid "Close the Editor"
+msgstr "Đóng trình chỉnh sửa"
+
+#: tfrmeditorwelcome.btnnewsong.caption
+msgid "Create a new song"
+msgstr "Tạo bài hát mới"
+
+#: tfrmeditorwelcome.btnopendocs.caption
+msgid "Open Documentation in Webbrowser..."
+msgstr "Mở tài liệu trong trình duyệt web…"
+
+#: tfrmeditorwelcome.lbldescription.caption
+msgid ""
+"Here you can change the songs which you would like to display.\n"
+"\n"
+"For detailed information about the syntax, please consider the documentation."
+msgstr ""
+"Tại đây bạn có thể chỉnh sửa các bài hát muốn hiển thị.\n"
+"\n"
+"Để biết thông tin chi tiết về cú pháp, vui lòng xem tài liệu."
+
+#: tfrmeditorwelcome.lblhint.caption
+msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
+msgstr "Lưu ý: Tệp lời bài hát là tệp văn bản đơn giản, bạn có thể chỉnh sửa bằng bất kỳ trình soạn thảo văn bản nào trên máy tính. Cantara hiện chỉ cung cấp các chức năng cơ bản."
+
+#: tfrmeditorwelcome.lblsupport.caption
+msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
+msgstr "Cantara là phần mềm miễn phí được tạo ra với hy vọng mang lại lợi ích. Sự đóng góp qua GitHub luôn được hoan nghênh. Hãy thoải mái tạo issue, đề xuất tính năng hoặc gửi pull request. Mọi vinh quang thuộc về Chúa! Soli Deo Gloria."
+
+#: tfrmeditorwelcome.lblwelcome.caption
+msgid "Welcome to the Editor!"
+msgstr "Chào mừng đến với Trình chỉnh sửa!"
+
+#: tfrmfulltextsearch.labalcreateindex.caption
+msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
+msgid "Create Index..."
+msgstr "Tạo chỉ mục…"
+
+#: tfrmfulltextsearch.labelenterkeyword.caption
+msgid "Enter a search term..."
+msgstr "Nhập từ khóa tìm kiếm…"
+
+#: tfrmfulltextsearch.labelentersearchterm.caption
+msgid "Enter search term"
+msgstr "Nhập từ khóa tìm kiếm"
+
+#: tfrmfulltextsearch.labelnoitemsfound.caption
+msgid ""
+"No items found...\n"
+"\n"
+"Try changing the search terms."
+msgstr ""
+"Không tìm thấy mục nào…\n"
+"\n"
+"Hãy thử thay đổi từ khóa tìm kiếm."
+
+#: tfrminfo.btnopengitrepo.caption
+msgid "Open Github Repository with Browser"
+msgstr "Mở kho GitHub trong trình duyệt"
+
+#: tfrminfo.btnopenlicense.caption
+msgid "Show used libraries and licenses"
+msgstr "Hiển thị thư viện và giấy phép sử dụng"
+
+#: tfrminfo.btnopenwebpage.caption
+msgid "Open Project's Webpage with Browser"
+msgstr "Mở trang web dự án trong trình duyệt"
+
+#: tfrminfo.caption
+msgctxt "tfrminfo.caption"
+msgid "About this Program"
+msgstr "Về chương trình này"
+
+#: tfrminfo.lblauthor.caption
+msgid "Autor: Jan Martin Reckel"
+msgstr "Tác giả: Jan Martin Reckel"
+
+#: tfrminfo.lblcompdate.caption
+msgid "lblCompDate"
+msgstr "Ngày biên dịch"
+
+#: tfrminfo.lblinfo.caption
+msgid ""
+"This program has been published under the GPL3 licence. \n"
+"The source code is available at the Github repository, a documentation can be be found on the project's webpage.\n"
+"You are allowed to change and reuse this program under the specified terms and conditions of the GPL3 licence.\n"
+"\n"
+"The author wishes God's blessing for the use of the program!"
+msgstr ""
+"Chương trình này được phát hành theo giấy phép GPL3.\n"
+"Mã nguồn có sẵn tại kho GitHub, tài liệu nằm trên trang web dự án.\n"
+"Bạn được phép sửa đổi và tái sử dụng chương trình theo các điều khoản của giấy phép GPL3.\n"
+"\n"
+"Tác giả cầu chúc phước lành của Chúa cho việc sử dụng chương trình!"
+
+#: tfrminfo.lblname.caption
+msgctxt "tfrminfo.lblname.caption"
+msgid "Cantara"
+msgstr "Cantara"
+
+#: tfrminfo.lblversion.caption
+msgid "lblVersion"
+msgstr "Phiên bản"
+
+#: tfrmmarkupexport.btnsavetofile.caption
+msgid "Save to File..."
+msgstr "Lưu vào tệp…"
+
+#: tfrmmarkupexport.caption
+msgid "Export Songs as Markup"
+msgstr "Xuất bài hát dưới dạng đánh dấu"
+
+#: tfrmmarkupexport.clipboardbutton.caption
+msgctxt "tfrmmarkupexport.clipboardbutton.caption"
+msgid "Copy to Clipboard"
+msgstr "Sao chép vào bộ nhớ tạm"
+
+#: tfrmmarkupexport.opendialog.title
+msgid "Load Template File"
+msgstr "Tải tệp mẫu"
+
+#: tfrmmarkupexport.result.caption
+msgid "Result"
+msgstr "Kết quả"
+
+#: tfrmmarkupexport.templatebox.caption
+msgid "Template"
+msgstr "Mẫu"
+
+#: tfrmpresent.caption
+msgid "Presentation"
+msgstr "Trình chiếu"
+
+#: tfrmpresent.menuitemmovetoscreen.caption
+msgid "Move to other screen"
+msgstr "Chuyển sang màn hình khác"
+
+#: tfrmpresent.menuitemquitpresentation.caption
+msgid "Quit Presentation"
+msgstr "Thoát trình chiếu"
+
+#: tfrmpresent.menuitemtogglefullscreen.caption
+msgid "Fullscreen"
+msgstr "Toàn màn hình"
+
+#: tfrmsettings.bgcolordialog.title
+msgid "Select background color"
+msgstr "Chọn màu nền"
+
+#: tfrmsettings.bgpicturedialog.title
+msgctxt "tfrmsettings.bgpicturedialog.title"
+msgid "Open image file"
+msgstr "Mở tệp hình ảnh"
+
+#: tfrmsettings.bgpicturefiledialog.title
+#, fuzzy
+msgctxt "tfrmsettings.bgpicturefiledialog.title"
+msgid "Open image file"
+msgstr "Mở tệp hình ảnh"
+
+#: tfrmsettings.btnbackgroundcolor.caption
+msgid "Background Color..."
+msgstr "Màu nền…"
+
+#: tfrmsettings.btnbackgroundimage.caption
+msgid "Background Image..."
+msgstr "Hình nền…"
+
+#: tfrmsettings.btnclose.caption
+msgctxt "tfrmsettings.btnclose.caption"
+msgid "Close"
+msgstr "Đóng"
+
+#: tfrmsettings.btndetails.caption
+msgid "Details..."
+msgstr "Chi tiết…"
+
+#: tfrmsettings.btnfontsizemanually.caption
+msgid "Change Font Settings..."
+msgstr "Thay đổi cài đặt phông chữ…"
+
+#: tfrmsettings.btnselectdir.caption
+msgctxt "tfrmsettings.btnselectdir.caption"
+msgid "..."
+msgstr "…"
+
+#: tfrmsettings.btntextcolor.caption
+msgid "Text Color..."
+msgstr "Màu chữ…"
+
+#: tfrmsettings.caption
+msgctxt "tfrmsettings.caption"
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: tfrmsettings.cbblackscreenonempty.caption
+msgid "Show black screen when slide is empty"
+msgstr "Hiển thị màn hình đen khi slide trống"
+
+#: tfrmsettings.cbemptyframe.caption
+msgid "Empty slide between songs"
+msgstr "Slide trống giữa các bài hát"
+
+#: tfrmsettings.cbfadetransition.caption
+msgid "Fade transition between slides"
+msgstr "Hiệu ứng mờ dần giữa các slide"
+
+#: tfrmsettings.cbmetadatafirstslide.caption
+msgid "at first slide"
+msgstr "ở slide đầu tiên"
+
+#: tfrmsettings.cbmetadatalastslide.caption
+msgid "at last slide"
+msgstr "ở slide cuối cùng"
+
+#: tfrmsettings.cbmetatitleslide.caption
+msgid "at special title slide"
+msgstr "ở slide tiêu đề đặc biệt"
+
+#: tfrmsettings.cbshowbackgroundimage.caption
+msgid "Show Background Image:"
+msgstr "Hiển thị hình nền:"
+
+#: tfrmsettings.cbspoiler.caption
+msgid "Spoil next slides"
+msgstr "Hiển thị trước các slide tiếp theo"
+
+#: tfrmsettings.combohorizontal.text
+msgid "Center"
+msgstr "Giữa"
+
+#: tfrmsettings.combovertical.text
+msgid "Middle"
+msgstr "Giữa theo chiều dọc"
+
+#: tfrmsettings.gbpresentation.caption
+msgid "Presentation View"
+msgstr "Chế độ trình chiếu"
+
+#: tfrmsettings.labelsongdir.caption
+msgid "Song Repo Path:"
+msgstr "Đường dẫn kho bài hát:"
+
+#: tfrmsettings.lblalignment.caption
+msgid "Alignment: "
+msgstr "Căn lề: "
+
+#: tfrmsettings.lblfadems.caption
+msgid "ms"
+msgstr "ms"
+
+#: tfrmsettings.lblimagebrightness.caption
+msgid "Change Image Transparency:"
+msgstr "Thay đổi độ trong suốt hình ảnh:"
+
+#: tfrmsettings.lblimageexplainer.caption
+msgid "lblImageExplainer"
+msgstr "lblImageExplainer"
+
+#: tfrmsettings.lblmeta.caption
+msgid "Show Meta Data:"
+msgstr "Hiển thị siêu dữ liệu:"
+
+#: tfrmsettings.lblmetacontent.caption
+msgid "Meta Data Content:"
+msgstr "Nội dung siêu dữ liệu:"
+
+#: tfrmsettings.lblwrapafter.caption
+msgid "Automatic wrap after how many lines (0 = off):"
+msgstr "Tự động xuống dòng sau bao nhiêu dòng (0 = tắt):"
+
+#: tfrmsettings.sbimagebrightness.hint
+msgid "The transparency of the background picture towards the background color"
+msgstr "Độ trong suốt của hình nền so với màu nền"
+
+#: tfrmsettings.selectdirectorydialog.title
+msgid "Select song repository dictionary"
+msgstr "Chọn thư mục kho bài hát"
+
+#: tfrmsettings.textcolordialog.title
+msgid "Select text color"
+msgstr "Chọn màu chữ"
+
+#: tfrmsongedit.caption
+msgid "Edit Files"
+msgstr "Chỉnh sửa tệp"
+
+#: tfrmsongedit.itemcopy.caption
+msgctxt "tfrmsongedit.itemcopy.caption"
+msgid "Copy"
+msgstr "Sao chép"
+
+#: tfrmsongedit.itemcut.caption
+msgid "Cut"
+msgstr "Cắt"
+
+#: tfrmsongedit.itemfadein.caption
+msgid "Zoom In"
+msgstr "Phóng to"
+
+#: tfrmsongedit.itemfadeout.caption
+msgid "Zoom Out"
+msgstr "Thu nhỏ"
+
+#: tfrmsongedit.itempaste.caption
+msgid "Paste"
+msgstr "Dán"
+
+#: tfrmsongedit.itemredo.caption
+msgid "Redo"
+msgstr "Làm lại"
+
+#: tfrmsongedit.itemundo.caption
+msgid "Undo"
+msgstr "Hoàn tác"
+
+#: tfrmsongedit.menuedit.caption
+msgctxt "tfrmsongedit.menuedit.caption"
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+#: tfrmsongedit.menufile.caption
+msgctxt "tfrmsongedit.menufile.caption"
+msgid "File"
+msgstr "Tệp"
+
+#: tfrmsongedit.menuitemarchivate.caption
+msgctxt "tfrmsongedit.menuitemarchivate.caption"
+msgid "Archive"
+msgstr "Lưu trữ"
+
+#: tfrmsongedit.menuitemclose.caption
+msgid "Close Editor"
+msgstr "Đóng trình chỉnh sửa"
+
+#: tfrmsongedit.menuitemcopy.caption
+msgctxt "tfrmsongedit.menuitemcopy.caption"
+msgid "Duplicate"
+msgstr "Nhân bản"
+
+#: tfrmsongedit.menuitemnew.caption
+msgid "New"
+msgstr "Mới"
+
+#: tfrmsongedit.menuitemsave.caption
+msgctxt "tfrmsongedit.menuitemsave.caption"
+msgid "Save"
+msgstr "Lưu"
+
+#: tfrmsongedit.view.caption
+msgid "View"
+msgstr "Xem"
+
+#: tfrmsongs.btnadd.caption
+msgid "+"
+msgstr "+"
+
+#: tfrmsongs.btnclear.caption
+msgid "🗑"
+msgstr "🗑"
+
+#: tfrmsongs.btnclear.hint
+msgid "Leere alle ausgewählten Lieder"
+msgstr "Xóa tất cả bài hát đã chọn"
+
+#: tfrmsongs.btndown.caption
+msgid "🠗"
+msgstr "🠗"
+
+#: tfrmsongs.btngoleft.caption
+msgid "←"
+msgstr "←"
+
+#: tfrmsongs.btngoright.caption
+msgid "→"
+msgstr "→"
+
+#: tfrmsongs.btnquitpresentation.caption
+msgid "×"
+msgstr "×"
+
+#: tfrmsongs.btnremove.caption
+msgid "-"
+msgstr "-"
+
+#: tfrmsongs.btnsettings.caption
+msgctxt "tfrmsongs.btnsettings.caption"
+msgid "Settings..."
+msgstr "Cài đặt…"
+
+#: tfrmsongs.btnstartpresentation.caption
+msgctxt "tfrmsongs.btnstartpresentation.caption"
+msgid "Presentation..."
+msgstr "Trình chiếu…"
+
+#: tfrmsongs.btnup.caption
+msgid "🠕"
+msgstr "🠕"
+
+#: tfrmsongs.buttonclosesongtexfile.caption
+msgid "Close File"
+msgstr "Đóng tệp"
+
+#: tfrmsongs.caption
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
+msgctxt "tfrmsongs.caption"
+msgid "Cantara"
+msgstr "Cantara"
+
+#: tfrmsongs.chkmultiwindowmode.caption
+msgid "Multi-Screen-Mode (suitable for multiple screens)"
+msgstr "Chế độ đa màn hình (phù hợp với nhiều màn hình)"
+
+#: tfrmsongs.edtsearch.hint
+msgid "Search..."
+msgstr "Tìm kiếm…"
+
+#: tfrmsongs.itemabout.caption
+msgid "Information about the Program"
+msgstr "Thông tin về chương trình"
+
+#: tfrmsongs.itemeditsongstyle.caption
+msgid "Edit song style..."
+msgstr "Chỉnh sửa kiểu bài hát…"
+
+#: tfrmsongs.itemend.caption
+msgctxt "tfrmsongs.itemend.caption"
+msgid "Close"
+msgstr "Đóng"
+
+#: tfrmsongs.itemexportpictures.caption
+msgid "Images..."
+msgstr "Hình ảnh…"
+
+#: tfrmsongs.itemexportpptx.caption
+msgid "Powerpoint Presentation (pptx)"
+msgstr "Trình chiếu PowerPoint (pptx)"
+
+#: tfrmsongs.itemfulltextsearch.caption
+msgid "Full Text Search..."
+msgstr "Tìm kiếm toàn văn…"
+
+#: tfrmsongs.itemloadselection.caption
+msgid "Load Song Selection..."
+msgstr "Tải lựa chọn bài hát…"
+
+#: tfrmsongs.itemmarkupexport.caption
+msgid "Markup Text..."
+msgstr "Xuất văn bản đánh dấu…"
+
+#: tfrmsongs.itemopenineditor.caption
+msgid "Open in Editor..."
+msgstr "Mở trong trình chỉnh sửa…"
+
+#: tfrmsongs.itempresentation.caption
+msgid "Run Presentation"
+msgstr "Chạy trình chiếu"
+
+#: tfrmsongs.itemreloadsonglist.caption
+msgid "Reload Song Repository"
+msgstr "Tải lại kho bài hát"
+
+#: tfrmsongs.itemsaveselection.caption
+msgid "Save Song Selection..."
+msgstr "Lưu lựa chọn bài hát…"
+
+#: tfrmsongs.itemsaveselectionas.caption
+msgid "Save Song Selection As..."
+msgstr "Lưu lựa chọn bài hát dưới dạng…"
+
+#: tfrmsongs.itemselectallsongs.caption
+msgid "Select all Songs"
+msgstr "Chọn tất cả bài hát"
+
+#: tfrmsongs.itemsettings.caption
+msgctxt "tfrmsongs.itemsettings.caption"
+msgid "Settings..."
+msgstr "Cài đặt…"
+
+#: tfrmsongs.itemshowwelcomeassistent.caption
+msgid "Show Welcome Assistent..."
+msgstr "Hiển thị trợ lý chào mừng…"
+
+#: tfrmsongs.itemsongeditor.caption
+msgid "Song Lyrics..."
+msgstr "Lời bài hát…"
+
+#: tfrmsongs.lblfoilnumber.caption
+msgid "Slide Numbers"
+msgstr "Số slide"
+
+#: tfrmsongs.lblpresentation.caption
+msgid "Presentation is running:"
+msgstr "Đang chạy trình chiếu:"
+
+#: tfrmsongs.menuedit.caption
+msgctxt "tfrmsongs.menuedit.caption"
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+#: tfrmsongs.menuexport.caption
+msgctxt "tfrmsongs.menuexport.caption"
+msgid "Export"
+msgstr "Xuất"
+
+#: tfrmsongs.menufile.caption
+msgctxt "tfrmsongs.menufile.caption"
+msgid "File"
+msgstr "Tệp"
+
+#: tfrmsongs.menuhelp.caption
+msgid "Help"
+msgstr "Trợ giúp"
+
+#: tfrmsongs.opendialog.title
+msgid "Open Song List"
+msgstr "Mở danh sách bài hát"
+
+#: tfrmsongs.panelsongtexstatus.caption
+msgid "PanelSongTeXStatus"
+msgstr "Bảng trạng thái SongTeX"
+
+#: tfrmsongs.savedialog.title
+msgid "Save Song List"
+msgstr "Lưu danh sách bài hát"
+
+#: tfrmsongstyle.btnbrowsebgimage.caption
+msgid "Browse..."
+msgstr "Duyệt…"
+
+#: tfrmsongstyle.btncancel.caption
+msgid "Cancel"
+msgstr "Hủy"
+
+#: tfrmsongstyle.btnfont.caption
+msgid "Select font..."
+msgstr "Chọn phông chữ…"
+
+#: tfrmsongstyle.btnok.caption
+msgid "OK"
+msgstr "OK"
+
+#: tfrmsongstyle.btnreset.caption
+msgid "Reset to global default"
+msgstr "Đặt lại về mặc định toàn cục"
+
+#: tfrmsongstyle.caption
+msgid "Song Style Override"
+msgstr "Ghi đè kiểu bài hát"
+
+#: tfrmsongstyle.cbshowbgimage.caption
+msgid "Show background image"
+msgstr "Hiển thị hình nền"
+
+#: tfrmsongstyle.cbusecustomstyle.caption
+msgid "Use custom style for this song"
+msgstr "Sử dụng kiểu tùy chỉnh cho bài hát này"
+
+#: tfrmsongstyle.gbalign.caption
+msgid "Horizontal Alignment"
+msgstr "Căn chỉnh ngang"
+
+#: tfrmsongstyle.gbbackground.caption
+msgid "Background"
+msgstr "Nền"
+
+#: tfrmsongstyle.gbfont.caption
+msgid "Font && Text Colour"
+msgstr "Phông chữ & Màu chữ"
+
+#: tfrmsongstyle.gbpreview.caption
+msgid "Preview"
+msgstr "Xem trước"
+
+#: tfrmsongstyle.lblalignlabel.caption
+msgid "Alignment:"
+msgstr "Căn chỉnh:"
+
+#: tfrmsongstyle.lblbgcolorlabel.caption
+msgid "Background colour:"
+msgstr "Màu nền:"
+
+#: tfrmsongstyle.lblbgimagelabel.caption
+msgid "Path:"
+msgstr "Đường dẫn:"
+
+#: tfrmsongstyle.lblfontpreview.caption
+msgid "Arial, 24 pt"
+msgstr "Arial, 24 pt"
+
+#: tfrmsongstyle.lbltextcolorlabel.caption
+msgid "Text colour:"
+msgstr "Màu chữ:"
+
+#: tfrmsongstyle.lbltransparency.caption
+msgid "Transparency (%):"
+msgstr "Độ trong suốt (%):"
+
+#: tfrmwelcome.btnaddexamplesong.caption
+msgid "Add \"Amazing Grace\" as an example"
+msgstr "Thêm “Amazing Grace” làm ví dụ"
+
+#: tfrmwelcome.btnback.caption
+msgid "Back..."
+msgstr "Quay lại…"
+
+#: tfrmwelcome.btnnext.caption
+msgid "Continue..."
+msgstr "Tiếp tục…"
+
+#: tfrmwelcome.btnopengithubrepo.caption
+msgid "Open Github Repository..."
+msgstr "Mở kho GitHub…"
+
+#: tfrmwelcome.btnopenwebpage.caption
+msgid "Open Webpage with Documentation..."
+msgstr "Mở trang web kèm tài liệu…"
+
+#: tfrmwelcome.btnselectsongrepodir.caption
+msgid "Select Song Repository..."
+msgstr "Chọn kho bài hát…"
+
+#: tfrmwelcome.caption
+msgid "Cantara Setup"
+msgstr "Cài đặt Cantara"
+
+#: tfrmwelcome.labelwelcome.caption
+msgid ""
+"Cantara is a free and open source song presentation software.\n"
+"All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
+msgstr ""
+"Cantara là phần mềm trình chiếu bài hát miễn phí và mã nguồn mở.\n"
+"Tất cả bài hát nên được đặt trong một thư mục kho bài hát. Vui lòng chọn ngay bây giờ một thư mục trên hệ thống tệp của bạn mà Cantara sẽ sử dụng làm kho bài hát. Nếu bạn chưa thu thập bài hát nào, bạn có thể tạo thư mục mới trước hoặc chọn một thư mục trống."
+
+#: tfrmwelcome.labelwelcomeheadline.caption
+msgid "Welcome to Cantara!"
+msgstr "Chào mừng đến với Cantara!"
+
+#: tfrmwelcome.lbladditionalinformation.caption
+msgid ""
+"You might want to adjust the appearence of the presentation in the Settings Dialog. In addition, you can add, edit, clone and convert song files via the editor. Both can be found in the Edit menu in the main window.\n"
+"Cantara supports two song formats: The CCLI Songselect format and the song format. This makes it easy to download and import songs from the internet. Please be aware that depending on your location and the particular song, license regulations for the public demonstration of song lyrics might apply. The user alone is responsible for the legal use of this software.\n"
+"For more information about the program, please consult the online documentation at the webpage https://www.cantara.app.\n"
+"\n"
+"Cantara is free software and published under the GPL3 license. The source code is publicly available on Github. If you like the project, consider giving it a star at Github! Feedback, issue reports and pull requests are also more then welcome.\n"
+"\n"
+"May God bless you and the use of this software!"
+msgstr ""
+"Bạn có thể điều chỉnh giao diện trình chiếu trong hộp thoại Cài đặt. Ngoài ra, bạn có thể thêm, chỉnh sửa, sao chép và chuyển đổi tệp bài hát qua trình chỉnh sửa. Cả hai đều nằm trong menu Chỉnh sửa ở cửa sổ chính.\n"
+"Cantara hỗ trợ hai định dạng bài hát: định dạng CCLI Songselect và định dạng bài hát riêng. Điều này giúp dễ dàng tải về và nhập bài hát từ internet. Lưu ý rằng tùy thuộc vào vị trí của bạn và bài hát cụ thể, có thể áp dụng các quy định cấp phép cho việc trình chiếu công khai lời bài hát. Người dùng chịu hoàn toàn trách nhiệm về việc sử dụng hợp pháp phần mềm này.\n"
+"Để biết thêm thông tin về chương trình, vui lòng tham khảo tài liệu trực tuyến tại trang web https://www.cantara.app.\n"
+"\n"
+"Cantara là phần mềm tự do được phát hành theo giấy phép GPL3. Mã nguồn được công khai trên GitHub. Nếu bạn thích dự án, hãy cân nhắc tặng một ngôi sao trên GitHub! Phản hồi, báo lỗi và pull request cũng rất được hoan nghênh.\n"
+"\n"
+"Cầu mong Chúa ban phước cho bạn và việc sử dụng phần mềm này!"
+
+#: tfrmwelcome.lblsongadded.caption
+msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
+msgstr "“Amazing Grace” đã được thêm vào kho của bạn. Bạn có thể tiếp tục."
+
+#: tfrmwelcome.lblsuccessheadline.caption
+msgid "Congratulations! Cantara is now ready to use!"
+msgstr "Chúc mừng! Cantara đã sẵn sàng sử dụng!"
+
+#: tfrmwrapperfulltextsearch.caption
+msgid "Fulltext Search"
+msgstr "Tìm kiếm toàn văn"
+
+#: welcome.btnnextfinish
+msgid "Finish"
+msgstr "Hoàn tất"
+
+#: welcome.btnnextnext
+msgid "Next"
+msgstr "Tiếp"
+
+#: welcome.songrepodirempty
+msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
+msgstr "Có vẻ bạn chưa thêm bài hát nào. Bạn có muốn thêm bài “Amazing Grace” của John Newton làm ví dụ vào kho bài hát không? Nhấn nút bên dưới, sau đó nhấn “Tiếp” để sang bước kế tiếp."
+
+#: welcome.songreponotempty
+msgid "The song repository contains already {songcount} songs which you can use with Cantara."
+msgstr "Kho bài hát đã chứa {songcount} bài mà bạn có thể sử dụng với Cantara."
+
+#: welcome.songreponotemptyaddamazinggrace
+msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
+msgstr "Nếu bạn muốn, chúng tôi có thể thêm “Amazing Grace” làm một ví dụ khác. Để làm điều đó, hãy nhấn nút bên dưới. Nếu không, bạn có thể nhấn “Tiếp”."
+
+#: welcome.songreposuccess
+msgid "The selected directory can be successfully used as a song repository."
+msgstr "Thư mục đã chọn có thể được sử dụng thành công làm kho bài hát."
+
+#: welcome.strnosongrepoyet
+msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
+msgstr "Vui lòng chọn đường dẫn kho bài hát trước khi rời khỏi trợ lý. Cantara không thể hoạt động nếu thiếu nó."
