@@ -19,7 +19,7 @@
 </div>
 
 > [!NOTE]
-> Cantara is currently in the process of being entirelly rewritten in Rust and Dioxus. Check out the [new Cantara 3 repository](https://github.com/CantaraProject/Cantara) for the current state of the rewrite. This repository (Cantara 2) will still be maintained for a certain amount of time, however no new features are going to be implemented here.
+> Cantara is currently in the process of being entirelly rewritten in Rust and Dioxus. Check out the [new Cantara 3 repository](https://github.com/CantaraProject/Cantara) for the current state of the rewrite. Until the release of version 3, this repository (Cantara 2) will still be maintained for a certain amount of time.
 
 ![](screenshots/cantara.gif)
 
