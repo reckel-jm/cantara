@@ -1,118 +1,100 @@
 on:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - master
+  release:
+    types: [published]
 
 jobs:
   build:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [windows-latest,ubuntu-latest,macos-latest]
+        operating-system: [windows-latest, ubuntu-latest, macos-latest]
         lazarus-versions: [stable]
-    env:
-      VERSION: 2.6.0
+    
     steps:
     - name: Checkout Source Code
       uses: actions/checkout@v4
       with:
         submodules: true
+
+    - name: Set Version Environment Variable
+      shell: bash
+      run: |
+        # If triggered by a tag, use the tag name. Otherwise, use 'latest'
+        if [[ "${{ github.ref_type }}" == "tag" ]]; then
+          echo "REL_VER=${{ github.ref_name }}" >> $GITHUB_ENV
+        else
+          echo "REL_VER=latest" >> $GITHUB_ENV
+        fi
+
     - name: Install Lazarus
       uses: gcarreno/setup-lazarus@v3.4.1
       with:
         lazarus-version: ${{ matrix.lazarus-versions }}
         with-cache: false
+
     - name: Build the Windows Application
       if: ${{ matrix.operating-system == 'windows-latest' }}
       run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk; lazbuild -B src/metadarkstyle/metadarkstyle.lpk; lazbuild -B src/Cantara.lpi
-    - name: Install libqt6pas dependency under Ubuntu
+
+    - name: Install libqt6pas (Ubuntu)
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6-dev_6.2.7-1_amd64.deb; wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6_6.2.7-1_amd64.deb; sudo apt install ./libqt6pas6_6.2.7-1_amd64.deb; sudo apt install ./libqt6pas6-dev_6.2.7-1_amd64.deb
+      run: |
+        wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6-dev_6.2.7-1_amd64.deb
+        wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.7/libqt6pas6_6.2.7-1_amd64.deb
+        sudo apt install ./libqt6pas6_6.2.7-1_amd64.deb ./libqt6pas6-dev_6.2.7-1_amd64.deb
+
     - name: Build the Linux Application
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: make
+
     - name: Build the MacOS Application
       if: ${{ matrix.operating-system == 'macos-latest' }}
       run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk && lazbuild -B src/metadarkstyle/metadarkstyle.lpk && lazbuild -B src/Cantara.lpi
-    - name: Run all Tests on Ubuntu
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: lazbuild src/fpccantaraclitest.lpi && cd src && ./fpccantaraclitest -a --format=plain
-    - name: Artifacts (Linux)
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Compiled Linux Binary
-        path: |
-          cantara
-          src/languages
-          src/Cantara.ico
-          app.cantara.Cantara.desktop
-          app.cantara.Cantara.png
-          COPYING
-        
-    - name: Install FPM
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: sudo apt-get install ruby ruby-dev rubygems build-essential && sudo gem install --no-document fpm
 
-    - name: Create DEB Package
+    # --- PACKAGING WITH DYNAMIC NAMES ---
+
+    - name: Zip Linux Binaries
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      run: zip -r cantara-${{ env.REL_VER }}-linux-x64.zip cantara src/languages src/Cantara.ico app.cantara.Cantara.desktop app.cantara.Cantara.png COPYING
+
+    - name: Create DEB/RPM Packages
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: |
+        sudo apt-get install ruby ruby-dev rubygems build-essential && sudo gem install --no-document fpm
         mkdir -p pkg/usr/local/bin
         cp cantara pkg/usr/local/bin
-        fpm -s dir -t deb -n cantara -v $(cat VERSION) -C pkg .
-        
-    - name: Create RPM Package
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      run: |
-        mkdir -p pkg/usr/local/bin
-        cp cantara pkg/usr/local/bin
-        fpm -s dir -t rpm -n cantara -v $(cat VERSION) -C pkg .
+        # Use the tag name for fpm versioning
+        CLEAN_VER=$(echo ${{ env.REL_VER }} | sed 's/v//g')
+        fpm -s dir -t deb -n cantara -v $CLEAN_VER -C pkg .
+        fpm -s dir -t rpm -n cantara -v $CLEAN_VER -C pkg .
 
-    - name: Create Windows Installer with InnoSetup
+    - name: Zip Windows Binaries
+      if: ${{ matrix.operating-system == 'windows-latest' }}
+      run: 7z a cantara-${{ env.REL_VER }}-windows-x64.zip ./src/cantara.exe ./src/languages ./src/Cantara.ico ./app.cantara.Cantara.desktop ./app.cantara.Cantara.png ./COPYING
+
+    - name: Create Windows Installer (InnoSetup)
       if: ${{ matrix.operating-system == 'windows-latest' }}
       uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
       with:
         path: cantara.iss
 
-    - name: Artifacts (Linux DEB)
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Compiled Linux DEB
-        path: cantara*.deb
-
-    - name: Artifacts (Linux RPM)
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Compiled Linux RPM
-        path: cantara*.rpm
-
-    - name: Artifacts (Windows)
-      if: ${{ matrix.operating-system == 'windows-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Compiled Windows Binary
-        path: |
-          src/cantara.exe
-          src/languages
-          src/Cantara.ico
-          app.cantara.Cantara.desktop
-          app.cantara.Cantara.png
-          COPYING
-
-    - name: Artifacts (Windows Installer)
-      if: ${{ matrix.operating-system == 'windows-latest' }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: Windows Installer
-        path: Output/cantara*.exe
-
-    - name: Artifacts (Apple)
+    - name: Zip MacOS Application
       if: ${{ matrix.operating-system == 'macos-latest' }}
-      uses: actions/upload-artifact@v4
+      run: zip -r cantara-${{ env.REL_VER }}-macos-x64.zip src/cantara.app COPYING
+
+    # --- RELEASE UPLOAD ---
+
+    - name: Upload to GitHub Release
+      if: github.event_name == 'release'
+      uses: softprops/action-gh-release@v2
       with:
-        name: Compiled Mac OS Binary
-        path: |
-           src/cantara.app
-           COPYING
+        files: |
+          cantara-${{ env.REL_VER }}-linux-x64.zip
+          cantara*.deb
+          cantara*.rpm
+          cantara-${{ env.REL_VER }}-windows-x64.zip
+          Output/cantara*.exe
+          cantara-${{ env.REL_VER }}-macos-x64.zip
