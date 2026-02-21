@@ -391,7 +391,7 @@ begin
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
   cbBlackScreenOnEmpty.Checked := settingsFile.ReadBool('Config', 'BlackScreenOnEmpty', False);
   cbFadeTransition.Checked := settingsFile.ReadBool('Config', 'FadeTransition', False);
-  seFadeDuration.Value := settingsFile.ReadInteger('Config', 'FadeDurationMs', 300);
+  seFadeDuration.Value := settingsFile.ReadInteger('Config', 'FadeDurationMs', 150);
   seFadeDuration.Enabled := cbFadeTransition.Checked;
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
     'Text-Color', 'clWhite'));
