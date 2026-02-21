@@ -50,6 +50,7 @@ type
     procedure edtBgImagePathChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure lblTextColorLabelClick(Sender: TObject);
     procedure pnlBgColorClick(Sender: TObject);
     procedure pnlTextColorClick(Sender: TObject);
     procedure spTransparencyChange(Sender: TObject);
@@ -119,6 +120,11 @@ begin
   FPreviewSlideList.Free;
   FExampleSong.Free;
   FPreviewCanvas.Free;
+end;
+
+procedure TfrmSongStyle.lblTextColorLabelClick(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmSongStyle.UpdateFontPreview;
