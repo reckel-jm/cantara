@@ -207,6 +207,10 @@ var
   NewHeight, NewWidth: Integer;
   ResampledAdjustedBackgroundPicture: TBGRABitmap;
 begin
+  // Always invalidate the per-song custom-bg cache: the canvas size may have
+  // changed (FormResize), so any previously cached scaled bitmap is stale.
+  FCustomBgPath := '';
+
   if PresentationStyleSettings.ShowBackgroundImage = false
      then Exit;
 
@@ -371,7 +375,11 @@ begin
   end;
 
   Bitmap.Fill(EffectiveStyle.BackgroundColor);
-  // Here we setup the different fonts for calculating the text height
+  // Here we setup the different fonts for calculating the text height.
+  // Guard against nil Font (e.g. style loaded without font info): fall back
+  // to the global presentation style so rendering never crashes.
+  if not Assigned(EffectiveStyle.Font) then
+    EffectiveStyle.Font := PresentationStyleSettings.Font;
   NormalTextFont := TFont.Create;
   NormalTextFont.Assign(EffectiveStyle.Font);
   NormalTextFont.Color := EffectiveStyle.TextColor;

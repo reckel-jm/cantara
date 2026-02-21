@@ -1,80 +1,93 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8"
+msgstr ""
+"Project-Id-Version: Cantara\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-02-21\n"
+"Last-Translator: \n"
+"Language-Team: Persian (Farsi)\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
-msgstr ""
+msgstr "ویرایش نام آهنگ"
 
 #: editordisplaysongcontent.streditsongnamecontent
 msgid "Please enter the new song name: "
-msgstr ""
+msgstr "لطفاً نام جدید آهنگ را وارد کنید: "
 
 #: editordisplaysongcontent.strerrorcclitosong
 msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
-msgstr ""
+msgstr "فایل قابل تبدیل نیست. مطمئن شوید که مجوز نوشتن در مخزن آهنگ‌ها را دارید!"
 
 #: editordisplaysongcontent.strfilecannotberenamed
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
-msgstr ""
+msgstr "نام فایل قابل تغییر نیست. مطمئن شوید که مجوز نوشتن در مخزن آهنگ‌ها را دارید!"
 
 #: flatpakhandling.messagecantaraneedsportaluse
 msgid ""
 "You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
 "Thank you for your understanding!"
 msgstr ""
+"شما از Cantara به‌صورت Flatpak استفاده می‌کنید. به دلیل به‌روزرسانی مجوزها، Cantara دیگر به پوشه خانگی شما دسترسی ندارد؛ این کار باعث افزایش امنیت سیستم می‌شود. اما این یعنی باید مسیر مخزن آهنگ‌ها را دوباره انتخاب کنید تا Cantara مجوز دسترسی به آن پوشه را دریافت کند. اگر قبلاً از تصویر پس‌زمینه استفاده می‌کردید، باید آن را هم دوباره انتخاب کنید.\n"
+"از درک شما سپاسگزاریم!"
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
-msgstr ""
+msgstr "بارگذاری قالب از فایل…"
 
 #: formmarkupexport.strtitleonly
 msgid "Title Only"
-msgstr ""
+msgstr "فقط عنوان"
 
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
-msgstr ""
+msgstr "عنوان آهنگ"
 
 #: imageexport.strfoldernotvalid
 msgid "Please select a folder in which you want to save the pictures."
-msgstr ""
+msgstr "لطفاً پوشه‌ای را برای ذخیره تصاویر انتخاب کنید."
 
 #: info.strauthor
 msgid "Author"
-msgstr ""
+msgstr "نویسنده"
 
 #: info.strbuttongitrepo
 msgid "Open webpage..."
-msgstr ""
+msgstr "باز کردن صفحه وب…"
 
 #: info.strformcaption
 msgctxt "info.strformcaption"
 msgid "About this Program"
-msgstr ""
+msgstr "درباره این برنامه"
 
 #: info.strprogramcompiled
 msgid "Program compiled"
-msgstr ""
+msgstr "تاریخ کامپایل برنامه"
 
 #: info.strversion
 msgid "Version"
-msgstr ""
+msgstr "نسخه"
 
 #: info.strwebpage
 msgid "https://www.cantara.app"
-msgstr ""
+msgstr "https://www.cantara.app"
 
 #: pptx.strcantaraexport
 msgid "Cantara Song Presentation Export"
-msgstr ""
+msgstr "خروجی ارائه آهنگ‌های Cantara"
 
 #: pptx.strsongs
 msgid "Songs"
-msgstr ""
+msgstr "آهنگ‌ها"
 
 #: settings.strbrightness
 msgid "Increase brightness by "
-msgstr ""
+msgstr "افزایش روشنایی به میزان "
 
 #: settings.strdefaultmetatemplate
 msgid ""
@@ -82,257 +95,260 @@ msgid ""
 "{%bible%}Bible Reference: {bible}\n"
 "{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
+"{%author%}نویسنده: {author}\n"
+"{%bible%}مرجع کتاب مقدس: {bible}\n"
+"{%ccli-songnumber%}شماره آهنگ CCLI: {ccli-songnumber} | شماره مجوز: {ccli-licensenumber}"
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
 msgid "Error"
-msgstr ""
+msgstr "خطا"
 
 #: settings.strnobackgroundimageselected
 msgid "You need to select a background image first."
-msgstr ""
+msgstr "ابتدا باید یک تصویر پس‌زمینه انتخاب کنید."
 
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
-msgstr ""
+msgstr "تصویر به همان شکل اصلی نمایش داده می‌شود"
 
 #: settings.strtransparency
 msgid "Increase transparency by "
-msgstr ""
+msgstr "افزایش شفافیت به میزان "
 
 #: settings.strvalidsongrepository
 msgid "Please choose a valid folder for the song repository!"
-msgstr ""
+msgstr "لطفاً یک پوشه معتبر برای مخزن آهنگ‌ها انتخاب کنید!"
 
 #: songeditor.strcannotarchivate
 msgid "No valid file selected."
-msgstr ""
+msgstr "هیچ فایل معتبری انتخاب نشده است."
 
 #: songeditor.strfilehaschanged
 msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
-msgstr ""
+msgstr "فایل {{filename}} پس از باز شدن تغییر کرده است. آیا می‌خواهید آن را ذخیره کنید؟"
 
 #: songeditor.strfilenameexists
 msgid "The name exists already. Please choose an other one."
-msgstr ""
+msgstr "این نام قبلاً وجود دارد. لطفاً نام دیگری انتخاب کنید."
 
 #: songeditor.strinvalidfilename
 msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
-msgstr ""
+msgstr "نام نامعتبر است. استفاده از جداکننده‌های مسیر (\"/\" در لینوکس و \"\\\" در ویندوز) مجاز نیست."
 
 #: songeditor.strnewfilecaption
 msgid "New Song"
-msgstr ""
+msgstr "آهنگ جدید"
 
 #: songeditor.strnewfilecontent
 msgid "Please add the name of the new song"
-msgstr ""
+msgstr "لطفاً نام آهنگ جدید را وارد کنید"
 
 #: songeditor.strsaveunsavedchangescaption
 msgid "Question"
-msgstr ""
+msgstr "سؤال"
 
 #: songeditor.strsaveunsavedchangescontent
 msgid "The file {filename} has unsaved changes. Would you like to save it now?"
-msgstr ""
+msgstr "فایل {filename} دارای تغییرات ذخیره‌نشده است. آیا اکنون می‌خواهید آن را ذخیره کنید؟"
 
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
-msgstr ""
+msgstr "https://www.cantara.app/tutorial/meta-data/"
 
 #: songeditor.strwelcome
 msgid "Welcome"
-msgstr ""
+msgstr "خوش آمدید"
 
 #: songselection.stractivesongtexfile
 msgid "The following file is opened at the moment: "
-msgstr ""
+msgstr "فایل زیر در حال حاضر باز است: "
 
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
-msgstr ""
+msgstr "تنظیمات…"
 
 #: songselection.strbuttonpraesentation
 msgctxt "songselection.strbuttonpraesentation"
 msgid "Presentation..."
-msgstr ""
+msgstr "ارائه…"
 
 #: songselection.strcannotopensong
 msgid "Error: The Song \"{songname}\" is not available. Skipping."
-msgstr ""
+msgstr "خطا: آهنگ «{songname}» در دسترس نیست. رد می‌شود."
 
 #: songselection.strerror
 msgctxt "songselection.strerror"
 msgid "Error"
-msgstr ""
+msgstr "خطا"
 
 #: songselection.strerroropening
 msgid "Error while opening. Propably you have not the required rights to access this file."
-msgstr ""
+msgstr "خطا در هنگام باز کردن. احتمالاً مجوز لازم برای دسترسی به این فایل را ندارید."
 
 #: songselection.strerrorsaving
 msgid "Error while saving. Propably you have not the required rights to access this file."
-msgstr ""
+msgstr "خطا در هنگام ذخیره. احتمالاً مجوز لازم برای دسترسی به این فایل را ندارید."
 
 #: songselection.strfehlerkeineliederbeipraesentation
 msgid "You have to add songs first."
-msgstr ""
+msgstr "ابتدا باید آهنگ‌ها را اضافه کنید."
 
 #: songselection.strfiledoesnotexist
 msgid "The File you would like to open does not exists."
-msgstr ""
+msgstr "فایلی که می‌خواهید باز کنید وجود ندارد."
 
 #: songselection.strfolie
 msgid "Slide"
-msgstr ""
+msgstr "اسلاید"
 
 #: songselection.strhint
 msgid "Hint"
-msgstr ""
+msgstr "نکته"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
-msgstr ""
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr "Cantara از موتور جاوااسکریپت مرورگر پیش‌فرض محلی شما و کتابخانه متن‌باز جاوااسکریپت PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) برای تولید فایل pptx استفاده می‌کند. بنابراین پس از زدن OK، مرورگر وب شما باز می‌شود و پس از اتمام موفقیت‌آمیز تولید، از شما مکان ذخیره فایل pptx را می‌پرسد. در طول این فرآیند نیازی به اتصال اینترنت نیست و هیچ داده‌ای با شخص دیگری به اشتراک گذاشته نمی‌شود (به جز مرورگر شما). اگر می‌خواهید ادامه دهید، OK را بزنید و این پیام در دفعات بعدی نمایش داده نمی‌شود. اگر نمی‌خواهید ادامه دهید، لطفاً Cancel را بزنید."
 
 #: songselection.strsongisempty
 msgid "The song {songname} is empty. It will not be added."
-msgstr ""
+msgstr "آهنگ {songname} خالی است. اضافه نخواهد شد."
 
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
-msgstr ""
+msgstr "آهنگ‌های موجود در فایل به مخزن آهنگ‌های شما وارد شدند."
 
 #: songselection.strtitleslide
 msgid "Title Slide"
-msgstr ""
+msgstr "اسلاید عنوان"
 
 #: tcfontdialog.caption
 msgid "Font Selection"
-msgstr ""
+msgstr "انتخاب فونت"
 
 #: tcfontdialog.fontpropertiesgroupbox.caption
 msgid "Font Properties"
-msgstr ""
+msgstr "ویژگی‌های فونت"
 
 #: tcfontdialog.fontselectiongroupbox.caption
 msgid "Font"
-msgstr ""
+msgstr "فونت"
 
 #: tcfontdialog.formatationcheckgroup.caption
 msgid "Formatation"
-msgstr ""
+msgstr "قالب‌بندی"
 
 #: tcfontdialog.labelfontsize.caption
 msgid "Font Size:"
-msgstr ""
+msgstr "اندازه فونت:"
 
 #: tcfontdialog.previewlabel.caption
 msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
-msgstr ""
+msgstr "نعمت شگفت‌انگیز، چه صدای شیرینی، که نجات‌دهنده‌ای مانند من را نجات داد! چه نعمت بزرگی است این نعمت."
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
-msgstr ""
+msgstr "انتخاب…"
 
 #: tformimageexport.buttonexportall.caption
 msgid "Export All"
-msgstr ""
+msgstr "خروجی همه"
 
 #: tformimageexport.buttonexportcurrent.caption
 msgctxt "tformimageexport.buttonexportcurrent.caption"
 msgid "Export Current"
-msgstr ""
+msgstr "خروجی فعلی"
 
 #: tformimageexport.buttonreloadpreview.caption
 msgid "Reload Preview..."
-msgstr ""
+msgstr "بارگذاری مجدد پیش‌نمایش…"
 
 #: tformimageexport.caption
 msgid "Image Exporter"
-msgstr ""
+msgstr "خروجی‌دهنده تصویر"
 
 #: tformimageexport.checkboxsync.caption
 msgid "Sync"
-msgstr ""
+msgstr "همگام‌سازی"
 
 #: tformimageexport.groupsettings.caption
 msgctxt "tformimageexport.groupsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "تنظیمات"
 
 #: tformimageexport.itemexport.caption
 msgctxt "tformimageexport.itemexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "خروجی"
 
 #: tformimageexport.itemremove.caption
 msgid "Remove"
-msgstr ""
+msgstr "حذف"
 
 #: tformimageexport.labelfolder.caption
 msgid "Folder: "
-msgstr ""
+msgstr "پوشه: "
 
 #: tformimageexport.labelheight.caption
 msgid "Height:"
-msgstr ""
+msgstr "ارتفاع:"
 
 #: tformimageexport.labelwidth.caption
 msgid "Width: "
-msgstr ""
+msgstr "عرض: "
 
 #: tformpadding.caption
 msgid "Additional Settings"
-msgstr ""
+msgstr "تنظیمات اضافی"
 
 #: tframesettingsdetailed.groupboxpadding.caption
 msgid "Padding"
-msgstr ""
+msgstr "فاصله داخلی"
 
 #: tframesettingsdetailed.labalbottom.caption
 msgid "Bottom: "
-msgstr ""
+msgstr "پایین: "
 
 #: tframesettingsdetailed.labelleft.caption
 msgid "Left:"
-msgstr ""
+msgstr "چپ:"
 
 #: tframesettingsdetailed.labelright.caption
 msgid "Right: "
-msgstr ""
+msgstr "راست: "
 
 #: tframesettingsdetailed.labeltop.caption
 msgid "Top: "
-msgstr ""
+msgstr "بالا: "
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
 msgid "Archive"
-msgstr ""
+msgstr "بایگانی"
 
 #: tfrmdisplaysongcontent.btnclose.caption
 msgctxt "tfrmdisplaysongcontent.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "بستن"
 
 #: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
 msgid "Convert CCLI File to Song Format"
-msgstr ""
+msgstr "تبدیل فایل CCLI به فرمت آهنگ"
 
 #: tfrmdisplaysongcontent.btncopy.caption
 msgctxt "tfrmdisplaysongcontent.btncopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "کپی"
 
 #: tfrmdisplaysongcontent.btnrename.caption
 msgid "Rename"
-msgstr ""
+msgstr "تغییر نام"
 
 #: tfrmdisplaysongcontent.btnsave.caption
 msgctxt "tfrmdisplaysongcontent.btnsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "ذخیره"
 
 #: tfrmdisplaysongcontent.labelccliimporthint.caption
 msgid ""
@@ -342,22 +358,27 @@ msgid ""
 "It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
 "If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
 msgstr ""
+"نکته:\n"
+"\n"
+"فایلی که می‌خواهید باز کنید یک فایل CCLI است.\n"
+"توصیه می‌شود ابتدا آن را به فرمت آهنگ تبدیل کنید و سپس فایل آهنگ را طبق میل خود ویرایش کنید.\n"
+"اگر مایل به انجام این کار هستید، روی دکمه زیر کلیک کنید. فایل CCLI به زیرپوشه «archive» در مخزن آهنگ‌های شما منتقل می‌شود و فایل آهنگ تولیدشده برای ویرایش باز خواهد شد."
 
 #: tfrmdisplaysongcontent.lblsongname.caption
 msgid "Name: "
-msgstr ""
+msgstr "نام: "
 
 #: tfrmeditorwelcome.btnclose.caption
 msgid "Close the Editor"
-msgstr ""
+msgstr "بستن ویرایشگر"
 
 #: tfrmeditorwelcome.btnnewsong.caption
 msgid "Create a new song"
-msgstr ""
+msgstr "ایجاد آهنگ جدید"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
-msgstr ""
+msgstr "باز کردن مستندات در مرورگر وب…"
 
 #: tfrmeditorwelcome.lbldescription.caption
 msgid ""
@@ -365,31 +386,34 @@ msgid ""
 "\n"
 "For detailed information about the syntax, please consider the documentation."
 msgstr ""
+"در اینجا می‌توانید آهنگ‌هایی که می‌خواهید نمایش دهید را تغییر دهید.\n"
+"\n"
+"برای اطلاعات دقیق درباره نحو، لطفاً به مستندات مراجعه کنید."
 
 #: tfrmeditorwelcome.lblhint.caption
 msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
-msgstr ""
+msgstr "لطفاً توجه کنید: فایل‌های متن آهنگ‌ها فایل‌های متنی ساده هستند و می‌توان آن‌ها را با هر ویرایشگر متنی روی سیستم محلی شما ویرایش کرد. Cantara در حال حاضر فقط قابلیت‌های پایه را ارائه می‌دهد."
 
 #: tfrmeditorwelcome.lblsupport.caption
 msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
-msgstr ""
+msgstr "Cantara نرم‌افزار رایگانی است که با امید مفید و سودمند بودن ساخته شده است. مشارکت از طریق GitHub بسیار خوشامد است. آزادانه مسئله ایجاد کنید، درخواست ویژگی بدهید یا pull request ارسال کنید. تمام جلال از آنِ خداست! Soli Deo Gloria."
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
-msgstr ""
+msgstr "به ویرایشگر خوش آمدید!"
 
 #: tfrmfulltextsearch.labalcreateindex.caption
 msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
 msgid "Create Index..."
-msgstr ""
+msgstr "ایجاد نمایه…"
 
 #: tfrmfulltextsearch.labelenterkeyword.caption
 msgid "Enter a search term..."
-msgstr ""
+msgstr "عبارت جستجو را وارد کنید…"
 
 #: tfrmfulltextsearch.labelentersearchterm.caption
 msgid "Enter search term"
-msgstr ""
+msgstr "عبارت جستجو را وارد کنید"
 
 #: tfrmfulltextsearch.labelnoitemsfound.caption
 msgid ""
@@ -397,31 +421,34 @@ msgid ""
 "\n"
 "Try changing the search terms."
 msgstr ""
+"موردی یافت نشد…\n"
+"\n"
+"سعی کنید عبارت جستجو را تغییر دهید."
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
-msgstr ""
+msgstr "باز کردن مخزن گیت‌هاب در مرورگر"
 
 #: tfrminfo.btnopenlicense.caption
 msgid "Show used libraries and licenses"
-msgstr ""
+msgstr "نمایش کتابخانه‌ها و مجوزهای استفاده‌شده"
 
 #: tfrminfo.btnopenwebpage.caption
 msgid "Open Project's Webpage with Browser"
-msgstr ""
+msgstr "باز کردن صفحه وب پروژه در مرورگر"
 
 #: tfrminfo.caption
 msgctxt "tfrminfo.caption"
 msgid "About this Program"
-msgstr ""
+msgstr "درباره این برنامه"
 
 #: tfrminfo.lblauthor.caption
 msgid "Autor: Jan Martin Reckel"
-msgstr ""
+msgstr "نویسنده: Jan Martin Reckel"
 
 #: tfrminfo.lblcompdate.caption
 msgid "lblCompDate"
-msgstr ""
+msgstr "تاریخ کامپایل"
 
 #: tfrminfo.lblinfo.caption
 msgid ""
@@ -431,545 +458,555 @@ msgid ""
 "\n"
 "The author wishes God's blessing for the use of the program!"
 msgstr ""
+"این برنامه تحت مجوز GPL3 منتشر شده است.\n"
+"کد منبع در مخزن گیت‌هاب در دسترس است و مستندات در صفحه وب پروژه یافت می‌شود.\n"
+"شما اجازه دارید این برنامه را تحت شرایط و ضوابط مشخص‌شده در مجوز GPL3 تغییر دهید و دوباره استفاده کنید.\n"
+"\n"
+"نویسنده برای استفاده از این برنامه برکت الهی را آرزو می‌کند!"
 
 #: tfrminfo.lblname.caption
 msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
-msgstr ""
+msgstr "نسخه"
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
-msgstr ""
+msgstr "ذخیره در فایل…"
 
 #: tfrmmarkupexport.caption
 msgid "Export Songs as Markup"
-msgstr ""
+msgstr "خروجی آهنگ‌ها به‌صورت نشانه‌گذاری"
 
 #: tfrmmarkupexport.clipboardbutton.caption
 msgctxt "tfrmmarkupexport.clipboardbutton.caption"
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "کپی به کلیپ‌بورد"
 
 #: tfrmmarkupexport.opendialog.title
 msgid "Load Template File"
-msgstr ""
+msgstr "بارگذاری فایل قالب"
 
 #: tfrmmarkupexport.result.caption
 msgid "Result"
-msgstr ""
+msgstr "نتیجه"
 
 #: tfrmmarkupexport.templatebox.caption
 msgid "Template"
-msgstr ""
+msgstr "قالب"
 
 #: tfrmpresent.caption
 msgid "Presentation"
-msgstr ""
+msgstr "ارائه"
 
 #: tfrmpresent.menuitemmovetoscreen.caption
 msgid "Move to other screen"
-msgstr ""
+msgstr "انتقال به صفحه دیگر"
 
 #: tfrmpresent.menuitemquitpresentation.caption
 msgid "Quit Presentation"
-msgstr ""
+msgstr "خروج از ارائه"
 
 #: tfrmpresent.menuitemtogglefullscreen.caption
 msgid "Fullscreen"
-msgstr ""
+msgstr "تمام‌صفحه"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
-msgstr ""
+msgstr "انتخاب رنگ پس‌زمینه"
 
 #: tfrmsettings.bgpicturedialog.title
 msgctxt "tfrmsettings.bgpicturedialog.title"
 msgid "Open image file"
-msgstr ""
+msgstr "باز کردن فایل تصویر"
 
 #: tfrmsettings.bgpicturefiledialog.title
+#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
-msgstr ""
+msgstr "باز کردن فایل تصویر"
 
 #: tfrmsettings.btnbackgroundcolor.caption
 msgid "Background Color..."
-msgstr ""
+msgstr "رنگ پس‌زمینه…"
 
 #: tfrmsettings.btnbackgroundimage.caption
 msgid "Background Image..."
-msgstr ""
+msgstr "تصویر پس‌زمینه…"
 
 #: tfrmsettings.btnclose.caption
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "بستن"
 
 #: tfrmsettings.btndetails.caption
 msgid "Details..."
-msgstr ""
+msgstr "جزئیات…"
 
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
-msgstr ""
+msgstr "تغییر تنظیمات فونت…"
 
 #: tfrmsettings.btnselectdir.caption
 msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
-msgstr ""
+msgstr "…"
 
 #: tfrmsettings.btntextcolor.caption
 msgid "Text Color..."
-msgstr ""
+msgstr "رنگ متن…"
 
 #: tfrmsettings.caption
 msgctxt "tfrmsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "تنظیمات"
 
 #: tfrmsettings.cbblackscreenonempty.caption
 msgid "Show black screen when slide is empty"
-msgstr ""
+msgstr "نمایش صفحه سیاه وقتی اسلاید خالی است"
 
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
-msgstr ""
+msgstr "اسلاید خالی بین آهنگ‌ها"
 
 #: tfrmsettings.cbfadetransition.caption
 msgid "Fade transition between slides"
-msgstr ""
+msgstr "انتقال محو بین اسلایدها"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
-msgstr ""
+msgstr "در اسلاید اول"
 
 #: tfrmsettings.cbmetadatalastslide.caption
 msgid "at last slide"
-msgstr ""
+msgstr "در اسلاید آخر"
 
 #: tfrmsettings.cbmetatitleslide.caption
 msgid "at special title slide"
-msgstr ""
+msgstr "در اسلاید عنوان ویژه"
 
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
-msgstr ""
+msgstr "نمایش تصویر پس‌زمینه:"
 
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
-msgstr ""
+msgstr "نمایش پیش‌نمایش اسلایدهای بعدی"
 
 #: tfrmsettings.combohorizontal.text
 msgid "Center"
-msgstr ""
+msgstr "مرکز"
 
 #: tfrmsettings.combovertical.text
 msgid "Middle"
-msgstr ""
+msgstr "وسط عمودی"
 
 #: tfrmsettings.gbpresentation.caption
 msgid "Presentation View"
-msgstr ""
+msgstr "نمایش ارائه"
 
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
-msgstr ""
+msgstr "مسیر مخزن آهنگ‌ها:"
 
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
-msgstr ""
+msgstr "ترازبندی: "
 
 #: tfrmsettings.lblfadems.caption
 msgid "ms"
-msgstr ""
+msgstr "میلی‌ثانیه"
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency:"
-msgstr ""
+msgstr "تغییر شفافیت تصویر:"
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
-msgstr ""
+msgstr "lblImageExplainer"
 
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
-msgstr ""
+msgstr "نمایش متاداده:"
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
-msgstr ""
+msgstr "محتوای متاداده:"
 
 #: tfrmsettings.lblwrapafter.caption
 msgid "Automatic wrap after how many lines (0 = off):"
-msgstr ""
+msgstr "خط‌شکنی خودکار پس از چند خط (۰ = خاموش):"
 
 #: tfrmsettings.sbimagebrightness.hint
 msgid "The transparency of the background picture towards the background color"
-msgstr ""
+msgstr "شفافیت تصویر پس‌زمینه نسبت به رنگ پس‌زمینه"
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
-msgstr ""
+msgstr "انتخاب پوشه مخزن آهنگ‌ها"
 
 #: tfrmsettings.textcolordialog.title
 msgid "Select text color"
-msgstr ""
+msgstr "انتخاب رنگ متن"
 
 #: tfrmsongedit.caption
 msgid "Edit Files"
-msgstr ""
+msgstr "ویرایش فایل‌ها"
 
 #: tfrmsongedit.itemcopy.caption
 msgctxt "tfrmsongedit.itemcopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "کپی"
 
 #: tfrmsongedit.itemcut.caption
 msgid "Cut"
-msgstr ""
+msgstr "برش"
 
 #: tfrmsongedit.itemfadein.caption
 msgid "Zoom In"
-msgstr ""
+msgstr "بزرگ‌نمایی"
 
 #: tfrmsongedit.itemfadeout.caption
 msgid "Zoom Out"
-msgstr ""
+msgstr "کوچک‌نمایی"
 
 #: tfrmsongedit.itempaste.caption
 msgid "Paste"
-msgstr ""
+msgstr "چسباندن"
 
 #: tfrmsongedit.itemredo.caption
 msgid "Redo"
-msgstr ""
+msgstr "انجام مجدد"
 
 #: tfrmsongedit.itemundo.caption
 msgid "Undo"
-msgstr ""
+msgstr "واگرد"
 
 #: tfrmsongedit.menuedit.caption
 msgctxt "tfrmsongedit.menuedit.caption"
 msgid "Edit"
-msgstr ""
+msgstr "ویرایش"
 
 #: tfrmsongedit.menufile.caption
 msgctxt "tfrmsongedit.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "فایل"
 
 #: tfrmsongedit.menuitemarchivate.caption
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
 msgid "Archive"
-msgstr ""
+msgstr "بایگانی"
 
 #: tfrmsongedit.menuitemclose.caption
 msgid "Close Editor"
-msgstr ""
+msgstr "بستن ویرایشگر"
 
 #: tfrmsongedit.menuitemcopy.caption
 msgctxt "tfrmsongedit.menuitemcopy.caption"
 msgid "Duplicate"
-msgstr ""
+msgstr "تکرار"
 
 #: tfrmsongedit.menuitemnew.caption
 msgid "New"
-msgstr ""
+msgstr "جدید"
 
 #: tfrmsongedit.menuitemsave.caption
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "ذخیره"
 
 #: tfrmsongedit.view.caption
 msgid "View"
-msgstr ""
+msgstr "نمایش"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: tfrmsongs.btnclear.caption
 msgid "🗑"
-msgstr ""
+msgstr "🗑"
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
-msgstr ""
+msgstr "پاک کردن تمام آهنگ‌های انتخاب‌شده"
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
-msgstr ""
+msgstr "🠗"
 
 #: tfrmsongs.btngoleft.caption
 msgid "←"
-msgstr ""
+msgstr "←"
 
 #: tfrmsongs.btngoright.caption
 msgid "→"
-msgstr ""
+msgstr "→"
 
 #: tfrmsongs.btnquitpresentation.caption
 msgid "×"
-msgstr ""
+msgstr "×"
 
 #: tfrmsongs.btnremove.caption
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tfrmsongs.btnsettings.caption
 msgctxt "tfrmsongs.btnsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "تنظیمات…"
 
 #: tfrmsongs.btnstartpresentation.caption
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
-msgstr ""
+msgstr "ارائه…"
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr ""
+msgstr "🠕"
 
 #: tfrmsongs.buttonclosesongtexfile.caption
 msgid "Close File"
-msgstr ""
+msgstr "بستن فایل"
 
 #: tfrmsongs.caption
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Multi-Screen-Mode (suitable for multiple screens)"
-msgstr ""
+msgstr "حالت چند صفحه‌ای (مناسب برای چندین نمایشگر)"
 
 #: tfrmsongs.edtsearch.hint
 msgid "Search..."
-msgstr ""
+msgstr "جستجو…"
 
 #: tfrmsongs.itemabout.caption
 msgid "Information about the Program"
-msgstr ""
+msgstr "اطلاعات درباره برنامه"
 
 #: tfrmsongs.itemeditsongstyle.caption
 msgid "Edit song style..."
-msgstr ""
+msgstr "ویرایش سبک آهنگ…"
 
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
-msgstr ""
+msgstr "بستن"
 
 #: tfrmsongs.itemexportpictures.caption
 msgid "Images..."
-msgstr ""
+msgstr "تصاویر…"
 
 #: tfrmsongs.itemexportpptx.caption
 msgid "Powerpoint Presentation (pptx)"
-msgstr ""
+msgstr "ارائه پاورپوینت (pptx)"
 
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
-msgstr ""
+msgstr "جستجوی تمام‌متن…"
 
 #: tfrmsongs.itemloadselection.caption
 msgid "Load Song Selection..."
-msgstr ""
+msgstr "بارگذاری انتخاب آهنگ‌ها…"
 
 #: tfrmsongs.itemmarkupexport.caption
 msgid "Markup Text..."
-msgstr ""
+msgstr "خروجی متن نشانه‌گذاری‌شده…"
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
-msgstr ""
+msgstr "باز کردن در ویرایشگر…"
 
 #: tfrmsongs.itempresentation.caption
 msgid "Run Presentation"
-msgstr ""
+msgstr "اجرای ارائه"
 
 #: tfrmsongs.itemreloadsonglist.caption
 msgid "Reload Song Repository"
-msgstr ""
+msgstr "بارگذاری مجدد مخزن آهنگ‌ها"
 
 #: tfrmsongs.itemsaveselection.caption
 msgid "Save Song Selection..."
-msgstr ""
+msgstr "ذخیره انتخاب آهنگ‌ها…"
 
 #: tfrmsongs.itemsaveselectionas.caption
 msgid "Save Song Selection As..."
-msgstr ""
+msgstr "ذخیره انتخاب آهنگ‌ها به‌عنوان…"
 
 #: tfrmsongs.itemselectallsongs.caption
 msgid "Select all Songs"
-msgstr ""
+msgstr "انتخاب همه آهنگ‌ها"
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "تنظیمات…"
 
 #: tfrmsongs.itemshowwelcomeassistent.caption
 msgid "Show Welcome Assistent..."
-msgstr ""
+msgstr "نمایش دستیار خوش‌آمدگویی…"
 
 #: tfrmsongs.itemsongeditor.caption
 msgid "Song Lyrics..."
-msgstr ""
+msgstr "متن آهنگ‌ها…"
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Slide Numbers"
-msgstr ""
+msgstr "شماره‌های اسلاید"
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Presentation is running:"
-msgstr ""
+msgstr "ارائه در حال اجراست:"
 
 #: tfrmsongs.menuedit.caption
 msgctxt "tfrmsongs.menuedit.caption"
 msgid "Edit"
-msgstr ""
+msgstr "ویرایش"
 
 #: tfrmsongs.menuexport.caption
 msgctxt "tfrmsongs.menuexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "خروجی"
 
 #: tfrmsongs.menufile.caption
 msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "فایل"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
-msgstr ""
+msgstr "راهنما"
 
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"
-msgstr ""
+msgstr "باز کردن فهرست آهنگ‌ها"
 
 #: tfrmsongs.panelsongtexstatus.caption
 msgid "PanelSongTeXStatus"
-msgstr ""
+msgstr "پنل وضعیت SongTeX"
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
-msgstr ""
+msgstr "ذخیره فهرست آهنگ‌ها"
 
 #: tfrmsongstyle.btnbrowsebgimage.caption
 msgid "Browse..."
-msgstr ""
+msgstr "مرور…"
 
 #: tfrmsongstyle.btncancel.caption
 msgid "Cancel"
-msgstr ""
+msgstr "لغو"
 
 #: tfrmsongstyle.btnfont.caption
 msgid "Select font..."
-msgstr ""
+msgstr "انتخاب فونت…"
 
 #: tfrmsongstyle.btnok.caption
 msgid "OK"
-msgstr ""
+msgstr "تأیید"
 
 #: tfrmsongstyle.btnreset.caption
 msgid "Reset to global default"
-msgstr ""
+msgstr "بازگرداندن به پیش‌فرض سراسری"
 
 #: tfrmsongstyle.caption
 msgid "Song Style Override"
-msgstr ""
+msgstr "نادیده گرفتن سبک آهنگ"
 
 #: tfrmsongstyle.cbshowbgimage.caption
 msgid "Show background image"
-msgstr ""
+msgstr "نمایش تصویر پس‌زمینه"
 
 #: tfrmsongstyle.cbusecustomstyle.caption
 msgid "Use custom style for this song"
-msgstr ""
+msgstr "استفاده از سبک سفارشی برای این آهنگ"
 
 #: tfrmsongstyle.gbalign.caption
 msgid "Horizontal Alignment"
-msgstr ""
+msgstr "تراز افقی"
 
 #: tfrmsongstyle.gbbackground.caption
 msgid "Background"
-msgstr ""
+msgstr "پس‌زمینه"
 
 #: tfrmsongstyle.gbfont.caption
 msgid "Font && Text Colour"
-msgstr ""
+msgstr "فونت و رنگ متن"
 
 #: tfrmsongstyle.gbpreview.caption
 msgid "Preview"
-msgstr ""
+msgstr "پیش‌نمایش"
 
 #: tfrmsongstyle.lblalignlabel.caption
 msgid "Alignment:"
-msgstr ""
+msgstr "تراز:"
 
 #: tfrmsongstyle.lblbgcolorlabel.caption
 msgid "Background colour:"
-msgstr ""
+msgstr "رنگ پس‌زمینه:"
 
 #: tfrmsongstyle.lblbgimagelabel.caption
 msgid "Path:"
-msgstr ""
+msgstr "مسیر:"
 
 #: tfrmsongstyle.lblfontpreview.caption
 msgid "Arial, 24 pt"
-msgstr ""
+msgstr "Arial، ۲۴ نقطه"
 
 #: tfrmsongstyle.lbltextcolorlabel.caption
 msgid "Text colour:"
-msgstr ""
+msgstr "رنگ متن:"
 
 #: tfrmsongstyle.lbltransparency.caption
 msgid "Transparency (%):"
-msgstr ""
+msgstr "شفافیت (٪):"
 
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr ""
+msgstr "افزودن «Amazing Grace» به عنوان نمونه"
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr ""
+msgstr "بازگشت…"
 
 #: tfrmwelcome.btnnext.caption
 msgid "Continue..."
-msgstr ""
+msgstr "ادامه…"
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr ""
+msgstr "باز کردن مخزن گیت‌هاب…"
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr ""
+msgstr "باز کردن صفحه وب با مستندات…"
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr ""
+msgstr "انتخاب مخزن آهنگ‌ها…"
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr ""
+msgstr "راه‌اندازی Cantara"
 
 #: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
+"Cantara نرم‌افزار رایگان و متن‌باز ارائه آهنگ است.\n"
+"همه آهنگ‌ها باید در یک پوشه مخزن آهنگ قرار داشته باشند. لطفاً اکنون پوشه‌ای را در سیستم فایل خود انتخاب کنید که Cantara از آن به عنوان مخزن آهنگ استفاده کند. اگر هنوز هیچ آهنگی جمع‌آوری نکرده‌اید، ابتدا می‌توانید یک پوشه جدید بسازید یا یک پوشه خالی انتخاب کنید."
 
 #: tfrmwelcome.labelwelcomeheadline.caption
 msgid "Welcome to Cantara!"
-msgstr ""
+msgstr "به Cantara خوش آمدید!"
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
@@ -981,44 +1018,50 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
+"می‌توانید ظاهر ارائه را در پنجره تنظیمات تغییر دهید. همچنین می‌توانید از طریق ویرایشگر فایل‌های آهنگ را اضافه، ویرایش، تکثیر و تبدیل کنید. هر دو در منوی ویرایش در پنجره اصلی یافت می‌شوند.\n"
+"Cantara از دو فرمت آهنگ پشتیبانی می‌کند: فرمت CCLI Songselect و فرمت آهنگ اختصاصی. این کار دانلود و وارد کردن آهنگ‌ها از اینترنت را آسان می‌کند. توجه داشته باشید که بسته به موقعیت مکانی شما و آهنگ خاص، مقررات مجوز برای نمایش عمومی متن آهنگ‌ها ممکن است اعمال شود. مسئولیت استفاده قانونی از این نرم‌افزار تنها بر عهده کاربر است.\n"
+"برای اطلاعات بیشتر درباره برنامه، لطفاً مستندات آنلاین را در صفحه https://www.cantara.app مطالعه کنید.\n"
+"\n"
+"Cantara نرم‌افزار آزاد است و تحت مجوز GPL3 منتشر شده است. کد منبع به‌صورت عمومی در گیت‌هاب در دسترس است. اگر پروژه را دوست دارید، لطفاً در گیت‌هاب به آن ستاره بدهید! بازخورد، گزارش اشکال و درخواست‌های pull نیز بسیار خوشامد است.\n"
+"\n"
+"خداوند شما و استفاده از این نرم‌افزار را برکت دهد!"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr ""
+msgstr "«Amazing Grace» به مخزن شما اضافه شد. اکنون می‌توانید ادامه دهید."
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr ""
+msgstr "تبریک می‌گویم! Cantara اکنون آماده استفاده است!"
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"
-msgstr ""
+msgstr "جستجوی تمام‌متن"
 
 #: welcome.btnnextfinish
 msgid "Finish"
-msgstr ""
+msgstr "پایان"
 
 #: welcome.btnnextnext
 msgid "Next"
-msgstr ""
+msgstr "بعدی"
 
 #: welcome.songrepodirempty
 msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
-msgstr ""
+msgstr "به نظر می‌رسد هنوز هیچ آهنگی اضافه نکرده‌اید. آیا مایلید آهنگ «Amazing Grace» از جان نیوتن را به عنوان نمونه به مخزن آهنگ‌های خود اضافه کنید؟ روی دکمه زیر کلیک کنید و سپس «بعدی» را بزنید تا به مرحله بعد بروید."
 
 #: welcome.songreponotempty
 msgid "The song repository contains already {songcount} songs which you can use with Cantara."
-msgstr ""
+msgstr "مخزن آهنگ‌ها در حال حاضر شامل {songcount} آهنگ است که می‌توانید با Cantara استفاده کنید."
 
 #: welcome.songreponotemptyaddamazinggrace
 msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
-msgstr ""
+msgstr "با این حال اگر مایل باشید، می‌توانیم آهنگ «Amazing Grace» را به عنوان نمونه دیگری اضافه کنیم. برای این کار، لطفاً دکمه زیر را فشار دهید. در غیر این صورت می‌توانید «بعدی» را کلیک کنید."
 
 #: welcome.songreposuccess
 msgid "The selected directory can be successfully used as a song repository."
-msgstr ""
+msgstr "پوشه انتخاب‌شده با موفقیت می‌تواند به عنوان مخزن آهنگ‌ها استفاده شود."
 
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
-msgstr ""
-
+msgstr "لطفاً پیش از ترک راهنما، مسیر مخزن آهنگ‌ها را انتخاب کنید. Cantara بدون آن کار نمی‌کند."

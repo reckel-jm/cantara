@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2024-03-30 22:56+0100\n"
+"PO-Revision-Date: 2026-02-21 09:00+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
@@ -34,6 +34,8 @@ msgid ""
 "You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
 "Thank you for your understanding!"
 msgstr ""
+"U gebruikt Cantara als Flatpak. Door een wijziging in de rechten kan Cantara niet langer bij uw persoonlijke map. Dit maakt uw systeem veiliger, maar betekent ook dat u de locatie van de nummerverzameling opnieuw moet kiezen zodat Cantara toegang krijgt tot die map. Als u een achtergrondafbeelding gebruikte, moet u die ook opnieuw selecteren.\n"
+"Bedankt voor uw begrip!"
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
@@ -265,7 +267,7 @@ msgstr "Voorvertoning herladen…"
 
 #: tformimageexport.caption
 msgid "Image Exporter"
-msgstr "Afbeelding(en) exporteren"
+msgstr "Afbeeldingen exporteren"
 
 #: tformimageexport.checkboxsync.caption
 msgid "Sync"
@@ -719,7 +721,7 @@ msgstr "🗑"
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
-msgstr "Prullenbak legen"
+msgstr "Alle geselecteerde nummers wissen"
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
@@ -764,11 +766,11 @@ msgstr "Bestand sluiten"
 #| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
-msgstr "Nummerselectie (Cantara)"
+msgstr "Cantara"
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Multi-Screen-Mode (suitable for multiple screens)"
-msgstr "Meerdereschermenmodus (voor meerdere beeldschermen)"
+msgstr "Meerschermenmodus (geschikt voor meerdere schermen)"
 
 #: tfrmsongs.edtsearch.hint
 msgid "Search..."
@@ -776,7 +778,11 @@ msgstr "Zoeken…"
 
 #: tfrmsongs.itemabout.caption
 msgid "Information about the Program"
-msgstr "Informatie over programma"
+msgstr "Over dit programma"
+
+#: tfrmsongs.itemeditsongstyle.caption
+msgid "Edit song style..."
+msgstr "Nummerstijl bewerken…"
 
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
@@ -789,19 +795,19 @@ msgstr "Afbeeldingen…"
 
 #: tfrmsongs.itemexportpptx.caption
 msgid "Powerpoint Presentation (pptx)"
-msgstr "Powerpointpresentatie (pptx)"
+msgstr "PowerPoint-presentatie (pptx)"
 
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
-msgstr "Volledige tekst doorzoeken…"
+msgstr "Volledige-tekstzoekopdracht…"
 
 #: tfrmsongs.itemloadselection.caption
 msgid "Load Song Selection..."
-msgstr "Nummerselectie laden…"
+msgstr "Selectie laden…"
 
 #: tfrmsongs.itemmarkupexport.caption
 msgid "Markup Text..."
-msgstr "Tekst markeren…"
+msgstr "Markup exporteren…"
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
@@ -809,19 +815,19 @@ msgstr "Openen in bewerker…"
 
 #: tfrmsongs.itempresentation.caption
 msgid "Run Presentation"
-msgstr "Presenteren"
+msgstr "Presentatie starten"
 
 #: tfrmsongs.itemreloadsonglist.caption
 msgid "Reload Song Repository"
-msgstr "Verzamelingsmap herladen"
+msgstr "Verzameling herladen"
 
 #: tfrmsongs.itemsaveselection.caption
 msgid "Save Song Selection..."
-msgstr "Nummerselectie opslaan…"
+msgstr "Selectie opslaan…"
 
 #: tfrmsongs.itemsaveselectionas.caption
 msgid "Save Song Selection As..."
-msgstr "Nummers opslaan als…"
+msgstr "Selectie opslaan als…"
 
 #: tfrmsongs.itemselectallsongs.caption
 msgid "Select all Songs"
@@ -834,19 +840,19 @@ msgstr "Instellingen…"
 
 #: tfrmsongs.itemshowwelcomeassistent.caption
 msgid "Show Welcome Assistent..."
-msgstr "Instelhulp tonen…"
+msgstr "Welkomsthulp tonen…"
 
 #: tfrmsongs.itemsongeditor.caption
 msgid "Song Lyrics..."
-msgstr "Songtekst…"
+msgstr "Songteksten…"
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Slide Numbers"
-msgstr "Volgnummer"
+msgstr "Dia-nummers"
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Presentation is running:"
-msgstr "Actieve presentatie:"
+msgstr "Presentatie actief:"
 
 #: tfrmsongs.menuedit.caption
 msgctxt "tfrmsongs.menuedit.caption"
@@ -869,19 +875,91 @@ msgstr "Hulp"
 
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"
-msgstr "Nummerlijst tonen"
+msgstr "Nummerlijst openen"
 
 #: tfrmsongs.panelsongtexstatus.caption
 msgid "PanelSongTeXStatus"
-msgstr "PanelSongTeXStatus"
+msgstr "Status songtekstbestand"
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
 msgstr "Nummerlijst opslaan"
 
+#: tfrmsongstyle.btnbrowsebgimage.caption
+msgid "Browse..."
+msgstr "Bladeren…"
+
+#: tfrmsongstyle.btncancel.caption
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: tfrmsongstyle.btnfont.caption
+msgid "Select font..."
+msgstr "Lettertype kiezen…"
+
+#: tfrmsongstyle.btnok.caption
+msgid "OK"
+msgstr "OK"
+
+#: tfrmsongstyle.btnreset.caption
+msgid "Reset to global default"
+msgstr "Standaardinstellingen herstellen"
+
+#: tfrmsongstyle.caption
+msgid "Song Style Override"
+msgstr "Aangepaste nummerstijl"
+
+#: tfrmsongstyle.cbshowbgimage.caption
+msgid "Show background image"
+msgstr "Achtergrondafbeelding tonen"
+
+#: tfrmsongstyle.cbusecustomstyle.caption
+msgid "Use custom style for this song"
+msgstr "Eigen stijl gebruiken voor dit nummer"
+
+#: tfrmsongstyle.gbalign.caption
+msgid "Horizontal Alignment"
+msgstr "Horizontale uitlijning"
+
+#: tfrmsongstyle.gbbackground.caption
+msgid "Background"
+msgstr "Achtergrond"
+
+#: tfrmsongstyle.gbfont.caption
+msgid "Font && Text Colour"
+msgstr "Lettertype en tekstkleur"
+
+#: tfrmsongstyle.gbpreview.caption
+msgid "Preview"
+msgstr "Voorbeeld"
+
+#: tfrmsongstyle.lblalignlabel.caption
+msgid "Alignment:"
+msgstr "Uitlijning:"
+
+#: tfrmsongstyle.lblbgcolorlabel.caption
+msgid "Background colour:"
+msgstr "Achtergrondkleur:"
+
+#: tfrmsongstyle.lblbgimagelabel.caption
+msgid "Path:"
+msgstr "Pad:"
+
+#: tfrmsongstyle.lblfontpreview.caption
+msgid "Arial, 24 pt"
+msgstr "Arial, 24 pt"
+
+#: tfrmsongstyle.lbltextcolorlabel.caption
+msgid "Text colour:"
+msgstr "Tekstkleur:"
+
+#: tfrmsongstyle.lbltransparency.caption
+msgid "Transparency (%):"
+msgstr "Doorzichtigheid (%):"
+
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr "‘Amazing Grace’ toevoegen als voorbeeldnummer"
+msgstr "‘Amazing Grace’ als voorbeeld toevoegen"
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
@@ -889,31 +967,31 @@ msgstr "Terug…"
 
 #: tfrmwelcome.btnnext.caption
 msgid "Continue..."
-msgstr "Volgende…"
+msgstr "Doorgaan…"
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr "GitHub-opslagruimte openen…"
+msgstr "GitHub-pagina openen…"
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr "Lees de documentatie in uw webbrowser…"
+msgstr "Documentatiewebsite openen…"
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr "Kies de nummermap…"
+msgstr "Nummerverzameling kiezen…"
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr "Cantara-instelhulp"
+msgstr "Cantara installatiehulp"
 
 #: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
-"Cantara is een gratis en opensource nummerpresentatieprogramma.\n"
-"Alle nummers dienen aanwezig te zijn in de gekozen map. Kies nu een map op uw systeem die gebruikt dient te worden als opslag. Als u nog geen muziekverzameling heeft, dan kunt u eerst een nieuwe map aanmaken of een lege map kiezen."
+"Cantara is gratis en opensource-software voor het presenteren van nummers.\n"
+"Alle nummers moeten in één map staan. Kies nu een map op uw computer die Cantara als verzamelmap gebruikt. Als u nog geen nummers heeft, maak dan eerst een nieuwe (lege) map aan."
 
 #: tfrmwelcome.labelwelcomeheadline.caption
 msgid "Welcome to Cantara!"

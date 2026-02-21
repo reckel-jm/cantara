@@ -1,80 +1,93 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8"
+msgstr ""
+"Project-Id-Version: Cantara\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-02-21\n"
+"Last-Translator: \n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: editordisplaysongcontent.streditsongnamecaption
 msgid "Edit Song Name"
-msgstr ""
+msgstr "曲名を編集"
 
 #: editordisplaysongcontent.streditsongnamecontent
 msgid "Please enter the new song name: "
-msgstr ""
+msgstr "新しい曲名を入力してください："
 
 #: editordisplaysongcontent.strerrorcclitosong
 msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
-msgstr ""
+msgstr "ファイルが変換できません。曲リポジトリへの書き込み権限があるか確認してください！"
 
 #: editordisplaysongcontent.strfilecannotberenamed
 msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
-msgstr ""
+msgstr "ファイル名を変更できません。曲リポジトリへの書き込み権限があるか確認してください！"
 
 #: flatpakhandling.messagecantaraneedsportaluse
 msgid ""
 "You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
 "Thank you for your understanding!"
 msgstr ""
+"CantaraをFlatpakで使用しています。権限の更新により、Cantaraはホームディレクトリにアクセスできなくなりました（これによりシステムの安全性が向上します）。しかしそのため、曲リポジトリのパスを再度選択してCantaraにアクセス権を与える必要があります。以前に使用していた背景画像がある場合も再度選択してください。\n"
+"ご理解いただきありがとうございます！"
 
 #: formmarkupexport.strloadtemplatefromfile
 msgid "Load Template From File..."
-msgstr ""
+msgstr "ファイルからテンプレートを読み込む…"
 
 #: formmarkupexport.strtitleonly
 msgid "Title Only"
-msgstr ""
+msgstr "タイトルだけ"
 
 #: fulltextsearch.strsongtitle
 msgid "Song Title"
-msgstr ""
+msgstr "曲名"
 
 #: imageexport.strfoldernotvalid
 msgid "Please select a folder in which you want to save the pictures."
-msgstr ""
+msgstr "画像を保存したいフォルダを選択してください。"
 
 #: info.strauthor
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #: info.strbuttongitrepo
 msgid "Open webpage..."
-msgstr ""
+msgstr "ウェブページを開く…"
 
 #: info.strformcaption
 msgctxt "info.strformcaption"
 msgid "About this Program"
-msgstr ""
+msgstr "このプログラムについて"
 
 #: info.strprogramcompiled
 msgid "Program compiled"
-msgstr ""
+msgstr "プログラムコンパイル日時"
 
 #: info.strversion
 msgid "Version"
-msgstr ""
+msgstr "バージョン"
 
 #: info.strwebpage
 msgid "https://www.cantara.app"
-msgstr ""
+msgstr "https://www.cantara.app"
 
 #: pptx.strcantaraexport
 msgid "Cantara Song Presentation Export"
-msgstr ""
+msgstr "Cantara 曲プレゼンテーションのエクスポート"
 
 #: pptx.strsongs
 msgid "Songs"
-msgstr ""
+msgstr "曲"
 
 #: settings.strbrightness
 msgid "Increase brightness by "
-msgstr ""
+msgstr "明るさを上げる："
 
 #: settings.strdefaultmetatemplate
 msgid ""
@@ -82,257 +95,260 @@ msgid ""
 "{%bible%}Bible Reference: {bible}\n"
 "{%ccli-songnumber%}CCLI song number: {ccli-songnumber} | License Number: {ccli-licensenumber}"
 msgstr ""
+"{%author%}作者：{author}\n"
+"{%bible%}聖書参照：{bible}\n"
+"{%ccli-songnumber%}CCLI曲番号：{ccli-songnumber} | ライセンス番号：{ccli-licensenumber}"
 
 #: settings.strerrorcaption
 msgctxt "settings.strerrorcaption"
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: settings.strnobackgroundimageselected
 msgid "You need to select a background image first."
-msgstr ""
+msgstr "先に背景画像を選択してください。"
 
 #: settings.strpictureoriginalstate
 msgid "Picture is shown as it is"
-msgstr ""
+msgstr "画像をそのまま表示"
 
 #: settings.strtransparency
 msgid "Increase transparency by "
-msgstr ""
+msgstr "透明度を上げる："
 
 #: settings.strvalidsongrepository
 msgid "Please choose a valid folder for the song repository!"
-msgstr ""
+msgstr "曲リポジトリとして有効なフォルダを選択してください！"
 
 #: songeditor.strcannotarchivate
 msgid "No valid file selected."
-msgstr ""
+msgstr "有効なファイルが選択されていません。"
 
 #: songeditor.strfilehaschanged
 msgid "The file {{filename}} has been changed after opening. Would you like to save it?"
-msgstr ""
+msgstr "ファイル {{filename}} が開いた後に変更されました。保存しますか？"
 
 #: songeditor.strfilenameexists
 msgid "The name exists already. Please choose an other one."
-msgstr ""
+msgstr "その名前はすでに存在します。別の名前を選んでください。"
 
 #: songeditor.strinvalidfilename
 msgid "Invalid name. No path delimiters (\"/\" on Linux and \"\\\" on Windows) are allowed."
-msgstr ""
+msgstr "無効な名前です。パス区切り文字（Linuxの「/」、Windowsの「\\」）は使用できません。"
 
 #: songeditor.strnewfilecaption
 msgid "New Song"
-msgstr ""
+msgstr "新しい曲"
 
 #: songeditor.strnewfilecontent
 msgid "Please add the name of the new song"
-msgstr ""
+msgstr "新しい曲の名前を入力してください"
 
 #: songeditor.strsaveunsavedchangescaption
 msgid "Question"
-msgstr ""
+msgstr "確認"
 
 #: songeditor.strsaveunsavedchangescontent
 msgid "The file {filename} has unsaved changes. Would you like to save it now?"
-msgstr ""
+msgstr "ファイル {filename} に保存されていない変更があります。今すぐ保存しますか？"
 
 #: songeditor.strsyntaxdocurl
 msgid "https://www.cantara.app/tutorial/meta-data/"
-msgstr ""
+msgstr "https://www.cantara.app/tutorial/meta-data/"
 
 #: songeditor.strwelcome
 msgid "Welcome"
-msgstr ""
+msgstr "ようこそ"
 
 #: songselection.stractivesongtexfile
 msgid "The following file is opened at the moment: "
-msgstr ""
+msgstr "現在開いているファイル："
 
 #: songselection.strbuttoneinstellungen
 msgctxt "songselection.strbuttoneinstellungen"
 msgid "Settings..."
-msgstr ""
+msgstr "設定…"
 
 #: songselection.strbuttonpraesentation
 msgctxt "songselection.strbuttonpraesentation"
 msgid "Presentation..."
-msgstr ""
+msgstr "プレゼンテーション…"
 
 #: songselection.strcannotopensong
 msgid "Error: The Song \"{songname}\" is not available. Skipping."
-msgstr ""
+msgstr "エラー：曲「{songname}」が利用できません。スキップします。"
 
 #: songselection.strerror
 msgctxt "songselection.strerror"
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: songselection.strerroropening
 msgid "Error while opening. Propably you have not the required rights to access this file."
-msgstr ""
+msgstr "開く際にエラーが発生しました。おそらくこのファイルへのアクセス権限がありません。"
 
 #: songselection.strerrorsaving
 msgid "Error while saving. Propably you have not the required rights to access this file."
-msgstr ""
+msgstr "保存中にエラーが発生しました。おそらくこのファイルへの書き込み権限がありません。"
 
 #: songselection.strfehlerkeineliederbeipraesentation
 msgid "You have to add songs first."
-msgstr ""
+msgstr "先に曲を追加してください。"
 
 #: songselection.strfiledoesnotexist
 msgid "The File you would like to open does not exists."
-msgstr ""
+msgstr "開こうとしているファイルが存在しません。"
 
 #: songselection.strfolie
 msgid "Slide"
-msgstr ""
+msgstr "スライド"
 
 #: songselection.strhint
 msgid "Hint"
-msgstr ""
+msgstr "ヒント"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
-msgstr ""
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgstr "Cantaraはpptxファイル生成のため、ローカルの既定ウェブブラウザのJavaScriptエンジンとオープンソースのJavaScriptライブラリPptxGenJS（https://gitbrent.github.io/PptxGenJS/）を使用しています。「OK」を押すとブラウザが開き、生成完了後にpptxファイルの保存場所を尋ねます。この処理中はインターネット接続は不要で、ブラウザ以外にデータは一切共有されません。続行する場合は「OK」を押してください（次回からはこのメッセージは表示されません）。続行しない場合は「キャンセル」を押してください。"
 
 #: songselection.strsongisempty
 msgid "The song {songname} is empty. It will not be added."
-msgstr ""
+msgstr "{songname} の曲は空です。追加されません。"
 
 #: songselection.strsongtexfilesongsimported
 msgid "The songs from the file have been imported to your song repository."
-msgstr ""
+msgstr "ファイルから曲が曲リポジトリにインポートされました。"
 
 #: songselection.strtitleslide
 msgid "Title Slide"
-msgstr ""
+msgstr "タイトルスライド"
 
 #: tcfontdialog.caption
 msgid "Font Selection"
-msgstr ""
+msgstr "フォント選択"
 
 #: tcfontdialog.fontpropertiesgroupbox.caption
 msgid "Font Properties"
-msgstr ""
+msgstr "フォントのプロパティ"
 
 #: tcfontdialog.fontselectiongroupbox.caption
 msgid "Font"
-msgstr ""
+msgstr "フォント"
 
 #: tcfontdialog.formatationcheckgroup.caption
 msgid "Formatation"
-msgstr ""
+msgstr "書式設定"
 
 #: tcfontdialog.labelfontsize.caption
 msgid "Font Size:"
-msgstr ""
+msgstr "フォントサイズ："
 
 #: tcfontdialog.previewlabel.caption
 msgid "Amazing Grace, how sweet the sound, that saved a wretch like me! How gracious is that grace."
-msgstr ""
+msgstr "驚くべき恵み、なんと甘美な響き、私のような惨めな者を救った！なんと恵み深い恵みか。"
 
 #: tformimageexport.buttonchoose.caption
 msgid "Choose..."
-msgstr ""
+msgstr "選択…"
 
 #: tformimageexport.buttonexportall.caption
 msgid "Export All"
-msgstr ""
+msgstr "すべてエクスポート"
 
 #: tformimageexport.buttonexportcurrent.caption
 msgctxt "tformimageexport.buttonexportcurrent.caption"
 msgid "Export Current"
-msgstr ""
+msgstr "現在のをエクスポート"
 
 #: tformimageexport.buttonreloadpreview.caption
 msgid "Reload Preview..."
-msgstr ""
+msgstr "プレビューを再読み込み…"
 
 #: tformimageexport.caption
 msgid "Image Exporter"
-msgstr ""
+msgstr "画像エクスポート"
 
 #: tformimageexport.checkboxsync.caption
 msgid "Sync"
-msgstr ""
+msgstr "同期"
 
 #: tformimageexport.groupsettings.caption
 msgctxt "tformimageexport.groupsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: tformimageexport.itemexport.caption
 msgctxt "tformimageexport.itemexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "エクスポート"
 
 #: tformimageexport.itemremove.caption
 msgid "Remove"
-msgstr ""
+msgstr "削除"
 
 #: tformimageexport.labelfolder.caption
 msgid "Folder: "
-msgstr ""
+msgstr "フォルダ："
 
 #: tformimageexport.labelheight.caption
 msgid "Height:"
-msgstr ""
+msgstr "高さ："
 
 #: tformimageexport.labelwidth.caption
 msgid "Width: "
-msgstr ""
+msgstr "幅："
 
 #: tformpadding.caption
 msgid "Additional Settings"
-msgstr ""
+msgstr "追加設定"
 
 #: tframesettingsdetailed.groupboxpadding.caption
 msgid "Padding"
-msgstr ""
+msgstr "余白"
 
 #: tframesettingsdetailed.labalbottom.caption
 msgid "Bottom: "
-msgstr ""
+msgstr "下："
 
 #: tframesettingsdetailed.labelleft.caption
 msgid "Left:"
-msgstr ""
+msgstr "左："
 
 #: tframesettingsdetailed.labelright.caption
 msgid "Right: "
-msgstr ""
+msgstr "右："
 
 #: tframesettingsdetailed.labeltop.caption
 msgid "Top: "
-msgstr ""
+msgstr "上："
 
 #: tfrmdisplaysongcontent.btnarchivate.caption
 msgctxt "tfrmdisplaysongcontent.btnarchivate.caption"
 msgid "Archive"
-msgstr ""
+msgstr "アーカイブ"
 
 #: tfrmdisplaysongcontent.btnclose.caption
 msgctxt "tfrmdisplaysongcontent.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: tfrmdisplaysongcontent.btnconvertcclifiletosongformat.caption
 msgid "Convert CCLI File to Song Format"
-msgstr ""
+msgstr "CCLIファイルを曲形式に変換"
 
 #: tfrmdisplaysongcontent.btncopy.caption
 msgctxt "tfrmdisplaysongcontent.btncopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "コピー"
 
 #: tfrmdisplaysongcontent.btnrename.caption
 msgid "Rename"
-msgstr ""
+msgstr "名前を変更"
 
 #: tfrmdisplaysongcontent.btnsave.caption
 msgctxt "tfrmdisplaysongcontent.btnsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: tfrmdisplaysongcontent.labelccliimporthint.caption
 msgid ""
@@ -342,22 +358,27 @@ msgid ""
 "It is recommended to convert the file to the song-format first and then edit the song file according to your wishes.\n"
 "If you would like to do so, please click the button below. The CCLI file will then be moved to the subdirectory 'archive' of your song repository and the generated song file will be opened for editing."
 msgstr ""
+"ヒント：\n"
+"\n"
+"これから開くファイルはCCLI形式です。\n"
+"まず曲形式に変換してからご希望通りに編集することをおすすめします。\n"
+"変換したい場合は下のボタンをクリックしてください。CCLIファイルは曲リポジトリの「archive」サブフォルダに移動され、生成された曲ファイルが編集用に開かれます。"
 
 #: tfrmdisplaysongcontent.lblsongname.caption
 msgid "Name: "
-msgstr ""
+msgstr "名前："
 
 #: tfrmeditorwelcome.btnclose.caption
 msgid "Close the Editor"
-msgstr ""
+msgstr "エディタを閉じる"
 
 #: tfrmeditorwelcome.btnnewsong.caption
 msgid "Create a new song"
-msgstr ""
+msgstr "新しい曲を作成"
 
 #: tfrmeditorwelcome.btnopendocs.caption
 msgid "Open Documentation in Webbrowser..."
-msgstr ""
+msgstr "ブラウザでドキュメントを開く…"
 
 #: tfrmeditorwelcome.lbldescription.caption
 msgid ""
@@ -365,31 +386,34 @@ msgid ""
 "\n"
 "For detailed information about the syntax, please consider the documentation."
 msgstr ""
+"ここで表示したい曲を変更できます。\n"
+"\n"
+"構文の詳細についてはドキュメントをご覧ください。"
 
 #: tfrmeditorwelcome.lblhint.caption
 msgid "Please note: The song lyrics files are simple text files and can be also edited with every text editor on your local system. Cantara offers only basic functionality yet."
-msgstr ""
+msgstr "ご注意：歌詞ファイルは単純なテキストファイルなので、ローカルシステム上のどんなテキストエディタでも編集可能です。Cantaraは現在基本機能のみを提供しています。"
 
 #: tfrmeditorwelcome.lblsupport.caption
 msgid "Cantara is free software which has been made with the hope that it might be useful and beneficial. Contribution via Github is more than welcome. Feel free to create issues, feature requests or pull request. All the Glory belongs to God! Soli Deo Gloria."
-msgstr ""
+msgstr "Cantaraは役に立ち祝福となることを願って作られた無料ソフトウェアです。GitHubでの貢献は大歓迎です。気軽にissue作成、機能リクエスト、pull requestをお寄せください。すべての栄光は神に！Soli Deo Gloria。"
 
 #: tfrmeditorwelcome.lblwelcome.caption
 msgid "Welcome to the Editor!"
-msgstr ""
+msgstr "エディタへようこそ！"
 
 #: tfrmfulltextsearch.labalcreateindex.caption
 msgctxt "tfrmfulltextsearch.labalcreateindex.caption"
 msgid "Create Index..."
-msgstr ""
+msgstr "インデックスを作成…"
 
 #: tfrmfulltextsearch.labelenterkeyword.caption
 msgid "Enter a search term..."
-msgstr ""
+msgstr "検索語を入力…"
 
 #: tfrmfulltextsearch.labelentersearchterm.caption
 msgid "Enter search term"
-msgstr ""
+msgstr "検索語を入力"
 
 #: tfrmfulltextsearch.labelnoitemsfound.caption
 msgid ""
@@ -397,31 +421,34 @@ msgid ""
 "\n"
 "Try changing the search terms."
 msgstr ""
+"項目が見つかりませんでした…\n"
+"\n"
+"検索語を変更してみてください。"
 
 #: tfrminfo.btnopengitrepo.caption
 msgid "Open Github Repository with Browser"
-msgstr ""
+msgstr "ブラウザでGitHubリポジトリを開く"
 
 #: tfrminfo.btnopenlicense.caption
 msgid "Show used libraries and licenses"
-msgstr ""
+msgstr "使用ライブラリとライセンスを表示"
 
 #: tfrminfo.btnopenwebpage.caption
 msgid "Open Project's Webpage with Browser"
-msgstr ""
+msgstr "プロジェクトのウェブページをブラウザで開く"
 
 #: tfrminfo.caption
 msgctxt "tfrminfo.caption"
 msgid "About this Program"
-msgstr ""
+msgstr "このプログラムについて"
 
 #: tfrminfo.lblauthor.caption
 msgid "Autor: Jan Martin Reckel"
-msgstr ""
+msgstr "作者：Jan Martin Reckel"
 
 #: tfrminfo.lblcompdate.caption
 msgid "lblCompDate"
-msgstr ""
+msgstr "コンパイル日時"
 
 #: tfrminfo.lblinfo.caption
 msgid ""
@@ -431,545 +458,555 @@ msgid ""
 "\n"
 "The author wishes God's blessing for the use of the program!"
 msgstr ""
+"このプログラムはGPL3ライセンスの下で公開されています。\n"
+"ソースコードはGitHubリポジトリで入手可能で、ドキュメントはプロジェクトのウェブページにあります。\n"
+"GPL3ライセンスの定める条件の下で、このプログラムを変更・再利用できます。\n"
+"\n"
+"作者は、このプログラムの使用に神の祝福があることを願っています！"
 
 #: tfrminfo.lblname.caption
 msgctxt "tfrminfo.lblname.caption"
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrminfo.lblversion.caption
 msgid "lblVersion"
-msgstr ""
+msgstr "バージョン"
 
 #: tfrmmarkupexport.btnsavetofile.caption
 msgid "Save to File..."
-msgstr ""
+msgstr "ファイルに保存…"
 
 #: tfrmmarkupexport.caption
 msgid "Export Songs as Markup"
-msgstr ""
+msgstr "曲をマークアップ形式でエクスポート"
 
 #: tfrmmarkupexport.clipboardbutton.caption
 msgctxt "tfrmmarkupexport.clipboardbutton.caption"
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "クリップボードにコピー"
 
 #: tfrmmarkupexport.opendialog.title
 msgid "Load Template File"
-msgstr ""
+msgstr "テンプレートファイルを読み込む"
 
 #: tfrmmarkupexport.result.caption
 msgid "Result"
-msgstr ""
+msgstr "結果"
 
 #: tfrmmarkupexport.templatebox.caption
 msgid "Template"
-msgstr ""
+msgstr "テンプレート"
 
 #: tfrmpresent.caption
 msgid "Presentation"
-msgstr ""
+msgstr "プレゼンテーション"
 
 #: tfrmpresent.menuitemmovetoscreen.caption
 msgid "Move to other screen"
-msgstr ""
+msgstr "別の画面に移動"
 
 #: tfrmpresent.menuitemquitpresentation.caption
 msgid "Quit Presentation"
-msgstr ""
+msgstr "プレゼンテーション終了"
 
 #: tfrmpresent.menuitemtogglefullscreen.caption
 msgid "Fullscreen"
-msgstr ""
+msgstr "全画面"
 
 #: tfrmsettings.bgcolordialog.title
 msgid "Select background color"
-msgstr ""
+msgstr "背景色を選択"
 
 #: tfrmsettings.bgpicturedialog.title
 msgctxt "tfrmsettings.bgpicturedialog.title"
 msgid "Open image file"
-msgstr ""
+msgstr "画像ファイルを開く"
 
 #: tfrmsettings.bgpicturefiledialog.title
+#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
-msgstr ""
+msgstr "画像ファイルを開く"
 
 #: tfrmsettings.btnbackgroundcolor.caption
 msgid "Background Color..."
-msgstr ""
+msgstr "背景色…"
 
 #: tfrmsettings.btnbackgroundimage.caption
 msgid "Background Image..."
-msgstr ""
+msgstr "背景画像…"
 
 #: tfrmsettings.btnclose.caption
 msgctxt "tfrmsettings.btnclose.caption"
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: tfrmsettings.btndetails.caption
 msgid "Details..."
-msgstr ""
+msgstr "詳細…"
 
 #: tfrmsettings.btnfontsizemanually.caption
 msgid "Change Font Settings..."
-msgstr ""
+msgstr "フォント設定を変更…"
 
 #: tfrmsettings.btnselectdir.caption
 msgctxt "tfrmsettings.btnselectdir.caption"
 msgid "..."
-msgstr ""
+msgstr "…"
 
 #: tfrmsettings.btntextcolor.caption
 msgid "Text Color..."
-msgstr ""
+msgstr "文字色…"
 
 #: tfrmsettings.caption
 msgctxt "tfrmsettings.caption"
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: tfrmsettings.cbblackscreenonempty.caption
 msgid "Show black screen when slide is empty"
-msgstr ""
+msgstr "スライドが空の場合に黒い画面を表示"
 
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
-msgstr ""
+msgstr "曲の間に空のスライド"
 
 #: tfrmsettings.cbfadetransition.caption
 msgid "Fade transition between slides"
-msgstr ""
+msgstr "スライド間のフェード遷移"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
-msgstr ""
+msgstr "最初のスライドで"
 
 #: tfrmsettings.cbmetadatalastslide.caption
 msgid "at last slide"
-msgstr ""
+msgstr "最後のスライドで"
 
 #: tfrmsettings.cbmetatitleslide.caption
 msgid "at special title slide"
-msgstr ""
+msgstr "特別なタイトルスライドで"
 
 #: tfrmsettings.cbshowbackgroundimage.caption
 msgid "Show Background Image:"
-msgstr ""
+msgstr "背景画像を表示："
 
 #: tfrmsettings.cbspoiler.caption
 msgid "Spoil next slides"
-msgstr ""
+msgstr "次のスライドを事前に表示"
 
 #: tfrmsettings.combohorizontal.text
 msgid "Center"
-msgstr ""
+msgstr "中央"
 
 #: tfrmsettings.combovertical.text
 msgid "Middle"
-msgstr ""
+msgstr "垂直中央"
 
 #: tfrmsettings.gbpresentation.caption
 msgid "Presentation View"
-msgstr ""
+msgstr "プレゼンテーション表示"
 
 #: tfrmsettings.labelsongdir.caption
 msgid "Song Repo Path:"
-msgstr ""
+msgstr "曲リポジトリのパス："
 
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
-msgstr ""
+msgstr "配置："
 
 #: tfrmsettings.lblfadems.caption
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency:"
-msgstr ""
+msgstr "画像の透明度を変更："
 
 #: tfrmsettings.lblimageexplainer.caption
 msgid "lblImageExplainer"
-msgstr ""
+msgstr "lblImageExplainer"
 
 #: tfrmsettings.lblmeta.caption
 msgid "Show Meta Data:"
-msgstr ""
+msgstr "メタデータを表示："
 
 #: tfrmsettings.lblmetacontent.caption
 msgid "Meta Data Content:"
-msgstr ""
+msgstr "メタデータの内容："
 
 #: tfrmsettings.lblwrapafter.caption
 msgid "Automatic wrap after how many lines (0 = off):"
-msgstr ""
+msgstr "何行後に自動改行（0 = オフ）："
 
 #: tfrmsettings.sbimagebrightness.hint
 msgid "The transparency of the background picture towards the background color"
-msgstr ""
+msgstr "背景色に対する背景画像の透明度"
 
 #: tfrmsettings.selectdirectorydialog.title
 msgid "Select song repository dictionary"
-msgstr ""
+msgstr "曲リポジトリフォルダを選択"
 
 #: tfrmsettings.textcolordialog.title
 msgid "Select text color"
-msgstr ""
+msgstr "文字色を選択"
 
 #: tfrmsongedit.caption
 msgid "Edit Files"
-msgstr ""
+msgstr "ファイル編集"
 
 #: tfrmsongedit.itemcopy.caption
 msgctxt "tfrmsongedit.itemcopy.caption"
 msgid "Copy"
-msgstr ""
+msgstr "コピー"
 
 #: tfrmsongedit.itemcut.caption
 msgid "Cut"
-msgstr ""
+msgstr "切り取り"
 
 #: tfrmsongedit.itemfadein.caption
 msgid "Zoom In"
-msgstr ""
+msgstr "拡大"
 
 #: tfrmsongedit.itemfadeout.caption
 msgid "Zoom Out"
-msgstr ""
+msgstr "縮小"
 
 #: tfrmsongedit.itempaste.caption
 msgid "Paste"
-msgstr ""
+msgstr "貼り付け"
 
 #: tfrmsongedit.itemredo.caption
 msgid "Redo"
-msgstr ""
+msgstr "やり直し"
 
 #: tfrmsongedit.itemundo.caption
 msgid "Undo"
-msgstr ""
+msgstr "元に戻す"
 
 #: tfrmsongedit.menuedit.caption
 msgctxt "tfrmsongedit.menuedit.caption"
 msgid "Edit"
-msgstr ""
+msgstr "編集"
 
 #: tfrmsongedit.menufile.caption
 msgctxt "tfrmsongedit.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "ファイル"
 
 #: tfrmsongedit.menuitemarchivate.caption
 msgctxt "tfrmsongedit.menuitemarchivate.caption"
 msgid "Archive"
-msgstr ""
+msgstr "アーカイブ"
 
 #: tfrmsongedit.menuitemclose.caption
 msgid "Close Editor"
-msgstr ""
+msgstr "エディタを閉じる"
 
 #: tfrmsongedit.menuitemcopy.caption
 msgctxt "tfrmsongedit.menuitemcopy.caption"
 msgid "Duplicate"
-msgstr ""
+msgstr "複製"
 
 #: tfrmsongedit.menuitemnew.caption
 msgid "New"
-msgstr ""
+msgstr "新規"
 
 #: tfrmsongedit.menuitemsave.caption
 msgctxt "tfrmsongedit.menuitemsave.caption"
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: tfrmsongedit.view.caption
 msgid "View"
-msgstr ""
+msgstr "表示"
 
 #: tfrmsongs.btnadd.caption
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: tfrmsongs.btnclear.caption
 msgid "🗑"
-msgstr ""
+msgstr "🗑"
 
 #: tfrmsongs.btnclear.hint
 msgid "Leere alle ausgewählten Lieder"
-msgstr ""
+msgstr "選択したすべての曲をクリア"
 
 #: tfrmsongs.btndown.caption
 msgid "🠗"
-msgstr ""
+msgstr "🠗"
 
 #: tfrmsongs.btngoleft.caption
 msgid "←"
-msgstr ""
+msgstr "←"
 
 #: tfrmsongs.btngoright.caption
 msgid "→"
-msgstr ""
+msgstr "→"
 
 #: tfrmsongs.btnquitpresentation.caption
 msgid "×"
-msgstr ""
+msgstr "×"
 
 #: tfrmsongs.btnremove.caption
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tfrmsongs.btnsettings.caption
 msgctxt "tfrmsongs.btnsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "設定…"
 
 #: tfrmsongs.btnstartpresentation.caption
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
-msgstr ""
+msgstr "プレゼンテーション…"
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
-msgstr ""
+msgstr "🠕"
 
 #: tfrmsongs.buttonclosesongtexfile.caption
 msgid "Close File"
-msgstr ""
+msgstr "ファイルを閉じる"
 
 #: tfrmsongs.caption
+#, fuzzy
+#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
-msgstr ""
+msgstr "Cantara"
 
 #: tfrmsongs.chkmultiwindowmode.caption
 msgid "Multi-Screen-Mode (suitable for multiple screens)"
-msgstr ""
+msgstr "マルチスクリーンモード（複数画面対応）"
 
 #: tfrmsongs.edtsearch.hint
 msgid "Search..."
-msgstr ""
+msgstr "検索…"
 
 #: tfrmsongs.itemabout.caption
 msgid "Information about the Program"
-msgstr ""
+msgstr "プログラム情報"
 
 #: tfrmsongs.itemeditsongstyle.caption
 msgid "Edit song style..."
-msgstr ""
+msgstr "曲のスタイルを編集…"
 
 #: tfrmsongs.itemend.caption
 msgctxt "tfrmsongs.itemend.caption"
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: tfrmsongs.itemexportpictures.caption
 msgid "Images..."
-msgstr ""
+msgstr "画像…"
 
 #: tfrmsongs.itemexportpptx.caption
 msgid "Powerpoint Presentation (pptx)"
-msgstr ""
+msgstr "PowerPointプレゼンテーション（pptx）"
 
 #: tfrmsongs.itemfulltextsearch.caption
 msgid "Full Text Search..."
-msgstr ""
+msgstr "全文検索…"
 
 #: tfrmsongs.itemloadselection.caption
 msgid "Load Song Selection..."
-msgstr ""
+msgstr "曲の選択を読み込む…"
 
 #: tfrmsongs.itemmarkupexport.caption
 msgid "Markup Text..."
-msgstr ""
+msgstr "マークアップテキスト…"
 
 #: tfrmsongs.itemopenineditor.caption
 msgid "Open in Editor..."
-msgstr ""
+msgstr "エディタで開く…"
 
 #: tfrmsongs.itempresentation.caption
 msgid "Run Presentation"
-msgstr ""
+msgstr "プレゼンテーションを実行"
 
 #: tfrmsongs.itemreloadsonglist.caption
 msgid "Reload Song Repository"
-msgstr ""
+msgstr "曲リポジトリを再読み込み"
 
 #: tfrmsongs.itemsaveselection.caption
 msgid "Save Song Selection..."
-msgstr ""
+msgstr "曲の選択を保存…"
 
 #: tfrmsongs.itemsaveselectionas.caption
 msgid "Save Song Selection As..."
-msgstr ""
+msgstr "曲の選択を名前を付けて保存…"
 
 #: tfrmsongs.itemselectallsongs.caption
 msgid "Select all Songs"
-msgstr ""
+msgstr "すべての曲を選択"
 
 #: tfrmsongs.itemsettings.caption
 msgctxt "tfrmsongs.itemsettings.caption"
 msgid "Settings..."
-msgstr ""
+msgstr "設定…"
 
 #: tfrmsongs.itemshowwelcomeassistent.caption
 msgid "Show Welcome Assistent..."
-msgstr ""
+msgstr "ようこそアシスタントを表示…"
 
 #: tfrmsongs.itemsongeditor.caption
 msgid "Song Lyrics..."
-msgstr ""
+msgstr "歌詞…"
 
 #: tfrmsongs.lblfoilnumber.caption
 msgid "Slide Numbers"
-msgstr ""
+msgstr "スライド番号"
 
 #: tfrmsongs.lblpresentation.caption
 msgid "Presentation is running:"
-msgstr ""
+msgstr "プレゼンテーション実行中："
 
 #: tfrmsongs.menuedit.caption
 msgctxt "tfrmsongs.menuedit.caption"
 msgid "Edit"
-msgstr ""
+msgstr "編集"
 
 #: tfrmsongs.menuexport.caption
 msgctxt "tfrmsongs.menuexport.caption"
 msgid "Export"
-msgstr ""
+msgstr "エクスポート"
 
 #: tfrmsongs.menufile.caption
 msgctxt "tfrmsongs.menufile.caption"
 msgid "File"
-msgstr ""
+msgstr "ファイル"
 
 #: tfrmsongs.menuhelp.caption
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: tfrmsongs.opendialog.title
 msgid "Open Song List"
-msgstr ""
+msgstr "曲リストを開く"
 
 #: tfrmsongs.panelsongtexstatus.caption
 msgid "PanelSongTeXStatus"
-msgstr ""
+msgstr "SongTeXステータス"
 
 #: tfrmsongs.savedialog.title
 msgid "Save Song List"
-msgstr ""
+msgstr "曲リストを保存"
 
 #: tfrmsongstyle.btnbrowsebgimage.caption
 msgid "Browse..."
-msgstr ""
+msgstr "参照…"
 
 #: tfrmsongstyle.btncancel.caption
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: tfrmsongstyle.btnfont.caption
 msgid "Select font..."
-msgstr ""
+msgstr "フォントを選択…"
 
 #: tfrmsongstyle.btnok.caption
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: tfrmsongstyle.btnreset.caption
 msgid "Reset to global default"
-msgstr ""
+msgstr "グローバルデフォルトにリセット"
 
 #: tfrmsongstyle.caption
 msgid "Song Style Override"
-msgstr ""
+msgstr "曲スタイルの上書き"
 
 #: tfrmsongstyle.cbshowbgimage.caption
 msgid "Show background image"
-msgstr ""
+msgstr "背景画像を表示"
 
 #: tfrmsongstyle.cbusecustomstyle.caption
 msgid "Use custom style for this song"
-msgstr ""
+msgstr "この曲にカスタムスタイルを使用"
 
 #: tfrmsongstyle.gbalign.caption
 msgid "Horizontal Alignment"
-msgstr ""
+msgstr "水平配置"
 
 #: tfrmsongstyle.gbbackground.caption
 msgid "Background"
-msgstr ""
+msgstr "背景"
 
 #: tfrmsongstyle.gbfont.caption
 msgid "Font && Text Colour"
-msgstr ""
+msgstr "フォントと文字色"
 
 #: tfrmsongstyle.gbpreview.caption
 msgid "Preview"
-msgstr ""
+msgstr "プレビュー"
 
 #: tfrmsongstyle.lblalignlabel.caption
 msgid "Alignment:"
-msgstr ""
+msgstr "配置："
 
 #: tfrmsongstyle.lblbgcolorlabel.caption
 msgid "Background colour:"
-msgstr ""
+msgstr "背景色："
 
 #: tfrmsongstyle.lblbgimagelabel.caption
 msgid "Path:"
-msgstr ""
+msgstr "パス："
 
 #: tfrmsongstyle.lblfontpreview.caption
 msgid "Arial, 24 pt"
-msgstr ""
+msgstr "Arial, 24 pt"
 
 #: tfrmsongstyle.lbltextcolorlabel.caption
 msgid "Text colour:"
-msgstr ""
+msgstr "文字色："
 
 #: tfrmsongstyle.lbltransparency.caption
 msgid "Transparency (%):"
-msgstr ""
+msgstr "透明度（%）："
 
 #: tfrmwelcome.btnaddexamplesong.caption
 msgid "Add \"Amazing Grace\" as an example"
-msgstr ""
+msgstr "「Amazing Grace」を例として追加"
 
 #: tfrmwelcome.btnback.caption
 msgid "Back..."
-msgstr ""
+msgstr "戻る…"
 
 #: tfrmwelcome.btnnext.caption
 msgid "Continue..."
-msgstr ""
+msgstr "続ける…"
 
 #: tfrmwelcome.btnopengithubrepo.caption
 msgid "Open Github Repository..."
-msgstr ""
+msgstr "GitHubリポジトリを開く…"
 
 #: tfrmwelcome.btnopenwebpage.caption
 msgid "Open Webpage with Documentation..."
-msgstr ""
+msgstr "ドキュメント付きウェブページを開く…"
 
 #: tfrmwelcome.btnselectsongrepodir.caption
 msgid "Select Song Repository..."
-msgstr ""
+msgstr "曲リポジトリを選択…"
 
 #: tfrmwelcome.caption
 msgid "Cantara Setup"
-msgstr ""
+msgstr "Cantara セットアップ"
 
 #: tfrmwelcome.labelwelcome.caption
 msgid ""
 "Cantara is a free and open source song presentation software.\n"
 "All songs should be located in a song repository directory. Please select now a directory on your file system which Cantara will use as its song repository. If you haven't collected any songs yet, you can create a new folder first or choose an empty one."
 msgstr ""
+"Cantaraは無料のオープンソース曲プレゼンテーションソフトウェアです。\n"
+"すべての曲は1つの曲リポジトリフォルダに置く必要があります。今すぐCantaraが曲リポジトリとして使用するファイルシステム上のフォルダを選択してください。まだ曲を集めていない場合は、まず新しいフォルダを作成するか、空のフォルダを選んでください。"
 
 #: tfrmwelcome.labelwelcomeheadline.caption
 msgid "Welcome to Cantara!"
-msgstr ""
+msgstr "Cantaraへようこそ！"
 
 #: tfrmwelcome.lbladditionalinformation.caption
 msgid ""
@@ -981,44 +1018,50 @@ msgid ""
 "\n"
 "May God bless you and the use of this software!"
 msgstr ""
+"設定ダイアログでプレゼンテーションの外観を調整できます。また、エディタを使って曲ファイルの追加・編集・複製・変換が可能です。どちらもメインウィンドウの「編集」メニューにあります。\n"
+"CantaraはCCLI Songselect形式と独自の曲形式の2つをサポートしています。これによりインターネットから曲を簡単にダウンロード・インポートできます。地域や曲によっては歌詞の公開上映に関するライセンス規制が適用される可能性があるのでご注意ください。このソフトウェアの合法的使用責任はユーザーのみにあります。\n"
+"プログラムの詳細はhttps://www.cantara.appのオンラインドキュメントをご覧ください。\n"
+"\n"
+"CantaraはGPL3ライセンスで公開されているフリーソフトウェアです。ソースコードはGitHubで公開されています。プロジェクトが気に入ったらGitHubでスターを付けてください！フィードバック、バグ報告、プルリクエストも大歓迎です。\n"
+"\n"
+"神があなたとこのソフトウェアの使用を祝福されますように！"
 
 #: tfrmwelcome.lblsongadded.caption
 msgid "\"Amazing Grace\" has been added to your repository. You can now continue."
-msgstr ""
+msgstr "「Amazing Grace」がリポジトリに追加されました。続行できます。"
 
 #: tfrmwelcome.lblsuccessheadline.caption
 msgid "Congratulations! Cantara is now ready to use!"
-msgstr ""
+msgstr "おめでとうございます！Cantaraの使用準備が整いました！"
 
 #: tfrmwrapperfulltextsearch.caption
 msgid "Fulltext Search"
-msgstr ""
+msgstr "全文検索"
 
 #: welcome.btnnextfinish
 msgid "Finish"
-msgstr ""
+msgstr "完了"
 
 #: welcome.btnnextnext
 msgid "Next"
-msgstr ""
+msgstr "次へ"
 
 #: welcome.songrepodirempty
 msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
-msgstr ""
+msgstr "まだ曲を追加していないようです。John Newtonの「Amazing Grace」を例として曲リポジトリに追加しますか？下のボタンをクリックし、「次へ」を押して次のステップに進んでください。"
 
 #: welcome.songreponotempty
 msgid "The song repository contains already {songcount} songs which you can use with Cantara."
-msgstr ""
+msgstr "曲リポジトリにはすでにCantaraで使用可能な{songcount}曲が含まれています。"
 
 #: welcome.songreponotemptyaddamazinggrace
 msgid "However if you like, we can add the song \"Amazing Grace\" as an other example. For that, please press the button below. Else you can click \"Next\"."
-msgstr ""
+msgstr "お望みなら「Amazing Grace」をもう一つの例として追加できます。その場合は下のボタンを押してください。不要なら「次へ」をクリックしてください。"
 
 #: welcome.songreposuccess
 msgid "The selected directory can be successfully used as a song repository."
-msgstr ""
+msgstr "選択したフォルダを曲リポジトリとして正常に使用できます。"
 
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
-msgstr ""
-
+msgstr "アシスタントを終了する前に曲リポジトリのパスを選択してください。それがないとCantaraは動作しません。"
