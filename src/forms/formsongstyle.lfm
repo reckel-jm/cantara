@@ -106,16 +106,16 @@ object frmSongStyle: TfrmSongStyle
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 5
+    Left = 2
     Height = 152
     Top = 96
-    Width = 704
+    Width = 710
     Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Left = 5
-    BorderSpacing.Right = 5
+    BorderSpacing.Left = 2
+    BorderSpacing.Right = 2
     Caption = 'Background'
     ClientHeight = 124
-    ClientWidth = 698
+    ClientWidth = 704
     TabOrder = 2
     object lblBgColorLabel: TLabel
       AnchorSideTop.Control = pnlBgColor
@@ -129,7 +129,9 @@ object frmSongStyle: TfrmSongStyle
     end
     object pnlBgColor: TPanel
       AnchorSideTop.Control = gbBackground
-      Left = 664
+      AnchorSideRight.Control = gbBackground
+      AnchorSideRight.Side = asrBottom
+      Left = 680
       Height = 24
       Top = 0
       Width = 24
@@ -150,7 +152,7 @@ object frmSongStyle: TfrmSongStyle
       Left = 0
       Height = 26
       Top = 24
-      Width = 698
+      Width = 704
       Anchors = [akTop, akLeft, akRight]
       Caption = 'Show background image'
       ParentFont = False
@@ -176,7 +178,7 @@ object frmSongStyle: TfrmSongStyle
       Left = 42
       Height = 28
       Top = 55
-      Width = 567
+      Width = 573
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 5
       BorderSpacing.Top = 5
@@ -187,7 +189,7 @@ object frmSongStyle: TfrmSongStyle
     object btnBrowseBgImage: TButton
       AnchorSideTop.Control = edtBgImagePath
       AnchorSideTop.Side = asrCenter
-      Left = 614
+      Left = 620
       Height = 28
       Top = 55
       Width = 76
@@ -212,7 +214,7 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Control = gbBackground
       AnchorSideRight.Side = asrBottom
-      Left = 628
+      Left = 634
       Height = 29
       Top = 89
       Width = 70
@@ -228,17 +230,17 @@ object frmSongStyle: TfrmSongStyle
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 5
+    Left = 2
     Height = 60
     Top = 253
-    Width = 704
+    Width = 710
     Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Left = 5
+    BorderSpacing.Left = 2
     BorderSpacing.Top = 5
-    BorderSpacing.Right = 5
+    BorderSpacing.Right = 2
     Caption = 'Horizontal Alignment'
     ClientHeight = 32
-    ClientWidth = 698
+    ClientWidth = 704
     TabOrder = 3
     object lblAlignLabel: TLabel
       AnchorSideTop.Control = cboHAlign
@@ -254,7 +256,7 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideTop.Control = gbAlign
       AnchorSideRight.Control = gbAlign
       AnchorSideRight.Side = asrBottom
-      Left = 578
+      Left = 584
       Height = 29
       Top = 0
       Width = 120
@@ -272,22 +274,29 @@ object frmSongStyle: TfrmSongStyle
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnReset
-    Left = 5
+    Left = 2
     Height = 328
     Top = 320
-    Width = 709
+    Width = 710
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Left = 5
+    BorderSpacing.Left = 2
     BorderSpacing.Top = 7
+    BorderSpacing.Right = 2
     Caption = 'Preview'
     ClientHeight = 300
-    ClientWidth = 703
+    ClientWidth = 704
     TabOrder = 4
     object imgPreview: TImage
-      Left = 6
-      Height = 292
-      Top = 4
-      Width = 691
+      AnchorSideLeft.Control = gbPreview
+      AnchorSideTop.Control = gbPreview
+      AnchorSideRight.Control = gbPreview
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = gbPreview
+      AnchorSideBottom.Side = asrBottom
+      Left = 0
+      Height = 300
+      Top = 0
+      Width = 704
       Anchors = [akTop, akLeft, akRight, akBottom]
       Proportional = True
       Stretch = True
