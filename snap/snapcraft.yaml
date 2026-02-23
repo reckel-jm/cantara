@@ -19,12 +19,6 @@ platforms:
 
 icon: app.cantara.Cantara.png
 
-slots:
-  cantara-dbus:
-    interface: dbus
-    bus: session
-    name: app.cantara.Cantara
-
 apps:
   cantara:
     command: cantara       # binary lives at $SNAP/bin/cantara
@@ -74,6 +68,7 @@ parts:
     override-pull: |
       craftctl default
       git submodule update --init --recursive
+
     override-build: |
       set -eux
 
