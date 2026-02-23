@@ -13,6 +13,9 @@ platforms:
   amd64:
     build-on: [amd64]
     build-for: [amd64]
+  arm64:
+    build-on: [arm64]
+    build-for: [arm64]
 
 icon: app.cantara.Cantara.png
 
@@ -40,8 +43,8 @@ parts:
 
   cantara:
     plugin: nil
-    source: https://github.com/reckel-jm/cantara.git
-    source-type: git
+    source: .
+    source-type: local
     build-packages:
       - build-essential
       - git
@@ -74,9 +77,27 @@ parts:
     override-build: |
       set -eux
 
-      wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.10/libqt6pas6-dev_6.2.10-1_amd64.deb
-      wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.10/libqt6pas6_6.2.10-1_amd64.deb
-      apt install -y ./libqt6pas6_6.2.10-1_amd64.deb ./libqt6pas6-dev_6.2.10-1_amd64.deb
+      # Detect architecture and set variables accordingly
+      ARCH=$(dpkg --print-architecture)
+      case "$ARCH" in
+        amd64)
+          DEB_ARCH="amd64"
+          LIB_DIR="x86_64-linux-gnu"
+          ;;
+        arm64)
+          DEB_ARCH="arm64"
+          LIB_DIR="aarch64-linux-gnu"
+          ;;
+        *)
+          echo "Unsupported architecture: $ARCH"
+          exit 1
+          ;;
+      esac
+
+      # Download and install architecture-specific libqt6pas
+      wget "https://github.com/davidbannon/libqt6pas/releases/download/v6.2.10/libqt6pas6-dev_6.2.10-1_${DEB_ARCH}.deb"
+      wget "https://github.com/davidbannon/libqt6pas/releases/download/v6.2.10/libqt6pas6_6.2.10-1_${DEB_ARCH}.deb"
+      apt install -y "./libqt6pas6_6.2.10-1_${DEB_ARCH}.deb" "./libqt6pas6-dev_6.2.10-1_${DEB_ARCH}.deb"
 
       cd src
 
@@ -100,7 +121,6 @@ parts:
         "$SNAPCRAFT_PART_INSTALL/Cantara.ico"
 
       # ── Install PNG icon into standard hicolor theme path ────────────────
-      # ../  from src/ = project root = $SNAPCRAFT_PART_SRC
       install -Dm644 ../app.cantara.Cantara.png \
         "$SNAPCRAFT_PART_INSTALL/app.cantara.Cantara.png"
 
@@ -108,9 +128,9 @@ parts:
       install -Dm644 ../cantara.desktop \
         "$SNAPCRAFT_PART_INSTALL/cantara.desktop"
 
-      cp -r /usr/lib/x86_64-linux-gnu/libQt6Pas.so.6* $SNAPCRAFT_PART_INSTALL/usr/lib/
+      # ── Copy libQt6Pas using architecture-specific path ──────────────────
+      cp -r "/usr/lib/${LIB_DIR}/libQt6Pas.so.6"* "$SNAPCRAFT_PART_INSTALL/usr/lib/"
 
-  # ── Strip documentation from the prime directory ─────────────────
   cleanup:
     after: [cantara]
     plugin: nil
