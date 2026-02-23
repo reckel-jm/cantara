@@ -56,10 +56,12 @@ type
     SlideList: TSlideList;
     cur: Integer; //The current Index of the String List which is shown
     FullScreen: Boolean;
+    BlackScreenActive: Boolean;
     PresentationCanvas: TPresentationCanvasHandler;
     SlideBitmap: TBGRABitmap;
     procedure GoPrevious;
     procedure GoNext;
+    procedure ToggleBlack;
     procedure Refresh;
     procedure ShowFirst;
   end;
@@ -81,6 +83,7 @@ const
     (VK_LEFT, VK_UP, VK_MEDIA_PREV_TRACK, VK_BROWSER_BACK, VK_PRIOR);
   ToggleFullscreenKeys: array[0..1] of Word = (VK_F11, VK_F5);
   EscapeKeys: array of Word = (VK_Escape);
+  BlackKeys: array[0..1] of Word = (VK_B, VK_OEM_PERIOD);
 
 var
   frmPresent: TfrmPresent;
@@ -105,7 +108,20 @@ end;
 
 procedure TfrmPresent.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  if key In GoRightKeys then
+  if key In BlackKeys then ToggleBlack
+  else if BlackScreenActive then
+  begin
+    // Any navigation key also exits black screen
+    if (key In GoRightKeys) or (key In GoLeftKeys) then
+    begin
+      BlackScreenActive := False;
+      if key In GoRightKeys then GoNext
+      else GoPrevious;
+    end
+    else if key In ToggleFullscreenKeys then SwitchFullscreen()
+    else if key In EscapeKeys then self.Hide;
+  end
+  else if key In GoRightKeys then
     GoNext
   else if key In GoLeftKeys then GoPrevious
   else if key In ToggleFullscreenKeys then SwitchFullscreen()
@@ -127,6 +143,61 @@ begin
   begin
     Dec(cur);
     ShowItem(cur);
+  end;
+end;
+
+procedure TfrmPresent.ToggleBlack;
+var
+  BlackBitmap: TBGRABitmap;
+  CanFade: Boolean;
+begin
+  if BlackScreenActive then
+  begin
+    // Restore the current slide
+    BlackScreenActive := False;
+    ShowItem(cur);
+  end
+  else
+  begin
+    // Go to black
+    BlackScreenActive := True;
+
+    // If a fade is already running, snap to its target first
+    if FadeTimer.Enabled then
+    begin
+      FadeTimer.Enabled := False;
+      FadeStep := 0;
+      FadePreviousBitmap.SetSize(FadeNextBitmap.Width, FadeNextBitmap.Height);
+      FadePreviousBitmap.Assign(FadeNextBitmap);
+    end;
+
+    CanFade := PresentationCanvas.PresentationStyleSettings.FadeTransition
+               and (FadePreviousBitmap.Width = Self.Width)
+               and (FadePreviousBitmap.Height = Self.Height)
+               and (Self.Width > 0) and (Self.Height > 0);
+
+    BlackBitmap := TBGRABitmap.Create(Self.Width, Self.Height, clBlack);
+    try
+      if CanFade then
+      begin
+        FadeNextBitmap.SetSize(Self.Width, Self.Height);
+        FadeBlendBitmap.SetSize(Self.Width, Self.Height);
+        FadeNextBitmap.Assign(BlackBitmap);
+        FadeTimer.Interval := Max(1,
+          PresentationCanvas.PresentationStyleSettings.FadeDurationMs div FADE_STEPS);
+        FadeTimer.Enabled := True;
+      end
+      else
+      begin
+        BlackBitmap.InvalidateBitmap;
+        ImageShower.Picture.Bitmap.Assign(BlackBitmap.Bitmap);
+        FadePreviousBitmap.SetSize(Self.Width, Self.Height);
+        FadePreviousBitmap.Assign(BlackBitmap);
+        ConnectedController.ReloadPresentationImage;
+      end;
+    finally
+      BlackBitmap.Free;
+    end;
   end;
 end;
 
@@ -263,6 +334,7 @@ procedure TfrmPresent.FormCreate(Sender: TObject);
 begin
   cur := 0;
   FullScreen := False;
+  BlackScreenActive := False;
   self.WindowState := wsMaximized;
   PresentationCanvas := TPresentationCanvasHandler.Create;
   self.SlideList := TSlideLIst.Create(True);
@@ -291,6 +363,7 @@ end;
 
 procedure TfrmPresent.FormHide(Sender: TObject);
 begin
+  BlackScreenActive := False;
   if FadeTimer.Enabled then
   begin
     FadeTimer.Enabled := False;

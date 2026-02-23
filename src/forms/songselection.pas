@@ -38,6 +38,7 @@ type
     btnClear: TButton;
     btnDown: TButton;
     btnQuitPresentation: TButton;
+    btnToggleBlack: TButton;
     btnRemove: TButton;
     btnGoLeft: TButton;
     btnGoRight: TButton;
@@ -95,6 +96,7 @@ type
     procedure btnGoLeftClick(Sender: TObject);
     procedure btnGoRightClick(Sender: TObject);
     procedure btnQuitPresentationClick(Sender: TObject);
+    procedure btnToggleBlackClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
     procedure btnStartPresentationClick(Sender: TObject);
@@ -935,6 +937,11 @@ end;
 procedure TfrmSongs.btnQuitPresentationClick(Sender: TObject);
 begin
   frmPresent.Hide;
+end;
+
+procedure TfrmSongs.btnToggleBlackClick(Sender: TObject);
+begin
+  frmPresent.ToggleBlack;
 end;
 
 procedure TfrmSongs.btnRemoveClick(Sender: TObject);

@@ -186,6 +186,23 @@ object frmSongs: TfrmSongs
         TabOrder = 2
         OnClick = btnQuitPresentationClick
       end
+      object btnToggleBlack: TButton
+        AnchorSideLeft.Control = btnQuitPresentation
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = ControlPanel
+        AnchorSideBottom.Control = ControlPanel
+        AnchorSideBottom.Side = asrBottom
+        Left = 227
+        Height = 45
+        Top = 2
+        Width = 75
+        Align = alCustom
+        Anchors = [akTop, akLeft, akBottom]
+        Caption = '■'
+        ModalResult = 5
+        TabOrder = 3
+        OnClick = btnToggleBlackClick
+      end
     end
     object lblFoilNumber: TLabel
       AnchorSideLeft.Control = SplitterContentImage
