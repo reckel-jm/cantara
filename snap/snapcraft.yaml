@@ -1,117 +1,121 @@
 name: cantara
 version: '2.7.0'
-summary: A Song Presentation Software.
+summary: Open Source Song Presentation Software for Churches and Small Groups
 description: |
-  A simple, leightweight but powerful program for song presentation in churches, small groups or at karaoke parties.
+  A simple, lightweight but powerful program for song presentation in churches,
+  small groups or at karaoke parties.
+
 confinement: strict
-icon: app.cantara.Cantara.png
-base: core22
+base: core24
 grade: stable
 
-architectures:
-  - build-on: amd64
-    build-for: amd64
-  #- build-on: arm64
-  #  build-for: arm64
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
 
-plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes:gtk-3-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes:icon-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes:sounds-themes
+icon: app.cantara.Cantara.png
 
-parts:
-  lazarus:
-    plugin: nil
-    source: .
-    source-type: local
-    build-packages:
-    - wget
-    - libgtk2.0-dev
-    override-build: |
-      if [ "$SNAP_ARCH" = "amd64" ]
-      then
-        wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.6/lazarus-project_3.6.0-0_amd64.deb"
-        wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.6/fpc-laz_3.2.2-210709_amd64.deb"
-        wget -nc "https://sourceforge.net/projects/lazarus/files/Lazarus%20Linux%20amd64%20DEB/Lazarus%203.6/fpc-src_3.2.2-210709_amd64.deb"
-        apt -y install "./lazarus-project_3.6.0-0_amd64.deb" "./fpc-laz_3.2.2-210709_amd64.deb" "./fpc-src_3.2.2-210709_amd64.deb"
-      fi
-    prime: [-*]
-  cantara:
-    after: [lazarus]
-    plugin: nil
-    source: .
-    source-type: local
-    build-packages:
-    - build-essential
-    stage-packages:
-    - qt5-gtk-platformtheme
-    - qtwayland5
-
-    override-build: |
-      wget -nc "https://github.com/davidbannon/libqt5pas/releases/download/v1.2.16/libqt5pas-dev_2.16-4_amd64.deb"
-      wget -nc "https://github.com/davidbannon/libqt5pas/releases/download/v1.2.16/libqt5pas1_2.16-4_amd64.deb"
-      apt -y install "./libqt5pas1_2.16-4_amd64.deb" "./libqt5pas-dev_2.16-4_amd64.deb"
-      cd src
-      lazbuild --ws="qt5" bgrabitmap/bgrabitmap/bgrabitmappack.lpk
-      lazbuild --ws="qt5" metadarkstyle/metadarkstyle.lpk
-      lazbuild -B --bm="ReleaseConfined" --ws="qt5" Cantara.lpi
-      cp -r languages $SNAPCRAFT_PART_INSTALL/
-      install Cantara.ico $SNAPCRAFT_PART_INSTALL/
-      install cantara $SNAPCRAFT_PART_INSTALL/
-      cp -r backgrounds $SNAPCRAFT_PART_INSTALL/
-      cd ..
-      install cantara.desktop $SNAPCRAFT_PART_INSTALL/
-      install app.cantara.Cantara.png $SNAPCRAFT_PART_INSTALL/
-      mkdir -p /usr/lib/x86_64-linux-gnu
-      cp /usr/lib/x86_64-linux-gnu/libQt5Pas* $SNAPCRAFT_PART_INSTALL/usr/lib/x86_64-linux-gnu/
-    stage:
-    - lib
-    - usr
-    - etc
-    - cantara
-    - languages
-    - cantara.desktop
-    - Cantara.ico
-    - app.cantara.Cantara.png
-  cleanup:
-    after: [cantara]
-    plugin: nil
-    build-snaps: [kf5-5-113-qt-5-15-11-core22]
-    override-prime: |
-      set -eux
-      for snap in "kf5-5-113-qt-5-15-11-core22"; do  # List all content-snaps you're using here
-        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" "$SNAPCRAFT_PRIME/usr/{}" \;
-      done
-      for cruft in bug lintian man icons; do
-        rm -rf $SNAPCRAFT_PRIME/usr/share/$cruft
-      done
-      find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
-      find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
-      find $SNAPCRAFT_PRIME/usr/lib -type f,l -name 'libQt*.so*' ! -name 'libQt5Pas*.so*' -delete
+slots:
+  cantara-dbus:
+    interface: dbus
+    bus: session
+    name: app.cantara.Cantara
 
 apps:
   cantara:
-    extensions:
-      - kde-neon
-    command: cantara
+    command: cantara       # binary lives at $SNAP/bin/cantara
     desktop: cantara.desktop
-    environment: 
-      DISABLE_WAYLAND: 1
+    extensions: [ "kde-neon-6" ]
     plugs:
-    - home
-    - desktop
-    - desktop-legacy
-    - opengl
-    - x11
-    - unity7
-    - wayland
-    - gsettings
+      - desktop
+      - desktop-legacy
+      - opengl
+      - x11
+      - wayland
+      - audio-playback
+      - gsettings
+
+parts:
+
+  cantara:
+    plugin: nil
+    source: https://github.com/reckel-jm/cantara.git
+    source-type: git
+    build-packages:
+      - build-essential
+      - git
+      - lcl
+      - lcl-utils
+      - lazarus          # Pulls in Lazarus IDE and LCL
+      - fpc              # Pulls in Free Pascal Compiler
+      - wget
+    stage-packages:
+      # - libqt5pas1       # Runtime library bundled into the final
+      - libxinerama1
+      - libqt6dbus6t64
+      - libqt6core6t64
+      - libqt6gui6t64
+      - libqt6widgets6t64
+      - libqt6printsupport6t64
+      - libb2-1
+      - libdouble-conversion3
+      - libmd4c0
+    stage:
+      - cantara
+      - languages
+      - cantara.desktop
+      - Cantara.ico
+      - app.cantara.Cantara.png
+      - usr/lib/libQt6Pas.so.6*
+    override-pull: |
+      craftctl default
+      git submodule update --init --recursive
+    override-build: |
+      set -eux
+
+      wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.10/libqt6pas6-dev_6.2.10-1_amd64.deb
+      wget https://github.com/davidbannon/libqt6pas/releases/download/v6.2.10/libqt6pas6_6.2.10-1_amd64.deb
+      apt install -y ./libqt6pas6_6.2.10-1_amd64.deb ./libqt6pas6-dev_6.2.10-1_amd64.deb
+
+      cd src
+
+      # Build required library packages with Qt6 widgetset
+      lazbuild --ws=qt6 bgrabitmap/bgrabitmap/bgrabitmappack.lpk
+      lazbuild --ws=qt6 metadarkstyle/metadarkstyle.lpk
+
+      # Build Cantara with the ReleaseConfined mode (stripped, optimised, Qt6)
+      lazbuild -B --bm="ReleaseConfined" --ws=qt6 Cantara.lpi
+
+      # ── Install binary ───────────────────────────────────────────────────
+      mkdir -p "$SNAPCRAFT_PART_INSTALL/"
+      install -m 755 cantara "$SNAPCRAFT_PART_INSTALL/cantara"
+
+      # ── Install data dirs (both live inside src/, not the project root) ──
+      cp -r languages   "$SNAPCRAFT_PART_INSTALL/"
+      cp -r backgrounds "$SNAPCRAFT_PART_INSTALL/"
+
+      # ── Install icon (src/Cantara.ico) ───────────────────────────────────
+      install -Dm644 Cantara.ico \
+        "$SNAPCRAFT_PART_INSTALL/Cantara.ico"
+
+      # ── Install PNG icon into standard hicolor theme path ────────────────
+      # ../  from src/ = project root = $SNAPCRAFT_PART_SRC
+      install -Dm644 ../app.cantara.Cantara.png \
+        "$SNAPCRAFT_PART_INSTALL/app.cantara.Cantara.png"
+
+      # ── Install desktop file ─────────────────────────────────────────────
+      install -Dm644 ../cantara.desktop \
+        "$SNAPCRAFT_PART_INSTALL/cantara.desktop"
+
+      cp -r /usr/lib/x86_64-linux-gnu/libQt6Pas.so.6* $SNAPCRAFT_PART_INSTALL/usr/lib/
+
+  # ── Strip documentation from the prime directory ─────────────────
+  cleanup:
+    after: [cantara]
+    plugin: nil
+    override-prime: |
+      set -eux
+      rm -rf "$SNAPCRAFT_PRIME/usr/share/doc"
+      rm -rf "$SNAPCRAFT_PRIME/usr/share/man"
+      find "$SNAPCRAFT_PRIME/usr/share" -type d -empty -delete 2>/dev/null || true
