@@ -421,7 +421,7 @@
         <PackageName Value="LCL"/>
       </Item7>
     </RequiredPackages>
-    <Units Count="31">
+    <Units Count="32">
       <Unit0>
         <Filename Value="Cantara.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -603,6 +603,10 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormSongStyle"/>
       </Unit30>
+      <Unit31>
+        <Filename Value="generics/languages.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit31>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
