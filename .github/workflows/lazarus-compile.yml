@@ -40,15 +40,17 @@ jobs:
       if: ${{ matrix.operating-system != 'windows-latest' }}
       run: |
         lazbuild -B src/fpccantaraclitest.lpi
-        ./src/fpccantaraclitest --all --format=plain
+        mv src/fpccantaraclitest .
+        ./fpccantaraclitest --all --format=plain
         rm fpccantaraclitest
 
     - name: Build and run the Lazarus test suite (Windows)
       if: ${{ matrix.operating-system == 'windows-latest' }}
       run: |
         lazbuild -B src/fpccantaraclitest.lpi
-        ./src/fpccantaraclitest.exe --all --format=plain
-        rm ./src/fpccantaraclitest.exe
+        mv src/fpccantaraclitest .
+        ./fpccantaraclitest.exe --all --format=plain
+        rm fpccantaraclitest.exe
 
     - name: Build the Windows Application
       if: ${{ matrix.operating-system == 'windows-latest' }}
