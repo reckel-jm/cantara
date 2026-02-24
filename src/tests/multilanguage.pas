@@ -18,6 +18,7 @@ type
     procedure TestHebrewDetection;
     procedure TestArabicDetection;
     procedure TestMixedNeutralCharacters;
+    procedure TestChineseLetters;
     procedure TestEmptyString;
   end;
 
@@ -35,13 +36,13 @@ end;
 
 procedure TTestBiDiDetection.TestHebrewDetection;
 begin
-  if not IsRTLLanguage('\u05e9\u05dc\u05d5\u05dd') then
+  if not IsRTLLanguage('שלום') then
     Fail('Failed to detect Hebrew script as RTL');
 end;
 
 procedure TTestBiDiDetection.TestArabicDetection;
 begin
-  if not IsRTLLanguage('\u0627\u0644\u0639\u0631\u0628\u064a\u0629') then
+  if not IsRTLLanguage('العربية') then
     Fail('Failed to detect Arabic script as RTL');
 end;
 
@@ -56,6 +57,13 @@ procedure TTestBiDiDetection.TestEmptyString;
 begin
   AssertEquals('Empty string should default to LTR',
                False, IsRTLLanguage(''));
+end;
+
+procedure TTestBiDiDetection.TestChineseLetters;
+begin
+  // Standard symbols and numbers should be LTR by default
+  AssertEquals('Chinese letters should stay LTR',
+               False, IsRTLLanguage('你好！你今天怎么样？'));
 end;
 
 procedure TTestBIDIDetection.TestHookUp;
