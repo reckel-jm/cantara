@@ -8,7 +8,8 @@ uses
   Classes, SysUtils, Slides, LCLType, LCLIntf, graphtype,
   intfgraphics, Math, LazCanvas,
   StrUtils, // for SplitString
-  fpImage, PresentationModels, BGRABitmap, BGRABitmapTypes, BGRAGraphics, Graphics;
+  fpImage, PresentationModels, BGRABitmap, BGRABitmapTypes, BGRAGraphics, Graphics,
+  languages;
 
 type
 
@@ -405,14 +406,6 @@ begin
     Height := self.Height;
   end;
 
-  {DisplayedMainText := GetWordWrappedString(
-    Slide.PartContent.MainText,
-    NormalTextFont.Name,
-    NormalTextFont.Height,
-    NormalTextFont.Style,
-    self.Width -
-    EffectiveStyle.Padding.Left - EffectiveStyle.Padding.Right
-  );     }
   DisplayedMainText := Slide.PartContent.MainText;
 
   MainTextHeight := self.CalculateTextHeight(NormalTextFont, self.Width -
@@ -490,6 +483,7 @@ begin
     WordBreak := True;
     Opaque := False;
     EndEllipsis := False;
+    RightToLeft := IsRTLLanguage(DisplayedMainText);
   end;
 
   Self.AssignBGRAFont(NormalTextFont);
@@ -537,6 +531,10 @@ begin
     Self.AssignBGRAFont(SpoilerTextFont);
     ContentRect.Top += MainTextHeight + SpoilerDistance;
     ContentRect.Height := SpoilerTextHeight;
+    with TextStyle do
+    begin
+      RightToLeft := IsRTLLanguage(Slide.PartContent.SpoilerText);
+    end;
     Bitmap.TextRect(ContentRect, SpoilerText, TextStyle.Alignment, tlCenter,
                       ColorToBgra(EffectiveStyle.TextColor)
                     );
@@ -554,6 +552,7 @@ begin
     begin
       Alignment := taLeftJustify;
       Layout := tlBottom;
+      RightToLeft := IsRTLLanguage(Slide.PartContent.MetaText);
     end;
     Self.AssignBGRAFont(MetaTextFont);
     Bitmap.TextRect(ContentRect, Slide.PartContent.MetaText, TextStyle.Alignment, tlTop,
