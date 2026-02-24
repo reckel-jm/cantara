@@ -40,7 +40,7 @@ jobs:
       if: ${{ matrix.operating-system != 'windows-latest' }}
       run: |
         lazbuild -B src/fpccantaraclitest.lpi
-        mv src/fpccantaraclitest .
+        cd src
         ./fpccantaraclitest --all --format=plain
         rm fpccantaraclitest
 
@@ -48,7 +48,7 @@ jobs:
       if: ${{ matrix.operating-system == 'windows-latest' }}
       run: |
         lazbuild -B src/fpccantaraclitest.lpi
-        mv src/fpccantaraclitest .
+        cd src
         ./fpccantaraclitest.exe --all --format=plain
         rm fpccantaraclitest.exe
 
