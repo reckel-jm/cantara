@@ -36,10 +36,17 @@ jobs:
         lazarus-version: ${{ matrix.lazarus-versions }}
         with-cache: false
 
-    - name: Build and run the Lazarus test suite
+    - name: Build and run the Lazarus test suite (Linux, Mac OS X)
+      if: ${{ matrix.operating-system != 'windows-latest' }}
       run: |
         lazbuild -B src/fpccantaraclitest.lpi
-        ./fpccantaraclitest --all --format=plain || ./fpccantaraclitest.exe --all --format=plain
+        ./fpccantaraclitest --all --format=plain
+
+    - name: Build and run the Lazarus test suite (Windows)
+      if: ${{ matrix.operating-system == 'windows-latest' }}
+      run: |
+        lazbuild -B src/fpccantaraclitest.lpi
+        ./fpccantaraclitest.exe --all --format=plain
 
     - name: Build the Windows Application
       if: ${{ matrix.operating-system == 'windows-latest' }}
