@@ -27,7 +27,7 @@ uses
   markup, imageexport, loadimagethread, CantaraStandardDialogs,
   presentationcontroller, cantarafontdialog, exporterinterfaces,
   thirdpartylibraries, flatpakhandling, settingshandler,
-  FormSongStyle
+  FormSongStyle, languages
   {$IFDEF WINDOWS}
   {
    On Windows, WinForms normally does not adjust to darkmode. We will use the Lazarus package MetaDarkStyle which sets the colors
