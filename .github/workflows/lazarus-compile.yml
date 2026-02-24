@@ -39,7 +39,7 @@ jobs:
     - name: Build and run the Lazarus test suite
       run: |
         lazbuild -B src/fpccantaraclitest.lpi
-        ./fpccantaraclitest --all --format=plain
+        ./fpccantaraclitest --all --format=plain || ./fpccantaraclitest.exe --all --format=plain
 
     - name: Build the Windows Application
       if: ${{ matrix.operating-system == 'windows-latest' }}
