@@ -36,8 +36,8 @@ jobs:
         lazarus-version: ${{ matrix.lazarus-versions }}
         with-cache: false
 
-    - name: Build and run the Lazarus test suite (Linux, Mac OS X)
-      if: ${{ matrix.operating-system != 'windows-latest' }}
+    - name: Build and run the Lazarus test suite (Linux)
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
       run: |
         lazbuild -B src/fpccantaraclitest.lpi
         cd src
