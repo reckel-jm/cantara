@@ -9,6 +9,7 @@ object frmSongStyle: TfrmSongStyle
   Constraints.MinHeight = 608
   Constraints.MinWidth = 420
   LCLVersion = '4.4.0.0'
+  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   object cbUseCustomStyle: TCheckBox
@@ -17,7 +18,7 @@ object frmSongStyle: TfrmSongStyle
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 0
-    Height = 26
+    Height = 25
     Top = 0
     Width = 714
     Anchors = [akTop, akLeft, akRight]
@@ -34,13 +35,13 @@ object frmSongStyle: TfrmSongStyle
     AnchorSideRight.Side = asrBottom
     Left = 0
     Height = 65
-    Top = 31
+    Top = 30
     Width = 714
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 5
     Caption = 'Font && Text Colour'
-    ClientHeight = 37
-    ClientWidth = 708
+    ClientHeight = 34
+    ClientWidth = 710
     TabOrder = 1
     object btnFont: TButton
       AnchorSideTop.Control = gbFont
@@ -72,7 +73,7 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideTop.Control = btnFont
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Control = pnlTextColor
-      Left = 596
+      Left = 598
       Height = 21
       Top = 5
       Width = 82
@@ -87,7 +88,7 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Control = gbFont
       AnchorSideRight.Side = asrBottom
-      Left = 684
+      Left = 686
       Height = 24
       Top = 3
       Width = 24
@@ -108,14 +109,14 @@ object frmSongStyle: TfrmSongStyle
     AnchorSideRight.Side = asrBottom
     Left = 5
     Height = 152
-    Top = 96
+    Top = 95
     Width = 704
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     BorderSpacing.Right = 5
     Caption = 'Background'
-    ClientHeight = 124
-    ClientWidth = 698
+    ClientHeight = 121
+    ClientWidth = 700
     TabOrder = 2
     object lblBgColorLabel: TLabel
       AnchorSideTop.Control = pnlBgColor
@@ -129,7 +130,7 @@ object frmSongStyle: TfrmSongStyle
     end
     object pnlBgColor: TPanel
       AnchorSideTop.Control = gbBackground
-      Left = 664
+      Left = 666
       Height = 24
       Top = 0
       Width = 24
@@ -148,9 +149,9 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideRight.Control = gbBackground
       AnchorSideRight.Side = asrBottom
       Left = 0
-      Height = 26
+      Height = 25
       Top = 24
-      Width = 698
+      Width = 700
       Anchors = [akTop, akLeft, akRight]
       Caption = 'Show background image'
       ParentFont = False
@@ -162,7 +163,7 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideTop.Side = asrCenter
       Left = 0
       Height = 21
-      Top = 59
+      Top = 61
       Width = 37
       Caption = 'Path:'
       ParentFont = False
@@ -174,9 +175,9 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = btnBrowseBgImage
       Left = 42
-      Height = 28
-      Top = 55
-      Width = 567
+      Height = 34
+      Top = 54
+      Width = 569
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 5
       BorderSpacing.Top = 5
@@ -187,9 +188,9 @@ object frmSongStyle: TfrmSongStyle
     object btnBrowseBgImage: TButton
       AnchorSideTop.Control = edtBgImagePath
       AnchorSideTop.Side = asrCenter
-      Left = 614
+      Left = 616
       Height = 28
-      Top = 55
+      Top = 57
       Width = 76
       Anchors = [akTop, akRight]
       Caption = 'Browse...'
@@ -201,7 +202,7 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideTop.Side = asrBottom
       Left = 0
       Height = 21
-      Top = 93
+      Top = 98
       Width = 124
       BorderSpacing.Top = 10
       Caption = 'Transparency (%):'
@@ -212,9 +213,9 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Control = gbBackground
       AnchorSideRight.Side = asrBottom
-      Left = 628
-      Height = 29
-      Top = 89
+      Left = 630
+      Height = 34
+      Top = 91
       Width = 70
       Anchors = [akTop, akRight]
       MaxValue = 100
@@ -230,22 +231,22 @@ object frmSongStyle: TfrmSongStyle
     AnchorSideRight.Side = asrBottom
     Left = 5
     Height = 60
-    Top = 253
+    Top = 252
     Width = 704
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     BorderSpacing.Right = 5
     Caption = 'Horizontal Alignment'
-    ClientHeight = 32
-    ClientWidth = 698
+    ClientHeight = 29
+    ClientWidth = 700
     TabOrder = 3
     object lblAlignLabel: TLabel
       AnchorSideTop.Control = cboHAlign
       AnchorSideTop.Side = asrCenter
       Left = 0
       Height = 21
-      Top = 4
+      Top = 7
       Width = 77
       Caption = 'Alignment:'
       ParentFont = False
@@ -254,12 +255,12 @@ object frmSongStyle: TfrmSongStyle
       AnchorSideTop.Control = gbAlign
       AnchorSideRight.Control = gbAlign
       AnchorSideRight.Side = asrBottom
-      Left = 578
-      Height = 29
+      Left = 580
+      Height = 35
       Top = 0
       Width = 120
       Anchors = [akTop, akRight]
-      ItemHeight = 28
+      ItemHeight = 27
       Style = csDropDownList
       TabOrder = 0
       OnChange = cboHAlignChange
@@ -273,21 +274,21 @@ object frmSongStyle: TfrmSongStyle
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnReset
     Left = 5
-    Height = 328
-    Top = 320
+    Height = 329
+    Top = 319
     Width = 709
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 7
     Caption = 'Preview'
-    ClientHeight = 300
-    ClientWidth = 703
+    ClientHeight = 298
+    ClientWidth = 705
     TabOrder = 4
     object imgPreview: TImage
       Left = 6
-      Height = 292
+      Height = 290
       Top = 4
-      Width = 691
+      Width = 693
       Anchors = [akTop, akLeft, akRight, akBottom]
       Proportional = True
       Stretch = True
