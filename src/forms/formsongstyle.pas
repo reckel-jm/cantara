@@ -48,6 +48,7 @@ type
     procedure cbUseCustomStyleChange(Sender: TObject);
     procedure cboHAlignChange(Sender: TObject);
     procedure edtBgImagePathChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure lblTextColorLabelClick(Sender: TObject);
@@ -254,6 +255,11 @@ end;
 procedure TfrmSongStyle.edtBgImagePathChange(Sender: TObject);
 begin
   RefreshPreview;
+end;
+
+procedure TfrmSongStyle.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  ModalResult := mrOk;
 end;
 
 procedure TfrmSongStyle.spTransparencyChange(Sender: TObject);
