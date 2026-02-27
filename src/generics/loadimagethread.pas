@@ -14,6 +14,7 @@ type
   TLoadImageThread = class(TThread)
   public
     constructor Create(CreateSuspended: Boolean);
+    destructor Destroy; override;
     procedure LoadData(PresentationStyleSettings: TPresentationStyleSettings;
       SlideSettings: TSlideSettings;
       PresentationCanvas: TPresentationCanvasHandler;
@@ -50,6 +51,14 @@ begin
   blocked := False;
 end;
 
+destructor TLoadImageThread.Destroy;
+begin
+  // Free any Font still owned by us (i.e. Execute has not yet transferred it
+  // to the canvas, or the canvas already nilled its reference to it).
+  PresentationModels.DestroyPresentationStyleSettings(PresentationStyleSettings);
+  inherited;
+end;
+
 procedure TLoadImageThread.LoadData(PresentationStyleSettings:
   TPresentationStyleSettings;
   SlideSettings: TSlideSettings; PresentationCanvas: TPresentationCanvasHandler;
@@ -62,6 +71,10 @@ begin
     blocked := False;
     self.ChangeBackground := True;
   end;
+  // Free the old Font before overwriting with the incoming style.
+  // The thread is halted at this point (caller must not call LoadData while
+  // Execute is running), so this is safe.
+  PresentationModels.DestroyPresentationStyleSettings(self.PresentationStyleSettings);
   self.PresentationStyleSettings := PresentationStyleSettings;
   self.SlideSettings := SlideSettings;
   self.PresentationCanvas := PresentationCanvas;
@@ -102,10 +115,15 @@ begin
 
       if Not Skip then
       begin
+        // Free the canvas's old Font, assign our style, then transfer ownership
+        // by nilling our Font reference. Do this once before the render loop.
+        PresentationModels.DestroyPresentationStyleSettings(
+          PresentationCanvas.PresentationStyleSettings);
+        PresentationCanvas.PresentationStyleSettings := self.PresentationStyleSettings;
+        PresentationStyleSettings.Font := nil; // canvas now owns the Font
         for i := 0 to 2 do
         begin
           PresentationCanvas.SlideSettings := self.SlideSettings;
-          PresentationCanvas.PresentationStyleSettings := self.PresentationStyleSettings;
           PresentationCanvas.Width := self.Screen.Width;
           PresentationCanvas.Height := self.Screen.Height;
           if ChangeBackground then

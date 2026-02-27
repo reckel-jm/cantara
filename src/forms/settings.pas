@@ -206,11 +206,10 @@ end;
 
 procedure TfrmSettings.FormDestroy(Sender: TObject);
 begin
-  PresentationPreviewCanvas.Destroy;
-  ExampleSong.Destroy;
-  SlideList.Destroy;
-
-  SettingsFile.Destroy;
+  FreeAndNil(PresentationPreviewCanvas);
+  FreeAndNil(ExampleSong);
+  FreeAndNil(SlideList);
+  FreeAndNil(SettingsFile);
 end;
 
 procedure TfrmSettings.FormShow(Sender: TObject);
@@ -225,6 +224,7 @@ end;
 
 procedure TfrmSettings.gbPresentationClick(Sender: TObject);
 begin
+  FreeAndNil(PresentationPreviewCanvas);
   PresentationPreviewCanvas := TPresentationCanvasHandler.Create;
 end;
 

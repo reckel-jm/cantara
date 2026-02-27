@@ -181,11 +181,11 @@ end;
 
 destructor TPresentationCanvasHandler.Destroy;
 begin
-  Bitmap.Destroy;
-  BackgroundPicture.Destroy;
-  ResizedBackgroundBitmap.Destroy;
-  AdjustedBackgroundPicture.Destroy;
-  FCustomBgResized.Destroy;
+  FreeAndNil(Bitmap);
+  FreeAndNil(BackgroundPicture);
+  FreeAndNil(ResizedBackgroundBitmap);
+  FreeAndNil(AdjustedBackgroundPicture);
+  FreeAndNil(FCustomBgResized);
   PresentationModels.DestroyPresentationStyleSettings(Self.PresentationStyleSettings);
   inherited;
 end;
