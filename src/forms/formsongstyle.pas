@@ -162,35 +162,34 @@ begin
   if (not FBaseStyleLoaded) or (FPreviewSlideList.Count = 0) then Exit;
   if imgPreview.Width <= 0 then Exit;
   Style := ExportStyle;
-  try
-    FPreviewCanvas.PresentationStyleSettings := Style;
-    // Render at full screen resolution (same as the presentation), then let
-    // imgPreview scale it down proportionally; this keeps font sizes correct.
-    FPreviewCanvas.Width  := Screen.Width;
-    FPreviewCanvas.Height := Screen.Height;
-    if Style.ShowBackgroundImage and FileExists(Style.BackgroundImageFilePath) then
+  // Free the old Font owned by the canvas before replacing it with the new style.
+  // The canvas takes ownership of Style.Font from this point on.
+  DestroyPresentationStyleSettings(FPreviewCanvas.PresentationStyleSettings);
+  FPreviewCanvas.PresentationStyleSettings := Style;
+  // Render at full screen resolution (same as the presentation), then let
+  // imgPreview scale it down proportionally; this keeps font sizes correct.
+  FPreviewCanvas.Width  := Screen.Width;
+  FPreviewCanvas.Height := Screen.Height;
+  if Style.ShowBackgroundImage and FileExists(Style.BackgroundImageFilePath) then
+  begin
+    if (Style.BackgroundImageFilePath <> FLastPreviewBgPath) or
+       (Style.Transparency <> FLastPreviewTransparency) or
+       (Style.BackgroundColor <> FLastPreviewBgColor) then
     begin
-      if (Style.BackgroundImageFilePath <> FLastPreviewBgPath) or
-         (Style.Transparency <> FLastPreviewTransparency) or
-         (Style.BackgroundColor <> FLastPreviewBgColor) then
-      begin
-        FPreviewCanvas.LoadBackgroundBitmap;
-        FLastPreviewBgPath := Style.BackgroundImageFilePath;
-        FLastPreviewTransparency := Style.Transparency;
-        FLastPreviewBgColor := Style.BackgroundColor;
-      end;
-    end
-    else
-    begin
-      FLastPreviewBgPath := '';
-      FLastPreviewTransparency := 0;
-      FLastPreviewBgColor := 0;
+      FPreviewCanvas.LoadBackgroundBitmap;
+      FLastPreviewBgPath := Style.BackgroundImageFilePath;
+      FLastPreviewTransparency := Style.Transparency;
+      FLastPreviewBgColor := Style.BackgroundColor;
     end;
-    FPreviewCanvas.ResizeBackgroundBitmap;
-    imgPreview.Picture.Assign(FPreviewCanvas.PaintSlide(FPreviewSlideList[0]));
-  finally
-    DestroyPresentationStyleSettings(Style);
+  end
+  else
+  begin
+    FLastPreviewBgPath := '';
+    FLastPreviewTransparency := 0;
+    FLastPreviewBgColor := 0;
   end;
+  FPreviewCanvas.ResizeBackgroundBitmap;
+  imgPreview.Picture.Assign(FPreviewCanvas.PaintSlide(FPreviewSlideList[0]));
 end;
 
 procedure TfrmSongStyle.cbUseCustomStyleChange(Sender: TObject);

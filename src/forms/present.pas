@@ -353,18 +353,23 @@ end;
 
 procedure TfrmPresent.FormDestroy(Sender: TObject);
 begin
-  if FadeTimer.Enabled then FadeTimer.Enabled := False;
-  SlideList.Destroy;
-  PresentationCanvas.Destroy;
-  FadePreviousBitmap.Free;
-  FadeNextBitmap.Free;
-  FadeBlendBitmap.Free;
+  if Assigned(FadeTimer) and FadeTimer.Enabled then FadeTimer.Enabled := False;
+  FreeAndNil(SlideList);
+  FreeAndNil(PresentationCanvas);
+  FreeAndNil(FadePreviousBitmap);
+  FreeAndNil(FadeNextBitmap);
+  FreeAndNil(FadeBlendBitmap);
 end;
 
 procedure TfrmPresent.FormHide(Sender: TObject);
 begin
+  // FormHide also fires during form destruction (when inherited Destroy tears
+  // down the window handle).  At that point FormDestroy has already freed
+  // PresentationCanvas, SlideList, etc., so touching them would crash.
+  if csDestroying in ComponentState then Exit;
+
   BlackScreenActive := False;
-  if FadeTimer.Enabled then
+  if Assigned(FadeTimer) and FadeTimer.Enabled then
   begin
     FadeTimer.Enabled := False;
     FadeStep := 0;
@@ -386,7 +391,7 @@ begin
     SwitchFullScreen(False);
     frmSongs.UpdateControls;
   end;
-  if (Assigned(SlideList)) And (self.Owner = frmSongs) then SlideList.Free;
+  if (Assigned(SlideList)) And (self.Owner = frmSongs) then FreeAndNil(SlideList);
 end;
 
 procedure TfrmPresent.SwitchFullScreen;

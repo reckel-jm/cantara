@@ -464,6 +464,8 @@ begin
   if lbxSSelected.Count > 0 then
   begin
     CreateSongListDataAndLoadItIntoSlideList(FormImageExport.SlideList);
+    PresentationModels.DestroyPresentationStyleSettings(
+      FormImageExport.PresentationCanvas.PresentationStyleSettings);
     FormImageExport.PresentationCanvas.PresentationStyleSettings :=
       frmSettings.ExportPresentationStyleSettings;
     FormImageExport.PresentationCanvas.SlideSettings :=
@@ -873,16 +875,13 @@ procedure TfrmSongs.FormDestroy(Sender: TObject);
 var
   i: Integer;
 begin
-  // Distroy all Song Data
+  // Destroy all Song Data
   for i := 0 to length(repo) - 1 do
     repo[i].Free;
-  try
-     LoadedSongList.Destroy;
-  finally
-  end;
+  FreeAndNil(LoadedSongList);
   for i := 0 to FCustomSongStyles.Count - 1 do
     FCustomSongStyles.Objects[i].Free;
-  FCustomSongStyles.Free;
+  FreeAndNil(FCustomSongStyles);
 end;
 
 procedure TfrmSongs.FormDropFiles(Sender: TObject; const FileNames: array of String);
@@ -969,6 +968,9 @@ begin
     if frmPresent.SlideList.Count <= 0 then Exit;
     frmSongs.FormResize(frmSongs);
     // Take the settings from the Settings Form
+    // Free the old Font owned by the canvas before replacing with a new style.
+    PresentationModels.DestroyPresentationStyleSettings(
+      frmPresent.PresentationCanvas.PresentationStyleSettings);
     frmPresent.PresentationCanvas.PresentationStyleSettings :=
       frmSettings.ExportPresentationStyleSettings;
     frmPresent.PresentationCanvas.SlideSettings := frmSettings.ExportSlideSettings();
