@@ -52,6 +52,22 @@
     <developer_name>Jan Martin Reckel</developer_name>
 
     <releases>
+        <release version="2.7.1" date="2026-02-27">
+            <description>
+                <p>New Features</p>
+                <ul>
+                    <li>New button to toggle the screen to black during a presentation; the keyboard shortcut B has the same effect.</li>
+                </ul>
+                <p>Bug Fixes</p>
+                <ul>
+                    <li>Fixed memory leaks: Fonts (TFont) were never freed due to an unimplemented DestroyPresentationStyleSettings.</li>
+                    <li>Fixed a SIGSEGV crash when closing Cantara while a presentation was active.</li>
+                    <li>Fixed null pointer crashes during teardown by using safe FreeAndNil in all destructors.</li>
+                    <li>Fixed a font leak in the settings preview thread (TLoadImageThread).</li>
+                    <li>Fixed a canvas leak in the settings form.</li>
+                </ul>
+            </description>
+        </release>
         <release version="2.7.0" date="2026-02-21">
             <description>
                 <p>New Features</p>

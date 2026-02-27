@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.7.1] - 2026-02-27
+
+### New Features
+
+- **Toggle black screen during presentation**: A new button in the presentation control bar lets you instantly blank the screen to black and restore it again. The keyboard shortcut `B` has the same effect.
+
+### Bug Fixes
+
+- Fixed memory leaks: `DestroyPresentationStyleSettings` was a no-op and never freed the owned `TFont`, causing fonts to leak on every presentation start, style preview refresh, and image export.
+- Fixed a SIGSEGV crash when closing Cantara while a presentation was active: `FormHide` was firing during form destruction (after `FormDestroy` had already freed objects), leading to null pointer dereferences via `PresentationCanvas` and invalid window handle accesses.
+- Replaced all bare `.Destroy` calls in destructors and `FormDestroy` handlers with `FreeAndNil` to guard against nil pointer crashes during teardown.
+- Fixed a memory leak in `TLoadImageThread`: the stored `TPresentationStyleSettings.Font` was never freed when overwritten by a new `LoadData` call.
+- Fixed a memory leak in `TfrmSettings.gbPresentationClick`: the existing preview canvas was not freed before creating a new one.
+
+---
+
 ## [2.7.0] - 2026-02-21
 
 ### New Features
