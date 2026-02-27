@@ -17,7 +17,7 @@ SolidCompression=yes
 CompressionThreads=2
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
-OutputBaseFilename={#MyAppOutputName}{#MyAppVersion}{#MyInstallerSuffix}
+OutputBaseFilename={#MyAppOutputName}-{#MyAppVersion}{#MyInstallerSuffix}
 LicenseFile=innosetup_license_file.txt
 
 [Languages]
