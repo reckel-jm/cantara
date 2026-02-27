@@ -8,6 +8,7 @@ object frmSongStyle: TfrmSongStyle
   ClientWidth = 714
   Constraints.MinHeight = 608
   Constraints.MinWidth = 420
+  Position = poOwnerFormCenter
   LCLVersion = '4.4.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
