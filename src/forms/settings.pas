@@ -390,7 +390,7 @@ begin
   edtRepoPath.Text := settingsFile.ReadString('Config', 'Repo-Path', getRepoDir());
   cbEmptyFrame.Checked := settingsFile.ReadBool('Config', 'empty-Frame', True);
   cbBlackScreenOnEmpty.Checked := settingsFile.ReadBool('Config', 'BlackScreenOnEmpty', False);
-  cbFadeTransition.Checked := settingsFile.ReadBool('Config', 'FadeTransition', False);
+  cbFadeTransition.Checked := settingsFile.ReadBool('Config', 'FadeTransition', True);
   seFadeDuration.Value := settingsFile.ReadInteger('Config', 'FadeDurationMs', 150);
   seFadeDuration.Enabled := cbFadeTransition.Checked;
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
