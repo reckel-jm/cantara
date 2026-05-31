@@ -73,19 +73,33 @@ uses
 function DecodeEscapedUnicodeSequences(const AText: String): String;
 var
   i: Integer;
-  CodePoint: Integer;
-  HexCode: String;
+  CodePoint, LowCodePoint: Integer;
+  HexCode, LowHexCode: String;
 begin
   Result := '';
   i := 1;
   while i <= Length(AText) do
   begin
-   if (AText[i] = '\') and (i + 5 <= Length(AText)) and
+   if (i + 1 <= Length(AText)) and (AText[i] = '\') and (i + 5 <= Length(AText)) and
      ((AText[i + 1] = 'u') or (AText[i + 1] = 'U')) then
    begin
      HexCode := Copy(AText, i + 2, 4);
      if TryStrToInt('$' + HexCode, CodePoint) then
      begin
+       if (CodePoint >= $D800) and (CodePoint <= $DBFF) and
+         (i + 11 <= Length(AText)) and (AText[i + 6] = '\') and
+         ((AText[i + 7] = 'u') or (AText[i + 7] = 'U')) then
+       begin
+         LowHexCode := Copy(AText, i + 8, 4);
+         if TryStrToInt('$' + LowHexCode, LowCodePoint) and
+           (LowCodePoint >= $DC00) and (LowCodePoint <= $DFFF) then
+         begin
+           Result := Result + UTF8Encode(
+             UnicodeString(WideChar(CodePoint)) + UnicodeString(WideChar(LowCodePoint)));
+           Inc(i, 12);
+           Continue;
+         end;
+       end;
        Result := Result + UTF8Encode(UnicodeString(WideChar(CodePoint)));
        Inc(i, 6);
        Continue;
