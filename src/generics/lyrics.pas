@@ -490,7 +490,7 @@ begin
   try
     outputcontent := TStringList.Create;
     outputcontent.Text := self.ExportAsSongFile;
-    outputcontent.SaveToFile(outputfilename);
+    outputcontent.SaveToFile(outputfilename, TEncoding.UTF8);
   finally
     outputcontent.Destroy;
   end;

@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, StdCtrls, ExtCtrls, Menus, Lyrics,
   Settings, ComCtrls, Dialogs, SynEdit, SynCompletion, SynMacroRecorder,
-  SynPluginSyncroEdit, SynHighlighterAny, Types, LCLType, LConvEncoding,
+  SynPluginSyncroEdit, SynHighlighterAny, Types, LCLType,
   SynEditTypes;
 
 type
@@ -69,6 +69,32 @@ implementation
 
 uses
   songeditor;
+
+function DecodeEscapedUnicodeSequences(const AText: String): String;
+var
+  i: Integer;
+  CodePoint: Integer;
+  HexCode: String;
+begin
+  Result := '';
+  i := 1;
+  while i <= Length(AText) do
+  begin
+   if (AText[i] = '\') and (i + 5 <= Length(AText)) and
+     ((AText[i + 1] = 'u') or (AText[i + 1] = 'U')) then
+   begin
+     HexCode := Copy(AText, i + 2, 4);
+     if TryStrToInt('$' + HexCode, CodePoint) then
+     begin
+       Result := Result + UTF8Encode(UnicodeString(WideChar(CodePoint)));
+       Inc(i, 6);
+       Continue;
+     end;
+   end;
+   Result := Result + AText[i];
+   Inc(i);
+  end;
+end;
 
   {$R *.lfm}
 
@@ -155,12 +181,8 @@ end;
 procedure TfrmDisplaySongContent.memoCodePaste(Sender: TObject;
   var AText: String; var AMode: TSynSelectionMode; ALogStartPos: TPoint;
   var AnAction: TSynCopyPasteAction);
-var
-  GuessedCoding: String;
-  Encoded: Boolean;
 begin
-  GuessedCoding := GuessEncoding(AText);
-  AText := ConvertEncodingToUTF8(AText, GuessedCoding, Encoded);
+  AText := DecodeEscapedUnicodeSequences(AText);
 end;
 
 procedure TfrmDisplaySongContent.loadFile(repofile: TRepoFile);
@@ -169,7 +191,7 @@ var
 begin
   self.openFile := repofile;
   self.openFilePath := repoFile.FilePath;
-  memoCode.Lines.LoadFromFile(self.openFilePath);
+  memoCode.Lines.LoadFromFile(self.openFilePath, TEncoding.UTF8);
   lblSongNameContent.Caption := openFile.Name;
   self.hasChanged := False; // dont run markAsChanged as it may cause exceptions
   { if CCLI File than show conversion suggestion instead of editor }
@@ -195,7 +217,7 @@ end;
 
 procedure TfrmDisplaySongContent.SaveFile;
 begin
-  memoCode.Lines.SaveToFile(self.openFilePath);
+  memoCode.Lines.SaveToFile(self.openFilePath, TEncoding.UTF8);
   markAsChanged(False);
 end;
 
