@@ -72,6 +72,8 @@ uses
 
 function CodePointToUTF8(const ACodePoint: Cardinal): UTF8String;
 begin
+  if ACodePoint > $10FFFF then
+    Exit('');
   if ACodePoint <= $7F then
   begin
     SetLength(Result, 1);
@@ -144,6 +146,12 @@ begin
                   end;
                 end;
               end;
+            end;
+            if (CodePoint >= $D800) and (CodePoint <= $DFFF) then
+            begin
+              Result := Result + Copy(AText, i, 6);
+              Inc(i, 6);
+              Continue;
             end;
             Result := Result + String(CodePointToUTF8(CodePoint));
             Inc(i, 6);
