@@ -70,43 +70,90 @@ implementation
 uses
   songeditor;
 
+function CodePointToUTF8(const ACodePoint: Cardinal): UTF8String;
+begin
+  if ACodePoint <= $7F then
+  begin
+    SetLength(Result, 1);
+    Result[1] := Char(ACodePoint);
+  end
+  else if ACodePoint <= $7FF then
+  begin
+    SetLength(Result, 2);
+    Result[1] := Char($C0 or (ACodePoint shr 6));
+    Result[2] := Char($80 or (ACodePoint and $3F));
+  end
+  else if ACodePoint <= $FFFF then
+  begin
+    SetLength(Result, 3);
+    Result[1] := Char($E0 or (ACodePoint shr 12));
+    Result[2] := Char($80 or ((ACodePoint shr 6) and $3F));
+    Result[3] := Char($80 or (ACodePoint and $3F));
+  end
+  else
+  begin
+    SetLength(Result, 4);
+    Result[1] := Char($F0 or (ACodePoint shr 18));
+    Result[2] := Char($80 or ((ACodePoint shr 12) and $3F));
+    Result[3] := Char($80 or ((ACodePoint shr 6) and $3F));
+    Result[4] := Char($80 or (ACodePoint and $3F));
+  end;
+end;
+
 function DecodeEscapedUnicodeSequences(const AText: String): String;
 var
-  i: Integer;
-  CodePoint, LowCodePoint: Integer;
+  i, Parsed: Integer;
+  CodePoint, LowCodePoint: Cardinal;
   HexCode, LowHexCode: String;
 begin
   Result := '';
   i := 1;
   while i <= Length(AText) do
   begin
-   if (i + 1 <= Length(AText)) and (AText[i] = '\') and (i + 5 <= Length(AText)) and
-     ((AText[i + 1] = 'u') or (AText[i + 1] = 'U')) then
-   begin
-     HexCode := Copy(AText, i + 2, 4);
-     if TryStrToInt('$' + HexCode, CodePoint) then
-     begin
-       if (CodePoint >= $D800) and (CodePoint <= $DBFF) and
-         (i + 11 <= Length(AText)) and (AText[i + 6] = '\') and
-         ((AText[i + 7] = 'u') or (AText[i + 7] = 'U')) then
-       begin
-         LowHexCode := Copy(AText, i + 8, 4);
-         if TryStrToInt('$' + LowHexCode, LowCodePoint) and
-           (LowCodePoint >= $DC00) and (LowCodePoint <= $DFFF) then
-         begin
-           Result := Result + UTF8Encode(
-             UnicodeString(WideChar(CodePoint)) + UnicodeString(WideChar(LowCodePoint)));
-           Inc(i, 12);
-           Continue;
-         end;
-       end;
-       Result := Result + UTF8Encode(UnicodeString(WideChar(CodePoint)));
-       Inc(i, 6);
-       Continue;
-     end;
-   end;
-   Result := Result + AText[i];
-   Inc(i);
+    if AText[i] = '\' then
+    begin
+      if i + 5 <= Length(AText) then
+      begin
+        if (AText[i + 1] = 'u') or (AText[i + 1] = 'U') then
+        begin
+          HexCode := Copy(AText, i + 2, 4);
+          if TryStrToInt('$' + HexCode, Parsed) then
+          begin
+            CodePoint := Cardinal(Parsed);
+            if (CodePoint >= $D800) and (CodePoint <= $DBFF) then
+            begin
+              if i + 11 <= Length(AText) then
+              begin
+                if AText[i + 6] = '\' then
+                begin
+                  if (AText[i + 7] = 'u') or (AText[i + 7] = 'U') then
+                  begin
+                    LowHexCode := Copy(AText, i + 8, 4);
+                    if TryStrToInt('$' + LowHexCode, Parsed) then
+                    begin
+                      LowCodePoint := Cardinal(Parsed);
+                      if (LowCodePoint >= $DC00) and (LowCodePoint <= $DFFF) then
+                      begin
+                        CodePoint := ((CodePoint - $D800) * $400) +
+                          (LowCodePoint - $DC00) + $10000;
+                        Result := Result + String(CodePointToUTF8(CodePoint));
+                        Inc(i, 12);
+                        Continue;
+                      end;
+                    end;
+                  end;
+                end;
+              end;
+            end;
+            Result := Result + String(CodePointToUTF8(CodePoint));
+            Inc(i, 6);
+            Continue;
+          end;
+        end;
+      end;
+    end;
+    Result := Result + AText[i];
+    Inc(i);
   end;
 end;
 
