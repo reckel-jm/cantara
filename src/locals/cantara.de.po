@@ -578,6 +578,10 @@ msgstr "Leerfolie zwischen den Liedern einfügen"
 msgid "Fade transition between slides"
 msgstr "Übergangszeit zwischen den Folien"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr "Mauszeiger im Präsentationsmodus verstecken"
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "bei der ersten Folie"

@@ -576,6 +576,10 @@ msgstr "Diapositiva vuota tra i brani"
 msgid "Fade transition between slides"
 msgstr "Transizione dissolvenza tra diapositive"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "nella prima diapositiva"

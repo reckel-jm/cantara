@@ -569,6 +569,10 @@ msgstr "Instellingen"
 msgid "Empty slide between songs"
 msgstr "Pauze tussen nummers"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "na eerste dia"

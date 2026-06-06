@@ -576,6 +576,10 @@ msgstr "歌曲間插入空白投影片"
 msgid "Fade transition between slides"
 msgstr "投影片間淡入淡出轉場"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "在第一張投影片"

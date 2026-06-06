@@ -576,6 +576,10 @@ msgstr "Slide trống giữa các bài hát"
 msgid "Fade transition between slides"
 msgstr "Hiệu ứng mờ dần giữa các slide"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "ở slide đầu tiên"

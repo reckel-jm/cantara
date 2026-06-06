@@ -576,6 +576,10 @@ msgstr "Pusty slajd między pieśniami"
 msgid "Fade transition between slides"
 msgstr "Płynne przejście między slajdami"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "na pierwszym slajdzie"

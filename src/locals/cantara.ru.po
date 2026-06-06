@@ -576,6 +576,10 @@ msgstr "Пустой слайд между песнями"
 msgid "Fade transition between slides"
 msgstr "Плавный переход между слайдами"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "на первом слайде"

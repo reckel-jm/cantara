@@ -572,6 +572,10 @@ msgstr "Diapositiva vacía entre canciones"
 msgid "Fade transition between slides"
 msgstr "Transición de fundido entre diapositivas"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "en la primera diapositiva"

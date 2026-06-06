@@ -576,6 +576,10 @@ msgstr "곡 사이에 빈 슬라이드"
 msgid "Fade transition between slides"
 msgstr "슬라이드 간 페이드 전환"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "첫 슬라이드에"

@@ -576,6 +576,10 @@ msgstr "Şarkılar arasında boş slayt"
 msgid "Fade transition between slides"
 msgstr "Slaytlar arasında soluklaşma geçişi"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "ilk slaytta"

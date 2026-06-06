@@ -576,6 +576,10 @@ msgstr "Slide vazio entre músicas"
 msgid "Fade transition between slides"
 msgstr "Transição de esmaecimento entre slides"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "no primeiro slide"

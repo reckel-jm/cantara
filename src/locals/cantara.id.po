@@ -576,6 +576,10 @@ msgstr "Slide kosong di antara lagu"
 msgid "Fade transition between slides"
 msgstr "Transisi pudar antar slide"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "pada slide pertama"
