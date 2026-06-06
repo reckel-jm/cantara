@@ -5,6 +5,7 @@ object FrameSettingsDetailed: TFrameSettingsDetailed
   Width = 381
   ClientHeight = 325
   ClientWidth = 381
+  LCLVersion = '4.6.0.0'
   TabOrder = 0
   DesignLeft = 423
   DesignTop = 34

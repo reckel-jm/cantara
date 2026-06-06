@@ -5,12 +5,13 @@ object frmDisplaySongContent: TfrmDisplaySongContent
   Width = 892
   ClientHeight = 452
   ClientWidth = 892
+  LCLVersion = '4.6.0.0'
   TabOrder = 0
   DesignLeft = 626
   DesignTop = 266
   object lblSongName: TLabel
     Left = 0
-    Height = 22
+    Height = 21
     Top = 0
     Width = 51
     Caption = 'Name: '
