@@ -580,7 +580,7 @@ msgstr "スライド間のフェード遷移"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "プレゼンテーションモードでマウスカーソルを非表示にする"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

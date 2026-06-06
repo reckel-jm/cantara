@@ -579,7 +579,7 @@ msgstr ""
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "Muiscursor verbergen in presentatiemodus"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

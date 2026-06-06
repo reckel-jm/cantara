@@ -580,7 +580,7 @@ msgstr "Transición de fundido entre diapositivas"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "Ocultar el cursor del ratón en el modo de presentación"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

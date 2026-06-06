@@ -580,7 +580,7 @@ msgstr "Płynne przejście między slajdami"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "Ukryj kursor myszy w trybie prezentacji"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

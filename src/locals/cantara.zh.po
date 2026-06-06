@@ -579,7 +579,7 @@ msgstr "投影片間淡入淡出轉場"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "在演示模式下隐藏鼠标光标"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

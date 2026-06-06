@@ -580,7 +580,7 @@ msgstr "Hiệu ứng mờ dần giữa các slide"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "Ẩn con trỏ chuột trong chế độ trình chiếu"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

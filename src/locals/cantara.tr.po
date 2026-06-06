@@ -580,7 +580,7 @@ msgstr "Slaytlar arasında soluklaşma geçişi"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "Sunum modunda fare imlecini gizle"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

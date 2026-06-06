@@ -580,7 +580,7 @@ msgstr "Плавний перехід між слайдами"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "Приховати курсор миші в режимі презентації"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

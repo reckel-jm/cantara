@@ -580,7 +580,7 @@ msgstr "מעבר התפוגגות בין שקופיות"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "הסתר את סמן העכבר במצב מצגת"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

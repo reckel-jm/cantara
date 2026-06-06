@@ -580,7 +580,7 @@ msgstr "Transisi pudar antar slide"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "Sembunyikan kursor mouse dalam mode presentasi"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

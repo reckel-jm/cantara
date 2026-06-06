@@ -580,7 +580,7 @@ msgstr "Transição de esmaecimento entre slides"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "Ocultar o cursor do mouse no modo de apresentação"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

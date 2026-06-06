@@ -580,7 +580,7 @@ msgstr "انتقال محو بین اسلایدها"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "مخفی کردن نشانگر ماوس در حالت ارائه"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

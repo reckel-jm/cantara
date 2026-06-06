@@ -580,7 +580,7 @@ msgstr "انتقال تلاشي بين الشرائح"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "إخفاء مؤشر الماوس في وضع العرض"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"

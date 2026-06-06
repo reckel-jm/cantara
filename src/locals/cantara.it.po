@@ -580,7 +580,7 @@ msgstr "Transizione dissolvenza tra diapositive"
 
 #: tfrmsettings.cbhidecursorinpresentation.caption
 msgid "Hide mouse cursor in presentation mode"
-msgstr ""
+msgstr "Nascondi il cursore del mouse in modalità presentazione"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
