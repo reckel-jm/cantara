@@ -1,0 +1,20 @@
+{"version":1,"strings":[
+{"hash":225406261,"name":"tfrmsongstyle.caption","sourcebytes":[83,111,110,103,32,83,116,121,108,101,32,79,118,101,114,114,105,100,101],"value":"Song Style Override"},
+{"hash":15725175,"name":"tfrmsongstyle.cbusecustomstyle.caption","sourcebytes":[85,115,101,32,99,117,115,116,111,109,32,115,116,121,108,101,32,102,111,114,32,116,104,105,115,32,115,111,110,103],"value":"Use custom style for this song"},
+{"hash":29072226,"name":"tfrmsongstyle.gbfont.caption","sourcebytes":[70,111,110,116,32,38,38,32,84,101,120,116,32,67,111,108,111,117,114],"value":"Font && Text Colour"},
+{"hash":26137854,"name":"tfrmsongstyle.btnfont.caption","sourcebytes":[83,101,108,101,99,116,32,102,111,110,116,46,46,46],"value":"Select font..."},
+{"hash":180195476,"name":"tfrmsongstyle.lblfontpreview.caption","sourcebytes":[65,114,105,97,108,44,32,50,52,32,112,116],"value":"Arial, 24 pt"},
+{"hash":235903546,"name":"tfrmsongstyle.lbltextcolorlabel.caption","sourcebytes":[84,101,120,116,32,99,111,108,111,117,114,58],"value":"Text colour:"},
+{"hash":32370148,"name":"tfrmsongstyle.gbbackground.caption","sourcebytes":[66,97,99,107,103,114,111,117,110,100],"value":"Background"},
+{"hash":97553370,"name":"tfrmsongstyle.lblbgcolorlabel.caption","sourcebytes":[66,97,99,107,103,114,111,117,110,100,32,99,111,108,111,117,114,58],"value":"Background colour:"},
+{"hash":17924581,"name":"tfrmsongstyle.cbshowbgimage.caption","sourcebytes":[83,104,111,119,32,98,97,99,107,103,114,111,117,110,100,32,105,109,97,103,101],"value":"Show background image"},
+{"hash":5671610,"name":"tfrmsongstyle.lblbgimagelabel.caption","sourcebytes":[80,97,116,104,58],"value":"Path:"},
+{"hash":115952286,"name":"tfrmsongstyle.btnbrowsebgimage.caption","sourcebytes":[66,114,111,119,115,101,46,46,46],"value":"Browse..."},
+{"hash":8496090,"name":"tfrmsongstyle.lbltransparency.caption","sourcebytes":[84,114,97,110,115,112,97,114,101,110,99,121,32,40,37,41,58],"value":"Transparency (%):"},
+{"hash":55340756,"name":"tfrmsongstyle.gbalign.caption","sourcebytes":[72,111,114,105,122,111,110,116,97,108,32,65,108,105,103,110,109,101,110,116],"value":"Horizontal Alignment"},
+{"hash":240600970,"name":"tfrmsongstyle.lblalignlabel.caption","sourcebytes":[65,108,105,103,110,109,101,110,116,58],"value":"Alignment:"},
+{"hash":126668695,"name":"tfrmsongstyle.gbpreview.caption","sourcebytes":[80,114,101,118,105,101,119],"value":"Preview"},
+{"hash":264711028,"name":"tfrmsongstyle.btnreset.caption","sourcebytes":[82,101,115,101,116,32,116,111,32,103,108,111,98,97,108,32,100,101,102,97,117,108,116],"value":"Reset to global default"},
+{"hash":1339,"name":"tfrmsongstyle.btnok.caption","sourcebytes":[79,75],"value":"OK"},
+{"hash":77089212,"name":"tfrmsongstyle.btncancel.caption","sourcebytes":[67,97,110,99,101,108],"value":"Cancel"}
+]}
