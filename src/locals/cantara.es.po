@@ -24,6 +24,10 @@ msgstr "Introduzca el nuevo nombre de la canción: "
 msgid "The file can not be converted. Make sure that you have the permissions to write to the song repository!"
 msgstr "El archivo no se puede convertir. ¡Asegúrese de que tiene permisos para escribir en el repositorio de canciones!"
 
+#: editordisplaysongcontent.strfilecannotberenamed
+msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
+msgstr "El archivo no puede ser renombrado. ¡Asegúrese de que tiene permisos para escribir en el repositorio de canciones!"
+
 #: flatpakhandling.messagecantaraneedsportaluse
 msgid ""
 "You are using Cantara as a Flatpak. Due to an update of the permissions, Cantara can't access your home directory anymore which helps to make your system securer. However, that also means that you have to select the song repository path once again, so that Cantara will be granted access to that directory. You also need to select the background image once again if you had one in use.\n"
@@ -204,7 +208,9 @@ msgid "Hint"
 msgstr "Aviso"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+#, fuzzy
+#| msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
 msgstr "Cantara está utilizando el motor JavaScript de su navegador web predeterminado y la biblioteca JavaScript de código abierto PptxGenJS[](https://gitbrent.github.io/PptxGenJS/) para generar el archivo pptx. Por lo tanto, después de presionar Aceptar, su navegador web se abrirá y le pedirá un lugar para guardar el archivo pptx cuando la generación se haya completado con éxito. Durante este proceso, no se necesita conexión a Internet y no se comparten datos con nadie más aparte de su navegador. Si desea continuar, presione Aceptar y este mensaje no volverá a aparecer la próxima vez. Si no desea continuar, presione Cancelar."
 
 #: songselection.strsongisempty
@@ -764,6 +770,10 @@ msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "Presentación..."
 
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
+
 #: tfrmsongs.btnup.caption
 msgid "🠕"
 msgstr "🠕"
@@ -1066,6 +1076,3 @@ msgstr "El directorio seleccionado puede usarse correctamente como repositorio d
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Por favor, seleccione una ruta de repositorio de canciones antes de salir del asistente. Cantara no puede funcionar sin ella."
 
-#: editordisplaysongcontent.strfilecannotberenamed
-msgid "The File can not be renamed. Make sure that you have the permissions to write to the song repository!"
-msgstr "El archivo no puede ser renombrado. ¡Asegúrese de que tiene permisos para escribir en el repositorio de canciones!"

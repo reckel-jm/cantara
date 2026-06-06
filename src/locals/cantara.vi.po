@@ -208,7 +208,9 @@ msgid "Hint"
 msgstr "Gợi ý"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+#, fuzzy
+#| msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
 msgstr "Cantara sử dụng engine JavaScript của trình duyệt mặc định trên máy bạn và thư viện mã nguồn mở PptxGenJS[](https://gitbrent.github.io/PptxGenJS/) để tạo tệp pptx. Sau khi nhấn OK, trình duyệt sẽ mở ra và hỏi bạn nơi lưu tệp pptx sau khi tạo thành công. Quá trình này không cần kết nối internet và không chia sẻ dữ liệu với bất kỳ ai ngoài trình duyệt của bạn. Nếu muốn tiếp tục, nhấn OK (thông báo này sẽ không hiện lại lần sau). Nếu không muốn tiếp tục, nhấn Hủy."
 
 #: songselection.strsongisempty
@@ -768,6 +770,10 @@ msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "Trình chiếu…"
 
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
+
 #: tfrmsongs.btnup.caption
 msgid "🠕"
 msgstr "🠕"
@@ -1069,3 +1075,4 @@ msgstr "Thư mục đã chọn có thể được sử dụng thành công làm 
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Vui lòng chọn đường dẫn kho bài hát trước khi rời khỏi trợ lý. Cantara không thể hoạt động nếu thiếu nó."
+
