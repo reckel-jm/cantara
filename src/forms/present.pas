@@ -435,17 +435,10 @@ begin
     // To full screen
     ShowWindow(Handle, SW_SHOWFULLSCREEN);
     Fullscreen := True;
-    if frmSettings.GetHideCursorInPresentation then
-    begin
-      Self.Cursor := crNone;
-      imageShower.Cursor := crNone;
-    end;
   end else begin
     // From full screen
     ShowWindow(Handle, SW_SHOWMAXIMIZED);
     Fullscreen := False;
-    Self.Cursor := crDefault;
-    imageShower.Cursor := crDefault;
   end;
   {$endif}
   MenuItemToggleFullScreen.Checked:=Fullscreen;
@@ -482,17 +475,10 @@ begin
     // To full screen
     ShowWindow(Handle, SW_SHOWFULLSCREEN);
     Fullscreen := True;
-    if frmSettings.GetHideCursorInPresentation then
-    begin
-      Self.Cursor := crNone;
-      imageShower.Cursor := crNone;
-    end;
   end else begin
     // From full screen
     ShowWindow(Handle, SW_SHOWMAXIMIZED);
     Fullscreen := False;
-    Self.Cursor := crDefault;
-    imageShower.Cursor := crDefault;
   end;
   {$endif}
   MenuItemToggleFullScreen.Checked:=Fullscreen;
