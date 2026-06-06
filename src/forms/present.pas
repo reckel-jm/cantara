@@ -216,6 +216,8 @@ end;
 
 procedure TfrmPresent.FormShow(Sender: TObject);
 begin
+  if frmSettings.GetHideCursorInPresentation then
+    Self.Cursor := crNone;
   PresentationCanvas.LoadBackgroundBitmap;
   if SlideList.Count > 0 then showItem(0)
   else
@@ -368,6 +370,8 @@ begin
   // PresentationCanvas, SlideList, etc., so touching them would crash.
   if csDestroying in ComponentState then Exit;
 
+  if Self.Cursor = crNone then
+    Self.Cursor := crDefault;
   BlackScreenActive := False;
   if Assigned(FadeTimer) and FadeTimer.Enabled then
   begin

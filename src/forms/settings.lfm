@@ -138,8 +138,20 @@ object frmSettings: TfrmSettings
     Caption = 'ms'
     ParentFont = False
   end
-  object gbPresentation: TGroupBox
+  object cbHideCursorInPresentation: TCheckBox
+    AnchorSideLeft.Control = gbPresentation
     AnchorSideTop.Control = seFadeDuration
+    AnchorSideTop.Side = asrBottom
+    Left = 8
+    Height = 26
+    Top = 143
+    Width = 330
+    Caption = 'Hide mouse cursor in presentation mode'
+    ParentFont = False
+    TabOrder = 14
+  end
+  object gbPresentation: TGroupBox
+    AnchorSideTop.Control = cbHideCursorInPresentation
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = btnClose
     Left = 8
