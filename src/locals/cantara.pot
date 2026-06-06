@@ -543,6 +543,10 @@ msgstr ""
 msgid "Fade transition between slides"
 msgstr ""
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr ""
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr ""
@@ -729,6 +733,10 @@ msgstr ""
 #: tfrmsongs.btnstartpresentation.caption
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
+msgstr ""
+
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
 msgstr ""
 
 #: tfrmsongs.btnup.caption

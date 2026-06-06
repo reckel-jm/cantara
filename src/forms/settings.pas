@@ -25,6 +25,7 @@ type
     btnDetails: TButton;
     cbBlackScreenOnEmpty: TCheckBox;
     cbFadeTransition: TCheckBox;
+    cbHideCursorInPresentation: TCheckBox;
     lblFadeMs: TLabel;
     seFadeDuration: TSpinEdit;
     cbMetaDataFirstSlide: TCheckBox;
@@ -106,6 +107,7 @@ type
     function ExportPresentationStyleSettings: TPresentationStyleSettings;
     function GetRepositoryPath: String;
     function GetSettingsFile: TINIFile;
+    function GetHideCursorInPresentation: Boolean;
     procedure SetPortalsUsedFlag;
   end;
 
@@ -393,6 +395,7 @@ begin
   cbFadeTransition.Checked := settingsFile.ReadBool('Config', 'FadeTransition', True);
   seFadeDuration.Value := settingsFile.ReadInteger('Config', 'FadeDurationMs', 150);
   seFadeDuration.Enabled := cbFadeTransition.Checked;
+  cbHideCursorInPresentation.Checked := settingsFile.ReadBool('Config', 'HideCursorInPresentation', False);
   textColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
     'Text-Color', 'clWhite'));
   bgColorDialog.Color := StringToColor(settingsFile.ReadString('Config',
@@ -514,6 +517,7 @@ begin
       settingsFile.WriteBool('Config', 'BlackScreenOnEmpty', cbBlackScreenOnEmpty.Checked);
       settingsFile.WriteBool('Config', 'FadeTransition', cbFadeTransition.Checked);
       settingsFile.WriteInteger('Config', 'FadeDurationMs', seFadeDuration.Value);
+      settingsFile.WriteBool('Config', 'HideCursorInPresentation', cbHideCursorInPresentation.Checked);
       settingsFile.WriteString('Config', 'Text-Color',
         ColorToString(textColorDialog.Color));
       settingsFile.WriteString('Config', 'Background-Color',
@@ -635,6 +639,11 @@ end;
 function TfrmSettings.GetSettingsFile: TINIFile;
 begin
   Result := SettingsFile;
+end;
+
+function TfrmSettings.GetHideCursorInPresentation: Boolean;
+begin
+  Result := cbHideCursorInPresentation.Checked;
 end;
 
 procedure TfrmSettings.SetPortalsUsedFlag;

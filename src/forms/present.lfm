@@ -8,16 +8,16 @@ object frmPresent: TfrmPresent
   ClientHeight = 535
   ClientWidth = 1070
   Color = clBlack
+  PopupMenu = PresentationMenu
+  Position = poScreenCenter
+  LCLVersion = '4.6.0.0'
+  WindowState = wsMaximized
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnHide = FormHide
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
-  PopupMenu = PresentationMenu
-  Position = poScreenCenter
-  LCLVersion = '3.2.0.0'
-  WindowState = wsMaximized
   object imageShower: TImage
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -31,8 +31,8 @@ object frmPresent: TfrmPresent
     Width = 1070
     AntialiasingMode = amOn
     Align = alClient
-    OnClick = imageShowerClick
     Proportional = True
+    OnClick = imageShowerClick
   end
   object PresentationMenu: TPopupMenu
     Left = 191

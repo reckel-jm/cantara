@@ -208,7 +208,9 @@ msgid "Hint"
 msgstr "تلميح"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+#, fuzzy
+#| msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
 msgstr "يستخدم Cantara محرك JavaScript في متصفح الويب الافتراضي المحلي الخاص بك ومكتبة JavaScript مفتوحة المصدر PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) لإنشاء ملف pptx. لذلك، بعد الضغط على موافق، سيفتح متصفح الويب الخاص بك ويطلب منك مكانًا لحفظ ملف pptx بعد اكتمال الإنشاء بنجاح. خلال هذه العملية، لا حاجة لاتصال بالإنترنت ولا تتم مشاركة أي بيانات مع أي شخص آخر عبر متصفحك. إذا أردت المتابعة، اضغط على موافق ولن تظهر هذه الرسالة مرة أخرى في المرات القادمة. إذا لم ترغب في المتابعة، اضغط على إلغاء."
 
 #: songselection.strsongisempty
@@ -576,6 +578,10 @@ msgstr "شريحة فارغة بين الأغاني"
 msgid "Fade transition between slides"
 msgstr "انتقال تلاشي بين الشرائح"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr "إخفاء مؤشر الماوس في وضع العرض"
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "في الشريحة الأولى"
@@ -763,6 +769,10 @@ msgstr "الإعدادات…"
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "العرض…"
+
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
@@ -1065,3 +1075,4 @@ msgstr "يمكن استخدام المجلد المحدد بنجاح كمستو�
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "يرجى اختيار مسار مستودع الأغاني قبل مغادرة المساعد. لا يمكن لـ Cantara العمل بدونه."
+

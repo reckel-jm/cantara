@@ -208,7 +208,9 @@ msgid "Hint"
 msgstr "Wskazówka"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+#, fuzzy
+#| msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
 msgstr "Cantara wykorzystuje silnik JavaScript Twojej domyślnej przeglądarki oraz otwartą bibliotekę JavaScript PptxGenJS[](https://gitbrent.github.io/PptxGenJS/), aby wygenerować plik pptx. Po naciśnięciu „OK” przeglądarka otworzy się i poprosi o miejsce zapisu pliku po zakończeniu generowania. W tym procesie nie jest wymagane połączenie z internetem i żadne dane nie są udostępniane nikomu poza Twoją przeglądarką. Jeśli chcesz kontynuować, naciśnij „OK” (wiadomość nie pojawi się ponownie). Jeśli nie chcesz kontynuować, naciśnij „Anuluj”."
 
 #: songselection.strsongisempty
@@ -576,6 +578,10 @@ msgstr "Pusty slajd między pieśniami"
 msgid "Fade transition between slides"
 msgstr "Płynne przejście między slajdami"
 
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr "Ukryj kursor myszy w trybie prezentacji"
+
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
 msgstr "na pierwszym slajdzie"
@@ -763,6 +769,10 @@ msgstr "Ustawienia…"
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "Prezentacja…"
+
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
@@ -1065,3 +1075,4 @@ msgstr "Wybrany katalog może być z powodzeniem używany jako repozytorium pie�
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Proszę wybrać ścieżkę do repozytorium pieśni zanim opuścisz kreator. Bez tego Cantara nie będzie działać."
+

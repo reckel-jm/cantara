@@ -7,10 +7,10 @@ object frmWelcome: TfrmWelcome
   Caption = 'Cantara Setup'
   ClientHeight = 489
   ClientWidth = 689
+  Position = poOwnerFormCenter
+  LCLVersion = '4.6.0.0'
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
-  Position = poOwnerFormCenter
-  LCLVersion = '3.2.0.0'
   object Notebook: TNotebook
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner

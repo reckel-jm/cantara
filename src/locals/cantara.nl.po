@@ -565,9 +565,21 @@ msgctxt "tfrmsettings.caption"
 msgid "Settings"
 msgstr "Instellingen"
 
+#: tfrmsettings.cbblackscreenonempty.caption
+msgid "Show black screen when slide is empty"
+msgstr ""
+
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
 msgstr "Pauze tussen nummers"
+
+#: tfrmsettings.cbfadetransition.caption
+msgid "Fade transition between slides"
+msgstr ""
+
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr "Muiscursor verbergen in presentatiemodus"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
@@ -608,6 +620,10 @@ msgstr "Locatie van nummer:"
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
 msgstr "Uitlijning: "
+
+#: tfrmsettings.lblfadems.caption
+msgid "ms"
+msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency:"
@@ -752,6 +768,10 @@ msgstr "Instellingen…"
 msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "Presentatie…"
+
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
 
 #: tfrmsongs.btnup.caption
 msgid "🠕"
