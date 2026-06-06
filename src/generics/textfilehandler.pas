@@ -63,7 +63,7 @@ begin
     filepath := filepath + fileending;
   end;
   try
-    HandlerStringList.SaveToFile(filepath);
+    HandlerStringList.SaveToFile(filepath, TEncoding.UTF8);
     Self.fFileHandlingStatus := StatusSuccess;
   except
     on E: EInOutError do
@@ -88,7 +88,7 @@ begin
   begin
     HandlerStringList := TStringList.Create;
     try
-      HandlerStringList.LoadFromFile(filepath);
+      HandlerStringList.LoadFromFile(filepath, TEncoding.UTF8);
       Result := HandlerStringList.Text;
       Self.fFileHandlingStatus := StatusSuccess;
     except

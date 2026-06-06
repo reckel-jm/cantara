@@ -158,7 +158,7 @@ begin
     RepoFile.FileName := RepoFile.Name + RepoFile.FileExtension;
     NewFilePath := frmSettings.edtRepoPath.Text + PathDelim + NewSongName + '.song';
     RepoFile.FilePath := NewFilePath;
-    (Frame As TfrmDisplaySongContent).memoCode.Lines.SaveToFile(NewFilePath);
+    (Frame As TfrmDisplaySongContent).memoCode.Lines.SaveToFile(NewFilePath, TEncoding.UTF8);
     SetLength(Repo, Length(Repo) + 1);
     Repo[Length(Repo) - 1] := RepoFile;
     lsSongs.AddItem(RepoFile.FileName, RepoFile);
