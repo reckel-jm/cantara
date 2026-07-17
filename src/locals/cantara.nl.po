@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-02-21 09:00+0100\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"PO-Revision-Date: 2026-07-08 18:32\n"
+"Last-Translator: Jan Martin Reckel <jm.reckel@t-online.de>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -525,7 +525,6 @@ msgid "Open image file"
 msgstr "Afbeelding openen"
 
 #: tfrmsettings.bgpicturefiledialog.title
-#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
 msgstr "Afbeelding openen"
@@ -782,8 +781,6 @@ msgid "Close File"
 msgstr "Bestand sluiten"
 
 #: tfrmsongs.caption
-#, fuzzy
-#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
 msgstr "Cantara"
