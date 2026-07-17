@@ -9,7 +9,7 @@ object frmSongs: TfrmSongs
   ClientWidth = 1290
   Menu = MainMenu
   Position = poScreenCenter
-  LCLVersion = '4.4.0.0'
+  LCLVersion = '4.6.0.0'
   OnActivate = FormActivate
   OnChangeBounds = FormResize
   OnClose = FormClose

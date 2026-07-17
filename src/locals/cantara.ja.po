@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cantara\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-02-21\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2026-07-08 18:32\n"
+"Last-Translator: Jan Martin Reckel <jm.reckel@t-online.de>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -208,7 +208,7 @@ msgid "Hint"
 msgstr "ヒント"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
 msgstr "Cantaraはpptxファイル生成のため、ローカルの既定ウェブブラウザのJavaScriptエンジンとオープンソースのJavaScriptライブラリPptxGenJS（https://gitbrent.github.io/PptxGenJS/）を使用しています。「OK」を押すとブラウザが開き、生成完了後にpptxファイルの保存場所を尋ねます。この処理中はインターネット接続は不要で、ブラウザ以外にデータは一切共有されません。続行する場合は「OK」を押してください（次回からはこのメッセージは表示されません）。続行しない場合は「キャンセル」を押してください。"
 
 #: songselection.strsongisempty
@@ -524,7 +524,6 @@ msgid "Open image file"
 msgstr "画像ファイルを開く"
 
 #: tfrmsettings.bgpicturefiledialog.title
-#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
 msgstr "画像ファイルを開く"
@@ -575,6 +574,10 @@ msgstr "曲の間に空のスライド"
 #: tfrmsettings.cbfadetransition.caption
 msgid "Fade transition between slides"
 msgstr "スライド間のフェード遷移"
+
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr "プレゼンテーションモードでマウスカーソルを非表示にする"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
@@ -764,6 +767,10 @@ msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "プレゼンテーション…"
 
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
+
 #: tfrmsongs.btnup.caption
 msgid "🠕"
 msgstr "🠕"
@@ -773,8 +780,6 @@ msgid "Close File"
 msgstr "ファイルを閉じる"
 
 #: tfrmsongs.caption
-#, fuzzy
-#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
 msgstr "Cantara"
@@ -1065,3 +1070,4 @@ msgstr "選択したフォルダを曲リポジトリとして正常に使用で
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "アシスタントを終了する前に曲リポジトリのパスを選択してください。それがないとCantaraは動作しません。"
+

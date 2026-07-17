@@ -6,6 +6,7 @@ object FrmFulltextsearch: TFrmFulltextsearch
   ClientHeight = 255
   ClientWidth = 424
   Color = clWindow
+  LCLVersion = '4.6.0.0'
   ParentBackground = False
   ParentColor = False
   TabOrder = 0

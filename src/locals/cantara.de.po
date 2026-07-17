@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2026-07-08 18:32\n"
 "Last-Translator: Jan Martin Reckel <jm.reckel@t-online.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -526,7 +526,6 @@ msgid "Open image file"
 msgstr "Bilddatei laden"
 
 #: tfrmsettings.bgpicturefiledialog.title
-#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
 msgstr "Bilddatei laden"
@@ -577,6 +576,10 @@ msgstr "Leerfolie zwischen den Liedern einfügen"
 #: tfrmsettings.cbfadetransition.caption
 msgid "Fade transition between slides"
 msgstr "Übergangszeit zwischen den Folien"
+
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr "Mauszeiger im Präsentationsmodus verstecken"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
@@ -767,6 +770,10 @@ msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "Präsentation..."
 
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
+
 #: tfrmsongs.btnup.caption
 msgid "🠕"
 msgstr "🠕"
@@ -776,8 +783,6 @@ msgid "Close File"
 msgstr "Datei schließen"
 
 #: tfrmsongs.caption
-#, fuzzy
-#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
 msgstr "Liedauswahl (Cantara)"
@@ -1050,10 +1055,8 @@ msgid "Next"
 msgstr "Weiter"
 
 #: welcome.songrepodirempty
-#, fuzzy
-#| msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at"
 msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
-msgstr "Es scheint jedoch, dass Sie noch keine Lieder hinzugefügt haben. Möchten Sie das Lied „Amazing Grace“ von John Newton als Beispiel zu Ihrem Liederverzeichnis hinzufügen? Dann klicken Sie auf"
+msgstr "Es scheint jedoch, dass Sie noch keine Lieder hinzugefügt haben. Möchten Sie das Lied „Amazing Grace“ von John Newton als Beispiel zu Ihrem Liederverzeichnis hinzufügen? Dann klicken Sie auf die Schaltfläche unten. Klicken Sie auf „Weiter“, um mit dem nächsten Schritt fortzufahren."
 
 #: welcome.songreponotempty
 msgid "The song repository contains already {songcount} songs which you can use with Cantara."

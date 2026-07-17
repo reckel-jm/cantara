@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-02-21 09:00+0100\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"PO-Revision-Date: 2026-07-08 18:32\n"
+"Last-Translator: Jan Martin Reckel <jm.reckel@t-online.de>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -525,7 +525,6 @@ msgid "Open image file"
 msgstr "Afbeelding openen"
 
 #: tfrmsettings.bgpicturefiledialog.title
-#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
 msgstr "Afbeelding openen"
@@ -565,9 +564,21 @@ msgctxt "tfrmsettings.caption"
 msgid "Settings"
 msgstr "Instellingen"
 
+#: tfrmsettings.cbblackscreenonempty.caption
+msgid "Show black screen when slide is empty"
+msgstr ""
+
 #: tfrmsettings.cbemptyframe.caption
 msgid "Empty slide between songs"
 msgstr "Pauze tussen nummers"
+
+#: tfrmsettings.cbfadetransition.caption
+msgid "Fade transition between slides"
+msgstr ""
+
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr "Muiscursor verbergen in presentatiemodus"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
@@ -608,6 +619,10 @@ msgstr "Locatie van nummer:"
 #: tfrmsettings.lblalignment.caption
 msgid "Alignment: "
 msgstr "Uitlijning: "
+
+#: tfrmsettings.lblfadems.caption
+msgid "ms"
+msgstr ""
 
 #: tfrmsettings.lblimagebrightness.caption
 msgid "Change Image Transparency:"
@@ -753,6 +768,10 @@ msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "Presentatie…"
 
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
+
 #: tfrmsongs.btnup.caption
 msgid "🠕"
 msgstr "🠕"
@@ -762,8 +781,6 @@ msgid "Close File"
 msgstr "Bestand sluiten"
 
 #: tfrmsongs.caption
-#, fuzzy
-#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
 msgstr "Cantara"

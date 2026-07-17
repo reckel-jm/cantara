@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cantara\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-02-21\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2026-07-08 18:32\n"
+"Last-Translator: Jan Martin Reckel <jm.reckel@t-online.de>\n"
 "Language-Team: Korean\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -208,7 +208,7 @@ msgid "Hint"
 msgstr "힌트"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
 msgstr "Cantara는 pptx 파일을 생성하기 위해 로컬 기본 웹 브라우저의 JavaScript 엔진과 오픈소스 JavaScript 라이브러리 PptxGenJS[](https://gitbrent.github.io/PptxGenJS/)를 사용합니다. 따라서 “확인”을 누르면 브라우저가 열리고 생성이 완료되면 pptx 파일을 저장할 위치를 묻습니다. 이 과정에서 인터넷 연결이 필요 없으며, 브라우저를 통한 데이터 공유도 없습니다. 계속하려면 “확인”을 누르세요(다음부터 이 메시지는 나타나지 않습니다). 취소하려면 “취소”를 누르세요."
 
 #: songselection.strsongisempty
@@ -524,7 +524,6 @@ msgid "Open image file"
 msgstr "이미지 파일 열기"
 
 #: tfrmsettings.bgpicturefiledialog.title
-#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
 msgstr "이미지 파일 열기"
@@ -575,6 +574,10 @@ msgstr "곡 사이에 빈 슬라이드"
 #: tfrmsettings.cbfadetransition.caption
 msgid "Fade transition between slides"
 msgstr "슬라이드 간 페이드 전환"
+
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr "프레젠테이션 모드에서 마우스 커서 숨기기"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
@@ -764,6 +767,10 @@ msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "프레젠테이션…"
 
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
+
 #: tfrmsongs.btnup.caption
 msgid "🠕"
 msgstr "🠕"
@@ -773,8 +780,6 @@ msgid "Close File"
 msgstr "파일 닫기"
 
 #: tfrmsongs.caption
-#, fuzzy
-#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
 msgstr "Cantara"
@@ -1065,3 +1070,4 @@ msgstr "선택한 폴더를 곡 저장소로 성공적으로 사용할 수 있�
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "도우미를 종료하기 전에 곡 저장소 경로를 선택하세요. 이 경로 없이는 Cantara가 작동하지 않습니다."
+

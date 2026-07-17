@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cantara\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2026-07-08 18:32\n"
 "Last-Translator: Jan Martin Reckel <jm.reckel@t-online.de>\n"
 "Language-Team: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language: it_IT\n"
@@ -208,7 +208,7 @@ msgid "Hint"
 msgstr "Suggerimento"
 
 #: songselection.strpptxgenjs
-msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs[](https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
+msgid "Cantara is using your local default web browser's Java Script engine and the open source Java Script library PptxGenJs (https://gitbrent.github.io/PptxGenJS/) to generate the pptx file. Therefore, after pressing OK, your web browser will open and ask you for a place to save the pptx file when the generation was done succesfully. During this process, no internet connection will be needed and no data is shared with anyone else despite your web browser. If you want to continue, press OK and this message won't show up again next time. If you don't want to continue, please press Cancel."
 msgstr "Cantara utilizza il motore JavaScript del tuo browser web predefinito e la libreria open source PptxGenJS[](https://gitbrent.github.io/PptxGenJS/) per generare il file pptx. Dopo aver premuto OK, il browser si aprirà e ti chiederà dove salvare il file pptx una volta completata la generazione con successo. Durante questo processo non è necessaria alcuna connessione Internet e nessun dato viene condiviso con terzi tramite il browser. Se vuoi continuare premi OK (questo messaggio non riapparirà più in futuro). Altrimenti premi Annulla."
 
 #: songselection.strsongisempty
@@ -524,7 +524,6 @@ msgid "Open image file"
 msgstr "Apri file immagine"
 
 #: tfrmsettings.bgpicturefiledialog.title
-#, fuzzy
 msgctxt "tfrmsettings.bgpicturefiledialog.title"
 msgid "Open image file"
 msgstr "Apri file immagine"
@@ -575,6 +574,10 @@ msgstr "Diapositiva vuota tra i brani"
 #: tfrmsettings.cbfadetransition.caption
 msgid "Fade transition between slides"
 msgstr "Transizione dissolvenza tra diapositive"
+
+#: tfrmsettings.cbhidecursorinpresentation.caption
+msgid "Hide mouse cursor in presentation mode"
+msgstr "Nascondi il cursore del mouse in modalità presentazione"
 
 #: tfrmsettings.cbmetadatafirstslide.caption
 msgid "at first slide"
@@ -764,6 +767,10 @@ msgctxt "tfrmsongs.btnstartpresentation.caption"
 msgid "Presentation..."
 msgstr "Presentazione..."
 
+#: tfrmsongs.btntoggleblack.caption
+msgid "■"
+msgstr ""
+
 #: tfrmsongs.btnup.caption
 msgid "🠕"
 msgstr "🠕"
@@ -773,8 +780,6 @@ msgid "Close File"
 msgstr "Chiudi file"
 
 #: tfrmsongs.caption
-#, fuzzy
-#| msgid "Song Selection (Cantara)"
 msgctxt "tfrmsongs.caption"
 msgid "Cantara"
 msgstr "Cantara"
@@ -1065,3 +1070,4 @@ msgstr "La directory selezionata può essere usata correttamente come repository
 #: welcome.strnosongrepoyet
 msgid "Please select a song repository path before you leave the assistent. Cantara can not work without it."
 msgstr "Seleziona un percorso per il repository dei brani prima di uscire dall'assistente. Cantara non può funzionare senza."
+

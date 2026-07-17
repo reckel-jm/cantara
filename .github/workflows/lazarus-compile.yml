@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [windows-latest, ubuntu-latest, macos-latest]
+        operating-system: [windows-latest, ubuntu-latest, macos-13]
         lazarus-versions: [stable]
     
     steps:
@@ -68,7 +68,7 @@ jobs:
       run: make
 
     - name: Build the MacOS Application
-      if: ${{ matrix.operating-system == 'macos-latest' }}
+      if: ${{ matrix.operating-system == 'macos-13' }}
       run: lazbuild -B src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk && lazbuild -B src/metadarkstyle/metadarkstyle.lpk && lazbuild -B src/Cantara.lpi
 
     # --- PACKAGING WITH DYNAMIC NAMES ---
@@ -99,7 +99,7 @@ jobs:
         path: cantara.iss
 
     - name: Zip MacOS Application
-      if: ${{ matrix.operating-system == 'macos-latest' }}
+      if: ${{ matrix.operating-system == 'macos-13' }}
       run: zip -r cantara-${{ env.REL_VER }}-macos-x64.zip src/cantara.app COPYING
 
 
@@ -124,7 +124,7 @@ jobs:
           Output/*.exe
 
     - name: Upload MacOS Artifacts
-      if: ${{ matrix.operating-system == 'macos-latest' }}
+      if: ${{ matrix.operating-system == 'macos-13' }}
       uses: actions/upload-artifact@v4
       with:
         name: cantara-${{ env.REL_VER }}-macos
