@@ -1056,7 +1056,7 @@ msgstr "Weiter"
 
 #: welcome.songrepodirempty
 msgid "However it seems that you have not added any songs yet. Would you like to add the song \"Amazing Grace\" from John Newton as an example to your song repository? Then click at the button below. Click \"Next\" to go to the next step."
-msgstr "Es scheint jedoch, dass Sie noch keine Lieder hinzugefügt haben. Möchten Sie das Lied „Amazing Grace“ von John Newton als Beispiel zu Ihrem Liederverzeichnis hinzufügen? Dann klicken Sie auf"
+msgstr "Es scheint jedoch, dass Sie noch keine Lieder hinzugefügt haben. Möchten Sie das Lied „Amazing Grace“ von John Newton als Beispiel zu Ihrem Liederverzeichnis hinzufügen? Dann klicken Sie auf die Schaltfläche unten. Klicken Sie auf „Weiter“, um mit dem nächsten Schritt fortzufahren."
 
 #: welcome.songreponotempty
 msgid "The song repository contains already {songcount} songs which you can use with Cantara."
